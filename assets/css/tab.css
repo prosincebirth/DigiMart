@@ -1,0 +1,115 @@
+.tab_section .tab_wrapper {
+  margin-top: 70px;
+}
+
+@media screen and (max-width: 991px) {
+  .tab_section .tab_wrapper {
+    padding: 0 15px;
+    margin-top: 25px;
+  }
+}
+
+.tab_section .tab_wrapper .tab_list__nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 20px;
+  -moz-column-gap: 20px;
+  column-gap: 20px;
+  border-bottom: 1px solid #C5A135;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.tab_section .tab_wrapper .tab_list__nav .tab_nav_item {
+  position: relative;
+}
+
+.tab_section .tab_wrapper .tab_list__nav .tab_nav_item.active {
+  background-color: #C5A135;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  padding: 7px 15px;
+}
+
+.tab_section .tab_wrapper .tab_list__nav .tab_nav_item.active:before {
+  display: none;
+}
+
+.tab_section .tab_wrapper .tab_list__nav .tab_nav_item.active a {
+  color: #fff;
+}
+
+.tab_section .tab_wrapper .tab_list__nav .tab_nav_item:before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+  bottom: -8px;
+}
+
+.tab_section .tab_wrapper .tab_list__nav .tab_nav_item a {
+  text-decoration: none;
+  text-transform: capitalize;
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #000;
+}
+
+.tab_section .tab_contents {
+  margin-top: 20px;
+}
+
+.tab_section .popular_items {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  -webkit-column-gap: 20px;
+  -moz-column-gap: 20px;
+  column-gap: 20px;
+}
+
+@media screen and (max-width: 991px) {
+  .tab_section .popular_items {
+    grid-template-columns: auto auto;
+    -webkit-column-gap: 10px;
+    -moz-column-gap: 10px;
+    column-gap: 10px;
+  }
+}
+
+.tab_section .popular_items .popular_list__items {
+  margin-bottom: 15px;
+}
+
+.tab_section .popular_items .item_wrapper {
+  position: relative;
+}
+
+.tab_section .popular_items .item_wrapper .item_tag {
+  display: inline-block;
+  font-size: 11px;
+  color: #fff;
+  padding: 5px 10px;
+  position: absolute;
+}
+
+.tab_section .popular_items .item_wrapper .img_wrapper img {
+  width: 100%;
+}
+
+.tab_section .popular_items .item_wrapper .item_info {
+  padding: 5px 15px 10px;
+  background-color: #fff;
+}
+
+.tab_section .popular_items .item_wrapper .item_info .item_title {
+  font-weight: 500;
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+
