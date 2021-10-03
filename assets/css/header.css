@@ -1,0 +1,203 @@
+.main_header {
+  background-color: rgba(46, 57, 74, 0.8);
+  position: sticky;
+  width: 100%;
+  z-index: 10;
+  top: 0;
+}
+
+@media screen and (max-width: 991px) {
+  .main_header {
+    background-color: #2E394A;
+  }
+}
+
+.main_header .nav_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 991px) {
+  .main_header .nav_wrapper {
+    height: 50px;
+  }
+}
+
+.main_header .nav_wrapper ul:not(.game_list__dropdown) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 20px;
+  -moz-column-gap: 20px;
+  column-gap: 20px;
+}
+
+.main_header .nav_wrapper ul:not(.game_list__dropdown) > li {
+  position: relative;
+}
+
+.main_header .nav_wrapper ul:not(.game_list__dropdown) > li > a {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  height: 50px;
+  line-height: 50px;
+  display: block;
+}
+
+.main_header .nav_wrapper ul:not(.game_list__dropdown) > li:before {
+  content: '';
+  width: 100%;
+  height: 2px;
+  background-color: aquamarine;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  -webkit-transition: all 0.15s linear;
+  -o-transition: all 0.15s linear;
+  transition: all 0.15s linear;
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+}
+
+.main_header .nav_wrapper ul:not(.game_list__dropdown) > li:hover:before, .main_header .nav_wrapper ul:not(.game_list__dropdown) > li.active:before {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.main_header .nav_wrapper .right_nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 20px;
+  -moz-column-gap: 20px;
+  column-gap: 20px;
+}
+
+.main_header .nav_wrapper .right_nav .other_nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #fff;
+  font-weight: 500;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-column-gap: 20px;
+  -moz-column-gap: 20px;
+  column-gap: 20px;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 991px) {
+  .main_header .nav_wrapper .right_nav .other_nav {
+    margin-right: 15px;
+  }
+}
+
+.main_header .nav_wrapper .right_nav .other_nav .game_wrapper {
+  position: relative;
+}
+
+.main_header .nav_wrapper .right_nav .other_nav .game_wrapper:hover .game_dropdown {
+  height: 68px;
+}
+
+.main_header .nav_wrapper .right_nav .other_nav .game_wrapper .selected_game {
+  height: 50px;
+  line-height: 50px;
+  cursor: pointer;
+}
+
+.main_header .nav_wrapper .right_nav .other_nav .game_wrapper .game_dropdown {
+  position: absolute;
+  top: 50px;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: #fff;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.main_header .nav_wrapper .right_nav .other_nav .game_wrapper .game_dropdown ul {
+  width: 120px;
+}
+
+.main_header .nav_wrapper .right_nav .other_nav .game_wrapper .game_dropdown ul li {
+  color: #000 !important;
+  padding: 7px 10px;
+  border-bottom: 1px solid #afafaf;
+}
+
+.main_header .nav_wrapper .right_nav .other_nav .game_wrapper .game_dropdown ul li:last-of-type {
+  border-bottom-width: 0;
+}
+
+.main_header .nav_wrapper .right_nav .other_nav .mail {
+  color: #fff;
+}
+
+@media screen and (max-width: 991px) {
+  .main_header .nav_wrapper .right_nav .other_nav .mail {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .main_header .nav_wrapper .right_nav .other_nav .user_detail {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .main_header .ham_menu {
+    display: none;
+  }
+}
+
+@media (max-width: 991px) {
+  .main_header .ham_menu {
+    display: block;
+    width: 30px;
+    margin-left: 15px;
+    position: relative;
+  }
+  .main_header .ham_menu .ham_text {
+    position: absolute;
+    right: -40px;
+    top: 0;
+    font-weight: 600;
+    color: #fff;
+  }
+  .main_header .ham_menu .bar {
+    display: block;
+    height: 3px;
+    background-color: #fff;
+    margin-bottom: 3px;
+  }
+  .main_header .ham_menu .bar:last-of-type {
+    margin-bottom: 0;
+  }
+  .main_header .left_nav__list,
+  .main_header .right_nav__list {
+    display: none !important;
+  }
+}
+
+.header_btn {
+  text-transform: uppercase;
+  color: var(--white-color);
+  text-decoration: none;
+}
