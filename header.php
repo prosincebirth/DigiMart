@@ -9,7 +9,7 @@
                     <span class="ham_text">HOME</span>
                 </div>
                 <ul class="left_nav__list">
-                    <li class="left_nav__list___item active"><a href="">Home</a></li>
+                    <li class="left_nav__list___item active"><a href="./">Home</a></li>
                     <li class="left_nav__list___item"><a href="market.php">Market</a></li>
                     <li class="left_nav__list___item"><a href="">News</a></li>
                     <li class="left_nav__list___item"><a href="">Wiki</a></li>
