@@ -1,0 +1,9 @@
+flow sa system nato
+register page > jscript > controller to connects database functions > ajax to register page 
+
+register page
+-ipa red ang error trappings
+-ipa green ang success
+-ang backround pud black dayon box type nga register page
+login page
+-e same lng sa register page , box type niya black background
