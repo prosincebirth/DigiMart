@@ -1,4 +1,5 @@
 <?php 
+	
 	require 'database.php';
 
 		if(isset($_POST['action_type'])){
@@ -30,9 +31,11 @@
 						$user_password=$_POST['user_password'];
 
 						if(existing_user($user_username)){
-							$details = login($user_username);
-							if(password_verify($user_password, $details['user_password'])){
+							$res = login($user_username);
+							if(password_verify($user_password, $res['user_password'])){	
+								$_SESSION['user_session'] = $res['user_id'];
 								echo 'success';
+
 							}else{
 								echo 'wrong password';
 							}

@@ -121,7 +121,10 @@ $(document).ready(function(){
                                     $('#for_register').html('<div class="alert alert-success">&nbsp; Success</div>').fadeIn(3000, function() {
                                    
                                     })
-                                  });
+                                  }); 
+                                  setTimeout(function() {
+                                    window.location.href = "login.php";
+                                  }, 2000);
                                
                             }
                         }
@@ -137,7 +140,6 @@ $(document).ready(function(){
                     var data=new FormData();
                     data.append("action_type","login");
                     data.append("user_username",username);
-                    data.append("user_email",email);
                     data.append("user_password",password);
 
                         $.ajax({
@@ -149,6 +151,23 @@ $(document).ready(function(){
                             processData:false,
                             success:function(res){
                                     alert(res);
+                        
+                                if(res=="success"){
+                                    $('#for_login').fadeIn(400, function() {
+                                        $('#for_login').html('<div class="alert alert-success">&nbsp; Success</div>').fadeIn(3000, function() {
+                                        })
+                                      }); 
+                                      setTimeout(function() {
+                                        window.location.href = "login.php";
+                                      }, 1000);                                
+                                }else if(res=="wrong password"){
+
+                                }else if(res=="username error"){
+
+                                }
+                                
+
+
                             }
                         });	
                     }

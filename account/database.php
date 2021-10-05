@@ -1,4 +1,5 @@
 <?php 
+	session_start(); 
 	//PUT COMMENTS WHERE THE FUNCTIONS BELONG !!! - JASON
     function connection(){// DB CONNECTION
 		$conn=new PDO("mysql:host=localhost;dbname=digimart","root","");
