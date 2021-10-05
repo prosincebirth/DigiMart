@@ -117,13 +117,12 @@ $(document).ready(function(){
                                   });
                             }
                             else if(res=="user added"){//success
-                                setTimeout(function(){                                  
-                                    $('#for_register').fadeIn(400, function() {
-                                        $('#for_register').html('<div class="alert alert-success">&nbsp; Success</div>').fadeIn(3000, function() {
-                                        location.href = "login.php"
-                                        })
-                                      });
-                                },3000);
+                                $('#for_register').fadeIn(400, function() {
+                                    $('#for_register').html('<div class="alert alert-success">&nbsp; Success</div>').fadeIn(3000, function() {
+                                   
+                                    })
+                                  });
+                               
                             }
                         }
                     });	
