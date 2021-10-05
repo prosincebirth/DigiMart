@@ -1,21 +1,21 @@
 <?php 
-
-    function connection(){
+	//PUT COMMENTS WHERE THE FUNCTIONS BELONG !!! - JASON
+    function connection(){// DB CONNECTION
 		$conn=new PDO("mysql:host=localhost;dbname=digimart","root","");
 		return $conn;
 	}
 
-	function add_new_user($user_username,$user_password,$user_email){
+	function add_new_user($user_username,$user_password,$user_email){//USER
 		$conn=connection();
-		$query="INSERT INTO user(user_username,user_password,user_email) values(:user_username,:user_password,:user_email)"; 
+		$query="INSERT INTO users(user_username,user_password,user_email) values(:user_username,:user_password,:user_email)"; 
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":user_username"=>$user_username,":user_password"=>$user_password,":user_email"=>$user_email));
 		$conn=null;
 	}
 
-	function existing_email($user_email){  
+	function existing_email($user_email){ //USER
 		$conn=connection();
-		$query="SELECT user_email from user where user_email=:user_email";
+		$query="SELECT user_email from users where user_email=:user_email";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":user_email"=>$user_email));
 		$res=$prepare->rowcount();
@@ -23,9 +23,9 @@
 		return $res;
 	}
 
-	function existing_user($user_username){
+	function existing_user($user_username){//user
 		$conn=connection();
-		$query="SELECT user_username from user where user_username=:user_username";
+		$query="SELECT user_username from users where user_username=:user_username";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":user_username"=>$user_username));
 		$res=$prepare->rowcount();
@@ -33,9 +33,9 @@
 		return $res;
 	}
 
-	function login($user_username){
+	function login($user_username){//user
 		$conn=connection();
-		$query="SELECT * from user where user_username=:user_username";
+		$query="SELECT * from users where user_username=:user_username";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":user_username"=>$user_username));
 		$res = $prepare->fetch(PDO::FETCH_ASSOC);

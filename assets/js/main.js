@@ -86,9 +86,7 @@ $(document).ready(function(){
                         cache:false,
                         processData:false,
                         success:function(res){
-                            alert(res);
-                            console.log(res);
-                            if(res==1){// both are taken
+                            if(res=="both taken"){// both are taken
                                 $('#error_email').fadeIn(400, function() {
                                     $('#error_email').html('<div class="alert alert-success">&nbsp; Email is already taken</div>').fadeIn(3000, function() {
                                       $('#error_email').fadeOut(3000, function(){
@@ -102,7 +100,7 @@ $(document).ready(function(){
                                     })
                                   });    
                             }
-                            else if(res==2){//username is taken
+                            else if(res=="user taken"){//username is taken
                                 $('#error_username').fadeIn(400, function() {
                                     $('#error_username').html('<div class="alert alert-success">&nbsp; Username is already taken</div>').fadeIn(3000, function() {
                                       $('#error_username').fadeOut(3000, function(){
@@ -110,7 +108,7 @@ $(document).ready(function(){
                                     })
                                   });    
                             }
-                            else if(res==3){//email is taken
+                            else if(res=="email taken"){//email is taken
                                 $('#error_email').fadeIn(400, function() {
                                     $('#error_email').html('<div class="alert alert-success">&nbsp; Email is already taken</div>').fadeIn(3000, function() {
                                       $('#error_email').fadeOut(3000, function(){
@@ -118,8 +116,14 @@ $(document).ready(function(){
                                     })
                                   });
                             }
-                            else if(res==4){//success
-                                alert(res);
+                            else if(res=="user added"){//success
+                                setTimeout(function(){                                  
+                                    $('#for_register').fadeIn(400, function() {
+                                        $('#for_register').html('<div class="alert alert-success">&nbsp; Success</div>').fadeIn(3000, function() {
+                                        location.href = "login.php"
+                                        })
+                                      });
+                                },3000);
                             }
                         }
                     });	

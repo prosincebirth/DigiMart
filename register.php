@@ -28,6 +28,7 @@
             </div>
             <div class="fld_btn">
                 <button class="btn btn-secondary btn-login" type="button" value="register">Create account</button>
+                <label for="for_register" id="for_register"></label>
             </div>
         </form>
     </div>
