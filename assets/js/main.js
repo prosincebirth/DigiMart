@@ -150,8 +150,6 @@ $(document).ready(function(){
                             cache:false,
                             processData:false,
                             success:function(res){
-                                    alert(res);
-                        
                                 if(res=="success"){
                                     $('#for_login').fadeIn(400, function() {
                                         $('#for_login').html('<div class="alert alert-success">&nbsp; Success</div>').fadeIn(3000, function() {
@@ -161,13 +159,21 @@ $(document).ready(function(){
                                         window.location.href = "login.php";
                                       }, 1000);                                
                                 }else if(res=="wrong password"){
+                                    $('#error_password').fadeIn(400, function() {
+                                        $('#error_password').html('<div class="alert alert-success">&nbsp; Incorrect Password </div>').fadeIn(3000, function() {
+                                          $('#error_password').fadeOut(3000, function(){
+                                          })
+                                        })
+                                      });
 
                                 }else if(res=="username error"){
-
-                                }
-                                
-
-
+                                    $('#error_username').fadeIn(400, function() {
+                                        $('#error_username').html('<div class="alert alert-success">&nbsp; Username is not recognized</div>').fadeIn(3000, function() {
+                                          $('#error_username').fadeOut(3000, function(){
+                                          })
+                                        })
+                                      });
+                                }                        
                             }
                         });	
                     }
