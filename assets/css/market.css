@@ -1,0 +1,128 @@
+.market_section .market_wrapper .sidebar {
+    background-color: var(--black-color);
+}
+
+.market_section .market_wrapper .sidebar .sidebar__wrapper {
+    padding: 10px 20px;
+}
+
+.market_section .market_wrapper .sidebar h1 {
+    color: var(--white-color);
+    font-size: 22px;
+    margin: 15px 0 25px;
+    font-weight: bolder;
+}
+
+.market_section .market_wrapper .sidebar .market_categories .market_categories--list {
+    /* padding-left: 10px; */
+}
+
+.market_section .market_wrapper .sidebar .market_categories .market_categories--list li {
+    margin-bottom: 5px;
+}
+
+.market_section .market_wrapper .sidebar .market_categories .market_categories--list li a {
+    color: var(--white-color);
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    display: block;
+    padding: 15px 10px;
+    border-radius: 5px;
+}
+
+.market_section .market_wrapper .sidebar .market_categories .market_categories--list li.active a,
+.market_section .market_wrapper .sidebar .market_categories .market_categories--list li a:hover {
+    background-color: var(--secondary-color);
+}
+
+.market_section .market_wrapper .mainbar .market_item--wrapper .market_item--container {
+    margin-bottom: 30px;
+}
+
+.market_section .market_wrapper .mainbar .market_item--wrapper .market_item--container .title {
+    font-size: 24px;
+    color: var(--white-color);
+    margin-bottom: 25px;
+    font-weight: bolder;
+}
+
+.market_section .market_wrapper .mainbar .market_item--wrapper .market_item--container .market__items--list .market__items--item {
+    width: 100%;
+}
+
+.market_section .market_wrapper .mainbar .market_item--wrapper .market_item--container .market__items--list .market__items--item a {
+    text-decoration: none;
+}
+
+.market__items--list .market__items--item .image--wrapper {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.market_section .market_wrapper .mainbar .market_item--wrapper .market_item--container .market__items--list .market__items--item .image--wrapper img {
+    width: 100%;
+}
+
+.market__items--list .market__items--item .items--info {
+    margin-top: 10px;
+    padding-left: 10px;
+}
+
+.market__items--list .market__items--item .items--info span {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--white-color);
+}
+
+.market__items--list .market__items--item .items--info span.item--price {
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.market__items--list .market__items--item .items--info span.item--title {
+    font-size: 14px;
+}
+
+.market__items--list .market__items--item .items--info span.item--type {
+    font-size: 12px;
+}
+
+@media screen and (min-width: 992px) {
+    .market_section .market_wrapper .sidebar {
+        width: 350px;
+        height: calc(100vh - 50px);
+    }
+
+    .market_section .market_wrapper .mainbar {
+        width: calc((100% - 350px) - 30px);
+        padding: 15px;
+    }
+
+    .market_section .market_wrapper {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .market_section .market_wrapper .mainbar .market_item--wrapper .market_item--container .market__items--list {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+        column-gap: 10px;
+        row-gap: 10px;
+    }    
+}
+
+@media screen and (max-width: 991px) {
+    .market_section .market_wrapper .mainbar .market_item--wrapper .market_item--container .market__items--list {
+        display: grid;
+        grid-template-columns: auto auto;
+        column-gap: 10px;
+        row-gap: 10px;
+    }
+
+    .market_section .market_wrapper .mainbar {
+        padding: 15px;
+    }
+    
+}

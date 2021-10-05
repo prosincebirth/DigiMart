@@ -1,5 +1,6 @@
 
 <?php include_once('head.php'); ?>
+<?php include_once('header.php'); ?>
 <?php if(isset($_SESSION['user_session'])){
         header("Location: index.php"); 
         exit();
@@ -36,7 +37,7 @@
 
         <div class="align-center font-14">
             <span>Not a member yet?</span>
-            <a href="#" class="link font-14">Sign-up</a>
+            <a href="register.php" class="link font-14">Sign-up</a>
         </div>
     </div>
 </div>

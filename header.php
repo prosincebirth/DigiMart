@@ -10,7 +10,7 @@
                 </div>
                 <ul class="left_nav__list">
                     <li class="left_nav__list___item active"><a href="">Home</a></li>
-                    <li class="left_nav__list___item"><a href="">Market</a></li>
+                    <li class="left_nav__list___item"><a href="market.php">Market</a></li>
                     <li class="left_nav__list___item"><a href="">News</a></li>
                     <li class="left_nav__list___item"><a href="">Wiki</a></li>
                 </ul>
@@ -57,13 +57,13 @@
                         </span>
                     </a>
 
-                    <a class="header_btn" data-form="#login_form" href="javascript:void(0);">
+                    <a class="header_btn" data-form="#login_form" href="login.php">
                         <span>
                             Log in
                         </span>
                     </a>
 
-                    <a class="header_btn" data-form="#register_form" href="javascript:void(0);">
+                    <a class="header_btn" data-form="#register_form" href="register.php">
                         <span>
                             Create account
                         </span>
