@@ -57,17 +57,16 @@
                         </span>
                     </a>
 
-                    <a class="header_btn" data-form="#login_form" href="javascript:void(0);">
-                        <span>
-                            Log in
-                        </span>
-                    </a>
+                    <?php 
+                    if(isset($_SESSION['user_session'])){// for login
+                        echo "<a class='header_btn' href='logout.php'>Logout</a>";
+                      }
+                      else{
+                        echo "<a class='header_btn' href='login.php'>Login</a>";
+                        echo "<a class='header_btn' href='login.php'>Register</a>";
+                      }
+                    ?>
 
-                    <a class="header_btn" data-form="#register_form" href="javascript:void(0);">
-                        <span>
-                            Create account
-                        </span>
-                    </a>
 
                     <div class="user visually-hidden">
                         <div class="user_wrapper">
