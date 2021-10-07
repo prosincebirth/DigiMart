@@ -2,6 +2,10 @@
     max-width: 400px;
     width: 100%;
     margin: 1.5rem auto 0;
+    padding: 25px 20px;
+    background-color: var(--white-color);
+    border-radius: 15px;
+    box-shadow: 0 7px 14px -5px #000;
 }
 
 .form_wrapper .title {

@@ -7,232 +7,241 @@
     <section class="market_section">
         <div class="container_full-width">
             <div class="market_wrapper">
-                <div class="sidebar">
-                    <div class="sidebar__wrapper">
-                        <h1>Categories</h1>
-                        <div class="market_categories">
-                            <ul class="market_categories--list">
-                                <li class="active">
-                                    <a href="#">DOTA 2</a>
-                                </li>
-                                <li class="">
-                                    <a href="#">DOTA 2</a>
-                                </li>
-                                <li class="">
-                                    <a href="#">DOTA 2</a>
-                                </li>
-                                <li class="">
-                                    <a href="#">DOTA 2</a>
-                                </li>
-                                <li class="">
-                                    <a href="#">DOTA 2</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
                 <div class="mainbar">
                     <div class="market_item--wrapper">
+                        <div class="market_tabs">
+                            <ul class="market_tab--list">
+                                <li class="active"><span>Popular Items</span></li>
+                                <li><span>Newly Listed Items</span></li>
+                                <li><span>Buy Orders</span></li>
+                            </ul>
+                        </div>
                         <div class="market_item--container market_popular--items">
-                            <h1 class="title">Popular Items</h1>
                             <div class="items_wrapper">
-                                <ul class="market__items--list">
-                                    <li class="market__items--item">
-                                        <a href="#">
-                                            <div class="image--wrapper">
-                                                <img src="http://via.placeholder.com/200x200" alt="">
-                                            </div>
-                                            <div class="items--info">
-                                                <span class="item--price">₱15,000</span>
-                                                <span class="item--title">Arcana Brief</span>                                            
-                                                <span class="item--type">Arcana/Staff</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="market__items--item">
-                                        <a href="#">
-                                            <div class="image--wrapper">
-                                                <img src="http://via.placeholder.com/200x200" alt="">
-                                            </div>
-                                            <div class="items--info">
-                                                <span class="item--price">₱15,000</span>
-                                                <span class="item--title">Arcana Brief</span>                                            
-                                                <span class="item--type">Arcana/Staff</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="market__items--item">
-                                        <a href="#">
-                                            <div class="image--wrapper">
-                                                <img src="http://via.placeholder.com/200x200" alt="">
-                                            </div>
-                                            <div class="items--info">
-                                                <span class="item--price">₱15,000</span>
-                                                <span class="item--title">Arcana Brief</span>                                            
-                                                <span class="item--type">Arcana/Staff</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="market__items--item">
-                                        <a href="#">
-                                            <div class="image--wrapper">
-                                                <img src="http://via.placeholder.com/200x200" alt="">
-                                            </div>
-                                            <div class="items--info">
-                                                <span class="item--price">₱15,000</span>
-                                                <span class="item--title">Arcana Brief</span>                                            
-                                                <span class="item--type">Arcana/Staff</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="market__items--item">
-                                        <a href="#">
-                                            <div class="image--wrapper">
-                                                <img src="http://via.placeholder.com/200x200" alt="">
-                                            </div>
-                                            <div class="items--info">
-                                                <span class="item--price">₱15,000</span>
-                                                <span class="item--title">Arcana Brief</span>                                            
-                                                <span class="item--type">Arcana/Staff</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
+                                <table class="table_list--items">
+                                    <thead>
+                                        <tr>
+                                            <th><span>Items</span></th>
+                                            <th><span>Price</span></th>
+                                            <th><span>Type</span></th>
+                                            <th><span>Seller</span></th>
+                                            <th><span>Time</span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <a href="#">
+                                                    <div class="item_info">
+                                                        <div class="image_wrapper">
+                                                            <img src="https://via.placeholder.com/100x60" alt="">
+                                                        </div>
+                                                        <div class="item_description">
+                                                            <span class="item_title">Lorem ipsum dolor sit amet dolor</span>
+                                                            <span class="item_badge common">Common</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div class="item_price">
+                                                    <span>₱ 120.00</span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="item_type">
+                                                    <span>Popular</span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="item_seller">
+                                                    <div class="item_seller--info">
+                                                        <div class="image_wrapper">
+                                                            <img src="https://via.placeholder.com/32x32" alt="">
+                                                        </div>
+                                                        <div class="item_seller--name">
+                                                            <span>Prosincebirth</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="item_time--added">
+                                                    <time>2021-05-06 00:29:13</time>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#">
+                                                    <div class="item_info">
+                                                        <div class="image_wrapper">
+                                                            <img src="https://via.placeholder.com/100x60" alt="">
+                                                        </div>
+                                                        <div class="item_description">
+                                                            <span class="item_title">Lorem ipsum dolor sit amet dolor</span>
+                                                            <span class="item_badge common">Common</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div class="item_price">
+                                                    <span>₱ 120.00</span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="item_type">
+                                                    <span>Popular</span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="item_seller">
+                                                    <div class="item_seller--info">
+                                                        <div class="image_wrapper">
+                                                            <img src="https://via.placeholder.com/32x32" alt="">
+                                                        </div>
+                                                        <div class="item_seller--name">
+                                                            <span>Prosincebirth</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="item_time--added">
+                                                    <time>2021-05-06 00:29:13</time>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#">
+                                                    <div class="item_info">
+                                                        <div class="image_wrapper">
+                                                            <img src="https://via.placeholder.com/100x60" alt="">
+                                                        </div>
+                                                        <div class="item_description">
+                                                            <span class="item_title">Lorem ipsum dolor sit amet dolor</span>
+                                                            <span class="item_badge common">Common</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div class="item_price">
+                                                    <span>₱ 120.00</span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="item_type">
+                                                    <span>Popular</span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="item_seller">
+                                                    <div class="item_seller--info">
+                                                        <div class="image_wrapper">
+                                                            <img src="https://via.placeholder.com/32x32" alt="">
+                                                        </div>
+                                                        <div class="item_seller--name">
+                                                            <span>Prosincebirth</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="item_time--added">
+                                                    <time>2021-05-06 00:29:13</time>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#">
+                                                    <div class="item_info">
+                                                        <div class="image_wrapper">
+                                                            <img src="https://via.placeholder.com/100x60" alt="">
+                                                        </div>
+                                                        <div class="item_description">
+                                                            <span class="item_title">Lorem ipsum dolor sit amet dolor</span>
+                                                            <span class="item_badge common">Common</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div class="item_price">
+                                                    <span>₱ 120.00</span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="item_type">
+                                                    <span>Popular</span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="item_seller">
+                                                    <div class="item_seller--info">
+                                                        <div class="image_wrapper">
+                                                            <img src="https://via.placeholder.com/32x32" alt="">
+                                                        </div>
+                                                        <div class="item_seller--name">
+                                                            <span>Prosincebirth</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="item_time--added">
+                                                    <time>2021-05-06 00:29:13</time>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#">
+                                                    <div class="item_info">
+                                                        <div class="image_wrapper">
+                                                            <img src="https://via.placeholder.com/100x60" alt="">
+                                                        </div>
+                                                        <div class="item_description">
+                                                            <span class="item_title">Lorem ipsum dolor sit amet dolor</span>
+                                                            <span class="item_badge common">Common</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div class="item_price">
+                                                    <span>₱ 120.00</span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="item_type">
+                                                    <span>Popular</span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="item_seller">
+                                                    <div class="item_seller--info">
+                                                        <div class="image_wrapper">
+                                                            <img src="https://via.placeholder.com/32x32" alt="">
+                                                        </div>
+                                                        <div class="item_seller--name">
+                                                            <span>Prosincebirth</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="item_time--added">
+                                                    <time>2021-05-06 00:29:13</time>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                        </div>
-                        <div class="market_item--container market_newlylisted--items">
-                            <h1 class="title">Newly Added Items</h1>
-                            <div class="items_wrapper">
-                                <ul class="market__items--list">
-                                    <li class="market__items--item">
-                                        <a href="#">
-                                            <div class="image--wrapper">
-                                                <img src="http://via.placeholder.com/200x200" alt="">
-                                            </div>
-                                            <div class="items--info">
-                                                <span class="item--price">₱15,000</span>
-                                                <span class="item--title">Arcana Brief</span>                                            
-                                                <span class="item--type">Arcana/Staff</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="market__items--item">
-                                        <a href="#">
-                                            <div class="image--wrapper">
-                                                <img src="http://via.placeholder.com/200x200" alt="">
-                                            </div>
-                                            <div class="items--info">
-                                                <span class="item--price">₱15,000</span>
-                                                <span class="item--title">Arcana Brief</span>                                            
-                                                <span class="item--type">Arcana/Staff</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="market__items--item">
-                                        <a href="#">
-                                            <div class="image--wrapper">
-                                                <img src="http://via.placeholder.com/200x200" alt="">
-                                            </div>
-                                            <div class="items--info">
-                                                <span class="item--price">₱15,000</span>
-                                                <span class="item--title">Arcana Brief</span>                                            
-                                                <span class="item--type">Arcana/Staff</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="market__items--item">
-                                        <a href="#">
-                                            <div class="image--wrapper">
-                                                <img src="http://via.placeholder.com/200x200" alt="">
-                                            </div>
-                                            <div class="items--info">
-                                                <span class="item--price">₱15,000</span>
-                                                <span class="item--title">Arcana Brief</span>                                            
-                                                <span class="item--type">Arcana/Staff</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="market__items--item">
-                                        <a href="#">
-                                            <div class="image--wrapper">
-                                                <img src="http://via.placeholder.com/200x200" alt="">
-                                            </div>
-                                            <div class="items--info">
-                                                <span class="item--price">₱15,000</span>
-                                                <span class="item--title">Arcana Brief</span>                                            
-                                                <span class="item--type">Arcana/Staff</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>                            
-                        </div>
-                        <div class="market_item--container market_buyorders--items">
-                            <h1 class="title">Buy Orders</h1>
-                            <div class="items_wrapper">
-                                <ul class="market__items--list">
-                                    <li class="market__items--item">
-                                        <a href="#">
-                                            <div class="image--wrapper">
-                                                <img src="http://via.placeholder.com/200x200" alt="">
-                                            </div>
-                                            <div class="items--info">
-                                                <span class="item--price">₱15,000</span>
-                                                <span class="item--title">Arcana Brief</span>                                            
-                                                <span class="item--type">Arcana/Staff</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="market__items--item">
-                                        <a href="#">
-                                            <div class="image--wrapper">
-                                                <img src="http://via.placeholder.com/200x200" alt="">
-                                            </div>
-                                            <div class="items--info">
-                                                <span class="item--price">₱15,000</span>
-                                                <span class="item--title">Arcana Brief</span>                                            
-                                                <span class="item--type">Arcana/Staff</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="market__items--item">
-                                        <a href="#">
-                                            <div class="image--wrapper">
-                                                <img src="http://via.placeholder.com/200x200" alt="">
-                                            </div>
-                                            <div class="items--info">
-                                                <span class="item--price">₱15,000</span>
-                                                <span class="item--title">Arcana Brief</span>                                            
-                                                <span class="item--type">Arcana/Staff</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="market__items--item">
-                                        <a href="#">
-                                            <div class="image--wrapper">
-                                                <img src="http://via.placeholder.com/200x200" alt="">
-                                            </div>
-                                            <div class="items--info">
-                                                <span class="item--price">₱15,000</span>
-                                                <span class="item--title">Arcana Brief</span>                                            
-                                                <span class="item--type">Arcana/Staff</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="market__items--item">
-                                        <a href="#">
-                                            <div class="image--wrapper">
-                                                <img src="http://via.placeholder.com/200x200" alt="">
-                                            </div>
-                                            <div class="items--info">
-                                                <span class="item--price">₱15,000</span>
-                                                <span class="item--title">Arcana Brief</span>                                            
-                                                <span class="item--type">Arcana/Staff</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>                            
                         </div>
                     </div>
                 </div>

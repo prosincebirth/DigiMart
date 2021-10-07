@@ -1,0 +1,12 @@
+.item_badge {
+    display: inline-block;
+    padding: 8px 15px;
+    margin-top: 8px;
+    border-radius: 3px;
+}
+
+.item_badge.common {
+    background-color: var(--gray-color);
+    color: var(--white-color);
+
+}
