@@ -1,5 +1,5 @@
 <?php 
-	session_start(); 
+		session_start(); 
 	//PUT COMMENTS WHERE THE FUNCTIONS BELONG !!! - JASON
     function connection(){// DB CONNECTION
 		$conn=new PDO("mysql:host=localhost;dbname=digimart","root","");
@@ -43,6 +43,16 @@
 		$conn=null;
 		return $res;
 
+	}
+
+	function view_all_items($item_id){
+		$conn=connection();
+		$query="SELECT * FROM game_items where item_id=:item_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":item_id"=>$item_id));
+		$res = $prepare->fetch(PDO::FETCH_ASSOC);
+		$conn=null;
+		return $res;
 	}
 
     

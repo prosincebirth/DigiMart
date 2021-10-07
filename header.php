@@ -3,6 +3,7 @@
         <div class="nav_wrapper">        
             <nav class="left_nav">
                 <div class="ham_menu">
+                    
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -63,7 +64,7 @@
                       }
                       else{
                         echo "<a class='header_btn' href='login.php'>Login</a>";
-                        echo "<a class='header_btn' href='login.php'>Register</a>";
+                        echo "<a class='header_btn' href='register.php'>Register</a>";
                       }
                     ?>
 

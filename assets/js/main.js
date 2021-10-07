@@ -156,7 +156,7 @@ $(document).ready(function(){
                                         })
                                       }); 
                                       setTimeout(function() {
-                                        window.location.href = "login.php";
+                                        window.location.href = "index.php";
                                       }, 1000);                                
                                 }else if(res=="wrong password"){
                                     $('#error_password').fadeIn(400, function() {

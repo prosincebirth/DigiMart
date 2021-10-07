@@ -3,7 +3,9 @@
 
 <main>
     <?php include 'components/mv.php'; ?>
-    <?php include 'components/tab.php'; ?>        
+    <?php include 'components/tab.php'; ?> 
+    <?php include 'components/tab.php'; ?>     
+    <?php include 'components/tab.php'; ?>            
 </main>
 
 <?php include_once('footer.php'); ?>
