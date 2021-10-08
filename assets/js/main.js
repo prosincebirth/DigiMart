@@ -1,6 +1,8 @@
 
 $(document).ready(function(){   
-  /* validation */
+
+    
+    //$("#add_game_modal").hide();
     $("#register-form").validate({
         rules:
         {
@@ -29,7 +31,7 @@ $(document).ready(function(){
                 required: "Provide a Username",
                 minlength: "Username Needs To Be Minimum of 5 Characters"
             },
-            password:{
+            user_password:{
                 required: "Provide a Password",
                 minlength: "Password Needs To Be Minimum of 8 Characters"
             },
@@ -42,6 +44,40 @@ $(document).ready(function(){
             }
         },
     });
+
+
+    $("#add-game-form").validate({
+        rules:
+        {
+            game_name: {
+                required: true,
+            },
+            game_desc: {
+                required: true,
+            },
+            game_region: {
+                required: true,
+            },
+            game_server: {
+                required: true,
+            },
+        },
+        messages:
+        {
+            game_name:{
+                required: "This field cannot be blank",
+            },
+            game_desc:{
+                required: "This field cannot be blank",
+            },
+            game_region:{
+                required: "This field cannot be blank",
+            },
+            game_server:{
+                required: "This field cannot be blank",
+            }
+        },
+    });    
 	
     $("#login-form").validate({
         rules:
@@ -61,7 +97,8 @@ $(document).ready(function(){
                               },
                       user_username: "Please enter your username",
               },
-        });  
+        });
+          
 
 	$(".btn").on("click",function(){
 		var btn_val=$(this).val();
@@ -130,8 +167,7 @@ $(document).ready(function(){
                         }
                     });	
                 }
-            break;
-                
+            break;               
             case "login":
                 if($("#login-form").valid()){
                     var username=$("#user_username").val().trim();
@@ -178,6 +214,36 @@ $(document).ready(function(){
                         });	
                     }
             break;
+            case "save_new_game":
+                if($("#add-game-form").valid()){
+				var game_name=$("#game_name").val().trim();
+                var game_desc=$("#game_desc").val().trim();
+                var game_region=$("#game_region").val().trim();
+                var game_server=$("#game_server").val().trim();
+
+				var data=new FormData();
+				data.append("action_type","add_new_game");
+				data.append("game_name",game_name);
+				data.append("game_desc",game_desc);
+				data.append("game_region",game_region);
+                data.append("game_server",game_server);
+				//$("#game_desc").val("");$("#game_region").val("");$("#game_server").val("");
+
+				$.ajax({	
+					url:"account/controller.php",
+					method:"post",
+					data:data,
+					contentType:false,
+					cache:false,
+					processData:false,
+					success:function(res){
+							alert(res)
+                            console.log(res)
+					}
+				});//END OF AJAX IN ADDING NEW ITEM
+            }
+				
+			break;//END OF SAVE NEW ITEM
 		};	
 	});	
 

@@ -42,7 +42,14 @@
 		$res = $prepare->fetch(PDO::FETCH_ASSOC);
 		$conn=null;
 		return $res;
+	}
 
+	function add_new_game($game_name,$game_desc,$game_region,$game_server){
+		$conn=connection();
+		$query="INSERT INTO games(game_name,game_desc,game_region,game_server) values(:game_name,:game_desc,:game_region,:game_server)"; 
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":game_name"=>$game_name,":game_desc"=>$game_desc,":game_region"=>$game_region,":game_server"=>$game_server));
+		$conn=null;
 	}
 
 	function view_all_items($item_id){

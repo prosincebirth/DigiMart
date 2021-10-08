@@ -25,7 +25,6 @@
 							echo 'user added';
 						} //if both are not taken, success
 					break;
-
 					case "login":
 						$user_username=$_POST['user_username'];
 						$user_password=$_POST['user_password'];
@@ -44,6 +43,17 @@
 							echo 'username error';
 						}
 					break;
+					case "add_new_game":
+						$game_name=$_POST['game_name'];
+						$game_desc=$_POST['game_desc'];
+						$game_region=$_POST['game_region'];
+						$game_server=$_POST['game_server'];
+
+						add_new_game($game_name,$game_desc,$game_region,$game_server);
+							echo 'user added';
+						
+						break;
+
 				}
 			}
 ?>
