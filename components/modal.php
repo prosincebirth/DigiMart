@@ -1,20 +1,141 @@
-<div id="add_item_modal">
+<div id="add_game_modal">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title">Add New Item <span class="close">&times;</span></h4>
+				<h4 class="modal-title">Add New Game <span class="close">&times;</span></h4>
 			</div>
 			<div class="modal-body">
-				<label>Item Name</label>
-				<input type="text" name="add_item_name" placeholder="Item Name" id="add_item_name" class="form-control">
-				<label>Item Quantity</label>
-				<input type="number" name="add_item_quantity" placeholder="Item Quantity" min="1" id="add_item_quantity" class="form-control">
-				<label>Item Price</label>
-				<input type="number" name="add_item_price" placeholder="0.00" id="add_item_price" class="form-control" min="0">
-			</div>
+            <form class="form-signin" method="post" id="add-game-form"><center>
+                <div class="fld_input"><input type="text" name="game_name" placeholder="Game Name" id="game_name" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="game_desc" placeholder="Game Description" id="game_desc" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="game_region" placeholder="Game Region" id="game_region" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="game_server" placeholder="Game Server" id="game_server" class="form-control"></div>
+
+            </div>
 			<div class="modal-footer">
-					<button class="btn btn-success" value="save_add_item">Save</button>
-					<button class="btn btn-danger">Close</button>
+					<button class="btn btn-success" type="button" value="save_new_game">Save</button>
+                    </form>
+			</div>
+                
+		</div>
+	</div>
+</div>
+
+<div id="edit_game_modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Edit Game <span class="close">&times;</span></h4>
+			</div>
+			<div class="modal-body">
+            <form class="form-signin" method="post" id="edit-game-form"><center>
+                <div class="fld_input"><input type="text" name="game_name" placeholder="Game Name" id="game_name" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="game_desc" placeholder="Game Description" id="game_desc" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="game_region" placeholder="Game Region" id="game_region" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="game_server" placeholder="Game Server" id="game_server" class="form-control"></div>
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="save_new_game">Save</button>
+                    </form>
 			</div>
 		</div>
 	</div>
+</div>
+
+<div id="add_game_modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Add Game Service <span class="close">&times;</span></h4>
+			</div>
+			<div class="modal-body">
+            <form class="form-signin" method="post" id="add-game-form"><center>
+                <div class="fld_input"><input type="text" name="game_name" placeholder="Game Name" id="game_name" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="game_desc" placeholder="Game Description" id="game_desc" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="game_region" placeholder="Game Region" id="game_region" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="game_server" placeholder="Game Server" id="game_server" class="form-control"></div>
+
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="save_new_game">Save</button>
+                    </form>
+			</div>
+                
+		</div>
+	</div>
+</div>
+
+<div id="add_game_modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Edit Game Service<span class="close">&times;</span></h4>
+			</div>
+			<div class="modal-body">
+            <form class="form-signin" method="post" id="add-game-form"><center>
+                <div class="fld_input"><input type="text" name="game_name" placeholder="Game Name" id="game_name" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="game_desc" placeholder="Game Description" id="game_desc" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="game_region" placeholder="Game Region" id="game_region" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="game_server" placeholder="Game Server" id="game_server" class="form-control"></div>
+
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="save_new_game">Save</button>
+                    </form>
+			</div>
+                
+		</div>
+	</div>
+</div>
+
+<div id="add_game_modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Add Game Item<span class="close">&times;</span></h4>
+			</div>
+			<div class="modal-body">
+            <form class="form-signin" method="post" id="add-game-form"><center>
+                <div class="fld_input"><input type="text" name="game_name" placeholder="Game Name" id="game_name" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="game_desc" placeholder="Game Description" id="game_desc" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="game_region" placeholder="Game Region" id="game_region" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="game_server" placeholder="Game Server" id="game_server" class="form-control"></div>
+
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="save_new_game">Save</button>
+                    </form>
+			</div>
+                
+		</div>
+	</div>
+</div>
+
+<div id="add_game_modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Edit Game Item<span class="close">&times;</span></h4>
+			</div>
+			<div class="modal-body">
+            <form class="form-signin" method="post" id="add-game-form"><center>
+                <div class="fld_input"><input type="text" name="game_name" placeholder="Game Name" id="game_name" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="game_desc" placeholder="Game Description" id="game_desc" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="game_region" placeholder="Game Region" id="game_region" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="game_server" placeholder="Game Server" id="game_server" class="form-control"></div>
+
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="save_new_game">Save</button>
+                    </form>
+			</div>
+                
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
