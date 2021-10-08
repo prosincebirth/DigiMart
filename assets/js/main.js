@@ -2,7 +2,7 @@
 $(document).ready(function(){   
 
     
-    $("#add_game_modal").hide();
+    //$("#add_game_modal").hide();
     $("#register-form").validate({
         rules:
         {
