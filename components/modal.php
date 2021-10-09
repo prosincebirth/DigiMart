@@ -1,6 +1,7 @@
+
 <div class="modal fade" id="add_game_modal" role="dialog">
 	<div class="modal-dialog">
-	
+
 	<div class="modal-content">
 		<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -12,7 +13,6 @@
 					<div class="fld_input"><input type="text" name="game_desc" placeholder="Game Description" id="game_desc" class="form-control"></div>
 					<div class="fld_input"><input type="text" name="game_region" placeholder="Game Region" id="game_region" class="form-control"></div>
 					<div class="fld_input"><input type="text" name="game_server" placeholder="Game Server" id="game_server" class="form-control"></div>
-		
 		</div>
 		<div class="modal-footer">
 			<button class="btn btn-success" type="button" value="save_new_game">Save</button>

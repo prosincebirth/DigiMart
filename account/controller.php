@@ -49,11 +49,13 @@
 						$game_region=$_POST['game_region'];
 						$game_server=$_POST['game_server'];
 
+						if(!empty($game_name) && !empty($game_desc) && !empty($game_region) && !empty($game_server)){
 						add_new_game($game_name,$game_desc,$game_region,$game_server);
-							echo 'user added';
-						
+							echo 'success';
+						}else{
+							echo 'field inputs error';
+						}
 						break;
-
 				}
 			}
 ?>

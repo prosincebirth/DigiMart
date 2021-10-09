@@ -1,5 +1,5 @@
 <?php 
-		session_start(); 
+	session_start(); 
 	//PUT COMMENTS WHERE THE FUNCTIONS BELONG !!! - JASON
     function connection(){// DB CONNECTION
 		$conn=new PDO("mysql:host=localhost;dbname=digimart","root","");
@@ -50,6 +50,30 @@
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":game_name"=>$game_name,":game_desc"=>$game_desc,":game_region"=>$game_region,":game_server"=>$game_server));
 		$conn=null;
+	}
+
+	function edit_game($game_id,$game_name,$game_desc,$game_region,$game_server){
+		$conn=connection();
+		$query="UPDATE games set game_name=:game_name,game_desc=:game_desc,game_region=:game_region,game_server=:game_server where game_id=:game_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":game_name"=>$game_name,":game_desc"=>$game_desc,":game_region"=>$game_region,":game_server"=>$game_server,":game_id"=>$game_id));
+		$conn=null;
+	}
+
+	function display_alll_games(){
+		$conn=connection();
+		$query="SELECT * FROM games where stats=1";
+		$prepare=$conn->query($query);
+		$res=$prepare->fetchall();
+		$conn=null;
+		return $res;
+	}
+
+	$sql = "update table_games set status=1 WHERE game_id = '$user'";
+	function delete_game(){
+		$conn=connection();
+		$query="UPDATE games set game_server=:game_server where game_id=:game_id";
+
 	}
 
 	function view_all_items($item_id){

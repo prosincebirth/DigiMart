@@ -1,7 +1,4 @@
 
-$(document).ready(function(){   
-
-    
     //$("#add_game_modal").hide();
     $("#register-form").validate({
         rules:
@@ -44,40 +41,6 @@ $(document).ready(function(){
             }
         },
     });
-
-
-    $("#add-game-form").validate({
-        rules:
-        {
-            game_name: {
-                required: true,
-            },
-            game_desc: {
-                required: true,
-            },
-            game_region: {
-                required: true,
-            },
-            game_server: {
-                required: true,
-            },
-        },
-        messages:
-        {
-            game_name:{
-                required: "This field cannot be blank",
-            },
-            game_desc:{
-                required: "This field cannot be blank",
-            },
-            game_region:{
-                required: "This field cannot be blank",
-            },
-            game_server:{
-                required: "This field cannot be blank",
-            }
-        },
-    });    
 	
     $("#login-form").validate({
         rules:
@@ -97,9 +60,8 @@ $(document).ready(function(){
                               },
                       user_username: "Please enter your username",
               },
-        });
-          
-
+    });
+   
 	$(".btn").on("click",function(){
 		var btn_val=$(this).val();
             switch(btn_val){
@@ -173,6 +135,7 @@ $(document).ready(function(){
                     var username=$("#user_username").val().trim();
                     var password=$("#user_password").val().trim();
 
+                    
                     var data=new FormData();
                     data.append("action_type","login");
                     data.append("user_username",username);
@@ -215,18 +178,19 @@ $(document).ready(function(){
                     }
             break;
             case "save_new_game":
-                if($("#add-game-form").valid()){
-				var game_name=$("#game_name").val().trim();
-                var game_desc=$("#game_desc").val().trim();
-                var game_region=$("#game_region").val().trim();
-                var game_server=$("#game_server").val().trim();
+                
+                //if($("#add-game-form").valid()){
+				var game_name1=$("#game_name").val().trim();
+                var game_desc1=$("#game_desc").val().trim();
+                var game_region1=$("#game_region").val().trim();
+                var game_server1=$("#game_server").val().trim();
 
 				var data=new FormData();
 				data.append("action_type","add_new_game");
-				data.append("game_name",game_name);
-				data.append("game_desc",game_desc);
-				data.append("game_region",game_region);
-                data.append("game_server",game_server);
+				data.append("game_name",game_name1);
+				data.append("game_desc",game_desc1);
+				data.append("game_region",game_region1);
+                data.append("game_server",game_server1);
 				//$("#game_desc").val("");$("#game_region").val("");$("#game_server").val("");
 
 				$.ajax({	
@@ -239,12 +203,15 @@ $(document).ready(function(){
 					success:function(res){
 							alert(res)
                             console.log(res)
+                            $('#for_login').fadeIn(400, function() {
+                                $('#for_login').html('<div class="alert alert-success">&nbsp; Success</div>').fadeIn(3000, function() {
+                                })
+                              }); 
 					}
 				});//END OF AJAX IN ADDING NEW ITEM
-            }
-				
+            //}				
 			break;//END OF SAVE NEW ITEM
 		};	
 	});	
 
-});	// END OF FUNCTION 
+	// END OF FUNCTION 
