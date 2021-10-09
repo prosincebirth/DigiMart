@@ -69,11 +69,13 @@
 		return $res;
 	}
 
-	$sql = "update table_games set status=1 WHERE game_id = '$user'";
-	function delete_game(){
+	
+	function delete_game($game_id){
 		$conn=connection();
-		$query="UPDATE games set game_server=:game_server where game_id=:game_id";
-
+		$query="UPDATE games set game_status=0 where game_id=:game_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":game_name"=>$game_name));
+		$conn=null;
 	}
 
 	function view_all_items($item_id){
