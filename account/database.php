@@ -60,7 +60,7 @@
 		$conn=null;
 	}
 
-	function display_alll_games(){
+	function display_all_games(){
 		$conn=connection();
 		$query="SELECT * FROM games where stats=1";
 		$prepare=$conn->query($query);
@@ -69,13 +69,12 @@
 		return $res;
 	}
 
-	
 	function delete_game($game_id){
 		$conn=connection();
 		$query="UPDATE games set game_status=0 where game_id=:game_id";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":game_name"=>$game_name));
-		$conn=null;
+		$conn=null;	
 	}
 
 	function view_all_items($item_id){
