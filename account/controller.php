@@ -56,6 +56,21 @@
 							echo 'field inputs error';
 						}
 						break;
+						case "add_game_item":
+							$item_name=$_POST['item_name'];
+							$item_desc=$_POST['item_desc'];
+							$item_price=$_POST['item_price'];
+							$item_image=addslashes(file_get_contents($_FILES['item_image']['tmp_name']));
+							$user_id=$_POST['user_id'];
+							$service_id=$_POST['service_id'];
+	
+							if(!empty($item_name) && !empty($item_desc) && !empty($item_price) && !empty($item_image)){
+							add_new_game_item($item_name,$item_desc,$item_price,$item_image,$user_id,$service_id);
+								echo 'success';
+							}else{
+								echo 'field inputs error';
+							}
+							break;				
 				}
 			}
 ?>

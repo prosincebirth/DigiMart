@@ -87,5 +87,13 @@
 		return $res;
 	}
 
+	function add_new_game_item($item_name,$item_desc,$item_price,$item_image,$user_id,$service_id){
+		$conn=connection();
+		$query="INSERT INTO games(item_name,item_desc,item_price,item_image,user_id,service_id) values(:item_name,:item_desc,:item_price,:item_image,:user_id,:service_id)"; 
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":item_name"=>$item_name,":item_desc"=>$item_desc,":item_price"=>$item_price,":item_image"=>$item_image,":user_id"=>$user_id,":service_id"=>$service_id));
+		$conn=null;
+	}
+
     
 ?>
