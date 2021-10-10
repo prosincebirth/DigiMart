@@ -217,7 +217,7 @@
 				var item_name=$("#item_name").val().trim();
                 var item_desc=$("#item_desc").val().trim();
                 var item_price=$("#item_price").val().trim();
-                var item_image=$("#item_image").val().trim();
+                var item_image=$("#item_image").val()
                 var user_id=$("#user_id").val().trim();
                 var service_id=$("#service_id").val().trim();
 
