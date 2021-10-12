@@ -1,6 +1,9 @@
 <?php include('head.php'); ?>
 <?php include('header.php'); ?>
 
+<link rel="preload stylesheet" href="assets/css/item-card.css" as="style" crossorigin>
+<link rel="preload stylesheet" href="assets/css/item-grid.css" as="style" crossorigin>
+
 <main>
     <section class="market_section">
         <div class="container_full-width">
@@ -9,17 +12,31 @@
                     <div class="market_item--wrapper">
                         <div class="market_tabs">
                             <ul class="market_tab--list">
-                                <li><span>Sale</span></li>
+                                <li class='active'><span>Sale</span></li>
                                 <li><span>Purchase</span></li>
                             </ul>
                         </div>
-                        <div class="market_item--container market_popular--items">
+                        <div class="market_item--container global-market">
                             <div class="items_wrapper">
-                                <ul class='item_grid'>
+                                <ul class="item_grid item_grid--6 item_grid--2-mobile">
+                                    <?php
+                                        for($i=0;$i<12;$i++) {
+                                    ?>
                                     <li class="item_grid--item">
-                                        <div class="item_card"></div>
+                                        <?php include('item-card.php'); ?>
                                     </li>
+                                    <?php } ?>
                                 </ul>
+
+                                <div class="pagination">
+                                    <ul>
+                                        <li><a href="">Previous</a></li>
+                                        <li><a href="?page=1">1</a></li>
+                                        <li><a href="?page=2">2</a></li>
+                                        <li><a href="?page=3">3</a></li>
+                                        <li><a href="">Next</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>                    

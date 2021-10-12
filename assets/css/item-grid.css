@@ -1,0 +1,17 @@
+.item_grid {
+    display: flex;  
+    justify-content: space-between;
+    flex-wrap: wrap;  
+    /* column-gap: 1rem; */
+    /* row-gap: 1rem; */
+}
+.item_grid--6 .item_grid--item {
+    width: calc(100% / 6 - 1rem);
+    margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 749px) {
+    .item_grid--2-mobile .item_grid--item {
+        width: calc(100% / 2 - 1rem);
+    }
+}

@@ -200,6 +200,11 @@
     border: 1px solid var(--black-color);
 }
 
+.global-market {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important; 
+}
+
 @media screen and (min-width: 992px) {
     .market_section .market_wrapper .mainbar {
         padding: 15px;

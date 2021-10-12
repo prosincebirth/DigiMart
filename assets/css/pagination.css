@@ -1,0 +1,26 @@
+.pagination {
+    display: block !important;
+    text-align: center;
+}
+.pagination ul {
+    display: flex;
+    justify-content: center;
+}
+.pagination ul li {
+    margin-right: 10px;
+}
+.pagination ul li:last-of-type {
+    margin-right: 0;
+}
+.pagination ul li:hover a {
+    background-color: var(--black-color);
+    color: var(--white-color);
+}
+.pagination ul li a {
+    display: inline-block;
+    padding: 8px 10px;
+    background-color: var(--white-color);
+    color: var(--black-color);
+    text-decoration: none !important;
+    font-size: 12px;
+}

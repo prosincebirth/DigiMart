@@ -1,0 +1,46 @@
+.item_card {
+    background-color: var(--white-color);
+    box-shadow: 0 0 0 1px var(--white-color);
+}
+.item_card a {
+    text-decoration: none !important;
+    color: inherit;
+}
+.item_card .img_wrapper {
+    width: fit-content;
+    position: relative;
+}
+.item_card .img_wrapper .badge {
+    border-radius: 0 !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.item_card .img_wrapper img {
+    width: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+.item_card .item_info {
+    padding: 10px;
+}
+.item_card .item_info .title {
+    font-size: 1.6rem !important;
+    color: var(--black-color) !important;
+    margin: 0 !important;
+}
+.item_card .item_info .other_info {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.item_card .item_info .other_info .price {
+    font-weight: bold;
+    color: var(--quinary-color);
+}
+.item_card .item_info .other_info .tag {
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--gray-color);
+}
