@@ -60,7 +60,7 @@
 							$item_name=$_POST['item_name'];
 							$item_desc=$_POST['item_desc'];
 							$item_price=$_POST['item_price'];
-							$image=addslashes(file_get_contents($_FILES['item_image']['tmp_name']));
+							$image=isset(addslashes(file_get_contents($_FILES['item_image']['tmp_name'])));
 							$item_image = $image;
 							$user_id=$_POST['user_id'];
 							$service_id=$_POST['service_id'];
