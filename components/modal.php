@@ -103,7 +103,7 @@
 		<h4 class="modal-title">Add Game Item </h4>
 		</div>
 		<div class="modal-body">
-		<form class="form-signin" method="post" id="add-game-form"><center>
+		<form class="form-signin" method="post" id="add-game-form" ><center>
                 <div class="fld_input"><input type="text" name="item_name" placeholder="Item Name" id="item_name" class="form-control"></div>
 				<div class="fld_input"><input type="text" name="item_desc" placeholder="Item Description" id="item_desc" class="form-control"></div>
 				<div class="fld_input"><input type="text" name="item_price" placeholder="Item Price" id="item_price" class="form-control"></div>

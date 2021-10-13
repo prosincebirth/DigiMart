@@ -1,7 +1,13 @@
 <div class="item_card">
     <a href="#">
         <div class="img_wrapper">
-            <img src="https://via.placeholder.com/500x400" alt="Staff of dragon">
+            <?php
+            require_once 'account/database.php';
+            $id=12;
+             $res = view_all_items($id);
+
+	        echo '<img src="data:image/png;base64,'.base64_encode($res['item_image']).'" ">';
+	        ?>
             <span class="badge common">Common</span>
         </div>
         <div class="item_info">

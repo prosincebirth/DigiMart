@@ -213,6 +213,7 @@
 			break;//END OF SAVE NEW ITEM
             case "save_game_item":
                 
+                
                 //if($("#add-game-form").valid()){
 				var item_name=$("#item_name").val().trim();
                 var item_desc=$("#item_desc").val().trim();
