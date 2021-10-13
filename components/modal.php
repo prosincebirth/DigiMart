@@ -107,7 +107,7 @@
                 <div class="fld_input"><input type="text" name="item_name" placeholder="Item Name" id="item_name" class="form-control"></div>
 				<div class="fld_input"><input type="text" name="item_desc" placeholder="Item Description" id="item_desc" class="form-control"></div>
 				<div class="fld_input"><input type="text" name="item_price" placeholder="Item Price" id="item_price" class="form-control"></div>
-				<div class="fld_input"><input type="file" name="item_image" placeholder="Item Image" id="item_image" class="form-control"></div>
+				<div class="fld_input"><input type="file" name="item_image" placeholder="Item Image" id="item_image"></div>
 				<div class="fld_input"><input type="text" name="user_id" placeholder="User ID" id="user_id" class="form-control"></div>
 				<div class="fld_input"><input type="text" name="service_id" placeholder="Service ID" id="service_id" class="form-control"></div>
 
