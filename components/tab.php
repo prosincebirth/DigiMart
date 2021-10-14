@@ -15,6 +15,9 @@
             <div class="tab_contents">
                 <div class="" id="popular_tab">
                     <div class="popular_items">
+                       <?php
+                                        for($i=0;$i<5;$i++) {
+                                    ?>
                         <div class="popular_list__items">
                             <div class="item_wrapper">
                                 <span class="item_tag is-purple">Mythical</span>
@@ -27,54 +30,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="popular_list__items">
-                            <div class="item_wrapper">
-                                <span class="item_tag is-purple">Mythical</span>
-                                <div class="img_wrapper">
-                                    <img src="http://via.placeholder.com/200x150" alt="">
-                                </div>
-                                <div class="item_info">
-                                    <h3 class="item_title">Staff sample</h3>
-                                    <span class="item_price">₱ 109.98</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="popular_list__items">
-                            <div class="item_wrapper">
-                                <span class="item_tag is-purple">Mythical</span>
-                                <div class="img_wrapper">
-                                    <img src="http://via.placeholder.com/200x150" alt="">
-                                </div>
-                                <div class="item_info">
-                                    <h3 class="item_title">Staff sample</h3>
-                                    <span class="item_price">₱ 109.98</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="popular_list__items">
-                            <div class="item_wrapper">
-                                <span class="item_tag is-purple">Mythical</span>
-                                <div class="img_wrapper">
-                                    <img src="http://via.placeholder.com/200x150" alt="">
-                                </div>
-                                <div class="item_info">
-                                    <h3 class="item_title">Staff sample</h3>
-                                    <span class="item_price">₱ 109.98</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="popular_list__items">
-                            <div class="item_wrapper">
-                                <span class="item_tag is-purple">Mythical</span>
-                                <div class="img_wrapper">
-                                    <img src="http://via.placeholder.com/200x150" alt="">
-                                </div>
-                                <div class="item_info">
-                                    <h3 class="item_title">Staff sample</h3>
-                                    <span class="item_price">₱ 109.98</span>
-                                </div>
-                            </div>
-                        </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
