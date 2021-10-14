@@ -3,8 +3,8 @@
         <div class="img_wrapper">
             <?php
             require_once 'account/database.php';
-            $id=1;
-             $res = view_all_items($id);
+                
+             $res = view_all_items($i);
 
 	        echo '<img src="data:image/png;base64,'.base64_encode($res['item_image']).'" ">';
             echo '<span class="badge common">'.$res['item_rarity'].'</span>';

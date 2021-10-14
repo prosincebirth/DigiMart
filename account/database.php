@@ -69,19 +69,28 @@
 
 	function view_all_items($item_id){
 		$conn=connection();
-		$query="SELECT * FROM game_items where item_id=:item_id";
+		$query="SELECT * FROM game_items where item_id=:item_id and item_status=1";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":item_id"=>$item_id));
 		$res = $prepare->fetch(PDO::FETCH_ASSOC);
 		$conn=null;
 		return $res;}
 
-	function add_new_game_item($item_name,$item_desc,$item_price,$item_image,$user_id,$service_id){
+	function add_new_game_item($item_name,$item_rarity,$item_price,$item_image,$user_id,$service_id){
 		$conn=connection();
-		$query="INSERT INTO game_items(item_name,item_desc,item_price,item_image,user_id,service_id) values(:item_name,:item_desc,:item_price,:item_image,:user_id,:service_id)"; 
+		$query="INSERT INTO game_items(item_name,item_rarity,item_price,item_image,user_id,service_id) values(:item_name,:item_rarity,:item_price,:item_image,:user_id,:service_id)"; 
 		$prepare=$conn->prepare($query);
-		$exec=$prepare->execute(array(":item_name"=>$item_name,":item_desc"=>$item_desc,":item_price"=>$item_price,":item_image"=>$item_image,":user_id"=>$user_id,":service_id"=>$service_id));
+		$exec=$prepare->execute(array(":item_name"=>$item_name,":item_rarity"=>$item_rarity,":item_price"=>$item_price,":item_image"=>$item_image,":user_id"=>$user_id,":service_id"=>$service_id));
 		$conn=null;}
+
+		function display_item(){
+			$conn=connection();
+			$query="SELECT * from game_items where item_status=1";
+			$prepare=$conn->query($query);
+			$res=$prepare->fetchall();
+			$conn=null;
+			return $res;
+		}
 
     
 ?>

@@ -16,16 +16,21 @@
                 <div class="" id="popular_tab">
                     <div class="popular_items">
                        <?php
-                                        for($i=0;$i<5;$i++) {
-                                    ?>
+                        
+                                        for($i=0;$i<10;$i++) {
+                                            
+                                    ?>           
                         <div class="popular_list__items">
                             <div class="item_wrapper">
-                                <span class="item_tag is-purple">Mythical</span>
+                                <?php   require_once 'account/database.php';
+                                            $res = view_all_items(); ?>
+                                <?php echo ' <span class="item_tag is-purple">'.$res['item_rarity'].'</span>'; ?>
                                 <div class="img_wrapper">
-                                    <img src="http://via.placeholder.com/200x150" alt="">
+                               <?php echo '<img src="data:image/png;base64,'.base64_encode($res['item_image']).'" ">'; ?>
                                 </div>
                                 <div class="item_info">
-                                    <h3 class="item_title">Staff sample</h3>
+                                    
+                                    <?php echo '<h3 class="item_title">'.$res['item_name'].'</h3>'; ?>
                                     <span class="item_price">₱ 109.98</span>
                                 </div>
                             </div>
