@@ -10,7 +10,7 @@
 		$conn= mysqli_connect("localhost", "root", "", "digimart");
 		return $conn;}
 
-		//////////////////
+		////////////////// ADDD FUNCTIONS /////////////////
 	function add_new_user($user_username,$user_password,$user_email){//USER
 		$conn=connection();
 		$query="INSERT INTO users(user_username,user_password,user_email) values(:user_username,:user_password,:user_email)"; 
@@ -40,7 +40,7 @@
 		$conn=null;}
 
 
-
+////////////////////////TRAPPINGS//////////////////////////////MESC///////////////////
 	function existing_email($user_email){ //USER
 		$conn=connection();
 		$query="SELECT user_email from users where user_email=:user_email";
@@ -69,7 +69,7 @@
 		return $res;}
 
 
-
+///////////////////UPDATE FUNCTIIONS/////////////////////////////////
 
 	function edit_game($game_id,$game_name,$game_desc,$game_region,$game_server){
 		$conn=connection();
@@ -78,6 +78,33 @@
 		$exec=$prepare->execute(array(":game_name"=>$game_name,":game_desc"=>$game_desc,":game_region"=>$game_region,":game_server"=>$game_server,":game_id"=>$game_id));
 		$conn=null;}
 		
+	function edit_user(){}
+	function edit_user_password(){}
+	function edit_game_service(){}
+	function edit_game_item(){}
+
+
+
+
+///////////////////////////////////////////////////////////////////////////
+
+
+function delete_game_service(){}
+function delete_game_service(){}
+function delete_game_service(){}
+function delete_game_service(){}
+function delete_game_service(){}
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////
+
+
+
+
 	function display_all_games(){
 		$conn=connection();
 		$query="SELECT * FROM games where stats=1";
