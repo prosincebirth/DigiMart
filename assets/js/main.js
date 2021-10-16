@@ -212,7 +212,6 @@ $('document').ready(function()
             //}				
 			break;//END OF SAVE NEW ITEM
             case "save_game_item":
-
 				var item_name=$("#item_name").val().trim();
                 var item_desc=$("#item_desc").val().trim();
                 var item_price=$("#item_price").val().trim();

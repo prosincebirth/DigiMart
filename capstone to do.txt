@@ -1,9 +1,46 @@
 flow sa system nato
 register page > jscript > controller to connects database functions > ajax to register page 
 
+Homepage 
+-ang pictures pa fix siya kanang stable ang size
+-grey(nav/top),black,white,black balik ang color sa background
+-ang dota2/csgo di straight ang iyang line sa uban 
+
 register page
 -ipa red ang error trappings
 -ipa green ang success
 -ang backround pud black dayon box type nga register page
 login page
 -e same lng sa register page , box type niya black background
+
+
+Homepage
+Marketplace page
+
+Login page 
+Register page
+
+Admin page
+
+Item page
+*Trade Records - 
+*Sell Orders
+*Buy Orders
+
+Inventory Page - Buyer
+*Buy History
+*Buy Orders
+*My Bargain
+
+Sale Page - Seller
+*Bargain Management
+*Sale History
+*Selling
+
+
+Profile page
+*Deposit page
+*Withdraw page
+*Transaction page
+*Notifications Page
+*On Sale Items Page

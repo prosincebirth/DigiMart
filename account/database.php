@@ -1,21 +1,45 @@
 <?php 
 	if(!isset($_SESSION)){session_start();}
 	
-
-    function connection(){// DB CONNECTION
+//////////////// DB /////////////////
+    function connection(){// DB CONNECTION PDO
 		$conn=new PDO("mysql:host=localhost;dbname=digimart","root","");
 		return $conn;}
 	
-	function connection2(){// DB CONNECTION
+	function connection2(){// DB CONNECTION MYSQL
 		$conn= mysqli_connect("localhost", "root", "", "digimart");
 		return $conn;}
 
+		//////////////////
 	function add_new_user($user_username,$user_password,$user_email){//USER
 		$conn=connection();
 		$query="INSERT INTO users(user_username,user_password,user_email) values(:user_username,:user_password,:user_email)"; 
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":user_username"=>$user_username,":user_password"=>$user_password,":user_email"=>$user_email));
 		$conn=null;}
+
+	function add_new_game($game_name,$game_desc,$game_region,$game_server){
+		$conn=connection();
+		$query="INSERT INTO games(game_name,game_desc,game_region,game_server) values(:game_name,:game_desc,:game_region,:game_server)"; 
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":game_name"=>$game_name,":game_desc"=>$game_desc,":game_region"=>$game_region,":game_server"=>$game_server));
+		$conn=null;}	
+	
+	function add_game_service($service_mode,$service_desc,$game_id){
+		$conn=connection();
+		$query="INSERT INTO game_services(service_mode,service_desc,game_id) values(:service_mode,:service_desc,:game_id)"; 
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":service_mode"=>$service_mode,":service_desc"=>$service_desc,":game_id"=>$game_id));
+		$conn=null;}	
+
+	function add_transaction($transaction_type,$transaction_desc,$transaction_amount,$game_item_id,$buyer_id){
+		$conn=connection();
+		$query="INSERT INTO game_items(transaction_type,transaction_desc,transaction_amount,game_item_id,buyer_id) values(:transaction_type,:transaction_desc,:transaction_amount,:game_item_id,:buyer_id)"; 
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":transaction_type"=>$transaction_type,":transaction_desc"=>$transaction_desc,":transaction_amount"=>$transaction_amount,":game_item_id"=>$game_item_id,":buyer_id"=>$buyer_id));
+		$conn=null;}
+
+
 
 	function existing_email($user_email){ //USER
 		$conn=connection();
@@ -44,12 +68,8 @@
 		$conn=null;
 		return $res;}
 
-	function add_new_game($game_name,$game_desc,$game_region,$game_server){
-		$conn=connection();
-		$query="INSERT INTO games(game_name,game_desc,game_region,game_server) values(:game_name,:game_desc,:game_region,:game_server)"; 
-		$prepare=$conn->prepare($query);
-		$exec=$prepare->execute(array(":game_name"=>$game_name,":game_desc"=>$game_desc,":game_region"=>$game_region,":game_server"=>$game_server));
-		$conn=null;}
+
+
 
 	function edit_game($game_id,$game_name,$game_desc,$game_region,$game_server){
 		$conn=connection();
@@ -82,12 +102,7 @@
 		$conn=null;
 		return $res;}
 
-	function add_new_game_item($item_name,$item_rarity,$item_price,$item_image,$user_id,$service_id){
-		$conn=connection();
-		$query="INSERT INTO game_items(item_name,item_rarity,item_price,item_image,user_id,service_id) values(:item_name,:item_rarity,:item_price,:item_image,:user_id,:service_id)"; 
-		$prepare=$conn->prepare($query);
-		$exec=$prepare->execute(array(":item_name"=>$item_name,":item_rarity"=>$item_rarity,":item_price"=>$item_price,":item_image"=>$item_image,":user_id"=>$user_id,":service_id"=>$service_id));
-		$conn=null;}
+
 
 	function display_item(){##DISPLAY IMAGE FOR HOMEPAGE DISPLAY 10
 		$conn=connection2();
