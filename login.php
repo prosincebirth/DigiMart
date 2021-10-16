@@ -1,7 +1,9 @@
 
 <?php include_once('head.php'); ?>
 <?php include_once('header.php'); ?>
-<?php if(isset($_SESSION['user_session'])){
+<?php 
+
+if(isset($_SESSION['user_session'])){
         header("Location: index.php"); 
         exit();
       }?>

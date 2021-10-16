@@ -2,11 +2,8 @@
     <a href="#">
         <div class="img_wrapper">
             <?php
-            require_once 'account/database.php';
-                
-             $res = view_all_items($i);
 
-	        echo '<img src="data:image/png;base64,'.base64_encode($res['item_image']).'" ">';
+	        echo '<img src="data:image/png;base64,'.base64_encode($res['item_image']).'"height="200" width="350" style = "display: block; margin-left: auto; margin-right: auto; width: 100%; ">';
             echo '<span class="badge common">'.$res['item_rarity'].'</span>';
 	        ?>
         </div>

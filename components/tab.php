@@ -16,26 +16,24 @@
                 <div class="" id="popular_tab">
                     <div class="popular_items">
                        <?php
-                        
-                                        for($i=0;$i<10;$i++) {
-                                            
-                                    ?>           
+                        require_once 'account/database.php';
+                        $result = display_item();
+                        if($result->num_rows > 0){
+                        while ($res = $result->fetch_assoc()){?>           
                         <div class="popular_list__items">
                             <div class="item_wrapper">
-                                <?php   require_once 'account/database.php';
-                                            $res = view_all_items(); ?>
                                 <?php echo ' <span class="item_tag is-purple">'.$res['item_rarity'].'</span>'; ?>
                                 <div class="img_wrapper">
-                               <?php echo '<img src="data:image/png;base64,'.base64_encode($res['item_image']).'" ">'; ?>
+                               <?php echo '<img src="data:image/png;base64,'.base64_encode($res['item_image']).'"height="200" width="350" style = "display: block; margin-left: auto; margin-right: auto; width: 100%; ">'; ?>
                                 </div>
                                 <div class="item_info">
                                     
                                     <?php echo '<h3 class="item_title">'.$res['item_name'].'</h3>'; ?>
-                                    <span class="item_price">₱ 109.98</span>
+                                    <?php echo '<span class="item_price">'.$res['item_price'].'</span>'; ?>
                                 </div>
                             </div>
                         </div>
-                        <?php } ?>
+                        <?php } }?>
                     </div>
                 </div>
             </div>

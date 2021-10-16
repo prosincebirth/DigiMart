@@ -1,3 +1,4 @@
+
 <header class="main_header">
     <div class="container">
         <div class="nav_wrapper">        
@@ -13,7 +14,6 @@
                     <li class="left_nav__list___item active"><a href="./">Home</a></li>
                     <li class="left_nav__list___item"><a href="market.php">Market</a></li>
                     <li class="left_nav__list___item"><a href="">News</a></li>
-                    <li class="left_nav__list___item"><a href="">Wiki</a></li>
                 </ul>
             </nav>
             <nav class="right_nav">
@@ -66,8 +66,9 @@
                         echo "<a class='header_btn' href='login.php'>Login</a>";
                         echo "<a class='header_btn' href='register.php'>Register</a>";
                       }
-                    ?>
 
+                    ?>
+                    
 
                     <div class="user visually-hidden">
                         <div class="user_wrapper">

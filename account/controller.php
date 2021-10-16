@@ -55,8 +55,8 @@
 						}else{
 							echo 'field inputs error';
 						}
-						break;
-						case "add_game_item":
+					break;
+					case "add_game_item":
 							$item_name=$_POST['item_name'];
 							$item_desc=$_POST['item_desc'];
 							$item_price=$_POST['item_price'];

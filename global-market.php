@@ -20,7 +20,14 @@
                             <div class="items_wrapper">
                                 <ul class="item_grid item_grid--6 item_grid--2-mobile">
                                     <?php
-                                        for($i=0;$i<12;$i++) {
+                                    require_once 'account/database.php';
+                                    $conn=connection();
+                                    $query="SELECT * from game_items where item_status=1";
+                                    $res=$conn->query($query);
+                                    $res->execute();
+                                    //if($res->rowcount() > 0){
+                                         while ($res = $res->fetch(PDO::FETCH_ASSOC)){
+                                                
                                     ?>
                                     <li class="item_grid--item">
                                         <?php include('item-card.php'); ?>

@@ -8,6 +8,7 @@
 <div class="container">
     <div class="form_wrapper">
         <h1 class="title">Create Account</h1>
+        <div class="hr"></div>
         <form class="form-signin" method="post" id="register-form"><center>
             <div class="fld_input">
                 <label for="username">

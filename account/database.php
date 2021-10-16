@@ -1,8 +1,13 @@
 <?php 
+	if(!isset($_SESSION)){session_start();}
 	
-	//PUT COMMENTS WHERE THE FUNCTIONS BELONG !!! - JASON
+
     function connection(){// DB CONNECTION
 		$conn=new PDO("mysql:host=localhost;dbname=digimart","root","");
+		return $conn;}
+	
+	function connection2(){// DB CONNECTION
+		$conn= mysqli_connect("localhost", "root", "", "digimart");
 		return $conn;}
 
 	function add_new_user($user_username,$user_password,$user_email){//USER
@@ -52,6 +57,7 @@
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":game_name"=>$game_name,":game_desc"=>$game_desc,":game_region"=>$game_region,":game_server"=>$game_server,":game_id"=>$game_id));
 		$conn=null;}
+		
 	function display_all_games(){
 		$conn=connection();
 		$query="SELECT * FROM games where stats=1";
@@ -83,14 +89,9 @@
 		$exec=$prepare->execute(array(":item_name"=>$item_name,":item_rarity"=>$item_rarity,":item_price"=>$item_price,":item_image"=>$item_image,":user_id"=>$user_id,":service_id"=>$service_id));
 		$conn=null;}
 
-		function display_item(){
-			$conn=connection();
-			$query="SELECT * from game_items where item_status=1";
-			$prepare=$conn->query($query);
-			$res=$prepare->fetchall();
-			$conn=null;
-			return $res;
-		}
-
-    
+	function display_item(){##DISPLAY IMAGE FOR HOMEPAGE DISPLAY 10
+		$conn=connection2();
+        $sql="SELECT * from game_items where item_status=1 LIMIT 10";
+        $result = $conn->query($sql);
+		return $result;}
 ?>
