@@ -3,7 +3,7 @@
         <div class="img_wrapper">
             <?php
 
-	        echo '<img src="data:image/png;base64,'.base64_encode($res['item_image']).'"height="200" width="350" style = "display: block; margin-left: auto; margin-right: auto; width: 100%; ">';
+	        echo '<img src="data:image/png;base64,'.base64_encode($res['item_image']).'">';
             echo '<span class="badge common">'.$res['item_rarity'].'</span>';
 	        ?>
         </div>

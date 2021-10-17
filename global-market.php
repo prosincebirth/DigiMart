@@ -21,18 +21,15 @@
                                 <ul class="item_grid item_grid--6 item_grid--2-mobile">
                                     <?php
                                     require_once 'account/database.php';
-                                    $conn=connection();
-                                    $query="SELECT * from game_items where item_status=1";
-                                    $res=$conn->query($query);
-                                    $res->execute();
-                                    //if($res->rowcount() > 0){
-                                         while ($res = $res->fetch(PDO::FETCH_ASSOC)){
+                                    $result = display_item(12);
+                                    if($result->num_rows > 0){
+                                    while ($res = $result->fetch_assoc()){?>   
                                                 
                                     ?>
                                     <li class="item_grid--item">
                                         <?php include('item-card.php'); ?>
                                     </li>
-                                    <?php } ?>
+                                    <?php } }?>
                                 </ul>
 
                                 <div class="pagination">

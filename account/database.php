@@ -128,9 +128,11 @@
 		return $res;}
 
 
-	function display_item(){##DISPLAY IMAGE FOR HOMEPAGE DISPLAY 10
+	function display_item($limit){//user
 		$conn=connection2();
-        $sql="SELECT * from game_items where item_status=1 LIMIT 10";
-        $result = $conn->query($sql);
+		$sql="SELECT * from game_items where item_status=1 LIMIT $limit";
+		$result = $conn->query($sql);
 		return $result;}
+
+	
 ?>
