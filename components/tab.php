@@ -22,7 +22,12 @@
                         while ($res = $result->fetch_assoc()){?>           
                         <div class="popular_list__items">
                             <div class="item_wrapper">
-                                <?php echo ' <span class="item_tag is-purple">'.$res['item_rarity'].'</span>'; ?>
+                                <?php  if($res['item_rarity'] == 'Immortal'){echo ' <span class="item_tag is-purple" style="background-color:#F2B166">'.$res['item_rarity'].'</span>';}
+                                        elseif($res['item_rarity'] == 'Mythical'){echo ' <span class="item_tag is-purple" style="background-color:#A876F9">'.$res['item_rarity'].'</span>';}
+                                        elseif($res['item_rarity'] == 'Arcana'){echo ' <span class="item_tag is-purple" style="background-color:#9ACC4C">'.$res['item_rarity'].'</span>';}
+                                        elseif($res['item_rarity'] == 'Treasure'){echo ' <span class="item_tag is-purple" style="background-color:#ff1493">'.$res['item_rarity'].'</span>';}
+                                        else{echo ' <span class="item_tag is-purple">'.$res['item_rarity'].'</span>';}
+                                ?>
                                 <div class="img_wrapper">
                                <?php echo '<img src="data:image/png;base64,'.base64_encode($res['item_image']).'"height="210" width="138" style = "display: block; margin-left: auto; margin-right: auto; width: 100%; ">'; ?>
                                 </div>
