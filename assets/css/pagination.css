@@ -13,14 +13,14 @@
     margin-right: 0;
 }
 .pagination ul li:hover a {
-    background-color: var(--black-color);
+    background-color: var(--gray-color);
     color: var(--white-color);
 }
 .pagination ul li a {
     display: inline-block;
     padding: 8px 10px;
     background-color: var(--white-color);
-    color: var(--black-color);
+    color: var(--secondary-color);
     text-decoration: none !important;
     font-size: 12px;
 }
