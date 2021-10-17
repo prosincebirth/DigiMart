@@ -24,7 +24,7 @@
                             <div class="item_wrapper">
                                 <?php echo ' <span class="item_tag is-purple">'.$res['item_rarity'].'</span>'; ?>
                                 <div class="img_wrapper">
-                               <?php echo '<img src="data:image/png;base64,'.base64_encode($res['item_image']).'"height="200" width="350" style = "display: block; margin-left: auto; margin-right: auto; width: 100%; ">'; ?>
+                               <?php echo '<img src="data:image/png;base64,'.base64_encode($res['item_image']).'"height="210" width="138" style = "display: block; margin-left: auto; margin-right: auto; width: 100%; ">'; ?>
                                 </div>
                                 <div class="item_info">
                                     

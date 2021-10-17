@@ -86,15 +86,18 @@
 
 
 
-///////////////////////////////////////////////////////////////////////////
+///////////////////////DELETE FUNCTIONS///////////////////////////////// 
+	function delete_game($game_id){
+		$conn=connection();
+		$query="UPDATE games set game_status=0 where game_id=:game_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":game_name"=>$game_name));
+		$conn=null;	}
 
+	function delete_user(){}
 
-function delete_game_service(){}
-function delete_game_service(){}
-function delete_game_service(){}
-function delete_game_service(){}
-function delete_game_service(){}
-
+	function delete_game_service(){}
+	function delete_game_item(){}
 
 
 
@@ -113,12 +116,7 @@ function delete_game_service(){}
 		$conn=null;
 		return $res;}
 
-	function delete_game($game_id){
-		$conn=connection();
-		$query="UPDATE games set game_status=0 where game_id=:game_id";
-		$prepare=$conn->prepare($query);
-		$exec=$prepare->execute(array(":game_name"=>$game_name));
-		$conn=null;	}
+
 
 	function view_all_items($item_id){
 		$conn=connection();
@@ -128,7 +126,6 @@ function delete_game_service(){}
 		$res = $prepare->fetch(PDO::FETCH_ASSOC);
 		$conn=null;
 		return $res;}
-
 
 
 	function display_item(){##DISPLAY IMAGE FOR HOMEPAGE DISPLAY 10
