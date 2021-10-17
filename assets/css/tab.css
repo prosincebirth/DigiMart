@@ -24,6 +24,7 @@
 
 .tab_section .tab_wrapper .tab_list__nav .tab_nav_item {
   position: relative;
+  
 }
 
 .tab_section .tab_wrapper .tab_list__nav .tab_nav_item.active {
@@ -94,7 +95,6 @@
   color: #fff;
   padding: 5px 10px;
   position: absolute;
-  background: #F2B166;
 }
 
 .tab_section .popular_items .item_wrapper .img_wrapper img {
@@ -111,6 +111,7 @@
   font-size: 16px;
   margin-top: 0;
   margin-bottom: 10px;
+  
 }
 
 

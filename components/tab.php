@@ -11,6 +11,12 @@
                         <span clas="tab_title">DOTA 2</span>
                     </a>
                 </li>
+                <li class="tab_nav_item">
+                    <a href="#">
+                        <i class="fa">&#xf11b;</i>
+                        <span clas="tab_title">CS:GO</span>
+                    </a>
+                </li>
             </ul>
             <div class="tab_contents">
                 <div class="" id="popular_tab">
@@ -22,10 +28,10 @@
                         while ($res = $result->fetch_assoc()){?>           
                         <div class="popular_list__items">
                             <div class="item_wrapper">
-                                <?php  if($res['item_rarity'] == 'Immortal'){echo ' <span class="item_tag is-purple" style="background-color:#F2B166">'.$res['item_rarity'].'</span>';}
-                                        elseif($res['item_rarity'] == 'Mythical'){echo ' <span class="item_tag is-purple" style="background-color:#A876F9">'.$res['item_rarity'].'</span>';}
-                                        elseif($res['item_rarity'] == 'Arcana'){echo ' <span class="item_tag is-purple" style="background-color:#9ACC4C">'.$res['item_rarity'].'</span>';}
-                                        elseif($res['item_rarity'] == 'Treasure'){echo ' <span class="item_tag is-purple" style="background-color:#ff1493">'.$res['item_rarity'].'</span>';}
+                                <?php  if($res['item_rarity'] == 'Immortal'){echo ' <span class="item_tag" style="background-color:#F2B166">'.$res['item_rarity'].'</span>';}
+                                        elseif($res['item_rarity'] == 'Mythical'){echo ' <span class="item_tag" style="background-color:#A876F9">'.$res['item_rarity'].'</span>';}
+                                        elseif($res['item_rarity'] == 'Arcana'){echo ' <span class="item_tag" style="background-color:#9ACC4C">'.$res['item_rarity'].'</span>';}
+                                        elseif($res['item_rarity'] == 'Treasure'){echo ' <span class="item_tag" style="background-color:#ff1493">'.$res['item_rarity'].'</span>';}
                                         else{echo ' <span class="item_tag is-purple">'.$res['item_rarity'].'</span>';}
                                 ?>
                                 <div class="img_wrapper">
