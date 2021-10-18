@@ -68,7 +68,7 @@
 		$conn=null;
 		return $res;}
 
-	function update_login($user_id){
+	function update_login($user_id){//update last login status
 		$conn=connection();
 		$query="UPDATE users SET last_login_date = current_timestamp() WHERE users.user_id = $user_id";
 		$prepare=$conn->query($query);
