@@ -34,6 +34,7 @@
 							if(password_verify($user_password, $res['user_password'])){	
 								$_SESSION['user_session'] = $res['user_id'];
 								$_SESSION['user_username'] = $res['user_username'];
+								update_login($res['user_id']);
 								echo 'success';
 
 							}else{

@@ -1,12 +1,8 @@
 
 <?php include_once('head.php'); ?>
+<?php if(isset($_SESSION['user_session'])){header("Location: index.php"); exit();}?>
 <?php include_once('header.php'); ?>
-<?php 
 
-if(isset($_SESSION['user_session'])){
-        header("Location: index.php"); 
-        exit();
-      }?>
 <div class="container">
     <div class="form_wrapper">
         <h1 class="title">Login Account</h1>

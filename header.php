@@ -1,4 +1,3 @@
-
 <header class="main_header">
     <div class="container">
         <div class="nav_wrapper">        

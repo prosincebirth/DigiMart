@@ -68,6 +68,14 @@
 		$conn=null;
 		return $res;}
 
+	function update_login($user_id){
+		$conn=connection();
+		$query="UPDATE users SET last_login_date = current_timestamp() WHERE users.user_id = $user_id";
+		$prepare=$conn->query($query);
+		$exec=$prepare->execute(array(":game_name"=>$game_name));
+		$conn=null;
+	}
+
 
 ///////////////////UPDATE FUNCTIIONS/////////////////////////////////
 
@@ -91,12 +99,29 @@
 		$conn=connection();
 		$query="UPDATE games set game_status=0 where game_id=:game_id";
 		$prepare=$conn->prepare($query);
-		$exec=$prepare->execute(array(":game_name"=>$game_name));
+		$exec=$prepare->execute(array(":game_id"=>$game_id));
+		$conn=null;}
+
+	function delete_user($user_id){
+		$conn=connection();
+		$query="UPDATE users set user_status=0 where user_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":user_id"=>$user_id));
 		$conn=null;	}
 
-	function delete_user(){}
-	function delete_game_service(){}
-	function delete_game_item(){}
+	function delete_game_service($service_id){
+		$conn=connection();
+		$query="UPDATE game_services set service_status=0 where service_id=:service_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":service_id"=>$service_id));
+		$conn=null;}
+
+	function delete_game_item($item_id){
+		$conn=connection();
+		$query="UPDATE game_items set item_status=0 where item_id=:item_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":item_id"=>$item_id));
+		$conn=null;}
 
 
 

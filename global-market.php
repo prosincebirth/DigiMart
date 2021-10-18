@@ -23,9 +23,7 @@
                                     require_once 'account/database.php';
                                     $result = display_item(12);
                                     if($result->num_rows > 0){
-                                    while ($res = $result->fetch_assoc()){?>   
-                                                
-                                    ?>
+                                    while ($res = $result->fetch_assoc()){?> 
                                     <li class="item_grid--item">
                                         <?php include('item-card.php'); ?>
                                     </li>
