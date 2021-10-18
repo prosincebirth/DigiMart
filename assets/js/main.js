@@ -61,12 +61,6 @@ $('document').ready(function()
                       user_username: "Please enter your username",
               },
     });
-
-    $(".close").on("click",function(){
-		$("#item_name").text("--");$("#stock").text("--");$("#quantity_change").val("");
-		$("#final_item_id").text("--");$("#final_item_name").text("--");$("#final_quantity").text("--");
-		$("#final_payment").text("--");$("#final_supplier_name").text("--");
-	});
    
 	$(".btn").on("click",function(){
 		var btn_val=$(this).val();
