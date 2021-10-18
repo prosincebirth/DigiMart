@@ -95,7 +95,6 @@
 		$conn=null;	}
 
 	function delete_user(){}
-
 	function delete_game_service(){}
 	function delete_game_item(){}
 

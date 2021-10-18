@@ -55,10 +55,7 @@
 					</div>
 					<div class="item_detail--ctas">
 						<p>
-							<a href="javascript:void(0);">
-								<span>Collect</span>
-								<i class="far fa-star"></i>
-							</a>
+						
 						</p>
 						<div>
 							<a class="item_sell" href="javascript:void(0);">Sell</a>
@@ -86,25 +83,7 @@
 					</div>
 				</div>
 
-				<div class="item_groups--sort">
-					<div class="item_groups--sort--container">
-						<div>
-							<label for="fldMin">¥</label>
-							<input id="fldMin" type="number" placeholder="Min">
-						</div>
-						<div>
-							<label for="fldMax">- ¥</label>
-							<input id="fldMax" type="number" placeholder="Max">
-						</div>
-						<div>
-							<select name="" id="">
-								<option value="">Default</option>
-								<option value="">Default</option>
-								<option value="">Default</option>
-							</select>
-						</div>
-					</div>
-				</div>
+			
 
 				<div class="item_group--table">
 					<div class="item_group--table--container">
@@ -140,7 +119,7 @@
 										<div class="item__group--cta">
 											<a class="buy_btn" href="javascript:void(0);">Buy</a>
 											<a class="wishlist_btn" href="javascript:void(0);">
-												<i class="far fa-heart"></i>
+											
 											</a>
 										</div>
 									</td>
@@ -168,7 +147,7 @@
 										<div class="item__group--cta">
 											<a class="buy_btn" href="javascript:void(0);">Buy</a>
 											<a class="wishlist_btn" href="javascript:void(0);">
-												<i class="far fa-heart"></i>
+											
 											</a>
 										</div>
 									</td>
@@ -196,7 +175,7 @@
 										<div class="item__group--cta">
 											<a class="buy_btn" href="javascript:void(0);">Buy</a>
 											<a class="wishlist_btn" href="javascript:void(0);">
-												<i class="far fa-heart"></i>
+											
 											</a>
 										</div>
 									</td>
@@ -224,7 +203,7 @@
 										<div class="item__group--cta">
 											<a class="buy_btn" href="javascript:void(0);">Buy</a>
 											<a class="wishlist_btn" href="javascript:void(0);">
-												<i class="far fa-heart"></i>
+											
 											</a>
 										</div>
 									</td>
@@ -252,7 +231,7 @@
 										<div class="item__group--cta">
 											<a class="buy_btn" href="javascript:void(0);">Buy</a>
 											<a class="wishlist_btn" href="javascript:void(0);">
-												<i class="far fa-heart"></i>
+											
 											</a>
 										</div>
 									</td>
@@ -280,7 +259,7 @@
 										<div class="item__group--cta">
 											<a class="buy_btn" href="javascript:void(0);">Buy</a>
 											<a class="wishlist_btn" href="javascript:void(0);">
-												<i class="far fa-heart"></i>
+											
 											</a>
 										</div>
 									</td>
@@ -308,7 +287,7 @@
 										<div class="item__group--cta">
 											<a class="buy_btn" href="javascript:void(0);">Buy</a>
 											<a class="wishlist_btn" href="javascript:void(0);">
-												<i class="far fa-heart"></i>
+											
 											</a>
 										</div>
 									</td>
@@ -336,7 +315,7 @@
 										<div class="item__group--cta">
 											<a class="buy_btn" href="javascript:void(0);">Buy</a>
 											<a class="wishlist_btn" href="javascript:void(0);">
-												<i class="far fa-heart"></i>
+											
 											</a>
 										</div>
 									</td>
