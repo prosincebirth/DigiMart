@@ -32,12 +32,20 @@
 		$exec=$prepare->execute(array(":service_mode"=>$service_mode,":service_desc"=>$service_desc,":game_id"=>$game_id));
 		$conn=null;}	
 
+		function add_new_game_item($item_name,$item_rarity,$item_price,$item_image,$user_id,$service_id){
+			$conn=connection();
+			$query="INSERT INTO game_items(item_name,item_rarity,item_price,item_image,user_id,service_id) values(:item_name,:item_rarity,:item_price,:item_image,:user_id,:service_id)"; 
+			$prepare=$conn->prepare($query);
+			$exec=$prepare->execute(array(":item_name"=>$item_name,":item_rarity"=>$item_rarity,":item_price"=>$item_price,":item_image"=>$item_image,":user_id"=>$user_id,":service_id"=>$service_id));
+			$conn=null;}
+
 	function add_transaction($transaction_type,$transaction_desc,$transaction_amount,$game_item_id,$buyer_id){
 		$conn=connection();
 		$query="INSERT INTO game_items(transaction_type,transaction_desc,transaction_amount,game_item_id,buyer_id) values(:transaction_type,:transaction_desc,:transaction_amount,:game_item_id,:buyer_id)"; 
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":transaction_type"=>$transaction_type,":transaction_desc"=>$transaction_desc,":transaction_amount"=>$transaction_amount,":game_item_id"=>$game_item_id,":buyer_id"=>$buyer_id));
 		$conn=null;}
+
 
 
 ////////////////////////TRAPPINGS//////////////////////////////MESC///////////////////
@@ -55,6 +63,15 @@
 		$query="SELECT user_username from users where user_username=:user_username";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":user_username"=>$user_username));
+		$res=$prepare->rowcount();
+		$conn=null;
+		return $res;}
+
+	function existing_game_item($item_name){//user
+		$conn=connection();
+		$query="SELECT item_name from game_items where item_name=:item_name";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":item_name"=>$item_name));
 		$res=$prepare->rowcount();
 		$conn=null;
 		return $res;}
@@ -130,8 +147,6 @@
 /////////////////////////////////////////////////////////////////////
 
 
-
-
 	function display_all_games(){
 		$conn=connection();
 		$query="SELECT * FROM games where stats=1";
@@ -139,8 +154,6 @@
 		$res=$prepare->fetchall();
 		$conn=null;
 		return $res;}
-
-
 
 	function view_all_items($item_id){
 		$conn=connection();

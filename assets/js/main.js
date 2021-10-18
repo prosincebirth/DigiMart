@@ -61,6 +61,12 @@ $('document').ready(function()
                       user_username: "Please enter your username",
               },
     });
+
+    $(".close").on("click",function(){
+		$("#item_name").text("--");$("#stock").text("--");$("#quantity_change").val("");
+		$("#final_item_id").text("--");$("#final_item_name").text("--");$("#final_quantity").text("--");
+		$("#final_payment").text("--");$("#final_supplier_name").text("--");
+	});
    
 	$(".btn").on("click",function(){
 		var btn_val=$(this).val();
@@ -178,8 +184,6 @@ $('document').ready(function()
                     }
             break;
             case "save_new_game":
-                
-                //if($("#add-game-form").valid()){
 				var game_name1=$("#game_name").val().trim();
                 var game_desc1=$("#game_desc").val().trim();
                 var game_region1=$("#game_region").val().trim();
@@ -191,7 +195,6 @@ $('document').ready(function()
 				data.append("game_desc",game_desc1);
 				data.append("game_region",game_region1);
                 data.append("game_server",game_server1);
-				//$("#game_desc").val("");$("#game_region").val("");$("#game_server").val("");
 
 				$.ajax({	
 					url:"account/controller.php",

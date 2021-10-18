@@ -59,6 +59,7 @@
 						</p>
 						<div>
 							<a class="item_sell" href="javascript:void(0);">Sell</a>
+							<button type="button" class="item_sell" data-toggle="modal" data-target="#add_game_item_modal">Sell</button>
 							<button type="button" class="item_place--buy--order" data-toggle="modal" data-target="#add_game_modal">Place buy order</button>
 						</div>
 					</div>
@@ -73,16 +74,9 @@
 							<li><span>Buy orders(65)</span></li>
 							<li><span>Trade Records</span></li>
 						</ul>
-						<div>
-							<button class="item_group--bulk--buy">
-								<span>Bulk buy</span>
-							</button>
-						</div>
+					
 					</div>
 				</div>
-
-			
-
 				<div class="item_group--table">
 					<div class="item_group--table--container">
 						<table>
