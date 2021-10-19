@@ -1,0 +1,132 @@
+
+.layout {
+    padding-top: 20px;
+}
+.column {
+    float: left;
+    padding: 10px;
+    
+}
+.col1 {
+    width: 25%;
+   
+}
+
+.col2 {
+    width: 75%;
+}
+
+.layout:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.col1 .panel{
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+}
+
+.col2 .main{
+    padding: 10px;
+    padding: 0 25px 50px 25px;
+    border: 1px solid var(--light-gray-color);
+    border-radius: 5px;
+}
+
+.col1 .panel .user-image{
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    
+}
+.col1 .panel .user-image .image{
+    padding: 20px 0 0 0;   
+}
+.col1 .panel .user-image .image img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+}
+.col1 .panel .user-image .name {
+    padding: 10px 0 20px 0;
+}
+.col1 .panel .user-image .name h2 {
+    font-size: 20px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.col1 .panel .menu {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+}
+
+.col1 .panel .menu button{
+    width: 100%;
+    height: 64px;
+    border: none;
+    color: var(--white-color);
+    background-color: var(--steam-color);
+}
+
+.col1 .panel .menu ul li button:hover,
+.col1 .panel .menu ul li button.active{
+    background-color: var(--secondary-color);
+}
+
+.col1 .panel .menu i{
+    padding: 10px;
+    align-content: left;
+}
+
+.col2 .main .user-setting {
+    color: var(--primary-color);
+}
+
+.col2 .main .user-setting h3{
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+.col2 .main .user-setting .list-tab {
+    width: 100%;
+}
+
+.col2 .main .user-setting .list-tab tr{
+    border-bottom: 1px solid var(--light-gray-color);
+    
+}
+
+.col2 .main .user-setting .list-tab td{
+    padding: 10px;
+    font-size: 14px;
+    color: #959595;
+}
+
+.col2 .main .user-setting .list-tab td img{
+    border-radius: 50%;
+}
+
+.col2 .user-setting .list-tab .t-left {
+    width: 120px;
+}
+
+.col2 .user-setting .list-tab .t-right{
+    text-align: right;
+}
+
+.col2 .user-setting .list-tab .t-right a:first-of-type{
+    margin-right: 15px;
+    display: inline-block;
+    background-color: var(--facebook-color);
+    color: var(--white-color);
+    height: 30px;
+    line-height: 30px;
+    padding: 0 15px;
+}
+
+.col2 .user-setting .list-tab table tbody tr td .t-right a:last-of-type{
+    color: var(--quinary-color);
+    font-size: 20px;
+}
