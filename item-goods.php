@@ -59,8 +59,7 @@
 						</p>
 						<div>
 							<a class="item_sell" href="javascript:void(0);">Sell</a>
-							<button type="button" class="item_sell" data-toggle="modal" data-target="#add_game_item_modal">Sell</button>
-							<button type="button" class="item_place--buy--order" data-toggle="modal" data-target="#add_game_modal">Place buy order</button>
+							<button class="item_place--buy--order">Place buy order</button>
 						</div>
 					</div>
 				</div>
@@ -72,11 +71,20 @@
 						<ul>
 							<li class="active"><span>Sell(65)</span></li>
 							<li><span>Buy orders(65)</span></li>
+							<li><span>Gallery(65)</span></li>
 							<li><span>Trade Records</span></li>
+							<li><span>Price Trend</span></li>
 						</ul>
-					
+						<div>
+							<button class="item_group--bulk--buy">
+								<span>Bulk buy</span>
+							</button>
+						</div>
 					</div>
 				</div>
+
+			
+
 				<div class="item_group--table">
 					<div class="item_group--table--container">
 						<table>
@@ -88,6 +96,202 @@
 								<th></th>
 							</thead>
 							<tbody>
+								<tr>
+									<td>
+										<div class="img_text">
+											<img class="item__img" src="http://via.placeholder.com/72x48" alt="">
+											<span>Hidden Vector</span>
+										</div>
+									</td>
+									<td>
+										<div class="img_text">
+											<img class="item__seller" src="http://via.placeholder.com/32x32" alt="">
+											<span>Lin hua</span>
+										</div>
+									</td>
+									<td>
+										<span>P2P Delivery</span>
+									</td>
+									<td>
+										<span>¥ 143.3</span>										
+									</td>
+									<td>
+										<div class="item__group--cta">
+											<a class="buy_btn" href="javascript:void(0);">Buy</a>
+											<a class="wishlist_btn" href="javascript:void(0);">
+											
+											</a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="img_text">
+											<img class="item__img" src="http://via.placeholder.com/72x48" alt="">
+											<span>Hidden Vector</span>
+										</div>
+									</td>
+									<td>
+										<div class="img_text">
+											<img class="item__seller" src="http://via.placeholder.com/32x32" alt="">
+											<span>Lin hua</span>
+										</div>
+									</td>
+									<td>
+										<span>P2P Delivery</span>
+									</td>
+									<td>
+										<span>¥ 143.3</span>										
+									</td>
+									<td>
+										<div class="item__group--cta">
+											<a class="buy_btn" href="javascript:void(0);">Buy</a>
+											<a class="wishlist_btn" href="javascript:void(0);">
+											
+											</a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="img_text">
+											<img class="item__img" src="http://via.placeholder.com/72x48" alt="">
+											<span>Hidden Vector</span>
+										</div>
+									</td>
+									<td>
+										<div class="img_text">
+											<img class="item__seller" src="http://via.placeholder.com/32x32" alt="">
+											<span>Lin hua</span>
+										</div>
+									</td>
+									<td>
+										<span>P2P Delivery</span>
+									</td>
+									<td>
+										<span>¥ 143.3</span>										
+									</td>
+									<td>
+										<div class="item__group--cta">
+											<a class="buy_btn" href="javascript:void(0);">Buy</a>
+											<a class="wishlist_btn" href="javascript:void(0);">
+											
+											</a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="img_text">
+											<img class="item__img" src="http://via.placeholder.com/72x48" alt="">
+											<span>Hidden Vector</span>
+										</div>
+									</td>
+									<td>
+										<div class="img_text">
+											<img class="item__seller" src="http://via.placeholder.com/32x32" alt="">
+											<span>Lin hua</span>
+										</div>
+									</td>
+									<td>
+										<span>P2P Delivery</span>
+									</td>
+									<td>
+										<span>¥ 143.3</span>										
+									</td>
+									<td>
+										<div class="item__group--cta">
+											<a class="buy_btn" href="javascript:void(0);">Buy</a>
+											<a class="wishlist_btn" href="javascript:void(0);">
+											
+											</a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="img_text">
+											<img class="item__img" src="http://via.placeholder.com/72x48" alt="">
+											<span>Hidden Vector</span>
+										</div>
+									</td>
+									<td>
+										<div class="img_text">
+											<img class="item__seller" src="http://via.placeholder.com/32x32" alt="">
+											<span>Lin hua</span>
+										</div>
+									</td>
+									<td>
+										<span>P2P Delivery</span>
+									</td>
+									<td>
+										<span>¥ 143.3</span>										
+									</td>
+									<td>
+										<div class="item__group--cta">
+											<a class="buy_btn" href="javascript:void(0);">Buy</a>
+											<a class="wishlist_btn" href="javascript:void(0);">
+											
+											</a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="img_text">
+											<img class="item__img" src="http://via.placeholder.com/72x48" alt="">
+											<span>Hidden Vector</span>
+										</div>
+									</td>
+									<td>
+										<div class="img_text">
+											<img class="item__seller" src="http://via.placeholder.com/32x32" alt="">
+											<span>Lin hua</span>
+										</div>
+									</td>
+									<td>
+										<span>P2P Delivery</span>
+									</td>
+									<td>
+										<span>¥ 143.3</span>										
+									</td>
+									<td>
+										<div class="item__group--cta">
+											<a class="buy_btn" href="javascript:void(0);">Buy</a>
+											<a class="wishlist_btn" href="javascript:void(0);">
+											
+											</a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="img_text">
+											<img class="item__img" src="http://via.placeholder.com/72x48" alt="">
+											<span>Hidden Vector</span>
+										</div>
+									</td>
+									<td>
+										<div class="img_text">
+											<img class="item__seller" src="http://via.placeholder.com/32x32" alt="">
+											<span>Lin hua</span>
+										</div>
+									</td>
+									<td>
+										<span>P2P Delivery</span>
+									</td>
+									<td>
+										<span>¥ 143.3</span>										
+									</td>
+									<td>
+										<div class="item__group--cta">
+											<a class="buy_btn" href="javascript:void(0);">Buy</a>
+											<a class="wishlist_btn" href="javascript:void(0);">
+											
+											</a>
+										</div>
+									</td>
+								</tr>
 								<tr>
 									<td>
 										<div class="img_text">
@@ -134,5 +338,5 @@
 		</div>
 	</section>
 </main>
-<?php include('components/modal.php')?>
+
 <?php include('footer.php'); ?>
