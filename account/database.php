@@ -32,12 +32,12 @@
 		$exec=$prepare->execute(array(":service_mode"=>$service_mode,":service_desc"=>$service_desc,":game_id"=>$game_id));
 		$conn=null;}	
 
-		function add_new_game_item($item_name,$item_rarity,$item_price,$item_image,$user_id,$service_id){
-			$conn=connection();
-			$query="INSERT INTO game_items(item_name,item_rarity,item_price,item_image,user_id,service_id) values(:item_name,:item_rarity,:item_price,:item_image,:user_id,:service_id)"; 
-			$prepare=$conn->prepare($query);
-			$exec=$prepare->execute(array(":item_name"=>$item_name,":item_rarity"=>$item_rarity,":item_price"=>$item_price,":item_image"=>$item_image,":user_id"=>$user_id,":service_id"=>$service_id));
-			$conn=null;}
+	function add_new_game_item($item_name,$item_detail1,$item_detail2,$item_detail3,$item_price,$item_image,$user_id,$service_id){
+		$conn=connection();
+		$query="INSERT INTO game_items(item_name,item_detail1,item_detail2,item_detail3,item_price,item_image,user_id,service_id) values(:item_name,:item_detail1,:item_detail2,:item_detail3,:item_price,:item_image,:user_id,:service_id)"; 
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":item_name"=>$item_name,":item_detail1"=>$item_detail1,":item_detail2"=>$item_detail2,":item_detail3"=>$item_detail3,":item_price"=>$item_price,":item_image"=>$item_image,":user_id"=>$user_id,":service_id"=>$service_id));
+		$conn=null;}
 
 	function add_transaction($transaction_type,$transaction_desc,$transaction_amount,$game_item_id,$buyer_id){
 		$conn=connection();
@@ -46,6 +46,13 @@
 		$exec=$prepare->execute(array(":transaction_type"=>$transaction_type,":transaction_desc"=>$transaction_desc,":transaction_amount"=>$transaction_amount,":game_item_id"=>$game_item_id,":buyer_id"=>$buyer_id));
 		$conn=null;}
 
+	function add_goods_id(){
+		$conn=connection();
+		$query="INSERT INTO game_items(transaction_type) values(:buyer_id)"; 
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":transaction_type"=>$transaction_type));
+		$conn=null;}
+	}
 
 
 ////////////////////////TRAPPINGS//////////////////////////////MESC///////////////////
@@ -67,14 +74,22 @@
 		$conn=null;
 		return $res;}
 
-	function existing_game_item($item_name){//user
+	function existing_game_item($item_name,$item_type,$item_detail1,$item_detail2,$item_detail3){//user
+		$conn=connection2();
+		$sql="SELECT * from game_items where item_name=$item_name and item_detail1=$item_detail1 and item_detail2=$item_detail2 and item_detail3=$item_detail3";
+		$result = $conn->query($sql);
+		return $result;}
+
+
+	function existing_game_item2($item_name){//user
 		$conn=connection();
-		$query="SELECT item_name from game_items where item_name=:item_name";
+		$query="SELECT item_name from game_items where item_name=:item_name ";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":item_name"=>$item_name));
 		$res=$prepare->rowcount();
 		$conn=null;
 		return $res;}
+
 
 	function login($user_username){//user
 		$conn=connection();
@@ -164,12 +179,18 @@
 		$conn=null;
 		return $res;}
 
-
 	function display_item($limit){//user
 		$conn=connection2();
 		$sql="SELECT * from game_items where item_status=1 LIMIT $limit";
 		$result = $conn->query($sql);
 		return $result;}
+	
+	function display_goods_id($goods_id){//user
+		$conn=connection2();
+		$sql="SELECT * from game_items where goods_id=$goods_id";
+		$result = $conn->query($sql);
+		return $result;}
+
 
 	
 ?>
