@@ -1,5 +1,13 @@
 $('document').ready(function()
 {
+    $('.js-drop').on('click', function() {
+        $(this).toggleClass('open');
+    });
+    $('[data-toggle="popover"]').popover({
+        placement: 'right',
+        trigger: 'hover'
+     });
+
     $("#register-form").validate({
         rules:
         {
