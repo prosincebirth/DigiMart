@@ -1,7 +1,6 @@
 <?php 
 
 	require 'database.php';
-
 		if(isset($_POST['action_type'])){
 			$action_type=$_POST['action_type'];
 				switch($action_type){

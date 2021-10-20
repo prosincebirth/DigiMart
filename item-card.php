@@ -4,7 +4,7 @@
             <?php
 
 	        echo '<img src="data:image/png;base64,'.base64_encode($res['item_image']).'">';
-            echo '<span class="badge common">'.$res['item_rarity'].'</span>';
+            echo '<span class="badge common">'.$res['item_detail1'].'</span>';
 	        ?>
         </div>
         <div class="item_info">

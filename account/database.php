@@ -174,7 +174,7 @@
 
 	function display_item($limit){//user
 		$conn=connection2();
-		$sql="SELECT * from game_items where item_status=1 LIMIT $limit";
+		$sql="SELECT * from game_items where item_status=1 and service_id=1 LIMIT $limit";
 		$result = $conn->query($sql);
 		return $result;}
 	
@@ -184,6 +184,28 @@
 		$result = $conn->query($sql);
 		return $result;}
 
+	function get_item_information($game_id){
+		$conn=connection2();
+		$sql="SELECT * from item_information where game_id=$game_id";
+		$result = $conn->query($sql);
+		return $result;
+	}
+
+	function get_item_category($game_id){//user
+		$conn=connection();
+		$query="SELECT * from item_category where game_id=:game_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":game_id"=>$game_id));
+		$res = $prepare->fetch(PDO::FETCH_ASSOC);
+		$conn=null;
+		return $res;}
+
+	function get_game_service($game_id){
+		$conn=connection2();
+		$sql="SELECT * from game_services where game_id=$game_id";
+		$result = $conn->query($sql);
+		return $result;
+	}
 
 	
 ?>
