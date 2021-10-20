@@ -23,7 +23,7 @@
                 </ul>
 
                 <div class="other_nav">
-                    <div class="game_wrapper">
+                    <div class="game_wrapper js-drop">
                         <div class="selected_game">
                             <span class="game_icon">
                                 <i class="fa">&#xf11b;</i>

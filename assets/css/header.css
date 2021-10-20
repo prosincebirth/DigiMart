@@ -37,6 +37,7 @@
   -webkit-column-gap: 20px;
   -moz-column-gap: 20px;
   column-gap: 20px;
+  margin-bottom: 0;
 }
 
 .main_header .nav_wrapper ul:not(.game_list__dropdown) > li {
@@ -109,7 +110,7 @@
   position: relative;
 }
 
-.main_header .nav_wrapper .right_nav .other_nav .game_wrapper:hover .game_dropdown {
+.main_header .nav_wrapper .right_nav .other_nav .game_wrapper.open .game_dropdown {
   height: 68px;
 }
 
