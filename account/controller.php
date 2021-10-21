@@ -57,16 +57,34 @@
 						}
 					break;
 					case "add_game_item":
+
 							$item_name=$_POST['item_name'];
-							$item_desc=$_POST['item_desc'];
+							$item_quality=$_POST['item_quality'];
+							$item_rarity=$_POST['item_rarity'];
+							$item_detail1=$_POST['item_detail1'];
+							$item_detail2=$_POST['item_detail2'];
+							$item_detail3=$_POST['item_detail3'];
 							$item_price=$_POST['item_price'];
-							$item_image=file_get_contents($_FILES['item_image']['tmp_name']);						
+							if(isset($_FILES['item_image'])){
+							$item_image=file_get_contents($_FILES['item_image']['tmp_name']);}
+						
 							$user_id=$_POST['user_id'];
 							$service_id=$_POST['service_id'];
 
-							if(!empty($item_name) && !empty($item_desc) && !empty($item_price) && !empty($item_image) && !empty($user_id) && !empty($service_id)){
-							add_new_game_item($item_name,$item_desc,$item_price,$item_image,$user_id,$service_id);
+							if(!empty($item_name) && !empty($item_image) && !$item_quality != 'null' && $item_rarity != 'null' && $item_detail1 != 'null' && $item_detail2 != 'null' && $item_detail3 != 'null' && $service_id !='null'){
+								//$result = existing_game_item($item_name,$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3);
+								if($res=existing_game_item($item_name,$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3)){
+									//$res=existing_game_item($item_name,$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3);
+									//add_item_goods_id($res['item_id']);
+									add_new_game_item($item_name,$res['goods_id'],$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3,$item_price,$item_image,$user_id,$service_id);
 								echo 'success';
+								}
+								else{
+									add_new_game_item($item_name,0,$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3,$item_price,$item_image,$user_id,$service_id);
+									$res=existing_game_item($item_name,$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3);
+									add_item_goods_id($res['item_id']);
+									echo 'succ23ess';
+								}
 							}else{
 								echo 'field inputs error';
 							}

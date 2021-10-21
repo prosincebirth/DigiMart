@@ -100,21 +100,22 @@
 	<div class="modal-content">
 		<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title">Add Game Item </h4>
+		<h4 class="modal-title"><center>POST ITEM FOR SALE</center</h4>
 		</div>
 		<div class="modal-body">
 		<form class="form-signin" method="post" id="add-game-form" ><center>
                 <div class="fld_input"><input type="text" name="item_name" placeholder="Item Name" id="item_name" class="form-control"></div>
-				<div class="fld_input"><select name="item_type" class="form-control">
+			
+				<div class="fld_input"><select name="item_quality" id="item_quality"  class="form-control">
 				<?php	$game=get_item_category(1);
 				echo '<option value="" disabled selected>'.$game['item_type'].'</option>';
                                     $result = get_item_information(1);
                                     if($result->num_rows > 0){
                                     while ($res = $result->fetch_assoc()){
-										if($res['item_type']!= NULL){
-										echo '<option value='.$res['item_type'].'>'.$res['item_type'].'</option>';}}}?>
+										if($res['item_quality']!= NULL){
+										echo '<option value='.$res['item_quality'].'>'.$res['item_quality'].'</option>';}}}?>
 										</select></div>
-				<div class="fld_input"><select name="item_rarity" class="form-control">	
+				<div class="fld_input"><select name="item_rarity" id="item_rarity" class="form-control">	
 				<option value="" disabled selected><?php echo $game['item_rarity'];?></option>
 									<?php
                                     $result = get_item_information(1);
@@ -124,7 +125,7 @@
 										echo '<option value='.$res['item_rarity'].'>'.$res['item_rarity'].'</option>';
 										}}}?>
 										</select></div>
-				<div class="fld_input"><select name="item_detail1" class="form-control">	
+				<div class="fld_input"><select name="item_detail1" id="item_detail1" class="form-control">	
 				<option value="" disabled selected><?php echo $game['item_category1'];?></option>
 									<?php
                                     $result = get_item_information(1);
@@ -134,7 +135,7 @@
 										echo '<option value='.$res['item_detail1'].'>'.$res['item_detail1'].'</option>';
 										}}}?>
 										</select></div>
-				<div class="fld_input"><select name="item_detail2" class="form-control">	
+				<div class="fld_input"><select name="item_detail2" id="item_detail2" class="form-control">	
 				<option value="" disabled selected><?php echo $game['item_category2'];?></option>
 									<?php
                                     $result = get_item_information(1);
@@ -144,7 +145,7 @@
 										echo '<option value='.$res['item_detail2'].'>'.$res['item_detail2'].'</option>';
 										}}}?>
 										</select></div>
-				<div class="fld_input"><select name="item_detail3" class="form-control">	
+				<div class="fld_input"><select name="item_detail3" id="item_detail3" class="form-control">	
 				<option value="" disabled selected><?php echo $game['item_category3'];?></option>
 									<?php
                                     $result = get_item_information(1);
@@ -155,11 +156,10 @@
 										}}}?>
 										</select></div>
 				<div class="fld_input"><input type="text" name="item_price" placeholder="Item Price" id="item_price" class="form-control"></div>
-				<div class="fld_input"><input type="file" name="item_image" placeholder="Item Image" id="item_image"></div>
-				<div class="fld_input"><input type="text" name="user_id" placeholder="User ID" id="user_id" class="form-control" value="<?php echo $_SESSION['user_session']; ?>"></div>
-				<div class="fld_input"><input type="text" name="service_id" placeholder="Service ID" id="service_id" class="form-control"></div>
-				
-				<div class="fld_input"><select name="item_detail3" class="form-control">	
+				<div class="fld_input"><input type="file" name="item_image" placeholder="Item Image" id="item_image" value="" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="user_id" placeholder="User ID" id="user_id" class="form-control" value="<?php echo $_SESSION['user_session']; ?>"></div>		
+
+				<div class="fld_input"><select name="service_id" id="service_id" class="form-control">	
 				<option value="" disabled selected>Service Mode</option>
 									<?php
                                     $result = get_game_service(1);
