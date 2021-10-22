@@ -1,5 +1,6 @@
 <?php include('head.php'); ?>
 <?php include('header.php'); ?>
+<?php require 'account/database.php'; ?>
 
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">

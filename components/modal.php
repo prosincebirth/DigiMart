@@ -1,11 +1,8 @@
-<?php require 'account/database.php'; ?>
 
 <div class="modal fade" id="add_game_modal" role="dialog">
 	<div class="modal-dialog">
-
 	<div class="modal-content">
 		<div class="modal-header">
-	
 		<h4 class="modal-title">Add New Game</h4>
 		</div>
 		<div class="modal-body">
@@ -95,7 +92,7 @@
 </div>
 
 
-<div class="modal fade" id="add_game_item_modal" role="dialog">
+<div class="modal fade" id="sale_game_item_modal" role="dialog">
 	<div class="modal-dialog">
 	<div class="modal-content">
 		<div class="modal-header">
@@ -158,7 +155,7 @@
 				<div class="fld_input"><input type="text" name="item_price" placeholder="Item Price" id="item_price" class="form-control"></div>
 				<div class="fld_input"><input type="file" name="item_image" placeholder="Item Image" id="item_image" value="" class="form-control"></div>
 				<div class="fld_input"><input type="hidden" name="user_id" placeholder="User ID" id="user_id" class="form-control" value="<?php echo $_SESSION['user_session']; ?>"></div>		
-
+				<div class="fld_input"><input type="hidden" name="order_id" placeholder="User ID" id="order_id" class="form-control" value="1"></div>	
 				<div class="fld_input"><select name="service_id" id="service_id" class="form-control">	
 				<option value="" disabled selected>Service Mode</option>
 									<?php

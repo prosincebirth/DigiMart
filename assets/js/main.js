@@ -227,7 +227,7 @@ $('document').ready(function()
                 var item_image=$('#item_image')[0].files[0];
                 var user_id=$("#user_id").val()
                 var service_id=$("#service_id").val()
-                
+                var order_id=$("#order_id").val()
                 
 				var data=new FormData();
 				data.append("action_type","add_game_item");
@@ -241,6 +241,7 @@ $('document').ready(function()
                 data.append("item_image",item_image);
                 data.append("user_id",user_id);
                 data.append("service_id",service_id);
+                data.append("order_id",order_id);
 
 				$.ajax({	
 					url:"account/controller.php",

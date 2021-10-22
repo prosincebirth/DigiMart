@@ -50,6 +50,7 @@
                             </ul>
                         </div>
                     </div>
+                    
 
                     <a class="mail visually-hidden" href="#">
                         <span class="email_icon">
@@ -59,6 +60,7 @@
 
                     <?php 
                     if(isset($_SESSION['user_session'])){// for login
+                        echo "<a class='header_btn' href='user-account.php'>My Account</a>";
                         echo "<a class='header_btn' href='logout.php'>Logout</a>";
                       }
                       else{

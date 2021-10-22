@@ -18,7 +18,7 @@
                                 <img src="http://via.placeholder.com/70x70" alt="">
                             </div>
                             <div class="name">
-                                <h2>User Name</h2>
+                                <h2><?php echo $_SESSION['user_username']; ?></h2>
                             </div>
                         </div>
 
@@ -106,66 +106,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <h3>Preferences</h3>
-                            <table class=list-tab width="100%">
-                                <tbody>
-                                    <tr>
-                                        <td class="t-left" width="120">Bargain set</td>
-                                        <td class="t-left"><span><i class="fas fa-check-square"></i>Enable bargains</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="t-left" width="120">Payment settings</td>
-                                        <td class="t-left"><span><i class="fas fa-check-square"></i>Accept Alipay payment</span></td>
-                                        <td class="t-left"><span><i class="fas fa-check-square"></i>Accept WeChat payment</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="t-left" width="120">Store display</td>
-                                        <td class="t-left"><span><i class="fas fa-check-square"></i>Open</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="t-left" width="120">Display Currency</td>
-                                        <td class="t-left"><select>  
-                                            <option value="">Select currency</option>
-                                            <option value="php">PHP</option>  
-                                            <option value="usd">UDS</option>  
-                                            <option value="rmb">RMB</option>  
-                                            </select>   
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="t-left">Sale limited buyer to sending offer first <i class="fas fa-question-circle" 
-                                        data-toggle="popover" title="Preference description" data-content="check this option if you don't want to send offer first when your items are sold" data-direction="right"></i></td>
-                                        <td class="t-left"><span><i class="fas fa-check-square"></i>Open</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="t-left">Enable SMS notification</td>
-                                        <td class="t-left"><span><i class="fas fa-check-square"></i>Open</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="t-left" width="120">Antiscam <i class="fas fa-question-circle" data-toggle="popover" 
-                                        title="Preference description" data-content="Once turned on, 
-                                        the system will help you intercept fake offers when the buff trade offer was canceled. 
-                                        The “strict” option will block fake offers more aggressively, but with a small probability of misjudgment." data-direction="right"></i></td>
-                                        <td class="t-left"><select>  
-                                            <option value="strict">Strict</option>  
-                                            <option value="basic">Basic</option>  
-                                            <option value="off">Off</option>  
-                                            </select>   </td>
-                                    </tr>
-                                        <td class="t-left">Inventory pricing</td>
-                                        <td class="t-left"><select>  
-                                                <option value="Steam">Steam price</option>  
-                                                <option value="Buff">Buff price</option>  
-                                        </select></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="t-left">Purchase Price Auto Noted <i class="fas fa-question-circle" data-toggle="popover" title="Preference description" 
-                                        data-content="Automatically fill purchase price to item notes after buying items on BUFF."
-                                        data-direction="right"></i></td>
-                                        <td class="t-left"><span><i class="fas fa-check-square"></i>Open</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                           
                         </div>
                     </div>
                 </div>
