@@ -72,11 +72,11 @@
 
 							if(!empty($item_name) && !empty($item_image) && !$item_quality != 'null' && $item_rarity != 'null' && $item_detail1 != 'null' && $item_detail2 != 'null' && $item_detail3 != 'null' && $service_id !='null'){
 								if($res=existing_game_item($item_name,$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3)){
-									add_new_game_item($item_name,$res['goods_id'],$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3,$item_price,$item_image,$user_id,$service_id,$order_id);
+									add_new_game_item($item_name,$res['goods_id'],$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3,$item_price,$item_image,$user_id,$service_id,1,$order_id);
 								echo 'success then copying the same goods id';
 								}
 								else{
-									add_new_game_item($item_name,0,$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3,$item_price,$item_image,$user_id,$service_id,$order_id);
+									add_new_game_item($item_name,0,$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3,$item_price,$item_image,$user_id,$service_id,1,$order_id);
 									$res=existing_game_item($item_name,$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3);
 									add_item_goods_id($res['item_id']);
 									echo 'success with new goods ID kay walay kaparehas';

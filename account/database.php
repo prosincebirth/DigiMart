@@ -32,11 +32,11 @@
 		$exec=$prepare->execute(array(":service_mode"=>$service_mode,":service_desc"=>$service_desc,":game_id"=>$game_id));
 		$conn=null;}	
 
-	function add_new_game_item($item_name,$goods_id,$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3,$item_price,$item_image,$user_id,$service_id,$order_id){
+	function add_new_game_item($item_name,$goods_id,$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3,$item_price,$item_image,$user_id,$service_id,$game_id,$order_id){
 		$conn=connection();
-		$query="INSERT INTO game_items(item_name,goods_id,item_quality,item_rarity,item_detail1,item_detail2,item_detail3,item_price,item_image,user_id,service_id,order_id) values(:item_name,:goods_id,:item_quality,:item_rarity,:item_detail1,:item_detail2,:item_detail3,:item_price,:item_image,:user_id,:service_id,:order_id)"; 
+		$query="INSERT INTO game_items(item_name,goods_id,item_quality,item_rarity,item_detail1,item_detail2,item_detail3,item_price,item_image,user_id,service_id,game_id,order_id) values(:item_name,:goods_id,:item_quality,:item_rarity,:item_detail1,:item_detail2,:item_detail3,:item_price,:item_image,:user_id,:service_id,:game_id,:order_id)"; 
 		$prepare=$conn->prepare($query);
-		$exec=$prepare->execute(array(":item_name"=>$item_name,":goods_id"=>$goods_id,":item_quality"=>$item_quality,":item_rarity"=>$item_rarity,":item_detail1"=>$item_detail1,":item_detail2"=>$item_detail2,":item_detail3"=>$item_detail3,":item_price"=>$item_price,":item_image"=>$item_image,":user_id"=>$user_id,":service_id"=>$service_id,":order_id"=>$order_id));
+		$exec=$prepare->execute(array(":item_name"=>$item_name,":goods_id"=>$goods_id,":item_quality"=>$item_quality,":item_rarity"=>$item_rarity,":item_detail1"=>$item_detail1,":item_detail2"=>$item_detail2,":item_detail3"=>$item_detail3,":item_price"=>$item_price,":item_image"=>$item_image,":user_id"=>$user_id,":service_id"=>$service_id,":game_id"=>$game_id,":order_id"=>$order_id));
 		$conn=null;}
 
 	function add_item_goods_id($item_id){
@@ -192,7 +192,7 @@
 
 	function display_item($limit){//user
 		$conn=connection2();
-		$sql="SELECT * from game_items where goods_id=2 and service_id=2 GROUP BY goods_id LIMIT $limit";
+		$sql="SELECT * from game_items  GROUP BY goods_id LIMIT $limit";
 		$result = $conn->query($sql);
 		return $result;}
 	
