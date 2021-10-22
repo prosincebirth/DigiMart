@@ -57,7 +57,7 @@
                             <i class="fa">&#xf0e0;</i>
                         </span>
                     </a>
-
+      
                     <?php 
                     if(isset($_SESSION['user_session'])){// for login
                         echo "<a class='header_btn' href='user-account.php'>My Account</a>";
@@ -71,17 +71,7 @@
                     ?>
                     
 
-                    <div class="user visually-hidden">
-                        <div class="user_wrapper">
-                            <span class="user_pic">
-                                <i class="fa">&#xf2bd;</i>
-                            </span>
-                            <span class="user_detail">
-                                USERNAME
-                            </span>
-                        </div>
-                    </div>
-                </div>
+                    
             </nav>
         </div>
     </div>

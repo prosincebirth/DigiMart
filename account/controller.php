@@ -22,7 +22,7 @@
 							add_new_user($user_username,$user_password,$user_email);
 							echo 'user added';
 						} //if both are not taken, success
-					break;
+						break;
 					case "login":
 						$user_username=$_POST['user_username'];
 						$user_password=$_POST['user_password'];
@@ -40,7 +40,7 @@
 						}else{
 							echo 'username error';
 						}
-					break;
+						break;
 					case "add_new_game":
 						$game_name=$_POST['game_name'];
 						$game_desc=$_POST['game_desc'];
@@ -53,9 +53,8 @@
 						}else{
 							echo 'field inputs error';
 						}
-					break;
-					case "add_game_item":
-
+						break;
+					case "sell_game_item":
 							$item_name=$_POST['item_name'];
 							$item_quality=$_POST['item_quality'];
 							$item_rarity=$_POST['item_rarity'];
@@ -65,7 +64,6 @@
 							$item_price=$_POST['item_price'];
 							if(isset($_FILES['item_image'])){
 							$item_image=file_get_contents($_FILES['item_image']['tmp_name']);}
-						
 							$user_id=$_POST['user_id'];
 							$service_id=$_POST['service_id'];
 							$order_id=$_POST['order_id'];
@@ -85,6 +83,19 @@
 								echo 'field inputs error';
 							}
 							break;			
+					case "buy_game_item":
+								$item_id=$_POST['item_id'];
+								$buyer_id=$_POST['buyer_id'];
+								$seller_id=$_POST['seller_id'];
+								$service_id=$_POST['service_id'];
+								$item_price=$_POST['item_price'];
+								$game_id=$_POST['game_id'];
+								$order_id=$_POST['order_id'];
+								
+									echo 'success then copying the same goods id';
+									
+
+								break;			
 								
 				}
 			}

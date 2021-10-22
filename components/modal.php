@@ -170,7 +170,7 @@
 
             </div>
 			<div class="modal-footer">
-					<button class="btn btn-success" type="button" value="save_game_item">Save</button>					
+					<button class="btn btn-success" type="button" value="sell_game_item">Save</button>					
                     </form>
 			</div>
 		</div>
@@ -178,7 +178,7 @@
 	</div>
 </div>
 
-<div class="modal fade" id="edit_game_item_modal" role="dialog">
+<div class="modal fade" id="sale_game_item_modal_2" role="dialog">
 	<div class="modal-dialog">
 	
 	<div class="modal-content">
@@ -221,6 +221,31 @@
 			<div class="modal-footer">
 					<button class="btn btn-success" type="button" value="save_game_item">Save</button>
                     </form>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+
+<div class="modal fade" id="buy_game_item_modal" role="dialog">
+	<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title">BUY</h4>
+		</div>
+		<div class="modal-body">
+				<div class="fld_input"><input type="hidden" name="order_id" placeholder="ORDER ID" id="order_id" class="form-control"></div>
+                <div class="fld_input"><input type="hidden" name="item_id" placeholder="ITEM ID" id="item_id" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="buyer_id" placeholder="BUYER ID" id="buyer_id" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="seller_id" placeholder="SELLER ID" id="seller_id" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="service_id" placeholder="SERVICE ID" id="service_id" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="item_price" placeholder="ITEM PRICE" id="item_price" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="game_id" placeholder="GAME ID" id="game_id" class="form-control"></div>
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="buy_game_item">BUY</button>
+               
 			</div>
 		</div>
 	</div>

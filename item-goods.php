@@ -62,7 +62,15 @@
 						
 						</p>
 						<div>
-							<a class="item_sell" data-toggle="modal" data-target="#sale_game_item_modal">Sell</a>
+							<a class="item_sell" data-toggle="modal" data-target="#sale_game_item_modal_2"data-item_id="<?php echo $res['item_id'];?>" 
+											data-item_name="<?php echo $res['item_name'];?>" 
+											data-item_image="<?php echo $res['item_image'];?>" 
+											data-item_quality="<?php echo $res['item_quality'];?>" 
+											data-item_rarity="<?php echo $res['item_rarity'];?>" 
+											data-item_detail1="<?php echo $res['item_detail1'];?>" 
+											data-item_detail2="<?php echo $res['item_detail2'];?>" 
+											data-item_detail3="<?php echo $res['item_detail3'];?>" 
+											data-user_id="<?php echo $_SESSION['user_session'];?>">Sell</a>
 							<button type="button" class="item_place--buy--order" data-toggle="modal" data-target="#edit_game_item_modal">Place buy order</button>
 						</div>
 					</div>
@@ -123,10 +131,19 @@
 									</td>
 									<td>
 										<div class="item__group--cta">
-											<a class="buy_btn"  data-toggle="modal" data-target="#edit_game_modal">Buy</a>
-											<button type="button" class="buy_btn" data-toggle="modal" data-target="#edit_game_modal">Place buy order</button>
-											<a class="wishlist_btn" href="javascript:void(0);">
+											<a class="buy_btn wishlist_btn"  data-toggle="modal" data-target="#buy_game_item_modal" 
+											data-item_id="<?php echo $res['item_id'];?>" 
+											data-seller_id="<?php echo $res['user_id'];?>" 
+											data-service_id="<?php echo $res['service_id'];?>" 
+											data-item_price="<?php echo $res['item_price'];?>" 
+											data-game_id="<?php echo $res['game_id'];?>" 
+											data-order_id="<?php echo $res['order_id'];?>" 
+											data-buyer_id="<?php echo $_SESSION['user_session'];?>"> Buy</a>
+
+											<a href="" data-toggle="modal">Bargain</a>
+											<a>
 											</a>
+
 										</div>
 									</td>
 									<?php } }?>
