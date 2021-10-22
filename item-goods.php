@@ -1,9 +1,9 @@
 <?php include('head.php'); ?>
-<?php if(!isset($_GET['id'])){header("Location: market.php"); exit();} ?>
+<?php if(!isset($_GET['goods_id'])){header("Location: market.php"); exit();} ?>
 <?php include('header.php'); ?>
 <?php require 'account/database.php'; ?>
 
-<?php $res=view_all_items($_GET['id']);?>
+<?php $res=view_all_items($_GET['goods_id']);?>
 
 <link rel="preload stylesheet" href="assets/css/item-card.css" as="style" crossorigin>
 <link rel="preload stylesheet" href="assets/css/item-grid.css" as="style" crossorigin>
@@ -51,10 +51,9 @@
 							<div class="item__ref--price">
 								<span>
 									Reference price | 
-									<span>¥ 196.61</span>
-									<span>($ 30.55)</span>
+									<span>₱  <?php echo $res['item_price'];?></span>
+									<span> </span>
 								</span>
-								
 							</div>
 						</div>
 					</div>
@@ -94,10 +93,10 @@
 									" data-direction="right"></i></td></th>
 								<th>Price</th>
 								<th></th>
-								<th></th>
+								
 							</thead>
 	
-					<?php	$result = display_market_goods($_GET['id']);
+					<?php	$result = display_market_sell_goods	($_GET['goods_id']);
                         	if($result->num_rows > 0){
                         	while ($res = $result->fetch_assoc()){?>      
 							<tbody>
@@ -112,17 +111,15 @@
 										<div class="img_text">
 
 											<?php echo '<img class="item__seller" src="data:image/png;base64,'.base64_encode($res['item_image']).'"height="40" >'; ?>
-											<span><?php echo $res['user_id'];?></span>	
+											<span><?php echo $res['user_username'];?></span>	
 										</div>
 									</td>
 									<td>
 										<span><?php echo $res['service_mode'];?></span>	
-										<td class="t-left">Sale limited buyer to sending offer first 
-											
 
 									</td>
 									<td>
-										<span>¥ 143.3</span>										
+										<span><?php echo $res['item_price'];?></span>										
 									</td>
 									<td>
 										<div class="item__group--cta">

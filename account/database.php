@@ -171,18 +171,19 @@
 		$conn=null;
 		return $res;}
 
-	function view_all_items($item_id){
+	function view_all_items($goods_id){
 		$conn=connection();
-		$query="SELECT * FROM game_items where item_id=:item_id and item_status=1";
+		$query="SELECT * FROM game_items where goods_id=:goods_id and item_status=1 ORDER BY item_price ASC ";
 		$prepare=$conn->prepare($query);
-		$exec=$prepare->execute(array(":item_id"=>$item_id));
+		$exec=$prepare->execute(array(":goods_id"=>$goods_id));
 		$res = $prepare->fetch(PDO::FETCH_ASSOC);
 		$conn=null;
 		return $res;}
 
-	function display_market_goods($id){
+	function display_market_sell_goods($id){
 		$conn=connection2();
-		$query="SELECT * FROM game_items a join game_services b where a.service_id = b.service_id and a.goods_id=$id and item_status=1";
+		$query="SELECT * FROM game_items a join game_services b join users c where a.service_id = b.service_id and a.goods_id=$id 
+		and a.user_id = c.user_id and order_id =1 and item_status=1 ORDER BY a.item_price ASC;";
 		$result = $conn->query($query);
 		return $result;
 
