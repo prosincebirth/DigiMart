@@ -68,21 +68,38 @@
 							$service_id=$_POST['service_id'];
 							$order_id=$_POST['order_id'];
 
-							if(!empty($item_name) && !empty($item_image) && !$item_quality != 'null' && $item_rarity != 'null' && $item_detail1 != 'null' && $item_detail2 != 'null' && $item_detail3 != 'null' && $service_id !='null'){
+							if(!empty($item_name) && !empty($item_image) && $item_quality != 'null' && $item_rarity != 'null' && $item_detail1 != 'null' && $item_detail2 != 'null' && $item_detail3 != 'null' && $service_id !='null'){
 								if($res=existing_game_item($item_name,$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3)){
-									add_new_game_item($item_name,$res['goods_id'],$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3,$item_price,$item_image,$user_id,$service_id,1,$order_id);
-								echo 'success then copying the same goods id';
+									add_new_game_item($item_name,$res['goods_id'],$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3,$item_price,$res['item_image'],$user_id,$service_id,1,$order_id);
+								echo 'success then copying the same goods_id';
 								}
 								else{
 									add_new_game_item($item_name,0,$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3,$item_price,$item_image,$user_id,$service_id,1,$order_id);
 									$res=existing_game_item($item_name,$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3);
 									add_item_goods_id($res['item_id']);
-									echo 'success with new goods ID kay walay kaparehas';
+									echo 'success with new goods_id kay walay kaparehas';
 								}
 							}else{
 								echo 'field inputs error';
 							}
+						
 							break;			
+					case "sell_game_item_2":
+								$goods_id=$_POST['goods_id'];
+								$item_pricex=$_POST['item_pricex']; 
+								$seller_id=$_POST['user_id'];
+								$service_idx=$_POST['service_idx'];
+								//order_id = 1 ;
+									if(!empty($item_pricex) && $service_idx != 'null' && $service_idx != 'NULL'){
+										$res=sale_game_modal_2($goods_id);
+										add_new_game_item($res['item_name'],$goods_id,$res['item_quality'],$res['item_rarity'],$res['item_detail1'],$res['item_detail2'],$res['item_detail3'],$item_pricex,$res['item_image'],$seller_id,$service_idx,1,1);
+										echo 'Selling of item is successful';
+									}else{
+										echo 'failed';
+									}
+
+
+								break;
 					case "buy_game_item":
 								$item_id=$_POST['item_id'];
 								$buyer_id=$_POST['buyer_id'];
@@ -95,7 +112,7 @@
 									echo 'success then copying the same goods id';
 									
 
-								break;			
+								break;											
 								
 				}
 			}

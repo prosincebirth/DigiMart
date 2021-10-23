@@ -92,6 +92,16 @@
 		$conn=null;
 		return $res;}
 
+	function sale_game_modal_2($goods_id){
+		$conn=connection();
+		$query="SELECT * from game_items where goods_id=:goods_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":goods_id"=>$goods_id));
+		$res = $prepare->fetch(PDO::FETCH_ASSOC);
+		$conn=null;
+		return $res;
+	}
+
 	function login($user_username){//user
 		$conn=connection();
 		$query="SELECT * from users where user_username=:user_username";
@@ -171,9 +181,30 @@
 		$conn=null;
 		return $res;}
 
-	function view_all_items($goods_id){
+	function view_all_items($goods_id){//items-goods.php
 		$conn=connection();
-		$query="SELECT * FROM game_items where goods_id=:goods_id and item_status=1 ORDER BY item_price ASC ";
+		$query="SELECT a.item_id,
+		a.goods_id,	
+		a.item_name,	
+		a.item_quality,	
+		a.item_rarity,	
+		a.item_detail1,	
+		a.item_detail2,	
+		a.item_detail3,	
+		a.item_image,	
+		a.item_price,	
+		a.item_status,	
+		a.item_date_added,	
+		a.user_id,
+		a.service_id,	
+		a.game_id,	
+		a.order_id,	
+		b.category_id,	
+		b.item_type,	
+		b.item_category1,	
+		b.item_category2,	
+		b.item_category3,	
+		b.game_id FROM game_items a join item_category b where a.game_id = b.game_id and a.goods_id=:goods_id and a.item_status=1 ORDER BY a.item_price ASC";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":goods_id"=>$goods_id));
 		$res = $prepare->fetch(PDO::FETCH_ASSOC);
@@ -186,9 +217,9 @@
 		and a.user_id = c.user_id and order_id =1 and item_status=1 ORDER BY a.item_price ASC;";
 		$result = $conn->query($query);
 		return $result;
-
 	}
 
+	
 
 	function display_item($limit){//user
 		$conn=connection2();

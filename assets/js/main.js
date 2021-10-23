@@ -90,22 +90,11 @@ $('document').ready(function()
     });
    
     $('#sale_game_item_modal_2').on('show.bs.modal', function(e) {
-        var item_name = $(e.relatedTarget).data('item_name');
-        var item_image = $(e.relatedTarget).data('item_image');
-        var item_quality = $(e.relatedTarget).data('item_quality');
-        var item_rarity = $(e.relatedTarget).data('item_rarity');
-        var item_detail1 = $(e.relatedTarget).data('item_detail1');
-        var item_detail2 = $(e.relatedTarget).data('item_detail2');
-        var item_detail3 = $(e.relatedTarget).data('item_detail3');
+        var goods_id = $(e.relatedTarget).data('goods_id');
         var user_id = $(e.relatedTarget).data('user_id');
 
-        //$(e.currentTarget).find('input[name="game_name"]').val(item_image);
-        $(e.currentTarget).find('input[name="buyer_id"]').val(buyer_id);
-        $(e.currentTarget).find('input[name="seller_id"]').val(seller_id);
-        $(e.currentTarget).find('input[name="service_id"]').val(service_id);
-        $(e.currentTarget).find('input[name="item_price"]').val(item_price);
-        $(e.currentTarget).find('input[name="game_id"]').val(game_id);
-        $(e.currentTarget).find('input[name="order_id"]').val(order_id);
+        $(e.currentTarget).find('input[name="goods_id"]').val(goods_id);
+        $(e.currentTarget).find('input[name="user_id"]').val(user_id);
 
     });
    
@@ -296,6 +285,38 @@ $('document').ready(function()
 				});//END OF AJAX IN ADDING NEW ITEM
             //}				
 			break;//END OF SAVE NEW ITEM
+            case "sell_game_item_2":
+				var goods_id=$("#goods_id").val()
+                var item_pricex=$("#item_pricex").val()
+                var user_id=$("#user_id").val()
+                var service_idx=$("#service_idx").val()
+             
+				var data=new FormData();
+				data.append("action_type","sell_game_item_2");
+				data.append("goods_id",goods_id);
+				data.append("item_pricex",item_pricex);
+                data.append("user_id",user_id);
+				data.append("service_idx",service_idx);
+  
+
+				$.ajax({	
+					url:"account/controller.php",
+					method:"post",
+					data:data,
+					contentType:false,
+					cache:false,
+					processData:false,
+					success:function(res){
+							
+                            if(res=="Selling of item is successful"){
+                            location.reload();
+                            }else{
+                            alert(res)
+                            }
+                            
+					}
+				});//END 
+			break;//END 
             case "buy_game_item":
 				var item_id=$("#item_id").val()
                 var buyer_id=$("#buyer_id").val()

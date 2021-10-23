@@ -10,8 +10,6 @@
 <link rel="preload stylesheet" href="assets/css/item.css" as="style" crossorigin>
 
 
-
-
 <main>
 	<section class="market_section">
 		<div class="container">
@@ -21,7 +19,6 @@
 					<li class="breadcrumb-item active" aria-current="page"><?php echo $res['item_name'];?></li>
 				</ol>
 			</nav>
-
 			<div class="item_detail">
 				<div class="item_detail--wrapper">
 					<div class="item_detail--img--content">
@@ -32,19 +29,19 @@
 						<div class="item_detail--content">
 							<h2>
 								<span><?php echo $res['item_name'];?></span>								
-								<span class="tag tag--immortal">Immortal</span>
+								<span class="tag tag--immortal"><?php echo $res['item_rarity'];?></span>
 							</h2>
 							<p>
 								<span>
-									Hero | 
+								<?php echo $res['item_category1'];?> | 
 									<span><?php echo $res['item_detail1'];?></span>
 								</span>
 								<span>
-									Slot | 
+								<?php echo $res['item_category2'];?> | 
 									<span><?php echo $res['item_detail2'];?></span>
 								</span>
 								<span>
-									Type | 
+								<?php echo $res['item_category3'];?> | 
 									<span><?php echo $res['item_detail3'];?></span>
 								</span>
 							</p>
@@ -62,15 +59,9 @@
 						
 						</p>
 						<div>
-							<a class="item_sell" data-toggle="modal" data-target="#sale_game_item_modal_2"data-item_id="<?php echo $res['item_id'];?>" 
-											data-item_name="<?php echo $res['item_name'];?>" 
-											data-item_image="<?php echo $res['item_image'];?>" 
-											data-item_quality="<?php echo $res['item_quality'];?>" 
-											data-item_rarity="<?php echo $res['item_rarity'];?>" 
-											data-item_detail1="<?php echo $res['item_detail1'];?>" 
-											data-item_detail2="<?php echo $res['item_detail2'];?>" 
-											data-item_detail3="<?php echo $res['item_detail3'];?>" 
-											data-user_id="<?php echo $_SESSION['user_session'];?>">Sell</a>
+							<a class="item_sell" data-toggle="modal" data-target="#sale_game_item_modal_2"
+											data-goods_id="<?php echo $_GET['goods_id'];?>" 
+											data-user_id="<?php echo $_SESSION['user_session'];?>" >Sell</a>
 							<button type="button" class="item_place--buy--order" data-toggle="modal" data-target="#edit_game_item_modal">Place buy order</button>
 						</div>
 					</div>
@@ -167,5 +158,7 @@
 		</div>
 	</section>
 </main>
+
+
 <?php include('components/modal.php')?>
 <?php include('footer.php'); ?>

@@ -170,7 +170,7 @@
 
             </div>
 			<div class="modal-footer">
-					<button class="btn btn-success" type="button" value="sell_game_item">Save</button>					
+					<button class="btn btn-success" type="button" value="sell_game_item">Sell</button>					
                     </form>
 			</div>
 		</div>
@@ -180,22 +180,29 @@
 
 <div class="modal fade" id="sale_game_item_modal_2" role="dialog">
 	<div class="modal-dialog">
-	
 	<div class="modal-content">
 		<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title">Edit Game Item </h4>
+		<h4 class="modal-title"><center>SELL ITEM </h4>
 		</div>
 		<div class="modal-body">
 		<form class="form-signin" method="post" id="add-game-form"><center>
-                <div class="fld_input"><input type="text" name="game_name" placeholder="Game Name" id="game_name" class="form-control"></div>
-				<div class="fld_input"><input type="text" name="game_desc" placeholder="Game Description" id="game_desc" class="form-control"></div>
-				<div class="fld_input"><input type="text" name="game_region" placeholder="Game Region" id="game_region" class="form-control"></div>
-				<div class="fld_input"><input type="text" name="game_server" placeholder="Game Server" id="game_server" class="form-control"></div>
-
+                <div class="fld_input"><input type="hidden" name="goods_id" placeholder="GOODS ID" id="goods_id" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="item_pricex" placeholder="ITEM PRICE" id="item_pricex" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="user_id" placeholder="SELLER ID" id="user_id" class="form-control"></div>
+				<div class="fld_input"><select name="service_idx" id="service_idx" class="form-control">	
+				<option value="" disabled selected>Service Mode</option>
+									<?php
+                                    $result = get_game_service(1);
+                                    if($result->num_rows > 0){
+									while ($res = $result->fetch_assoc()){
+										if($res['service_id']!= NULL){
+										echo '<option value='.$res['service_id'].'>'.$res['service_mode'].'</option>';
+										}}}?>
+										</select></div>
             </div>
 			<div class="modal-footer">
-					<button class="btn btn-success" type="button" value="save_new_game">Save</button>
+					<button class="btn btn-success" type="button" value="sell_game_item_2">Sell</button>
                     </form>
 			</div>
 		</div>
@@ -235,13 +242,13 @@
 		<h4 class="modal-title">BUY</h4>
 		</div>
 		<div class="modal-body">
-				<div class="fld_input"><input type="hidden" name="order_id" placeholder="ORDER ID" id="order_id" class="form-control"></div>
-                <div class="fld_input"><input type="hidden" name="item_id" placeholder="ITEM ID" id="item_id" class="form-control"></div>
-				<div class="fld_input"><input type="hidden" name="buyer_id" placeholder="BUYER ID" id="buyer_id" class="form-control"></div>
-				<div class="fld_input"><input type="hidden" name="seller_id" placeholder="SELLER ID" id="seller_id" class="form-control"></div>
-				<div class="fld_input"><input type="hidden" name="service_id" placeholder="SERVICE ID" id="service_id" class="form-control"></div>
-				<div class="fld_input"><input type="hidden" name="item_price" placeholder="ITEM PRICE" id="item_price" class="form-control"></div>
-				<div class="fld_input"><input type="hidden" name="game_id" placeholder="GAME ID" id="game_id" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="order_id" placeholder="ORDER ID" id="order_id" class="form-control"></div>
+                <div class="fld_input"><input type="text" name="item_id" placeholder="ITEM ID" id="item_id" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="buyer_id" placeholder="BUYER ID" id="buyer_id" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="seller_id" placeholder="SELLER ID" id="seller_id" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="service_id" placeholder="SERVICE ID" id="service_id" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="item_price" placeholder="ITEM PRICE" id="item_price" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="game_id" placeholder="GAME ID" id="game_id" class="form-control"></div>
             </div>
 			<div class="modal-footer">
 					<button class="btn btn-success" type="button" value="buy_game_item">BUY</button>

@@ -15,7 +15,9 @@
 
                         <div class="user-image">
                             <div class="image">
-                                <img src="http://via.placeholder.com/70x70" alt="">
+                                <img src="http://via.placeholder.com/70x70" input type="file" name="item_image"alt="">
+
+                                
                             </div>
                             <div class="name">
                                 <h2><?php echo $_SESSION['user_username']; ?></h2>
