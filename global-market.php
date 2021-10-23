@@ -6,7 +6,7 @@
 
 <main>
     <section class="market_section">
-        <div class="container_full-width">
+        <div class="container">
             <div class="market_wrapper">
                 <div class="mainbar">
                     <div class="market_item--wrapper">

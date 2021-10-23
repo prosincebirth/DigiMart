@@ -3,7 +3,7 @@
 
 <!-- <link rel="preload stylesheet" href="assets/css/item-card.css" as="style" crossorigin>
 <link rel="preload stylesheet" href="assets/css/item-grid.css" as="style" crossorigin> -->
-<link rel="preload stylesheet" href="assets/css/user.css" as="style" crossorigin>
+<link rel="preload stylesheet" href="assets/css/user-account.css" as="style" crossorigin>
 
 <main>
     <section class="market_section">

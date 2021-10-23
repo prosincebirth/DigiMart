@@ -1,6 +1,7 @@
 .item_card {
     background-color: var(--white-color);
     box-shadow: 0 0 0 1px var(--white-color);
+    border-radius: 5px;
 }
 .item_card a {
     text-decoration: none !important;
@@ -11,7 +12,7 @@
     position: relative;
 }
 .item_card .img_wrapper .badge {
-    border-radius: 0 !important;
+    border-radius: 5px !important;
     position: absolute;
     top: 0;
     left: 0;
