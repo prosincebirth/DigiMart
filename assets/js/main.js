@@ -79,14 +79,13 @@ $('document').ready(function()
         var game_id = $(e.relatedTarget).data('game_id');
         var order_id = $(e.relatedTarget).data('order_id');
 
-        $(e.currentTarget).find('input[name="item_id"]').val(item_id);
+        $(e.currentTarget).find('input[name="item_ida"]').val(item_id);
         $(e.currentTarget).find('input[name="buyer_id"]').val(buyer_id);
         $(e.currentTarget).find('input[name="seller_id"]').val(seller_id);
-        $(e.currentTarget).find('input[name="service_id"]').val(service_id);
-        $(e.currentTarget).find('input[name="item_price"]').val(item_price);
+        $(e.currentTarget).find('input[name="service_ida"]').val(service_id);
+        $(e.currentTarget).find('input[name="item_pricea"]').val(item_price);
         $(e.currentTarget).find('input[name="game_id"]').val(game_id);
         $(e.currentTarget).find('input[name="order_id"]').val(order_id);
-
     });
    
     $('#sale_game_item_modal_2').on('show.bs.modal', function(e) {
@@ -318,21 +317,21 @@ $('document').ready(function()
 				});//END 
 			break;//END 
             case "buy_game_item":
-				var item_id=$("#item_id").val()
+				var item_ida=$("#item_ida").val()
                 var buyer_id=$("#buyer_id").val()
                 var seller_id=$("#seller_id").val()
-                var service_id=$("#service_id").val()
-                var item_price=$("#item_price").val()
+                var service_ida=$("#service_ida").val()
+                var item_pricea=$("#item_pricea").val()
                 var game_id=$("#game_id").val()
                 var order_id=$("#order_id").val()  
          
 				var data=new FormData();
 				data.append("action_type","buy_game_item");
-				data.append("item_id",item_id);
+				data.append("item_ida",item_ida);
 				data.append("buyer_id",buyer_id);
                 data.append("seller_id",seller_id);
-				data.append("service_id",service_id);
-				data.append("item_price",item_price);
+				data.append("service_ida",service_ida);
+				data.append("item_pricea",item_pricea);
                 data.append("game_id",game_id);
                 data.append("order_id",order_id);
 

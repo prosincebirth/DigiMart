@@ -11,7 +11,7 @@
 		return $conn;}
 
 		////////////////// ADDD FUNCTIONS /////////////////
-	function add_new_user($user_username,$user_password,$user_email){//USER
+	function add_new_user($user_username,$user_password,$user_email){//register.php
 		$conn=connection();
 		$query="INSERT INTO users(user_username,user_password,user_email) values(:user_username,:user_password,:user_email)"; 
 		$prepare=$conn->prepare($query);
@@ -53,11 +53,11 @@
 		$exec=$prepare->execute(array(":item_id"=>$item_id,":goods_id"=>$goods_id));
 		$conn=null;}	
 
-	function add_transaction($transaction_type,$transaction_desc,$transaction_amount,$game_item_id,$buyer_id){
+	function add_transaction($transaction_type,$transaction_amount,$game_item_id,$buyer_id,$seller_id,$service_id,$game_id){//item-goods.php
 		$conn=connection();
-		$query="INSERT INTO game_items(transaction_type,transaction_desc,transaction_amount,game_item_id,buyer_id) values(:transaction_type,:transaction_desc,:transaction_amount,:game_item_id,:buyer_id)"; 
+		$query="INSERT INTO transactions(transaction_type,transaction_amount,game_item_id,buyer_id,seller_id,service_id,game_id) values(:transaction_type,:transaction_amount,:game_item_id,:buyer_id,:seller_id,:service_id,:game_id)"; 
 		$prepare=$conn->prepare($query);
-		$exec=$prepare->execute(array(":transaction_type"=>$transaction_type,":transaction_desc"=>$transaction_desc,":transaction_amount"=>$transaction_amount,":game_item_id"=>$game_item_id,":buyer_id"=>$buyer_id));
+		$exec=$prepare->execute(array(":transaction_type"=>$transaction_type,":transaction_amount"=>$transaction_amount,":game_item_id"=>$game_item_id,":buyer_id"=>$buyer_id,":seller_id"=>$seller_id,":service_id"=>$service_id,":game_id"=>$game_id));
 		$conn=null;}
 
 
@@ -211,6 +211,7 @@
 		$conn=null;
 		return $res;}
 
+	
 	function display_market_sell_goods($id){
 		$conn=connection2();
 		$query="SELECT * FROM game_items a join game_services b join users c where a.service_id = b.service_id and a.goods_id=$id 
@@ -219,11 +220,10 @@
 		return $result;
 	}
 
-	
 
-	function display_item($limit){//user
+	function display_item($limit){//global-market.php
 		$conn=connection2();
-		$sql="SELECT * from game_items  GROUP BY goods_id LIMIT $limit";
+		$sql="SELECT *,COUNT(*) as mycount from game_items GROUP BY goods_id LIMIT $limit";
 		$result = $conn->query($sql);
 		return $result;}
 	

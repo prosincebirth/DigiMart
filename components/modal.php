@@ -242,17 +242,18 @@
 		<h4 class="modal-title">BUY</h4>
 		</div>
 		<div class="modal-body">
+		<form class="form-signin" method="post" id="service-game-form"><center>
 				<div class="fld_input"><input type="text" name="order_id" placeholder="ORDER ID" id="order_id" class="form-control"></div>
-                <div class="fld_input"><input type="text" name="item_id" placeholder="ITEM ID" id="item_id" class="form-control"></div>
+                <div class="fld_input"><input type="text" name="item_ida" placeholder="ITEM ID" id="item_ida" class="form-control"></div>
 				<div class="fld_input"><input type="text" name="buyer_id" placeholder="BUYER ID" id="buyer_id" class="form-control"></div>
 				<div class="fld_input"><input type="text" name="seller_id" placeholder="SELLER ID" id="seller_id" class="form-control"></div>
-				<div class="fld_input"><input type="text" name="service_id" placeholder="SERVICE ID" id="service_id" class="form-control"></div>
-				<div class="fld_input"><input type="text" name="item_price" placeholder="ITEM PRICE" id="item_price" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="service_ida" placeholder="SERVICE ID" id="service_ida" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="item_pricea" placeholder="ITEM PRICE" id="item_pricea" class="form-control"></div>
 				<div class="fld_input"><input type="text" name="game_id" placeholder="GAME ID" id="game_id" class="form-control"></div>
             </div>
 			<div class="modal-footer">
 					<button class="btn btn-success" type="button" value="buy_game_item">BUY</button>
-               
+					</form>
 			</div>
 		</div>
 	</div>
