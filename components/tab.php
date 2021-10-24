@@ -27,7 +27,9 @@
                         if($result->num_rows > 0){
                         while ($res = $result->fetch_assoc()){?>           
                         <div class="popular_list__items">
+                      
                             <div class="item_wrapper">
+                                
                                 <?php  if($res['item_rarity'] == 'Common'){echo ' <span class="item_tag" style="background-color:#484b5f">'.$res['item_rarity'].'</span>';}
                                         elseif($res['item_rarity'] == 'Uncommon'){echo ' <span class="item_tag" style="background-color:#82BDFF">'.$res['item_rarity'].'</span>';}
                                         elseif($res['item_rarity'] == 'Rare'){echo ' <span class="item_tag" style="background-color:#7C8FF5">'.$res['item_rarity'].'</span>';}
@@ -38,11 +40,14 @@
                                         elseif($res['item_rarity'] == 'Ancient'){echo ' <span class="item_tag" style="background-color:#e06b6a">'.$res['item_rarity'].'</span>';}
                                 ?>
                                 <div class="img_wrapper">
-                               <?php echo '<img src="data:image/png;base64,'.base64_encode($res['item_image']).'"height="210" width="138" style = "display: block; margin-left: auto; margin-right: auto; width: 100%; ">'; ?>
-                                </div>
+                                    
+                                <?php echo '<img src="data:image/png;base64,'.base64_encode($res['item_image']).'"height="240" ">'; ?>
+                                
+                            </div>
                                 <div class="item_info">
                                     
                                     <?php echo '<h3 class="item_title">'.$res['item_name'].'</h3>'; ?>
+                                    
                                     <?php echo '<span class="item_price">'.$res['item_price'].'</span>'; ?>
                                 </div>
                             </div>

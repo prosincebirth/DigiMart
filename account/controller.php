@@ -71,16 +71,16 @@
 							if(!empty($item_name) && !empty($item_image) && $item_quality != 'null' && $item_rarity != 'null' && $item_detail1 != 'null' && $item_detail2 != 'null' && $item_detail3 != 'null' && $service_id !='null'){
 								if($res=existing_game_item($item_name,$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3)){
 									add_new_game_item($item_name,$res['goods_id'],$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3,$item_price,$res['item_image'],$user_id,$service_id,1,$order_id);
-								echo 'Success'; //success copying the same goods_id since same sila og item
+								echo 'Success'; //success ,copying the same goods_id since same sila og item
 								}
 								else{
 									add_new_game_item($item_name,0,$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3,$item_price,$item_image,$user_id,$service_id,1,$order_id);
 									$res=existing_game_item($item_name,$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3);
 									add_item_goods_id($res['item_id']);
-									echo 'Success';  //success creating new goods_id since solo item
+									echo 'Success';  //success, creating new goods_id since solo item
 								}
 							}else{
-								echo 'Empty fields';
+								echo 'Empty fields'; // input is lacking , wrong inputs
 							}
 						
 							break;			
@@ -114,7 +114,8 @@
 								if($buyer_id != $seller_id){
 								add_transaction("SALE ORDER",$item_pricea,$item_ida,$buyer_id,$seller_id,$service_ida,$order_id);
 								echo 'success '; // success not buying his own posting
-								}
+								}else{echo 'You cannot buy your game ';} // cannot buy your own game 
+								//}else{echo 'You cannot buy your game ';} // cannot buy because the balance is insufficient
 
 								break;											
 								

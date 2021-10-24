@@ -62,7 +62,7 @@
 							<a class="item_sell" data-toggle="modal" data-target="#sale_game_item_modal_2"
 											data-goods_id="<?php echo $_GET['goods_id'];?>" 
 											data-user_id="<?php echo $_SESSION['user_session'];?>" >Sell</a>
-							<button type="button" class="item_place--buy--order" data-toggle="modal" data-target="#edit_game_item_modal">Place buy order</button>
+							<button type="button" class="item_place--buy--order" data-toggle="modal" data-target="#buyorder_game_item_modal_2">Place buy order</button>
 						</div>
 					</div>
 				</div>
@@ -103,7 +103,7 @@
 									<td>
 										<div class="img_text">
 											<?php echo '<img class="item__img" src="data:image/png;base64,'.base64_encode($res['item_image']).'"height="72" >'; ?>
-											<span><?php echo $res['item_name'];?></span>	
+											<span><?php echo $res['item_quality']," ",$res['item_name'];?></span>	
 										</div>
 									</td>
 									<td>
@@ -128,10 +128,10 @@
 											data-service_id="<?php echo $res['service_id'];?>" 
 											data-item_price="<?php echo $res['item_price'];?>" 
 											data-game_id="<?php echo $res['game_id'];?>" 
-											data-order_id="<?php echo $res['order_id'];?>" 
+											data-order_id="<?php echo $res['order_id'];?>"
 											data-buyer_id="<?php echo $_SESSION['user_session'];?>"> Buy</a>
-
-											<a href="" data-toggle="modal">Bargain</a>
+											
+											<a  data-toggle="modal" data-target="#bargain_game_item_modal">Bargain</a>
 											<a>
 											</a>
 
