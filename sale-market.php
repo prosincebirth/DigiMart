@@ -12,8 +12,8 @@
                     <div class="market_item--wrapper">
                         <div class="market_tabs">
                             <ul class="market_tab--list">
-                                <li class='active'><span>Sale</span></li>
-                                <li><span>Purchase</span></li>
+                                <li class='active'><span onclick="window.location.href='sale-market.php';">Sale</span></li>
+                                <li><span onclick="window.location.href='buy-market.php';">Purchase</span></li>
                             </ul>
                         </div>
                         <div class="market_item--container global-market">
