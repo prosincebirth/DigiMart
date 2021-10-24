@@ -13,45 +13,10 @@
                             <li><span>Buy Order Records</span></li>
                             <li><span>Place Buy Order</span></li>
                         </ul>
-                        <div class="market_tabs--labels">
-                            <div class="labels">
-                                <span>Buy order: </span>
-                                <span>0</span>
-                            </div>
-                            <div class="labels">
-                                <span>Expenditure estimates: </span>
-                                <span>$ 0</span>
-                            </div>
-                        </div>
+                        
                     </div>
                     <div class="market_tabs">
-                        <div class="dropdown__wrapper">
-                            <div class="field">
-                                <select class="form-control">
-                                    <option selected>Hero</option>
-                                </select>
-                            </div>
-                            <div class="field">
-                                <select class="form-control">
-                                    <option value="">Quality</option>
-                                </select>
-                            </div>
-                            <div class="field">
-                                <select class="form-control">
-                                    <option value="">Rarity</option>
-                                </select>
-                            </div>
-                            <div class="field">
-                                <select class="form-control">
-                                    <option value="">Type</option>
-                                </select>
-                            </div>
-                            <div class="field">
-                                <select class="form-control">
-                                    <option value="">Slot</option>
-                                </select>
-                            </div>
-                        </div>
+                        
                         <div class="search__bar">
                             <input type="search" name="" id="" class="form-control">
                             <button type="submit">
