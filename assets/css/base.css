@@ -51,3 +51,77 @@ body {
 .font-18 { font-size: 18px; }
 
 .font-20 { font-size: 20px; }
+
+
+
+
+/* MARKET TABLE */
+.table_list--items {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--tertiary-color);
+}
+
+.table_list--items thead tr,
+.table_list--items tbody tr {
+    border-bottom: 1px solid var(--tertiary-color);
+}
+
+.table_list--items tbody {
+    background-color: var(--white-color);
+    color: var(--secondary-color);
+    font-size: 12px;
+}
+
+.table_list--items tbody a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.table_list--items tbody tr:last-of-type {
+    border-bottom-width: 0;
+}
+
+.table_list--items th span {
+    font-size: 14px;
+    color: var(--white-color);
+}
+
+.table_list--items th,
+.table_list--items td {
+    text-align: left;
+    padding: 15px;
+}
+
+.table_list--items .item_info {
+    display: flex;
+    align-items: center;
+}
+
+.table_list--items .item_info .image_wrapper {
+    margin-right: 10px;
+}
+
+.table_list--items .item_info .item_description .item_title {
+    display: block;
+    font-weight: bold;
+}
+
+.table_list--items .item_price span {
+    display: inline-block;
+    color: var(--facebook-color);
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.table_list--items .item_seller .item_seller--info {
+    display: flex;
+    align-items: center;
+}
+
+.table_list--items .item_seller .item_seller--info .image_wrapper {
+    margin-right: 10px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid var(--black-color);
+}
