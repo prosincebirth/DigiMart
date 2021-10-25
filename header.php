@@ -1,3 +1,6 @@
+<?php require 'account/database.php'; ?>
+<?php include 'components/modal.php'; ?>
+
 <header class="main_header">
     <div class="container">
         <div class="nav_wrapper">        
@@ -15,13 +18,16 @@
                     <li class="left_nav__list___item"><a href="sale-market.php">News</a></li>
                 </ul>
             </nav>
+            <?php if(isset($_SESSION['user_session'])){?>
             <nav class="right_nav">
                 <ul class="right_nav__list">
                     <li class="right_nav__list___item"><a href="">Inventory</a></li>
-                    <li class="right_nav__list___item"><a href="">Sales</a></li>
-                    <li class="right_nav__list___item"><a href="">Buy Order</a></li>
+                    <li class="right_nav__list___item"><a href="sale-order.php">Sales</a></li>
+                    <li class="right_nav__list___item"><a href="buy-order.php">Buy Order</a></li>
                 </ul>
-
+            <?php }else{?>
+            <nav class="right_nav">
+                <?php }?> 
                 <div class="other_nav">
                     <div class="game_wrapper js-drop">
                         <div class="selected_game">
@@ -60,14 +66,11 @@
       
                     <?php 
                     if(isset($_SESSION['user_session'])){// for login
-                        echo "<a class='header_btn' href='user-account.php'>My Account</a>";
+                        echo "<a class='header_btn' href='#'>My Account</a>";
                         echo "<a class='header_btn' href='logout.php'>Logout</a>";
+                      }else{
+                        echo "<a class='header_btn' data-toggle='modal' href='#login_modal'>Login</a>";
                       }
-                      else{
-                        echo "<a class='header_btn' href='login.php'>Login</a>";
-                        echo "<a class='header_btn' href='register.php'>Register</a>";
-                      }
-
                     ?>
                     
 

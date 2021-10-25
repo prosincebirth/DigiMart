@@ -1,7 +1,6 @@
 <?php include('head.php'); ?>
 <?php if(!isset($_GET['goods_id'])){header("Location: market.php"); exit();} ?>
 <?php include('header.php'); ?>
-<?php require 'account/database.php'; ?>
 
 <?php $res=view_all_items($_GET['goods_id']);?>
 
@@ -15,7 +14,7 @@
 		<div class="container">
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="global-market.php">Market</a></li>
+					<li class="breadcrumb-item"><a href="buy-market.php">Market</a></li>
 					<li class="breadcrumb-item active" aria-current="page"><?php echo $res['item_name'];?></li>
 				</ol>
 			</nav>
@@ -61,7 +60,7 @@
 						<div>
 							<a class="item_sell" data-toggle="modal" data-target="#sale_game_item_modal_2"
 											data-goods_id="<?php echo $_GET['goods_id'];?>" 
-											data-user_id="<?php echo $_SESSION['user_session'];?>" >Sell</a>
+											data-user_id="<?php if(!isset($_GET['goods_id'])){echo $_SESSION['user_session']; }?>" >Sell</a>
 							<button type="button" class="item_place--buy--order" data-toggle="modal" data-target="#buyorder_game_item_modal_2">Place buy order</button>
 						</div>
 					</div>
@@ -129,9 +128,10 @@
 											data-item_price="<?php echo $res['item_price'];?>" 
 											data-game_id="<?php echo $res['game_id'];?>" 
 											data-order_id="<?php echo $res['order_id'];?>"
-											data-buyer_id="<?php echo $_SESSION['user_session'];?>"> Buy</a>
+										
+											data-buyer_id="<?php if(!isset($_GET['goods_id'])){echo $_SESSION['user_session']; }?>"> Buy</a>
 											
-											<a  data-toggle="modal" data-target="#bargain_game_item_modal">Bargain</a>
+											<a data-dismiss="modal" data-toggle="modal" data-target="#login_modal">Bargain</a>
 											<a>
 											</a>
 

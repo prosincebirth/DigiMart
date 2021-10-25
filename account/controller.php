@@ -30,10 +30,12 @@
 						if(existing_user($user_username)){
 							$res = login($user_username);
 							if(password_verify($user_password, $res['user_password'])){	
+
 								$_SESSION['user_session'] = $res['user_id'];
 								$_SESSION['user_username'] = $res['user_username'];
 								update_login($res['user_id']);
-								echo 'success';
+								echo 'success1';
+
 							}else{
 								echo 'wrong password';
 							}
@@ -110,12 +112,20 @@
 								$game_id=$_POST['game_id'];
 								$order_id=$_POST['order_id'];
 								
+
+								if(empty($buyer_id)){ // trappings for not logged in
+									echo 'Please Login';
+								}
+								else if($buyer_id == $seller_id){ // cannot buy your own game 
+									echo 'You cannot buy your game ';
+								}
+								//else if{ for balance trappings , // cannot buy because the balance is insufficient
+								//}
+								else{
+									add_transaction("SALE ORDER",$item_pricea,$item_ida,$buyer_id,$seller_id,$service_ida,$order_id);
+									echo 'success '; // success not buying his own posting
+								} 
 							
-								if($buyer_id != $seller_id){
-								add_transaction("SALE ORDER",$item_pricea,$item_ida,$buyer_id,$seller_id,$service_ida,$order_id);
-								echo 'success '; // success not buying his own posting
-								}else{echo 'You cannot buy your game ';} // cannot buy your own game 
-								//}else{echo 'You cannot buy your game ';} // cannot buy because the balance is insufficient
 
 								break;											
 								

@@ -175,7 +175,7 @@
 
 	function display_all_games(){
 		$conn=connection();
-		$query="SELECT * FROM games where stats=1";
+		$query="SELECT * FROM games where game_status=1";
 		$prepare=$conn->query($query);
 		$res=$prepare->fetchall();
 		$conn=null;

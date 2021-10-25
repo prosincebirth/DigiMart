@@ -1,6 +1,6 @@
 <?php include('head.php'); ?>
 <?php include('header.php'); ?>
-<?php require 'account/database.php'; ?>
+
 <main>    
 <section class="market_section">
     <div class="container">
@@ -38,8 +38,8 @@
                                     </tr>
                                 </thead>
                                 <?php	$result = display_market_sell_goods	($_GET['goods_id']);
-                        	if($result->num_rows > 0){
-                        	while ($res = $result->fetch_assoc()){?>      
+										if($result->num_rows > 0){
+										while ($res = $result->fetch_assoc()){?>      
 							<tbody>
 								<tr>
 									<td>
@@ -76,10 +76,11 @@
 											<a  data-toggle="modal" data-target="#bargain_game_item_modal">Bargain</a>
 											<a>
 											</a>
-
+											<?php } }?>
 										</div>
+										
 									</td>
-									<?php } }?>
+									
 								</tr>
 
 							</tbody>

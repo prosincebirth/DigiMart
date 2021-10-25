@@ -20,7 +20,7 @@
                             <div class="items_wrapper">
                                 <ul class="item_grid item_grid--6 item_grid--2-mobile">
                                     <?php
-                                    require_once 'account/database.php';
+                                    //require_once 'account/database.php';
                                     $result = display_item(20);
                                     if($result->num_rows > 0){
                                     while ($res = $result->fetch_assoc()){?> 

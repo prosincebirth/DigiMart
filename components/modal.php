@@ -242,7 +242,7 @@
 	<div class="modal-content">
 		<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title"><center>POST ITEM FOR SALE</center</h4>
+		<h4 class="modal-title"><center>PLACE BUY ORDER</center</h4>
 		</div>
 		<div class="modal-body">
 		<form class="form-signin" method="post" id="add-game-form" ><center>
@@ -328,7 +328,7 @@
 	<div class="modal-content">
 		<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title"><center>SELL ITEM </h4>
+		<h4 class="modal-title"><center>PLACE BUY ORDER</h4>
 		</div>
 		<div class="modal-body">
 		<form class="form-signin" method="post" id="add-game-form"><center>
@@ -404,6 +404,89 @@
 </div>
 
 
+
+<div class="modal fade" id="login_modal" role="dialog">
+	<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title">Login</h4>
+		</div>
+		<div class="modal-body">
+		<form class="form-signin" method="post" id="login-form"><center>
+            <div class="fld_input">
+                <label for="email">
+                    <input type="text" name="user_username" id="user_username" placeholder="Username" autocomplete="off">
+                    <label for="error_username" id="error_username"></label>
+                </label>
+            </div>
+            <div class="fld_input">
+                <label for="password">
+                    <input type="password" name="user_password" id="user_password" placeholder="Password" autocomplete="off">
+                    <label for="error_password" id="error_password"></label>
+                </label>
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-secondary btn-login" type="button" value="login">Login</button>
+               	 	<label for="for_login" id="for_login"></label>
+                    </form>
+					<div class="align-center font-14">
+            <span>Not a member yet?</span>
+            <a data-dismiss="modal" data-toggle='modal' href='#register_modal' class="link font-14">Sign-up</a>
+        </div>
+			</div>   
+		</div>
+	</div>
+	</div>
+</div>
+
+
+<div class="modal fade" id="register_modal" role="dialog">
+	<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title">Registration</h4>
+		</div>
+		<div class="modal-body">
+		<form class="form-signin" method="post" id="login-form"><center>
+			<div class="fld_input">
+                <label for="username">
+                    <input type="text" name="user_username" id="user_username" placeholder="Username">
+                    <label for="user_username" id="error_username"></label>
+                </label>
+            </div>
+            <div class="fld_input">
+                <label for="email">
+                    <input type="text" name="user_email" id="user_email" placeholder="Email Address" >
+                    <label for="user_email" id="error_email"></label>
+                </label>
+            </div>
+            <div class="fld_input">
+                <label for="password1">
+                    <input type="password" name="user_password" id="user_password" placeholder="Password" >
+                </label>
+            </div>
+            <div class="fld_input">
+                <label for="password1">
+                    <input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password" >
+                </label>
+            </div>
+			<div class="modal-footer">
+				<div class="fld_btn">
+					<button class="btn btn-secondary btn-login" type="button" value="register">Create account</button>
+					<label for="for_register" id="for_register"></label>
+				</div>
+                    </form>
+					<div class="align-center font-14">
+            <span>Already have an account ?</span>
+            <a data-dismiss="modal" data-toggle='modal' href='#login_modal' class="link font-14">Login</a>
+        </div>
+			</div>   
+		</div>
+	</div>
+	</div>
+</div>
 
 
 

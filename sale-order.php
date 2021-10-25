@@ -1,6 +1,6 @@
 <?php include('head.php'); ?>
 <?php include('header.php'); ?>
-<?php require 'account/database.php'; ?>
+
 <main>    
 <section class="market_section">
     <div class="container">
