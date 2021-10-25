@@ -11,20 +11,20 @@ $('document').ready(function()
     $("#register-form").validate({
         rules:
         {
-            user_username: {
+            user_username_b: {
                 required: true,
                 minlength: 5
             },
-            user_password: {
+            user_password_b: {
                 required: true,
                 minlength: 8,
                 maxlength: 15
             },
-            cpassword: {
+            cpassword_b: {
                 required: true,
-                equalTo: '#user_password'
+                equalTo: '#user_password_b'
             },
-            user_email: {
+            user_email_b: {
                 required: true,
 				email: true,
                
@@ -32,18 +32,18 @@ $('document').ready(function()
         },
         messages:
         {
-            user_username:{
+            user_username_b:{
                 required: "Provide a Username",
                 minlength: "Username Needs To Be Minimum of 5 Characters"
             },
-            user_password:{
+            user_password_b:{
                 required: "Provide a Password",
                 minlength: "Password Needs To Be Minimum of 8 Characters"
             },
-            user_email:{
+            user_email_b:{
                 required: "Provide a Valid Email",
             },
-            cpassword:{
+            cpassword_b:{
                 required: "Retype Your Password",
                 equalTo: "Password Mismatch! Retype"
             }
@@ -102,15 +102,15 @@ $('document').ready(function()
             switch(btn_val){
             case "register":
                 if($("#register-form").valid()){
-                    var username=$("#user_username").val().trim();
-                    var email=$("#user_email").val().trim();
-                    var password=$("#user_password").val().trim();
+                    var username_b=$("#user_username_b").val().trim();
+                    var email_b=$("#user_email_b").val().trim();
+                    var password_b=$("#user_password_b").val().trim();
 
                     var data=new FormData();
                     data.append("action_type","register");
-                    data.append("user_username",username);
-                    data.append("user_email",email);
-                    data.append("user_password",password);
+                    data.append("user_username_b",username_b);
+                    data.append("user_email_b",email_b);
+                    data.append("user_password_b",password_b);
                     
                     $.ajax({
                         url:'account/controller.php',
@@ -153,7 +153,6 @@ $('document').ready(function()
                             else if(res=="user added"){//success
                                 $('#for_register').fadeIn(400, function() {
                                     $('#for_register').html('<div class="alert alert-success">&nbsp; Success</div>').fadeIn(3000, function() {
-                                   
                                     })
                                   }); 
                                   setTimeout(function() {
@@ -185,13 +184,8 @@ $('document').ready(function()
                             processData:false,
                             success:function(res){
                                 if(res=="success"){
-                                    $('#for_login').fadeIn(400, function() {
-                                        $('#for_login').html('<div class="alert alert-success">&nbsp; Success</div>').fadeIn(3000, function() {
-                                        })
-                                      }); 
-                                      setTimeout(function() {
-                                        window.location.href = "index.php";
-                                      }, 1000);                                
+                                    alert(res)
+                                    location.reload();                           
                                 }else if(res=="wrong password"){
                                     $('#error_password').fadeIn(400, function() {
                                         $('#error_password').html('<div class="alert alert-success">&nbsp; Incorrect Password </div>').fadeIn(3000, function() {
@@ -199,7 +193,6 @@ $('document').ready(function()
                                           })
                                         })
                                       });
-
                                 }else if(res=="username error"){
                                     $('#error_username').fadeIn(400, function() {
                                         $('#error_username').html('<div class="alert alert-success">&nbsp; Username is not recognized</div>').fadeIn(3000, function() {
@@ -212,18 +205,16 @@ $('document').ready(function()
                         });	
                     }
             break;
-            case "save_new_game":
-				var game_name1=$("#game_name").val().trim();
-                var game_desc1=$("#game_desc").val().trim();
-                var game_region1=$("#game_region").val().trim();
-                var game_server1=$("#game_server").val().trim();
-
+            case "add_new_game": //TESTED 11:56 pm , 25/10/2021
+				var game_name_a=$("#game_name_a").val().trim();
+                var game_desc_a=$("#game_desc_a").val().trim();
+                var steam_game_id_a=$("#steam_game_id_a").val().trim();
+      
 				var data=new FormData();
 				data.append("action_type","add_new_game");
-				data.append("game_name",game_name1);
-				data.append("game_desc",game_desc1);
-				data.append("game_region",game_region1);
-                data.append("game_server",game_server1);
+				data.append("game_name_a",game_name_a);
+				data.append("game_desc_a",game_desc_a);
+				data.append("steam_game_id_a",steam_game_id_a);
 
 				$.ajax({	
 					url:"account/controller.php",
@@ -234,11 +225,6 @@ $('document').ready(function()
 					processData:false,
 					success:function(res){
 							alert(res)
-                            console.log(res)
-                            $('#for_login').fadeIn(400, function() {
-                                $('#for_login').html('<div class="alert alert-success">&nbsp; Success</div>').fadeIn(3000, function() {
-                                })
-                              }); 
 					}
 				});//END OF AJAX IN ADDING NEW ITEM
             //}				

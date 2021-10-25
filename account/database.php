@@ -1,6 +1,8 @@
 <?php 
-	if(!isset($_SESSION)){session_start();}
-	
+	 if(!isset($_SESSION)){
+		session_start();
+	 }
+
 //////////////// DB /////////////////
     function connection(){// DB CONNECTION PDO
 		$conn=new PDO("mysql:host=localhost;dbname=digimart","root","");
@@ -18,11 +20,11 @@
 		$exec=$prepare->execute(array(":user_username"=>$user_username,":user_password"=>$user_password,":user_email"=>$user_email));
 		$conn=null;}
 
-	function add_new_game($game_name,$game_desc,$game_region,$game_server){
+	function add_new_game($game_name,$game_desc,$steam_game_id_a){// ADD GAME // ADD_GAME_GAME_MODAL // TESTED 11:56 pm , 25/10/2021
 		$conn=connection();
-		$query="INSERT INTO games(game_name,game_desc,game_region,game_server) values(:game_name,:game_desc,:game_region,:game_server)"; 
+		$query="INSERT INTO games(game_name,game_desc,steam_game_id) values(:game_name,:game_desc,:steam_game_id_a)"; 
 		$prepare=$conn->prepare($query);
-		$exec=$prepare->execute(array(":game_name"=>$game_name,":game_desc"=>$game_desc,":game_region"=>$game_region,":game_server"=>$game_server));
+		$exec=$prepare->execute(array(":game_name"=>$game_name,":game_desc"=>$game_desc,":steam_game_id_a"=>$steam_game_id_a));
 		$conn=null;}	
 	
 	function add_game_service($service_mode,$service_desc,$game_id){

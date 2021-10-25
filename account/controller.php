@@ -4,22 +4,22 @@
 			$action_type=$_POST['action_type'];
 				switch($action_type){
 					case "register":
-						$user_username=$_POST['user_username'];
-						$user_email=$_POST['user_email'];
-						$user_password=$_POST['user_password'];
-						$user_password=password_hash($user_password, PASSWORD_DEFAULT); 
+						$user_username_b=$_POST['user_username_b'];
+						$user_email_b=$_POST['user_email_b'];
+						$user_password_b=$_POST['user_password_b'];
+						$user_password_b=password_hash($user_password_b, PASSWORD_DEFAULT); 
 
-						if(existing_user($user_username) && existing_email($user_email)){
+						if(existing_user($user_username_b) && existing_email($user_email_b)){
 							echo 'both taken';
 						} // if both are taken
-						else if(existing_user($user_username)){
+						else if(existing_user($user_username_b)){
 							echo 'user taken';
 						} // if user is taken
-						else if(existing_email($user_email)){
+						else if(existing_email($user_email_b)){
 							echo 'email taken';
 						} // if email is taken
 						else{
-							add_new_user($user_username,$user_password,$user_email);
+							add_new_user($user_username_b,$user_password_b,$user_email_b);
 							echo 'user added';
 						} //if both are not taken, success
 						break;
@@ -30,12 +30,11 @@
 						if(existing_user($user_username)){
 							$res = login($user_username);
 							if(password_verify($user_password, $res['user_password'])){	
-
 								$_SESSION['user_session'] = $res['user_id'];
 								$_SESSION['user_username'] = $res['user_username'];
-								update_login($res['user_id']);
-								echo 'success1';
-
+								session_write_close();
+								echo 'success';
+				
 							}else{
 								echo 'wrong password';
 							}
@@ -43,17 +42,16 @@
 							echo 'username error';
 						}
 						break;
-					case "add_new_game":
-						$game_name=$_POST['game_name'];
-						$game_desc=$_POST['game_desc'];
-						$game_region=$_POST['game_region'];
-						$game_server=$_POST['game_server'];
+					case "add_new_game"://TESTED 11:56 pm , 25/10/2021
+						$game_name_a=$_POST['game_name_a'];
+						$game_desc_a=$_POST['game_desc_a'];
+						$steam_game_id_a=$_POST['steam_game_id_a'];
 
-						if(!empty($game_name) && !empty($game_desc) && !empty($game_region) && !empty($game_server)){
-						add_new_game($game_name,$game_desc,$game_region,$game_server);
-							echo 'success';
+						if(!empty($game_name_a) && !empty($game_desc_a) && !empty($steam_game_id_a)){
+						add_new_game($game_name_a,$game_desc_a,$steam_game_id_a);
+							echo 'Success';
 						}else{
-							echo 'field inputs error';
+							echo 'Field inputs error';
 						}
 						break;
 					case "sell_game_item":
