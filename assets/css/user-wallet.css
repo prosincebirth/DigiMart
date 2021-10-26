@@ -23,13 +23,12 @@
 
 .col1 .panel{
     background-color: var(--secondary-color);
+    color: var(--white-color);
     border-radius: 5px;
 }
 
-.col2 .main{
-    padding: 10px;
-    padding: 0 25px 50px 25px;
-    border: 1px solid var(--light-gray-color);
+.col2 .header{
+    background-color: var(--secondary-color);
     border-radius: 5px;
 }
 
@@ -79,7 +78,97 @@
     align-content: left;
 }
 
-.col2 .main .user-setting {
-    color: var(--primary-color);
+.col2 .header .col {
+    float: left;
+    width: 33.33%;
+    padding: 10px 20px 10px 20px;
+    color: var(--white-color);
 }
+
+.col2 .header .row:after {
+    float: left;
+    width: 33.33%;
+}
+
+.col2 .grid-container { 
+    display: grid;
+    grid-row-gap: 20px;
+    background-color: var(--white-color);
+    border-radius: 5px;
+}
+
+.col2 .grid-item-header{
+    background-color: var(--secondary-color);
+    border: 1px solid var(--light-gray-color);
+    border-radius: 5px
+}
+
+.col2 .grid-item {
+    background-color: var(--white-color);
+    border: 1px solid var(--light-gray-color);
+    border-radius: 5px
+}
+
+.col2 .grid-container .grid-item-header .header .row .col .info .icon{
+    float: left;
+    padding: 0 10px 0 10px;
+}
+
+.col2 .grid-container .grid-item .body .tab {
+    background-color: var(--steam-color);
+    padding: 10px;
+    width: 100%;
+    padding-bottom: 30px;
+    border-radius: 5px;
+} 
+
+.col2 .grid-container .grid-item .body .tab .tab-list li{
+    float: left;
+    width: 33.33%;
+    text-align: center;
+    
+}
+
+.col2 .grid-container .grid-item .body .tab .tab-list li button{
+    font-size: 20px;
+    color: var(--white-color);
+    background-color: var(--steam-color);
+    width: 100%;
+    border: none;
+}
+
+.col2 .grid-container .grid-item .body .user-wallet .table {
+    width: 100%;
+}
+
+.col2 .grid-container .grid-item .body .user-wallet .table tbody {
+    background-color: var(--white-color);
+}
+
+.col2 .grid-container .grid-item .body .user-wallet table tbody tr .t-left{
+    padding: 10px 20px 10px 10px;
+}
+
+.col2 .grid-container .grid-item .body .user-wallet table tbody tr .t-right{
+    padding: 10px 20px 10px 10px;
+    width: 80%;
+}
+
+.col2 .grid-container .grid-item .body .user-wallet table tbody tr .t-right span input[type="number"]{
+    font-size: 15px;
+    border-width: 0;
+    padding-left: 5px;
+    
+}
+
+.col2 .grid-container .grid-item .body .user-wallet table tbody tr .t-right span button{
+    width: 15%;
+    height: 40%;
+    border: none;
+    background-color: var(--facebook-color);
+    color: var(--white-color);
+}
+
+
+
 
