@@ -228,9 +228,9 @@
 		return $result;
 	}	
 
-	function display_item($limit){//global-market.php
+	function display_item(){//global-market.php
 		$conn=connection2();
-		$sql="SELECT *,COUNT(*) as mycount from game_items a join goods b where a.goods_id=b.goods_id LIMIT $limit";
+		$sql="SELECT * from goods a join game_items b where a.goods_id=b.goods_id";
 		$result = $conn->query($sql);
 		return $result;}
 	
