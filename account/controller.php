@@ -67,34 +67,37 @@
 						}
 						break;	
 					case "sell_game_item":
-							$item_name=$_POST['item_name'];
-							$item_quality=$_POST['item_quality'];
-							$item_rarity=$_POST['item_rarity'];
-							$item_detail1=$_POST['item_detail1'];
-							$item_detail2=$_POST['item_detail2'];
-							$item_detail3=$_POST['item_detail3'];
-							$item_price=$_POST['item_price'];
-							if(isset($_FILES['item_image'])){
-							$item_image=file_get_contents($_FILES['item_image']['tmp_name']);}
-							$user_id=$_POST['user_id'];
-							$service_id=$_POST['service_id'];
-							$order_id=$_POST['order_id'];
+							$goods_name_a=$_POST['goods_name_a'];
+							$goods_quality_a=$_POST['goods_quality_a'];
+							$goods_rarity_a=$_POST['goods_rarity_a'];
+							$goods_detail1_a=$_POST['goods_detail1_a'];
+							$goods_detail2_a=$_POST['goods_detail2_a'];
+							$goods_detail3_a=$_POST['goods_detail3_a'];
+							$goods_price_a=$_POST['goods_price_a'];
+							$goods_quantity_a=$_POST['goods_quantity_a'];
+							$goods_image_a ="";
+							if(isset($_FILES['goods_image_a'])){
+							$goods_image_a=file_get_contents($_FILES['goods_image_a']['tmp_name']);}
+							$order_id_a=$_POST['order_id_a'];
+							$service_id_a=$_POST['service_id_a'];
+							//add_new_game_item($item_price,$item_quantity,$goods_id,$user_id,$service_id,$game_id,$order_id)
+							//add_new_goods($goods_name,$goods_quality,$goods_rarity,$goods_detail1,$goods_detail2,$goods_detail3,$goods_image,$game_id)
+							
+							if(!empty($goods_name_a) && !empty($_SESSION['user_session']) && !empty($order_id_a)  && !empty($goods_image_a) && $goods_quality_a != 'null' && $goods_rarity_a != 'null' && $goods_detail1_a != 'null' && $goods_detail2_a != 'null' && $goods_detail3_a != 'null' && $goods_price_a != 'null' && $goods_quantity_a !='null' && $order_id_a !='null' && $service_id_a !='null'){
+								if($result=existing_goods($goods_name_a,$goods_quality_a,$goods_rarity_a,$goods_detail1_a,$goods_detail2_a,$goods_detail3_a,$goods_image_a,'1')){
+									add_new_game_item($goods_price_a,$goods_quantity_a,$result['goods_id'],$_SESSION['user_session'],$service_id_a,'1','1');
+									echo 'Success';
+								}else{
+									add_new_goods($goods_name_a,$goods_quality_a,$goods_rarity_a,$goods_detail1_a,$goods_detail2_a,$goods_detail3_a,$goods_image_a,'1');
+									echo 'Succe123ss'; 
+								}
+								
 
-							if(!empty($item_name) && !empty($item_image) && $item_quality != 'null' && $item_rarity != 'null' && $item_detail1 != 'null' && $item_detail2 != 'null' && $item_detail3 != 'null' && $service_id !='null'){
-								if($res=existing_game_item($item_name,$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3)){
-									add_new_game_item($item_name,$res['goods_id'],$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3,$item_price,$res['item_image'],$user_id,$service_id,1,$order_id);
-								echo 'Success'; //success ,copying the same goods_id since same sila og item
-								}
-								else{
-									add_new_game_item($item_name,0,$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3,$item_price,$item_image,$user_id,$service_id,1,$order_id);
-									$res=existing_game_item($item_name,$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3);
-									add_item_goods_id($res['item_id']);
-									echo 'Success';  //success, creating new goods_id since solo item
-								}
 							}else{
 								echo 'Empty fields'; // input is lacking , wrong inputs
 							}
 						
+
 							break;			
 					case "sell_game_item_2":
 								$goods_id=$_POST['goods_id'];

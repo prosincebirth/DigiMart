@@ -226,7 +226,6 @@ $('document').ready(function()
                 var goods_price_a=$("#goods_price_a").val()  
                 var goods_quantity_a=$("#goods_quantity_a").val()  
                 var goods_image_a=$('#goods_image_a')[0].files[0];
-                var user_id_a=$("#user_id_a").val()
                 var order_id_a=$("#order_id_a").val()
                 var service_id_a=$("#service_id_a").val()
                 
@@ -241,7 +240,6 @@ $('document').ready(function()
 				data.append("goods_price_a",goods_price_a);
                 data.append("goods_quantity_a",goods_quantity_a);
                 data.append("goods_image_a",goods_image_a);
-                data.append("user_id_a",user_id_a);
                 data.append("order_id_a",order_id_a);
                 data.append("service_id_a",service_id_a);
 

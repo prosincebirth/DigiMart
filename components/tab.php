@@ -27,26 +27,25 @@
                         if($result->num_rows > 0){
                         while ($res = $result->fetch_assoc()){?>           
                         <div class="popular_list__items">
-                      
                             <div class="item_wrapper">
                                 
-                                <?php  if($res['item_rarity'] == 'Common'){echo ' <span class="item_tag" style="background-color:#484b5f">'.$res['item_rarity'].'</span>';}
-                                        elseif($res['item_rarity'] == 'Uncommon'){echo ' <span class="item_tag" style="background-color:#82BDFF">'.$res['item_rarity'].'</span>';}
-                                        elseif($res['item_rarity'] == 'Rare'){echo ' <span class="item_tag" style="background-color:#7C8FF5">'.$res['item_rarity'].'</span>';}
-                                        elseif($res['item_rarity'] == 'Mythical'){echo ' <span class="item_tag" style="background-color:#A876F9">'.$res['item_rarity'].'</span>';}
-                                        elseif($res['item_rarity'] == 'Immortal'){echo ' <span class="item_tag" style="background-color:#F2B166">'.$res['item_rarity'].'</span>';}
-                                        elseif($res['item_rarity'] == 'Legendary'){echo ' <span class="item_tag" style="background-color:#DC5EEA">'.$res['item_rarity'].'</span>';}
-                                        elseif($res['item_rarity'] == 'Arcana'){echo ' <span class="item_tag" style="background-color:#9ACC4C">'.$res['item_rarity'].'</span>';}
-                                        elseif($res['item_rarity'] == 'Ancient'){echo ' <span class="item_tag" style="background-color:#e06b6a">'.$res['item_rarity'].'</span>';}
+                                <?php  if($res['goods_rarity'] == 'Common'){echo ' <span class="item_tag" style="background-color:#484b5f">'.$res['goods_rarity'].'</span>';}
+                                        elseif($res['goods_rarity'] == 'Uncommon'){echo ' <span class="item_tag" style="background-color:#82BDFF">'.$res['goods_rarity'].'</span>';}
+                                        elseif($res['goods_rarity'] == 'Rare'){echo ' <span class="item_tag" style="background-color:#7C8FF5">'.$res['goods_rarity'].'</span>';}
+                                        elseif($res['goods_rarity'] == 'Mythical'){echo ' <span class="item_tag" style="background-color:#A876F9">'.$res['goods_rarity'].'</span>';}
+                                        elseif($res['goods_rarity'] == 'Immortal'){echo ' <span class="item_tag" style="background-color:#F2B166">'.$res['goods_rarity'].'</span>';}
+                                        elseif($res['goods_rarity'] == 'Legendary'){echo ' <span class="item_tag" style="background-color:#DC5EEA">'.$res['goods_rarity'].'</span>';}
+                                        elseif($res['goods_rarity'] == 'Arcana'){echo ' <span class="item_tag" style="background-color:#9ACC4C">'.$res['goods_rarity'].'</span>';}
+                                        elseif($res['goods_rarity'] == 'Ancient'){echo ' <span class="item_tag" style="background-color:#e06b6a">'.$res['goods_rarity'].'</span>';}
                                 ?>
                                 <div class="img_wrapper">
                                     
-                                <?php echo '<img src="data:image/png;base64,'.base64_encode($res['item_image']).'"height="240" ">'; ?>
+                                <?php echo '<img src="data:image/png;base64,'.base64_encode($res['goods_image']).'"height="240" ">'; ?>
                                 
                             </div>
                                 <div class="item_info">
                                     
-                                    <?php echo '<h3 class="item_title">'.$res['item_name'].'</h3>'; ?>
+                                    <?php echo '<h3 class="item_title">'.$res['goods_name'].'</h3>'; ?>
                                     
                                     <?php echo '<span class="item_price">'.$res['item_price'].'</span>'; ?>
                                 </div>

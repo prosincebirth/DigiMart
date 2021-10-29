@@ -41,11 +41,11 @@
 		$exec=$prepare->execute(array(":item_price"=>$item_price,":item_quantity"=>$item_quantity,":goods_id"=>$goods_id,":user_id"=>$user_id,":service_id"=>$service_id,":game_id"=>$game_id,":order_id"=>$order_id));
 		$conn=null;}
 
-	function add_new_game_item($goods_name,$goods_quality,$goods_rarity,$goods_detail1,$goods_detail2,$goods_detail3,$goods_image,$game_id){
+	function add_new_goods($goods_name,$goods_quality,$goods_rarity,$goods_detail_1,$goods_detail_2,$goods_detail_3,$goods_image,$game_id){
 		$conn=connection();
-		$query="INSERT INTO goods(goods_name,goods_quality,goods_rarity,goods_detail1,goods_detail2,goods_detail3,goods_image,game_id) values(:goods_name,:goods_quality,:goods_rarity,:goods_detail1,:goods_detail2,:goods_detail3,:goods_image,:game_id)"; 
+		$query="INSERT INTO goods(goods_name,goods_quality,goods_rarity,goods_detail_1,goods_detail_2,goods_detail_3,goods_image,game_id) values(:goods_name,:goods_quality,:goods_rarity,:goods_detail_1,:goods_detail_2,:goods_detail_3,:goods_image,:game_id)"; 
 		$prepare=$conn->prepare($query);
-		$exec=$prepare->execute(array(":goods_name"=>$goods_name,":goods_quality"=>$goods_quality,":goods_rarity"=>$goods_rarity,":goods_detail1"=>$goods_detail1,":goods_detail2"=>$goods_detail2,":goods_detail3"=>$goods_detail3,":goods_image"=>$goods_image,":game_id"=>$game_id));
+		$exec=$prepare->execute(array(":goods_name"=>$goods_name,":goods_quality"=>$goods_quality,":goods_rarity"=>$goods_rarity,":goods_detail_1"=>$goods_detail_1,":goods_detail_2"=>$goods_detail_2,":goods_detail_3"=>$goods_detail_3,":goods_image"=>$goods_image,":game_id"=>$game_id));
 		$conn=null;}
 		
 
@@ -93,11 +93,11 @@
 		$conn=null;
 		return $res;}
 
-	function existing_game_item($item_name,$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3){//user
+	function existing_goods($goods_name,$goods_quality,$goods_rarity,$goods_detail_1,$goods_detail_2,$goods_detail_3,$goods_image,$game_id){//USED IN POST SALE
 		$conn=connection();
-		$query="SELECT * from game_items where item_name=:item_name and item_quality=:item_quality and item_rarity=:item_rarity and item_detail1=:item_detail1 and item_detail2=:item_detail2 and item_detail3=:item_detail3";
+		$query="SELECT * from goods where goods_name=:goods_name and goods_quality=:goods_quality and goods_rarity=:goods_rarity and goods_detail_1=:goods_detail_1 and goods_detail_2=:goods_detail_2 and goods_detail_3=:goods_detail_3 and goods_image=:goods_image and game_id=:game_id";
 		$prepare=$conn->prepare($query);
-		$exec=$prepare->execute(array(":item_name"=>$item_name,":item_quality"=>$item_quality,":item_rarity"=>$item_rarity,":item_detail1"=>$item_detail1,":item_detail2"=>$item_detail2,":item_detail3"=>$item_detail3));
+		$exec=$prepare->execute(array(":goods_name"=>$goods_name,":goods_quality"=>$goods_quality,":goods_rarity"=>$goods_rarity,":goods_detail_1"=>$goods_detail_1,":goods_detail_2"=>$goods_detail_2,":goods_detail_3"=>$goods_detail_3,":goods_image"=>$goods_image,":game_id"=>$game_id));
 		$res = $prepare->fetch(PDO::FETCH_ASSOC);
 		$conn=null;
 		return $res;}
@@ -230,7 +230,7 @@
 
 	function display_item($limit){//global-market.php
 		$conn=connection2();
-		$sql="SELECT *,COUNT(*) as mycount from game_items GROUP BY goods_id LIMIT $limit";
+		$sql="SELECT *,COUNT(*) as mycount from game_items a join goods b where a.goods_id=b.goods_id LIMIT $limit";
 		$result = $conn->query($sql);
 		return $result;}
 	

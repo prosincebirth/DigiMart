@@ -208,8 +208,8 @@
                                     $result = get_goods_information(1);
                                     if($result->num_rows > 0){
 									while ($res = $result->fetch_assoc()){
-										if($res['goods_detail1']!= NULL){
-										echo '<option value='.$res['goods_detail1'].'>'.$res['goods_detail1'].'</option>';
+										if($res['goods_detail_1']!= NULL){
+										echo '<option value='.$res['goods_detail_1'].'>'.$res['goods_detail_1'].'</option>';
 										}}}?>
 										</select></div>
 				<div class="fld_input"><select name="goods_detail2_a" id="goods_detail2_a" class="form-control">	
@@ -218,8 +218,8 @@
                                     $result = get_goods_information(1);
                                     if($result->num_rows > 0){
 									while ($res = $result->fetch_assoc()){
-										if($res['goods_detail2']!= NULL){
-										echo '<option value='.$res['goods_detail2'].'>'.$res['goods_detail2'].'</option>';
+										if($res['goods_detail_2']!= NULL){
+										echo '<option value='.$res['goods_detail_2'].'>'.$res['goods_detail_2'].'</option>';
 										}}}?>
 										</select></div>
 				<div class="fld_input"><select name="goods_detail3_a" id="goods_detail3_a" class="form-control">	
@@ -228,15 +228,14 @@
                                     $result = get_goods_information(1);
                                     if($result->num_rows > 0){
 									while ($res = $result->fetch_assoc()){
-										if($res['goods_detail3']!= NULL){
-										echo '<option value='.$res['goods_detail3'].'>'.$res['goods_detail3'].'</option>';
+										if($res['goods_detail_3']!= NULL){
+										echo '<option value='.$res['goods_detail_3'].'>'.$res['goods_detail_3'].'</option>';
 										}}}?>
 										</select></div>
 				<div class="fld_input"><input type="number" name="goods_price_a" placeholder="ITEM PRICE" id="goods_price_a" class="form-control"></div>
 				<div class="fld_input"><input type="number" name="goods_quantity_a" placeholder="ITEM QUANTITY" id="goods_quantity_a" class="form-control"></div>
 				<div class="fld_input"><input type="file" name="goods_image_a" placeholder="ITEM IMAGE" id="goods_image_a" value="" class="form-control"></div>
-				<div class="fld_input"><input type="hidden" name="user_id_a" placeholder="User ID" id="user_id_a" class="form-control" value="<?php echo $_SESSION['user_session']; ?>"></div>		
-				<div class="fld_input"><input type="hidden" name="order_id_a" placeholder="ORDER ID" id="order_id_a" class="form-control" value="1"></div>	
+				<div class="fld_input"><input type="text" name="order_id_a" placeholder="ORDER ID" id="order_id_a" class="form-control" value="1"></div>	
 				<div class="fld_input"><select name="service_id_a" id="service_id_a" class="form-control">	
 				<option value="" disabled selected>Service Mode</option>
 									<?php
@@ -255,12 +254,6 @@
 	</div>
 	</div>
 </div>
-
-
-
-
-
-
 
 
 
