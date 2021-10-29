@@ -33,7 +33,6 @@
 	</div>
 </div>
 
-
 <div class="modal fade" id="register_modal" role="dialog">
 	<div class="modal-dialog">
 	<div class="modal-content">
@@ -110,7 +109,7 @@
 		<div class="modal-body">
 					<div class="fld_input"><input type="text" name="game_name_b" placeholder="Game Name" id="game_name_b" class="form-control"></div>
 					<div class="fld_input"><input type="text" name="game_desc_b" placeholder="Game Description" id="game_desc_b" class="form-control"></div>
-					<div class="fld_input"><input type="text" name="steam_game_id_b" placeholder="Game Region" id="steam_game_id_b" class="form-control"></div>
+					<div class="fld_input"><input type="text" name="steam_game_id_b" placeholder="Steam Game ID" id="steam_game_id_b" class="form-control"></div>
             </div>
 			<div class="modal-footer">
 					<button class="btn btn-success" type="button" value="edit_new_game">Save</button>
@@ -129,10 +128,19 @@
 		<h4 class="modal-title">Game Service </h4>
 		</div>
 		<div class="modal-body">
-	
-                <div class="fld_input"><input type="text" name="service_name_a" placeholder="Service Name" id="service_name_a" class="form-control"></div>
 				<div class="fld_input"><input type="text" name="service_mode_a" placeholder="Service Mode" id="service_mode_a" class="form-control"></div>
 				<div class="fld_input"><input type="text" name="service_desc_a" placeholder="Service Description" id="service_desc_a" class="form-control"></div>
+				<div class="fld_input"><select name="game_id_a" id="game_id_a" class="form-control">	
+				<option value="" disabled selected>Game</option>
+									<?php
+                                    $result = get_game();
+                                    if($result->num_rows > 0){
+									while ($res = $result->fetch_assoc()){
+										if($res['game_id']!= NULL){
+										echo '<option value='.$res['game_id'].'>'.$res['game_name'].'</option>';
+										}}}	
+										?>
+										</select></div>
             </div>
 			<div class="modal-footer">
 					<button class="btn btn-success" type="button" value="add_new_game_service">Save</button>

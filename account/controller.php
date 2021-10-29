@@ -54,6 +54,18 @@
 							echo 'Field inputs error';
 						}
 						break;
+					case "add_new_game_service"://TESTED 11:56 pm , 25/10/2021
+						$service_mode_a=$_POST['service_mode_a'];
+						$service_desc_a=$_POST['service_desc_a'];
+						$game_id_a=$_POST['game_id_a'];
+
+						if(!empty($service_mode_a) && !empty($service_desc_a) && !empty($game_id_a)){
+						add_game_service($service_mode_a,$service_desc_a,$game_id_a);
+							echo 'Success';
+						}else{
+							echo 'Field inputs error';
+						}
+						break;	
 					case "sell_game_item":
 							$item_name=$_POST['item_name'];
 							$item_quality=$_POST['item_quality'];

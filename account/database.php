@@ -27,7 +27,7 @@
 		$exec=$prepare->execute(array(":game_name"=>$game_name,":game_desc"=>$game_desc,":steam_game_id_a"=>$steam_game_id_a));
 		$conn=null;}	
 	
-	function add_game_service($service_mode,$service_desc,$game_id){
+	function add_game_service($service_mode,$service_desc,$game_id){ // ADD GAME service // add_services_modal // TESTED 9:26 pm , 29/10/2021
 		$conn=connection();
 		$query="INSERT INTO game_services(service_mode,service_desc,game_id) values(:service_mode,:service_desc,:game_id)"; 
 		$prepare=$conn->prepare($query);
@@ -252,6 +252,13 @@
 	function get_game_service($game_id){
 		$conn=connection2();
 		$sql="SELECT * from game_services where game_id=$game_id";
+		$result = $conn->query($sql);
+		return $result;
+	}
+	
+	function get_game(){// USED IN GAME SERVICES
+		$conn=connection2();
+		$sql="SELECT * from games";
 		$result = $conn->query($sql);
 		return $result;
 	}

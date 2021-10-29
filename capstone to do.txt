@@ -15,6 +15,7 @@ login page
 
 
 steam_game_id - id sa game , sa steam game store
+game desc - 2x iya size unta
 
 Homepage
 Marketplace page

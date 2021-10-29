@@ -191,9 +191,31 @@ $('document').ready(function()
 					success:function(res){
 							alert(res)
 					}
-				});//END OF AJAX IN ADDING NEW ITEM
-            //}				
-			break;//END OF SAVE NEW ITEM
+				});//END	
+			break;
+            case "add_new_game_service": //TESTED 11:56 pm , 25/10/2021
+				var service_mode_a=$("#service_mode_a").val().trim();
+                var service_desc_a=$("#service_desc_a").val().trim();
+                var game_id_a=$("#game_id_a").val().trim();
+      
+				var data=new FormData();
+				data.append("action_type","add_new_game_service");
+				data.append("service_mode_a",service_mode_a);
+				data.append("service_desc_a",service_desc_a);
+                data.append("game_id_a",game_id_a);
+
+				$.ajax({	
+					url:"account/controller.php",
+					method:"post",
+					data:data,
+					contentType:false,
+					cache:false,
+					processData:false,
+					success:function(res){
+							alert(res)
+					}
+				});//END	
+			break;//END//END
             case "sell_game_item":
 				var item_name=$("#item_name").val()
                 var item_quality=$("#item_quality").val()
