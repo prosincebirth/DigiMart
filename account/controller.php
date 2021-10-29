@@ -24,22 +24,22 @@
 						} //if both are not taken, success
 						break;
 					case "login":
-						$user_username=$_POST['user_username'];
-						$user_password=$_POST['user_password'];
+						$user_username_a=$_POST['user_username_a'];
+						$user_password_a=$_POST['user_password_a'];
 
-						if(existing_user($user_username)){
-							$res = login($user_username);
-							if(password_verify($user_password, $res['user_password'])){	
+						if(existing_user($user_username_a)){
+							$res = login($user_username_a);
+							if(password_verify($user_password_a, $res['user_password'])){	
 								$_SESSION['user_session'] = $res['user_id'];
 								$_SESSION['user_username'] = $res['user_username'];
 								session_write_close();
-								echo 'success';
-				
+								echo 'Successfuly Logged In';
+								update_login($res['user_id']);
 							}else{
-								echo 'wrong password';
+								echo 'Wrong Password';
 							}
 						}else{
-							echo 'username error';
+							echo 'Username not recognized';
 						}
 						break;
 					case "add_new_game"://TESTED 11:56 pm , 25/10/2021

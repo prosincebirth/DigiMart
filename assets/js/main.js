@@ -1,5 +1,6 @@
 $('document').ready(function()
 {
+
     $('.js-drop').on('click', function() {
         $(this).toggleClass('open');
     });
@@ -121,44 +122,18 @@ $('document').ready(function()
                         processData:false,
                         success:function(res){
                             if(res=="both taken"){// both are taken
-                                $('#error_email').fadeIn(400, function() {
-                                    $('#error_email').html('<div class="alert alert-success">&nbsp; Email is already taken</div>').fadeIn(3000, function() {
-                                      $('#error_email').fadeOut(3000, function(){
-                                      })
-                                    })
-                                  });
-                                  $('#error_username').fadeIn(400, function() {
-                                    $('#error_username').html('<div class="alert alert-success">&nbsp; Username is already taken</div>').fadeIn(3000, function() {
-                                      $('#error_username').fadeOut(3000, function(){
-                                      })
-                                    })
-                                  });    
+                                alert(res) 
                             }
                             else if(res=="user taken"){//username is taken
-                                $('#error_username').fadeIn(400, function() {
-                                    $('#error_username').html('<div class="alert alert-success">&nbsp; Username is already taken</div>').fadeIn(3000, function() {
-                                      $('#error_username').fadeOut(3000, function(){
-                                      })
-                                    })
-                                  });    
+                                alert(res) 
                             }
                             else if(res=="email taken"){//email is taken
-                                $('#error_email').fadeIn(400, function() {
-                                    $('#error_email').html('<div class="alert alert-success">&nbsp; Email is already taken</div>').fadeIn(3000, function() {
-                                      $('#error_email').fadeOut(3000, function(){
-                                      })
-                                    })
-                                  });
+                                alert(res)
                             }
                             else if(res=="user added"){//success
-                                $('#for_register').fadeIn(400, function() {
-                                    $('#for_register').html('<div class="alert alert-success">&nbsp; Success</div>').fadeIn(3000, function() {
-                                    })
-                                  }); 
-                                  setTimeout(function() {
-                                    window.location.href = "login.php";
-                                  }, 2000);
-                               
+                                alert(res)
+                                $("#register_modal").hide()       
+                                $("#login_modal").show()                      
                             }
                         }
                     });	
@@ -166,14 +141,14 @@ $('document').ready(function()
             break;               
             case "login":
                 if($("#login-form").valid()){
-                    var username=$("#user_username").val().trim();
-                    var password=$("#user_password").val().trim();
+                    var username_a=$("#user_username_a").val().trim();
+                    var password_a=$("#user_password_a").val().trim();
 
                     
                     var data=new FormData();
                     data.append("action_type","login");
-                    data.append("user_username",username);
-                    data.append("user_password",password);
+                    data.append("user_username_a",username_a);
+                    data.append("user_password_a",password_a);
 
                         $.ajax({
                             url:'account/controller.php',
@@ -183,23 +158,13 @@ $('document').ready(function()
                             cache:false,
                             processData:false,
                             success:function(res){
-                                if(res=="success"){
+                                if(res=="Successfuly Logged In"){
                                     alert(res)
                                     location.reload();                           
-                                }else if(res=="wrong password"){
-                                    $('#error_password').fadeIn(400, function() {
-                                        $('#error_password').html('<div class="alert alert-success">&nbsp; Incorrect Password </div>').fadeIn(3000, function() {
-                                          $('#error_password').fadeOut(3000, function(){
-                                          })
-                                        })
-                                      });
-                                }else if(res=="username error"){
-                                    $('#error_username').fadeIn(400, function() {
-                                        $('#error_username').html('<div class="alert alert-success">&nbsp; Username is not recognized</div>').fadeIn(3000, function() {
-                                          $('#error_username').fadeOut(3000, function(){
-                                          })
-                                        })
-                                      });
+                                }else if(res=="Wrong Password"){
+                                    alert(res)
+                                }else if(res=="Username not recognized"){
+                                    alert(res)
                                 }                        
                             }
                         });	

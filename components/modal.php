@@ -1,3 +1,86 @@
+<div class="modal fade" id="login_modal" role="dialog">
+	<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title">Login</h4>
+		</div>
+		<div class="modal-body">
+		<form class="form-signin" method="post" id="login-form"><center>
+            <div class="fld_input">
+                <label for="email">
+                    <input type="text" name="user_username_a" id="user_username_a" placeholder="Username" autocomplete="off">
+                    <label for="error_username" id="error_username"></label>
+                </label>
+            </div>
+            <div class="fld_input">
+                <label for="password">
+                    <input type="password" name="user_password_a" id="user_password_a" placeholder="Password" autocomplete="off">
+                    <label for="error_password" id="error_password"></label>
+                </label>
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-secondary btn-login" type="button" value="login">Login</button>
+               	 	<label for="for_login" id="for_login"></label>
+                    </form>
+					<div class="align-center font-14">
+            <span>Not a member yet?</span>
+            <a data-dismiss="modal" data-toggle='modal' href='#register_modal' class="link font-14">Sign-up</a>
+        </div>
+			</div>   
+		</div>
+	</div>
+	</div>
+</div>
+
+
+<div class="modal fade" id="register_modal" role="dialog">
+	<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title">Registration</h4>
+		</div>
+		<div class="modal-body">
+		<form class="form-signin" method="post" id="register-form"><center>
+			<div class="fld_input">
+                <label for="username">
+                    <input type="text" name="user_username_b" id="user_username_b" placeholder="Username">
+                    <label for="user_username" id="error_username"></label>
+                </label>
+            </div>
+            <div class="fld_input">
+                <label for="email">
+                    <input type="text" name="user_email_b" id="user_email_b" placeholder="Email Address" >
+                    <label for="user_email" id="error_email"></label>
+                </label>
+            </div>
+            <div class="fld_input">
+                <label for="password1">
+                    <input type="password" name="user_password_b" id="user_password_b" placeholder="Password" >
+                </label>
+            </div>
+            <div class="fld_input">
+                <label for="password1">
+                    <input type="password" name="cpassword_b" id="cpassword_b" placeholder="Confirm Password" >
+                </label>
+            </div>
+			<div class="modal-footer">
+				<div class="fld_btn">
+					<button class="btn btn-secondary btn-login" type="button" value="register">Create account</button>
+					<label for="for_register" id="for_register"></label>
+				</div>
+                    </form>
+					<div class="align-center font-14">
+            <span>Already have an account ?</span>
+            <a data-dismiss="modal" data-toggle='modal' href='#login_modal' class="link font-14">Login</a>
+        </div>
+			</div>   
+		</div>
+	</div>
+	</div>
+</div>
+
 
 <div class="modal fade" id="add_game_modal" role="dialog">
 	<div class="modal-dialog">
@@ -8,7 +91,7 @@
 		<div class="modal-body">
 					<div class="fld_input"><input type="text" name="game_name_a" placeholder="Game Name" id="game_name_a" class="form-control"></div>
 					<div class="fld_input"><input type="text" name="game_desc_a" placeholder="Game Description" id="game_desc_a" class="form-control"></div>
-					<div class="fld_input"><input type="text" name="steam_game_id_a" placeholder="Game Region" id="steam_game_id_a" class="form-control"></div>
+					<div class="fld_input"><input type="text" name="steam_game_id_a" placeholder="Steam Game ID" id="steam_game_id_a" class="form-control"></div>
 		</div>
 		<div class="modal-footer">
 			<button class="btn btn-success" type="button" value="add_new_game">Save</button>
@@ -363,92 +446,4 @@
 	</div>
 	</div>
 </div>
-
-
-
-<div class="modal fade" id="login_modal" role="dialog">
-	<div class="modal-dialog">
-	<div class="modal-content">
-		<div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title">Login</h4>
-		</div>
-		<div class="modal-body">
-		<form class="form-signin" method="post" id="login-form"><center>
-            <div class="fld_input">
-                <label for="email">
-                    <input type="text" name="user_username" id="user_username" placeholder="Username" autocomplete="off">
-                    <label for="error_username" id="error_username"></label>
-                </label>
-            </div>
-            <div class="fld_input">
-                <label for="password">
-                    <input type="password" name="user_password" id="user_password" placeholder="Password" autocomplete="off">
-                    <label for="error_password" id="error_password"></label>
-                </label>
-            </div>
-			<div class="modal-footer">
-					<button class="btn btn-secondary btn-login" type="button" value="login">Login</button>
-               	 	<label for="for_login" id="for_login"></label>
-                    </form>
-					<div class="align-center font-14">
-            <span>Not a member yet?</span>
-            <a data-dismiss="modal" data-toggle='modal' href='#register_modal' class="link font-14">Sign-up</a>
-        </div>
-			</div>   
-		</div>
-	</div>
-	</div>
-</div>
-
-
-<div class="modal fade" id="register_modal" role="dialog">
-	<div class="modal-dialog">
-	<div class="modal-content">
-		<div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title">Registration</h4>
-		</div>
-		<div class="modal-body">
-		<form class="form-signin" method="post" id="register-form"><center>
-			<div class="fld_input">
-                <label for="username">
-                    <input type="text" name="user_username_b" id="user_username_b" placeholder="Username">
-                    <label for="user_username" id="error_username"></label>
-                </label>
-            </div>
-            <div class="fld_input">
-                <label for="email">
-                    <input type="text" name="user_email_b" id="user_email_b" placeholder="Email Address" >
-                    <label for="user_email" id="error_email"></label>
-                </label>
-            </div>
-            <div class="fld_input">
-                <label for="password1">
-                    <input type="password" name="user_password_b" id="user_password_b" placeholder="Password" >
-                </label>
-            </div>
-            <div class="fld_input">
-                <label for="password1">
-                    <input type="password" name="cpassword_b" id="cpassword_b" placeholder="Confirm Password" >
-                </label>
-            </div>
-			<div class="modal-footer">
-				<div class="fld_btn">
-					<button class="btn btn-secondary btn-login" type="button" value="register">Create account</button>
-					<label for="for_register" id="for_register"></label>
-				</div>
-                    </form>
-					<div class="align-center font-14">
-            <span>Already have an account ?</span>
-            <a data-dismiss="modal" data-toggle='modal' href='#login_modal' class="link font-14">Login</a>
-        </div>
-			</div>   
-		</div>
-	</div>
-	</div>
-</div>
-
-
-
 

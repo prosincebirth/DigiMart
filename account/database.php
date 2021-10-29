@@ -114,13 +114,11 @@
 		return $res;}
 
 	function update_login($user_id){//update last login status/login.php
-		$conn=connection();
+		$conn=connection2();
 		$query="UPDATE users SET last_login_date = current_timestamp() WHERE users.user_id = $user_id";
 		$prepare=$conn->query($query);
-		$exec=$prepare->execute(array(":game_name"=>$game_name));
 		$conn=null;
 	}
-
 
 ///////////////////UPDATE FUNCTIIONS/////////////////////////////////
 

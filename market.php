@@ -14,14 +14,14 @@
                         <div class="market_tabs">
                             <ul class="market_tab--list">
                                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#add_game_modal">Add New Game</button>
-                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#sale_game_item_modal">Game Services</button>
-                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#add_services_modal">Game Items</button>
-                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#edit_services_modal">Sale Orders</button>
-                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#1">Buy Orders</button>
-                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#add_game_modal">Bargain Orders</button>
-                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#add_game_modal">Transaction Logs</button>
-                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#add_game_modal">Review Logs</button>
-                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#add_game_modal">Ticket Logs</button>
+                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#edit_game_modal">Edit Game</button>
+                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#add_services_modal">Add Game Services</button>
+                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#edit_services_modal">Edit Game Services</button>
+                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#sale_game_item_modal">Raw sale item </button>
+                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#sale_game_item_modal_2">Page sale item</button>
+                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#buy_game_item_modal">Buy Game</button>
+                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#buyorder_game_item_modal">Raw buy order</button>
+                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#buyorder_game_item_modal_2">Page buy order</button>
                                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#add_game_modal">List of Orders</button>
                                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#add_game_modal">List of Sales</button>
                                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#add_game_modal">List of Users</button>
