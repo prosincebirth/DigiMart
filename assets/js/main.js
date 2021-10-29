@@ -217,31 +217,33 @@ $('document').ready(function()
 				});//END	
 			break;//END//END
             case "sell_game_item":
-				var item_name=$("#item_name").val()
-                var item_quality=$("#item_quality").val()
-                var item_rarity=$("#item_rarity").val()
-                var item_detail1=$("#item_detail1").val()
-                var item_detail2=$("#item_detail2").val()
-                var item_detail3=$("#item_detail3").val()
-                var item_price=$("#item_price").val()  
-                var item_image=$('#item_image')[0].files[0];
-                var user_id=$("#user_id").val()
-                var service_id=$("#service_id").val()
-                var order_id=$("#order_id").val()
+				var goods_name_a=$("#goods_name_a").val()
+                var goods_quality_a=$("#goods_quality_a").val()
+                var goods_rarity_a=$("#goods_rarity_a").val()
+                var goods_detail1_a=$("#goods_detail1_a").val()
+                var goods_detail2_a=$("#goods_detail2_a").val()
+                var goods_detail3_a=$("#goods_detail3_a").val()
+                var goods_price_a=$("#goods_price_a").val()  
+                var goods_quantity_a=$("#goods_quantity_a").val()  
+                var goods_image_a=$('#goods_image_a')[0].files[0];
+                var user_id_a=$("#user_id_a").val()
+                var order_id_a=$("#order_id_a").val()
+                var service_id_a=$("#service_id_a").val()
                 
 				var data=new FormData();
 				data.append("action_type","sell_game_item");
-				data.append("item_name",item_name);
-				data.append("item_quality",item_quality);
-                data.append("item_rarity",item_rarity);
-				data.append("item_detail1",item_detail1);
-                data.append("item_detail2",item_detail2);
-				data.append("item_detail3",item_detail3);
-				data.append("item_price",item_price);
-                data.append("item_image",item_image);
-                data.append("user_id",user_id);
-                data.append("service_id",service_id);
-                data.append("order_id",order_id);
+				data.append("goods_name_a",goods_name_a);
+				data.append("goods_quality_a",goods_quality_a);
+                data.append("goods_rarity_a",goods_rarity_a);
+				data.append("goods_detail1_a",goods_detail1_a);
+                data.append("goods_detail2_a",goods_detail2_a);
+				data.append("goods_detail3_a",goods_detail3_a);
+				data.append("goods_price_a",goods_price_a);
+                data.append("goods_quantity_a",goods_quantity_a);
+                data.append("goods_image_a",goods_image_a);
+                data.append("user_id_a",user_id_a);
+                data.append("order_id_a",order_id_a);
+                data.append("service_id_a",service_id_a);
 
 				$.ajax({	
 					url:"account/controller.php",

@@ -34,12 +34,20 @@
 		$exec=$prepare->execute(array(":service_mode"=>$service_mode,":service_desc"=>$service_desc,":game_id"=>$game_id));
 		$conn=null;}	
 
-	function add_new_game_item($item_name,$goods_id,$item_quality,$item_rarity,$item_detail1,$item_detail2,$item_detail3,$item_price,$item_image,$user_id,$service_id,$game_id,$order_id){
+	function add_new_game_item($item_price,$item_quantity,$goods_id,$user_id,$service_id,$game_id,$order_id){
 		$conn=connection();
-		$query="INSERT INTO game_items(item_name,goods_id,item_quality,item_rarity,item_detail1,item_detail2,item_detail3,item_price,item_image,user_id,service_id,game_id,order_id) values(:item_name,:goods_id,:item_quality,:item_rarity,:item_detail1,:item_detail2,:item_detail3,:item_price,:item_image,:user_id,:service_id,:game_id,:order_id)"; 
+		$query="INSERT INTO game_items(item_price,item_quantity,goods_id,user_id,service_id,game_id,order_id) values(:item_price,:item_quantity,:goods_id,:user_id,:service_id,:game_id,:order_id)"; 
 		$prepare=$conn->prepare($query);
-		$exec=$prepare->execute(array(":item_name"=>$item_name,":goods_id"=>$goods_id,":item_quality"=>$item_quality,":item_rarity"=>$item_rarity,":item_detail1"=>$item_detail1,":item_detail2"=>$item_detail2,":item_detail3"=>$item_detail3,":item_price"=>$item_price,":item_image"=>$item_image,":user_id"=>$user_id,":service_id"=>$service_id,":game_id"=>$game_id,":order_id"=>$order_id));
+		$exec=$prepare->execute(array(":item_price"=>$item_price,":item_quantity"=>$item_quantity,":goods_id"=>$goods_id,":user_id"=>$user_id,":service_id"=>$service_id,":game_id"=>$game_id,":order_id"=>$order_id));
 		$conn=null;}
+
+	function add_new_game_item($goods_name,$goods_quality,$goods_rarity,$goods_detail1,$goods_detail2,$goods_detail3,$goods_image,$game_id){
+		$conn=connection();
+		$query="INSERT INTO goods(goods_name,goods_quality,goods_rarity,goods_detail1,goods_detail2,goods_detail3,goods_image,game_id) values(:goods_name,:goods_quality,:goods_rarity,:goods_detail1,:goods_detail2,:goods_detail3,:goods_image,:game_id)"; 
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":goods_name"=>$goods_name,":goods_quality"=>$goods_quality,":goods_rarity"=>$goods_rarity,":goods_detail1"=>$goods_detail1,":goods_detail2"=>$goods_detail2,":goods_detail3"=>$goods_detail3,":goods_image"=>$goods_image,":game_id"=>$game_id));
+		$conn=null;}
+		
 
 	function add_item_goods_id($item_id){
 		$conn=connection();
@@ -218,8 +226,7 @@
 		and a.user_id = c.user_id and order_id =1 and item_status=1 ORDER BY a.item_price ASC;";
 		$result = $conn->query($query);
 		return $result;
-	}
-
+	}	
 
 	function display_item($limit){//global-market.php
 		$conn=connection2();
@@ -233,35 +240,33 @@
 		$result = $conn->query($sql);
 		return $result;}
 
-	function get_item_information($game_id){
+	function get_goods_information($game_id){//USED IN sale_game_item_modal
 		$conn=connection2();
-		$sql="SELECT * from item_information where game_id=$game_id";
+		$sql="SELECT * from goods_information where game_id=$game_id";
 		$result = $conn->query($sql);
 		return $result;
 	}
 
-	function get_item_category($game_id){//user
+	function get_goods_category($game_id){//USED IN sale_game_item_modal
 		$conn=connection();
-		$query="SELECT * from item_category where game_id=:game_id";
+		$query="SELECT * from goods_category where game_id=:game_id";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":game_id"=>$game_id));
 		$res = $prepare->fetch(PDO::FETCH_ASSOC);
 		$conn=null;
 		return $res;}
 
-	function get_game_service($game_id){
+	function get_game_service($game_id){//USED IN sale_game_item_modal 
 		$conn=connection2();
 		$sql="SELECT * from game_services where game_id=$game_id";
 		$result = $conn->query($sql);
-		return $result;
-	}
-	
-	function get_game(){// USED IN GAME SERVICES
+		return $result;}
+
+	function get_game(){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
 		$sql="SELECT * from games";
 		$result = $conn->query($sql);
-		return $result;
-	}
+		return $result;}
 
 	
 ?>

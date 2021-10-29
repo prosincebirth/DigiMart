@@ -3,7 +3,7 @@
 		if(isset($_POST['action_type'])){
 			$action_type=$_POST['action_type'];
 				switch($action_type){
-					case "register":
+					case "register"://TESTED
 						$user_username_b=$_POST['user_username_b'];
 						$user_email_b=$_POST['user_email_b'];
 						$user_password_b=$_POST['user_password_b'];
@@ -23,7 +23,7 @@
 							echo 'user added';
 						} //if both are not taken, success
 						break;
-					case "login":
+					case "login"://TESTED
 						$user_username_a=$_POST['user_username_a'];
 						$user_password_a=$_POST['user_password_a'];
 
