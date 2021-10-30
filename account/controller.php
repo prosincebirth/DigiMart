@@ -82,7 +82,7 @@
 							$service_id_a=$_POST['service_id_a'];
 							//add_new_game_item($item_price,$item_quantity,$goods_id,$user_id,$service_id,$game_id,$order_id)
 							//add_new_goods($goods_name,$goods_quality,$goods_rarity,$goods_detail1,$goods_detail2,$goods_detail3,$goods_image,$game_id)
-							if(!empty($goods_name_a) && !empty($_SESSION['user_session']) && !empty($order_id_a)  && !empty($goods_image_a) && $goods_quality_a != 'null' && $goods_rarity_a != 'null' && $goods_detail1_a != 'null' && $goods_detail2_a != 'null' && $goods_detail3_a != 'null' && $goods_price_a != 'null' && $goods_quantity_a !='null' && $order_id_a !='null' && $service_id_a !='null'){
+							if(!empty($goods_name_a) && is_numeric($item_price_b) && is_numeric($items_quantity_b) && !empty($_SESSION['user_session']) && !empty($order_id_a)  && !empty($goods_image_a) && $goods_quality_a != 'null' && $goods_rarity_a != 'null' && $goods_detail1_a != 'null' && $goods_detail2_a != 'null' && $goods_detail3_a != 'null' && $goods_price_a != 'null' && $goods_quantity_a !='null' && $order_id_a !='null' && $service_id_a !='null'){
 								if($result=existing_goods($goods_name_a,$goods_quality_a,$goods_rarity_a,$goods_detail1_a,$goods_detail2_a,$goods_detail3_a,$goods_image_a,'1')){
 									add_new_game_item($goods_price_a,$goods_quantity_a,$result['goods_id'],$_SESSION['user_session'],$service_id_a,'1','1');
 									echo 'Success but the item is new';
@@ -95,26 +95,20 @@
 							}else{
 								echo 'Empty fields'; // input is lacking , wrong inputs
 							}
-						
-
 							break;			
 					case "sell_game_item_2":
-								$goods_id=$_POST['goods_id'];
-								$item_pricex=$_POST['item_pricex']; 
-								$seller_id=$_POST['user_id'];
-								$service_idx=$_POST['service_idx'];
-								//order_id = 1 ;
-									if(!empty($item_pricex) && $service_idx != 'null' && $service_idx != 'NULL'){
-										$res=sale_game_modal_2($goods_id);
-										add_new_game_item($res['item_name'],$goods_id,$res['item_quality'],$res['item_rarity'],$res['item_detail1'],$res['item_detail2'],$res['item_detail3'],$item_pricex,$res['item_image'],$seller_id,$service_idx,1,1);
+								$item_price_b=$_POST['item_price_b'];
+								$items_quantity_b=$_POST['items_quantity_b']; 
+								$goods_id_b=$_POST['goods_id_b'];
+								$service_id_b=$_POST['service_id_b'];
+								//add_new_game_item($item_price,$item_quantity,$goods_id,$user_id,$service_id,$game_id,$order_id)
+									if(!empty($item_price_b) && is_numeric($item_price_b) && is_numeric($items_quantity_b) && !empty($items_quantity_b) && !empty($goods_id_b) && $service_id_b != 'NULL'){
+										add_new_game_item($item_price_b,$items_quantity_b,$goods_id_b,$_SESSION['user_session'],$service_id_b,'1','1');
 										echo 'Success'; // success posting item on item page , copying same attribute of the item rather than inputing everything 
 									}else{
 										echo 'Failed'; // Wrong input , Empty input
 									}
-
-
 								break;
-
 					case "buy_game_item":
 								$item_ida=$_POST['item_ida'];
 								$buyer_id=$_POST['buyer_id'];

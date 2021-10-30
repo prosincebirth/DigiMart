@@ -91,11 +91,8 @@ $('document').ready(function()
    
     $('#sale_game_item_modal_2').on('show.bs.modal', function(e) {
         var goods_id = $(e.relatedTarget).data('goods_id');
-        var user_id = $(e.relatedTarget).data('user_id');
-
-        $(e.currentTarget).find('input[name="goods_id"]').val(goods_id);
-        $(e.currentTarget).find('input[name="user_id"]').val(user_id);
-
+   
+        $(e.currentTarget).find('input[name="goods_id_b"]').val(goods_id);
     });
    
 	$(".btn").on("click",function(){
@@ -258,17 +255,17 @@ $('document').ready(function()
             //}				
 			break;//END OF SAVE NEW ITEM
             case "sell_game_item_2":
-				var goods_id=$("#goods_id").val()
-                var item_pricex=$("#item_pricex").val()
-                var user_id=$("#user_id").val()
-                var service_idx=$("#service_idx").val()
+				var item_price_b=$("#item_price_b").val()
+                var items_quantity_b=$("#items_quantity_b").val()
+                var goods_id_b=$("#goods_id_b").val()
+                var service_id_b=$("#service_id_b").val()
              
 				var data=new FormData();
 				data.append("action_type","sell_game_item_2");
-				data.append("goods_id",goods_id);
-				data.append("item_pricex",item_pricex);
-                data.append("user_id",user_id);
-				data.append("service_idx",service_idx);
+				data.append("item_price_b",item_price_b);
+				data.append("items_quantity_b",items_quantity_b);
+                data.append("goods_id_b",goods_id_b);
+				data.append("service_id_b",service_id_b);
   
 
 				$.ajax({	
@@ -280,7 +277,7 @@ $('document').ready(function()
 					processData:false,
 					success:function(res){
 							
-                            if(res=="Selling of item is successful"){
+                            if(res=="Success"){
                             location.reload();
                             }else{
                             alert(res)

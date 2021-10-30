@@ -59,8 +59,7 @@
 						</p>
 						<div>
 							<a class="item_sell" data-toggle="modal" data-target="#sale_game_item_modal_2"
-											data-goods_id="<?php echo $_GET['goods_id'];?>" 
-											data-user_id="<?php if(!isset($_GET['goods_id'])){echo $_SESSION['user_session']; }?>" >Sell</a>
+											data-goods_id="<?php echo $_GET['goods_id'];?>">Sell</a>
 							<button type="button" class="item_place--buy--order" data-toggle="modal" data-target="#buyorder_game_item_modal_2">Place buy order</button>
 						</div>
 					</div>
@@ -90,7 +89,9 @@
 									Automatic Delivery Items will be deposited to Digimart Inventory first and system delivers to the buyer's backpack after the payment are made
 									" data-direction="right"></i></td></th>
 								<th>Price</th>
+								<th>Quantity</th>
 								<th></th>
+							
 								
 							</thead>
 	
@@ -109,7 +110,7 @@
 										<div class="img_text">
 
 											<?php echo '<img class="item__seller" src="data:image/png;base64,'.base64_encode($res['goods_image']).'"height="40" >'; ?>
-											<span><?php echo $_SESSION['user_username'];?></span>	
+											<span><?php echo $res['user_username'];?></span>	
 										</div>
 									</td>
 									<td>
@@ -118,6 +119,9 @@
 									</td>
 									<td>
 										<span><?php echo $res['item_price'];?></span>										
+									</td>
+									<td>
+										<span><?php echo $res['item_quantity'];?></span>										
 									</td>
 									<td>
 										<div class="item__group--cta">

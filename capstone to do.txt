@@ -47,3 +47,14 @@ Profile page
 *Transaction page
 *Notifications Page
 *On Sale Items Page
+
+
+
+******
+
+Item must has quantity
+maka bargain as a whole value
+email verification
+gcash payment method
+add to cart
+after register dapat mo open and login modal

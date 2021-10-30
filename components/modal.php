@@ -255,6 +255,37 @@
 	</div>
 </div>
 
+<div class="modal fade" id="sale_game_item_modal_2" role="dialog"><!-- selling items on item-goods.php-->
+	<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title"><center>SELL ITEM </h4>
+		</div>
+		<div class="modal-body">		
+				<div class="fld_input"><input type="number" name="item_price_b" placeholder="ITEM PRICE" id="item_price_b" class="form-control"></div>
+				<div class="fld_input"><input type="number" name="items_quantity_b" placeholder="ITEM QUANTITY" id="items_quantity_b" class="form-control"></div>
+                <div class="fld_input"><input type="hidden" name="goods_id_b" placeholder="GOODS ID" id="goods_id_b" class="form-control"></div>
+				<div class="fld_input"><select name="service_id_b" id="service_id_b" class="form-control">	
+				<option value="" disabled selected>Service Mode</option>
+									<?php
+                                    $result = get_game_service(1);
+                                    if($result->num_rows > 0){
+									while ($res = $result->fetch_assoc()){
+										if($res['service_id']!= NULL){
+										echo '<option value='.$res['service_id'].'>'.$res['service_mode'].'</option>';
+										}}}?>
+										</select></div>
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="sell_game_item_2">Sell</button>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+
+
 
 
 
