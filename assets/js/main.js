@@ -286,6 +286,47 @@ $('document').ready(function()
 					}
 				});//END 
 			break;//END 
+            case "buyorder_game_item":
+				var goods_name_d=$("#goods_name_d").val()
+                var goods_quality_d=$("#goods_quality_d").val()
+                var goods_rarity_d=$("#goods_rarity_d").val()
+                var goods_detail1_d=$("#goods_detail1_d").val()
+                var goods_detail2_d=$("#goods_detail2_d").val()
+                var goods_detail3_d=$("#goods_detail3_d").val()
+                var goods_price_d=$("#goods_price_d").val()  
+                var goods_quantity_d=$("#goods_quantity_d").val()  
+                var goods_image_d=$('#goods_image_d')[0].files[0];
+                var order_id_d=$("#order_id_d").val()
+                var service_id_d=$("#service_id_d").val()
+                
+				var data=new FormData();
+				data.append("action_type","sell_game_item");
+				data.append("goods_name_d",goods_name_d);
+				data.append("goods_quality_d",goods_quality_d);
+                data.append("goods_rarity_d",goods_rarity_d);
+				data.append("goods_detail1_d",goods_detail1_d);
+                data.append("goods_detail2_d",goods_detail2_d);
+				data.append("goods_detail3_d",goods_detail3_d);
+				data.append("goods_price_d",goods_price_d);
+                data.append("goods_quantity_d",goods_quantity_d);
+                data.append("goods_image_d",goods_image_d);
+                data.append("order_id_d",order_id_d);
+                data.append("service_id_d",service_id_d);
+
+				$.ajax({	
+					url:"account/controller.php",
+					method:"post",
+					data:data,
+					contentType:false,
+					cache:false,
+					processData:false,
+					success:function(res){
+							alert(res)
+                            console.log(res)
+					}
+				});//END OF AJAX IN ADDING NEW ITEM
+            //}				
+			break;//END OF SAVE NEW ITEM
             case "buy_game_item":
 				var item_ida=$("#item_ida").val()
                 var buyer_id=$("#buyer_id").val()

@@ -285,6 +285,143 @@
 	</div>
 </div>
 
+<div class="modal fade" id="buy_game_item_modal" role="dialog"><!-- buying items on item-goods.php-->
+	<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title">BUY ITEM</h4>
+		</div>
+		<div class="modal-body">
+			
+				<div class="fld_input"><input type="text" name="order_id_c" placeholder="ORDER ID" id="order_id_c" class="form-control"></div>
+                <div class="fld_input"><input type="text" name="item_id_c" placeholder="ITEM ID" id="item_id_c" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="buyer_id_c" placeholder="BUYER ID" id="buyer_id_c" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="seller_id_c" placeholder="SELLER ID" id="seller_id_c" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="service_id_c" placeholder="SERVICE ID" id="service_id_c" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="item_price_c" placeholder="ITEM PRICE" id="item_price_c" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="game_id_c" placeholder="GAME ID" id="game_id_c" class="form-control"></div>
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="buy_game_item">BUY</button>
+				
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+
+<div class="modal fade" id="buyorder_game_item_modal" role="dialog"><!-- buying items on item-goods.php-->
+	<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title"><center>BUY ORDER ITEM </center</h4>
+		</div>
+		<div class="modal-body">
+                <div class="fld_input"><input type="text" name="goods_name_d" placeholder="Item Name" id="goods_name_d" class="form-control"> </div>
+				<div class="fld_input"><select name="goods_quality_d" id="goods_quality_d"  class="form-control">
+				<?php	$game=get_goods_category(1);
+				echo '<option value="" disabled selected>'.$game['goods_type'].'</option>';
+                                    $result = get_goods_information(1);
+                                    if($result->num_rows > 0){
+                                    while ($res = $result->fetch_assoc()){
+										if($res['goods_quality']!= NULL){
+										echo '<option value='.$res['goods_quality'].'>'.$res['goods_quality'].'</option>';}}}?>
+										</select></div>
+				<div class="fld_input"><select name="goods_rarity_d" id="goods_rarity_d" class="form-control">	
+				<option value="" disabled selected><?php echo $game['goods_rarity'];?></option>
+									<?php
+                                    $result = get_goods_information(1);
+                                    if($result->num_rows > 0){
+									while ($res = $result->fetch_assoc()){
+										if($res['goods_rarity']!= NULL){
+										echo '<option value='.$res['goods_rarity'].'>'.$res['goods_rarity'].'</option>';
+										}}}?>
+										</select></div>
+				<div class="fld_input"><select name="goods_detail1_d" id="goods_detail1_d" class="form-control">	
+				<option value="" disabled selected><?php echo $game['goods_category1'];?></option>
+									<?php
+                                    $result = get_goods_information(1);
+                                    if($result->num_rows > 0){
+									while ($res = $result->fetch_assoc()){
+										if($res['goods_detail_1']!= NULL){
+										echo '<option value='.$res['goods_detail_1'].'>'.$res['goods_detail_1'].'</option>';
+										}}}?>
+										</select></div>
+				<div class="fld_input"><select name="goods_detail2_d" id="goods_detail2_d" class="form-control">	
+				<option value="" disabled selected><?php echo $game['goods_category2'];?></option>
+									<?php
+                                    $result = get_goods_information(1);
+                                    if($result->num_rows > 0){
+									while ($res = $result->fetch_assoc()){
+										if($res['goods_detail_2']!= NULL){
+										echo '<option value='.$res['goods_detail_2'].'>'.$res['goods_detail_2'].'</option>';
+										}}}?>
+										</select></div>
+				<div class="fld_input"><select name="goods_detail3_d" id="goods_detail3_d" class="form-control">	
+				<option value="" disabled selected><?php echo $game['goods_category3'];?></option>
+									<?php
+                                    $result = get_goods_information(1);
+                                    if($result->num_rows > 0){
+									while ($res = $result->fetch_assoc()){
+										if($res['goods_detail_3']!= NULL){
+										echo '<option value='.$res['goods_detail_3'].'>'.$res['goods_detail_3'].'</option>';
+										}}}?>
+										</select></div>
+				<div class="fld_input"><input type="number" name="goods_price_d" placeholder="ITEM PRICE" id="goods_price_d" class="form-control"></div>
+				<div class="fld_input"><input type="number" name="goods_quantity_d" placeholder="ITEM QUANTITY" id="goods_quantity_d" class="form-control"></div>
+				<div class="fld_input"><input type="file" name="goods_image_d" placeholder="ITEM IMAGE" id="goods_image_d" value="" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="order_id_d" placeholder="ORDER ID" id="order_id_d" class="form-control" value="1"></div>	
+				<div class="fld_input"><select name="service_id_d" id="service_id_d" class="form-control">	
+				<option value="" disabled selected>Service Mode</option>
+									<?php
+                                    $result = get_game_service(1);
+                                    if($result->num_rows > 0){
+									while ($res = $result->fetch_assoc()){
+										if($res['service_id']!= NULL){
+										echo '<option value='.$res['service_id'].'>'.$res['service_mode'].'</option>';
+										}}}?>
+										</select></div>
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="buyorder_game_item">Sell</button>			
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+
+<div class="modal fade" id="buyorder_game_item_modal_2" role="dialog"> <!-- modal for buying game items from scratch/new item/ buy order-->
+	<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title"><center>PLACE BUY ORDER</h4>
+		</div>
+		<div class="modal-body">		
+				<div class="fld_input"><input type="number" name="item_price_b" placeholder="ITEM PRICE" id="item_price_b" class="form-control"></div>
+				<div class="fld_input"><input type="number" name="items_quantity_b" placeholder="ITEM QUANTITY" id="items_quantity_b" class="form-control"></div>
+                <div class="fld_input"><input type="hidden" name="goods_id_b" placeholder="GOODS ID" id="goods_id_b" class="form-control"></div>
+				<div class="fld_input"><select name="service_id_b" id="service_id_b" class="form-control">	
+				<option value="" disabled selected>Service Mode</option>
+									<?php
+                                    $result = get_game_service(1);
+                                    if($result->num_rows > 0){
+									while ($res = $result->fetch_assoc()){
+										if($res['service_id']!= NULL){
+										echo '<option value='.$res['service_id'].'>'.$res['service_mode'].'</option>';
+										}}}?>
+										</select></div>
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="buyorder_game_item_2">Sell</button>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+
 
 
 
