@@ -300,7 +300,7 @@ $('document').ready(function()
                 var service_id_d=$("#service_id_d").val()
                 
 				var data=new FormData();
-				data.append("action_type","sell_game_item");
+				data.append("action_type","buyorder_game_item");
 				data.append("goods_name_d",goods_name_d);
 				data.append("goods_quality_d",goods_quality_d);
                 data.append("goods_rarity_d",goods_rarity_d);

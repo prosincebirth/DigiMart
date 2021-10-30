@@ -372,7 +372,7 @@
 				<div class="fld_input"><input type="number" name="goods_price_d" placeholder="ITEM PRICE" id="goods_price_d" class="form-control"></div>
 				<div class="fld_input"><input type="number" name="goods_quantity_d" placeholder="ITEM QUANTITY" id="goods_quantity_d" class="form-control"></div>
 				<div class="fld_input"><input type="file" name="goods_image_d" placeholder="ITEM IMAGE" id="goods_image_d" value="" class="form-control"></div>
-				<div class="fld_input"><input type="text" name="order_id_d" placeholder="ORDER ID" id="order_id_d" class="form-control" value="1"></div>	
+				<div class="fld_input"><input type="text" name="order_id_d" placeholder="ORDER ID" id="order_id_d" class="form-control" value="2"></div>	
 				<div class="fld_input"><select name="service_id_d" id="service_id_d" class="form-control">	
 				<option value="" disabled selected>Service Mode</option>
 									<?php
@@ -385,7 +385,7 @@
 										</select></div>
             </div>
 			<div class="modal-footer">
-					<button class="btn btn-success" type="button" value="buyorder_game_item">Sell</button>			
+					<button class="btn btn-success" type="button" value="buyorder_game_item">Confirm</button>			
 			</div>
 		</div>
 	</div>

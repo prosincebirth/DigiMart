@@ -82,6 +82,7 @@
 							$service_id_a=$_POST['service_id_a'];
 							//add_new_game_item($item_price,$item_quantity,$goods_id,$user_id,$service_id,$game_id,$order_id)
 							//add_new_goods($goods_name,$goods_quality,$goods_rarity,$goods_detail1,$goods_detail2,$goods_detail3,$goods_image,$game_id)
+							//existing_goods($goods_name,$goods_quality,$goods_rarity,$goods_detail_1,$goods_detail_2,$goods_detail_3,$goods_image,$game_id){
 							if(!empty($goods_name_a) && is_numeric($item_price_b) && is_numeric($items_quantity_b) && !empty($_SESSION['user_session']) && !empty($order_id_a)  && !empty($goods_image_a) && $goods_quality_a != 'null' && $goods_rarity_a != 'null' && $goods_detail1_a != 'null' && $goods_detail2_a != 'null' && $goods_detail3_a != 'null' && $goods_price_a != 'null' && $goods_quantity_a !='null' && $order_id_a !='null' && $service_id_a !='null'){
 								if($result=existing_goods($goods_name_a,$goods_quality_a,$goods_rarity_a,$goods_detail1_a,$goods_detail2_a,$goods_detail3_a,$goods_image_a,'1')){
 									add_new_game_item($goods_price_a,$goods_quantity_a,$result['goods_id'],$_SESSION['user_session'],$service_id_a,'1','1');
@@ -109,6 +110,37 @@
 										echo 'Failed'; // Wrong input , Empty input
 									}
 								break;
+					case "buyorder_game_item":
+							$goods_name_d=$_POST['goods_name_d'];
+							$goods_quality_d=$_POST['goods_quality_d'];
+							$goods_rarity_d=$_POST['goods_rarity_d'];
+							$goods_detail1_d=$_POST['goods_detail1_d'];
+							$goods_detail2_d=$_POST['goods_detail2_d'];
+							$goods_detail3_d=$_POST['goods_detail3_d'];
+							$goods_price_d=$_POST['goods_price_d'];
+							$goods_quantity_d=$_POST['goods_quantity_d'];
+							$goods_image_d ="";
+							if(isset($_FILES['goods_image_d'])){
+							$goods_image_d=file_get_contents($_FILES['goods_image_d']['tmp_name']);}
+							$order_id_d=$_POST['order_id_d'];
+							$service_id_d=$_POST['service_id_d'];
+							//add_new_game_item($item_price,$item_quantity,$goods_id,$user_id,$service_id,$game_id,$order_id)
+							//add_new_goods($goods_name,$goods_quality,$goods_rarity,$goods_detail1,$goods_detail2,$goods_detail3,$goods_image,$game_id)
+							//existing_goods($goods_name,$goods_quality,$goods_rarity,$goods_detail_1,$goods_detail_2,$goods_detail_3,$goods_image,$game_id){
+							if(!empty($goods_name_d) && is_numeric($goods_price_d) && is_numeric($goods_quantity_d) && !empty($_SESSION['user_session']) && !empty($order_id_d)  && !empty($goods_image_d) && $goods_quality_d != 'null' && $goods_rarity_d != 'null' && $goods_detail1_d != 'null' && $goods_detail2_d != 'null' && $goods_detail3_d != 'null' && $goods_price_d != 'null' && $goods_quantity_d !='null' && $order_id_d !='null' && $service_id_d !='null'){
+								if($result=existing_goods($goods_name_d,$goods_quality_d,$goods_rarity_d,$goods_detail1_d,$goods_detail2_d,$goods_detail3_d,$goods_image_d,'1')){
+									add_new_game_item($goods_price_d,$goods_quantity_d,$result['goods_id'],$_SESSION['user_session'],$service_id_d,'1','2');
+									echo 'Success but the item is new';
+								}else{
+									add_new_goods($goods_name_d,$goods_quality_d,$goods_rarity_d,$goods_detail1_d,$goods_detail2_d,$goods_detail3_d,$goods_image_d,'1');
+									$result=existing_goods($goods_name_d,$goods_quality_d,$goods_rarity_d,$goods_detail1_d,$goods_detail2_d,$goods_detail3_d,$goods_image_d,'1');
+									add_new_game_item($goods_price_d,$goods_quantity_d,$result['goods_id'],$_SESSION['user_session'],$service_id_d,'1','2');
+									echo 'Success but the item is already'; 
+								}
+							}else{
+								echo 'Empty fields'; // input is lacking , wrong inputs
+							}
+							break;						
 					case "buy_game_item":
 								$item_ida=$_POST['item_ida'];
 								$buyer_id=$_POST['buyer_id'];
