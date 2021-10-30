@@ -15,33 +15,33 @@
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="buy-market.php">Market</a></li>
-					<li class="breadcrumb-item active" aria-current="page"><?php echo $res['item_name'];?></li>
+					<li class="breadcrumb-item active" aria-current="page"><?php echo $res['goods_name'];?></li>
 				</ol>
 			</nav>
 			<div class="item_detail">
 				<div class="item_detail--wrapper">
 					<div class="item_detail--img--content">
 						<div class="img_wrapper">
-						<?php echo '<img src="data:image/png;base64,'.base64_encode($res['item_image']).'"height="260" >'; ?>
+						<?php echo '<img src="data:image/png;base64,'.base64_encode($res['goods_image']).'"height="260" >'; ?>
 							
 						</div>
 						<div class="item_detail--content">
 							<h2>
-								<span><?php echo $res['item_name'];?></span>								
-								<span class="tag tag--immortal"><?php echo $res['item_rarity'];?></span>
+								<span><?php echo $res['goods_name'];?></span>								
+								<span class="tag tag--immortal"><?php echo $res['goods_rarity'];?></span>
 							</h2>
 							<p>
 								<span>
-								<?php echo $res['item_category1'];?> | 
-									<span><?php echo $res['item_detail1'];?></span>
+								<?php echo $res['goods_category1'];?> | 
+									<span><?php echo $res['goods_detail_1'];?></span>
 								</span>
 								<span>
-								<?php echo $res['item_category2'];?> | 
-									<span><?php echo $res['item_detail2'];?></span>
+								<?php echo $res['goods_category2'];?> | 
+									<span><?php echo $res['goods_detail_2'];?></span>
 								</span>
 								<span>
-								<?php echo $res['item_category3'];?> | 
-									<span><?php echo $res['item_detail3'];?></span>
+								<?php echo $res['goods_category3'];?> | 
+									<span><?php echo $res['goods_detail_3'];?></span>
 								</span>
 							</p>
 							<div class="item__ref--price">
@@ -94,22 +94,22 @@
 								
 							</thead>
 	
-					<?php	$result = display_market_sell_goods	($_GET['goods_id']);
+					<?php	$result = display_market_sell_goods($_GET['goods_id']);
                         	if($result->num_rows > 0){
                         	while ($res = $result->fetch_assoc()){?>      
 							<tbody>
 								<tr>
 									<td>
 										<div class="img_text">
-											<?php echo '<img class="item__img" src="data:image/png;base64,'.base64_encode($res['item_image']).'"height="72" >'; ?>
-											<span><?php echo $res['item_quality']," ",$res['item_name'];?></span>	
+											<?php echo '<img class="item__img" src="data:image/png;base64,'.base64_encode($res['goods_image']).'"height="72" >'; ?>
+											<span><?php echo $res['goods_quality']," ",$res['goods_name'];?></span>	
 										</div>
 									</td>
 									<td>
 										<div class="img_text">
 
-											<?php echo '<img class="item__seller" src="data:image/png;base64,'.base64_encode($res['item_image']).'"height="40" >'; ?>
-											<span><?php echo $res['user_username'];?></span>	
+											<?php echo '<img class="item__seller" src="data:image/png;base64,'.base64_encode($res['goods_image']).'"height="40" >'; ?>
+											<span><?php echo $_SESSION['user_username'];?></span>	
 										</div>
 									</td>
 									<td>

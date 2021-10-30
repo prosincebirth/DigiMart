@@ -191,28 +191,7 @@
 
 	function view_all_items($goods_id){//items-goods.php
 		$conn=connection();
-		$query="SELECT a.item_id,
-		a.goods_id,	
-		a.item_name,	
-		a.item_quality,	
-		a.item_rarity,	
-		a.item_detail1,	
-		a.item_detail2,	
-		a.item_detail3,	
-		a.item_image,	
-		a.item_price,	
-		a.item_status,	
-		a.item_date_added,	
-		a.user_id,
-		a.service_id,	
-		a.game_id,	
-		a.order_id,	
-		b.category_id,	
-		b.item_type,	
-		b.item_category1,	
-		b.item_category2,	
-		b.item_category3,	
-		b.game_id FROM game_items a join item_category b where a.game_id = b.game_id and a.goods_id=:goods_id and a.item_status=1 ORDER BY a.item_price ASC";
+		$query="SELECT * FROM goods a join game_items b join goods_category c WHERE a.goods_id = :goods_id and a.game_id = c.game_id and b.item_status=1 ORDER BY b.item_price ASC";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":goods_id"=>$goods_id));
 		$res = $prepare->fetch(PDO::FETCH_ASSOC);
@@ -220,10 +199,9 @@
 		return $res;}
 
 	
-	function display_market_sell_goods($id){
+	function display_market_sell_goods($goods_id){
 		$conn=connection2();
-		$query="SELECT * FROM game_items a join game_services b join users c where a.service_id = b.service_id and a.goods_id=$id 
-		and a.user_id = c.user_id and order_id =1 and item_status=1 ORDER BY a.item_price ASC;";
+		$query="SELECT * from game_items a join goods b join game_services c where a.goods_id = b.goods_id and a.service_id = c.service_id and a.item_status=1 and a.goods_id = $goods_id ORDER BY a.item_price ASC";
 		$result = $conn->query($query);
 		return $result;
 	}	
@@ -233,6 +211,12 @@
 		$sql="SELECT * from goods a join game_items b where a.goods_id=b.goods_id";
 		$result = $conn->query($sql);
 		return $result;}
+
+	function display_items(){//global-market.php
+		$conn=connection2();
+		$sql="SELECT *,count(b.item_id) as mycount from goods a inner JOIN game_items b where b.goods_id=a.goods_id group by a.goods_id";
+		$result = $conn->query($sql);
+		return $result;}		
 	
 	function display_goods_id($goods_id){//user
 		$conn=connection2();
