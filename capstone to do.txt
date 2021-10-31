@@ -58,3 +58,19 @@ email verification
 gcash payment method
 add to cart
 after register dapat mo open and login modal
+
+
+index/homepage
+login modal/register modal
+market search/sale order/buy order
+store credit/balance/frozen balance
+
+buy order-page
+bargain order
+update page
+edit games,game service
+display items
+
+you cannot buy your own posted sell item
+you cannot buy if you are not logged in 
+**

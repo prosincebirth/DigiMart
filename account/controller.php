@@ -141,6 +141,19 @@
 								echo 'Empty fields'; // input is lacking , wrong inputs
 							}
 							break;						
+					case "buyorder_game_item_2":
+								$item_price_e=$_POST['item_price_e'];
+								$items_quantity_e=$_POST['items_quantity_e']; 
+								$goods_id_e=$_POST['goods_id_e'];
+								$service_id_e=$_POST['service_id_e'];
+								//add_new_game_item($item_price,$item_quantity,$goods_id,$user_id,$service_id,$game_id,$order_id)			
+									if(!empty($item_price_e) && is_numeric($item_price_e) && is_numeric($items_quantity_e) && !empty($items_quantity_e) && !empty($goods_id_e) && $service_id_e != 'NULL'){
+										add_new_game_item($item_price_e,$items_quantity_e,$goods_id_e,$_SESSION['user_session'],$service_id_e,'1','1');
+										echo 'Success'; // success posting item on item page , copying same attribute of the item rather than inputing everything 
+									}else{
+										echo 'Faled'; // Wrong input , Empty input
+									}
+								break;
 					case "buy_game_item":
 								$item_ida=$_POST['item_ida'];
 								$buyer_id=$_POST['buyer_id'];
@@ -165,7 +178,7 @@
 								} 
 							
 
-								break;											
+								break;																		
 								
 				}
 			}

@@ -60,7 +60,8 @@
 						<div>
 							<a class="item_sell" data-toggle="modal" data-target="#sale_game_item_modal_2"
 											data-goods_id="<?php echo $_GET['goods_id'];?>">Sell</a>
-							<button type="button" class="item_place--buy--order" data-toggle="modal" data-target="#buyorder_game_item_modal_2">Place buy order</button>
+							<button type="button" class="item_place--buy--order" data-toggle="modal" data-target="#buyorder_game_item_modal_2"
+											data-goods_id="<?php echo $_GET['goods_id'];?>">Place buy order</a>
 						</div>
 					</div>
 				</div>

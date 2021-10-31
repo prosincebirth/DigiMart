@@ -80,7 +80,6 @@
 	</div>
 </div>
 
-
 <div class="modal fade" id="add_game_modal" role="dialog">
 	<div class="modal-dialog">
 	<div class="modal-content">
@@ -252,8 +251,7 @@
 			</div>
 		</div>
 	</div>
-	</div>
-</div>
+	</div></div>
 
 <div class="modal fade" id="sale_game_item_modal_2" role="dialog"><!-- selling items on item-goods.php-->
 	<div class="modal-dialog">
@@ -308,8 +306,7 @@
 			</div>
 		</div>
 	</div>
-	</div>
-</div>
+	</div></div>
 
 <div class="modal fade" id="buyorder_game_item_modal" role="dialog"><!-- buying items on item-goods.php-->
 	<div class="modal-dialog">
@@ -389,8 +386,7 @@
 			</div>
 		</div>
 	</div>
-	</div>
-</div>
+  </div></div>
 
 <div class="modal fade" id="buyorder_game_item_modal_2" role="dialog"> <!-- modal for buying game items from scratch/new item/ buy order-->
 	<div class="modal-dialog">
@@ -400,10 +396,10 @@
 		<h4 class="modal-title"><center>PLACE BUY ORDER</h4>
 		</div>
 		<div class="modal-body">		
-				<div class="fld_input"><input type="number" name="item_price_b" placeholder="ITEM PRICE" id="item_price_b" class="form-control"></div>
-				<div class="fld_input"><input type="number" name="items_quantity_b" placeholder="ITEM QUANTITY" id="items_quantity_b" class="form-control"></div>
-                <div class="fld_input"><input type="hidden" name="goods_id_b" placeholder="GOODS ID" id="goods_id_b" class="form-control"></div>
-				<div class="fld_input"><select name="service_id_b" id="service_id_b" class="form-control">	
+				<div class="fld_input"><input type="number" name="item_price_e" placeholder="ITEM PRICE" id="item_price_e" class="form-control"></div>
+				<div class="fld_input"><input type="number" name="items_quantity_e" placeholder="ITEM QUANTITY" id="items_quantity_e" class="form-control"></div>
+                <div class="fld_input"><input type="hidden" name="goods_id_e" placeholder="GOODS ID" id="goods_id_e" class="form-control"></div>
+				<div class="fld_input"><select name="service_id_e" id="service_id_e" class="form-control">	
 				<option value="" disabled selected>Service Mode</option>
 									<?php
                                     $result = get_game_service(1);
@@ -423,6 +419,31 @@
 </div>
 
 
+<div class="modal fade" id="buy_game_item_modal" role="dialog"><!-- buying items on item-goods.php-->
+	<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title">BUY ITEM</h4>
+		</div>
+		<div class="modal-body">
+			
+				<div class="fld_input"><input type="text" name="item_price_f" placeholder="ITEM PRICE" id="order_id_c" class="form-control"></div>
+                <div class="fld_input"><input type="text" name="item_id_c" placeholder="ITEM QUANTITY" id="item_id_c" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="buyer_id_c" placeholder="ITEM ID" id="buyer_id_c" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="seller_id_c" placeholder="BUYER ID" id="seller_id_c" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="service_id_c" placeholder="SELLER ID" id="service_id_c" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="item_price_c" placeholder="SERVICE ID" id="item_price_c" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="game_id_c" placeholder="GAME ID" id="game_id_c" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="game_id_c" placeholder="ORDER ID" id="game_id_c" class="form-control"></div>
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="buy_game_item">BUY</button>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
 
 
 

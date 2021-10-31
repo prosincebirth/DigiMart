@@ -91,8 +91,12 @@ $('document').ready(function()
    
     $('#sale_game_item_modal_2').on('show.bs.modal', function(e) {
         var goods_id = $(e.relatedTarget).data('goods_id');
-   
         $(e.currentTarget).find('input[name="goods_id_b"]').val(goods_id);
+    });
+
+    $('#buyorder_game_item_modal_2').on('show.bs.modal', function(e) {
+        var goods_id = $(e.relatedTarget).data('goods_id');
+        $(e.currentTarget).find('input[name="goods_id_e"]').val(goods_id);
     });
    
 	$(".btn").on("click",function(){
@@ -278,6 +282,7 @@ $('document').ready(function()
 					success:function(res){
 							
                             if(res=="Success"){
+                            alert(res)    
                             location.reload();
                             }else{
                             alert(res)
@@ -327,6 +332,38 @@ $('document').ready(function()
 				});//END OF AJAX IN ADDING NEW ITEM
             //}				
 			break;//END OF SAVE NEW ITEM
+            case "buyorder_game_item_2":
+				var item_price_e=$("#item_price_e").val()
+                var items_quantity_e=$("#items_quantity_e").val()
+                var goods_id_e=$("#goods_id_e").val()
+                var service_id_e=$("#service_id_e").val()
+             
+				var data=new FormData();
+				data.append("action_type","buyorder_game_item_2");
+				data.append("item_price_e",item_price_e);
+				data.append("items_quantity_e",items_quantity_e);
+                data.append("goods_id_e",goods_id_e);
+				data.append("service_id_e",service_id_e);
+  
+				$.ajax({	
+					url:"account/controller.php",
+					method:"post",
+					data:data,
+					contentType:false,
+					cache:false,
+					processData:false,
+					success:function(res){
+							
+                            if(res=="Success"){
+                            alert(res)
+                            location.reload();
+                            }else{
+                            alert(res)
+                            }
+                            
+					}
+				});//END 
+			break;//END 
             case "buy_game_item":
 				var item_ida=$("#item_ida").val()
                 var buyer_id=$("#buyer_id").val()
