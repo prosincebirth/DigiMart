@@ -2,12 +2,12 @@
 <?php if(!isset($_GET['goods_id'])){header("Location: market.php"); exit();} ?>
 <?php include('header.php'); ?>
 
-<?php $res=view_all_items($_GET['goods_id']);?>
+<?php $res=display_goods($_GET['goods_id']);?>
+<?php $game=display_game_category(1);?>
 
 <link rel="preload stylesheet" href="assets/css/item-card.css" as="style" crossorigin>
 <link rel="preload stylesheet" href="assets/css/item-grid.css" as="style" crossorigin>
 <link rel="preload stylesheet" href="assets/css/item.css" as="style" crossorigin>
-
 
 <main>
 	<section class="market_section">
@@ -32,15 +32,15 @@
 							</h2>
 							<p>
 								<span>
-								<?php echo $res['goods_category1'];?> | 
+								<?php echo $game['goods_category1'];?> | 
 									<span><?php echo $res['goods_detail_1'];?></span>
 								</span>
 								<span>
-								<?php echo $res['goods_category2'];?> | 
+								<?php echo $game['goods_category2'];?> | 
 									<span><?php echo $res['goods_detail_2'];?></span>
 								</span>
 								<span>
-								<?php echo $res['goods_category3'];?> | 
+								<?php echo $game['goods_category3'];?> | 
 									<span><?php echo $res['goods_detail_3'];?></span>
 								</span>
 							</p>
@@ -127,14 +127,13 @@
 									<td>
 										<div class="item__group--cta">
 											<a class="buy_btn wishlist_btn"  data-toggle="modal" data-target="#buy_game_item_modal" 
-											data-item_id="<?php echo $res['item_id'];?>" 
-											data-seller_id="<?php echo $res['user_id'];?>" 
-											data-service_id="<?php echo $res['service_id'];?>" 
-											data-item_price="<?php echo $res['item_price'];?>" 
-											data-game_id="<?php echo $res['game_id'];?>" 
-											data-order_id="<?php echo $res['order_id'];?>"
-										
-											data-buyer_id="<?php if(!isset($_GET['goods_id'])){echo $_SESSION['user_session']; }?>"> Buy</a>
+											data-item_price_f="<?php echo $res['item_price'];?>" 
+											data-item_id_f="<?php echo $res['item_id'];?>"
+											data-buyer_id_f="<?php if(!isset($_GET['goods_id'])){echo $_SESSION['user_session']; }?>" 
+											data-seller_id_f="<?php echo $res['user_id'];?>" 
+											data-service_id_f="<?php echo $res['service_id'];?>" 
+											data-game_id_f="<?php echo $res['game_id'];?>" 
+											data-order_id_f="<?php echo $res['order_id'];?>"> Buy</a>
 											
 											<a data-dismiss="modal" data-toggle="modal" data-target="#login_modal">Bargain</a>
 											<a>

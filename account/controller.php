@@ -148,36 +148,36 @@
 								$service_id_e=$_POST['service_id_e'];
 								//add_new_game_item($item_price,$item_quantity,$goods_id,$user_id,$service_id,$game_id,$order_id)			
 									if(!empty($item_price_e) && is_numeric($item_price_e) && is_numeric($items_quantity_e) && !empty($items_quantity_e) && !empty($goods_id_e) && $service_id_e != 'NULL'){
-										add_new_game_item($item_price_e,$items_quantity_e,$goods_id_e,$_SESSION['user_session'],$service_id_e,'1','1');
+										add_new_game_item($item_price_e,$items_quantity_e,$goods_id_e,$_SESSION['user_session'],$service_id_e,'1','2');
 										echo 'Success'; // success posting item on item page , copying same attribute of the item rather than inputing everything 
 									}else{
 										echo 'Faled'; // Wrong input , Empty input
 									}
 								break;
 					case "buy_game_item":
-								$item_ida=$_POST['item_ida'];
-								$buyer_id=$_POST['buyer_id'];
-								$seller_id=$_POST['seller_id'];
-								$service_ida=$_POST['service_ida'];
-								$item_pricea=$_POST['item_pricea'];
-								$game_id=$_POST['game_id'];
-								$order_id=$_POST['order_id'];
+								$item_price_f=$_POST['item_price_f'];
+								$item_amount_f=$_POST['item_amount_f'];
+								$item_id_f=$_POST['item_id_f'];
+								$buyer_id_f=$_POST['buyer_id_f'];
+								$seller_id_f=$_POST['seller_id_f'];
+								$service_id_f=$_POST['service_id_f'];
+								$game_id_f=$_POST['game_id_f'];
+								$order_id_f=$_POST['order_id_f'];
 								
-
-								if(empty($buyer_id)){ // trappings for not logged in
+								//add_transaction($transaction_quantity,$transaction_amount,$game_item_id,$buyer_id,$seller_id,$service_id,$game_id,$order_id)
+								if(empty($buyer_id_f)){ // trappings for not logged in
 									echo 'Please Login';
 								}
-								else if($buyer_id == $seller_id){ // cannot buy your own game 
+								else if($buyer_id_f == $seller_id_f){ // cannot buy your own game 
 									echo 'You cannot buy your game ';
 								}
-								//else if{ for balance trappings , // cannot buy because the balance is insufficient
+								//else if{} for balance trappings , // cannot buy because the balance is insufficient
 								//}
 								else{
-									add_transaction("SALE ORDER",$item_pricea,$item_ida,$buyer_id,$seller_id,$service_ida,$order_id);
+									add_transaction($item_amount_f,$item_price_f,$item_id_f,$buyer_id_f,$seller_id_f,$service_id_f,$game_id_f,$order_id_f);
 									echo 'success '; // success not buying his own posting
 								} 
 							
-
 								break;																		
 								
 				}

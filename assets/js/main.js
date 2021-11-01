@@ -1,6 +1,5 @@
 $('document').ready(function()
 {
-
     $('.js-drop').on('click', function() {
         $(this).toggleClass('open');
     });
@@ -72,31 +71,51 @@ $('document').ready(function()
     });
 
     $('#buy_game_item_modal').on('show.bs.modal', function(e) {
-        var item_id = $(e.relatedTarget).data('item_id');
-        var buyer_id = $(e.relatedTarget).data('buyer_id');
-        var seller_id = $(e.relatedTarget).data('seller_id');
-        var service_id = $(e.relatedTarget).data('service_id');
-        var item_price = $(e.relatedTarget).data('item_price');
-        var game_id = $(e.relatedTarget).data('game_id');
-        var order_id = $(e.relatedTarget).data('order_id');
+        
+        var item_price_f = $(e.relatedTarget).data('item_price_f');
+        //var item_amount_f = $(e.relatedTarget).data('item_amount_f');
+        var item_id_f = $(e.relatedTarget).data('item_id_f');
+        var buyer_id_f = $(e.relatedTarget).data('buyer_id_f');
+        var seller_id_f = $(e.relatedTarget).data('seller_id_f');
+        var service_id_f = $(e.relatedTarget).data('service_id_f');
+        var game_id_f = $(e.relatedTarget).data('game_id_f');
+        var order_id_f = $(e.relatedTarget).data('order_id_f');
+        
+        $(e.currentTarget).find('input[name="item_price_f"]').val(item_price_f);
+        $(e.currentTarget).find('span[name="item_price_11"]').html(item_price_f);
+        $(e.currentTarget).find('input[name="item_id_f"]').val(item_id_f);
+        $(e.currentTarget).find('input[name="buyer_id_f"]').val(buyer_id_f);
+        $(e.currentTarget).find('input[name="seller_id_f"]').val(seller_id_f);
+        $(e.currentTarget).find('input[name="service_id_f"]').val(service_id_f);
+        $(e.currentTarget).find('input[name="game_id_f"]').val(game_id_f);
+        $(e.currentTarget).find('input[name="order_id_f"]').val(order_id_f);
 
-        $(e.currentTarget).find('input[name="item_ida"]').val(item_id);
-        $(e.currentTarget).find('input[name="buyer_id"]').val(buyer_id);
-        $(e.currentTarget).find('input[name="seller_id"]').val(seller_id);
-        $(e.currentTarget).find('input[name="service_ida"]').val(service_id);
-        $(e.currentTarget).find('input[name="item_pricea"]').val(item_price);
-        $(e.currentTarget).find('input[name="game_id"]').val(game_id);
-        $(e.currentTarget).find('input[name="order_id"]').val(order_id);
+            //document.getElementById('item_price_z').value = item_price_f;
+           // document.getElementById('item_price_z').value = item_price_f + item_amount_f;
+
     });
-   
+
+    $(function(){ // this will be called when the DOM is ready
+        $('#item_quantity_f').keyup(function() {
+            var price=Number($("#item_price_f").val())
+            var amount=Number($("#item_quantity_f").val())
+            
+            $('#item_price_11').html(price)
+            $('#item_price_22').html(price * amount)
+
+        
+        });
+      });
+    
+
     $('#sale_game_item_modal_2').on('show.bs.modal', function(e) {
-        var goods_id = $(e.relatedTarget).data('goods_id');
-        $(e.currentTarget).find('input[name="goods_id_b"]').val(goods_id);
+        var goods_id_b = $(e.relatedTarget).data('goods_id');
+        $(e.currentTarget).find('input[name="goods_id_b"]').val(goods_id_b);
     });
 
     $('#buyorder_game_item_modal_2').on('show.bs.modal', function(e) {
-        var goods_id = $(e.relatedTarget).data('goods_id');
-        $(e.currentTarget).find('input[name="goods_id_e"]').val(goods_id);
+        var goods_id_e = $(e.relatedTarget).data('goods_id');
+        $(e.currentTarget).find('input[name="goods_id_e"]').val(goods_id_e);
     });
    
 	$(".btn").on("click",function(){
@@ -365,23 +384,29 @@ $('document').ready(function()
 				});//END 
 			break;//END 
             case "buy_game_item":
-				var item_ida=$("#item_ida").val()
-                var buyer_id=$("#buyer_id").val()
-                var seller_id=$("#seller_id").val()
-                var service_ida=$("#service_ida").val()
-                var item_pricea=$("#item_pricea").val()
-                var game_id=$("#game_id").val()
-                var order_id=$("#order_id").val()  
+              
+                    
+				//var item_price_f=$("#item_price_f").val()
+                var item_amount_f=$("#item_amount_f").val()
+                var item_id_f=$("#item_id_f").val()
+                var buyer_id_f=$("#buyer_id_f").val()
+                var seller_id_f=$("#seller_id_f").val()
+                var service_id_f=$("#service_id_f").val()
+                var game_id_f=$("#game_id_f").val()
+                var order_id_f=$("#order_id_f").val()  
+
+
          
 				var data=new FormData();
 				data.append("action_type","buy_game_item");
-				data.append("item_ida",item_ida);
-				data.append("buyer_id",buyer_id);
-                data.append("seller_id",seller_id);
-				data.append("service_ida",service_ida);
-				data.append("item_pricea",item_pricea);
-                data.append("game_id",game_id);
-                data.append("order_id",order_id);
+				data.append("item_price_f",item_price_f);
+				data.append("item_amount_f",item_amount_f);
+                data.append("item_id_f",item_id_f);
+				data.append("buyer_id_f",buyer_id_f);
+				data.append("seller_id_f",seller_id_f);
+                data.append("service_id_f",service_id_f);
+                data.append("game_id_f",game_id_f);
+                data.append("order_id_f",order_id_f);
 
 				$.ajax({	
 					url:"account/controller.php",
@@ -397,8 +422,10 @@ $('document').ready(function()
 				});//END OF AJAX IN ADDING NEW ITEM
             //}				
 			break;//END OF SAVE NEW ITEM
-            
-		};	
+          
+        
+		};
+        	
 	});	
 
 

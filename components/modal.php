@@ -27,11 +27,10 @@
             <span>Not a member yet?</span>
             <a data-dismiss="modal" data-toggle='modal' href='#register_modal' class="link font-14">Sign-up</a>
         </div>
-			</div>   
+				</div>   
+			</div>
 		</div>
-	</div>
-	</div>
-</div>
+	</div></div>
 
 <div class="modal fade" id="register_modal" role="dialog">
 	<div class="modal-dialog">
@@ -77,8 +76,7 @@
 			</div>   
 		</div>
 	</div>
-	</div>
-</div>
+	</div></div>
 
 <div class="modal fade" id="add_game_modal" role="dialog">
 	<div class="modal-dialog">
@@ -95,8 +93,7 @@
 			<button class="btn btn-success" type="button" value="add_new_game">Save</button>
 		</div>
 	</div>
-	</div>
-</div>
+	</div></div>
 
 <div class="modal fade" id="edit_game_modal" role="dialog">
 	<div class="modal-dialog">
@@ -115,8 +112,7 @@
 			</div>
 		</div>
 	</div>
-	</div>
-</div>
+	</div></div>
 
 <div class="modal fade" id="add_services_modal" role="dialog">
 	<div class="modal-dialog">
@@ -147,8 +143,7 @@
 			</div>  
 		</div>
 	</div>
-	</div>
-</div>
+	</div></div>
 
 <div class="modal fade" id="edit_services_modal" role="dialog">
 	<div class="modal-dialog">
@@ -170,8 +165,7 @@
 			</div>   
 		</div>
 	</div>
-	</div>
-</div>
+	</div></div>
 
 <div class="modal fade" id="sale_game_item_modal" role="dialog"> <!-- modal for adding game items from scratch/new item-->
 	<div class="modal-dialog">
@@ -280,33 +274,8 @@
 			</div>
 		</div>
 	</div>
-	</div>
-</div>
-
-<div class="modal fade" id="buy_game_item_modal" role="dialog"><!-- buying items on item-goods.php-->
-	<div class="modal-dialog">
-	<div class="modal-content">
-		<div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title">BUY ITEM</h4>
-		</div>
-		<div class="modal-body">
-			
-				<div class="fld_input"><input type="text" name="order_id_c" placeholder="ORDER ID" id="order_id_c" class="form-control"></div>
-                <div class="fld_input"><input type="text" name="item_id_c" placeholder="ITEM ID" id="item_id_c" class="form-control"></div>
-				<div class="fld_input"><input type="text" name="buyer_id_c" placeholder="BUYER ID" id="buyer_id_c" class="form-control"></div>
-				<div class="fld_input"><input type="text" name="seller_id_c" placeholder="SELLER ID" id="seller_id_c" class="form-control"></div>
-				<div class="fld_input"><input type="text" name="service_id_c" placeholder="SERVICE ID" id="service_id_c" class="form-control"></div>
-				<div class="fld_input"><input type="text" name="item_price_c" placeholder="ITEM PRICE" id="item_price_c" class="form-control"></div>
-				<div class="fld_input"><input type="text" name="game_id_c" placeholder="GAME ID" id="game_id_c" class="form-control"></div>
-            </div>
-			<div class="modal-footer">
-					<button class="btn btn-success" type="button" value="buy_game_item">BUY</button>
-				
-			</div>
-		</div>
-	</div>
 	</div></div>
+
 
 <div class="modal fade" id="buyorder_game_item_modal" role="dialog"><!-- buying items on item-goods.php-->
 	<div class="modal-dialog">
@@ -415,8 +384,7 @@
 			</div>
 		</div>
 	</div>
-	</div>
-</div>
+	</div></div>
 
 
 <div class="modal fade" id="buy_game_item_modal" role="dialog"><!-- buying items on item-goods.php-->
@@ -424,26 +392,28 @@
 	<div class="modal-content">
 		<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title">BUY ITEM</h4>
+		<h4 class="modal-title"><center>BUY ITEM</h4>
 		</div>
 		<div class="modal-body">
-			
-				<div class="fld_input"><input type="text" name="item_price_f" placeholder="ITEM PRICE" id="order_id_c" class="form-control"></div>
-                <div class="fld_input"><input type="text" name="item_id_c" placeholder="ITEM QUANTITY" id="item_id_c" class="form-control"></div>
-				<div class="fld_input"><input type="text" name="buyer_id_c" placeholder="ITEM ID" id="buyer_id_c" class="form-control"></div>
-				<div class="fld_input"><input type="text" name="seller_id_c" placeholder="BUYER ID" id="seller_id_c" class="form-control"></div>
-				<div class="fld_input"><input type="text" name="service_id_c" placeholder="SELLER ID" id="service_id_c" class="form-control"></div>
-				<div class="fld_input"><input type="text" name="item_price_c" placeholder="SERVICE ID" id="item_price_c" class="form-control"></div>
-				<div class="fld_input"><input type="text" name="game_id_c" placeholder="GAME ID" id="game_id_c" class="form-control"></div>
-				<div class="fld_input"><input type="text" name="game_id_c" placeholder="ORDER ID" id="game_id_c" class="form-control"></div>
+									
+				Item Price : <span id="item_price_11"  name="item_price_11"> </span></br>
+				Total : <span id="item_price_22"  name="item_price_22"> </span>
+
+				<div class="fld_input"><input type="hidden" name="item_price_f" placeholder="ITEM PRICE" id="item_price_f" class="form-control"></div>						
+                <div class="fld_input"><input type="text" name="item_quantity_f" placeholder="ITEM QUANTITY" id="item_quantity_f" value ="1" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="item_id_f" placeholder="ITEM ID" id="item_id_f" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="buyer_id_f" placeholder="BUYER ID" id="buyer_id_f" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="seller_id_f" placeholder="SELLER ID" id="seller_id_f" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="service_id_f" placeholder="SERVICE ID" id="service_id_f" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="game_id_f" placeholder="GAME ID" id="game_id_f" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="order_id_f" placeholder="ORDER ID" id="order_id_f" class="form-control"></div>
             </div>
 			<div class="modal-footer">
-					<button class="btn btn-success" type="button" value="buy_game_item">BUY</button>
+					<button class="btn btn-success" type="button" value="buy_game_item">Confirm</button>
 			</div>
 		</div>
 	</div>
-	</div>
-</div>
+	</div></div>
 
 
 

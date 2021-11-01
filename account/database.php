@@ -63,11 +63,11 @@
 		$exec=$prepare->execute(array(":item_id"=>$item_id,":goods_id"=>$goods_id));
 		$conn=null;}	
 
-	function add_transaction($transaction_type,$transaction_amount,$game_item_id,$buyer_id,$seller_id,$service_id,$game_id){//item-goods.php
+	function add_transaction($transaction_quantity,$transaction_amount,$game_item_id,$buyer_id,$seller_id,$service_id,$game_id,$order_id){//item-goods.php
 		$conn=connection();
-		$query="INSERT INTO transactions(transaction_type,transaction_amount,game_item_id,buyer_id,seller_id,service_id,game_id) values(:transaction_type,:transaction_amount,:game_item_id,:buyer_id,:seller_id,:service_id,:game_id)"; 
+		$query="INSERT INTO transactions(transaction_type,transaction_amount,game_item_id,buyer_id,seller_id,service_id,game_id,order_id) values(:transaction_type,:transaction_amount,:game_item_id,:buyer_id,:seller_id,:service_id,:game_id,:order_id)"; 
 		$prepare=$conn->prepare($query);
-		$exec=$prepare->execute(array(":transaction_type"=>$transaction_type,":transaction_amount"=>$transaction_amount,":game_item_id"=>$game_item_id,":buyer_id"=>$buyer_id,":seller_id"=>$seller_id,":service_id"=>$service_id,":game_id"=>$game_id));
+		$exec=$prepare->execute(array(":transaction_type"=>$transaction_type,":transaction_amount"=>$transaction_amount,":game_item_id"=>$game_item_id,":buyer_id"=>$buyer_id,":seller_id"=>$seller_id,":service_id"=>$service_id,":game_id"=>$game_id,":order_id"=>$order_id));
 		$conn=null;}
 
 
@@ -189,11 +189,20 @@
 		$conn=null;
 		return $res;}
 
-	function view_all_items($goods_id){//items-goods.php
+	function display_goods($goods_id){//items-goods.php
 		$conn=connection();
-		$query="SELECT * FROM goods a join game_items b join goods_category c WHERE a.goods_id = :goods_id and a.game_id = c.game_id and b.item_status=1 ORDER BY b.item_price ASC";
+		$query="SELECT * FROM goods a join game_items b WHERE a.goods_id = :goods_id and b.item_status=1 ORDER BY b.item_price ASC";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":goods_id"=>$goods_id));
+		$res = $prepare->fetch(PDO::FETCH_ASSOC);
+		$conn=null;
+		return $res;}
+
+	function display_game_category($game_id){//items-goods.php
+		$conn=connection();
+		$query="SELECT * FROM goods_category where game_id=:game_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":game_id"=>$game_id));
 		$res = $prepare->fetch(PDO::FETCH_ASSOC);
 		$conn=null;
 		return $res;}
