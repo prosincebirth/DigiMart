@@ -396,11 +396,13 @@
 		</div>
 		<div class="modal-body">
 									
-				Item Price : <span id="item_price_11"  name="item_price_11"> </span></br>
-				Total : <span id="item_price_22"  name="item_price_22"> </span>
+				Item Price : <span id="display_price"  name="display_price"> </span></br>
+				Total : <span id="display_total"  name="display_total"> </span>
 
 				<div class="fld_input"><input type="hidden" name="item_price_f" placeholder="ITEM PRICE" id="item_price_f" class="form-control"></div>						
-                <div class="fld_input"><input type="text" name="item_quantity_f" placeholder="ITEM QUANTITY" id="item_quantity_f" value ="1" class="form-control"></div>
+                <div class="fld_input"><input type="number" name="item_quantity_f" placeholder="ITEM QUANTITY" id="item_quantity_f" value ="1" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="item_total_f" placeholder="ITEM TOTAL" id="item_total_f" class="form-control"></div>	
+				<div class="fld_input"><input type="hidden" name="item_stock_f" placeholder="ITEM STOCK" id="item_stock_f" class="form-control"></div>	
 				<div class="fld_input"><input type="hidden" name="item_id_f" placeholder="ITEM ID" id="item_id_f" class="form-control"></div>
 				<div class="fld_input"><input type="hidden" name="buyer_id_f" placeholder="BUYER ID" id="buyer_id_f" class="form-control"></div>
 				<div class="fld_input"><input type="hidden" name="seller_id_f" placeholder="SELLER ID" id="seller_id_f" class="form-control"></div>

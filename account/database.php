@@ -1,7 +1,6 @@
 <?php 
 	 if(!isset($_SESSION)){
-		session_start();
-	 }
+		session_start();}
 
 //////////////// DB /////////////////
     function connection(){// DB CONNECTION PDO
@@ -63,15 +62,12 @@
 		$exec=$prepare->execute(array(":item_id"=>$item_id,":goods_id"=>$goods_id));
 		$conn=null;}	
 
-	function add_transaction($transaction_quantity,$transaction_amount,$game_item_id,$buyer_id,$seller_id,$service_id,$game_id,$order_id){//item-goods.php
+	function add_transaction($transaction_quantity,$transaction_amount,$item_id,$buyer_id,$seller_id,$service_id,$game_id,$order_id){//item-goods.php
 		$conn=connection();
-		$query="INSERT INTO transactions(transaction_type,transaction_amount,game_item_id,buyer_id,seller_id,service_id,game_id,order_id) values(:transaction_type,:transaction_amount,:game_item_id,:buyer_id,:seller_id,:service_id,:game_id,:order_id)"; 
+		$query="INSERT INTO transactions(transaction_quantity,transaction_amount,item_id,buyer_id,seller_id,service_id,game_id,order_id) values(:transaction_quantity,:transaction_amount,:item_id,:buyer_id,:seller_id,:service_id,:game_id,:order_id)"; 
 		$prepare=$conn->prepare($query);
-		$exec=$prepare->execute(array(":transaction_type"=>$transaction_type,":transaction_amount"=>$transaction_amount,":game_item_id"=>$game_item_id,":buyer_id"=>$buyer_id,":seller_id"=>$seller_id,":service_id"=>$service_id,":game_id"=>$game_id,":order_id"=>$order_id));
+		$exec=$prepare->execute(array(":transaction_quantity"=>$transaction_quantity,":transaction_amount"=>$transaction_amount,":item_id"=>$item_id,":buyer_id"=>$buyer_id,":seller_id"=>$seller_id,":service_id"=>$service_id,":game_id"=>$game_id,":order_id"=>$order_id));
 		$conn=null;}
-
-
-	
 
 
 ////////////////////////TRAPPINGS//////////////////////////////MESC///////////////////
@@ -109,8 +105,7 @@
 		$exec=$prepare->execute(array(":goods_id"=>$goods_id));
 		$res = $prepare->fetch(PDO::FETCH_ASSOC);
 		$conn=null;
-		return $res;
-	}
+		return $res;}
 
 	function login($user_username){//user
 		$conn=connection();
@@ -125,11 +120,9 @@
 		$conn=connection2();
 		$query="UPDATE users SET last_login_date = current_timestamp() WHERE users.user_id = $user_id";
 		$prepare=$conn->query($query);
-		$conn=null;
-	}
+		$conn=null;}
 
 ///////////////////UPDATE FUNCTIIONS/////////////////////////////////
-
 	function edit_game($game_id,$game_name,$game_desc,$game_region,$game_server){
 		$conn=connection();
 		$query="UPDATE games set game_name=:game_name,game_desc=:game_desc,game_region=:game_region,game_server=:game_server where game_id=:game_id";
@@ -212,8 +205,7 @@
 		$conn=connection2();
 		$query="SELECT * from game_items a join goods b join game_services c join users d where a.goods_id = b.goods_id and a.user_id=d.user_id and d.user_status=1 and a.service_id = c.service_id and a.item_status=1 and a.goods_id = $goods_id ORDER BY a.item_price ASC";
 		$result = $conn->query($query);
-		return $result;
-	}	
+		return $result;}	
 
 	function display_item(){//global-market.php
 		$conn=connection2();
@@ -237,8 +229,7 @@
 		$conn=connection2();
 		$sql="SELECT * from goods_information where game_id=$game_id";
 		$result = $conn->query($sql);
-		return $result;
-	}
+		return $result;}
 
 	function get_goods_category($game_id){//USED IN sale_game_item_modal
 		$conn=connection();
