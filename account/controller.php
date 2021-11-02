@@ -182,7 +182,34 @@
 									echo 'success '; // success not buying his own posting
 								} 
 								break;		
+					case "bargain_game_item":
+								$item_quantity_f=$_POST['item_quantity_f'];
+								$item_total_f=$_POST['item_total_f'];
+								$item_id_f=$_POST['item_id_f'];
+								$buyer_id_f=$_POST['buyer_id_f'];
+								$seller_id_f=$_POST['seller_id_f'];
+								$service_id_f=$_POST['service_id_f'];
+								$game_id_f=$_POST['game_id_f'];
+								$order_id_f=$_POST['order_id_f'];
+								$item_stock_f=$_POST['item_stock_f'];
 								
+								//add_transaction($transaction_quantity,$transaction_amount,$game_item_id,$buyer_id,$seller_id,$service_id,$game_id,$order_id)
+								if(empty($buyer_id_f)){ // trappings for not logged in
+									echo 'Please Login';
+								}
+								else if($buyer_id_f == $seller_id_f){ // cannot buy your own game 
+									echo 'You cannot buy your game ';
+								}
+								else if($item_quantity_f > $item_stock_f){ // cannot exceed stock
+									echo 'You cannot buy your game ';
+								}
+								//else if(){ balance trappings , cannot buy because the balance is insufficient
+								//}
+								else{
+									add_transaction($item_quantity_f,$item_total_f,$item_id_f,$buyer_id_f,$seller_id_f,$service_id_f,$game_id_f,$order_id_f);
+									echo 'success '; // success not buying his own posting
+								} 
+								break;				
 								
 
 				}

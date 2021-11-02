@@ -450,10 +450,10 @@
 	</div>
 	
 
+
 <div class="modal fade" id="bargain_item_modal" role="dialog"><!-- buying items on item-goods.php-->
-	
-<div class="modal-dialog">
-	<div class="modal-content">
+	<div class="modal-dialog">
+		<div class="modal-content">
 		<div class="modal-header"> 
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
 		<h4 class="modal-title"><center>BARGAIN ITEM</h4>
@@ -480,8 +480,9 @@
 					<button class="btn btn-success" type="button" value="bargain_game_item">Confirm</button>
 			</div>
 		</div>
-	</div>
+		</div>
 	</div></div>	
+
 	
 
 

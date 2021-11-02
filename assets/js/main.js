@@ -460,9 +460,8 @@ $('document').ready(function()
                 var game_id_f=$("#game_id_f").val()
                 var order_id_f=$("#order_id_f").val()  
 
-
 				var data=new FormData();
-				data.append("action_type","buy_game_item");
+				data.append("action_type","bargain_game_item");
 				data.append("item_quantity_f",item_quantity_f);
                 data.append("item_stock_f",item_stock_f);
 				data.append("item_total_f",item_total_f);
