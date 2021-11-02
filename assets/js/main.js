@@ -93,18 +93,38 @@ $('document').ready(function()
         $(e.currentTarget).find('input[name="order_id_f"]').val(order_id_f);
     });
 
-    $(function(){ // this will be called when the DOM is ready
-        $('#item_quantity_f').keyup(function() {
-            var price=Number($("#item_price_f").val())
-            var quantity=Number($("#item_quantity_f").val())
+// this will be called when the DOM is ready
+    $('#item_quantity_f').keyup(function() {
+        var price=Number($("#item_price_f").val())
+        var quantity=Number($("#item_quantity_f").val())
+        $('#display_price_f').html(price)
+        $('#display_total_f').html(price * quantity)
+        $('#item_total_f').val(price * quantity)
+    });
 
-            $('#display_price').html(price)
-            $('#display_total').html(price * quantity)
-            $('#item_total_f').val(price * quantity)
-            
-        });
+    $('#bargain_item_modal').on('show.bs.modal', function(e) {
+        var item_stock_f = $(e.relatedTarget).data('item_stock_f');
+        var item_price_f = $(e.relatedTarget).data('item_price_f');
+        //var item_amount_f = $(e.relatedTarget).data('item_amount_f');
+        var item_id_f = $(e.relatedTarget).data('item_id_f');
+        var buyer_id_f = $(e.relatedTarget).data('buyer_id_f');
+        var seller_id_f = $(e.relatedTarget).data('seller_id_f');
+        var service_id_f = $(e.relatedTarget).data('service_id_f');
+        var game_id_f = $(e.relatedTarget).data('game_id_f');
+        var order_id_f = $(e.relatedTarget).data('order_id_f');
         
-      });
+        $(e.currentTarget).find('input[name="item_stock_f"]').val(item_stock_f);
+        $(e.currentTarget).find('input[name="item_price_f"]').val(item_price_f);
+        $(e.currentTarget).find('span[name="display_price"]').html(item_price_f);
+        $(e.currentTarget).find('input[name="item_total_f"]').val(item_price_f);
+        $(e.currentTarget).find('input[name="item_id_f"]').val(item_id_f);
+        $(e.currentTarget).find('input[name="buyer_id_f"]').val(buyer_id_f);
+        $(e.currentTarget).find('input[name="seller_id_f"]').val(seller_id_f);
+        $(e.currentTarget).find('input[name="service_id_f"]').val(service_id_f);
+        $(e.currentTarget).find('input[name="game_id_f"]').val(game_id_f);
+        $(e.currentTarget).find('input[name="order_id_f"]').val(order_id_f);
+    });
+    
     
 
     $('#sale_game_item_modal_2').on('show.bs.modal', function(e) {

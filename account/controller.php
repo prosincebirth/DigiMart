@@ -155,7 +155,6 @@
 									}
 								break;
 					case "buy_game_item":
-
 								$item_quantity_f=$_POST['item_quantity_f'];
 								$item_total_f=$_POST['item_total_f'];
 								$item_id_f=$_POST['item_id_f'];
@@ -166,7 +165,6 @@
 								$order_id_f=$_POST['order_id_f'];
 								$item_stock_f=$_POST['item_stock_f'];
 								
-								echo $buyer_id_f;
 								//add_transaction($transaction_quantity,$transaction_amount,$game_item_id,$buyer_id,$seller_id,$service_id,$game_id,$order_id)
 								if(empty($buyer_id_f)){ // trappings for not logged in
 									echo 'Please Login';
@@ -183,9 +181,8 @@
 									add_transaction($item_quantity_f,$item_total_f,$item_id_f,$buyer_id_f,$seller_id_f,$service_id_f,$game_id_f,$order_id_f);
 									echo 'success '; // success not buying his own posting
 								} 
-							
-								break;																		
-								
+								break;																										
 				}
+				
 			}
 ?>

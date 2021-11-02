@@ -396,8 +396,8 @@
 		</div>
 		<div class="modal-body">
 									
-				Item Price : <span id="display_price"  name="display_price"> </span></br>
-				Total : <span id="display_total"  name="display_total"> </span>
+				Item Price : <span id="display_price_f"  name="display_price_f"> </span></br>
+				Total : <span id="display_total_f"  name="display_total_f"> </span>
 
 				<div class="fld_input"><input type="hidden" name="item_price_f" placeholder="ITEM PRICE" id="item_price_f" class="form-control"></div>						
                 <div class="fld_input"><input type="number" name="item_quantity_f" placeholder="ITEM QUANTITY" id="item_quantity_f" value ="1" class="form-control"></div>
@@ -416,6 +416,38 @@
 		</div>
 	</div>
 	</div></div>
+
+<div class="modal fade" id="bargain_item_modal" role="dialog"><!-- buying items on item-goods.php-->
+	<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header"> 
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title"><center>BARGAIN ITEM</h4>
+		</div>
+		<div class="modal-body">
+									
+				Item Price : <span id="display_price_g"  name="display_price_g"> </span></br>
+				Total : <span id="display_total_g"  name="display_total_g"> </span>
+
+				<div class="fld_input"><input type="hidden" name="item_price_g" placeholder="ITEM PRICE" id="item_price_g" class="form-control"></div>						
+                	<div class="fld_input"><input type="number" name="item_quantity_g" placeholder="ITEM QUANTITY" id="item_quantity_g" value ="1" class="form-control"></div>
+					<div class="fld_input"><input type="number" name="bargain_price_g" placeholder="BARGAIN AMOUNT" id="bargain_price_g" value ="1" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="item_total_g" placeholder="ITEM TOTAL" id="item_total_g" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="item_stock_g" placeholder="ITEM STOCK" id="item_stock_g" class="form-control"></div>	
+				<div class="fld_input"><input type="hidden" name="item_id_g" placeholder="ITEM ID" id="item_id_g" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="buyer_id_g" placeholder="BUYER ID" id="buyer_id_g" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="seller_id_g" placeholder="SELLER ID" id="seller_id_g" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="service_id_g" placeholder="SERVICE ID" id="service_id_g" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="game_id_g" placeholder="GAME ID" id="game_id_g" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="order_id_g" placeholder="ORDER ID" id="order_id_g" class="form-control"></div>
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="bargain_game_item">Confirm</button>
+			</div>
+		</div>
+	</div>
+	</div></div>	
+	
 
 
 

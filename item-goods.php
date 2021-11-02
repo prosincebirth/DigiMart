@@ -136,7 +136,17 @@
 											data-game_id_f="<?php echo $res['game_id'];?>" 
 											data-order_id_f="<?php echo $res['order_id'];?>"> Buy</a>
 											
-											<a data-dismiss="modal" data-toggle="modal" data-target="#login_modal">Bargain</a>
+											<a data-dismiss="modal" data-toggle="modal" data-target="#bargain_item_modal"
+											data-item_price_g="<?php echo $res['item_price'];?>" 
+											data-item_id_g="<?php echo $res['item_id'];?>"
+											data-item_stock_g="<?php echo $res['item_quantity'];?>"
+											data-buyer_id_g="<?php if(isset($_SESSION['user_session'])){echo $_SESSION['user_session']; }?>" 
+											data-seller_id_g="<?php echo $res['user_id'];?>" 
+											data-service_id_g="<?php echo $res['service_id'];?>" 
+											data-game_id_g="<?php echo $res['game_id'];?>" 
+											data-order_id_g="<?php echo $res['order_id'];?>">
+											
+											>Bargain</a>
 											<a>
 											</a>
 
