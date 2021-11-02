@@ -1,5 +1,6 @@
 <div class="modal fade" id="login_modal" role="dialog">
-	<div class="modal-dialog">
+	<div class="vertical-alignment-helper">
+	<div class="modal-dialog vertical-align-center">
 	<div class="modal-content">
 		<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -31,9 +32,12 @@
 			</div>
 		</div>
 	</div></div>
+	</div>
+	
 
 <div class="modal fade" id="register_modal" role="dialog">
-	<div class="modal-dialog">
+	<div class="vertical-alignment-helper">
+	<div class="modal-dialog vertical-align-center">
 	<div class="modal-content">
 		<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -77,11 +81,15 @@
 		</div>
 	</div>
 	</div></div>
+	</div>
+	
 
 <div class="modal fade" id="add_game_modal" role="dialog">
-	<div class="modal-dialog">
+	<div class="vertical-alignment-helper">
+	<div class="modal-dialog vertical-align-center">
 	<div class="modal-content">
 		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
 		<h4 class="modal-title">Add New Game</h4>
 		</div>
 		<div class="modal-body">
@@ -94,9 +102,12 @@
 		</div>
 	</div>
 	</div></div>
+	</div>
+	
 
 <div class="modal fade" id="edit_game_modal" role="dialog">
-	<div class="modal-dialog">
+	<div class="vertical-alignment-helper">
+	<div class="modal-dialog vertical-align-center">
 	<div class="modal-content">
 		<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -113,10 +124,12 @@
 		</div>
 	</div>
 	</div></div>
+	</div>
+	
 
 <div class="modal fade" id="add_services_modal" role="dialog">
-	<div class="modal-dialog">
-	
+	<div class="vertical-alignment-helper">
+	<div class="modal-dialog vertical-align-center">
 	<div class="modal-content">
 		<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -144,10 +157,12 @@
 		</div>
 	</div>
 	</div></div>
+	</div>
+	
 
 <div class="modal fade" id="edit_services_modal" role="dialog">
-	<div class="modal-dialog">
-	
+	<div class="vertical-alignment-helper">
+	<div class="modal-dialog vertical-align-center">
 	<div class="modal-content">
 		<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -166,9 +181,12 @@
 		</div>
 	</div>
 	</div></div>
+	</div>
+	
 
 <div class="modal fade" id="sale_game_item_modal" role="dialog"> <!-- modal for adding game items from scratch/new item-->
-	<div class="modal-dialog">
+	<div class="vertical-alignment-helper">
+	<div class="modal-dialog vertical-align-center">
 	<div class="modal-content">
 		<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -246,9 +264,12 @@
 		</div>
 	</div>
 	</div></div>
+	</div>
+	
 
 <div class="modal fade" id="sale_game_item_modal_2" role="dialog"><!-- selling items on item-goods.php-->
-	<div class="modal-dialog">
+	<div class="vertical-alignment-helper">
+	<div class="modal-dialog vertical-align-center">
 	<div class="modal-content">
 		<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -275,10 +296,14 @@
 		</div>
 	</div>
 	</div></div>
+	</div>
+	
+	
 
 
 <div class="modal fade" id="buyorder_game_item_modal" role="dialog"><!-- buying items on item-goods.php-->
-	<div class="modal-dialog">
+	<div class="vertical-alignment-helper">
+	<div class="modal-dialog vertical-align-center">
 	<div class="modal-content">
 		<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -356,9 +381,12 @@
 		</div>
 	</div>
   </div></div>
+	</div>
+	
 
 <div class="modal fade" id="buyorder_game_item_modal_2" role="dialog"> <!-- modal for buying game items from scratch/new item/ buy order-->
-	<div class="modal-dialog">
+	<div class="vertical-alignment-helper">
+	<div class="modal-dialog vertical-align-center">
 	<div class="modal-content">
 		<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -385,10 +413,13 @@
 		</div>
 	</div>
 	</div></div>
+	</div>
+	
 
 
 <div class="modal fade" id="buy_game_item_modal" role="dialog"><!-- buying items on item-goods.php-->
-	<div class="modal-dialog">
+	<div class="vertical-alignment-helper">
+	<div class="modal-dialog vertical-align-center">
 	<div class="modal-content">
 		<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -416,6 +447,8 @@
 		</div>
 	</div>
 	</div></div>
+	</div>
+	
 
 
 

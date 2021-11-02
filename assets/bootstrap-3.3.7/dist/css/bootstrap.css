@@ -5902,6 +5902,18 @@ button.close {
   width: auto;
   margin: 10px;
 }
+
+.vertical-alignment-helper {
+  display:table;
+  height: 100%;
+  width: 100%;
+}
+.vertical-align-center {
+  /* To center vertically */
+  display: table-cell;
+  vertical-align: middle;
+}
+
 .modal-content {
   position: relative;
   background-color: #fff;
@@ -5913,6 +5925,10 @@ button.close {
   outline: 0;
   -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
           box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+  width:inherit;
+  height:inherit;
+  /* To center horizontally */
+  margin: 0 auto;
 }
 .modal-backdrop {
   position: fixed;
