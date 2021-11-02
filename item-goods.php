@@ -144,9 +144,7 @@
 											data-seller_id_g="<?php echo $res['user_id'];?>" 
 											data-service_id_g="<?php echo $res['service_id'];?>" 
 											data-game_id_g="<?php echo $res['game_id'];?>" 
-											data-order_id_g="<?php echo $res['order_id'];?>">
-											
-											>Bargain</a>
+											data-order_id_g="<?php echo $res['order_id'];?>"> Bargain</a>
 											<a>
 											</a>
 

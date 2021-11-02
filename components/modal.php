@@ -451,7 +451,8 @@
 	
 
 <div class="modal fade" id="bargain_item_modal" role="dialog"><!-- buying items on item-goods.php-->
-	<div class="modal-dialog">
+	
+<div class="modal-dialog">
 	<div class="modal-content">
 		<div class="modal-header"> 
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -459,7 +460,8 @@
 		</div>
 		<div class="modal-body">
 									
-				Item Price : <span id="display_price_g"  name="display_price_g"> </span></br>
+				Price : <span id="display_price_g"  name="display_price_g"> </span></br>
+				Minimum : <span id="display_minimumm_g"  name="display_minimumm_g"> </span></br>
 				Total : <span id="display_total_g"  name="display_total_g"> </span>
 
 				<div class="fld_input"><input type="hidden" name="item_price_g" placeholder="ITEM PRICE" id="item_price_g" class="form-control"></div>						

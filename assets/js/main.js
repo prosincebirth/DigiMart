@@ -93,7 +93,6 @@ $('document').ready(function()
         $(e.currentTarget).find('input[name="order_id_f"]').val(order_id_f);
     });
 
-// this will be called when the DOM is ready
     $('#item_quantity_f').keyup(function() {
         var price=Number($("#item_price_f").val())
         var quantity=Number($("#item_quantity_f").val())
@@ -103,28 +102,36 @@ $('document').ready(function()
     });
 
     $('#bargain_item_modal').on('show.bs.modal', function(e) {
-        var item_stock_f = $(e.relatedTarget).data('item_stock_f');
-        var item_price_f = $(e.relatedTarget).data('item_price_f');
-        //var item_amount_f = $(e.relatedTarget).data('item_amount_f');
-        var item_id_f = $(e.relatedTarget).data('item_id_f');
-        var buyer_id_f = $(e.relatedTarget).data('buyer_id_f');
-        var seller_id_f = $(e.relatedTarget).data('seller_id_f');
-        var service_id_f = $(e.relatedTarget).data('service_id_f');
-        var game_id_f = $(e.relatedTarget).data('game_id_f');
-        var order_id_f = $(e.relatedTarget).data('order_id_f');
+        var item_stock_g = $(e.relatedTarget).data('item_stock_g');
+        var item_price_g = $(e.relatedTarget).data('item_price_g');
+        var minimum_price = 0.6 * item_price_g;
+        var item_id_g = $(e.relatedTarget).data('item_id_g');
+        var buyer_id_g = $(e.relatedTarget).data('buyer_id_g');
+        var seller_id_g = $(e.relatedTarget).data('seller_id_g');
+        var service_id_g= $(e.relatedTarget).data('service_id_g');
+        var game_id_g = $(e.relatedTarget).data('game_id_g');
+        var order_id_g = $(e.relatedTarget).data('order_id_g');
         
-        $(e.currentTarget).find('input[name="item_stock_f"]').val(item_stock_f);
-        $(e.currentTarget).find('input[name="item_price_f"]').val(item_price_f);
-        $(e.currentTarget).find('span[name="display_price"]').html(item_price_f);
-        $(e.currentTarget).find('input[name="item_total_f"]').val(item_price_f);
-        $(e.currentTarget).find('input[name="item_id_f"]').val(item_id_f);
-        $(e.currentTarget).find('input[name="buyer_id_f"]').val(buyer_id_f);
-        $(e.currentTarget).find('input[name="seller_id_f"]').val(seller_id_f);
-        $(e.currentTarget).find('input[name="service_id_f"]').val(service_id_f);
-        $(e.currentTarget).find('input[name="game_id_f"]').val(game_id_f);
-        $(e.currentTarget).find('input[name="order_id_f"]').val(order_id_f);
+        $(e.currentTarget).find('input[name="item_stock_g"]').val(item_stock_g);
+        $(e.currentTarget).find('span[name="display_price_g"]').html(item_price_g);
+        $(e.currentTarget).find('span[name="display_minimumm_g"]').html(minimum_price.toFixed());
+        $(e.currentTarget).find('input[name="item_price_g"]').val(item_price_g);
+        $(e.currentTarget).find('input[name="item_id_g"]').val(item_id_g);
+        $(e.currentTarget).find('input[name="buyer_id_g"]').val(buyer_id_g);
+        $(e.currentTarget).find('input[name="seller_id_g"]').val(seller_id_g);
+        $(e.currentTarget).find('input[name="service_id_g"]').val(service_id_g);
+        $(e.currentTarget).find('input[name="game_id_g"]').val(game_id_g);
+        $(e.currentTarget).find('input[name="order_id_g"]').val(order_id_g);
     });
     
+    $('#bargain_price_g,#item_quantity_g').keyup(function() {
+        var quantity=Number($("#item_quantity_g").val())
+        var bargain=Number($("#bargain_price_g").val())
+        //var dummy = Number($("#display_minimumm_g").html())
+
+        $('#display_total_g').html(bargain * quantity)
+        $('#item_total_g').val(bargain * quantity)
+    });
     
 
     $('#sale_game_item_modal_2').on('show.bs.modal', function(e) {
@@ -441,8 +448,45 @@ $('document').ready(function()
 				});//END OF AJAX IN ADDING NEW ITEM
             //}				
 			break;//END OF SAVE NEW ITEM
-          
-        
+            case "bargain_game_item":
+              
+                var item_stock_f=$("#item_stock_f").val()
+				var item_quantity_f=$("#item_quantity_f").val()
+                var item_total_f=$("#item_total_f").val()
+                var item_id_f=$("#item_id_f").val()
+                var buyer_id_f=$("#buyer_id_f").val()
+                var seller_id_f=$("#seller_id_f").val()
+                var service_id_f=$("#service_id_f").val()
+                var game_id_f=$("#game_id_f").val()
+                var order_id_f=$("#order_id_f").val()  
+
+
+				var data=new FormData();
+				data.append("action_type","buy_game_item");
+				data.append("item_quantity_f",item_quantity_f);
+                data.append("item_stock_f",item_stock_f);
+				data.append("item_total_f",item_total_f);
+                data.append("item_id_f",item_id_f);
+				data.append("buyer_id_f",buyer_id_f);
+				data.append("seller_id_f",seller_id_f);
+                data.append("service_id_f",service_id_f);
+                data.append("game_id_f",game_id_f);
+                data.append("order_id_f",order_id_f);
+
+				$.ajax({	
+					url:"account/controller.php",
+					method:"post",
+					data:data,
+					contentType:false,
+					cache:false,
+					processData:false,
+					success:function(res){
+							alert(res)
+                            console.log(res)
+					}
+				});//END OF AJAX IN ADDING NEW ITEM
+            //}				
+			break;//END OF SAVE NEW ITEM
 		};
         	
 	});	

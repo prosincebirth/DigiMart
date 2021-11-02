@@ -175,14 +175,16 @@
 								else if($item_quantity_f > $item_stock_f){ // cannot exceed stock
 									echo 'You cannot buy your game ';
 								}
-								//else if{} for balance trappings , // cannot buy because the balance is insufficient
+								//else if(){ balance trappings , cannot buy because the balance is insufficient
 								//}
 								else{
 									add_transaction($item_quantity_f,$item_total_f,$item_id_f,$buyer_id_f,$seller_id_f,$service_id_f,$game_id_f,$order_id_f);
 									echo 'success '; // success not buying his own posting
 								} 
-								break;																										
+								break;		
+								
+								
+
 				}
-				
 			}
 ?>
