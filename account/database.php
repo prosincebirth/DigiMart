@@ -172,7 +172,17 @@
 
 
 /////////////////////////////////////////////////////////////////////
+	function display_buy_orders($user_id){// USED IN GAME SERVICES , POST SALE
+		$conn=connection2();
+		$sql="SELECT * from game_items a join goods b where user_id=$user_id and a.goods_id = b.goods_id and a.order_id=2 and a.item_status=1";
+		$result = $conn->query($sql);
+		return $result;}
 
+	function display_buy_order_records($user_id){// USED IN GAME SERVICES , POST SALE
+		$conn=connection2();
+		$sql="SELECT * from game_items a join goods b where user_id=$user_id and a.goods_id = b.goods_id and a.order_id=2 and a.item_status=0";
+		$result = $conn->query($sql);
+		return $result;}	
 
 	function display_all_games(){
 		$conn=connection();

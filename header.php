@@ -20,8 +20,8 @@
             <nav class="right_nav">
                 <ul class="right_nav__list">
                     <li class="right_nav__list___item"><a href="">Inventory</a></li>
-                    <li class="right_nav__list___item"><a href="sale-order.php">Sales</a></li>
-                    <li class="right_nav__list___item"><a href="buy-order.php">Buy Order</a></li>
+                    <li class="right_nav__list___item"><a href="sale_order.php">Sales</a></li>
+                    <li class="right_nav__list___item"><a href="buy_order.php">Buy Order</a></li>
                 </ul>
             <?php }else{?>
             <nav class="right_nav">
@@ -77,9 +77,7 @@
                         echo "<a class='header_btn' data-toggle='modal' href='#login_modal'>Login</a>";
                       }
                     ?>
-                    
 
-                    
             </nav>
         </div>
     </div>
