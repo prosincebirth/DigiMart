@@ -239,6 +239,7 @@ nav#mobile-menu .mobile-menu_close span {
 
 nav#mobile-menu ul {
   margin-top: 10px;
+  width: 75%;
 }
 
 nav#mobile-menu ul li {
