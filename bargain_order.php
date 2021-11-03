@@ -9,9 +9,8 @@
                 <div class="market_item--wrapper">
                     <div class="market_tabs">
                         <ul class="market_tab--list">
-                            <li class='active'><span onclick="window.location.href='buy_order.php';">Buy Orders</span></li>
-                            <li ><span onclick="window.location.href='buy_order_record.php';">Buy Order Records</span></li>
-                            <li><span>Place Buy Order</span></li>
+                            <li class='active'><span onclick="window.location.href='bargain_order.php';">Bargain Orders</span></li>
+                            <li ><span onclick="window.location.href='bargain_order_record.php';">Bargain Order Records</span></li>
                         </ul>
                         
                     </div>
@@ -34,15 +33,15 @@
                                         <th>Buy Order Price</th>
                                         <th>Progress</th>
                                         <th>Create Time</th>
-                                        <th></th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
-                                <?php	$result = display_buy_orders($_SESSION['user_session']);
+                                <?php	$result = display_bargain_orders($_SESSION['user_session']);
 										if($result->num_rows > 0){
 										while ($res = $result->fetch_assoc()){?>      
-							<tbody>
-								<tr>
-									<td>
+							    <tbody>
+								    <tr>
+									    <td>
 										<div class="img_text">
 											<?php echo '<img class="item__img" src="data:image/png;base64,'.base64_encode($res['goods_image']).'"height="72" >'; ?>
 											<span><?php echo $res['goods_quality']," ",$res['goods_name'];?></span>	

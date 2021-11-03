@@ -23,7 +23,7 @@
                     <div class="popular_items">
                        <?php
                         require_once 'account/database.php';
-                        $result = display_item();
+                        $result = display_item(5);
                         if($result->num_rows > 0){
                         while ($res = $result->fetch_assoc()){?>           
                         <div class="popular_list__items">

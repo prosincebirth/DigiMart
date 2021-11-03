@@ -172,6 +172,18 @@
 
 
 /////////////////////////////////////////////////////////////////////
+	function display_bargain_orders($user_id){// USED IN GAME SERVICES , POST SALE
+		$conn=connection2();
+		$sql="SELECT * from game_items a join goods b where user_id=$user_id and a.goods_id = b.goods_id and a.order_id=3 and a.item_status=1";
+		$result = $conn->query($sql);
+		return $result;}
+
+	function display_bargain_orders_records($user_id){// USED IN GAME SERVICES , POST SALE
+		$conn=connection2();
+		$sql="SELECT * from game_items a join goods b where user_id=$user_id and a.goods_id = b.goods_id and a.order_id=3 and a.item_status !=1";
+		$result = $conn->query($sql);
+		return $result;}
+
 	function display_buy_orders($user_id){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
 		$sql="SELECT * from game_items a join goods b where user_id=$user_id and a.goods_id = b.goods_id and a.order_id=2 and a.item_status=1";
@@ -180,7 +192,7 @@
 
 	function display_buy_order_records($user_id){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
-		$sql="SELECT * from game_items a join goods b where user_id=$user_id and a.goods_id = b.goods_id and a.order_id=2 and a.item_status=0";
+		$sql="SELECT * from game_items a join goods b where user_id=$user_id and a.goods_id = b.goods_id and a.order_id=2 and a.item_status !=1";
 		$result = $conn->query($sql);
 		return $result;}	
 
@@ -217,9 +229,9 @@
 		$result = $conn->query($query);
 		return $result;}	
 
-	function display_item(){//global-market.php
+	function display_item($limit){//global-market.php
 		$conn=connection2();
-		$sql="SELECT * from goods a join game_items b where a.goods_id=b.goods_id";
+		$sql="SELECT * from goods a join game_items b where a.goods_id=b.goods_id LIMIT $limit";
 		$result = $conn->query($sql);
 		return $result;}
 

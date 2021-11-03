@@ -1,6 +1,7 @@
 <?php include('head.php'); ?>
 <?php include('header.php'); ?>
 
+
 <main>    
 <section class="market_section">
     <div class="container">
@@ -57,11 +58,11 @@
 									<td>
 									<span><?php echo $res['item_date_added'];?></span>										
 									</td>
-									<td>
-																	
-											<?php } }?>
-										</div>
-									
+									<td><?php
+                                         if($res['item_status']!=1){
+                                            echo '<span> Cancelled</span>';	
+                                         }
+                                         } }?>
 									</td>
 									
 								</tr>
