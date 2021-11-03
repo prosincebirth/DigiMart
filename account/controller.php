@@ -173,7 +173,7 @@
 									echo 'You cannot buy your game ';
 								}
 								else if($item_quantity_f > $item_stock_f){ // cannot exceed stock
-									echo 'You cannot buy your game ';
+									echo 'Exceed Quantity';
 								}
 								//else if(){ balance trappings , cannot buy because the balance is insufficient
 								//}
@@ -183,25 +183,35 @@
 								} 
 								break;		
 					case "bargain_game_item":
-								$item_quantity_f=$_POST['item_quantity_f'];
-								$item_total_f=$_POST['item_total_f'];
-								$item_id_f=$_POST['item_id_f'];
-								$buyer_id_f=$_POST['buyer_id_f'];
-								$seller_id_f=$_POST['seller_id_f'];
-								$service_id_f=$_POST['service_id_f'];
-								$game_id_f=$_POST['game_id_f'];
-								$order_id_f=$_POST['order_id_f'];
-								$item_stock_f=$_POST['item_stock_f'];
 								
-								//add_transaction($transaction_quantity,$transaction_amount,$game_item_id,$buyer_id,$seller_id,$service_id,$game_id,$order_id)
-								if(empty($buyer_id_f)){ // trappings for not logged in
+								$minimum_g=$_POST['minimum_g'];
+								$bargain_price_g=$_POST['bargain_price_g'];
+								$item_price_g=$_POST['item_price_g'];
+								$item_stock_g=$_POST['item_stock_g'];
+								$item_quantity_g=$_POST['item_quantity_g'];
+								$item_total_g=$_POST['item_total_g'];
+								$item_id_g=$_POST['item_id_g'];
+								$buyer_id_g=$_POST['buyer_id_g'];
+								$seller_id_g=$_POST['seller_id_g'];
+								$service_id_g=$_POST['service_id_g'];
+								$game_id_g=$_POST['game_id_g'];
+								$order_id_g=$_POST['order_id_g'];
+
+
+								if(empty($buyer_id_g)){ // trappings for not logged in
 									echo 'Please Login';
 								}
-								else if($buyer_id_f == $seller_id_f){ // cannot buy your own game 
-									echo 'You cannot buy your game ';
+								else if($buyer_id_g == $seller_id_g){ // cannot buy your own game 
+									echo 'You cannot bargain your game ';
 								}
-								else if($item_quantity_f > $item_stock_f){ // cannot exceed stock
-									echo 'You cannot buy your game ';
+								else if($item_quantity_g > $item_stock_g){ // cannot exceed stock
+									echo 'Exceed Quantity';
+								}
+								else if($bargain_price_g < $minimum_g){ // cannot exceed stock
+									echo 'Bargain price error';
+								}
+								else if($bargain_price_g > $item_price_g){ // cannot exceed stock
+									echo 'Bargain price error';
 								}
 								//else if(){ balance trappings , cannot buy because the balance is insufficient
 								//}
@@ -209,8 +219,8 @@
 									add_transaction($item_quantity_f,$item_total_f,$item_id_f,$buyer_id_f,$seller_id_f,$service_id_f,$game_id_f,$order_id_f);
 									echo 'success '; // success not buying his own posting
 								} 
-								break;				
-								
+								break;		
+
 
 				}
 			}

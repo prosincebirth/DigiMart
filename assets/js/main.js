@@ -143,7 +143,7 @@ $('document').ready(function()
         var goods_id_e = $(e.relatedTarget).data('goods_id');
         $(e.currentTarget).find('input[name="goods_id_e"]').val(goods_id_e);
     });
-   
+
 	$(".btn").on("click",function(){
 		var btn_val=$(this).val();
             switch(btn_val){
@@ -450,27 +450,33 @@ $('document').ready(function()
 			break;//END OF SAVE NEW ITEM
             case "bargain_game_item":
               
-                var item_stock_f=$("#item_stock_f").val()
-				var item_quantity_f=$("#item_quantity_f").val()
-                var item_total_f=$("#item_total_f").val()
-                var item_id_f=$("#item_id_f").val()
-                var buyer_id_f=$("#buyer_id_f").val()
-                var seller_id_f=$("#seller_id_f").val()
-                var service_id_f=$("#service_id_f").val()
-                var game_id_f=$("#game_id_f").val()
-                var order_id_f=$("#order_id_f").val()  
+                var minimum_g =$("#display_minimumm_g").html()
+                var bargain_price_g=$("#bargain_price_g").val()
+                var item_price_g=$("#item_price_g").val()
+                var item_stock_g=$("#item_stock_g").val()
+				var item_quantity_g=$("#item_quantity_g").val()
+                var item_total_g=$("#item_total_g").val()
+                var item_id_g=$("#item_id_g").val()
+                var buyer_id_g=$("#buyer_id_g").val()
+                var seller_id_g=$("#seller_id_g").val()
+                var service_id_g=$("#service_id_g").val()
+                var game_id_g=$("#game_id_g").val()
+                var order_id_g=$("#order_id_g").val()  
 
 				var data=new FormData();
 				data.append("action_type","bargain_game_item");
-				data.append("item_quantity_f",item_quantity_f);
-                data.append("item_stock_f",item_stock_f);
-				data.append("item_total_f",item_total_f);
-                data.append("item_id_f",item_id_f);
-				data.append("buyer_id_f",buyer_id_f);
-				data.append("seller_id_f",seller_id_f);
-                data.append("service_id_f",service_id_f);
-                data.append("game_id_f",game_id_f);
-                data.append("order_id_f",order_id_f);
+				data.append("minimum_g",minimum_g);
+                data.append("bargain_price_g",bargain_price_g);
+				data.append("item_price_g",item_price_g);
+                data.append("item_stock_g",item_stock_g);
+				data.append("item_quantity_g",item_quantity_g);
+				data.append("item_total_g",item_total_g);
+                data.append("item_id_g",item_id_g);
+                data.append("buyer_id_g",buyer_id_g);
+                data.append("seller_id_g",seller_id_g);
+                data.append("service_id_g",service_id_g);
+                data.append("game_id_g",game_id_g);
+                data.append("order_id_g",order_id_g);
 
 				$.ajax({	
 					url:"account/controller.php",
