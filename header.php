@@ -109,7 +109,7 @@
             }
         });
         
-        $('.mobile-menu_close').on('click', function() {
+        $('.mobile-menu_close').on('click, touchstart', function() {
             $('.js-mobile-menu').removeClass('active');
             $('#mobile-menu').removeClass('open');
         });

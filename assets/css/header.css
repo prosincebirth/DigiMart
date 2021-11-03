@@ -172,7 +172,7 @@
   .main_header .ham_menu {
     display: block;
     width: 30px;
-    margin-left: 15px;
+    /* margin-left: 15px; */
     position: relative;
   }
   .main_header .ham_menu .ham_text {
