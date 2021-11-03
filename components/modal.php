@@ -459,7 +459,7 @@
 		<h4 class="modal-title"><center>BARGAIN ITEM</h4>
 		</div>
 		<div class="modal-body">
-		<form>							
+								
 				Price : <span id="display_price_g"  name="display_price_g"> </span></br>
 				Minimum : <span id="display_minimumm_g"  name="display_minimumm_g"> </span></br>
 				Total : <span id="display_total_g"  name="display_total_g"> </span>
@@ -474,12 +474,12 @@
 				<div class="fld_input"><input type="hidden" name="seller_id_g" placeholder="SELLER ID" id="seller_id_g" class="form-control"></div>
 				<div class="fld_input"><input type="hidden" name="service_id_g" placeholder="SERVICE ID" id="service_id_g" class="form-control"></div>
 				<div class="fld_input"><input type="hidden" name="game_id_g" placeholder="GAME ID" id="game_id_g" class="form-control"></div>
-				<div class="fld_input"><input type="hidden" name="order_id_g" placeholder="ORDER ID" id="order_id_g" class="form-control"></div>
+				<div class="fld_input"><input type="text" name="order_id_g" placeholder="ORDER ID" id="order_id_g" class="form-control"></div>
             </div>
 			<div class="modal-footer">
 					<button class="btn btn-success" type="button" value="bargain_game_item">Confirm</button>
 			</div>
-									</form>
+									
 		</div>
 		</div>
 	</div></div>	

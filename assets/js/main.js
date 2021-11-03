@@ -83,7 +83,7 @@ $('document').ready(function()
         
         $(e.currentTarget).find('input[name="item_stock_f"]').val(item_stock_f);
         $(e.currentTarget).find('input[name="item_price_f"]').val(item_price_f);
-        $(e.currentTarget).find('span[name="display_price"]').html(item_price_f);
+        $(e.currentTarget).find('span[name="display_price_f"]').html(item_price_f);
         $(e.currentTarget).find('input[name="item_total_f"]').val(item_price_f);
         $(e.currentTarget).find('input[name="item_id_f"]').val(item_id_f);
         $(e.currentTarget).find('input[name="buyer_id_f"]').val(buyer_id_f);
@@ -96,7 +96,7 @@ $('document').ready(function()
     $('#item_quantity_f').keyup(function() {
         var price=Number($("#item_price_f").val())
         var quantity=Number($("#item_quantity_f").val())
-        $('#display_price_f').html(price)
+
         $('#display_total_f').html(price * quantity)
         $('#item_total_f').val(price * quantity)
     });
