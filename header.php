@@ -5,12 +5,10 @@
     <div class="container">
         <div class="nav_wrapper">        
             <nav class="left_nav">
-                <div class="ham_menu">
-                    
+                <div class="ham_menu js-mobile-menu">                    
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
-                    <span class="ham_text">HOME</span>
                 </div>
                 <ul class="left_nav__list">
                     <li class="left_nav__list___item active"><a href="./">Home</a></li>
@@ -66,8 +64,15 @@
       
                     <?php 
                     if(isset($_SESSION['user_session'])){// for login
-                        echo "<a class='header_btn' href='#'>My Account</a>";
-                        echo "<a class='header_btn' href='logout.php'>Logout</a>";
+                        echo "<a class='header_btn' href='#'>
+                            <span class='small-hide'>My Account</span>
+                            <span class='large-hide'><i class='far fa-user-circle'></i></span>
+                            </a>";
+                        echo "<a class='header_btn' href='logout.php'>
+                        <span class='small-hide'>Logout</span>
+                        <span class='large-hide'><i class='fas fa-sign-out-alt'></i></span>
+                        
+                        </a>";
                       }else{
                         echo "<a class='header_btn' data-toggle='modal' href='#login_modal'>Login</a>";
                       }
@@ -79,3 +84,34 @@
         </div>
     </div>
 </header>
+
+<nav id="mobile-menu" class="large-hide">   
+    <span class="mobile-menu_close">
+        <i class="fas fa-times"></i>
+        <span>CLOSE</span>
+    </span> 
+    <ul class="left_nav__list">
+        <li class="left_nav__list___item active"><a href="./">Home</a></li>
+        <li class="left_nav__list___item"><a href="market.php">Market</a></li>
+        <li class="left_nav__list___item"><a href="sale-market.php">News</a></li>
+    </ul>
+</nav>
+
+<script>
+    $(document).ready(function() {
+        $('.js-mobile-menu').on('click', function() {
+            if( $(this).hasClass('active') ) {
+                $(this).removeClass('active');
+                $('#mobile-menu').removeClass('open');
+            } else {
+                $(this).addClass('active');
+                $('#mobile-menu').addClass('open');
+            }
+        });
+        
+        $('.mobile-menu_close').on('click', function() {
+            $('.js-mobile-menu').removeClass('active');
+            $('#mobile-menu').removeClass('open');
+        });
+    });
+</script>

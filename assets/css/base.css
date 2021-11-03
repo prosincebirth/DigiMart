@@ -52,6 +52,23 @@ body {
 
 .font-20 { font-size: 20px; }
 
+@media screen and (min-width: 992px) { /* tablet to desktop view */
+    .large-hide { display: none }
+}
+
+@media (max-width: 991) and (min-width: 768px) { /* mobile to tablet view */
+    .medium-hide { display: none }
+}
+
+@media screen and (max-width: 767px) { /* mobile view */
+    .small-hide { display: none }
+}
+
+.img_wrapper img {
+    width: 100%;
+    object-fit: cover;
+}
+
 
 
 
