@@ -151,9 +151,35 @@
 
 										</div>
 									</td>
-									<?php } }?>
-								</tr>
+									<?php } 
+								}else {	?> 
+								
+								<tbody>
+									<tr>
+										<td>
+										
+										</td>
+										<td>
+											
+										</td>
+										<td>
+										
+										no
+										</td>
+											
+										<td>
+											data						
+										</td>
+										<td>
+								</br>				
+										</td>
+										<td>
 
+										</td>
+								
+										<?php } ?>
+	
+							</tr>
 							</tbody>
 						</table>
 						

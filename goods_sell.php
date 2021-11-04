@@ -97,7 +97,7 @@
 								
 							</thead>
 	
-					<?php	$result = display_market_sell_goods($_GET['goods_id']);
+					<?php	$result = display_goods_sell_order($_GET['goods_id']);
                         	if($result->num_rows > 0){
                         	while ($res = $result->fetch_assoc()){?>      
 							<tbody>

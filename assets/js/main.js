@@ -128,11 +128,43 @@ $('document').ready(function()
         var quantity=Number($("#item_quantity_g").val())
         var bargain=Number($("#bargain_price_g").val())
         //var dummy = Number($("#display_minimumm_g").html())
-
         $('#display_total_g').html(bargain * quantity)
         $('#item_total_g').val(bargain * quantity)
     });
     
+    $('#supply_item_modal').on('show.bs.modal', function(e) {
+        var item_stock_h = $(e.relatedTarget).data('item_stock_h');
+        var item_price_h = $(e.relatedTarget).data('item_price_h');
+        //var item_amount_f = $(e.relatedTarget).data('item_amount_f');
+        var item_id_h = $(e.relatedTarget).data('item_id_h');
+        var buyer_id_h = $(e.relatedTarget).data('buyer_id_h');
+        var seller_id_h = $(e.relatedTarget).data('seller_id_h');
+        var service_id_h = $(e.relatedTarget).data('service_id_h');
+        var game_id_h = $(e.relatedTarget).data('game_id_h');
+        var order_id_h = $(e.relatedTarget).data('order_id_h');
+        
+        $(e.currentTarget).find('input[name="item_stock_h"]').val(item_stock_h);
+        $(e.currentTarget).find('input[name="item_price_h"]').val(item_price_h);
+        $(e.currentTarget).find('span[name="display_price_h"]').html(item_price_h);
+        $(e.currentTarget).find('input[name="item_total_h"]').val(item_price_h);
+        $(e.currentTarget).find('input[name="item_id_h"]').val(item_id_h);
+        $(e.currentTarget).find('input[name="buyer_id_h"]').val(buyer_id_h);
+        $(e.currentTarget).find('input[name="seller_id_h"]').val(seller_id_h);
+        $(e.currentTarget).find('input[name="service_id_h"]').val(service_id_h);
+        $(e.currentTarget).find('input[name="game_id_h"]').val(game_id_h);
+        $(e.currentTarget).find('input[name="order_id_h"]').val(order_id_h);
+    });
+
+    $('#item_quantity_h').keyup(function() {
+        var price=Number($("#item_price_h").val())
+        var quantity=Number($("#item_quantity_h").val())
+
+        $('#display_total_h').html(price * quantity)
+        $('#item_total_h').val(price * quantity)
+    });
+
+
+
 
     $('#sale_game_item_modal_2').on('show.bs.modal', function(e) {
         var goods_id_b = $(e.relatedTarget).data('goods_id');
@@ -477,6 +509,46 @@ $('document').ready(function()
                 data.append("service_id_g",service_id_g);
                 data.append("game_id_g",game_id_g);
                 data.append("order_id_g",order_id_g);
+
+				$.ajax({	
+					url:"account/controller.php",
+					method:"post",
+					data:data,
+					contentType:false,
+					cache:false,
+					processData:false,
+					success:function(res){
+							alert(res)
+                            console.log(res)
+					}
+				});//END OF AJAX IN ADDING NEW ITEM
+            //}				
+			break;//END OF SAVE NEW ITEM
+            case "supply_item_modal":
+              
+                var item_price_h=$("#item_price_h").val()
+                var item_stock_h=$("#item_stock_h").val()
+				var item_quantity_h=$("#item_quantity_h").val()
+                var item_total_h=$("#item_total_h").val()
+                var item_id_h=$("#item_id_h").val()
+                var buyer_id_h=$("#buyer_id_h").val()
+                var seller_id_h=$("#seller_id_h").val()
+                var service_id_h=$("#service_id_h").val()
+                var game_id_h=$("#game_id_h").val()
+                var order_id_h=$("#order_id_h").val()  
+
+				var data=new FormData();
+				data.append("action_type","supply_item_modal");
+				data.append("item_price_h",item_price_h);
+                data.append("item_stock_h",item_stock_h);
+				data.append("item_quantity_h",item_quantity_h);
+				data.append("item_total_h",item_total_h);
+                data.append("item_id_h",item_id_h);
+                data.append("buyer_id_h",buyer_id_h);
+                data.append("seller_id_h",seller_id_h);
+                data.append("service_id_h",service_id_h);
+                data.append("game_id_h",game_id_h);
+                data.append("order_id_h",order_id_h);
 
 				$.ajax({	
 					url:"account/controller.php",

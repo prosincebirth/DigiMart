@@ -85,20 +85,20 @@
 						<table>
 							<thead>
 								<th>Items</th>
-								<th>Seller</th>
+								<th>Buyers</th>
 								<th>Mode <i class="fas fa-question-circle" data-toggle="popover" data-html="true" title="Mode" data-content="
 									P2P Delivery Item's are in seller's Inventory, sellers will deliver them directly to the buyer's Inventory <br><br>
 									Manual Delivery Items are in seller's inventory, Sellers will deliver the items to the DigiMart inventory first and buyers can retrieve them from their backpacks <br><br>
 									Automatic Delivery Items will be deposited to Digimart Inventory first and system delivers to the buyer's backpack after the payment are made
 									" data-direction="right"></i></td></th>
-								<th>Price</th>
 								<th>Quantity</th>
+								<th>Price</th>
 								<th></th>
 							
 								
 							</thead>
 	
-					<?php	$result = display_market_sell_goods($_GET['goods_id']);
+					<?php	$result = display_goods_buy_order($_GET['goods_id']);
                         	if($result->num_rows > 0){
                         	while ($res = $result->fetch_assoc()){?>      
 							<tbody>
@@ -111,9 +111,8 @@
 									</td>
 									<td>
 										<div class="img_text">
-
 											<?php echo '<img class="item__seller" src="data:image/png;base64,'.base64_encode($res['goods_image']).'"height="40" >'; ?>
-											<span><?php echo $res['user_username'];?></span>	
+												<span><?php echo $res['user_username'];?></span>	
 										</div>
 									</td>
 									<td>
@@ -121,35 +120,25 @@
 
 									</td>
 									<td>
-										<span><?php echo $res['item_price'];?></span>										
+										<span><?php echo $res['item_quantity'];?></span>
+																	
 									</td>
 									<td>
-										<span><?php echo $res['item_quantity'];?></span>										
+										<span><?php echo $res['item_price'];?></span>														
 									</td>
 									<td>
 										<div class="item__group--cta">
-											<a class="buy_btn wishlist_btn"  data-toggle="modal" data-target="#buy_game_item_modal" 
-											data-item_price_f="<?php echo $res['item_price'];?>" 
-											data-item_id_f="<?php echo $res['item_id'];?>"
-											data-item_stock_f="<?php echo $res['item_quantity'];?>"
-											data-buyer_id_f="<?php if(isset($_SESSION['user_session'])){echo $_SESSION['user_session']; }?>" 
-											data-seller_id_f="<?php echo $res['user_id'];?>" 
-											data-service_id_f="<?php echo $res['service_id'];?>" 
-											data-game_id_f="<?php echo $res['game_id'];?>" 
-											data-order_id_f="<?php echo '1'?>"> Buy</a>
-											
-											<a data-dismiss="modal" data-toggle="modal" data-target="#bargain_item_modal"
-											data-item_price_g="<?php echo $res['item_price'];?>" 
-											data-item_id_g="<?php echo $res['item_id'];?>"
-											data-item_stock_g="<?php echo $res['item_quantity'];?>"
-											data-buyer_id_g="<?php if(isset($_SESSION['user_session'])){echo $_SESSION['user_session']; }?>" 
-											data-seller_id_g="<?php echo $res['user_id'];?>" 
-											data-service_id_g="<?php echo $res['service_id'];?>" 
-											data-game_id_g="<?php echo $res['game_id'];?>" 
-											data-order_id_g="<?php echo '3'?>"> Bargain</a>
+											<a class="buy_btn wishlist_btn"  data-toggle="modal" data-target="#supply_item_modal" 
+											data-item_price_h="<?php echo $res['item_price'];?>" 
+											data-item_id_h="<?php echo $res['item_id'];?>"
+											data-item_stock_h="<?php echo $res['item_quantity'];?>"
+											data-seller_id_h="<?php if(isset($_SESSION['user_session'])){echo $_SESSION['user_session']; }?>" 
+											data-buyer_id_h="<?php echo $res['user_id'];?>" 
+											data-service_id_h="<?php echo $res['service_id'];?>" 
+											data-game_id_h="<?php echo $res['game_id'];?>" 
+											data-order_id_h="<?php echo '2'?>">SUPPLY</a>
 											<a>
 											</a>
-
 										</div>
 									</td>
 									<?php } }?>

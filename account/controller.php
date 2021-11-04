@@ -182,8 +182,7 @@
 									echo 'success '; // success not buying his own posting
 								} 
 								break;		
-					case "bargain_game_item":
-								
+					case "bargain_game_item":		
 								$minimum_g=$_POST['minimum_g'];
 								$bargain_price_g=$_POST['bargain_price_g'];
 								$item_price_g=$_POST['item_price_g'];
@@ -208,10 +207,10 @@
 									echo 'Exceed Quantity';
 								}
 								else if($bargain_price_g < $minimum_g){ // cannot exceed stock
-									echo 'Bargain price error';
+									echo 'Bargain price error low';
 								}
 								else if($bargain_price_g > $item_price_g){ // cannot exceed stock
-									echo 'Bargain price error';
+									echo 'Bargain price error high';
 								}
 								//else if(){ balance trappings , cannot buy because the balance is insufficient
 								//}
@@ -219,9 +218,37 @@
 									add_transaction($item_quantity_g,$item_total_g,$item_id_g,$buyer_id_g,$seller_id_g,$service_id_g,$game_id_g,$order_id_g);
 									echo 'success '; // success not buying his own posting
 								} 
-								break;		
+								break;
+					case "supply_item_modal":		
+
+								$item_price_h=$_POST['item_price_h'];
+								$item_stock_h=$_POST['item_stock_h'];
+								$item_quantity_h=$_POST['item_quantity_h'];
+								$item_total_h=$_POST['item_total_h'];
+								$item_id_h=$_POST['item_id_h'];
+								$buyer_id_h=$_POST['buyer_id_h'];
+								$seller_id_h=$_POST['seller_id_h'];
+								$service_id_h=$_POST['service_id_h'];
+								$game_id_h=$_POST['game_id_h'];
+								$order_id_h=$_POST['order_id_h'];
 
 
+								if(empty($seller_id_h)){ // trappings for not logged in
+									echo 'Please Login';
+								}
+								else if($buyer_id_h == $seller_id_h){ // cannot buy your own game 
+									echo 'You cannot supply your own post ';
+								}
+								else if($item_quantity_h > $item_stock_h){ // cannot exceed stock
+									echo 'Exceed Quantity';
+								}
+								//else if(){ balance trappings , cannot buy because the balance is insufficient
+								//}								
+								else{
+									add_transaction($item_quantity_h,$item_total_h,$item_id_h,$buyer_id_h,$seller_id_h,$service_id_h,$game_id_h,$order_id_h);
+									echo 'success '; // success not buying his own posting
+								} 
+								break;							
 				}
 			}
 ?>
