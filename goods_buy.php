@@ -71,9 +71,11 @@
 				<div class="item_groups--wrapper">
 					<div class="item_groups--tab">
 						<ul>
-							<li class="active"><span>Sell</span></li>
-							<li><span>Buy orders</span></li>
-							<li><span>Trade Records</span></li>
+				
+								<?php
+							echo ' <li ><a href="goods_sell.php?goods_id='.$_GET['goods_id'].'";><span>Sell</span></a></li>';
+							echo ' <li class="active"><a href="goods_buy.php?goods_id='.$_GET['goods_id'].'";><span>Buy Orders</span></a></li>';
+							echo ' <li ><a href="goods_record.php?goods_id='.$_GET['goods_id'].'";><span>Trade Record</span></a></li>'; ?>
 						</ul>
 					
 					</div>

@@ -1,6 +1,6 @@
 <div class="item_card">
 <?php
-    echo '<a href="item-goods.php?goods_id='.$res['goods_id'].'">';
+    echo '<a href="goods_sell.php?goods_id='.$res['goods_id'].'">';
     echo '<div class="img_wrapper">';
 	        echo '<img src="data:image/png;base64,'.base64_encode($res['goods_image']).'">';
             echo '<span class="badge common">'.$res['goods_rarity'].'</span>';
