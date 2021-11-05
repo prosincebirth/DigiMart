@@ -9,9 +9,9 @@
                 <div class="market_item--wrapper">
                     <div class="market_tabs">
                         <ul class="market_tab--list">
-                            <li class='active'><span>Buy Orders</span></li>
-                            <li><span>Buy Order Records</span></li>
-                            <li><span>Place Buy Order</span></li>
+                            <li class='active'><span>Sale</span></li>
+                            <li><span>Sale Records</span></li>
+                            <li><span>Post Item to Sell</span></li>
                         </ul>
                         
                     </div>
@@ -32,9 +32,9 @@
                                     <tr>
                                         <th>Items</th>
                                         <th>Price</th>
-                                        <th>Max Price</th>
-                                        <th>Progress</th>
-                                        <th>Create time</th>
+                                        <th>Type</th>
+                                        <th>Buy</th>
+                                        <th>Creaete time</th>
                                     </tr>
                                 </thead>
                                 <?php	$result = display_market_sell_goods	($_GET['goods_id']);

@@ -18,9 +18,9 @@
             </nav>
             <?php if(isset($_SESSION['user_session'])){?>
             <nav class="right_nav">
-                <ul class="right_nav__list">
-                    <li class="right_nav__list___item"><a href="bargain_order.php">Bargain</a></li>
+                <ul class="right_nav__list">                   
                     <li class="right_nav__list___item"><a href="sale_order.php">Sales</a></li>
+                    <li class="right_nav__list___item"><a href="bargain_order.php">Bargain</a></li>
                     <li class="right_nav__list___item"><a href="buy_order.php">Buy Order</a></li>
                 </ul>
             <?php }else{?>

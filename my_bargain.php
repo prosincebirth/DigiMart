@@ -8,11 +8,10 @@
             <div class="mainbar">
                 <div class="market_item--wrapper">
                     <div class="market_tabs">
-                        <ul class="market_tab--list">
-							
-                            <li  class='active'><span onclick="window.location.href='bargain_order.php';">Bargain Orders</span></li>
-                            <li><span onclick="window.location.href='bargain_order_record.php';">Bargain Order Records</span></li>
-							<li ><span onclick="window.location.href='my_bargain.php';">My Bargain</span></li>
+                        <ul class="market_tab--list">				
+                            <li ><span onclick="window.location.href='bargain_order.php';">Bargain Orders</span></li>
+                            <li ><span onclick="window.location.href='bargain_order_record.php';">Bargain Order Records</span></li>
+							<li class='active'><span onclick="window.location.href='my_bargain.php';">My Bargain</span></li>
                         </ul>
                         
                     </div>
@@ -34,9 +33,10 @@
                                         <th>Items</th>
                                         <th>Bargain Price</th>
 										<th>Quantity</th>
-                                        <th>Buyer</th>	
-                                        <th>Create Time</th>
-										<th></th>
+										<th>Total</th>
+                                        <th>Seller</th>	
+                                        <th>Time</th>
+									
                                     </tr>
                                 </thead>
                                 <?php	$result = display_my_bargain_orders($_SESSION['user_session']);
@@ -51,13 +51,17 @@
 										</div>
 									</td>
 									<td>
-										<span><?php echo $res['item_price'];?></span>									
+										<span><?php echo $res['item_price'];?></span>						
 									</td>
 									<td>
 									<span><?php echo $res['item_quantity']; ?></span>		
+								
 									</td>
 									<td>
-									
+									<span><?php echo $res['transaction_amount']; ?></span>		
+										</td>
+
+									<td>
 									<span><?php echo $res['seller_name'];?></span>								
 									</td>
 									<td>
@@ -65,32 +69,22 @@
 									</td>
 									<td>
 										<div class="item__group--cta">
-											<button class="buy_btn wishlist_btn"  data-toggle="modal" data-target="#buy_game_item_modal" 
-											data-item_price_f="<?php echo $res['item_price'];?>" 
-											data-item_id_f="<?php echo $res['item_id'];?>"
-											data-item_stock_f="<?php echo $res['item_quantity'];?>"
-											data-buyer_id_f="<?php if(isset($_SESSION['user_session'])){echo $_SESSION['user_session']; }?>" 
-											data-seller_id_f="<?php echo $res['user_id'];?>" 
-											data-service_id_f="<?php echo $res['service_id'];?>" 
-											data-game_id_f="<?php echo $res['game_id'];?>" 
-											data-order_id_f="<?php echo '1'?>"> Accept</button>
-											
-											<button data-dismiss="modal" data-toggle="modal" data-target="#bargain_item_modal"
-											data-item_price_g="<?php echo $res['item_price'];?>" 
-											data-item_id_g="<?php echo $res['item_id'];?>"
-											data-item_stock_g="<?php echo $res['item_quantity'];?>"
-											data-buyer_id_g="<?php if(isset($_SESSION['user_session'])){echo $_SESSION['user_session']; }?>" 
-											data-seller_id_g="<?php echo $res['user_id'];?>" 
-											data-service_id_g="<?php echo $res['service_id'];?>" 
-											data-game_id_g="<?php echo $res['game_id'];?>" 
-											data-order_id_g="<?php echo '3'?>"> Refuse</button>
-										
-										</div>
+											<a class="buy_btn wishlist_btn"  data-toggle="modal" data-target="#buy_game_item_modal" 
+											data-item_id="<?php echo $res['item_id'];?>" 
+											data-seller_id="<?php echo $res['user_id'];?>" 
+											data-service_id="<?php echo $res['service_id'];?>" 
+											data-item_price="<?php echo $res['item_price'];?>" 
+											data-game_id="<?php echo $res['game_id'];?>" 
+											data-order_id="<?php echo $res['order_id'];?>"
+											data-buyer_id="<?php echo $_SESSION['user_session'];?>"> Cancel Order</a>
+													
 											<?php } }?>
-											</td>
-										<td>										
+										</div>
+										
 									</td>
+									
 								</tr>
+
 							</tbody>
                             </table>
                             <div class="pagination">

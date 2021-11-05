@@ -117,7 +117,7 @@ $('document').ready(function()
         $(e.currentTarget).find('input[name="bargain_price_g"]').val(minimum_price.toFixed());
         $(e.currentTarget).find('span[name="display_minimumm_g"]').html(minimum_price.toFixed());
         $(e.currentTarget).find('span[name="display_total_g"]').html(minimum_price.toFixed());
-                $(e.currentTarget).find('input[name="item_total_g"]').val(minimum_price.toFixed());
+        $(e.currentTarget).find('input[name="item_total_g"]').val(minimum_price.toFixed());
 
         $(e.currentTarget).find('input[name="item_price_g"]').val(item_price_g);
         $(e.currentTarget).find('input[name="item_id_g"]').val(item_id_g);
