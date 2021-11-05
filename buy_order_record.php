@@ -12,7 +12,7 @@
                         <ul class="market_tab--list">
                             <li><span onclick="window.location.href='buy_order.php';">Buy Orders</span></li>
                             <li class='active'><span onclick="window.location.href='buy_order_record.php';">Buy Order Records</span></li>
-                            <li><span>Place Buy Order</span></li>
+                            <li><span data-toggle="modal" data-target="#buyorder_game_item_modal">Place Buy Order</span></li>
                         </ul>
                         
                     </div>
@@ -46,7 +46,7 @@
 									<td>
 										<div class="img_text">
 											<?php echo '<img class="item__img" src="data:image/png;base64,'.base64_encode($res['goods_image']).'"height="72" >'; ?>
-											<span><?php echo $res['goods_quality']," ",$res['goods_name'];?></span>	
+                                            <span><?php echo '<a href="goods_sell.php?goods_id='.$res['goods_id'].'";><span>'.$res['goods_quality'].' '.$res['goods_name'].'</span></a>';?></span>	
 										</div>
 									</td>
 									<td>
@@ -59,8 +59,14 @@
 									<span><?php echo $res['item_date_added'];?></span>										
 									</td>
 									<td><?php
-                                         if($res['item_status']!=1){
-                                            echo '<span> Cancelled</span>';	
+                                         if($res['item_status']==0){
+                                            echo '<span> Successful </span>';	
+                                         }else if($res['item_status']==2){
+                                            echo '<span> Cancelled </span>';	
+                                         }else if($res['item_status']==3){
+                                            echo '<span> Seller Cancelled</span>';	
+                                         }else if($res['item_status']==4){
+                                            echo '<span> Buyer Cancelled</span>';	
                                          }
                                          } }?>
 									</td>

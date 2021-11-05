@@ -114,7 +114,11 @@ $('document').ready(function()
         
         $(e.currentTarget).find('input[name="item_stock_g"]').val(item_stock_g);
         $(e.currentTarget).find('span[name="display_price_g"]').html(item_price_g);
+        $(e.currentTarget).find('input[name="bargain_price_g"]').val(minimum_price.toFixed());
         $(e.currentTarget).find('span[name="display_minimumm_g"]').html(minimum_price.toFixed());
+        $(e.currentTarget).find('span[name="display_total_g"]').html(minimum_price.toFixed());
+                $(e.currentTarget).find('input[name="item_total_g"]').val(minimum_price.toFixed());
+
         $(e.currentTarget).find('input[name="item_price_g"]').val(item_price_g);
         $(e.currentTarget).find('input[name="item_id_g"]').val(item_id_g);
         $(e.currentTarget).find('input[name="buyer_id_g"]').val(buyer_id_g);
@@ -163,7 +167,13 @@ $('document').ready(function()
         $('#item_total_h').val(price * quantity)
     });
 
+    $('#cancel_buy_order_modal').on('show.bs.modal', function(e) {
+        var item_id_i = $(e.relatedTarget).data('item_id_i');
+        var user_id_i = $(e.relatedTarget).data('user_id_i');
 
+        $(e.currentTarget).find('input[name="item_id_i"]').val(item_id_i);
+        $(e.currentTarget).find('input[name="user_id_i"]').val(user_id_i);
+    });
 
 
     $('#sale_game_item_modal_2').on('show.bs.modal', function(e) {
@@ -525,7 +535,7 @@ $('document').ready(function()
             //}				
 			break;//END OF SAVE NEW ITEM
             case "supply_item_modal":
-              
+ 
                 var item_price_h=$("#item_price_h").val()
                 var item_stock_h=$("#item_stock_h").val()
 				var item_quantity_h=$("#item_quantity_h").val()
@@ -564,11 +574,30 @@ $('document').ready(function()
 				});//END OF AJAX IN ADDING NEW ITEM
             //}				
 			break;//END OF SAVE NEW ITEM
-		};
-        	
+            case "cancel_buy_order_modal":             
+                var item_id_i=$("#item_id_i").val()
+                var user_id_i=$("#user_id_i").val()
+
+				var data=new FormData();
+				data.append("action_type","cancel_buy_order_modal");
+				data.append("item_id_i",item_id_i);
+                data.append("user_id_i",user_id_i);
+
+				$.ajax({	
+					url:"account/controller.php",
+					method:"post",
+					data:data,
+					contentType:false,
+					cache:false,
+					processData:false,
+					success:function(res){
+							alert(res)
+                            location.reload();
+					}
+				});//END OF AJAX IN ADDING NEW ITEM
+            //}				
+			break;//END OF SAVE NEW ITEM
+        
+        };	
 	});	
-
-
-    
-
 });

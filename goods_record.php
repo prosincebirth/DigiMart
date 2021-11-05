@@ -105,16 +105,16 @@
 										</div>
 									</td>
 									<td>
-									<span><?php echo $res['item_price'];?></span>			
+										<span><?php echo $res['item_price'];?></span>			
 									</td>
 									<td>
 									
 									</td>
 									<td>
-									<span><?php echo $res['order_desc'];?></span>						
+										<span><?php echo $res['order_desc'];?></span>						
 									</td>
 									<td>
-										<span><?php echo $res['transaction_date'];?></span>										
+										<span><?php echo date('Y-m-d',strtotime($res['transaction_date']));?></span>																			
 									</td>
 									<td>
 									
@@ -132,7 +132,7 @@
 										</td>
 										<td>
 										
-										no
+											no
 										</td>
 											
 										<td>

@@ -134,9 +134,13 @@
 	function edit_user_password(){}
 	function edit_game_service(){}
 	function edit_game_item(){}
-
-
-
+///////////////////UPDATE FUNCTIIONS CONFIRMATION/////////////////////////////////
+	function cancel_buy_order($item_id,$user_id){
+		$conn=connection();
+		$query="UPDATE game_items set item_status=4 where item_id=:item_id and user_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":item_id"=>$item_id,":user_id"=>$user_id));
+		$conn=null;}
 
 ///////////////////////DELETE FUNCTIONS///////////////////////////////// 
 	function delete_game($game_id){
@@ -173,10 +177,9 @@
 
 /////////////////////////////////////////////////////////////////////
 	function display(){}
-
 	function display_bargain_orders($user_id){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
-		$sql="SELECT * from game_items a join goods b where user_id=$user_id and a.goods_id = b.goods_id and a.order_id=3 and a.item_status=1";
+		$sql="SELECT *,(select user_username AS bargain_user from users where user_id=$user_id ) from transactions a join game_items b join goods c join users d where a.seller_id=d.user_id and a.order_id = 3 and a.transaction_status = 1 and a.item_id = b.item_id and b.goods_id=c.goods_id ORDER BY a.transaction_date ASC";
 		$result = $conn->query($sql);
 		return $result;}
 
@@ -188,13 +191,13 @@
 
 	function display_buy_orders($user_id){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
-		$sql="SELECT * from game_items a join goods b where user_id=$user_id and a.goods_id = b.goods_id and a.order_id=2 and a.item_status=1";
+		$sql="SELECT * from game_items a join goods b where a.user_id=$user_id and a.goods_id = b.goods_id and a.order_id=2 and a.item_status=1 ORDER BY a.item_date_added ASC";
 		$result = $conn->query($sql);
 		return $result;}
 
 	function display_buy_order_records($user_id){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
-		$sql="SELECT * from game_items a join goods b where user_id=$user_id and a.goods_id = b.goods_id and a.order_id=2 and a.item_status !=1";
+		$sql="SELECT * from game_items a join goods b where user_id=$user_id and a.goods_id = b.goods_id and a.order_id=2 and a.item_status !=1 ORDER BY item_date_added ASC";
 		$result = $conn->query($sql);
 		return $result;}	
 
@@ -239,7 +242,7 @@
 
 	function display_goods_trade_record($goods_id){
 		$conn=connection2();
-		$query="SELECT * from transactions a join orders b join game_items c join goods d where a.item_id = c.item_id and a.transaction_status=0 and c.item_status=0 and a.order_id=b.order_id and c.goods_id = d.goods_id";
+		$query="SELECT * from transactions a join orders b join game_items c join goods d where a.item_id = c.item_id and a.transaction_status=0 and c.item_status=0 and a.order_id=b.order_id and c.goods_id = d.goods_id ORDER BY a.transaction_date ASC";
 		$result = $conn->query($query);
 		return $result;}		
 		

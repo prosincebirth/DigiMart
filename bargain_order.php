@@ -30,10 +30,11 @@
                                 <thead>
                                     <tr>
                                         <th>Items</th>
-                                        <th>Buy Order Price</th>
-                                        <th>Progress</th>
+                                        <th>Bargain Price</th>
+										<th>Quantity</th>
+                                        <th>Seller</th>	
                                         <th>Create Time</th>
-                                        <th>Status</th>
+										<th></th>
                                     </tr>
                                 </thead>
                                 <?php	$result = display_bargain_orders($_SESSION['user_session']);
@@ -51,7 +52,11 @@
 										<span><?php echo $res['item_price'];?></span>									
 									</td>
 									<td>
-										<span><?php echo $res['item_quantity'];?></span>
+									<span><?php echo $res['item_quantity']; ?></span>		
+									</td>
+									<td>
+									
+									<span><?php echo $res['user_username'];?></span>								
 									</td>
 									<td>
 									<span><?php echo $res['item_date_added'];?></span>										

@@ -11,7 +11,7 @@
                         <ul class="market_tab--list">
                             <li class='active'><span onclick="window.location.href='buy_order.php';">Buy Orders</span></li>
                             <li ><span onclick="window.location.href='buy_order_record.php';">Buy Order Records</span></li>
-                            <li><span>Place Buy Order</span></li>
+                            <li><span data-toggle="modal" data-target="#buyorder_game_item_modal">Place Buy Order</span></li>   
                         </ul>
                         
                     </div>
@@ -45,7 +45,7 @@
 									<td>
 										<div class="img_text">
 											<?php echo '<img class="item__img" src="data:image/png;base64,'.base64_encode($res['goods_image']).'"height="72" >'; ?>
-											<span><?php echo $res['goods_quality']," ",$res['goods_name'];?></span>	
+											<span><?php echo '<a href="goods_sell.php?goods_id='.$res['goods_id'].'";><span>'.$res['goods_quality'].' '.$res['goods_name'].'</span></a>';?></span>	  
 										</div>
 									</td>
 									<td>
@@ -59,16 +59,9 @@
 									</td>
 									<td>
 										<div class="item__group--cta">
-											<a class="buy_btn wishlist_btn"  data-toggle="modal" data-target="#buy_game_item_modal" 
-											data-item_id="<?php echo $res['item_id'];?>" 
-											data-seller_id="<?php echo $res['user_id'];?>" 
-											data-service_id="<?php echo $res['service_id'];?>" 
-											data-item_price="<?php echo $res['item_price'];?>" 
-											data-game_id="<?php echo $res['game_id'];?>" 
-											data-order_id="<?php echo $res['order_id'];?>"
-											data-buyer_id="<?php echo $_SESSION['user_session'];?>"> Cancel Order</a>
-											
-										
+											<button class="buy_btn wishlist_btn"  data-toggle="modal" data-target="#cancel_buy_order_modal" 
+											data-item_id_i="<?php echo $res['item_id'];?>" 
+											data-user_id_i="<?php echo $_SESSION['user_session'];?>"> Cancel Order</button>
 											<?php } }?>
 										</div>
 										
