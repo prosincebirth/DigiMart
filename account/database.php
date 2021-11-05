@@ -179,13 +179,13 @@
 	function display(){}
 	function display_bargain_orders($user_id){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
-		$sql="SELECT *,(select user_username AS bargain_user from users where user_id=$user_id ) from transactions a join game_items b join goods c join users d where a.seller_id=d.user_id and a.order_id = 3 and a.transaction_status = 1 and a.item_id = b.item_id and b.goods_id=c.goods_id ORDER BY a.transaction_date ASC";
+		$sql="SELECT *,(select user_username from users where user_id=a.seller_id ) as seller_name from transactions a join game_items b join goods c join users d where a.buyer_id=d.user_id and a.order_id = 3 and a.transaction_status = 1 and a.item_id = b.item_id and b.goods_id=c.goods_id ORDER BY a.transaction_date ASC";
 		$result = $conn->query($sql);
 		return $result;}
 
 	function display_bargain_orders_records($user_id){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
-		$sql="SELECT * from game_items a join goods b where user_id=$user_id and a.goods_id = b.goods_id and a.order_id=3 and a.item_status !=1";
+		$sql="SELECT * from transactions a join game_items b join goods c where a.buyer_id=58 and a.item_id = b.item_id and b.goods_id = c.goods_id and a.order_id=3 and a.transaction_status !=1 ORDER BY a.transaction_date ASC";
 		$result = $conn->query($sql);
 		return $result;}
 
@@ -242,7 +242,7 @@
 
 	function display_goods_trade_record($goods_id){
 		$conn=connection2();
-		$query="SELECT * from transactions a join orders b join game_items c join goods d where a.item_id = c.item_id and a.transaction_status=0 and c.item_status=0 and a.order_id=b.order_id and c.goods_id = d.goods_id ORDER BY a.transaction_date ASC";
+		$query="SELECT * from transactions a join orders b join game_items c join goods d where a.item_id = c.item_id and a.transaction_status=0 and a.order_id=b.order_id and c.goods_id = d.goods_id ORDER BY a.transaction_date ASC";
 		$result = $conn->query($query);
 		return $result;}		
 		

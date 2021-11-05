@@ -56,7 +56,7 @@
 									</td>
 									<td>
 									
-									<span><?php echo $res['user_username'];?></span>								
+									<span><?php echo $res['seller_name'];?></span>								
 									</td>
 									<td>
 									<span><?php echo $res['item_date_added'];?></span>										
