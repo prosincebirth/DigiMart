@@ -8,10 +8,10 @@
             <div class="mainbar">
                 <div class="market_item--wrapper">
                     <div class="market_tabs">
-                        <ul class="market_tab--list">
-                            <li class='active'><span onclick="window.location.href='buy_order.php';">Buy Orders</span></li>
-                            <li ><span onclick="window.location.href='buy_order_record.php';">Buy Order Records</span></li>
-                            <li><span data-toggle="modal" data-target="#buyorder_game_item_modal">Place Buy Order</span></li>   
+                        <ul class="market_tab--list">				
+                            <li ><span onclick="window.location.href='bargain_order.php';">Bargain Orders</span></li>
+                            <li ><span onclick="window.location.href='bargain_order_record.php';">Bargain Order Records</span></li>
+							<li class='active'><span onclick="window.location.href='my_bargain.php';">My Bargain</span></li>
                         </ul>
                         
                     </div>
@@ -31,37 +31,53 @@
                                 <thead>
                                     <tr>
                                         <th>Items</th>
-                                        <th>Buy Order Price</th>
-                                        <th>Progress</th>
-                                        <th>Create Time</th>
-                                        <th></th>
+                                        <th>Bargain Price</th>
+										<th>Quantity</th>
+										<th>Total</th>
+                                        <th>Seller</th>	
+                                        <th>Time</th>
+									
                                     </tr>
                                 </thead>
-                                <?php	$result = display_buy_orders($_SESSION['user_session']);
+                                <?php	$result = display_my_bargain_orders($_SESSION['user_session']);
 										if($result->num_rows > 0){
 										while ($res = $result->fetch_assoc()){?>      
-							<tbody>
-								<tr>
-									<td>
+							    <tbody>
+								    <tr>
+									    <td>
 										<div class="img_text">
 											<?php echo '<img class="item__img" src="data:image/png;base64,'.base64_encode($res['goods_image']).'"height="72" >'; ?>
-											<span><?php echo '<a href="goods_sell.php?goods_id='.$res['goods_id'].'";><span>'.$res['goods_quality'].' '.$res['goods_name'].'</span></a>';?></span>	  
+											<span><?php echo $res['goods_quality']," ",$res['goods_name'];?></span>	
 										</div>
 									</td>
 									<td>
-										<span><?php echo $res['item_price'];?></span>									
+										<span><?php echo $res['item_price'];?></span>						
 									</td>
 									<td>
-										<span><?php echo $res['item_quantity'];?></span>
+									<span><?php echo $res['item_quantity']; ?></span>		
+								
+									</td>
+									<td>
+									<span><?php echo $res['transaction_amount']; ?></span>		
+										</td>
+
+									<td>
+									<span><?php echo $res['seller_name'];?></span>								
 									</td>
 									<td>
 									<span><?php echo $res['item_date_added'];?></span>										
 									</td>
 									<td>
 										<div class="item__group--cta">
-											<button class="buy_btn wishlist_btn"  data-toggle="modal" data-target="#cancel_buy_order_modal" 
-											data-item_id_i="<?php echo $res['item_id'];?>" 
-											data-user_id_i="<?php echo $_SESSION['user_session'];?>"> Cancel Order</button>
+											<a class="buy_btn wishlist_btn"  data-toggle="modal" data-target="#buy_game_item_modal" 
+											data-item_id="<?php echo $res['item_id'];?>" 
+											data-seller_id="<?php echo $res['user_id'];?>" 
+											data-service_id="<?php echo $res['service_id'];?>" 
+											data-item_price="<?php echo $res['item_price'];?>" 
+											data-game_id="<?php echo $res['game_id'];?>" 
+											data-order_id="<?php echo $res['order_id'];?>"
+											data-buyer_id="<?php echo $_SESSION['user_session'];?>"> Cancel Order</a>
+													
 											<?php } }?>
 										</div>
 										

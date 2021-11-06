@@ -464,9 +464,10 @@
 				Minimum : <span id="display_minimumm_g"  name="display_minimumm_g"> </span></br>
 				Total : <span id="display_total_g"  name="display_total_g"> </span>
 							
-				<div class="fld_input"><input type="hidden" name="item_price_g" placeholder="ITEM PRICE" id="item_price_g" class="form-control"></div>						
+				<div class="fld_input"><input type="hidden" name="item_price_g" placeholder="ITEM PRICE" id="item_price_g" class="form-control"></div>			
+				<div class="fld_input"><input type="number" name="bargain_price_g" placeholder="BARGAIN PRICE" id="bargain_price_g" class="form-control"></div>			
                 	<div class="fld_input"><input type="number" name="item_quantity_g" placeholder="ITEM QUANTITY" id="item_quantity_g" value ="1" class="form-control" autofocus></div>
-					<div class="fld_input"><input type="number" name="bargain_price_g" placeholder="BARGAIN AMOUNT" id="bargain_price_g" value ="1" class="form-control"></div>
+					
 				<div class="fld_input"><input type="hidden" name="item_total_g" placeholder="ITEM TOTAL" id="item_total_g" class="form-control"></div>
 				<div class="fld_input"><input type="hidden" name="item_stock_g" placeholder="ITEM STOCK" id="item_stock_g" class="form-control"></div>	
 				<div class="fld_input"><input type="hidden" name="item_id_g" placeholder="ITEM ID" id="item_id_g" class="form-control"></div>
@@ -509,6 +510,25 @@
             </div>
 			<div class="modal-footer">
 					<button class="btn btn-success" type="button" value="supply_item_modal">Confirm</button>
+			</div>
+									
+		</div>
+		</div>
+	</div></div>
+	
+<div class="modal fade" id="cancel_buy_order_modal" role="dialog"><!-- buying items on item-goods.php-->
+	<div class="modal-dialog">
+		<div class="modal-content">
+		<div class="modal-header"> 
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title"><center>CANCEL BUY ORDER</h4>
+		</div>
+		<div class="modal-body">							
+				<div class="fld_input"><input type="hidden" name="item_id_i" placeholder="ITEM ID" id="item_id_i" class="form-control"></div>						
+				<div class="fld_input"><input type="hidden" name="user_id_i" placeholder="USER ID" id="user_id_i" class="form-control"></div>						
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="cancel_buy_order_modal">Confirm</button>
 			</div>
 									
 		</div>

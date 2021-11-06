@@ -10,8 +10,9 @@
                 <div class="market_item--wrapper">
                     <div class="market_tabs">
                         <ul class="market_tab--list">
-                            <li><span onclick="window.location.href='bargain_order.php';">Bargain Orders</span></li>
+                            <li ><span onclick="window.location.href='bargain_order.php';">Bargain Orders</span></li>
                             <li class='active'><span onclick="window.location.href='bargain_order_record.php';">Bargain Order Records</span></li>
+							<li ><span onclick="window.location.href='my_bargain.php';">My Bargain</span></li>
                         </ul>      
                     </div>
                     <div class="market_tabs">
@@ -35,7 +36,7 @@
                                         <th>Status</th>
                                     </tr>
                                 </thead><?php	
-                                        $result = display_buy_order_records($_SESSION['user_session']);
+                                        $result = display_bargain_orders_records($_SESSION['user_session']);
 										if($result->num_rows > 0){
 										while ($res = $result->fetch_assoc()){?>                  
 							<tbody>
@@ -56,10 +57,17 @@
 									<span><?php echo $res['item_date_added'];?></span>										
 									</td>
 									<td><?php
-                                         if($res['item_status']!=1){
-                                            echo '<span> Cancelled</span>';	
+                                         if($res['transaction_status']==0){
+                                            echo '<span> Successful </span>';	
+                                         }else if($res['transaction_status']==2){
+                                            echo '<span> Cancelled </span>';	
+                                         }else if($res['transaction_status']==3){
+                                            echo '<span> Seller Cancelled</span>';	
+                                         }else if($res['transaction_status']==4){
+                                            echo '<span> Buyer Cancelled</span>';	
                                          }
                                          } }?>
+                                    
 									</td>
 									
 								</tr>
