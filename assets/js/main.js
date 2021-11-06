@@ -219,9 +219,7 @@ $('document').ready(function()
                                 alert(res)
                             }
                             else if(res=="user added"){//success
-                                alert(res)
-                                $("#register_modal").hide()       
-                                $("#login_modal").show()                      
+                                alert(res)             
                             }
                         }
                     });	
@@ -569,7 +567,7 @@ $('document').ready(function()
 					processData:false,
 					success:function(res){
 							alert(res)
-                            console.log(res)
+                            location.reload();         
 					}
 				});//END OF AJAX IN ADDING NEW ITEM
             //}				

@@ -87,8 +87,7 @@
 										
 										</div>
 											<?php } }?>
-											</td>
-										<td>										
+																			
 									</td>
 								</tr>
 							</tbody>

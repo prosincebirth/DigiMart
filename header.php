@@ -65,7 +65,7 @@
                     <?php 
                     if(isset($_SESSION['user_session'])){// for login
                         echo "<a class='header_btn' href='#'>
-                            <span class='small-hide'>My Account</span>
+                            <span class='small-hide'>".$_SESSION['user_username']."</span>
                             <span class='large-hide'><i class='far fa-user-circle'></i></span>
                             </a>";
                         echo "<a class='header_btn' href='logout.php'>

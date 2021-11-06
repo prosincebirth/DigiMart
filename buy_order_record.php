@@ -10,9 +10,10 @@
                 <div class="market_item--wrapper">
                     <div class="market_tabs">
                         <ul class="market_tab--list">
-                            <li><span onclick="window.location.href='buy_order.php';">Buy Orders</span></li>
+                            <li ><span onclick="window.location.href='buy_order.php';">Buy Orders</span></li>
                             <li class='active'><span onclick="window.location.href='buy_order_record.php';">Buy Order Records</span></li>
-                            <li><span data-toggle="modal" data-target="#buyorder_game_item_modal">Place Buy Order</span></li>
+                            <li ><span onclick="window.location.href='my_buyorder.php';">My Buy Order</span></li>
+                            <li><span data-toggle="modal" data-target="#buyorder_game_item_modal">Place Buy Order</span></li>   
                         </ul>
                         
                     </div>
