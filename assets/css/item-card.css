@@ -26,8 +26,8 @@
     padding: 10px;
 }
 .item_card .item_info .title {
-    font-size: 1.6rem !important;
-    color: var(--black-color) !important;
+    font-size: 1.5rem !important;
+    color: var(--secondary-color) !important;
     margin: 0 !important;
 }
 .item_card .item_info .other_info {

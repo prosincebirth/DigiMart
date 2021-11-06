@@ -91,8 +91,15 @@
     <ul class="left_nav__list">
         <li class="left_nav__list___item active"><a href="./">Home</a></li>
         <li class="left_nav__list___item"><a href="market.php">Market</a></li>
-        <li class="left_nav__list___item"><a href="sale-market.php">News</a></li>
+        <li class="left_nav__list___item"><a href="sale_market.php">News</a></li>
     </ul>
+    <?php if(isset($_SESSION['user_session'])){?>
+    <ul class="left_nav__list">
+        <li class="left_nav__list___item"><a href="bargain_order.php">Bargain</a></li>
+        <li class="left_nav__list___item"><a href="sale_order.php">Sales</a></li>
+        <li class="left_nav__list___item"><a href="buy_order.php">Buy Order</a></li>
+    </ul>
+    <?php }else{ echo "<a class='header_btn' data-toggle='modal' href='#login_modal'></a>"; }?>
 </nav>
 
 <script>
