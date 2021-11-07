@@ -33,7 +33,7 @@
                                     <tr>
                                         <th>Items</th>
                                         <th>Buy Order Price</th>
-                                        <th>Progress</th>
+                                        <th>Quantity</th>
                                         <th>Create Time</th>
                                         <th>Status</th>
                                     </tr>

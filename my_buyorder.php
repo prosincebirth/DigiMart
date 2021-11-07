@@ -33,12 +33,12 @@
                                     <tr>
                                         <th>Items</th>
                                         <th>Buy Order Price</th>
-                                        <th>Progress</th>
+                                        <th>Quantity</th>
                                         <th>Create Time</th>
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <?php	$result = display_buy_orders($_SESSION['user_session']);
+                                <?php	$result = display_mybuy_orders($_SESSION['user_session'],1);//user logged in and game id
 										if($result->num_rows > 0){
 										while ($res = $result->fetch_assoc()){?>      
 							<tbody>
@@ -46,8 +46,10 @@
 									<td>
 										<div class="img_text">
 											<?php echo '<img class="item__img" src="data:image/png;base64,'.base64_encode($res['goods_image']).'"height="72" >'; ?>
-											<span><?php echo '<a href="goods_sell.php?goods_id='.$res['goods_id'].'";><span>'.$res['goods_quality'].' '.$res['goods_name'].'</span></a>';?></span>	  
+											<span><?php echo '<a href="goods_sell.php?goods_id='.$res['goods_id'].'";><span>'.$res['goods_quality'].' '.$res['goods_name'].'</span></a>';?></span>	
+                                              
 										</div>
+                                        
 									</td>
 									<td>
 										<span><?php echo $res['item_price'];?></span>									

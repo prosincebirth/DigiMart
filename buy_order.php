@@ -32,8 +32,9 @@
                                 <thead>
                                     <tr>
                                         <th>Items</th>
-                                        <th>Buy Order Price</th>
-                                        <th>Progress</th>
+                                        <th>Buyer</th>  
+                                        <th>Price</th>
+                                        <th>Quantity</th>
                                         <th>Create Time</th>
                                         <th></th>
                                     </tr>
@@ -46,25 +47,45 @@
 									<td>
 										<div class="img_text">
 											<?php echo '<img class="item__img" src="data:image/png;base64,'.base64_encode($res['goods_image']).'"height="72" >'; ?>
-											<span><?php echo '<a href="goods_sell.php?goods_id='.$res['goods_id'].'";><span>'.$res['goods_quality'].' '.$res['goods_name'].'</span></a>';?></span>	  
+											<span><?php echo '<a href="goods_buy.php?goods_id='.$res['goods_id'].'";><span>'.$res['goods_quality'].' '.$res['goods_name'].'</span></a>';?></span>	  
 										</div>
 									</td>
-									<td>
-										<span><?php echo $res['item_price'];?></span>									
+                                    <td>
+										<span><?php echo $res['seller_name'];?></span>
 									</td>
 									<td>
-										<span><?php echo $res['item_quantity'];?></span>
+										<span><?php echo $res['transaction_amount'];?></span>									
 									</td>
 									<td>
-									<span><?php echo $res['item_date_added'];?></span>										
+										<span><?php echo $res['transaction_quantity'];?></span>
 									</td>
 									<td>
-										<div class="item__group--cta">
-											<button class="buy_btn wishlist_btn"  data-toggle="modal" data-target="#cancel_buy_order_modal" 
-											data-item_id_i="<?php echo $res['item_id'];?>" 
-											data-user_id_i="<?php echo $_SESSION['user_session'];?>"> Cancel Order</button>
+									<span><?php echo $res['transaction_date'];?></span>										
+									</td>
+									<td>
+                                    <div class="item__group--cta">
+											<button class="buy_btn wishlist_btn"  data-toggle="modal" data-target="#buy_game_item_modal" 
+											data-item_price_f="<?php echo $res['item_price'];?>" 
+											data-item_id_f="<?php echo $res['item_id'];?>"
+											data-item_stock_f="<?php echo $res['item_quantity'];?>"
+											data-buyer_id_f="<?php if(isset($_SESSION['user_session'])){echo $_SESSION['user_session']; }?>" 
+											data-seller_id_f="<?php echo $res['user_id'];?>" 
+											data-service_id_f="<?php echo $res['service_id'];?>" 
+											data-game_id_f="<?php echo $res['game_id'];?>" 
+											data-order_id_f="<?php echo '1'?>"> Accept</button>
+											
+											<button data-dismiss="modal" data-toggle="modal" data-target="#bargain_item_modal"
+											data-item_price_g="<?php echo $res['item_price'];?>" 
+											data-item_id_g="<?php echo $res['item_id'];?>"
+											data-item_stock_g="<?php echo $res['item_quantity'];?>"
+											data-buyer_id_g="<?php if(isset($_SESSION['user_session'])){echo $_SESSION['user_session']; }?>" 
+											data-seller_id_g="<?php echo $res['user_id'];?>" 
+											data-service_id_g="<?php echo $res['service_id'];?>" 
+											data-game_id_g="<?php echo $res['game_id'];?>" 
+											data-order_id_g="<?php echo '3'?>"> Refuse</button>
+										
+										</div>
 											<?php } }?>
-										</div>
 										
 									</td>
 									

@@ -528,7 +528,7 @@
 				<div class="fld_input"><input type="hidden" name="user_id_i" placeholder="USER ID" id="user_id_i" class="form-control"></div>						
             </div>
 			<div class="modal-footer">
-					<button class="btn btn-success" type="button" value="cancel_buy_order_modal">Confirm</button>
+					<button class="btn btn-success" type="button" value="cancel_buy_order_modal">Confirm</button>					
 			</div>
 									
 		</div>

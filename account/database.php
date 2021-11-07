@@ -195,9 +195,16 @@
 		$result = $conn->query($sql);
 		return $result;}
 
+	
 	function display_buy_orders($user_id){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
-		$sql="SELECT * from game_items a join goods b where a.user_id=$user_id and a.goods_id = b.goods_id and a.order_id=2 and a.item_status=1 ORDER BY a.item_date_added ASC";
+		$sql="SELECT *,(select user_username from users where user_id=a.buyer_id ) as seller_name from transactions a join game_items b join goods c join users d where a.item_id = b.item_id AND b.goods_id = c.goods_id AND a.seller_id = $user_id AND d.user_id = $user_id AND a.order_id = 2 AND a.transaction_status = 1 ORDER BY a.transaction_date ASC";
+		$result = $conn->query($sql);
+		return $result;}
+		
+	function display_mybuy_orders($user_id,$game_id){// USED IN GAME SERVICES , POST SALE
+		$conn=connection2();
+		$sql="SELECT  * from game_items a join goods b where a.goods_id=b.goods_id and a.user_id=$user_id and a.order_id=2 and a.item_status=1 and a.game_id=$game_id ORDER BY a.item_date_added ASC";
 		$result = $conn->query($sql);
 		return $result;}
 
