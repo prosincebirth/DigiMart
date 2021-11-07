@@ -175,7 +175,6 @@ $('document').ready(function()
         $(e.currentTarget).find('input[name="user_id_i"]').val(user_id_i);
     });
 
-
     $('#sale_game_item_modal_2').on('show.bs.modal', function(e) {
         var goods_id_b = $(e.relatedTarget).data('goods_id');
         $(e.currentTarget).find('input[name="goods_id_b"]').val(goods_id_b);
@@ -185,6 +184,15 @@ $('document').ready(function()
         var goods_id_e = $(e.relatedTarget).data('goods_id');
         $(e.currentTarget).find('input[name="goods_id_e"]').val(goods_id_e);
     });
+
+    $('#accept_buy_order_modal').on('show.bs.modal', function(e) {
+        var transaction_id_j = $(e.relatedTarget).data('transaction_id_j');
+        var user_id_j = $(e.relatedTarget).data('user_id_j');
+
+        $(e.currentTarget).find('input[name="transaction_id_j"]').val(transaction_id_j);
+        $(e.currentTarget).find('input[name="user_id_j"]').val(user_id_j);
+    });
+
 
 	$(".btn").on("click",function(){
 		var btn_val=$(this).val();
@@ -595,6 +603,30 @@ $('document').ready(function()
 				});//END OF AJAX IN ADDING NEW ITEM
             //}				
 			break;//END OF SAVE NEW ITEM
+            case "accept_buy_order_modal":             
+                var transaction_id_j=$("#transaction_id_j").val()
+                var user_id_j=$("#user_id_j").val()
+
+				var data=new FormData();
+				data.append("action_type","accept_buy_order_modal");
+				data.append("transaction_id_j",transaction_id_j);
+                data.append("user_id_j",user_id_j);
+
+				$.ajax({	
+					url:"account/controller.php",
+					method:"post",
+					data:data,
+					contentType:false,
+					cache:false,
+					processData:false,
+					success:function(res){
+							alert(res)
+                            location.reload();
+					}
+				});//END OF AJAX IN ADDING NEW ITEM
+            //}				
+			break;//END OF SAVE NEW ITEM
+            
         
         };	
 	});	

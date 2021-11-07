@@ -266,7 +266,24 @@
 									cancel_buy_order($item_id_i,$user_id_i);
 									echo 'success '; // success not buying his own posting
 								} 
-								break;			
+								break;
+					case "accept_buy_order_modal":		
+
+								$item_id_i=$_POST['item_id_i'];
+								$user_id_i=$_POST['user_id_i'];
+								
+								if(empty($user_id_i)){ // trappings for not logged in
+									echo 'Please Login';
+								}
+								//else if(){ balance trappings , cannot buy because the balance is insufficient
+								//else if(){ email not verified trappings , cannot buy because the email is not verified
+								//}								
+								else{
+									cancel_buy_order($item_id_i,$user_id_i);
+									echo 'success '; // success not buying his own posting
+								} 
+								break;				
+								
 					}
 			}
 ?>

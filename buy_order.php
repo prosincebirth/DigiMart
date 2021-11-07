@@ -39,7 +39,7 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <?php	$result = display_buy_orders($_SESSION['user_session']);
+                                <?php	$result = display_buy_orders($_SESSION['user_session'],1);
 										if($result->num_rows > 0){
 										while ($res = $result->fetch_assoc()){?>      
 							<tbody>
@@ -64,15 +64,10 @@
 									</td>
 									<td>
                                     <div class="item__group--cta">
-											<button class="buy_btn wishlist_btn"  data-toggle="modal" data-target="#buy_game_item_modal" 
-											data-item_price_f="<?php echo $res['item_price'];?>" 
-											data-item_id_f="<?php echo $res['item_id'];?>"
-											data-item_stock_f="<?php echo $res['item_quantity'];?>"
-											data-buyer_id_f="<?php if(isset($_SESSION['user_session'])){echo $_SESSION['user_session']; }?>" 
-											data-seller_id_f="<?php echo $res['user_id'];?>" 
-											data-service_id_f="<?php echo $res['service_id'];?>" 
-											data-game_id_f="<?php echo $res['game_id'];?>" 
-											data-order_id_f="<?php echo '1'?>"> Accept</button>
+											<button class="buy_btn wishlist_btn"  data-toggle="modal" data-target="#accept_buy_order_modal" 
+											data-transaction_id_j="<?php echo $res['transaction_id'];?>" 
+                                            data-user_id_j="<?php if(isset($_SESSION['user_session'])){echo $_SESSION['user_session']; }?>" 
+										            >Accept</button>
 											
 											<button data-dismiss="modal" data-toggle="modal" data-target="#bargain_item_modal"
 											data-item_price_g="<?php echo $res['item_price'];?>" 
@@ -92,7 +87,10 @@
 								</tr>
 
 							</tbody>
+
+                            
                             </table>
+
                             <div class="pagination">
 								<ul>
 										<li><a href="">Previous</a></li>
