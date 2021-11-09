@@ -146,10 +146,12 @@ $('document').ready(function()
         var service_id_h = $(e.relatedTarget).data('service_id_h');
         var game_id_h = $(e.relatedTarget).data('game_id_h');
         var order_id_h = $(e.relatedTarget).data('order_id_h');
-        
+     
+
         $(e.currentTarget).find('input[name="item_stock_h"]').val(item_stock_h);
         $(e.currentTarget).find('input[name="item_price_h"]').val(item_price_h);
         $(e.currentTarget).find('span[name="display_price_h"]').html(item_price_h);
+        $(e.currentTarget).find('span[name="display_total_h"]').html(item_price_h);  
         $(e.currentTarget).find('input[name="item_total_h"]').val(item_price_h);
         $(e.currentTarget).find('input[name="item_id_h"]').val(item_id_h);
         $(e.currentTarget).find('input[name="buyer_id_h"]').val(buyer_id_h);

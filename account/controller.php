@@ -245,10 +245,15 @@
 								//else if(){ balance trappings , cannot buy because the balance is insufficient
 								//else if(){ email not verified trappings , cannot buy because the email is not verified
 								//}								
-								else{
+								else if($item_quantity_h == $item_stock_h){
+									update_buy_order_item_quantity_out_of_stock($item_id_h);
 									add_transaction($item_quantity_h,$item_total_h,$item_id_h,$buyer_id_h,$seller_id_h,$service_id_h,$game_id_h,$order_id_h);
 									echo 'success '; // success not buying his own posting
-								} 
+								}else{
+									update_buy_order_item_quantity($item_id_h,$item_quantity_h);
+									add_transaction($item_quantity_h,$item_total_h,$item_id_h,$buyer_id_h,$seller_id_h,$service_id_h,$game_id_h,$order_id_h);
+									echo 'success '; // success not buying his own posting
+								}
 								break;							
 					
 					case "cancel_buy_order_modal":		
@@ -269,8 +274,8 @@
 								break;
 					case "accept_buy_order_modal":		
 
-								$item_id_i=$_POST['item_id_i'];
-								$user_id_i=$_POST['user_id_i'];
+								$transaction_id_j=$_POST['transaction_id_j'];
+								$user_id_j=$_POST['user_id_j'];
 								
 								if(empty($user_id_i)){ // trappings for not logged in
 									echo 'Please Login';

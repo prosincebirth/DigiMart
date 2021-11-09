@@ -142,6 +142,21 @@
 		$exec=$prepare->execute(array(":item_id"=>$item_id,":user_id"=>$user_id));
 		$conn=null;}
 
+	function update_buy_order_item_quantity($item_id,$item_quantity){
+		$conn=connection();
+		$query="UPDATE game_items set item_quantity=item_quantity-:item_quantity where item_id=:item_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":item_id"=>$item_id,":item_quantity"=>$item_quantity));
+		$conn=null;}
+
+	function update_buy_order_item_quantity_out_of_stock($item_id){//SET TO ITEM INACTIVE
+		$conn=connection();
+		$query="UPDATE game_items set item_status=0,item_quantity=0 where item_id=:item_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":item_id"=>$item_id));
+		$conn=null;}	
+	
+
 ///////////////////////DELETE FUNCTIONS///////////////////////////////// 
 	function delete_game($game_id){
 		$conn=connection();
@@ -261,7 +276,7 @@
 
 	function display_goods_trade_record($goods_id){
 		$conn=connection2();
-		$query="SELECT * from transactions a join orders b join game_items c join goods d where a.item_id = c.item_id and a.transaction_status=0 and a.order_id=b.order_id and c.goods_id = d.goods_id ORDER BY a.transaction_date ASC";
+		$query="SELECT * from transactions a join orders b join game_items c join goods d where a.item_id = c.item_id and c.goods_id = $goods_id and a.transaction_status=0 and a.order_id=b.order_id and c.goods_id = d.goods_id ORDER BY a.transaction_date ASC";
 		$result = $conn->query($query);
 		return $result;}		
 		
