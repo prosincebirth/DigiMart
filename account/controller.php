@@ -242,6 +242,7 @@
 								else if($item_quantity_h > $item_stock_h){ // cannot exceed stock
 									echo 'Exceed Quantity';
 								}
+								//else if(){ trappings posting many same items , cannot post same items u must increase the quantity
 								//else if(){ balance trappings , cannot buy because the balance is insufficient
 								//else if(){ email not verified trappings , cannot buy because the email is not verified
 								//}								

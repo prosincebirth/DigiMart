@@ -40,14 +40,13 @@
 		$exec=$prepare->execute(array(":item_price"=>$item_price,":item_quantity"=>$item_quantity,":goods_id"=>$goods_id,":user_id"=>$user_id,":service_id"=>$service_id,":game_id"=>$game_id,":order_id"=>$order_id));
 		$conn=null;}
 
-	function add_new_goods($goods_name,$goods_quality,$goods_rarity,$goods_detail_1,$goods_detail_2,$goods_detail_3,$goods_image,$game_id){
+	function add_new_goods($goods_name,$goods_quality,$goods_rarity,$goods_detail_1,$goods_detail_2,$goods_detail_3,$goods_image,$game_id){	
 		$conn=connection();
 		$query="INSERT INTO goods(goods_name,goods_quality,goods_rarity,goods_detail_1,goods_detail_2,goods_detail_3,goods_image,game_id) values(:goods_name,:goods_quality,:goods_rarity,:goods_detail_1,:goods_detail_2,:goods_detail_3,:goods_image,:game_id)"; 
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":goods_name"=>$goods_name,":goods_quality"=>$goods_quality,":goods_rarity"=>$goods_rarity,":goods_detail_1"=>$goods_detail_1,":goods_detail_2"=>$goods_detail_2,":goods_detail_3"=>$goods_detail_3,":goods_image"=>$goods_image,":game_id"=>$game_id));
 		$conn=null;}
 		
-
 	function add_item_goods_id($item_id){
 		$conn=connection();
 		$query="UPDATE game_items SET goods_id = item_id * 2 WHERE game_items.item_id = :item_id";		
