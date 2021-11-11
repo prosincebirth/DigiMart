@@ -195,7 +195,7 @@ $('document').ready(function()
         $(e.currentTarget).find('input[name="user_id_j"]').val(user_id_j);
     });
 
-    $('#reject_buy_order_modal').on('show.bs.modal', function(e) {
+    $('#refuse_buy_order_modal').on('show.bs.modal', function(e) {
         var transaction_id_k = $(e.relatedTarget).data('transaction_id_k');
         var user_id_k = $(e.relatedTarget).data('user_id_k');
 
@@ -636,12 +636,12 @@ $('document').ready(function()
 				});//END OF AJAX IN ADDING NEW ITEM
             //}				
 			break;//END OF SAVE NEW ITEM
-            case "reject_buy_order_modal":             
+            case "refuse_buy_order_modal":             
                 var transaction_id_k=$("#transaction_id_k").val()
                 var user_id_k=$("#user_id_k").val()
 
 				var data=new FormData();
-				data.append("action_type","reject_buy_order_modal");
+				data.append("action_type","refuse_buy_order_modal");
 				data.append("transaction_id_k",transaction_id_k);
                 data.append("user_id_k",user_id_k);
 

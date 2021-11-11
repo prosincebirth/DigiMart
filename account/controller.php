@@ -299,8 +299,8 @@
 								} 
 								break;				
 								
-					}
-					case "reject_buy_order_modal":		
+					
+					case "refuse_buy_order_modal":		
 
 						$transaction_id_k=$_POST['transaction_id_k'];
 						$user_id_k=$_POST['user_id_k'];
@@ -311,14 +311,13 @@
 						//else if(){ balance trappings , cannot buy because the balance is insufficient
 						//else if(){ email not verified trappings , cannot buy because the email is not verified
 						//}								
-						else{
-							result=get_transaction_details($transaction_id_k,$user_id_k);
-							update_game_quantity(result['item_id'],result['transaction_quantity']);
+						else if($result=get_transaction_details($transaction_id_k,$user_id_k)){
+							update_game_quantity_reject($result['item_id'],$result['transaction_quantity']);
 							update_transaction_buy_order($transaction_id_k);
 							echo 'success '; // success not buying his own posting
 						} 
 						break;				
 						
 			}
-			}
+		}
 ?>
