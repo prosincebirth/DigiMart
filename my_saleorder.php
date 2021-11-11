@@ -36,7 +36,7 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <?php	$result = display_mybuy_orders($_SESSION['user_session'],1);//user logged in and game id
+                                <?php	$result = display_my_sale_order($_SESSION['user_session'],1);//user logged in and game id
 										if($result->num_rows > 0){
 										while ($res = $result->fetch_assoc()){?>      
 							<tbody>

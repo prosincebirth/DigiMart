@@ -231,7 +231,12 @@
 		$result = $conn->query($sql);
 		return $result;}	
 	
-	function display_my_sale_order(){}
+	function display_my_sale_order($user_id,$game_id){
+		$conn=connection2();
+		$sql="SELECT  * from game_items a join goods b where a.goods_id=b.goods_id and a.user_id=$user_id and a.order_id=1  and a.game_id=$game_id ORDER BY a.item_status ASC";
+		$result = $conn->query($sql);
+		return $result;}
+	
 
 	function display_bargain_orders($user_id){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
