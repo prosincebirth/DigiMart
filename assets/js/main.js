@@ -195,6 +195,14 @@ $('document').ready(function()
         $(e.currentTarget).find('input[name="user_id_j"]').val(user_id_j);
     });
 
+    $('#reject_buy_order_modal').on('show.bs.modal', function(e) {
+        var transaction_id_k = $(e.relatedTarget).data('transaction_id_k');
+        var user_id_k = $(e.relatedTarget).data('user_id_k');
+
+        $(e.currentTarget).find('input[name="transaction_id_k"]').val(transaction_id_k);
+        $(e.currentTarget).find('input[name="user_id_k"]').val(user_id_k);
+    });
+
 
 	$(".btn").on("click",function(){
 		var btn_val=$(this).val();
@@ -628,8 +636,30 @@ $('document').ready(function()
 				});//END OF AJAX IN ADDING NEW ITEM
             //}				
 			break;//END OF SAVE NEW ITEM
-            
-        
+            case "reject_buy_order_modal":             
+                var transaction_id_k=$("#transaction_id_k").val()
+                var user_id_k=$("#user_id_k").val()
+
+				var data=new FormData();
+				data.append("action_type","reject_buy_order_modal");
+				data.append("transaction_id_k",transaction_id_k);
+                data.append("user_id_k",user_id_k);
+
+				$.ajax({	
+					url:"account/controller.php",
+					method:"post",
+					data:data,
+					contentType:false,
+					cache:false,
+					processData:false,
+					success:function(res){
+							alert(res)
+                            location.reload();
+					}
+				});//END OF AJAX IN ADDING NEW ITEM
+            //}				
+			break;//END OF SAVE NEW ITEM
+                    
         };	
 	});	
 });

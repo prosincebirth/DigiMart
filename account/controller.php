@@ -128,10 +128,15 @@
 							//add_new_goods($goods_name,$goods_quality,$goods_rarity,$goods_detail1,$goods_detail2,$goods_detail3,$goods_image,$game_id)
 							//existing_goods($goods_name,$goods_quality,$goods_rarity,$goods_detail_1,$goods_detail_2,$goods_detail_3,$goods_image,$game_id){
 							if(!empty($goods_name_d) && is_numeric($goods_price_d) && is_numeric($goods_quantity_d) && !empty($_SESSION['user_session']) && !empty($order_id_d)  && !empty($goods_image_d) && $goods_quality_d != 'null' && $goods_rarity_d != 'null' && $goods_detail1_d != 'null' && $goods_detail2_d != 'null' && $goods_detail3_d != 'null' && $goods_price_d != 'null' && $goods_quantity_d !='null' && $order_id_d !='null' && $service_id_d !='null'){
-								if($result=existing_goods($goods_name_d,$goods_quality_d,$goods_rarity_d,$goods_detail1_d,$goods_detail2_d,$goods_detail3_d,$goods_image_d,'1')){
+								if($result=existing_goods($goods_name_d,$goods_quality_d,$goods_rarity_d,$goods_detail1_d,$goods_detail2_d,$goods_detail3_d,$goods_image_d,'1')){//existing on DB
+									if(existing_game_items($result['goods_id'],$_SESSION['user_session'])){
+										echo 'Item already posted';
+									}
+									else{
 									add_new_game_item($goods_price_d,$goods_quantity_d,$result['goods_id'],$_SESSION['user_session'],$service_id_d,'1','2');
 									echo 'Success but the item is new';
-								}else{
+									}
+								}else{//not existed , created new goods_id
 									add_new_goods($goods_name_d,$goods_quality_d,$goods_rarity_d,$goods_detail1_d,$goods_detail2_d,$goods_detail3_d,$goods_image_d,'1');
 									$result=existing_goods($goods_name_d,$goods_quality_d,$goods_rarity_d,$goods_detail1_d,$goods_detail2_d,$goods_detail3_d,$goods_image_d,'1');
 									add_new_game_item($goods_price_d,$goods_quantity_d,$result['goods_id'],$_SESSION['user_session'],$service_id_d,'1','2');
@@ -148,10 +153,14 @@
 								$service_id_e=$_POST['service_id_e'];
 								//add_new_game_item($item_price,$item_quantity,$goods_id,$user_id,$service_id,$game_id,$order_id)			
 									if(!empty($item_price_e) && is_numeric($item_price_e) && is_numeric($items_quantity_e) && !empty($items_quantity_e) && !empty($goods_id_e) && $service_id_e != 'NULL'){
+										if(existing_game_items($goods_id_e,$_SESSION['user_session'])){
+											echo 'Item already posted';
+										}else{
 										add_new_game_item($item_price_e,$items_quantity_e,$goods_id_e,$_SESSION['user_session'],$service_id_e,'1','2');
-										echo 'Success'; // success posting item on item page , copying same attribute of the item rather than inputing everything 
+										echo 'Success';
+										} // success posting item on item page , copying same attribute of the item rather than inputing everything 
 									}else{
-										echo 'Faled'; // Wrong input , Empty input
+										echo 'Failed'; // Wrong input , Empty input
 									}
 								break;
 					case "buy_game_item":
@@ -249,11 +258,11 @@
 								else if($item_quantity_h == $item_stock_h){
 									update_buy_order_item_quantity_out_of_stock($item_id_h);
 									add_transaction($item_quantity_h,$item_total_h,$item_id_h,$buyer_id_h,$seller_id_h,$service_id_h,$game_id_h,$order_id_h);
-									echo 'success '; // success not buying his own posting
+									echo 'success'; // success not buying his own posting
 								}else{
 									update_buy_order_item_quantity($item_id_h,$item_quantity_h);
 									add_transaction($item_quantity_h,$item_total_h,$item_id_h,$buyer_id_h,$seller_id_h,$service_id_h,$game_id_h,$order_id_h);
-									echo 'success '; // success not buying his own posting
+									echo 'success'; // success not buying his own posting
 								}
 								break;							
 					
@@ -278,18 +287,38 @@
 								$transaction_id_j=$_POST['transaction_id_j'];
 								$user_id_j=$_POST['user_id_j'];
 								
-								if(empty($user_id_i)){ // trappings for not logged in
+								if(empty($user_id_j)){ // trappings for not logged in
 									echo 'Please Login';
 								}
 								//else if(){ balance trappings , cannot buy because the balance is insufficient
 								//else if(){ email not verified trappings , cannot buy because the email is not verified
 								//}								
 								else{
-									cancel_buy_order($item_id_i,$user_id_i);
+									accept_buy_order($transaction_id_j,$user_id_j);
 									echo 'success '; // success not buying his own posting
 								} 
 								break;				
 								
 					}
+					case "reject_buy_order_modal":		
+
+						$transaction_id_k=$_POST['transaction_id_k'];
+						$user_id_k=$_POST['user_id_k'];
+						
+						if(empty($user_id_k)){ // trappings for not logged in
+							echo 'Please Login';
+						}
+						//else if(){ balance trappings , cannot buy because the balance is insufficient
+						//else if(){ email not verified trappings , cannot buy because the email is not verified
+						//}								
+						else{
+							result=get_transaction_details($transaction_id_k,$user_id_k);
+							update_game_quantity(result['item_id'],result['transaction_quantity']);
+							update_transaction_buy_order($transaction_id_k);
+							echo 'success '; // success not buying his own posting
+						} 
+						break;				
+						
+			}
 			}
 ?>

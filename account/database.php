@@ -97,6 +97,15 @@
 		$conn=null;
 		return $res;}
 
+	function existing_game_items($goods_id,$user_id){//USED IN POST SALE
+		$conn=connection();
+		$query="SELECT * from game_items where goods_id=:goods_id and user_id=:user_id and item_status=1";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":goods_id"=>$goods_id,":user_id"=>$user_id));
+		$res = $prepare->fetch(PDO::FETCH_ASSOC);
+		$conn=null;
+		return $res;}
+
 	function sale_game_modal_2($goods_id){
 		$conn=connection();
 		$query="SELECT * from game_items where goods_id=:goods_id";
@@ -136,9 +145,16 @@
 ///////////////////UPDATE FUNCTIIONS CONFIRMATION/////////////////////////////////
 	function cancel_buy_order($item_id,$user_id){
 		$conn=connection();
-		$query="UPDATE game_items set item_status=4 where item_id=:item_id and user_id=:user_id";
+		$query="UPDATE game_items set item_status=2 where item_id=:item_id and user_id=:user_id";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":item_id"=>$item_id,":user_id"=>$user_id));
+		$conn=null;}
+	
+	function accept_buy_order($transaction_id,$user_id){
+		$conn=connection();
+		$query="UPDATE transactions set transaction_status=2 where transaction_id=:transaction_id and buyer_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id,":user_id"=>$user_id));
 		$conn=null;}
 
 	function update_buy_order_item_quantity($item_id,$item_quantity){
@@ -150,12 +166,25 @@
 
 	function update_buy_order_item_quantity_out_of_stock($item_id){//SET TO ITEM INACTIVE
 		$conn=connection();
-		$query="UPDATE game_items set item_status=0,item_quantity=0 where item_id=:item_id";
+		$query="UPDATE game_items set item_status=12,item_quantity=0 where item_id=:item_id";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":item_id"=>$item_id));
 		$conn=null;}	
 	
-
+	function update_game_quantity($item_id,$item_amount){
+		$conn=connection();
+		$query="UPDATE game_items set item_quantity=item_quantity+:item_amount where item_id=:item_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":item_id"=>$item_id,":item_amount"=>$item_amount));
+		$conn=null;}	
+	
+	function update_transaction_buy_order($transaction_id){
+		$conn=connection();
+		$query="UPDATE transactions set transaction_status=2 where transaction_id=:transaction_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id));
+		$conn=null;}	
+	
 ///////////////////////DELETE FUNCTIONS///////////////////////////////// 
 	function delete_game($game_id){
 		$conn=connection();
@@ -212,25 +241,19 @@
 	
 	function display_buy_orders($user_id,$game_id){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
-		$sql="SELECT *,(select user_username from users where user_id=a.buyer_id ) as seller_name from transactions a join game_items b join goods c join users d where a.item_id = b.item_id AND b.goods_id = c.goods_id AND a.seller_id = $user_id AND d.user_id = $user_id AND a.game_id=$game_id and a.order_id = 2 AND a.transaction_status = 1 ORDER BY a.transaction_date ASC";
+		$sql="SELECT *,(select user_username from users where user_id=a.seller_id ) as seller_name from transactions a join game_items b join goods c join users d where a.item_id = b.item_id AND b.goods_id = c.goods_id AND a.buyer_id = $user_id and a.seller_id != $user_id AND d.user_id = $user_id AND a.game_id=$game_id and a.order_id = 2 AND a.transaction_status = 1 ORDER BY a.transaction_date ASC";
 		$result = $conn->query($sql);
 		return $result;}
 		
 	function display_mybuy_orders($user_id,$game_id){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
-		$sql="SELECT  * from game_items a join goods b where a.goods_id=b.goods_id and a.user_id=$user_id and a.order_id=2 and a.item_status=1 and a.game_id=$game_id ORDER BY a.item_date_added ASC";
+		$sql="SELECT  * from game_items a join goods b where a.goods_id=b.goods_id and a.user_id=$user_id and a.order_id=2  and a.game_id=$game_id ORDER BY a.item_status ASC";
 		$result = $conn->query($sql);
 		return $result;}
 
 	function display_buy_order_records($user_id,$game_id){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
-		$sql="SELECT * from game_items a join goods b where a.user_id=$user_id and a.goods_id = b.goods_id and a.order_id=2 and a.item_status !=1 and a.game_id=$game_id ORDER BY a.item_date_added ASC";
-		$result = $conn->query($sql);
-		return $result;}	
-
-	function display_buy_order_records2($user_id,$game_id){// USED IN GAME SERVICES , POST SALE
-		$conn=connection2();
-		$sql="SELECT * from transactions a join game_items b join goods c where a.item_id=b.item_id and b.goods_id = c.goods_id and a.seller_id=$user_id and a.transaction_status !=1 and a.game_id=$game_id ORDER BY a.transaction_date ASC";		
+		$sql="SELECT *,(select user_username from users where user_id=a.seller_id ) as seller_name from transactions a join game_items b join goods c where a.item_id=b.item_id and b.goods_id = c.goods_id and a.buyer_id=$user_id and a.transaction_status !=1 and a.game_id=$game_id and a.order_id = 2 ORDER BY a.transaction_status ASC";		
 		$result = $conn->query($sql);
 		return $result;}		
 
@@ -323,6 +346,11 @@
 		$sql="SELECT * from games";
 		$result = $conn->query($sql);
 		return $result;}
-
+	
+	function get_transaction_details($transaction_id,$user_id){// USED IN GAME SERVICES , POST SALE
+		$conn=connection2();
+		$sql="SELECT * from transactions where transaction_id=$transaction_id where buyer_id=$user_id";
+		$result = $conn->query($sql);
+		return $result;}
 	
 ?>
