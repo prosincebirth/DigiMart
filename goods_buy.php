@@ -91,8 +91,8 @@
 									Manual Delivery Items are in seller's inventory, Sellers will deliver the items to the DigiMart inventory first and buyers can retrieve them from their backpacks <br><br>
 									Automatic Delivery Items will be deposited to Digimart Inventory first and system delivers to the buyer's backpack after the payment are made
 									" data-direction="right"></i></td></th>
-								<th>Quantity</th>
 								<th>Price</th>
+								<th>Quantity</th>
 								<th></th>
 							
 								

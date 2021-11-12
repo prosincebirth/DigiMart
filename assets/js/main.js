@@ -203,6 +203,23 @@ $('document').ready(function()
         $(e.currentTarget).find('input[name="user_id_k"]').val(user_id_k);
     });
 
+    $('#item_deliver_sale_order_modal').on('show.bs.modal', function(e) {
+        var transaction_id_l = $(e.relatedTarget).data('transaction_id_l');
+        var user_id_l = $(e.relatedTarget).data('user_id_l');
+
+        $(e.currentTarget).find('input[name="transaction_id_l"]').val(transaction_id_l);
+        $(e.currentTarget).find('input[name="user_id_l"]').val(user_id_l);
+    });
+
+    $('#item_confirmation_buy_order_modal').on('show.bs.modal', function(e) {
+        var transaction_id_m = $(e.relatedTarget).data('transaction_id_m');
+        var user_id_m = $(e.relatedTarget).data('user_id_m');
+
+        $(e.currentTarget).find('input[name="transaction_id_m"]').val(transaction_id_m);
+        $(e.currentTarget).find('input[name="user_id_m"]').val(user_id_m);
+    });
+    
+    
 
 	$(".btn").on("click",function(){
 		var btn_val=$(this).val();
@@ -659,7 +676,54 @@ $('document').ready(function()
 				});//END OF AJAX IN ADDING NEW ITEM
             //}				
 			break;//END OF SAVE NEW ITEM
+            case "item_deliver_sale_order_modal":             
+                var transaction_id_l=$("#transaction_id_l").val()
+                var user_id_l=$("#user_id_l").val()
+
+				var data=new FormData();
+				data.append("action_type","item_deliver_sale_order_modal");
+				data.append("transaction_id_l",transaction_id_l);
+                data.append("user_id_l",user_id_l);
+
+				$.ajax({	
+					url:"account/controller.php",
+					method:"post",
+					data:data,
+					contentType:false,
+					cache:false,
+					processData:false,
+					success:function(res){
+							alert(res)
+                            location.reload();
+					}
+				});//END OF AJAX IN ADDING NEW ITEM
+            //}				
+			break;//END OF SAVE NEW ITEM
+            case "item_confirmation_buy_order_modal":             
+                var transaction_id_m=$("#transaction_id_m").val()
+                var user_id_m=$("#user_id_m").val()
+
+				var data=new FormData();
+				data.append("action_type","item_confirmation_buy_order_modal");
+				data.append("transaction_id_m",transaction_id_m);
+                data.append("user_id_m",user_id_m);
+
+				$.ajax({	
+					url:"account/controller.php",
+					method:"post",
+					data:data,
+					contentType:false,
+					cache:false,
+					processData:false,
+					success:function(res){
+							alert(res)
+                            location.reload();
+					}
+				});//END OF AJAX IN ADDING NEW ITEM
+            //}				
+			break;//END OF SAVE NEW ITEM
                     
         };	
 	});	
 });
+

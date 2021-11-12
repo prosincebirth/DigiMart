@@ -568,7 +568,48 @@
 			</div>									
 		</div>
 		</div>
-	</div></div>							
+	</div></div>
+
+<div class="modal fade" id="item_deliver_sale_order_modal" role="dialog"><!-- buying items on item-goods.php-->
+	<div class="modal-dialog">
+		<div class="modal-content">
+		<div class="modal-header"> 
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title"><center>Buy Order Confirmation</h4>
+		</div>
+		<div class="modal-body">							
+				<div class="fld_input"><input type="text" name="transaction_id_l" placeholder="ITEM ID" id="transaction_id_l" class="form-control"></div>						
+				<div class="fld_input"><input type="text" name="user_id_l" placeholder="USER ID" id="user_id_l" class="form-control"></div>			
+
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="item_deliver_sale_order_modal">Confirm</button>					
+			</div>									
+		</div>
+		</div>
+	</div></div>
+
+<div class="modal fade" id="item_confirmation_buy_order_modal" role="dialog"><!-- buying items on item-goods.php-->
+	<div class="modal-dialog">
+		<div class="modal-content">
+		<div class="modal-header"> 
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title"><center>Item Received Confirmation</h4>
+		</div>
+		<div class="modal-body">							
+				<div class="fld_input"><input type="text" name="transaction_id_m" placeholder="ITEM ID" id="transaction_id_m" class="form-control"></div>						
+				<div class="fld_input"><input type="text" name="user_id_m" placeholder="USER ID" id="user_id_m" class="form-control"></div>			
+							
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="item_confirmation_buy_order_modal">Confirm</button>					
+			</div>									
+		</div>
+		</div>
+	</div></div>					
+	
+	
+
 
 	
 

@@ -143,6 +143,22 @@
 	function edit_game_service(){}
 	function edit_game_item(){}
 ///////////////////UPDATE FUNCTIIONS CONFIRMATION/////////////////////////////////
+
+ 	function update_item_delivery($transaction_id,$user_id){
+		$conn=connection();
+		$query="UPDATE transactions set transaction_status=4 where transaction_id=:transaction_id and seller_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id,":user_id"=>$user_id));
+		$conn=null;}
+
+	function update_item_confirmation($transaction_id,$user_id){
+		$conn=connection();
+		$query="UPDATE transactions set transaction_status=0 where transaction_id=:transaction_id and buyer_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id,":user_id"=>$user_id));
+		$conn=null;}
+
+
 	function cancel_buy_order($item_id,$user_id){
 		$conn=connection();
 		$query="UPDATE game_items set item_status=2 where item_id=:item_id and user_id=:user_id";
@@ -152,7 +168,7 @@
 	
 	function accept_buy_order($transaction_id,$user_id){
 		$conn=connection();
-		$query="UPDATE transactions set transaction_status=2 where transaction_id=:transaction_id and buyer_id=:user_id";
+		$query="UPDATE transactions set transaction_status=3 where transaction_id=:transaction_id and buyer_id=:user_id";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id,":user_id"=>$user_id));
 		$conn=null;}
@@ -165,6 +181,20 @@
 		$conn=null;}
 
 	function update_buy_order_item_quantity_out_of_stock($item_id){//SET TO ITEM INACTIVE
+		$conn=connection();
+		$query="UPDATE game_items set item_status=12,item_quantity=0 where item_id=:item_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":item_id"=>$item_id));
+		$conn=null;}
+		
+	function update_sale_order_item_quantity($item_id,$item_quantity){
+		$conn=connection();
+		$query="UPDATE game_items set item_quantity=item_quantity-:item_quantity where item_id=:item_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":item_id"=>$item_id,":item_quantity"=>$item_quantity));
+		$conn=null;}
+
+	function update_sale_order_item_quantity_out_of_stock($item_id){//SET TO ITEM INACTIVE
 		$conn=connection();
 		$query="UPDATE game_items set item_status=12,item_quantity=0 where item_id=:item_id";
 		$prepare=$conn->prepare($query);
@@ -227,7 +257,7 @@
 	
 	function display_sale_order_records($user_id,$game_id){
 		$conn=connection2();
-		$sql="SELECT *,(select user_username from users where user_id=a.buyer_id ) as buyer_name from transactions a join game_items b join goods c where a.item_id=b.item_id and b.goods_id = c.goods_id and a.buyer_id != $user_id and a.seller_id=$user_id and a.transaction_status !=1 and a.game_id=$game_id ORDER BY a.transaction_status ASC";		
+		$sql="SELECT *,(select user_username from users where user_id=a.buyer_id ) as buyer_name from transactions a join game_items b join goods c where a.item_id=b.item_id and b.goods_id = c.goods_id and a.buyer_id != $user_id and a.seller_id=$user_id and a.game_id=$game_id and a.order_id !=1 ORDER BY a.transaction_date DESC";		
 		$result = $conn->query($sql);
 		return $result;}	
 	

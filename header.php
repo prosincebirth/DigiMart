@@ -64,7 +64,7 @@
       
                     <?php 
                     if(isset($_SESSION['user_session'])){// for login
-                        echo "<a class='header_btn' href='#'>
+                        echo "<a class='header_btn' href='user_account.php'>
                             <span class='small-hide'>".$_SESSION['user_username']."</span>
                             <span class='large-hide'><i class='far fa-user-circle'></i></span>
                             </a>";

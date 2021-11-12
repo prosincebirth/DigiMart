@@ -186,7 +186,13 @@
 								}
 								//else if(){ balance trappings , cannot buy because the balance is insufficient
 								//}
+								else if($item_quantity_f == $item_stock_f){
+									update_sale_order_item_quantity_out_of_stock($item_id_f);
+									add_transaction($item_quantity_f,$item_total_f,$item_id_f,$buyer_id_f,$seller_id_f,$service_id_f,$game_id_f,$order_id_f);
+									echo 'success';
+								}
 								else{
+									update_sale_order_item_quantity($item_id_f,$item_quantity_f);
 									add_transaction($item_quantity_f,$item_total_f,$item_id_f,$buyer_id_f,$seller_id_f,$service_id_f,$game_id_f,$order_id_f);
 									echo 'success '; // success not buying his own posting
 								} 
@@ -316,7 +322,39 @@
 							update_transaction_buy_order($transaction_id_k);
 							echo 'success '; // success not buying his own posting
 						} 
-						break;				
+						break;
+					case "item_deliver_sale_order_modal":		
+
+						$transaction_id_l=$_POST['transaction_id_l'];
+						$user_id_l=$_POST['user_id_l'];
+						
+						if(empty($user_id_l)){ // trappings for not logged in
+							echo 'Please Login';
+						}
+						//else if(){ balance trappings , cannot buy because the balance is insufficient
+						//else if(){ email not verified trappings , cannot buy because the email is not verified
+						//}								
+						else{
+							update_item_delivery($transaction_id_l,$user_id_l);
+							echo 'success '; // success not buying his own posting
+						} 
+						break;
+					case "item_confirmation_buy_order_modal":		
+
+						$transaction_id_m=$_POST['transaction_id_m'];
+						$user_id_m=$_POST['user_id_m'];
+						
+						if(empty($user_id_m)){ // trappings for not logged in
+							echo 'Please Login';
+						}
+						//else if(){ balance trappings , cannot buy because the balance is insufficient
+						//else if(){ email not verified trappings , cannot buy because the email is not verified
+						//}								
+						else{
+							update_item_confirmation($transaction_id_m,$user_id_m);
+							echo 'success '; // success not buying his own posting
+						} 
+						break;								
 						
 			}
 		}

@@ -26,7 +26,7 @@
                         <div class="menu">
                             <ul>
                             <li><button onclick="location.href='user-wallet.php'"><i class="fas fa-wallet"></i>My wallet</button></li>
-                                <li><button class="active" href="javascript:void(0);"><i class="fas fa-cog"></i>Account</button></li>
+                                <li><button class="active" href="javascript:void(0);"><i class="fas fa-cog"></i>z`Account</button></li>
                                 <li><button href="javascript:void(0);"><i class="fas fa-envelope"></i>Messages</button></li>
                                 <li><button href="javascript:void(0);"><i class="fas fa-star"></i>Favorites</button></li>
                                 <li><button href="javascript:void(0);"><i class="fas fa-ticket-alt"></i>My coupon</button></li>

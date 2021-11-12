@@ -45,9 +45,7 @@
 										<div class="img_text">
 											<?php echo '<img class="item__img" src="data:image/png;base64,'.base64_encode($res['goods_image']).'"height="72" >'; ?>
 											<span><?php echo '<a href="goods_sell.php?goods_id='.$res['goods_id'].'";><span>'.$res['goods_quality'].' '.$res['goods_name'].'</span></a>';?></span>	
-                                              
-										</div>
-                                        
+										</div>                                       
 									</td>
 									<td>
 										<span><?php echo $res['item_price'];?></span>									
@@ -66,11 +64,11 @@
                                             echo '<button class="buy_btn wishlist_btn"  
                                             data-toggle="modal" 
                                             data-target="#cancel_buy_order_modal" 
-                                            data-item_id_i='.$res['item_id'].' data-user_id_i='.$_SESSION['user_session'].' >Cancel Order</button>';
+                                            data-item_id_i='.$res['item_id'].' data-user_id_i='.$_SESSION['user_session'].'>Cancel Order</button>';
                                          }else if($res['item_status']==2){
                                             echo "<span> Canceled Order </span>";
                                          }else if($res['item_status']==3){
-                                            echo "<span> Waiting for Seller's Response </span>";	
+                                            echo "<span> Waiting for your response </span>";	
                                          }else if($res['item_status']==4){
                                             echo "<span> Waiting for Buyer's Response</span>";	
                                          }else if($res['item_status']==5){

@@ -105,7 +105,7 @@
 										</div>
 									</td>
 									<td>
-										<span><?php echo $res['item_price'];?></span>			
+										<span><?php echo $res['transaction_amount'];?></span>			
 									</td>
 									<td>
 									

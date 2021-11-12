@@ -33,7 +33,7 @@
                                     <tr>
                                         <th>Items</th>
                                         <th>Seller</th>
-                                        <th>Buy Order Price</th>
+                                        <th>Price</th>
                                         <th>Quantity</th>
                                         <th>Create Time</th>
                                         <th>Status</th>
@@ -49,7 +49,7 @@
 									<td>
 										<div class="img_text">
 											<?php echo '<img class="item__img" src="data:image/png;base64,'.base64_encode($res['goods_image']).'"height="72" >'; ?>
-                                            <span><?php echo '<a href="goods_sell.php?goods_id='.$res['goods_id'].'";><span>'.$res['goods_quality'].' '.$res['goods_name'].'</span></a>';?></span>
+                                            <span><?php echo '<a href="goods_buy.php?goods_id='.$res['goods_id'].'";><span>'.$res['goods_quality'].' '.$res['goods_name'].'</span></a>';?></span>
                                         			
 										</div>
 									</td>
@@ -75,13 +75,18 @@
                                             echo "<span> Waiting for seller's response </span>";
                                             echo '<br>';
                                             echo '<br>';
-                                            echo '<button>Cancel Order</button>';	
-                                         }else if($res['transaction_status']==4){
+                                            echo '<button> Cancel Order</button>';	
+                                         }else if($res['transaction_status']==4){//Waiting for Buyer's Response
                                             echo '<span> Waiting for your response</span>';	
                                             echo '<br>';
                                             echo '<br>';
-                                            echo '<button> Item Received</button>';
-                                            echo '<button> Start Dispute</button>';
+                                            echo '<button class="buy_btn wishlist_btn"  
+                                                data-toggle="modal" 
+                                                data-target="#item_confirmation_buy_order_modal" 
+                                                data-transaction_id_m='.$res['transaction_id'].'
+                                                data-user_id_m='.$_SESSION['user_session'].'>Item recieved</button>';
+                                            echo ' ';
+                                            echo '<button> Start Dispute </button>';
                                          }else if($res['transaction_status']==5){
                                             echo '<span> Seller Canceled </span>';	
                                          }else if($res['transaction_status']==6){

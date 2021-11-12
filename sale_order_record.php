@@ -33,7 +33,7 @@
                                     <tr>
                                         <th>Items</th>
                                         <th>Type</th>
-                                        <th>Buy Order Price</th>
+                                        <th>Price</th>
                                         <th>Quantity</th>
                                         <th>Create Time</th>
                                         <th>Status</th>
@@ -77,18 +77,27 @@
                                         <?php
                                          if($res['transaction_status']==0){
                                             echo '<span> Success </span>';
+                                         }else if($res['transaction_status']==1){
+                                          echo "<span> Waiting for buyer's response </span>";
+                                          echo '<br>';
+                                          echo '<br>';
+                                          echo '<button> Cancel Order </button>';   
                                          }else if($res['transaction_status']==2){
                                             echo "<span> Canceled Order </span>";
                                          }else if($res['transaction_status']==3){
-                                            echo "<span> Waiting for seller's response </span>";
-                                            echo '<br>';
-                                            echo '<br>';
-                                            echo '<button>Cancel Order</button>';	
+                                          echo '<span> Waiting for your response</span>';	
+                                          echo '<br>';
+                                          echo '<br>';
+                                          echo '<button class="buy_btn wishlist_btn"  
+                                            data-toggle="modal" 
+                                            data-target="#item_deliver_sale_order_modal" 
+                                            data-transaction_id_l='.$res['transaction_id'].'
+                                            data-user_id_l='.$_SESSION['user_session'].'>Item Delivered</button>';
+                                          echo '   <button> Cancel Order </button>';
                                          }else if($res['transaction_status']==4){
-                                            echo '<span> Waiting for your response</span>';	
+                                          echo "<span> Waiting for buyer's response </span>";
                                             echo '<br>';
                                             echo '<br>';
-                                            echo '<button> Item Received</button>';
                                             echo '<button> Start Dispute</button>';
                                          }else if($res['transaction_status']==5){
                                             echo '<span> Seller Canceled </span>';	
@@ -107,7 +116,7 @@
                                          }else if($res['transaction_status']==12){
                                             echo '<span> Sold Out </span>';	
                                          }
-                                         
+
                                          } }?>
 
 
