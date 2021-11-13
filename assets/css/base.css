@@ -28,6 +28,10 @@ body {
     background-color: var(--light-gray-color) !important;
 }
 
+body.open {
+    overflow: hidden;
+}
+
 .hr {
     width: 100%;
     height: 1px;

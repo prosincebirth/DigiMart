@@ -2,6 +2,7 @@ $('document').ready(function()
 {
     $('.js-drop').on('click', function() {
         $(this).toggleClass('open');
+        $('body').toggleClass('open');
     });
     $('[data-toggle="popover"]').popover({
         placement: 'right',

@@ -108,9 +108,11 @@
             if( $(this).hasClass('active') ) {
                 $(this).removeClass('active');
                 $('#mobile-menu').removeClass('open');
+                $('body').removeClass('open');
             } else {
                 $(this).addClass('active');
                 $('#mobile-menu').addClass('open');
+                $('body').addClass('open');
             }
         });
         
