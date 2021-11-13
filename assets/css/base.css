@@ -148,3 +148,8 @@ body {
     overflow: hidden;
     border: 1px solid var(--black-color);
 }
+
+.item_wrapper .img_wrapper {
+    max-height: 150px;
+    overflow: hidden;
+}
