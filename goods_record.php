@@ -81,6 +81,7 @@
 				</div>
 				<div class="item_group--table">
 					<div class="item_group--table--container">
+						<div class="table">
 						<table>
 							<thead>
 								<th>Items</th>
@@ -150,6 +151,7 @@
 							</tr>
 							</tbody>
 						</table>
+						</div>
 						
 						<div class="pagination">
 								<ul>

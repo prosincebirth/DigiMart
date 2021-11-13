@@ -10,8 +10,12 @@
     margin-bottom: 1rem;
 }
 
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 991px) {
+    .item_grid {
+        display: block;
+    }
     .item_grid--2-mobile .item_grid--item {
-        width: calc(100% / 2 - 1rem);
+        width: calc(100% - 1rem);
+        margin-bottom: 15px;
     }
 }

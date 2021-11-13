@@ -204,3 +204,10 @@ body.open {
     display: inline-block;
     color: inherit;
 }
+
+/* TABLE */
+@media screen and (max-width: 991px) {
+    .table {
+        overflow-x: scroll;
+    }
+}
