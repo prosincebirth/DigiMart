@@ -157,3 +157,50 @@ body.open {
     max-height: 150px;
     overflow: hidden;
 }
+
+.modal-dialog {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.modal-content {
+    background-color: #232323 !important;
+}
+
+.modal-title,
+.modal-header .close {
+    color: var(--white-color);
+}
+
+.modal-header .close {
+    font-size: 24px;
+    opacity: 1;
+}
+
+.modal-body input {
+    border: 1px solid #fff !important;
+    background-color: #232323 !important;
+    color: var(--white-color) !important;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.modal-body label {
+    font-size: 14px;
+}
+
+.modal-footer,
+.modal-footer a {
+    color: var(--white-color);
+}
+
+.modal-footer a {
+    font-weight: 700;
+    border-bottom: 1px solid transparent;
+}
+
+.modal-footer a:hover {
+    text-decoration: underline;
+    display: inline-block;
+    color: inherit;
+}

@@ -18,17 +18,17 @@
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: var(--gray-color);
     opacity: 1; /* Firefox */
-    font-size: 1rem;
+    font-size: 14px
 }
 
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
     color: var(--gray-color);
-    font-size: 1rem;
+    font-size: 14px
 }
 
 ::-ms-input-placeholder { /* Microsoft Edge */
     color: var(--gray-color);
-    font-size: 1rem;
+    font-size: 14px
 }
 
 .fld_chkbox {
