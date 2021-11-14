@@ -73,8 +73,7 @@
 		$query="INSERT INTO wallets(user_id) values(:user_id)"; 
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":user_id"=>$user_id));
-		$conn=null;
-	}
+		$conn=null;}
 
 		////////////////////////TRAPPINGS//////////////////////////////MESC///////////////////
 	function existing_email($user_email){ //USER
@@ -104,12 +103,26 @@
 		$conn=null;
 		return $res;}
 	
-	function update_wallet_balance($user_id,$total){
+	function update_frozen_balance($user_id,$total){
 		$conn=connection();
 		$query="UPDATE wallets set wallet_balance=wallet_balance-:total,wallet_frozen_balance=wallet_frozen_balance+:total where user_id=:user_id";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":user_id"=>$user_id,":total"=>$total));
 		$conn=null;}
+
+	function update_wallet_balance($user_id,$total){
+		$conn=connection();
+		$query="UPDATE wallets set wallet_balance=wallet_balance+:total,wallet_frozen_balance=wallet_frozen_balance-:total where user_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":user_id"=>$user_id,":total"=>$total));
+		$conn=null;}
+
+	function wallet_balance($user_id,$total){
+		$conn=connection();
+		$query="UPDATE wallets set wallet_balance=wallet_balance+:total where user_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":user_id"=>$user_id,":total"=>$total));
+		$conn=null;}	
 
 	function existing_goods($goods_name,$goods_quality,$goods_rarity,$goods_detail_1,$goods_detail_2,$goods_detail_3,$goods_image,$game_id){//USED IN POST SALE
 		$conn=connection();
@@ -426,5 +439,15 @@
 		$res = $prepare->fetch(PDO::FETCH_ASSOC);
 		$conn=null;
 		return $res;}
+
+	function get_game_item_information($item_id){//USED IN sale_game_item_modal
+		$conn=connection();
+		$query="SELECT * from game_items where item_id=:item_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":item_id"=>$item_id));
+		$res = $prepare->fetch(PDO::FETCH_ASSOC);
+		$conn=null;
+		return $res;}
+		
 
 ?>

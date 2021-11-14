@@ -282,12 +282,10 @@ $('document').ready(function()
                             success:function(res){                             
                                 if(res=="Success"){
                                     alert(res)
-                                    location.reload();                           
-                                }else if(res=="Wrong Password"){
+                                    location.reload();
+                                }else{
                                     alert(res)
-                                }else if(res=="Username not recognized"){
-                                    alert(res)
-                                }                        
+                                }                       
                             }
                         });	
                     }
@@ -311,7 +309,12 @@ $('document').ready(function()
 					cache:false,
 					processData:false,
 					success:function(res){
-							alert(res)
+                        if(res=="Success"){
+                            alert(res)
+                            location.reload();
+                        }else{
+                            alert(res)
+                        } 
 					}
 				});//END	
 			break;
@@ -334,7 +337,12 @@ $('document').ready(function()
 					cache:false,
 					processData:false,
 					success:function(res){
-							alert(res)
+                        if(res=="Success"){
+                            alert(res)
+                            location.reload();
+                        }else{
+                            alert(res)
+                        } 
 					}
 				});//END	
 			break;//END//END
@@ -373,8 +381,12 @@ $('document').ready(function()
 					cache:false,
 					processData:false,
 					success:function(res){
-							alert(res)
-                            console.log(res)
+                        if(res=="Success"){
+                            alert(res)
+                            location.reload();
+                        }else{
+                            alert(res)
+                        } 
 					}
 				});//END OF AJAX IN ADDING NEW ITEM
             //}				
@@ -401,14 +413,12 @@ $('document').ready(function()
 					cache:false,
 					processData:false,
 					success:function(res){
-							
-                            if(res=="Success"){
-                            alert(res)    
-                            location.reload();
-                            }else{
+                        if(res=="Success"){
                             alert(res)
-                            }
-                            
+                            location.reload();
+                        }else{
+                            alert(res)
+                        }         
 					}
 				});//END 
 			break;//END 
@@ -449,14 +459,10 @@ $('document').ready(function()
 					success:function(res){
                         if(res=="Success"){
                             alert(res)
-                            location.reload();                           
-                        }else if(res=="Item already posted"){
+                            location.reload();
+                        }else{
                             alert(res)
-                        }else if(res=="Empty Fields"){
-                            alert(res)
-                        }else if(res=="Insufficient Balance"){
-                            alert(res)
-                        }                         
+                        }                        
 					}
 				});//END OF AJAX IN ADDING NEW ITEM
             //}				
@@ -528,7 +534,9 @@ $('document').ready(function()
                         if(res=="Success"){
                             alert(res)
                             location.reload();
-                        }
+                        }else{
+                            alert(res)
+                        } 
 					}
 				});//END OF AJAX IN ADDING NEW ITEM
             //}				
@@ -571,8 +579,12 @@ $('document').ready(function()
 					cache:false,
 					processData:false,
 					success:function(res){
-							alert(res)
-                            console.log(res)
+                        if(res=="Success"){
+                            alert(res)
+                            location.reload();
+                        }else{
+                            alert(res)
+                        } 
 					}
 				});//END OF AJAX IN ADDING NEW ITEM
             //}				
@@ -611,8 +623,12 @@ $('document').ready(function()
 					cache:false,
 					processData:false,
 					success:function(res){
-							alert(res)
-                            location.reload();         
+                        if(res=="Success"){
+                            alert(res)
+                            location.reload();
+                        }else{
+                            alert(res)
+                        }       
 					}
 				});//END OF AJAX IN ADDING NEW ITEM
             //}				
@@ -634,8 +650,12 @@ $('document').ready(function()
 					cache:false,
 					processData:false,
 					success:function(res){
-							alert(res)
+                        if(res=="Success"){
+                            alert(res)
                             location.reload();
+                        }else{
+                            alert(res)
+                        } 
 					}
 				});//END OF AJAX IN ADDING NEW ITEM
             //}				
@@ -657,8 +677,12 @@ $('document').ready(function()
 					cache:false,
 					processData:false,
 					success:function(res){
-							alert(res)
+                        if(res=="Success"){
+                            alert(res)
                             location.reload();
+                        }else{
+                            alert(res)
+                        } 
 					}
 				});//END OF AJAX IN ADDING NEW ITEM
             //}				
@@ -680,8 +704,12 @@ $('document').ready(function()
 					cache:false,
 					processData:false,
 					success:function(res){
-							alert(res)
+                        if(res=="Success"){
+                            alert(res)
                             location.reload();
+                        }else{
+                            alert(res)
+                        } 
 					}
 				});//END OF AJAX IN ADDING NEW ITEM
             //}				
@@ -703,8 +731,12 @@ $('document').ready(function()
 					cache:false,
 					processData:false,
 					success:function(res){
-							alert(res)
+                        if(res=="Success"){
+                            alert(res)
                             location.reload();
+                        }else{
+                            alert(res)
+                        } 
 					}
 				});//END OF AJAX IN ADDING NEW ITEM
             //}				
@@ -726,13 +758,16 @@ $('document').ready(function()
 					cache:false,
 					processData:false,
 					success:function(res){
-							alert(res)
+                        if(res=="Success"){
+                            alert(res)
                             location.reload();
+                        }else{
+                            alert(res)
+                        } 
 					}
 				});//END OF AJAX IN ADDING NEW ITEM
             //}				
-			break;//END OF SAVE NEW ITEM
-                    
+			break;//END OF SAVE NEW ITEM        
         };	
 	});	
 });
