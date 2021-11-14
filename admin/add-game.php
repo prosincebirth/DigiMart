@@ -4,7 +4,7 @@ include('includes/navbar.php');
 ?>
 
 
-<div class="modal fade" id="addgame" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="add_new_game_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -14,24 +14,27 @@ include('includes/navbar.php');
         </button>
       </div>
       <form action="#" method="POST">
-
         <div class="modal-body">
-
             <div class="form-group">
                 <label> Name </label>
-                <input type="text" name="name" class="form-control" placeholder="Name">
+                <input type="text" class="form-control"  name="game_name_a" placeholder="Game Name" id="game_name_a" class="form-control">
             </div>
+
             <div class="form-group">
                 <label>Description</label>
-                <input type="text" name="description" class="form-control" placeholder="Description">
+                <input type="text" name="game_desc_a" placeholder="Game Description" id="game_desc_a" class="form-control">
             </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                <input type="text" name="steam_game_id_a" placeholder="Steam Game ID" id="steam_game_id_a" class="form-control">
+            </div>        
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" name="registerbtn" class="btn btn-primary">Save</button>
+            <button type="button" name="add_new_game_modal" class="btn btn-primary">Save</button>
         </div>
       </form>
-
     </div>
   </div>
 </div>
@@ -43,7 +46,7 @@ include('includes/navbar.php');
 <div class="card shadow mb-4">
   <div class="card-header py-3">
     <h6 class="m-0 font-weight-bold text-primary">Game 
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addgame">Add Game</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add_new_game_modal">Add Game</button>
     </h6>
   </div>
 

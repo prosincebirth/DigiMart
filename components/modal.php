@@ -5,6 +5,7 @@
 		<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
 		<h4 class="modal-title">Login</h4>
+		<img src="admin/logo/Logo-Design.png" alt="" width="200px" height="200px"> 
 		</div>
 		<div class="modal-body">
 		<form class="form-signin" method="post" id="login-form"><center>

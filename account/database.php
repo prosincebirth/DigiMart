@@ -68,8 +68,17 @@
 		$exec=$prepare->execute(array(":transaction_quantity"=>$transaction_quantity,":transaction_amount"=>$transaction_amount,":item_id"=>$item_id,":buyer_id"=>$buyer_id,":seller_id"=>$seller_id,":service_id"=>$service_id,":game_id"=>$game_id,":order_id"=>$order_id));
 		$conn=null;}
 
+    function add_wallet($user_id){
+		$conn=connection();
+		$query="INSERT INTO wallets(user_id) values(:user_id)"; 
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":user_id"=>$user_id));
+		$conn=null;
+	}
 
-////////////////////////TRAPPINGS//////////////////////////////MESC///////////////////
+
+
+		////////////////////////TRAPPINGS//////////////////////////////MESC///////////////////
 	function existing_email($user_email){ //USER
 		$conn=connection();
 		$query="SELECT user_email from users where user_email=:user_email";
@@ -87,6 +96,22 @@
 		$res=$prepare->rowcount();
 		$conn=null;
 		return $res;}
+
+	function get_wallet_balance($user_id){//USED IN POST SALE
+		$conn=connection();
+		$query="SELECT * from wallets where user_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":user_id"=>$user_id));
+		$res = $prepare->fetch(PDO::FETCH_ASSOC);
+		$conn=null;
+		return $res;}
+	
+	function update_wallet_balance($user_id,$total){
+		$conn=connection();
+		$query="UPDATE wallets set wallet_balance=wallet_balance-:total,wallet_frozen_balance=wallet_frozen_balance+:total where user_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":user_id"=>$user_id,":total"=>$total));
+		$conn=null;}
 
 	function existing_goods($goods_name,$goods_quality,$goods_rarity,$goods_detail_1,$goods_detail_2,$goods_detail_3,$goods_image,$game_id){//USED IN POST SALE
 		$conn=connection();

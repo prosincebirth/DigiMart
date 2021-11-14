@@ -1,4 +1,6 @@
    <!-- Sidebar -->
+<?php
+  // if(!isset($_SESSION)){header("Location: ../index.php"); exit();} ?>
    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 <!-- Sidebar - Brand -->

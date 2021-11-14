@@ -19,7 +19,7 @@
 							echo 'email taken';
 						} // if email is taken
 						else{
-							add_new_user($user_username_b,$user_password_b,$user_email_b);
+							add_new_user($user_username_b,$user_password_b,$user_email_b);							
 							echo 'user added';
 						} //if both are not taken, success
 						break;
@@ -32,9 +32,13 @@
 							if(password_verify($user_password_a, $res['user_password'])){	
 								$_SESSION['user_session'] = $res['user_id'];
 								$_SESSION['user_username'] = $res['user_username'];
+								$_SESSION['user_status'] = $res['user_status'];
 								session_write_close();
 								echo 'Successfuly Logged In';
 								update_login($res['user_id']);
+									if(!existing_wallet($res['user_id'])){
+											add_wallet($res['user_id']);										
+										}
 							}else{
 								echo 'Wrong Password';
 							}
@@ -86,15 +90,15 @@
 							if(!empty($goods_name_a) && is_numeric($goods_price_a) && is_numeric($goods_quantity_a) && !empty($_SESSION['user_session']) && !empty($order_id_a)  && !empty($goods_image_a) && $goods_quality_a != 'null' && $goods_rarity_a != 'null' && $goods_detail1_a != 'null' && $goods_detail2_a != 'null' && $goods_detail3_a != 'null' && $goods_price_a != 'null' && $goods_quantity_a !='null' && $order_id_a !='null' && $service_id_a !='null'){
 								if($result=existing_goods($goods_name_a,$goods_quality_a,$goods_rarity_a,$goods_detail1_a,$goods_detail2_a,$goods_detail3_a,$goods_image_a,'1')){
 									add_new_game_item($goods_price_a,$goods_quantity_a,$result['goods_id'],$_SESSION['user_session'],$service_id_a,'1','1');
-									echo 'Success but the item is new';
+									echo 'Success (NEW GOODS_ID WILL BE GENERATED)';
 								}else{
 									add_new_goods($goods_name_a,$goods_quality_a,$goods_rarity_a,$goods_detail1_a,$goods_detail2_a,$goods_detail3_a,$goods_image_a,'1');
 									$result=existing_goods($goods_name_a,$goods_quality_a,$goods_rarity_a,$goods_detail1_a,$goods_detail2_a,$goods_detail3_a,$goods_image_a,'1');
 									add_new_game_item($goods_price_a,$goods_quantity_a,$result['goods_id'],$_SESSION['user_session'],$service_id_a,'1','1');
-									echo 'Success but the item is already'; 
+									echo 'Success (GOODS_ID IS ALREADY EXISTING)'; 
 								}
 							}else{
-								echo 'Empty fields'; // input is lacking , wrong inputs
+								echo 'Empty Fields'; // input is lacking , wrong inputs
 							}
 							break;			
 					case "sell_game_item_2":
@@ -105,7 +109,7 @@
 								//add_new_game_item($item_price,$item_quantity,$goods_id,$user_id,$service_id,$game_id,$order_id)
 									if(!empty($item_price_b) && is_numeric($item_price_b) && is_numeric($items_quantity_b) && !empty($items_quantity_b) && !empty($goods_id_b) && $service_id_b != 'NULL'){
 										add_new_game_item($item_price_b,$items_quantity_b,$goods_id_b,$_SESSION['user_session'],$service_id_b,'1','1');
-										echo 'Success'; // success posting item on item page , copying same attribute of the item rather than inputing everything 
+										echo 'Success (GOODS_ID ALREADY INHERITED)'; // success posting item on item page , copying same attribute of the item rather than inputing everything 
 									}else{
 										echo 'Failed'; // Wrong input , Empty input
 									}
@@ -124,23 +128,33 @@
 							$goods_image_d=file_get_contents($_FILES['goods_image_d']['tmp_name']);}
 							$order_id_d=$_POST['order_id_d'];
 							$service_id_d=$_POST['service_id_d'];
+							$user_id_d=$_SESSION['user_session'];
 							//add_new_game_item($item_price,$item_quantity,$goods_id,$user_id,$service_id,$game_id,$order_id)
 							//add_new_goods($goods_name,$goods_quality,$goods_rarity,$goods_detail1,$goods_detail2,$goods_detail3,$goods_image,$game_id)
 							//existing_goods($goods_name,$goods_quality,$goods_rarity,$goods_detail_1,$goods_detail_2,$goods_detail_3,$goods_image,$game_id){
 							if(!empty($goods_name_d) && is_numeric($goods_price_d) && is_numeric($goods_quantity_d) && !empty($_SESSION['user_session']) && !empty($order_id_d)  && !empty($goods_image_d) && $goods_quality_d != 'null' && $goods_rarity_d != 'null' && $goods_detail1_d != 'null' && $goods_detail2_d != 'null' && $goods_detail3_d != 'null' && $goods_price_d != 'null' && $goods_quantity_d !='null' && $order_id_d !='null' && $service_id_d !='null'){
-								if($result=existing_goods($goods_name_d,$goods_quality_d,$goods_rarity_d,$goods_detail1_d,$goods_detail2_d,$goods_detail3_d,$goods_image_d,'1')){//existing on DB
-									if(existing_game_items($result['goods_id'],$_SESSION['user_session'])){
-										echo 'Item already posted';
+								$balance=get_wallet_balance($user_id_d);
+								$total = $goods_quantity_d * $goods_price_d;
+									if($balance['wallet_balance'] >= $total){
+										if($result=existing_goods($goods_name_d,$goods_quality_d,$goods_rarity_d,$goods_detail1_d,$goods_detail2_d,$goods_detail3_d,$goods_image_d,'1')){//existing on DB
+											if(existing_game_items($result['goods_id'],$user_id_d)){
+												echo 'Item already posted';
+											}
+											else{
+												add_new_game_item($goods_price_d,$goods_quantity_d,$result['goods_id'],$user_id_d,$service_id_d,'1','2');
+												update_wallet_balance($user_id_d,$total);
+												echo 'Success (NEW GOODS_ID IS GENERATED)';
+											}
+										}else{//not existed , created new goods_id
+											add_new_goods($goods_name_d,$goods_quality_d,$goods_rarity_d,$goods_detail1_d,$goods_detail2_d,$goods_detail3_d,$goods_image_d,'1');
+											$result=existing_goods($goods_name_d,$goods_quality_d,$goods_rarity_d,$goods_detail1_d,$goods_detail2_d,$goods_detail3_d,$goods_image_d,'1');
+											add_new_game_item($goods_price_d,$goods_quantity_d,$result['goods_id'],$user_id_d,$service_id_d,'1','2');
+											update_wallet_balance($user_id_d,$total);
+											echo 'Success (GOODS_ID IS COPIED)'; 
+										}
 									}
-									else{
-									add_new_game_item($goods_price_d,$goods_quantity_d,$result['goods_id'],$_SESSION['user_session'],$service_id_d,'1','2');
-									echo 'Success but the item is new';
-									}
-								}else{//not existed , created new goods_id
-									add_new_goods($goods_name_d,$goods_quality_d,$goods_rarity_d,$goods_detail1_d,$goods_detail2_d,$goods_detail3_d,$goods_image_d,'1');
-									$result=existing_goods($goods_name_d,$goods_quality_d,$goods_rarity_d,$goods_detail1_d,$goods_detail2_d,$goods_detail3_d,$goods_image_d,'1');
-									add_new_game_item($goods_price_d,$goods_quantity_d,$result['goods_id'],$_SESSION['user_session'],$service_id_d,'1','2');
-									echo 'Success but the item is already'; 
+								else{
+									echo 'Insufficient Balance'; // input is lacking , wrong inputs
 								}
 							}else{
 								echo 'Empty fields'; // input is lacking , wrong inputs

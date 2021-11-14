@@ -43,7 +43,7 @@
                                         <div class="info">
                                             <div class="icon"><i class="fas fa-money-bill-wave fa-3x"></i></div>
                                             <div class="info-title">
-                                                <span>Balance Alipay</span>
+                                                <span>Store Credit</span>
                                             </div>
                                             <div class="info-ammount">
                                                 <span>₱ 0</span>
@@ -54,7 +54,7 @@
                                         <div class="info">
                                             <div class="icon"><i class="fas fa-credit-card  fa-3x"></i></div>
                                             <div class="info-title">
-                                                <span>Balance other</span>
+                                                <span>Balance</span>
                                             </div>
                                             <div class="info-ammount">
                                                 <span>₱ 0</span>
