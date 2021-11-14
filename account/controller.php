@@ -19,7 +19,8 @@
 							echo 'email taken';
 						} // if email is taken
 						else{
-							add_new_user($user_username_b,$user_password_b,$user_email_b);							
+							add_new_user($user_username_b,$user_password_b,$user_email_b);	
+
 							echo 'user added';
 						} //if both are not taken, success
 						break;
@@ -27,24 +28,27 @@
 						$user_username_a=$_POST['user_username_a'];
 						$user_password_a=$_POST['user_password_a'];
 
-						if(existing_user($user_username_a)){
-							$res = login($user_username_a);
-							if(password_verify($user_password_a, $res['user_password'])){	
-								$_SESSION['user_session'] = $res['user_id'];
-								$_SESSION['user_username'] = $res['user_username'];
-								$_SESSION['user_status'] = $res['user_status'];
-								session_write_close();
-								echo 'Successfuly Logged In';
-								update_login($res['user_id']);
-									if(!existing_wallet($res['user_id'])){
-											add_wallet($res['user_id']);										
-										}
+						if(!empty($user_username_a) && !empty($user_password_a)){
+							if(existing_user($user_username_a)){
+								$res = login($user_username_a);
+								if(password_verify($user_password_a, $res['user_password'])){	
+									$_SESSION['user_session'] = $res['user_id'];
+									$_SESSION['user_username'] = $res['user_username'];
+									$_SESSION['user_status'] = $res['user_status'];
+									session_write_close();
+									update_login($res['user_id']);
+										if(!get_wallet_balance($res['user_id'])){
+												add_wallet($res['user_id']);										
+											}
+									echo 'Success';		
+								}else{
+									echo 'Wrong Password';
+								}
 							}else{
-								echo 'Wrong Password';
+								echo 'Username not recognized';
 							}
-						}else{
-							echo 'Username not recognized';
-						}
+						}else{ echo 'Empty Fields';
+							}
 						break;
 					case "add_new_game"://TESTED 11:56 pm , 25/10/2021
 						$game_name_a=$_POST['game_name_a'];
@@ -52,10 +56,10 @@
 						$steam_game_id_a=$_POST['steam_game_id_a'];
 
 						if(!empty($game_name_a) && !empty($game_desc_a) && !empty($steam_game_id_a)){
-						add_new_game($game_name_a,$game_desc_a,$steam_game_id_a);
-							echo 'Success';
+							add_new_game($game_name_a,$game_desc_a,$steam_game_id_a);
+								echo 'Success';
 						}else{
-							echo 'Field inputs error';
+								echo 'Field inputs error';
 						}
 						break;
 					case "add_new_game_service"://TESTED 11:56 pm , 25/10/2021
@@ -133,31 +137,30 @@
 							//add_new_goods($goods_name,$goods_quality,$goods_rarity,$goods_detail1,$goods_detail2,$goods_detail3,$goods_image,$game_id)
 							//existing_goods($goods_name,$goods_quality,$goods_rarity,$goods_detail_1,$goods_detail_2,$goods_detail_3,$goods_image,$game_id){
 							if(!empty($goods_name_d) && is_numeric($goods_price_d) && is_numeric($goods_quantity_d) && !empty($_SESSION['user_session']) && !empty($order_id_d)  && !empty($goods_image_d) && $goods_quality_d != 'null' && $goods_rarity_d != 'null' && $goods_detail1_d != 'null' && $goods_detail2_d != 'null' && $goods_detail3_d != 'null' && $goods_price_d != 'null' && $goods_quantity_d !='null' && $order_id_d !='null' && $service_id_d !='null'){
-								$balance=get_wallet_balance($user_id_d);
-								$total = $goods_quantity_d * $goods_price_d;
-									if($balance['wallet_balance'] >= $total){
+								$balance_d=get_wallet_balance($user_id_d);
+								$total_d = $goods_quantity_d * $goods_price_d;
+									if($balance_d['wallet_balance'] >= $total_d){
 										if($result=existing_goods($goods_name_d,$goods_quality_d,$goods_rarity_d,$goods_detail1_d,$goods_detail2_d,$goods_detail3_d,$goods_image_d,'1')){//existing on DB
 											if(existing_game_items($result['goods_id'],$user_id_d)){
-												echo 'Item already posted';
+												echo 'Item already posted';//ITEM ALREADY EXISTED OR POSTED
 											}
 											else{
 												add_new_game_item($goods_price_d,$goods_quantity_d,$result['goods_id'],$user_id_d,$service_id_d,'1','2');
-												update_wallet_balance($user_id_d,$total);
-												echo 'Success (NEW GOODS_ID IS GENERATED)';
+												update_wallet_balance($user_id_d,$total_d);
+												echo 'Success';//NEW GOODS_ID IS GENERATED
 											}
 										}else{//not existed , created new goods_id
 											add_new_goods($goods_name_d,$goods_quality_d,$goods_rarity_d,$goods_detail1_d,$goods_detail2_d,$goods_detail3_d,$goods_image_d,'1');
 											$result=existing_goods($goods_name_d,$goods_quality_d,$goods_rarity_d,$goods_detail1_d,$goods_detail2_d,$goods_detail3_d,$goods_image_d,'1');
 											add_new_game_item($goods_price_d,$goods_quantity_d,$result['goods_id'],$user_id_d,$service_id_d,'1','2');
-											update_wallet_balance($user_id_d,$total);
-											echo 'Success (GOODS_ID IS COPIED)'; 
+											update_wallet_balance($user_id_d,$total_d);
+											echo 'Success';//GOODS_ID IS COPIED
 										}
-									}
-								else{
+								}else{
 									echo 'Insufficient Balance'; // input is lacking , wrong inputs
 								}
 							}else{
-								echo 'Empty fields'; // input is lacking , wrong inputs
+								echo 'Empty Fields'; // input is lacking , wrong inputs
 							}
 							break;						
 					case "buyorder_game_item_2":
@@ -165,17 +168,26 @@
 								$items_quantity_e=$_POST['items_quantity_e']; 
 								$goods_id_e=$_POST['goods_id_e'];
 								$service_id_e=$_POST['service_id_e'];
+								$user_id_e=$_SESSION['user_session'];
 								//add_new_game_item($item_price,$item_quantity,$goods_id,$user_id,$service_id,$game_id,$order_id)			
 									if(!empty($item_price_e) && is_numeric($item_price_e) && is_numeric($items_quantity_e) && !empty($items_quantity_e) && !empty($goods_id_e) && $service_id_e != 'NULL'){
-										if(existing_game_items($goods_id_e,$_SESSION['user_session'])){
-											echo 'Item already posted';
+										$balance_e=get_wallet_balance($user_id_e);
+										$total_e = $items_quantity_e * $item_price_e;
+										if($balance_e['wallet_balance'] >= $total_e){
+											if(existing_game_items($goods_id_e,$user_id_e)){
+												echo 'Item already posted';
+											}else{
+												add_new_game_item($item_price_e,$items_quantity_e,$goods_id_e,$user_id_e,$service_id_e,'1','2');
+												update_wallet_balance($user_id_e,$total_e);
+												echo 'Success';
+											} // success posting item on item page , copying same attribute of the item rather than inputing everything 
 										}else{
-										add_new_game_item($item_price_e,$items_quantity_e,$goods_id_e,$_SESSION['user_session'],$service_id_e,'1','2');
-										echo 'Success';
-										} // success posting item on item page , copying same attribute of the item rather than inputing everything 
+											  echo 'Insufficient Balance'; // input is lacking , wrong inputs
+											 }
 									}else{
-										echo 'Failed'; // Wrong input , Empty input
-									}
+										echo 'Empty Fields'; // Wrong input , Empty input
+										}
+								
 								break;
 					case "buy_game_item":
 								$item_quantity_f=$_POST['item_quantity_f'];
@@ -198,17 +210,27 @@
 								else if($item_quantity_f > $item_stock_f){ // cannot exceed stock
 									echo 'Exceed Quantity';
 								}
-								//else if(){ balance trappings , cannot buy because the balance is insufficient
-								//}
 								else if($item_quantity_f == $item_stock_f){
-									update_sale_order_item_quantity_out_of_stock($item_id_f);
-									add_transaction($item_quantity_f,$item_total_f,$item_id_f,$buyer_id_f,$seller_id_f,$service_id_f,$game_id_f,$order_id_f);
-									echo 'success';
+									$balance_f=get_wallet_balance($buyer_id_f);
+									if($balance_f['wallet_balance'] >= $item_total_f){
+										update_sale_order_item_quantity_out_of_stock($item_id_f);
+										add_transaction($item_quantity_f,$item_total_f,$item_id_f,$buyer_id_f,$seller_id_f,$service_id_f,$game_id_f,$order_id_f);
+										update_wallet_balance($buyer_id_f,$item_total_f);
+											echo 'Success';
+									}else{ 
+											echo 'Insufficient Balance'; 
+										}
 								}
 								else{
-									update_sale_order_item_quantity($item_id_f,$item_quantity_f);
-									add_transaction($item_quantity_f,$item_total_f,$item_id_f,$buyer_id_f,$seller_id_f,$service_id_f,$game_id_f,$order_id_f);
-									echo 'success '; // success not buying his own posting
+									$balance_f=get_wallet_balance($buyer_id_f);
+									if($balance_f['wallet_balance'] >= $item_total_f){
+										update_sale_order_item_quantity($item_id_f,$item_quantity_f);
+										add_transaction($item_quantity_f,$item_total_f,$item_id_f,$buyer_id_f,$seller_id_f,$service_id_f,$game_id_f,$order_id_f);
+										update_wallet_balance($buyer_id_f,$item_total_f);
+											echo 'Success'; // success not buying his own posting	
+									}else{ 
+											echo 'Insufficient Balance'; 
+										}
 								} 
 								break;		
 					case "bargain_game_item":		
@@ -243,9 +265,16 @@
 								}
 								//else if(){ balance trappings , cannot buy because the balance is insufficient
 								//}
+								else if($balance_g=get_wallet_balance($buyer_id_g)){ 
+									if($balance_f['wallet_balance'] >= $item_total_f)
+									$item_total_g
+
+									echo 'Success';
+								}
 								else{
 									add_transaction($item_quantity_g,$item_total_g,$item_id_g,$buyer_id_g,$seller_id_g,$service_id_g,$game_id_g,$order_id_g);
-									echo 'success '; // success not buying his own posting
+
+								 // success not buying his own posting
 								} 
 								break;
 					case "supply_item_modal":		

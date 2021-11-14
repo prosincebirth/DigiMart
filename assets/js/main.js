@@ -85,6 +85,7 @@ $('document').ready(function()
         $(e.currentTarget).find('input[name="item_stock_f"]').val(item_stock_f);
         $(e.currentTarget).find('input[name="item_price_f"]').val(item_price_f);
         $(e.currentTarget).find('span[name="display_price_f"]').html(item_price_f);
+        $(e.currentTarget).find('span[name="display_total_f"]').html(item_price_f);
         $(e.currentTarget).find('input[name="item_total_f"]').val(item_price_f);
         $(e.currentTarget).find('input[name="item_id_f"]').val(item_id_f);
         $(e.currentTarget).find('input[name="buyer_id_f"]').val(buyer_id_f);
@@ -265,7 +266,6 @@ $('document').ready(function()
                 if($("#login-form").valid()){
                     var username_a=$("#user_username_a").val().trim();
                     var password_a=$("#user_password_a").val().trim();
-
                     
                     var data=new FormData();
                     data.append("action_type","login");
@@ -279,8 +279,8 @@ $('document').ready(function()
                             contentType:false,
                             cache:false,
                             processData:false,
-                            success:function(res){
-                                if(res=="Successfuly Logged In"){
+                            success:function(res){                             
+                                if(res=="Success"){
                                     alert(res)
                                     location.reload();                           
                                 }else if(res=="Wrong Password"){
@@ -447,8 +447,16 @@ $('document').ready(function()
 					cache:false,
 					processData:false,
 					success:function(res){
-							alert(res)
-                            console.log(res)
+                        if(res=="Success"){
+                            alert(res)
+                            location.reload();                           
+                        }else if(res=="Item already posted"){
+                            alert(res)
+                        }else if(res=="Empty Fields"){
+                            alert(res)
+                        }else if(res=="Insufficient Balance"){
+                            alert(res)
+                        }                         
 					}
 				});//END OF AJAX IN ADDING NEW ITEM
             //}				
@@ -474,12 +482,11 @@ $('document').ready(function()
 					cache:false,
 					processData:false,
 					success:function(res){
-							
                             if(res=="Success"){
-                            alert(res)
-                            location.reload();
+                                alert(res)
+                                location.reload();
                             }else{
-                            alert(res)
+                                alert(res)
                             }
                             
 					}
@@ -518,8 +525,10 @@ $('document').ready(function()
 					cache:false,
 					processData:false,
 					success:function(res){
-							alert(res)
-                            console.log(res)
+                        if(res=="Success"){
+                            alert(res)
+                            location.reload();
+                        }
 					}
 				});//END OF AJAX IN ADDING NEW ITEM
             //}				

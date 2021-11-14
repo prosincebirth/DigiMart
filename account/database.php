@@ -76,8 +76,6 @@
 		$conn=null;
 	}
 
-
-
 		////////////////////////TRAPPINGS//////////////////////////////MESC///////////////////
 	function existing_email($user_email){ //USER
 		$conn=connection();
