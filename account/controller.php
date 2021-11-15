@@ -74,6 +74,16 @@
 								echo 'Field inputs error';
 						}
 						break;	
+					case "delete_new_game_modal"://TESTED 11:56 pm , 25/10/2021
+						$game_id_c=$_POST['game_id_c'];
+
+						if(!empty($game_id_c)){
+								delete_game($game_id_c);
+								echo 'Success';
+						}else{
+								echo 'Field inputs error';
+						}
+						break;
 					case "add_new_game_service"://TESTED 11:56 pm , 25/10/2021
 						$service_mode_a=$_POST['service_mode_a'];
 						$service_desc_a=$_POST['service_desc_a'];

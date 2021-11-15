@@ -382,7 +382,14 @@
 		$conn=connection2();
 		$sql="SELECT * from games where game_status=1";
 		$result = $conn->query($sql);
-		return $result;}			
+		return $result;}		
+	
+	function display_all_services(){
+		$conn=connection2();
+		$sql="SELECT * from game_services where service_status=1";
+		$result = $conn->query($sql);
+		return $result;}	
+	
 
 	function display_wallet_balance($user_id){
 		$conn=connection2();

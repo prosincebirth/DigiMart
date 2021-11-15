@@ -1,6 +1,5 @@
 $('document').ready(function(){
 
-
 $('#edit_new_game_modal').on('show.bs.modal', function(e){
     var game_id_b = $(e.relatedTarget).data('1');
     var steam_game_id_b = $(e.relatedTarget).data('2');
@@ -85,11 +84,40 @@ $(".btn").on("click",function(){
             });//END	
             break;
             case "delete_new_game_modal": 
-            var game_id_b=$("#game_id_b").val().trim();
+            var game_id_c=$("#game_id_c").val().trim();
   
             var data=new FormData();
             data.append("action_type","delete_new_game_modal");
             data.append("game_id_c",game_id_c);
+
+            $.ajax({	
+                url:"../account/controller.php",
+                method:"post",
+                data:data,
+                contentType:false,
+                cache:false,
+                processData:false,
+                success:function(res){
+                    console.log(res)
+                    if(res=="Success"){
+                        alert(res)
+                        location.reload();
+                    }else{
+                        alert(res)
+                    } 
+                }
+            });//END	
+            break;
+            case "add_new_service_modal": 
+            var service_mode_d=$("#service_mode_d").val().trim();
+            var service_desc_d=$("#service_desc_d").val().trim();
+            var game_id_d=$("#game_id_d").val().trim();
+  
+            var data=new FormData();
+            data.append("action_type","add_new_service_modal");
+            data.append("service_mode_d",service_mode_d);
+            data.append("service_desc_d",service_desc_d);
+            data.append("game_id_d",game_id_d);
 
             $.ajax({	
                 url:"../account/controller.php",
