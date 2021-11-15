@@ -609,7 +609,60 @@
 		</div>
 	</div></div>					
 	
+<div class="modal fade" id="cancel_sale_order_modal" role="dialog"><!-- buying items on item-goods.php-->
+	<div class="modal-dialog">
+		<div class="modal-content">
+		<div class="modal-header"> 
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title"><center>CANCEL SALE ORDER</h4>
+		</div>
+		<div class="modal-body">							
+				<div class="fld_input"><input type="hidden" name="item_id_n" placeholder="ITEM ID" id="item_id_n" class="form-control"></div>						
+				<div class="fld_input"><input type="hidden" name="user_id_n" placeholder="USER ID" id="user_id_n" class="form-control"></div>						
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="cancel_sale_order_modal">Confirm</button>					
+			</div>									
+		</div>
+		</div>
+	</div></div>
 	
+<div class="modal fade" id="accept_sale_order_modal" role="dialog"><!-- buying items on item-goods.php-->
+	<div class="modal-dialog">
+		<div class="modal-content">
+		<div class="modal-header"> 
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title"><center>ACCEPT SALE ORDER</h4>
+		</div>
+		<div class="modal-body">							
+				<div class="fld_input"><input type="hidden" name="transaction_id_o" placeholder="ITEM ID" id="transaction_id_o" class="form-control"></div>						
+				<div class="fld_input"><input type="hidden" name="user_id_o" placeholder="USER ID" id="user_id_o" class="form-control"></div>						
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="accept_sale_order_modal">Confirm</button>					
+			</div>									
+		</div>
+		</div>
+	</div></div>
+
+<div class="modal fade" id="refuse_sale_order_modal" role="dialog"><!-- buying items on item-goods.php-->
+	<div class="modal-dialog">
+		<div class="modal-content">
+		<div class="modal-header"> 
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title"><center>REFUSE SALE ORDER</h4>
+		</div>
+		<div class="modal-body">							
+				<div class="fld_input"><input type="hidden" name="transaction_id_p" placeholder="ITEM ID" id="transaction_id_p" class="form-control"></div>						
+				<div class="fld_input"><input type="hidden" name="user_id_p" placeholder="USER ID" id="user_id_p" class="form-control"></div>						
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="refuse_sale_order_modal">Confirm</button>					
+			</div>									
+		</div>
+		</div>
+	</div></div>
+
 
 
 	

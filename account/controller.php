@@ -330,11 +330,10 @@
 								if(empty($user_id_i)){ // trappings for not logged in
 									echo 'Please Login';
 								}						
-								else{	
+								else if($result_i=get_game_item_information($item_id_i,$user_id_i)){
 										cancel_buy_order($item_id_i,$user_id_i);
-										update_wallet_balance($user_id_i,$total_i);
-										echo 'Success'; 
-															
+										update_wallet_balance($user_id_i,$result_i['item_price'] * $result_i['item_quantity'] );
+										echo 'Success'; 															
 									}
 								break;
 					case "accept_buy_order_modal":		
@@ -347,7 +346,7 @@
 								}						
 								else{
 									accept_buy_order($transaction_id_j,$user_id_j);
-									echo 'Success '; // success not buying his own posting
+									echo 'Success'; // success not buying his own posting
 								} 
 								break;				
 								
@@ -363,10 +362,10 @@
 						//else if(){ email not verified trappings , cannot buy because the email is not verified
 						//}								
 						else if($result_k=get_transaction_details($transaction_id_k,$user_id_k)){
-							update_game_quantity_reject($result_k['item_id'],$result_k['transaction_quantity']);
+							//update_game_quantity_reject($result_k['item_id'],$result_k['transaction_quantity']);
 							update_transaction_buy_order($transaction_id_k);
-							wallet_balance($user_id_k,$result_k['transaction_quantity']);
-							echo 'Success '; // success not buying his own posting
+							update_wallet_balance($user_id_k,$result_k['transaction_quantity']*$result_k['transaction_amount']);
+							echo 'Success'; // success not buying his own posting
 						} 
 						break;
 					case "item_deliver_sale_order_modal":		
@@ -382,7 +381,7 @@
 						//}								
 						else{
 							update_item_delivery($transaction_id_l,$user_id_l);
-							echo 'success '; // success not buying his own posting
+							echo 'Success'; // success not buying his own posting
 						} 
 						break;
 					case "item_confirmation_buy_order_modal":		
@@ -396,11 +395,25 @@
 						//else if(){ balance trappings , cannot buy because the balance is insufficient
 						//else if(){ email not verified trappings , cannot buy because the email is not verified
 						//}								
-						else{
+						else if($result_m=get_transaction_details($transaction_id_m,$user_id_m)){
+							send_wallet_balance($result_m['seller_id'],$result_m['transaction_quantity']*$result_m['transaction_amount']);
+							deduct_wallet_balance($result_m['buyer_id'],$result_m['transaction_quantity']*$result_m['transaction_amount']);
 							update_item_confirmation($transaction_id_m,$user_id_m);
-							echo 'success '; // success not buying his own posting
+							echo 'Success'; // success not buying his own posting
 						} 
-						break;								
+						break;
+					case "cancel_sale_order_modal":		
+							$item_id_n=$_POST['item_id_n'];
+							$user_id_n=$_POST['user_id_n'];
+							
+							if(empty($user_id_n)){ // trappings for not logged in
+								echo 'Please Login';
+							}						
+							else{
+								cancel_sale_order($item_id_n,$user_id_n);
+								echo 'Success'; 															
+								}
+							break;									
 						
 			}
 		}

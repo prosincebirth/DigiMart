@@ -43,7 +43,8 @@
                                         <div class="info">
                                             <div class="icon"><i class="fas fa-money-bill-wave fa-3x"></i></div>
                                             <div class="info-title">
-                                                <span>Store Credit</span>
+                                                
+                                                <span>Balance</span>
                                             </div>
                                             <div class="info-ammount">
                                                 <span>₱ 0</span>
@@ -54,17 +55,7 @@
                                         <div class="info">
                                             <div class="icon"><i class="fas fa-credit-card  fa-3x"></i></div>
                                             <div class="info-title">
-                                                <span>Balance</span>
-                                            </div>
-                                            <div class="info-ammount">
-                                                <span>₱ 0</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="info">
-                                            <div class="info-title">
-                                                <span>Frozen balance</span>
+                                                <span>Frozen Balance</span>
                                             </div>
                                             <div class="info-ammount">
                                                 <span>₱ 0</span>

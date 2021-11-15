@@ -63,8 +63,8 @@
                                          }else if($res['item_status']==1){
                                             echo '<button class="buy_btn wishlist_btn"  
                                             data-toggle="modal" 
-                                            data-target="#cancel_buy_order_modal" 
-                                            data-item_id_i='.$res['item_id'].' data-user_id_i='.$_SESSION['user_session'].'>Cancel Order</button>';
+                                            data-target="#cancel_sale_order_modal" 
+                                            data-item_id_n='.$res['item_id'].' data-user_id_n='.$_SESSION['user_session'].'>Cancel Order</button>';
                                          }else if($res['item_status']==2){
                                             echo "<span> Canceled Order </span>";
                                          }else if($res['item_status']==3){

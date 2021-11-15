@@ -116,17 +116,11 @@
                                          }else if($res['transaction_status']==12){
                                             echo '<span> Sold Out </span>';	
                                          }
-
                                          } }?>
-
-
-									</td>
-									
+									</td>	
 								</tr>
-
 							</tbody>
                             </table>
-                            
                             <div class="pagination">
 								<ul>
 										<li><a href="">Previous</a></li>

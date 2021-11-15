@@ -117,12 +117,20 @@
 		$exec=$prepare->execute(array(":user_id"=>$user_id,":total"=>$total));
 		$conn=null;}
 
-	function wallet_balance($user_id,$total){
+	function send_wallet_balance($user_id,$total){
 		$conn=connection();
 		$query="UPDATE wallets set wallet_balance=wallet_balance+:total where user_id=:user_id";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":user_id"=>$user_id,":total"=>$total));
-		$conn=null;}	
+		$conn=null;}
+	
+	function deduct_wallet_balance($user_id,$total){
+		$conn=connection();
+		$query="UPDATE wallets set wallet_frozen_balance=wallet_frozen_balance-:total where user_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":user_id"=>$user_id,":total"=>$total));
+		$conn=null;}		
+		
 
 	function existing_goods($goods_name,$goods_quality,$goods_rarity,$goods_detail_1,$goods_detail_2,$goods_detail_3,$goods_image,$game_id){//USED IN POST SALE
 		$conn=connection();
@@ -201,6 +209,13 @@
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":item_id"=>$item_id,":user_id"=>$user_id));
 		$conn=null;}
+
+	function cancel_sale_order($item_id,$user_id){
+		$conn=connection();
+		$query="UPDATE game_items set item_status=2 where item_id=:item_id and user_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":item_id"=>$item_id,":user_id"=>$user_id));
+		$conn=null;}	
 	
 	function accept_buy_order($transaction_id,$user_id){
 		$conn=connection();
@@ -349,6 +364,13 @@
 		$conn=null;
 		return $res;}
 
+	function display_wallet_balance($user_id){
+		$conn=connection2();
+		$sql="SELECT * FROM wallets where user_id=$userid";
+		$result = $conn->query($sql);
+		return $result;}
+	
+
 	function display_goods($goods_id){//items-goods.php
 		$conn=connection();
 		$query="SELECT * FROM goods a join game_items b WHERE a.goods_id = :goods_id  ORDER BY b.item_price ASC";
@@ -431,7 +453,7 @@
 		$result = $conn->query($sql);
 		return $result;}
 	
-	function get_transaction_details($transaction_id,$user_id){
+	function get_transaction_details($transaction_id,$user_id){ // BUY ORDER
 		$conn=connection();
 		$query="SELECT * from transactions where transaction_id=:transaction_id and buyer_id=:user_id";
 		$prepare=$conn->prepare($query);
@@ -440,14 +462,14 @@
 		$conn=null;
 		return $res;}
 
-	function get_game_item_information($item_id){//USED IN sale_game_item_modal
+	function get_game_item_information($item_id,$user_id){//USED IN sale_game_item_modal
 		$conn=connection();
-		$query="SELECT * from game_items where item_id=:item_id";
+		$query="SELECT * from game_items where item_id=:item_id and user_id=:user_id";
 		$prepare=$conn->prepare($query);
-		$exec=$prepare->execute(array(":item_id"=>$item_id));
+		$exec=$prepare->execute(array(":item_id"=>$item_id,":user_id"=>$user_id));
 		$res = $prepare->fetch(PDO::FETCH_ASSOC);
 		$conn=null;
 		return $res;}
-		
+
 
 ?>

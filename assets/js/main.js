@@ -179,6 +179,14 @@ $('document').ready(function()
         $(e.currentTarget).find('input[name="user_id_i"]').val(user_id_i);
     });
 
+    $('#cancel_sale_order_modal').on('show.bs.modal', function(e) {
+        var item_id_n = $(e.relatedTarget).data('item_id_n');
+        var user_id_n = $(e.relatedTarget).data('user_id_n');
+
+        $(e.currentTarget).find('input[name="item_id_n"]').val(item_id_n);
+        $(e.currentTarget).find('input[name="user_id_n"]').val(user_id_n);
+    });
+
     $('#sale_game_item_modal_2').on('show.bs.modal', function(e) {
         var goods_id_b = $(e.relatedTarget).data('goods_id');
         $(e.currentTarget).find('input[name="goods_id_b"]').val(goods_id_b);
@@ -195,6 +203,22 @@ $('document').ready(function()
 
         $(e.currentTarget).find('input[name="transaction_id_j"]').val(transaction_id_j);
         $(e.currentTarget).find('input[name="user_id_j"]').val(user_id_j);
+    });
+
+    $('#accept_sale_order_modal').on('show.bs.modal', function(e) {
+        var transaction_id_o = $(e.relatedTarget).data('transaction_id_o');
+        var user_id_o = $(e.relatedTarget).data('user_id_o');
+
+        $(e.currentTarget).find('input[name="transaction_id_o"]').val(transaction_id_o);
+        $(e.currentTarget).find('input[name="user_id_o"]').val(user_id_o);
+    });
+
+    $('#refuse_sale_order_modal').on('show.bs.modal', function(e) {
+        var transaction_id_p = $(e.relatedTarget).data('transaction_id_p');
+        var user_id_p = $(e.relatedTarget).data('user_id_p');
+
+        $(e.currentTarget).find('input[name="transaction_id_k"]').val(transaction_id_p);
+        $(e.currentTarget).find('input[name="user_id_k"]').val(user_id_p);
     });
 
     $('#refuse_buy_order_modal').on('show.bs.modal', function(e) {
@@ -684,9 +708,8 @@ $('document').ready(function()
                             alert(res)
                         } 
 					}
-				});//END OF AJAX IN ADDING NEW ITEM
-            //}				
-			break;//END OF SAVE NEW ITEM
+				});			
+			break;
             case "refuse_buy_order_modal":             
                 var transaction_id_k=$("#transaction_id_k").val()
                 var user_id_k=$("#user_id_k").val()
@@ -765,9 +788,86 @@ $('document').ready(function()
                             alert(res)
                         } 
 					}
-				});//END OF AJAX IN ADDING NEW ITEM
-            //}				
-			break;//END OF SAVE NEW ITEM        
+				});
+			break; 
+            case "cancel_sale_order_modal":             
+                var item_id_n=$("#item_id_n").val()
+                var user_id_n=$("#user_id_n").val()
+
+				var data=new FormData();
+				data.append("action_type","cancel_sale_order_modal");
+				data.append("item_id_n",item_id_n);
+                data.append("user_id_n",user_id_n);
+
+				$.ajax({	
+					url:"account/controller.php",
+					method:"post",
+					data:data,
+					contentType:false,
+					cache:false,
+					processData:false,
+					success:function(res){
+                        if(res=="Success"){
+                            alert(res)
+                            location.reload();
+                        }else{
+                            alert(res)
+                        } 
+					}
+				});	
+			break;
+            case "accept_sale_order_modal":             
+                var transaction_id_o=$("#transaction_id_o").val()
+                var user_id_o=$("#user_id_o").val()
+
+				var data=new FormData();
+				data.append("action_type","accept_sale_order_modal");
+				data.append("transaction_id_o",transaction_id_o);
+                data.append("user_id_o",user_id_o);
+
+				$.ajax({	
+					url:"account/controller.php",
+					method:"post",
+					data:data,
+					contentType:false,
+					cache:false,
+					processData:false,
+					success:function(res){
+                        if(res=="Success"){
+                            alert(res)
+                            location.reload();
+                        }else{
+                            alert(res)
+                        } 
+					}
+				});
+            break;
+            case "refuse_sale_order_modal":             
+                var transaction_id_p=$("#transaction_id_p").val()
+                var user_id_p=$("#user_id_p").val()
+
+				var data=new FormData();
+				data.append("action_type","refuse_sale_order_modal");
+				data.append("transaction_id_p",transaction_id_p);
+                data.append("user_id_p",user_id_p);
+
+				$.ajax({	
+					url:"account/controller.php",
+					method:"post",
+					data:data,
+					contentType:false,
+					cache:false,
+					processData:false,
+					success:function(res){
+                        if(res=="Success"){
+                            alert(res)
+                            location.reload();
+                        }else{
+                            alert(res)
+                        } 
+					}
+				});
+            break;	
         };	
 	});	
 });
