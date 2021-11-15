@@ -85,11 +85,11 @@ include('includes/navbar.php');
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
           <tr>
+            <th>ID</th>
             <th>Steam Game ID</th>
             <th>Game Name </th>
             <th>Description </th>
-            <th colspan="2"><center>Actions </th>
-            
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -100,6 +100,7 @@ include('includes/navbar.php');
 										while ($res = $result->fetch_assoc()){ ?>  
      
           <tr>
+          <td><?php echo $res['game_id'];?></td>
             <td><?php echo $res['steam_game_id'];?></td>
             <td><?php echo $res['game_name'];?></td>
             <td><?php echo $res['game_desc'];?></td>
