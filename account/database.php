@@ -300,6 +300,13 @@
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":game_id"=>$game_id));
 		$conn=null;}
+	
+	function delete_game_services($service_id){
+		$conn=connection();
+		$query="UPDATE game_services set service_status=0 where service_id=:service_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":service_id"=>$service_id));
+		$conn=null;}	
 
 	function delete_user($user_id){
 		$conn=connection();

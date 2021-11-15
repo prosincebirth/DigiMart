@@ -20,18 +20,16 @@
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
     <link rel="stylesheet" href="assets/css/market.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
- 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-
    <?php
         if(!isset($_SESSION)){
             session_start();
         }
-        else if($_SESSION['user_status']==2){
-            header("Location: admin/index.php"); exit();
-        }
-
+        if(isset($_SESSION['user_status'])){
+            if($_SESSION['user_status']==2){
+                header("Location: admin/index.php"); exit();
+                }   
+            }
     ?>
 </head>
 <body>

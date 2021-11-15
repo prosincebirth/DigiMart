@@ -79,8 +79,29 @@ include('includes/navbar.php');
     </div>
   </div></div>
 
+<div class="modal fade" id="delete_game_services_modal" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Game Service</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body">
+            <div class="form-group"> 
+              <input type="text" class="form-control" name="service_id_f" placeholder="Game Name" id="service_id_f" class="form-control">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" value="delete_game_services_modal" class="btn btn-primary">Confirm</button>
+        </div>
+    </div>
+  </div></div>
 
-<div class="container-fluid">
+  <div class="container-fluid">
+  
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -125,8 +146,8 @@ include('includes/navbar.php');
                   >Edit</button>
             </td>
             <td>
-                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete_new_game_modal"
-									data-11="<?php echo $res['game_id']; ?>"  
+                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete_game_services_modal"
+									data-28="<?php echo $res['service_id']; ?>"  
                   >DELETE</button>
             </td>
           </tr>

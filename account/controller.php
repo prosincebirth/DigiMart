@@ -109,6 +109,17 @@
 							echo 'Field inputs error';
 						}
 						break;
+
+					case "delete_game_services_modal"://TESTED 11:56 pm , 25/10/2021
+						$service_id_f=$_POST['service_id_f'];
+
+						if(!empty($service_id_f)){
+								delete_game_services($service_id_f);
+								echo 'Success';
+						}else{
+								echo 'Field inputs error';
+						}
+						break;	
 					case "sell_game_item":
 							$goods_name_a=$_POST['goods_name_a'];
 							$goods_quality_a=$_POST['goods_quality_a'];

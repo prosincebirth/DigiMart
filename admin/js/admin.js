@@ -30,6 +30,11 @@ $('#delete_new_game_modal').on('show.bs.modal', function(e){
     $(e.currentTarget).find('input[name="game_id_c"]').val(game_id_c);
 });
 
+$('#delete_game_services_modal').on('show.bs.modal', function(e){
+    var service_id_f = $(e.relatedTarget).data('28');
+
+    $(e.currentTarget).find('input[name="service_id_f"]').val(service_id_f);
+});
 
 
 $(".btn").on("click",function(){
@@ -161,6 +166,31 @@ $(".btn").on("click",function(){
             data.append("service_mode_e",service_mode_e);
             data.append("service_desc_e",service_desc_e);
             data.append("game_id_e",game_id_e);
+
+            $.ajax({	
+                url:"../account/controller.php",
+                method:"post",
+                data:data,
+                contentType:false,
+                cache:false,
+                processData:false,
+                success:function(res){
+                    console.log(res)
+                    if(res=="Success"){
+                        alert(res)
+                        location.reload();
+                    }else{
+                        alert(res)
+                    } 
+                }
+            });//END	
+            break;
+            case "delete_game_services_modal": 
+            var service_id_f=$("#service_id_f").val().trim();
+  
+            var data=new FormData();
+            data.append("action_type","delete_game_services_modal");
+            data.append("service_id_f",service_id_f);
 
             $.ajax({	
                 url:"../account/controller.php",
