@@ -449,17 +449,6 @@
 	</div></div>
 	</div>
 	
-
-
-<<<<<<< HEAD
-<div class="modal fade" id="bargain_item_modal" role="dialog"><!-- buying items on item-goods.php-->
-	<div class="vertical-alignment-helper">
-		<div class="modal-dialog vertical-align-center">
-			<div class="modal-content">
-			<div class="modal-header"> 
-			<button type="button" class="close" data-dismiss="modal">&times;</button>
-			<h4 class="modal-title"><center>BARGAIN ITEM</h4>
-=======
 <div class="modal fade" id="bargain_item_modal" role="dialog"><!-- buying items on item-goods.php-->
 	<div class="vertical-alignment-helper">
 		<div class="modal-dialog vertical-align-center">
@@ -489,7 +478,6 @@
             </div>
 			<div class="modal-footer">
 					<button class="btn btn-success" type="button" value="bargain_game_item">Confirm</button>
->>>>>>> 2351caffefb9b2843e816bb0c0c55b6f18a81b9c
 			</div>
 			<div class="modal-body">
 									
