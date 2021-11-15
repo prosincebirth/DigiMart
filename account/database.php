@@ -329,7 +329,16 @@
 	
 	function display_sale_order_records($user_id,$game_id){
 		$conn=connection2();
-		$sql="SELECT *,(select user_username from users where user_id=a.buyer_id ) as buyer_name from transactions a join game_items b join goods c where a.item_id=b.item_id and b.goods_id = c.goods_id and a.buyer_id != $user_id and a.seller_id=$user_id and a.game_id=$game_id  ORDER BY a.transaction_date DESC";		
+		$sql="SELECT a.order_id,
+		a.transaction_amount,a.buyer_id,a.seller_id,a.item_id,a.game_id,
+		a.transaction_quantity,
+		a.transaction_date,
+		a.transaction_status,
+		b.goods_id,b.item_id,
+		c.goods_image,
+		c.goods_id,
+		c.goods_quality,
+		c.goods_name,(select user_username from users where user_id=a.buyer_id ) as buyer_name from transactions a join game_items b join goods c where a.item_id=b.item_id and b.goods_id = c.goods_id and a.buyer_id != $user_id and a.seller_id=$user_id and a.game_id=$game_id ORDER BY a.transaction_date DESC";		
 		$result = $conn->query($sql);
 		return $result;}	
 	
