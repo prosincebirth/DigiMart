@@ -184,7 +184,13 @@
 	
 	function edit_user(){}
 	function edit_user_password(){}
-	function edit_game_service(){}
+	function edit_game_service($service_id,$service_mode,$service_desc,$game_id){
+		$conn=connection();
+		$query="UPDATE game_services set service_mode=:service_mode,service_desc=:service_desc,game_id=:game_id where service_id=:service_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":game_id"=>$game_id,":service_desc"=>$service_desc,":service_mode"=>$service_mode,":service_id"=>$service_id));
+		$conn=null;}
+
 	function edit_game_item(){}
 ///////////////////UPDATE FUNCTIIONS CONFIRMATION/////////////////////////////////
 

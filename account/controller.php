@@ -96,6 +96,19 @@
 							echo 'Field inputs error';
 						}
 						break;	
+					case "edit_game_services_modal"://TESTED 11:56 pm , 25/10/2021
+						$service_id_e=$_POST['service_id_e'];
+						$service_mode_e=$_POST['service_mode_e'];
+						$service_desc_e=$_POST['service_desc_e'];
+						$game_id_e=$_POST['game_id_e'];
+
+						if(!empty($service_id_e) && !empty($service_mode_e) && !empty($service_desc_e) && !empty($game_id_e)){
+							edit_game_service($service_id_e,$service_mode_e,$service_desc_e,$game_id_e);
+							echo 'Success';
+						}else{
+							echo 'Field inputs error';
+						}
+						break;
 					case "sell_game_item":
 							$goods_name_a=$_POST['goods_name_a'];
 							$goods_quality_a=$_POST['goods_quality_a'];

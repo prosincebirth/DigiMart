@@ -85,31 +85,6 @@
 	</div>
 	
 
-
-<div class="modal fade" id="edit_services_modal" role="dialog">
-	<div class="vertical-alignment-helper">
-	<div class="modal-dialog vertical-align-center">
-	<div class="modal-content">
-		<div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title">Edit Game Service </h4>
-		</div>
-		<div class="modal-body">
-	
-                <div class="fld_input"><input type="text" name="service_name_b" placeholder="Service Name" id="service_name_b" class="form-control"></div>
-				<div class="fld_input"><input type="text" name="service_mode_b" placeholder="Service Mode" id="service_mode_b" class="form-control"></div>
-				<div class="fld_input"><input type="text" name="service_desc_b" placeholder="Service Description" id="service_desc_b" class="form-control"></div>
-            </div>
-			<div class="modal-footer">
-					<button class="btn btn-success" type="button" value="edit_new_game_service">Save</button>
-                  
-			</div>   
-		</div>
-	</div>
-	</div></div>
-	</div>
-	
-
 <div class="modal fade" id="sale_game_item_modal" role="dialog"> 
 	<div class="vertical-alignment-helper">
 	<div class="modal-dialog vertical-align-center">
