@@ -1,4 +1,6 @@
+
 <?php include('head.php'); ?>
+<?php if(!isset($_SESSION)){header("Location: index.php"); exit();}?>
 <?php include('header.php'); ?>
 
 
@@ -32,9 +34,10 @@
                                 <thead>
                                     <tr>
                                         <th>Items</th>
-                                        <th>Type</th>
                                         <th>Price</th>
                                         <th>Quantity</th>
+                                        <th>Type</th>
+                                        <th>Buyer</th>
                                         <th>Create Time</th>
                                         <th>Status</th>
                                     </tr>
@@ -54,6 +57,12 @@
 										</div>
 									</td>
                                     <td>
+										<span><?php echo $res['transaction_amount'];?></span>									
+									</td>
+                                    <td>
+										<span><?php echo $res['transaction_quantity'];?></span>
+									</td>
+                                    <td>
                                             <?php 
                                          if($res['order_id']==1){
                                             echo '<span>Sale Order</span>';
@@ -65,14 +74,12 @@
                                             ?>
 									</td>
 									<td>
-										<span><?php echo $res['transaction_amount'];?></span>									
+										<span><?php echo $res['buyer_name'];?></span>									
 									</td>
 									<td>
-										<span><?php echo $res['transaction_quantity'];?></span>
+										<span><?php echo $res['transaction_date'];?></span>
 									</td>
-									<td>
-									<span><?php echo $res['transaction_date'];?></span>										
-									</td>
+
 									<td>
                                         <?php
                                          if($res['transaction_status']==0){

@@ -323,7 +323,7 @@
 /////////////////////////////////////////////////////////////////////
 	function display_sale_order($user_id,$game_id){
 		$conn=connection2();
-		$sql="SELECT *,(select user_username from users where user_id=a.buyer_id ) as buyer_name from transactions a join game_items b join goods c join users d where a.item_id = b.item_id AND b.goods_id = c.goods_id AND a.seller_id = $user_id and a.buyer_id != $user_id AND d.user_id = $user_id AND a.game_id=$game_id and a.order_id != 2 AND a.transaction_status = 1 ORDER BY a.transaction_date ASC";
+		$sql="SELECT *,(select user_username from users where user_id=a.buyer_id ) as buyer_name from transactions a join game_items b join goods c join users d where a.item_id = b.item_id AND b.goods_id = c.goods_id AND a.seller_id = $user_id and a.buyer_id != $user_id AND d.user_id = $user_id AND a.game_id=$game_id AND a.transaction_status = 1 ORDER BY a.transaction_date ASC";
 		$result = $conn->query($sql);
 		return $result;}
 	
@@ -331,7 +331,7 @@
 		$conn=connection2();
 		$sql="SELECT a.order_id,
 		a.transaction_amount,a.buyer_id,a.seller_id,a.item_id,a.game_id,
-		a.transaction_quantity,
+		a.transaction_quantity,a.transaction_id,
 		a.transaction_date,
 		a.transaction_status,
 		b.goods_id,b.item_id,

@@ -24,10 +24,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 
-   <?php if(!isset($_SESSION)){
-        session_start();
-        
-    }?>
+   <?php
+        if(!isset($_SESSION)){
+            session_start();
+        }
+        if($_SESSION['user_status']==2){
+            header("Location: admin/index.php"); exit();
+        }
+
+    ?>
 </head>
 <body>
     

@@ -1,10 +1,15 @@
 <?php
+if(!isset($_SESSION)){
+  session_start();
+}
+if($_SESSION['user_status']!=2){
+  header("Location: ../index.php"); exit();
+}
 include('includes/header.php'); 
 include('includes/navbar.php'); 
 
+//if(!isset($_SESSION)){header("Location: ../index.php"); exit();} ?>
 ?>
-
-
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
