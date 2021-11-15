@@ -311,25 +311,26 @@ $('document').ready(function()
                         });	
                     }
             break;
-            case "add_new_game": 
+            case "add_new_game_modal": 
 				var game_name_a=$("#game_name_a").val().trim();
                 var game_desc_a=$("#game_desc_a").val().trim();
                 var steam_game_id_a=$("#steam_game_id_a").val().trim();
       
 				var data=new FormData();
-				data.append("action_type","add_new_game");
+				data.append("action_type","add_new_game_modal");
 				data.append("game_name_a",game_name_a);
 				data.append("game_desc_a",game_desc_a);
 				data.append("steam_game_id_a",steam_game_id_a);
 
 				$.ajax({	
-					url:"account/controller.php",
+					url:"./account/controller.php",
 					method:"post",
 					data:data,
 					contentType:false,
 					cache:false,
 					processData:false,
 					success:function(res){
+                        console.log(res)
                         if(res=="Success"){
                             alert(res)
                             location.reload();

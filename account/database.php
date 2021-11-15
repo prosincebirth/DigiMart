@@ -379,12 +379,10 @@
 		return $result;}		
 
 	function display_all_games(){
-		$conn=connection();
-		$query="SELECT * FROM games where game_status=1";
-		$prepare=$conn->query($query);
-		$res=$prepare->fetchall();
-		$conn=null;
-		return $res;}
+		$conn=connection2();
+		$sql="SELECT * from games where game_status=1";
+		$result = $conn->query($sql);
+		return $result;}			
 
 	function display_wallet_balance($user_id){
 		$conn=connection2();

@@ -1,10 +1,10 @@
 <?php
 include('includes/header.php'); 
 include('includes/navbar.php'); 
+
 ?>
 
-
-<div class="modal fade" id="add_new_game_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="add_new_game_modal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -13,31 +13,59 @@ include('includes/navbar.php');
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="#" method="POST">
         <div class="modal-body">
             <div class="form-group">
                 <label> Name </label>
                 <input type="text" class="form-control"  name="game_name_a" placeholder="Game Name" id="game_name_a" class="form-control">
             </div>
-
             <div class="form-group">
                 <label>Description</label>
                 <input type="text" name="game_desc_a" placeholder="Game Description" id="game_desc_a" class="form-control">
             </div>
 
             <div class="form-group">
-                <label>Description</label>
+                <label>Steam Game ID</label>
                 <input type="text" name="steam_game_id_a" placeholder="Steam Game ID" id="steam_game_id_a" class="form-control">
             </div>        
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" name="add_new_game_modal" class="btn btn-primary">Save</button>
+            <button type="button" value="add_new_game_modal" class="btn btn-primary">Save</button>
         </div>
-      </form>
     </div>
-  </div>
-</div>
+  </div></div>
+
+<div class="modal fade" id="edit_new_game_modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Game Data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label> Name </label>
+                <input type="text" class="form-control"  name="game_name_b" placeholder="Game Name" id="game_name_b" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <input type="text" name="game_desc_b" placeholder="Game Description" id="game_desc_b" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>Steam Game ID</label>
+                <input type="text" name="steam_game_id_b" placeholder="Steam Game ID" id="steam_game_id_b" class="form-control">
+            </div>        
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" value="edit_new_game_modal" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+  </div></div>
+
 
 
 <div class="container-fluid">
@@ -57,26 +85,31 @@ include('includes/navbar.php');
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
           <tr>
-            <th> ID </th>
-            <th> Game Name </th>
+            <th>Steam Game ID</th>
+            <th>Game Name </th>
             <th>Description </th>
-            <th>EDIT </th>
-            <th>DELETE </th>
+            <th colspan="2"><center>Actions </th>
+            
           </tr>
         </thead>
         <tbody>
+        
+                 <?php
+                    $result = display_all_games();
+										if($result->num_rows > 0){
+										while ($res = $result->fetch_assoc()){ ?>  
      
           <tr>
-            <td> 1 </td>
-            <td> DOTA 2</td>
-            <td> Dota 2 is a multiplayer online battle arena (MOBA) video game in which two 
-                teams of five players compete to collectively destroy a large structure defended by the opposing
-                 team known as the "Ancient", whilst defending their own.</td>
+            <td><?php echo $res['steam_game_id'];?></td>
+            <td><?php echo $res['game_name'];?></td>
+            <td><?php echo $res['game_desc'];?></td>
             <td>
-                <form action="" method="post">
-                    <input type="hidden" name="edit_id" value="">
-                    <button  type="submit" name="edit_btn" class="btn btn-success"> EDIT</button>
-                </form>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit_new_game_modal"
+									data-game_id_b="<?php echo $res['game_id']; ?>"     
+                  data-goods_name_b="<?php echo $res['game_name']; ?>"
+                  data-goods_desc_b="<?php echo $res['game_desc'];?>"
+                  >Edit</a>
+
             </td>
             <td>
                 <form action="" method="post">
@@ -85,7 +118,7 @@ include('includes/navbar.php');
                 </form>
             </td>
           </tr>
-        
+              <?php  } }?>
         </tbody>
       </table>
 
@@ -95,6 +128,9 @@ include('includes/navbar.php');
 
 </div>
 <!-- /.container-fluid -->
+
+
+
 
 <?php
 include('includes/scripts.php');

@@ -85,7 +85,7 @@
 	</div>
 	
 
-<div class="modal fade" id="add_game_modal" role="dialog">
+<div class="modal fade" id="add_new_game_modal" role="dialog">
 	<div class="vertical-alignment-helper">
 	<div class="modal-dialog vertical-align-center">
 	<div class="modal-content">
@@ -99,7 +99,7 @@
 					<div class="fld_input"><input type="text" name="steam_game_id_a" placeholder="Steam Game ID" id="steam_game_id_a" class="form-control"></div>
 		</div>
 		<div class="modal-footer">
-			<button class="btn btn-success" type="button" value="add_new_game">Save</button>
+			<button class="btn btn-success" type="button" value="add_new_game_modal">Save</button>
 		</div>
 	</div>
 	</div></div>

@@ -49,7 +49,7 @@
 						}else{ echo 'Empty Fields';
 							}
 						break;
-					case "add_new_game"://TESTED 11:56 pm , 25/10/2021
+					case "add_new_game_modal"://TESTED 11:56 pm , 25/10/2021
 						$game_name_a=$_POST['game_name_a'];
 						$game_desc_a=$_POST['game_desc_a'];
 						$steam_game_id_a=$_POST['steam_game_id_a'];
