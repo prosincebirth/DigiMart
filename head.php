@@ -28,7 +28,7 @@
         if(!isset($_SESSION)){
             session_start();
         }
-        if($_SESSION['user_status']==2){
+        else if($_SESSION['user_status']==2){
             header("Location: admin/index.php"); exit();
         }
 
