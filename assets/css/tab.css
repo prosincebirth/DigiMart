@@ -87,7 +87,7 @@
   }
 
   .tab_section .popular_items .popular_list__items {
-    flex: 0 0 calc(50% - 10px);
+    flex: 0 0 calc(100% - 10px);
   }
 }
 

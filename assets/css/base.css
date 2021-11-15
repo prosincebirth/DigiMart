@@ -26,6 +26,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1.2rem;
     background-color: var(--light-gray-color) !important;
+    color: var(--white-color);
 }
 
 body.open {
@@ -161,6 +162,7 @@ body.open {
 .modal-dialog {
     padding-left: 15px;
     padding-right: 15px;
+    color: var(--white-color);
 }
 
 .modal-content {
