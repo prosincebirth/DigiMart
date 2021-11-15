@@ -4,37 +4,41 @@ include('includes/navbar.php');
 ?>
 
 
-<div class="modal fade" id="addgame" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="add_new_service_modal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Service Data</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add Game Service</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="#" method="POST">
-
         <div class="modal-body">
-
             <div class="form-group">
-                <label> Name </label>
-                <input type="text" name="name" class="form-control" placeholder="Name">
+                <label>Service Mode </label>
+                <input type="text" class="form-control"  name="service_mode_d" placeholder="Service Mode" id="service_mode_d" class="form-control">
             </div>
             <div class="form-group">
-                <label>Description</label>
-                <input type="text" name="description" class="form-control" placeholder="Description">
+                <label>Service Description</label>
+                <input type="text" name="service_desc_d" placeholder="Service Description" id="service_desc_d" class="form-control">
             </div>
+            <label>Game</label>
+            <div class="fld_input"><select name="game_id_d" id="game_id_d" class="form-control">	
+									<?php $result = get_game();
+                      if($result->num_rows > 0){
+									    while ($res = $result->fetch_assoc()){
+										if($res['game_id']!= NULL){
+										echo '<option value='.$res['game_id'].'>'.$res['game_name'].'</option>';
+										}}}	
+										?>
+										</select></div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" name="registerbtn" class="btn btn-primary">Save</button>
+            <button type="button" value="add_new_service_modal" class="btn btn-primary">Confirm</button>
         </div>
-      </form>
-
     </div>
-  </div>
-</div>
+  </div></div>
 
 
 <div class="container-fluid">
@@ -43,7 +47,7 @@ include('includes/navbar.php');
 <div class="card shadow mb-4">
   <div class="card-header py-3">
     <h6 class="m-0 font-weight-bold text-primary">Service 
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addgame">Add Services</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add_new_service_modal">Add Services</button>
     </h6>
   </div>
 
@@ -56,65 +60,37 @@ include('includes/navbar.php');
           <tr>
             <th> ID </th>
             <th> Service Name </th>
+            <th>Game</th>
             <th>Description </th>
             <th>EDIT </th>
             <th>DELETE </th>
           </tr>
         </thead>
         <tbody>
-     
+                    <?php
+                    $result = display_all_services();
+										if($result->num_rows > 0){
+										while ($res = $result->fetch_assoc()){ 
+                    ?> 
           <tr>
-            <td> 1 </td>
-            <td> P2P Delivery</td>
-            <td> P2P Delivery</td>
+            <td><?php echo $res['service_id']; ?></td>
+            <td><?php echo $res['service_mode']; ?></td>
+            <td><?php echo $res['game_name']; ?></td>
+            <td><?php echo $res['service_desc']; ?></td>
             <td>
-                <form action="" method="post">
-                    <input type="hidden" name="edit_id" value="">
-                    <button  type="submit" name="edit_btn" class="btn btn-success"> EDIT</button>
-                </form>
+                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit_new_game_modal"
+									data-21="<?php echo $res['service_id']; ?>"  
+                  data-22="<?php echo $res['service_mode'];?>"     
+                  data-23="<?php echo $res['service_desc']; ?>"   
+                  >Edit</button>
             </td>
             <td>
-                <form action="" method="post">
-                  <input type="hidden" name="delete_id" value="">
-                  <button type="submit" name="delete_btn" class="btn btn-danger"> DELETE</button>
-                </form>
+                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete_new_game_modal"
+									data-11="<?php echo $res['game_id']; ?>"  
+                  >DELETE</button>
             </td>
           </tr>
-          <tr>
-            <td> 2 </td>
-            <td> Manual Delivery</td>
-            <td> Manual Delivery</td>
-            <td>
-                <form action="" method="post">
-                    <input type="hidden" name="edit_id" value="">
-                    <button  type="submit" name="edit_btn" class="btn btn-success"> EDIT</button>
-                </form>
-            </td>
-            <td>
-                <form action="" method="post">
-                  <input type="hidden" name="delete_id" value="">
-                  <button type="submit" name="delete_btn" class="btn btn-danger"> DELETE</button>
-                </form>
-            </td>
-          </tr>
-          <tr>
-            <td> 3 </td>
-            <td> Automatic Delivery</td>
-            <td> Automatic Delivery</td>
-            <td>
-                <form action="" method="post">
-                    <input type="hidden" name="edit_id" value="">
-                    <button  type="submit" name="edit_btn" class="btn btn-success"> EDIT</button>
-                </form>
-            </td>
-            <td>
-                <form action="" method="post">
-                  <input type="hidden" name="delete_id" value="">
-                  <button type="submit" name="delete_btn" class="btn btn-danger"> DELETE</button>
-                </form>
-            </td>
-          </tr>
-        
+          <?php  } }?>
         </tbody>
       </table>
 

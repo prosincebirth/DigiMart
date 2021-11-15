@@ -74,13 +74,23 @@
 								echo 'Field inputs error';
 						}
 						break;	
-					case "add_new_game_service"://TESTED 11:56 pm , 25/10/2021
-						$service_mode_a=$_POST['service_mode_a'];
-						$service_desc_a=$_POST['service_desc_a'];
-						$game_id_a=$_POST['game_id_a'];
+					case "delete_new_game_modal"://TESTED 11:56 pm , 25/10/2021
+						$game_id_c=$_POST['game_id_c'];
 
-						if(!empty($service_mode_a) && !empty($service_desc_a) && !empty($game_id_a)){
-						add_game_service($service_mode_a,$service_desc_a,$game_id_a);
+						if(!empty($game_id_c)){
+								delete_game($game_id_c);
+								echo 'Success';
+						}else{
+								echo 'Field inputs error';
+						}
+						break;
+					case "add_new_service_modal"://TESTED 11:56 pm , 25/10/2021
+						$service_mode_d=$_POST['service_mode_d'];
+						$service_desc_d=$_POST['service_desc_d'];
+						$game_id_d=$_POST['game_id_d'];
+
+						if(!empty($service_mode_d) && !empty($service_desc_d) && !empty($game_id_d)){
+						add_game_service($service_mode_d,$service_desc_d,$game_id_d);
 							echo 'Success';
 						}else{
 							echo 'Field inputs error';

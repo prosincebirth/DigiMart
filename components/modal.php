@@ -86,40 +86,6 @@
 	
 
 
-
-<div class="modal fade" id="add_services_modal" role="dialog">
-	<div class="vertical-alignment-helper">
-	<div class="modal-dialog vertical-align-center">
-	<div class="modal-content">
-		<div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title">Game Service </h4>
-		</div>
-		<div class="modal-body">
-				<div class="fld_input"><input type="text" name="service_mode_a" placeholder="Service Mode" id="service_mode_a" class="form-control"></div>
-				<div class="fld_input"><input type="text" name="service_desc_a" placeholder="Service Description" id="service_desc_a" class="form-control"></div>
-				<div class="fld_input"><select name="game_id_a" id="game_id_a" class="form-control">	
-				<option value="" disabled selected>Game</option>
-									<?php
-                                    $result = get_game();
-                                    if($result->num_rows > 0){
-									while ($res = $result->fetch_assoc()){
-										if($res['game_id']!= NULL){
-										echo '<option value='.$res['game_id'].'>'.$res['game_name'].'</option>';
-										}}}	
-										?>
-										</select></div>
-            </div>
-			<div class="modal-footer">
-					<button class="btn btn-success" type="button" value="add_new_game_service">Save</button>
-                  
-			</div>  
-		</div>
-	</div>
-	</div></div>
-	</div>
-	
-
 <div class="modal fade" id="edit_services_modal" role="dialog">
 	<div class="vertical-alignment-helper">
 	<div class="modal-dialog vertical-align-center">
