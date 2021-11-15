@@ -29,6 +29,7 @@
     .item_detail .item_detail--wrapper .item_detail--img--content .img_wrapper {
         padding: 0;
         margin-bottom: 15px;
+        height: 200px;
     }
     .item_detail .item_detail--wrapper .item_detail--img--content .item_detail--content {
         margin: 0;
