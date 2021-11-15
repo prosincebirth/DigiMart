@@ -39,7 +39,7 @@
 										<th></th>
                                     </tr>
                                 </thead>
-                                <?php	$result = display_my_bargain_orders($_SESSION['user_session']);
+                                <?php	$result = display_bargain_orders($_SESSION['user_session'],1);
 										if($result->num_rows > 0){
 										while ($res = $result->fetch_assoc()){?>      
 							    <tbody>

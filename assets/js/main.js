@@ -217,8 +217,8 @@ $('document').ready(function()
         var transaction_id_p = $(e.relatedTarget).data('transaction_id_p');
         var user_id_p = $(e.relatedTarget).data('user_id_p');
 
-        $(e.currentTarget).find('input[name="transaction_id_k"]').val(transaction_id_p);
-        $(e.currentTarget).find('input[name="user_id_k"]').val(user_id_p);
+        $(e.currentTarget).find('input[name="transaction_id_p"]').val(transaction_id_p);
+        $(e.currentTarget).find('input[name="user_id_p"]').val(user_id_p);
     });
 
     $('#refuse_buy_order_modal').on('show.bs.modal', function(e) {

@@ -348,7 +348,7 @@
 									accept_buy_order($transaction_id_j,$user_id_j);
 									echo 'Success'; // success not buying his own posting
 								} 
-								break;				
+							break;				
 								
 					case "refuse_buy_order_modal":		
 
@@ -361,13 +361,13 @@
 						//else if(){ balance trappings , cannot buy because the balance is insufficient
 						//else if(){ email not verified trappings , cannot buy because the email is not verified
 						//}								
-						else if($result_k=get_transaction_details($transaction_id_k,$user_id_k)){
+						else if($result_k=get_buy_order_transaction_details($transaction_id_k,$user_id_k)){
 							//update_game_quantity_reject($result_k['item_id'],$result_k['transaction_quantity']);
 							update_transaction_buy_order($transaction_id_k);
 							update_wallet_balance($user_id_k,$result_k['transaction_quantity']*$result_k['transaction_amount']);
 							echo 'Success'; // success not buying his own posting
 						} 
-						break;
+							break;
 					case "item_deliver_sale_order_modal":		
 
 						$transaction_id_l=$_POST['transaction_id_l'];
@@ -395,13 +395,14 @@
 						//else if(){ balance trappings , cannot buy because the balance is insufficient
 						//else if(){ email not verified trappings , cannot buy because the email is not verified
 						//}								
-						else if($result_m=get_transaction_details($transaction_id_m,$user_id_m)){
+						else if($result_m=get_buy_order_transaction_details($transaction_id_m,$user_id_m)){
 							send_wallet_balance($result_m['seller_id'],$result_m['transaction_quantity']*$result_m['transaction_amount']);
 							deduct_wallet_balance($result_m['buyer_id'],$result_m['transaction_quantity']*$result_m['transaction_amount']);
 							update_item_confirmation($transaction_id_m,$user_id_m);
+							
 							echo 'Success'; // success not buying his own posting
 						} 
-						break;
+							break;
 					case "cancel_sale_order_modal":		
 							$item_id_n=$_POST['item_id_n'];
 							$user_id_n=$_POST['user_id_n'];
@@ -413,7 +414,35 @@
 								cancel_sale_order($item_id_n,$user_id_n);
 								echo 'Success'; 															
 								}
-							break;									
+						break;
+					case "accept_sale_order_modal":		
+
+						$transaction_id_o=$_POST['transaction_id_o'];
+						$user_id_o=$_POST['user_id_o'];
+						
+						if(empty($user_id_o)){ // trappings for not logged in
+							echo 'Please Login';
+						}						
+						else{
+							accept_sale_order($transaction_id_o,$user_id_o);
+							echo 'Success'; // success not buying his own posting
+						} 
+						break;
+					case "refuse_sale_order_modal":		
+
+						$transaction_id_p=$_POST['transaction_id_p'];
+						$user_id_p=$_POST['user_id_p'];
+						
+						if(empty($user_id_p)){ // trappings for not logged in
+							echo 'Please Login';
+						}
+						else if($result_p=get_sale_order_transaction_details($transaction_id_p,$user_id_p)){
+							//update_game_quantity_reject($result_k['item_id'],$result_k['transaction_quantity']);
+							update_transaction_sale_order($transaction_id_p);
+							update_wallet_balance($result_p['buyer_id'],$result_p['transaction_quantity']*$result_p['transaction_amount']);
+							echo 'Success'; // success not buying his own posting
+						} 
+						break;											
 						
 			}
 		}

@@ -224,6 +224,13 @@
 		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id,":user_id"=>$user_id));
 		$conn=null;}
 
+	function accept_sale_order($transaction_id,$user_id){
+		$conn=connection();
+		$query="UPDATE transactions set transaction_status=3 where transaction_id=:transaction_id and seller_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id,":user_id"=>$user_id));
+		$conn=null;}	
+
 	function update_buy_order_item_quantity($item_id,$item_quantity){
 		$conn=connection();
 		$query="UPDATE game_items set item_quantity=item_quantity-:item_quantity where item_id=:item_id";
@@ -264,7 +271,14 @@
 		$query="UPDATE transactions set transaction_status=2 where transaction_id=:transaction_id";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id));
-		$conn=null;}	
+		$conn=null;}
+
+	function update_transaction_sale_order($transaction_id){
+		$conn=connection();
+		$query="UPDATE transactions set transaction_status=2 where transaction_id=:transaction_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id));
+		$conn=null;}		
 	
 ///////////////////////DELETE FUNCTIONS///////////////////////////////// 
 	function delete_game($game_id){
@@ -308,7 +322,7 @@
 	
 	function display_sale_order_records($user_id,$game_id){
 		$conn=connection2();
-		$sql="SELECT *,(select user_username from users where user_id=a.buyer_id ) as buyer_name from transactions a join game_items b join goods c where a.item_id=b.item_id and b.goods_id = c.goods_id and a.buyer_id != $user_id and a.seller_id=$user_id and a.game_id=$game_id and a.order_id !=1 ORDER BY a.transaction_date DESC";		
+		$sql="SELECT *,(select user_username from users where user_id=a.buyer_id ) as buyer_name from transactions a join game_items b join goods c where a.item_id=b.item_id and b.goods_id = c.goods_id and a.buyer_id != $user_id and a.seller_id=$user_id and a.game_id=$game_id  ORDER BY a.transaction_date DESC";		
 		$result = $conn->query($sql);
 		return $result;}	
 	
@@ -319,9 +333,9 @@
 		return $result;}
 	
 
-	function display_bargain_orders($user_id){// USED IN GAME SERVICES , POST SALE
+	function display_bargain_orders($user_id,$game_id){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
-		$sql="SELECT *,(select user_username from users where user_id=a.seller_id ) as seller_name from transactions a join game_items b join goods c join users d where a.buyer_id=d.user_id and a.order_id = 3 and a.transaction_status = 1 and a.item_id = b.item_id and b.goods_id=c.goods_id ORDER BY a.transaction_date ASC";
+		$sql="SELECT *,(select user_username from users where user_id=a.seller_id ) as seller_name from transactions a join game_items b join goods c join users d where a.item_id = b.item_id AND b.goods_id = c.goods_id AND a.buyer_id = $user_id and a.seller_id != $user_id AND d.user_id = $user_id AND a.game_id=$game_id and a.order_id = 3 AND a.transaction_status = 1 ORDER BY a.transaction_date ASC";
 		$result = $conn->query($sql);
 		return $result;}
 
@@ -352,7 +366,7 @@
 
 	function display_buy_order_records($user_id,$game_id){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
-		$sql="SELECT *,(select user_username from users where user_id=a.seller_id ) as seller_name from transactions a join game_items b join goods c where a.item_id=b.item_id and b.goods_id = c.goods_id and a.buyer_id=$user_id and a.seller_id != $user_id and a.transaction_status !=1 and a.game_id=$game_id and a.order_id = 2 ORDER BY a.transaction_status ASC";		
+		$sql="SELECT *,(select user_username from users where user_id=a.seller_id ) as seller_name from transactions a join game_items b join goods c where a.item_id=b.item_id and b.goods_id = c.goods_id and a.buyer_id=$user_id and a.seller_id != $user_id and a.transaction_status !=1 and a.game_id=$game_id and a.order_id != 3 ORDER BY a.transaction_status ASC";		
 		$result = $conn->query($sql);
 		return $result;}		
 
@@ -453,7 +467,7 @@
 		$result = $conn->query($sql);
 		return $result;}
 	
-	function get_transaction_details($transaction_id,$user_id){ // BUY ORDER
+	function get_buy_order_transaction_details($transaction_id,$user_id){ // BUY ORDER
 		$conn=connection();
 		$query="SELECT * from transactions where transaction_id=:transaction_id and buyer_id=:user_id";
 		$prepare=$conn->prepare($query);
@@ -461,6 +475,15 @@
 		$res = $prepare->fetch(PDO::FETCH_ASSOC);
 		$conn=null;
 		return $res;}
+
+	function get_sale_order_transaction_details($transaction_id,$user_id){ // BUY ORDER
+		$conn=connection();
+		$query="SELECT * from transactions where transaction_id=:transaction_id and seller_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id,":user_id"=>$user_id));
+		$res = $prepare->fetch(PDO::FETCH_ASSOC);
+		$conn=null;
+		return $res;}	
 
 	function get_game_item_information($item_id,$user_id){//USED IN sale_game_item_modal
 		$conn=connection();
