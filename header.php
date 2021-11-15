@@ -74,7 +74,10 @@
                         
                         </a>";
                       }else{
-                        echo "<a class='header_btn' data-toggle='modal' href='#login_modal'>Login</a>";
+                        echo "<a class='header_btn' data-toggle='modal' href='#login_modal'>
+                        <span class='small-hide'>Login</span>
+                        <span class='karge-hide'><i class='fas fa-sign-in-alt'></i></span>
+                        </a>";
                       }
                     ?>
 
