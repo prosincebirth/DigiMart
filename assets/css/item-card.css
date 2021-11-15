@@ -7,7 +7,7 @@
     color: inherit;
 }
 .item_card .img_wrapper {
-    width: fit-content;
+    height: 120px;
     position: relative;
 }
 .item_card .img_wrapper .badge {
