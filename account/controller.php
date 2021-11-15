@@ -20,7 +20,7 @@
 						} // if email is taken
 						else{
 							add_new_user($user_username_b,$user_password_b,$user_email_b);	
-							echo 'user added';
+							echo 'Success';
 						} //if both are not taken, success
 						break;
 					case "login":

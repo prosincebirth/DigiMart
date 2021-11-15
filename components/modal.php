@@ -5,7 +5,7 @@
 		<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
 		<h4 class="modal-title">Login</h4>
-		<img src="admin/logo/Logo-Design.png" alt="" width="200px" height="200px"> 
+
 		</div>
 		<div class="modal-body">
 		<form class="form-signin" method="post" id="login-form"><center>
@@ -185,7 +185,7 @@
 	</div>
 	
 
-<div class="modal fade" id="sale_game_item_modal" role="dialog"> <!-- modal for adding game items from scratch/new item-->
+<div class="modal fade" id="sale_game_item_modal" role="dialog"> 
 	<div class="vertical-alignment-helper">
 	<div class="modal-dialog vertical-align-center">
 	<div class="modal-content">
@@ -247,7 +247,7 @@
 				<div class="fld_input"><input type="number" name="goods_price_a" placeholder="ITEM PRICE" id="goods_price_a" class="form-control"></div>
 				<div class="fld_input"><input type="number" name="goods_quantity_a" placeholder="ITEM QUANTITY" id="goods_quantity_a" class="form-control"></div>
 				<div class="fld_input" style="border:none;"><input type="file" name="goods_image_a" placeholder="ITEM IMAGE" id="goods_image_a" value="" class="form-control"></div>
-				<div class="fld_input"><input type="text" name="order_id_a" placeholder="ORDER ID" id="order_id_a" class="form-control" value="1"></div>	
+				<div class="fld_input"><input type="hidden" name="order_id_a" placeholder="ORDER ID" id="order_id_a" class="form-control" value="1"></div>	
 				<div class="fld_input"><select name="service_id_a" id="service_id_a" class="form-control">	
 				<option value="" disabled selected>Service Mode</option>
 									<?php
@@ -268,8 +268,7 @@
 	</div>
 	
 
-<div class="modal fade" id="sale_game_item_modal_2" role="dialog"><!-- selling items on item-goods.php-->
-	<div class="vertical-alignment-helper">
+<div class="modal fade" id="sale_game_item_modal_2" role="dialog">
 	<div class="modal-dialog vertical-align-center">
 	<div class="modal-content">
 		<div class="modal-header">
@@ -302,7 +301,7 @@
 	
 
 
-<div class="modal fade" id="buyorder_game_item_modal" role="dialog"><!-- buying items on item-goods.php-->
+<div class="modal fade" id="buyorder_game_item_modal" role="dialog">
 	<div class="vertical-alignment-helper">
 	<div class="modal-dialog vertical-align-center">
 	<div class="modal-content">
@@ -385,7 +384,7 @@
 	</div>
 	
 
-<div class="modal fade" id="buyorder_game_item_modal_2" role="dialog"> <!-- modal for buying game items from scratch/new item/ buy order-->
+<div class="modal fade" id="buyorder_game_item_modal_2" role="dialog">
 	<div class="vertical-alignment-helper">
 	<div class="modal-dialog vertical-align-center">
 	<div class="modal-content">
@@ -418,7 +417,7 @@
 	
 
 
-<div class="modal fade" id="buy_game_item_modal" role="dialog"><!-- buying items on item-goods.php-->
+<div class="modal fade" id="buy_game_item_modal" role="dialog">
 	<div class="vertical-alignment-helper">
 	<div class="modal-dialog vertical-align-center">
 	<div class="modal-content">
@@ -452,6 +451,7 @@
 	
 
 
+<<<<<<< HEAD
 <div class="modal fade" id="bargain_item_modal" role="dialog"><!-- buying items on item-goods.php-->
 	<div class="vertical-alignment-helper">
 		<div class="modal-dialog vertical-align-center">
@@ -459,6 +459,37 @@
 			<div class="modal-header"> 
 			<button type="button" class="close" data-dismiss="modal">&times;</button>
 			<h4 class="modal-title"><center>BARGAIN ITEM</h4>
+=======
+<div class="modal fade" id="bargain_item_modal" role="dialog"><!-- buying items on item-goods.php-->
+	<div class="vertical-alignment-helper">
+		<div class="modal-dialog vertical-align-center">
+			<div class="modal-content">
+			<div class="modal-header"> 
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h4 class="modal-title"><center>BARGAIN ITEM</h4>
+		</div>
+		<div class="modal-body">
+								
+				Price : <span id="display_price_g"  name="display_price_g"> </span></br>
+				Minimum : <span id="display_minimumm_g"  name="display_minimumm_g"> </span></br>
+				Total : <span id="display_total_g"  name="display_total_g"> </span>
+							
+				<div class="fld_input"><input type="hidden" name="item_price_g" placeholder="ITEM PRICE" id="item_price_g" class="form-control"></div>			
+				<div class="fld_input"><input type="number" name="bargain_price_g" placeholder="BARGAIN PRICE" id="bargain_price_g" class="form-control"></div>			
+                	<div class="fld_input"><input type="number" name="item_quantity_g" placeholder="ITEM QUANTITY" id="item_quantity_g" value ="1" class="form-control" autofocus></div>
+					
+				<div class="fld_input"><input type="hidden" name="item_total_g" placeholder="ITEM TOTAL" id="item_total_g" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="item_stock_g" placeholder="ITEM STOCK" id="item_stock_g" class="form-control"></div>	
+				<div class="fld_input"><input type="hidden" name="item_id_g" placeholder="ITEM ID" id="item_id_g" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="buyer_id_g" placeholder="BUYER ID" id="buyer_id_g" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="seller_id_g" placeholder="SELLER ID" id="seller_id_g" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="service_id_g" placeholder="SERVICE ID" id="service_id_g" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="game_id_g" placeholder="GAME ID" id="game_id_g" class="form-control"></div>
+				<div class="fld_input"><input type="hidden" name="order_id_g" placeholder="ORDER ID" id="order_id_g" class="form-control"></div>
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="bargain_game_item">Confirm</button>
+>>>>>>> 2351caffefb9b2843e816bb0c0c55b6f18a81b9c
 			</div>
 			<div class="modal-body">
 									
@@ -486,9 +517,15 @@
 			</div>
 			</div>
 		</div>
+<<<<<<< HEAD
 	</div>
 </div>
 <div class="modal fade" id="supply_item_modal" role="dialog"><!-- buying items on item-goods.php-->
+=======
+		</div>
+	</div></div>
+<div class="modal fade" id="supply_item_modal" role="dialog">
+>>>>>>> 2351caffefb9b2843e816bb0c0c55b6f18a81b9c
 	<div class="modal-dialog">
 		<div class="modal-content">
 		<div class="modal-header"> 
@@ -520,7 +557,7 @@
 		</div>
 	</div></div>
 	
-<div class="modal fade" id="cancel_buy_order_modal" role="dialog"><!-- buying items on item-goods.php-->
+<div class="modal fade" id="cancel_buy_order_modal" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
 		<div class="modal-header"> 
@@ -538,8 +575,7 @@
 		</div>
 	</div></div>
 
-<div class="modal fade" id="accept_buy_order_modal" role="dialog"><!-- buying items on item-goods.php-->
-	<div class="modal-dialog">
+<div class="modal fade" id="accept_buy_order_modal" role="dialog">
 		<div class="modal-content">
 		<div class="modal-header"> 
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -556,7 +592,7 @@
 		</div>
 	</div></div>				
 
-<div class="modal fade" id="refuse_buy_order_modal" role="dialog"><!-- buying items on item-goods.php-->
+<div class="modal fade" id="refuse_buy_order_modal" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
 		<div class="modal-header"> 
@@ -574,7 +610,7 @@
 		</div>
 	</div></div>
 
-<div class="modal fade" id="item_deliver_sale_order_modal" role="dialog"><!-- buying items on item-goods.php-->
+<div class="modal fade" id="item_deliver_sale_order_modal" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
 		<div class="modal-header"> 
@@ -593,7 +629,7 @@
 		</div>
 	</div></div>
 
-<div class="modal fade" id="item_confirmation_buy_order_modal" role="dialog"><!-- buying items on item-goods.php-->
+<div class="modal fade" id="item_confirmation_buy_order_modal" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
 		<div class="modal-header"> 
@@ -612,7 +648,7 @@
 		</div>
 	</div></div>					
 	
-<div class="modal fade" id="cancel_sale_order_modal" role="dialog"><!-- buying items on item-goods.php-->
+<div class="modal fade" id="cancel_sale_order_modal" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
 		<div class="modal-header"> 
@@ -630,7 +666,7 @@
 		</div>
 	</div></div>
 	
-<div class="modal fade" id="accept_sale_order_modal" role="dialog"><!-- buying items on item-goods.php-->
+<div class="modal fade" id="accept_sale_order_modal" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
 		<div class="modal-header"> 
@@ -648,7 +684,7 @@
 		</div>
 	</div></div>
 
-<div class="modal fade" id="refuse_sale_order_modal" role="dialog"><!-- buying items on item-goods.php-->
+<div class="modal fade" id="refuse_sale_order_modal" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
 		<div class="modal-header"> 
@@ -666,7 +702,7 @@
 		</div>
 	</div></div>
 
-<div class="modal fade" id="cancel_bargain_order_modal" role="dialog"><!-- buying items on item-goods.php-->
+<div class="modal fade" id="cancel_bargain_order_modal" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
 		<div class="modal-header"> 

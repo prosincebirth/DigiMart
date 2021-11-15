@@ -278,18 +278,7 @@ $('document').ready(function()
                         cache:false,
                         processData:false,
                         success:function(res){
-                            if(res=="both taken"){// both are taken
-                                alert(res) 
-                            }
-                            else if(res=="user taken"){//username is taken
-                                alert(res) 
-                            }
-                            else if(res=="email taken"){//email is taken
-                                alert(res)
-                            }
-                            else if(res=="user added"){//success
-                                alert(res)             
-                            }
+                            alert(res) 
                         }
                     });	
                 }
@@ -322,7 +311,7 @@ $('document').ready(function()
                         });	
                     }
             break;
-            case "add_new_game": //TESTED 11:56 pm , 25/10/2021
+            case "add_new_game": 
 				var game_name_a=$("#game_name_a").val().trim();
                 var game_desc_a=$("#game_desc_a").val().trim();
                 var steam_game_id_a=$("#steam_game_id_a").val().trim();
@@ -350,7 +339,7 @@ $('document').ready(function()
 					}
 				});//END	
 			break;
-            case "add_new_game_service": //TESTED 11:56 pm , 25/10/2021
+            case "add_new_game_service": 
 				var service_mode_a=$("#service_mode_a").val().trim();
                 var service_desc_a=$("#service_desc_a").val().trim();
                 var game_id_a=$("#game_id_a").val().trim();

@@ -1,5 +1,5 @@
 <?php include('head.php'); ?>
-<?php if(!isset($_GET['goods_id'])){header("Location: market.php"); exit();} ?>
+
 <?php include('header.php'); ?>
 
 <?php $res=display_goods($_GET['goods_id']);?>
