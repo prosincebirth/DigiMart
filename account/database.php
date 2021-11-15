@@ -175,13 +175,13 @@
 		$conn=null;}
 
 ///////////////////UPDATE FUNCTIIONS/////////////////////////////////
-	function edit_game($game_id,$game_name,$game_desc,$game_region,$game_server){
+	function edit_game($game_id,$game_name,$game_desc,$steam_game_id){
 		$conn=connection();
-		$query="UPDATE games set game_name=:game_name,game_desc=:game_desc,game_region=:game_region,game_server=:game_server where game_id=:game_id";
+		$query="UPDATE games set game_name=:game_name,steam_game_id=:steam_game_id,game_desc=:game_desc where game_id=:game_id";
 		$prepare=$conn->prepare($query);
-		$exec=$prepare->execute(array(":game_name"=>$game_name,":game_desc"=>$game_desc,":game_region"=>$game_region,":game_server"=>$game_server,":game_id"=>$game_id));
+		$exec=$prepare->execute(array(":game_name"=>$game_name,":game_desc"=>$game_desc,":game_id"=>$game_id,":steam_game_id"=>$steam_game_id));
 		$conn=null;}
-		
+	
 	function edit_user(){}
 	function edit_user_password(){}
 	function edit_game_service(){}

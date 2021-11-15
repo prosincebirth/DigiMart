@@ -30,12 +30,12 @@ include('includes/navbar.php');
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" value="add_new_game_modal" class="btn btn-primary">Save</button>
+            <button type="button" value="add_new_game_modal" class="btn btn-primary">Confirm</button>
         </div>
     </div>
   </div></div>
 
-<div class="modal fade" id="edit_new_game_modal">
+<div class="modal fade" id="edit_new_game_modal" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -48,6 +48,7 @@ include('includes/navbar.php');
             <div class="form-group">
                 <label> Name </label>
                 <input type="text" class="form-control"  name="game_name_b" placeholder="Game Name" id="game_name_b" class="form-control">
+                <input type="hidden" class="form-control"  name="game_id_b" placeholder="Game Name" id="game_id_b" class="form-control">
             </div>
             <div class="form-group">
                 <label>Description</label>
@@ -61,12 +62,31 @@ include('includes/navbar.php');
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" value="edit_new_game_modal" class="btn btn-primary">Save</button>
+            <button type="button" value="edit_new_game_modal" class="btn btn-primary">Confirm</button>
         </div>
     </div>
   </div></div>
 
-
+<div class="modal fade" id="delete_new_game_modal" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Game Data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body">
+            <div class="form-group"> 
+              <input type="hidden" class="form-control" name="game_id_c" placeholder="Game Name" id="game_id_c" class="form-control">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" value="delete_new_game_modal" class="btn btn-primary">Confirm</button>
+        </div>
+    </div>
+  </div></div>
 
 <div class="container-fluid">
 
@@ -79,9 +99,7 @@ include('includes/navbar.php');
   </div>
 
   <div class="card-body">
-
     <div class="table-responsive">
-
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
           <tr>
@@ -89,34 +107,32 @@ include('includes/navbar.php');
             <th>Steam Game ID</th>
             <th>Game Name </th>
             <th>Description </th>
-            <th>Actions</th>
+            <th colspan="2">Actions</th>
           </tr>
         </thead>
         <tbody>
-        
                  <?php
                     $result = display_all_games();
 										if($result->num_rows > 0){
 										while ($res = $result->fetch_assoc()){ ?>  
      
           <tr>
-          <td><?php echo $res['game_id'];?></td>
+          <td><?php echo $res['game_id']; ?></td>
             <td><?php echo $res['steam_game_id'];?></td>
             <td><?php echo $res['game_name'];?></td>
             <td><?php echo $res['game_desc'];?></td>
             <td>
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit_new_game_modal"
-									data-game_id_b="<?php echo $res['game_id']; ?>"     
-                  data-goods_name_b="<?php echo $res['game_name']; ?>"
-                  data-goods_desc_b="<?php echo $res['game_desc'];?>"
-                  >Edit</a>
-
+									data-1="<?php echo $res['game_id']; ?>"  
+                  data-2="<?php echo $res['steam_game_id'];?>"     
+                  data-3="<?php echo $res['game_name']; ?>"   
+                  data-4="<?php  echo $res['game_desc']; ?>"   
+                  >Edit</button>
             </td>
             <td>
-                <form action="" method="post">
-                  <input type="hidden" name="delete_id" value="">
-                  <button type="submit" name="delete_btn" class="btn btn-danger"> DELETE</button>
-                </form>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete_new_game_modal"
+									data-11="<?php echo $res['game_id']; ?>"  
+                  >DELETE</button>
             </td>
           </tr>
               <?php  } }?>

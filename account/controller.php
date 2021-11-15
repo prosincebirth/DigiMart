@@ -61,6 +61,19 @@
 								echo 'Field inputs error';
 						}
 						break;
+					case "edit_new_game_modal"://TESTED 11:56 pm , 25/10/2021
+						$game_id_b=$_POST['game_id_b'];
+						$game_name_b=$_POST['game_name_b'];
+						$game_desc_b=$_POST['game_desc_b'];
+						$steam_game_id_b=$_POST['steam_game_id_b'];
+
+						if(!empty($game_name_b) && !empty($game_desc_b) && !empty($steam_game_id_b) && !empty($game_id_b)){
+								edit_game($game_id_b,$game_name_b,$game_desc_b,$steam_game_id_b);
+								echo 'Success';
+						}else{
+								echo 'Field inputs error';
+						}
+						break;	
 					case "add_new_game_service"://TESTED 11:56 pm , 25/10/2021
 						$service_mode_a=$_POST['service_mode_a'];
 						$service_desc_a=$_POST['service_desc_a'];
