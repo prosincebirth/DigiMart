@@ -9,7 +9,6 @@
                 <div class="market_item--wrapper">
                     <div class="market_tabs">
                         <ul class="market_tab--list">				
-                            <li ><span onclick="window.location.href='bargain_order.php';">Bargain Orders</span></li>
                             <li ><span onclick="window.location.href='bargain_order_record.php';">Bargain Order Records</span></li>
 							<li class='active'><span onclick="window.location.href='my_bargain.php';">My Bargain</span></li>
                         </ul>
@@ -69,14 +68,9 @@
 									</td>
 									<td>
 										<div class="item__group--cta">
-											<a class="buy_btn wishlist_btn"  data-toggle="modal" data-target="#buy_game_item_modal" 
-											data-item_id="<?php echo $res['item_id'];?>" 
-											data-seller_id="<?php echo $res['user_id'];?>" 
-											data-service_id="<?php echo $res['service_id'];?>" 
-											data-item_price="<?php echo $res['item_price'];?>" 
-											data-game_id="<?php echo $res['game_id'];?>" 
-											data-order_id="<?php echo $res['order_id'];?>"
-											data-buyer_id="<?php echo $_SESSION['user_session'];?>"> Cancel Order</a>
+											<button class="buy_btn wishlist_btn"  data-toggle="modal" data-target="#cancel_bargain_order_modal" 
+											data-transaction_id_q="<?php echo $res['transaction_id'];?>" 
+											data-user_id_q="<?php echo $_SESSION['user_session'];?>"> Cancel Order</button>
 													
 											<?php } }?>
 										</div>

@@ -332,7 +332,7 @@
 								}						
 								else if($result_i=get_game_item_information($item_id_i,$user_id_i)){
 										cancel_buy_order($item_id_i,$user_id_i);
-										update_wallet_balance($user_id_i,$result_i['item_price'] * $result_i['item_quantity'] );
+										update_wallet_balance($user_id_i,$result_i['item_price'] * $result_i['item_quantity']);
 										echo 'Success'; 															
 									}
 								break;
@@ -442,7 +442,20 @@
 							update_wallet_balance($result_p['buyer_id'],$result_p['transaction_quantity']*$result_p['transaction_amount']);
 							echo 'Success'; // success not buying his own posting
 						} 
-						break;											
+						break;
+					case "cancel_bargain_order_modal":		
+							$transaction_id_q=$_POST['transaction_id_q'];
+							$user_id_q=$_POST['user_id_q'];
+							
+							if(empty($user_id_q)){ // trappings for not logged in
+								echo 'Please Login';
+							}						
+							else if($result_q=get_bargain_order_transaction_details($transaction_id_q,$user_id_q)){
+								cancel_bargain_order($transaction_id_q,$user_id_q);
+								update_wallet_balance($user_id_q,$result_q['transaction_amount'] * $result_q['transaction_quantity']);
+								echo 'Success'; 															
+								}
+						break;												
 						
 			}
 		}

@@ -187,6 +187,14 @@ $('document').ready(function()
         $(e.currentTarget).find('input[name="user_id_n"]').val(user_id_n);
     });
 
+    $('#cancel_bargain_order_modal').on('show.bs.modal', function(e) {
+        var transaction_id_q = $(e.relatedTarget).data('transaction_id_q');
+        var user_id_q = $(e.relatedTarget).data('user_id_q');
+
+        $(e.currentTarget).find('input[name="transaction_id_q"]').val(transaction_id_q);
+        $(e.currentTarget).find('input[name="user_id_q"]').val(user_id_q);
+    });
+
     $('#sale_game_item_modal_2').on('show.bs.modal', function(e) {
         var goods_id_b = $(e.relatedTarget).data('goods_id');
         $(e.currentTarget).find('input[name="goods_id_b"]').val(goods_id_b);
@@ -288,8 +296,8 @@ $('document').ready(function()
             break;               
             case "login":
                 if($("#login-form").valid()){
-                    var username_a=$("#user_username_a").val().trim();
-                    var password_a=$("#user_password_a").val().trim();
+                    var username_a=$("#user_username_a").val();
+                    var password_a=$("#user_password_a").val();
                     
                     var data=new FormData();
                     data.append("action_type","login");
@@ -850,6 +858,32 @@ $('document').ready(function()
 				data.append("action_type","refuse_sale_order_modal");
 				data.append("transaction_id_p",transaction_id_p);
                 data.append("user_id_p",user_id_p);
+                
+				$.ajax({	
+					url:"account/controller.php",
+					method:"post",
+					data:data,
+					contentType:false,
+					cache:false,
+					processData:false,
+					success:function(res){
+                        if(res=="Success"){
+                            alert(res)
+                            location.reload();
+                        }else{
+                            alert(res)
+                        } 
+					}
+				});
+            break;
+            case "cancel_bargain_order_modal":             
+                var transaction_id_q=$("#transaction_id_q").val()
+                var user_id_q=$("#user_id_q").val()
+
+				var data=new FormData();
+				data.append("action_type","cancel_bargain_order_modal");
+				data.append("transaction_id_q",transaction_id_q);
+                data.append("user_id_q",user_id_q);
 
 				$.ajax({	
 					url:"account/controller.php",
