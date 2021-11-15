@@ -60,6 +60,7 @@ include('includes/navbar.php');
           <tr>
             <th> ID </th>
             <th> Service Name </th>
+            <th>Game</th>
             <th>Description </th>
             <th>EDIT </th>
             <th>DELETE </th>
@@ -74,6 +75,7 @@ include('includes/navbar.php');
           <tr>
             <td><?php echo $res['service_id']; ?></td>
             <td><?php echo $res['service_mode']; ?></td>
+            <td><?php echo $res['game_name']; ?></td>
             <td><?php echo $res['service_desc']; ?></td>
             <td>
                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit_new_game_modal"

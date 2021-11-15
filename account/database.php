@@ -386,7 +386,7 @@
 	
 	function display_all_services(){
 		$conn=connection2();
-		$sql="SELECT * from game_services where service_status=1";
+		$sql="SELECT *,(select game_name from games where game_id=a.game_id) as game_name from game_services a where service_status=1";
 		$result = $conn->query($sql);
 		return $result;}	
 	
