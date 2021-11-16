@@ -483,7 +483,7 @@
 
 	function get_game_service($game_id){//USED IN sale_game_item_modal 
 		$conn=connection2();
-		$sql="SELECT * from game_services where game_id=$game_id";
+		$sql="SELECT * from game_services where game_id=$game_id and service_status=1";
 		$result = $conn->query($sql);
 		return $result;}
 
