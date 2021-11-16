@@ -99,7 +99,11 @@
                                             data-target="#item_deliver_sale_order_modal" 
                                             data-transaction_id_l='.$res['transaction_id'].'
                                             data-user_id_l='.$_SESSION['user_session'].'>Item Delivered</button>';
-                                          echo '   <button> Cancel Order </button>';
+                                            echo ' ';
+                                        echo '<button class="buy_btn wishlist_btn"  
+                                            data-toggle="modal" 
+                                            data-target="#cancel_sale_order_modal_nn" 
+                                            data-transaction_id_nn='.$res['transaction_id'].' data-user_id_nn='.$_SESSION['user_session'].' >Cancel Order</button>';
                                          }else if($res['transaction_status']==4){
                                           echo "<span> Waiting for buyer's response </span>";
                                             echo '<br>';

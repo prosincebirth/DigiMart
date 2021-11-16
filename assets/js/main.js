@@ -237,6 +237,14 @@ $('document').ready(function()
         $(e.currentTarget).find('input[name="user_id_p"]').val(user_id_p);
     });
 
+    $('#cancel_sale_order_modal_nn').on('show.bs.modal', function(e) {
+        var transaction_id_nn = $(e.relatedTarget).data('transaction_id_nn');
+        var user_id_nn = $(e.relatedTarget).data('user_id_nn');
+
+        $(e.currentTarget).find('input[name="transaction_id_nn"]').val(transaction_id_nn);
+        $(e.currentTarget).find('input[name="user_id_nn"]').val(user_id_nn);
+    });
+
     $('#refuse_buy_order_modal').on('show.bs.modal', function(e) {
         var transaction_id_k = $(e.relatedTarget).data('transaction_id_k');
         var user_id_k = $(e.relatedTarget).data('user_id_k');
@@ -829,7 +837,33 @@ $('document').ready(function()
 				data.append("action_type","cancel_sale_order_modal");
 				data.append("item_id_n",item_id_n);
                 data.append("user_id_n",user_id_n);
+                
+				$.ajax({	
+					url:"account/controller.php",
+					method:"post",
+					data:data,
+					contentType:false,
+					cache:false,
+					processData:false,
+					success:function(res){
+                        if(res=="Success"){
+                            alert(res)
+                            location.reload();
+                        }else{
+                            alert(res)
+                        } 
+					}
+				});	
+			break;
+            case "cancel_sale_order_modal_nn":             
+                var transaction_id_nn=$("#transaction_id_nn").val()
+                var user_id_nn=$("#user_id_nn").val()
 
+				var data=new FormData();
+				data.append("action_type","cancel_sale_order_modal_nn");
+				data.append("transaction_id_nn",transaction_id_nn);
+                data.append("user_id_nn",user_id_nn);
+              
 				$.ajax({	
 					url:"account/controller.php",
 					method:"post",

@@ -477,7 +477,20 @@
 								update_wallet_balance($user_id_ii,$result_ii['transaction_amount'] * $result_ii['transaction_quantity']);
 								echo 'Success'; 															
 								}
-						break;	
+						break;
+					case "cancel_sale_order_modal_nn":		
+							$transaction_id_nn=$_POST['transaction_id_nn'];
+							$user_id_nn=$_POST['user_id_nn'];
+							
+							if(empty($user_id_nn)){ // trappings for not logged in
+								echo 'Please Login';
+							}						
+							else if($result_nn=get_sale_order_transaction_details($transaction_id_nn,$user_id_nn)){
+								cancel_sale_order_nn($transaction_id_nn,$user_id_nn);
+								update_wallet_balance($result_nn['buyer_id'],$result_nn['transaction_amount'] * $result_nn['transaction_quantity']);
+								echo 'Success'; 															
+								}
+						break;			
 					case "accept_sale_order_modal":		
 
 						$transaction_id_o=$_POST['transaction_id_o'];

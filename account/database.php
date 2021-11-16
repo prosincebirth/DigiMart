@@ -217,10 +217,17 @@
 	
 	function cancel_bargain_order($transaction_id,$user_id){
 		$conn=connection();
-		$query="UPDATE transactions set transaction_status=6 where transaction_id=:transaction_id and buyer_id=:user_id";
+		$query="UPDATE transactions set transaction_status=2 where transaction_id=:transaction_id and buyer_id=:user_id";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id,":user_id"=>$user_id));
 		$conn=null;}
+
+	function cancel_sale_order_nn($transaction_id,$user_id){
+		$conn=connection();
+		$query="UPDATE transactions set transaction_status=2 where transaction_id=:transaction_id and seller_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id,":user_id"=>$user_id));
+		$conn=null;}	
 
 	function cancel_sale_order($item_id,$user_id){
 		$conn=connection();

@@ -438,7 +438,7 @@
 		<div class="modal-content">
 		<div class="modal-header"> 
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title"><center>CANCEL BUY ORDER</h4>
+		<h4 class="modal-title"><center>CANCEL ORDER</h4>
 		</div>
 		<div class="modal-body">							
 				<div class="fld_input"><input type="hidden" name="transaction_id_ii" placeholder="ITEM ID" id="transaction_id_ii" class="form-control"></div>						
@@ -542,8 +542,8 @@
 		</div>
 	</div></div>
 	
-<div class="modal fade bd-example-modal-sm" id="accept_sale_order_modal" role="dialog">
-	<div class="modal-dialog modal-sm">
+<div class="modal fade " id="accept_sale_order_modal" role="dialog">
+	<div class="modal-dialog">
 		<div class="modal-content">
 		<div class="modal-header"> 
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -562,8 +562,8 @@
 		</div>
 	</div></div>
 
-<div class="modal fade bd-example-modal-sm" id="refuse_sale_order_modal" role="dialog">
-<div class="modal-dialog modal-sm">
+<div class="modal fade" id="refuse_sale_order_modal" role="dialog">
+<div class="modal-dialog">
 		<div class="modal-content">
 		<div class="modal-header"> 
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -579,6 +579,25 @@
 		</div>
 		</div>
 	</div></div>
+
+<div class="modal fade" id="cancel_sale_order_modal_nn" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+		<div class="modal-header"> 
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title"><center>CANCEL SALE ORDER</h4>
+		</div>
+		<div class="modal-body">							
+				<div class="fld_input"><input type="hidden" name="transaction_id_nn" placeholder="ITEM ID" id="transaction_id_nn" class="form-control"></div>						
+				<div class="fld_input"><input type="hidden" name="user_id_nn" placeholder="USER ID" id="user_id_nn" class="form-control"></div>						
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="cancel_sale_order_modal_nn">Confirm</button>					
+			</div>									
+		</div>
+		</div>
+	</div></div>
+	
 
 <div class="modal fade" id="cancel_bargain_order_modal" role="dialog">
 	<div class="modal-dialog">
