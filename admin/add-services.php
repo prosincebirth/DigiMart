@@ -90,7 +90,7 @@ include('includes/navbar.php');
       </div>
         <div class="modal-body">
             <div class="form-group"> 
-              <input type="text" class="form-control" name="service_id_f" placeholder="Game Name" id="service_id_f" class="form-control">
+              <input type="hidden" class="form-control" name="service_id_f" placeholder="Game Name" id="service_id_f" class="form-control">
             </div>
         </div>
         <div class="modal-footer">

@@ -42,9 +42,11 @@
   <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header">List:</h6>
-      <a class="collapse-item" href="order-list.php">Order</a>
-      <a class="collapse-item" href="sales-list.php">Sales</a>
+      <a class="collapse-item" href="sales.php">Sales</a>
       <a class="collapse-item" href="users-list.php">Users</a>
+      <a class="collapse-item" href="buy_order.php">Buy Order</a>
+      <a class="collapse-item" href="sale_order.php">Sale Order</a>
+
     </div>
   </div>
 </li>

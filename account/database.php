@@ -385,6 +385,30 @@
 		$result = $conn->query($sql);
 		return $result;}
 
+	function display_buy_orders_admin(){// USED IN GAME SERVICES , POST SALE
+		$conn=connection2();
+		$sql="SELECT  * from game_items a join goods b join game_services c join games d join users e where a.goods_id=b.goods_id and a.order_id=2 and a.game_id=d.game_id and a.service_id = c.service_id and a.user_id=e.user_id and a.item_status != 0 ORDER BY a.item_status ASC";
+		$result = $conn->query($sql);
+		return $result;}
+
+	function display_sale_orders_admin(){// USED IN GAME SERVICES , POST SALE
+		$conn=connection2();
+		$sql="SELECT  * from game_items a join goods b join game_services c join games d join users e where a.goods_id=b.goods_id and a.order_id=1 and a.game_id=d.game_id and a.service_id = c.service_id and a.user_id=e.user_id and a.item_status != 0 ORDER BY a.item_status ASC";
+		$result = $conn->query($sql);
+		return $result;}
+	
+	function display_transaction_records_admin(){// USED IN GAME SERVICES , POST SALE
+		$conn=connection2();
+		$sql="SELECT *,(select user_username from users where user_id=a.seller_id ) as seller_name,(select user_username from users where user_id=a.buyer_id ) as buyer_name from transactions a join game_items b join goods c join games d join game_services e join orders f
+		where a.item_id = b.item_id AND
+        b.goods_id = c.goods_id AND 
+        a.game_id=d.game_id and 
+        a.service_id=e.service_id and
+		a.order_id = f.order_id
+        ORDER BY a.transaction_date DESC";
+		$result = $conn->query($sql);
+		return $result;}	
+
 	function display_buy_order_records($user_id,$game_id){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
 		$sql="SELECT *,(select user_username from users where user_id=a.seller_id ) as seller_name from transactions a join game_items b join goods c where a.item_id=b.item_id and b.goods_id = c.goods_id and a.buyer_id=$user_id and a.seller_id != $user_id and a.transaction_status !=1 and a.game_id=$game_id and a.order_id != 3 ORDER BY a.transaction_status ASC";		
@@ -458,7 +482,37 @@
 		$conn=connection2();
 		$sql="SELECT *,count(b.item_id) as mycount from goods a inner JOIN game_items b where b.goods_id=a.goods_id group by a.goods_id";
 		$result = $conn->query($sql);
+		return $result;}
+	function get_user_count(){
+		$conn=connection2();
+		$sql="SELECT count(user_id) as count_users from users where user_status != 0";
+		$result = $conn->query($sql);
+		return $result;}
+
+	function get_game_count(){
+		$conn=connection2();
+		$sql="SELECT count(game_id) as count_games from games where game_status != 0";
+		$result = $conn->query($sql);
+		return $result;}
+
+	function get_service_count(){
+		$conn=connection2();
+		$sql="SELECT count(service_id) as count_services from game_services where service_status != 0";
+		$result = $conn->query($sql);
+		return $result;}
+
+	function get_game_item_count(){
+		$conn=connection2();
+		$sql="SELECT count(item_id) as count_game_items from game_items where item_status != 0";
+		$result = $conn->query($sql);
 		return $result;}		
+
+	function get_transaction_count(){
+		$conn=connection2();
+		$sql="SELECT count(transaction_id) as count_transactions from transactions where transaction_status != 0";
+		$result = $conn->query($sql);
+		return $result;}				
+	
 	
 	function display_goods_id($goods_id){//user
 		$conn=connection2();
@@ -483,7 +537,7 @@
 
 	function get_game_service($game_id){//USED IN sale_game_item_modal 
 		$conn=connection2();
-		$sql="SELECT * from game_services where game_id=$game_id";
+		$sql="SELECT * from game_services where game_id=$game_id and service_status=1";
 		$result = $conn->query($sql);
 		return $result;}
 
