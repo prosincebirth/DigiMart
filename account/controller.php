@@ -40,6 +40,9 @@
 												add_wallet($res_a['user_id']);										
 											}
 									echo 'Success';		
+									//header('Location: home.php'); 
+									//palihug ko try ani na fix para wla na alert mo gawas tanawa ang sa modal ilisdi ang button to submit para auto redirect ra siya
+									//then e uncomment ang header 
 								}else{
 									echo 'Wrong Password';
 								}

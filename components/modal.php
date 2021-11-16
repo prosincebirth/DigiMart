@@ -22,7 +22,7 @@
                 </label>
             </div>
 			<div class="modal-footer">
-					<button class="btn btn-secondary btn-login" type="button" value="login">Login</button>
+					<button class="btn btn-secondary btn-login" type="button" value="login" >Login</button>
                	 	<label for="for_login" id="for_login"></label>
                     </form>
 					<div class="align-center font-14">
