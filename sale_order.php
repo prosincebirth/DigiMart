@@ -58,11 +58,11 @@
 									</td>
                                     <td>
                                             <?php 
-                                         if($res['order_id']==1){
+                                         if($res['transaction_order_id']==1){
                                             echo '<span>Sale Order</span>';
-                                         }else if($res['order_id']==2){
+                                         }else if($res['transaction_order_id']==2){
                                             echo "<span>Buy Order</span>";		
-                                         }else if($res['order_id']==3){
+                                         }else if($res['transaction_order_id']==3){
                                             echo "<span>Bargain Order</span>";				
                                          }
                                             ?>

@@ -567,7 +567,7 @@
 		<div class="modal-content">
 		<div class="modal-header"> 
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title"><center>REFUSE SALE ORDER</h4>
+		<h4 class="modal-title"><center>REFUSE ORDER</h4>
 		</div>
 		<div class="modal-body">							
 				<div class="fld_input"><input type="hidden" name="transaction_id_p" placeholder="ITEM ID" id="transaction_id_p" class="form-control"></div>						

@@ -45,7 +45,8 @@
                                                 <span>Balance</span>
                                             </div>
                                             <div class="info-ammount">
-                                                <span>₱ 0</span>
+                                            <?php	$display_balance = display_balance($_SESSION['user_session']);foreach($display_balance as $balance){ ?>
+                                                <span>₱<?php echo $balance['wallet_balance']; ?> </span>
                                             </div>
                                         </div>
                                     </div>
@@ -56,7 +57,7 @@
                                                 <span>Frozen Balance</span>
                                             </div>
                                             <div class="info-ammount">
-                                                <span>₱ 0</span>
+                                                <span>₱<?php echo $balance['wallet_frozen_balance']; }?></span>
                                             </div>
                                         </div>
                                     </div>

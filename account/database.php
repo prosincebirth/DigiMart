@@ -342,10 +342,17 @@
 /////////////////////////////////////////////////////////////////////
 	function display_sale_order($user_id,$game_id){
 		$conn=connection2();
-		$sql="SELECT *,(select user_username from users where user_id=a.buyer_id ) as buyer_name from transactions a join game_items b join goods c join users d where a.item_id = b.item_id AND b.goods_id = c.goods_id AND a.seller_id = $user_id and a.buyer_id != $user_id AND d.user_id = $user_id AND a.game_id=$game_id AND a.transaction_status = 1 ORDER BY a.transaction_date ASC";
+		$sql="SELECT *,(select user_username from users where user_id=a.buyer_id ) as buyer_name,(select order_id from orders where order_id=a.order_id ) as transaction_order_id from transactions a join game_items b join goods c join users d where a.item_id = b.item_id AND b.goods_id = c.goods_id AND a.seller_id = $user_id and a.buyer_id != $user_id AND d.user_id = $user_id AND a.game_id=$game_id AND a.transaction_status = 1 ORDER BY a.transaction_date ASC";
 		$result = $conn->query($sql);
 		return $result;}
 	
+	function display_balance($user_id){
+		$conn=connection2();
+		$sql="SELECT * from wallets where user_id=$user_id";
+		$result = $conn->query($sql);
+		return $result;}
+	
+
 	function display_sale_order_records($user_id,$game_id){
 		$conn=connection2();
 		$sql="SELECT a.order_id,
