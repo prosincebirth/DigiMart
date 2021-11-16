@@ -34,9 +34,10 @@
                                         <th>Items</th>
                                         <th>Bargain Price</th>
 										<th>Quantity</th>
-                                        <th>Buyer</th>	
+										<th>Total</th>
+                                        <th>Seller</th>	
                                         <th>Create Time</th>
-										<th></th>
+										<th>Action</th>
                                     </tr>
                                 </thead>
                                 <?php	$result = display_bargain_orders($_SESSION['user_session'],1);
@@ -51,43 +52,26 @@
 										</div>
 									</td>
 									<td>
-										<span><?php echo $res['item_price'];?></span>									
+										<span><?php echo $res['transaction_amount'];?></span>									
 									</td>
 									<td>
-									<span><?php echo $res['item_quantity']; ?></span>		
+										<span><?php echo $res['transaction_quantity']; ?></span>		
 									</td>
 									<td>
+										<span><?php echo $res['transaction_amount'] * $res['transaction_quantity'];?></span>								
+									</td>
+									<td>
+										<span><?php echo $res['seller_name'];?></span>								
+									</td>
+									<td>
+										<span><?php echo $res['item_date_added'];?></span>										
+									</td>
+									<td>
+
+
+
 									
-									<span><?php echo $res['seller_name'];?></span>								
-									</td>
-									<td>
-									<span><?php echo $res['item_date_added'];?></span>										
-									</td>
-									<td>
-										<div class="item__group--cta">
-											<button class="buy_btn wishlist_btn"  data-toggle="modal" data-target="#buy_game_item_modal" 
-											data-item_price_f="<?php echo $res['item_price'];?>" 
-											data-item_id_f="<?php echo $res['item_id'];?>"
-											data-item_stock_f="<?php echo $res['item_quantity'];?>"
-											data-buyer_id_f="<?php if(isset($_SESSION['user_session'])){echo $_SESSION['user_session']; }?>" 
-											data-seller_id_f="<?php echo $res['user_id'];?>" 
-											data-service_id_f="<?php echo $res['service_id'];?>" 
-											data-game_id_f="<?php echo $res['game_id'];?>" 
-											data-order_id_f="<?php echo '1'?>"> Accept</button>
-											
-											<button data-dismiss="modal" data-toggle="modal" data-target="#bargain_item_modal"
-											data-item_price_g="<?php echo $res['item_price'];?>" 
-											data-item_id_g="<?php echo $res['item_id'];?>"
-											data-item_stock_g="<?php echo $res['item_quantity'];?>"
-											data-buyer_id_g="<?php if(isset($_SESSION['user_session'])){echo $_SESSION['user_session']; }?>" 
-											data-seller_id_g="<?php echo $res['user_id'];?>" 
-											data-service_id_g="<?php echo $res['service_id'];?>" 
-											data-game_id_g="<?php echo $res['game_id'];?>" 
-											data-order_id_g="<?php echo '3'?>"> Refuse</button>
-										
-										</div>
-											<?php } }?>
-																			
+										<?php } }?>								
 									</td>
 								</tr>
 							</tbody>

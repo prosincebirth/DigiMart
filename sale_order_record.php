@@ -12,7 +12,7 @@
                 <div class="market_item--wrapper">
                     <div class="market_tabs">
                         <ul class="market_tab--list">
-                            <li ><span onclick="window.location.href='sale_order.php';">Sale Orders</span></li>
+                            <li ><span onclick="window.location.href='sale_order.php';">Sale Order</span></li>
                             <li class='active'><span onclick="window.location.href='sale_order_record.php';">Sale Order Records</span></li>
                             <li ><span onclick="window.location.href='my_saleorder.php';">My Sale Order</span></li>
                             <li><span data-toggle="modal" data-target="#sale_game_item_modal">Post Item for Sale</span></li>  

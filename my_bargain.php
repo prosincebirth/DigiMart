@@ -10,9 +10,10 @@
                 <div class="market_item--wrapper">
                     <div class="market_tabs">
                         <ul class="market_tab--list">				
-                            <li ><span onclick="window.location.href='bargain_order_record.php';">Bargain Order Records</span></li>
+							<li ><span onclick="window.location.href='bargain_order.php';">Bargain Orders</span></li>
+                            <li><span onclick="window.location.href='bargain_order_record.php';">Bargain Order Records</span></li>
 							<li class='active'><span onclick="window.location.href='my_bargain.php';">My Bargain</span></li>
-                        </ul>
+                        </ul>      
                         
                     </div>
                     <div class="market_tabs">
@@ -68,11 +69,12 @@
 									<span><?php echo $res['item_date_added'];?></span>										
 									</td>
 									<td>
+									<span>Waiting for seller to accept</span>		
+									<br></br>
 										<div class="item__group--cta">
 											<button class="buy_btn wishlist_btn"  data-toggle="modal" data-target="#cancel_bargain_order_modal" 
 											data-transaction_id_q="<?php echo $res['transaction_id'];?>" 
 											data-user_id_q="<?php echo $_SESSION['user_session'];?>"> Cancel Order</button>
-													
 											<?php } }?>
 										</div>
 										

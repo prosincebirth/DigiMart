@@ -18,15 +18,7 @@
                         </ul>
                         
                     </div>
-                    <div class="market_tabs">
-                        <div class="search__bar">
-                            <input type="search" name="" id="" class="form-control">
-                            <button type="submit">
-                            <i class="fas fa-search"></i>
-                            <span>Search</span>
-                            </button>
-                        </div>
-                    </div>
+                  
                     <div class="market_item--container">
                         <div class="items_wrapper">
                             <table class="table_list--items">

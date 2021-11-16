@@ -396,6 +396,18 @@
 		ORDER BY a.transaction_date DESC";
 		$result = $conn->query($sql);
 		return $result;}
+	
+	function display_bargain_orders($user_id,$game_id){// USED IN GAME SERVICES , POST SALE
+		$conn=connection2();
+		$sql="SELECT *,(select user_username from users where user_id=a.seller_id ) as seller_name from transactions a join game_items b join goods c 
+		where a.item_id = b.item_id AND b.goods_id = c.goods_id AND a.buyer_id = $user_id AND a.seller_id != $user_id  AND a.game_id=$game_id and a.order_id = 3 and 
+		a.transaction_status!=0 AND a.transaction_status!=2 AND a.transaction_status!=5 AND
+		a.transaction_status!=6 AND a.transaction_status!=7 AND a.transaction_status!=8 AND
+		a.transaction_status!=10 AND a.transaction_status!=11 AND a.transaction_status!=12
+		ORDER BY a.transaction_date DESC";
+		$result = $conn->query($sql);
+		return $result;}
+		
 		
 	function display_mybuy_orders($user_id,$game_id){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();

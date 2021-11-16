@@ -11,7 +11,8 @@
                 <div class="market_item--wrapper">
                     <div class="market_tabs">
                         <ul class="market_tab--list">
-                            <li class='active'><span onclick="window.location.href='bargain_order_record.php';">Bargain Order Records</span></li>
+                        <li ><span onclick="window.location.href='bargain_order.php';">Bargain Orders</span></li>
+                            <li  class='active'><span onclick="window.location.href='bargain_order_record.php';">Bargain Order Records</span></li>
 							<li ><span onclick="window.location.href='my_bargain.php';">My Bargain</span></li>
                         </ul>      
                     </div>
@@ -31,6 +32,8 @@
                                     <tr>
                                         <th>Items</th>
                                         <th>Bargain Price</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
                                         <th>Seller</th>
                                         <th>Create Time</th>
                                         <th>Status</th>
@@ -48,12 +51,18 @@
 										</div>
 									</td>
 									<td>
-										<span><?php echo $res['transaction_quantity'];?></span>									
+										<span><?php echo $res['transaction_amount'];?></span>									
 									</td>
 									<td>
-										<span><?php echo $res['transaction_amount'];?></span>
+										<span><?php echo $res['transaction_quantity'];?></span>
+									</td>
+                                    <td>
+										<span><?php echo $res['transaction_quantity'] * $res['transaction_amount'] ;?></span>
 									</td>
 									<td>
+									<span><?php echo $res['seller_name'];?></span>										
+									</td>
+                                    <td>
 									<span><?php echo $res['transaction_date'];?></span>										
 									</td>
 									<td><?php
