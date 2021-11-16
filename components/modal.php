@@ -452,6 +452,7 @@
 	</div></div>
 	
 <div class="modal fade" id="accept_buy_order_modal" role="dialog">
+<div class="modal-dialog">
 		<div class="modal-content">
 		<div class="modal-header"> 
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -476,8 +477,8 @@
 		<h4 class="modal-title"><center>REFUSE BUY ORDER</h4>
 		</div>
 		<div class="modal-body">							
-				<div class="fld_input"><input type="text" name="transaction_id_k" placeholder="ITEM ID" id="transaction_id_k" class="form-control"></div>						
-				<div class="fld_input"><input type="text" name="user_id_k" placeholder="USER ID" id="user_id_k" class="form-control"></div>						
+				<div class="fld_input"><input type="hidden" name="transaction_id_k" placeholder="ITEM ID" id="transaction_id_k" class="form-control"></div>						
+				<div class="fld_input"><input type="hidden" name="user_id_k" placeholder="USER ID" id="user_id_k" class="form-control"></div>						
             </div>
 			<div class="modal-footer">
 					<button class="btn btn-success" type="button" value="refuse_buy_order_modal">Confirm</button>					
