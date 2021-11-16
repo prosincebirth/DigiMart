@@ -396,6 +396,13 @@
 		$sql="SELECT  * from game_items a join goods b join game_services c join games d join users e where a.goods_id=b.goods_id and a.order_id=1 and a.game_id=d.game_id and a.service_id = c.service_id and a.user_id=e.user_id and a.item_status != 0 ORDER BY a.item_status ASC";
 		$result = $conn->query($sql);
 		return $result;}
+
+	function display_users_admin(){// USED IN GAME SERVICES , POST SALE
+		$conn=connection2();
+		$sql="SELECT  * from users where user_status !=2";
+		$result = $conn->query($sql);
+		return $result;}	
+
 	
 	function display_transaction_records_admin(){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();

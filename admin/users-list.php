@@ -8,7 +8,7 @@ include('includes/navbar.php');
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">Users List</h6>
+    <h6 class="m-0 font-weight-bold text-primary">List of Users</h6>
   </div>
 
   <div class="card-body">
@@ -19,40 +19,28 @@ include('includes/navbar.php');
         <thead>
           <tr>
             <th> ID </th>
-            <th> Name </th>
             <th> Username</th>
-            <th> Last login </th>
+            <th> User Email </th>
+            <th> Last Login </th>
             <th> Status</th>
-            <th> Action</th>
           </tr>
         </thead>
         <tbody>
+        <?php	$display_users_admin = display_users_admin();foreach($display_users_admin as $users){ ?>
           <tr>
-            <td> 1 </td>
-            <td> Sample name </td>
-            <td> Sample username</td>
-            <td> November 2, 2021 - 7:00 pm</td>
-            <td> Active</td>
-            <td>
-                <form action="" method="post">
-                  <input type="hidden" name="delete_id" value="">
-                  <button type="submit" name="delete_btn" class="btn btn-danger"> BAN</button>
-                </form>
-            </td>
+            <td><?php echo $users['user_id']; ?></td>
+            <td><?php echo $users['user_username']; ?></td>
+            <td><?php echo $users['user_email']; ?></td>
+            <td><?php echo date('Y-m-d',strtotime($users['last_login_date'])); ?></td>
+            <?php if($users['user_status']==0){
+                echo '<td>Inactive</td>';
+              }else if($users['user_status']==1){
+                echo '<td>Active</td>';
+              }else if($users['user_status']==2){
+                echo '<td>Canceled</td>';
+              } ?>
           </tr>
-          <tr>
-            <td> 2 </td>
-            <td> Sample name </td>
-            <td> Sample username</td>
-            <td> November 2, 2021 - 8:00 pm</td>
-            <td> Banned</td>
-            <td>
-                <form action="" method="post">
-                    <input type="hidden" name="edit_id" value="">
-                    <button  type="submit" name="edit_btn" class="btn btn-success"> UNBAN</button>
-                </form>
-            </td>
-          </tr>
+          <?php } ?>
         </tbody>
       </table>
 
