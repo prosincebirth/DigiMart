@@ -1,9 +1,23 @@
 .tab_section {
+ 
   background-color: var(--dark-color);
+}
+
+.tab_section:nth-child(even){
+  background-image: url("../svg/index-section1-bg.jpg");
+  height: auto;
+  width: auto;
+}
+
+.tab_section:nth-child(odd){
+  background-image: url("../svg/index-section2-bg.jpg");
+  height: auto;
+  width: auto;
 }
 
 .tab_section .tab_wrapper {
   margin-top: 70px;
+  margin-bottom: 50px;
   
 }
 
