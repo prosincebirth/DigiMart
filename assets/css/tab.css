@@ -115,6 +115,7 @@
 
 .tab_section .popular_items .item_wrapper {
   position: relative;
+  width: 208px;
 }
 
 .tab_section .popular_items .item_wrapper .item_tag {
@@ -132,6 +133,15 @@
 .tab_section .popular_items .item_wrapper .item_info {
   padding: 5px 15px 10px;
   background-color: #fff;
+}
+
+.tab_section .popular_items .item_wrapper .item_info .item_title {
+  color: var(--primary-color);
+}
+
+.tab_section .popular_items .item_wrapper .item_info .item_price {
+  color: green;
+  font-weight: bold;
 }
 
 .tab_section .popular_items .item_wrapper .item_info .item_title {
