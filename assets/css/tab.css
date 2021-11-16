@@ -136,6 +136,15 @@
 }
 
 .tab_section .popular_items .item_wrapper .item_info .item_title {
+  color: var(--primary-color);
+}
+
+.tab_section .popular_items .item_wrapper .item_info .item_price {
+  color: green;
+  font-weight: bold;
+}
+
+.tab_section .popular_items .item_wrapper .item_info .item_title {
   font-weight: 500;
   font-size: 16px;
   margin-top: 0;

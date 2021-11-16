@@ -54,7 +54,7 @@
                                         
                                         <?php echo '<h3 class="item_title">'.$res['goods_name'].'</h3>'; ?>
                                         
-                                        <?php echo '<span class="item_price">'.$res['item_price'].'</span>'; ?>
+                                        <?php echo '<span class="item_price">₱ '.$res['item_price'].'</span>'; ?>
                                     </div>
                                 </div>
                             </div>
