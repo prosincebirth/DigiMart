@@ -26,6 +26,7 @@ include('includes/navbar.php');
             <th>User</th>
             <th>Game Name</th>
             <th>Service Name</th>
+            <th>Date Created</th>
           </tr>
         </thead>
         <tbody>
@@ -38,6 +39,7 @@ include('includes/navbar.php');
             <td><?php echo $buy_orders['user_username']; ?></td>
             <td><?php echo $buy_orders['game_name']; ?></td>
             <td><?php echo $buy_orders['service_mode']; ?></td>
+            <td><?php echo date('Y-m-d',strtotime($buy_orders['item_date_added'])); ?></td>
           </tr>
           <?php } ?>
         </tbody>
