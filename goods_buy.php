@@ -138,8 +138,7 @@
 											data-service_id_h="<?php echo $res['service_id'];?>" 
 											data-game_id_h="<?php echo $res['game_id'];?>" 
 											data-order_id_h="<?php echo '2'?>">SUPPLY</a>
-											<a>
-											</a>
+											
 										</div>
 									</td>
 									<?php } }?>
