@@ -28,6 +28,7 @@
                     </div>
                     <div class="market_item--container">
                         <div class="items_wrapper">
+							<div class="table">
                             <table class="table_list--items">
                                 <thead>
                                     <tr>
@@ -84,6 +85,7 @@
 
 							</tbody>
                             </table>
+							</div>
                             <div class="pagination">
 								<ul>
 										<li><a href="">Previous</a></li>

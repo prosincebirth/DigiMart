@@ -27,8 +27,22 @@
                     </div>
                     <div class="market_item--container">
                         <div class="items_wrapper">
+                        <div class="table">
                             <table class="table_list--items">
-                                <thead>
+                                
+                                    <thead>
+                                        <tr>
+                                            <th>Items</th>
+                                            <th>Bargain Price</th>
+                                            <th>Seller</th>
+                                            <th>Create Time</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead><?php	
+                                            $result = display_bargain_orders_records($_SESSION['user_session'],1);
+                                            if($result->num_rows > 0){
+                                            while ($res = $result->fetch_assoc()){?>                  
+                                <tbody>
                                     <tr>
                                         <th>Items</th>
                                         <th>Bargain Price</th>
@@ -109,8 +123,9 @@
 									
 								</tr>
 
-							</tbody>
-                            </table>
+                                </tbody>
+                                </table>
+                            </div>
                             <div class="pagination">
 								<ul>
 										<li><a href="">Previous</a></li>

@@ -133,11 +133,11 @@
 										</td>
 										<td>
 										
-											no
+											 <span>no</span>
 										</td>
 											
 										<td>
-											data						
+											<span>data</span>			
 										</td>
 										<td>
 								</br>				
