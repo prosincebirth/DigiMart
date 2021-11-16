@@ -458,7 +458,37 @@
 		$conn=connection2();
 		$sql="SELECT *,count(b.item_id) as mycount from goods a inner JOIN game_items b where b.goods_id=a.goods_id group by a.goods_id";
 		$result = $conn->query($sql);
+		return $result;}
+	function get_user_count(){
+		$conn=connection2();
+		$sql="SELECT count(user_id) as count_users from users where user_status != 0";
+		$result = $conn->query($sql);
+		return $result;}
+
+	function get_game_count(){
+		$conn=connection2();
+		$sql="SELECT count(game_id) as count_games from games where game_status != 0";
+		$result = $conn->query($sql);
+		return $result;}
+
+	function get_service_count(){
+		$conn=connection2();
+		$sql="SELECT count(service_id) as count_services from game_services where service_status != 0";
+		$result = $conn->query($sql);
+		return $result;}
+
+	function get_game_item_count(){
+		$conn=connection2();
+		$sql="SELECT count(item_id) as count_game_items from game_items where item_status != 0";
+		$result = $conn->query($sql);
 		return $result;}		
+
+	function get_transaction_count(){
+		$conn=connection2();
+		$sql="SELECT count(transaction_id) as count_transactions from transactions where transaction_status != 0";
+		$result = $conn->query($sql);
+		return $result;}				
+	
 	
 	function display_goods_id($goods_id){//user
 		$conn=connection2();
