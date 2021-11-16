@@ -217,7 +217,7 @@
 	
 	function cancel_bargain_order($transaction_id,$user_id){
 		$conn=connection();
-		$query="UPDATE transactions set transaction_status=2 where transaction_id=:transaction_id and buyer_id=:user_id";
+		$query="UPDATE transactions set transaction_status=6 where transaction_id=:transaction_id and buyer_id=:user_id";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id,":user_id"=>$user_id));
 		$conn=null;}
@@ -417,7 +417,7 @@
 
 	function display_buy_order_records($user_id,$game_id){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
-		$sql="SELECT *,(select user_username from users where user_id=a.seller_id ) as seller_name from transactions a join game_items b join goods c where a.item_id=b.item_id and b.goods_id = c.goods_id and a.buyer_id=$user_id and a.seller_id != $user_id and a.game_id=$game_id and a.order_id != 3 ORDER BY a.transaction_status ASC";		
+		$sql="SELECT *,(select user_username from users where user_id=a.seller_id ) as seller_name from transactions a join game_items b join goods c where a.item_id=b.item_id and b.goods_id = c.goods_id and a.buyer_id=$user_id and a.seller_id != $user_id and a.game_id=$game_id and a.order_id != 3 ORDER BY a.transaction_date desc";		
 		$result = $conn->query($sql);
 		return $result;}		
 

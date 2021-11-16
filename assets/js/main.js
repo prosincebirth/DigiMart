@@ -179,6 +179,14 @@ $('document').ready(function()
         $(e.currentTarget).find('input[name="user_id_i"]').val(user_id_i);
     });
 
+    $('#cancel_buy_order_modal_i').on('show.bs.modal', function(e) {
+        var transaction_id_ii = $(e.relatedTarget).data('transaction_id_ii');
+        var user_id_ii = $(e.relatedTarget).data('user_id_ii');
+
+        $(e.currentTarget).find('input[name="transaction_id_ii"]').val(transaction_id_ii);
+        $(e.currentTarget).find('input[name="user_id_ii"]').val(user_id_ii);
+    });
+
     $('#cancel_sale_order_modal').on('show.bs.modal', function(e) {
         var item_id_n = $(e.relatedTarget).data('item_id_n');
         var user_id_n = $(e.relatedTarget).data('user_id_n');
@@ -679,8 +687,33 @@ $('document').ready(function()
                             alert(res)
                         } 
 					}
-				});//END OF AJAX IN ADDING NEW ITEM
-            //}				
+				});		
+			break;//END OF SAVE NEW ITEM
+            case "cancel_buy_order_modal_i":             
+                var transaction_id_ii=$("#transaction_id_ii").val()
+                var user_id_ii=$("#user_id_ii").val()
+
+				var data=new FormData();
+				data.append("action_type","cancel_buy_order_modal_i");
+				data.append("transaction_id_ii",transaction_id_ii);
+                data.append("user_id_ii",user_id_ii);
+
+				$.ajax({	
+					url:"account/controller.php",
+					method:"post",
+					data:data,
+					contentType:false,
+					cache:false,
+					processData:false,
+					success:function(res){
+                        if(res=="Success"){
+                            alert(res)
+                            location.reload();
+                        }else{
+                            alert(res)
+                        } 
+					}
+				});		
 			break;//END OF SAVE NEW ITEM
             case "accept_buy_order_modal":             
                 var transaction_id_j=$("#transaction_id_j").val()

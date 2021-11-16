@@ -465,6 +465,19 @@
 								echo 'Success'; 															
 								}
 						break;
+					case "cancel_buy_order_modal_i":		
+							$transaction_id_ii=$_POST['transaction_id_ii'];
+							$user_id_ii=$_POST['user_id_ii'];
+							
+							if(empty($user_id_ii)){ // trappings for not logged in
+								echo 'Please Login';
+							}						
+							else if($result_ii=get_bargain_order_transaction_details($transaction_id_ii,$user_id_ii)){
+								cancel_bargain_order($transaction_id_ii,$user_id_ii);
+								update_wallet_balance($user_id_ii,$result_ii['transaction_amount'] * $result_ii['transaction_quantity']);
+								echo 'Success'; 															
+								}
+						break;	
 					case "accept_sale_order_modal":		
 
 						$transaction_id_o=$_POST['transaction_id_o'];

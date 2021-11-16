@@ -177,8 +177,8 @@
 		<h4 class="modal-title"><center>SELL ITEM </h4>
 		</div>
 		<div class="modal-body">		
-				<div class="fld_input"><input type="number" name="item_price_b" placeholder="ITEM PRICE" id="item_price_b" class="form-control"></div>
-				<div class="fld_input"><input type="number" name="items_quantity_b" placeholder="ITEM QUANTITY" id="items_quantity_b" class="form-control"></div>
+				<div class="fld_input"><label>Price </label><input type="number" name="item_price_b"  id="item_price_b" class="form-control"></div>
+				<div class="fld_input"><label> Quantity </label><input type="number" name="items_quantity_b"  id="items_quantity_b" class="form-control"></div>
                 <div class="fld_input"><input type="hidden" name="goods_id_b" placeholder="GOODS ID" id="goods_id_b" class="form-control"></div>
 				<div class="fld_input"><select name="service_id_b" id="service_id_b" class="form-control">	
 				<option value="" disabled selected>Service Mode</option>
@@ -294,8 +294,8 @@
 		<h4 class="modal-title"><center>PLACE BUY ORDER</h4>
 		</div>
 		<div class="modal-body">		
-				<div class="fld_input"><input type="number" name="item_price_e" placeholder="ITEM PRICE" id="item_price_e" class="form-control"></div>
-				<div class="fld_input"><input type="number" name="items_quantity_e" placeholder="ITEM QUANTITY" id="items_quantity_e" class="form-control"></div>
+				<div class="fld_input"><label> Price </label><input type="number" name="item_price_e"  id="item_price_e" class="form-control"></div>
+				<div class="fld_input"><label> Quantity </label><input type="number" name="items_quantity_e"  id="items_quantity_e" class="form-control"></div>
                 <div class="fld_input"><input type="hidden" name="goods_id_e" placeholder="GOODS ID" id="goods_id_e" class="form-control"></div>
 				<div class="fld_input"><select name="service_id_e" id="service_id_e" class="form-control">	
 				<option value="" disabled selected>Service Mode</option>
@@ -332,7 +332,7 @@
 				Total : <span id="display_total_f"  name="display_total_f"> </span>
 
 				<div class="fld_input"><input type="hidden" name="item_price_f" placeholder="ITEM PRICE" id="item_price_f" class="form-control"></div>						
-                <div class="fld_input"><input type="number" name="item_quantity_f" placeholder="ITEM QUANTITY" id="item_quantity_f" value ="1" class="form-control"></div>
+                <div class="fld_input"><label> Quantity </label><input type="number" name="item_quantity_f" placeholder="ITEM QUANTITY" id="item_quantity_f" value ="1" class="form-control"></div>
 				<div class="fld_input"><input type="hidden" name="item_total_f" placeholder="ITEM TOTAL" id="item_total_f" class="form-control"></div>	
 				<div class="fld_input"><input type="hidden" name="item_stock_f" placeholder="ITEM STOCK" id="item_stock_f" class="form-control"></div>	
 				<div class="fld_input"><input type="hidden" name="item_id_f" placeholder="ITEM ID" id="item_id_f" class="form-control"></div>
@@ -365,8 +365,8 @@
 				Total : <span id="display_total_g"  name="display_total_g"> </span>
 							
 				<div class="fld_input"><input type="hidden" name="item_price_g" placeholder="ITEM PRICE" id="item_price_g" class="form-control"></div>			
-				<div class="fld_input"><input type="number" name="bargain_price_g" placeholder="BARGAIN PRICE" id="bargain_price_g" class="form-control"></div>			
-                	<div class="fld_input"><input type="number" name="item_quantity_g" placeholder="ITEM QUANTITY" id="item_quantity_g" value ="1" class="form-control" autofocus></div>
+				<div class="fld_input"><label> Bargain Price </label><input type="number" name="bargain_price_g" placeholder="BARGAIN PRICE" id="bargain_price_g" class="form-control"></div>			
+                	<div class="fld_input"><label> Quantity </label><input type="number" name="item_quantity_g" placeholder="ITEM QUANTITY" id="item_quantity_g" value ="1" class="form-control" autofocus></div>
 					
 				<div class="fld_input"><input type="hidden" name="item_total_g" placeholder="ITEM TOTAL" id="item_total_g" class="form-control"></div>
 				<div class="fld_input"><input type="hidden" name="item_stock_g" placeholder="ITEM STOCK" id="item_stock_g" class="form-control"></div>	
@@ -433,6 +433,24 @@
 		</div>
 	</div></div>
 
+<div class="modal fade" id="cancel_buy_order_modal_i" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+		<div class="modal-header"> 
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title"><center>CANCEL BUY ORDER</h4>
+		</div>
+		<div class="modal-body">							
+				<div class="fld_input"><input type="hidden" name="transaction_id_ii" placeholder="ITEM ID" id="transaction_id_ii" class="form-control"></div>						
+				<div class="fld_input"><input type="hidden" name="user_id_ii" placeholder="USER ID" id="user_id_ii" class="form-control"></div>						
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="cancel_buy_order_modal_i">Confirm</button>					
+			</div>									
+		</div>
+		</div>
+	</div></div>
+	
 <div class="modal fade" id="accept_buy_order_modal" role="dialog">
 		<div class="modal-content">
 		<div class="modal-header"> 
