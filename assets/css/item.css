@@ -137,6 +137,8 @@
     height: 30px;
     line-height: 30px;
     background-color: var(--quinary-color);
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .item_detail .item_detail--wrapper .item_detail--ctas div > button {
@@ -232,12 +234,9 @@
     color: var(--gray-color);
 }
 
-.item_group--table--container table tbody tr:nth-child(odd) {
-    background-color: var(--dark-gray-color);
-}
-
-.item_group--table--container table tbody tr:nth-child(even) {
+.item_group--table--container .table table tbody tr {
     background-color: var(--white-color);
+    border: 1px solid black;
 }
 
 .item_group--table--container table tbody tr td {
