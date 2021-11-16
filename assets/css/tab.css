@@ -115,6 +115,7 @@
 
 .tab_section .popular_items .item_wrapper {
   position: relative;
+  width: 208px;
 }
 
 .tab_section .popular_items .item_wrapper .item_tag {

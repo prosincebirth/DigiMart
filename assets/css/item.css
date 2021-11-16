@@ -230,7 +230,7 @@
 }
 
 .item_group--table--container table tbody tr:nth-child(odd) {
-    background-color: var(--light-gray-color);
+    background-color: var(--dark-gray-color);
 }
 
 .item_group--table--container table tbody tr:nth-child(even) {
