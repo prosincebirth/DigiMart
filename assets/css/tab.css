@@ -90,6 +90,10 @@
   column-gap: 20px;
 }
 
+.tab_section .popular_items a{
+  text-decoration: none !important;
+}
+
 @media screen and (max-width: 991px) {
   .tab_section .popular_items {
     display: block;
@@ -135,19 +139,16 @@
   background-color: #fff;
 }
 
-.tab_section .popular_items .item_wrapper .item_info .item_title {
-  color: var(--primary-color);
-}
-
 .tab_section .popular_items .item_wrapper .item_info .item_price {
-  color: green;
   font-weight: bold;
+  color: var(--quinary-color);
 }
 
 .tab_section .popular_items .item_wrapper .item_info .item_title {
   font-weight: 500;
   font-size: 16px;
   margin-top: 0;
+  color: var(--primary-color) !important;
   margin-bottom: 10px;
   display: -webkit-box;
   white-space: nowrap;
@@ -155,6 +156,7 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  
 }
 
 
