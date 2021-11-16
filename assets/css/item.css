@@ -23,12 +23,15 @@
 
 .item_detail .item_detail--wrapper .item_detail--img--content .img_wrapper {
     padding: 15px 0 15px 15px;
+    width: 375;
+    height: 270;
 }
 
 @media screen and (max-width: 991px) {
     .item_detail .item_detail--wrapper .item_detail--img--content .img_wrapper {
         padding: 0;
         margin-bottom: 15px;
+        width: auto;
         height: 200px;
     }
     .item_detail .item_detail--wrapper .item_detail--img--content .item_detail--content {
@@ -258,9 +261,19 @@
     height: 30px;
     line-height: 30px;
     padding: 0 15px;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .item_group--table--container table tbody tr td .item__group--cta a:last-of-type {
-    color: var(--quinary-color);
-    font-size: 20px;
+    margin-top: 5px;
+    margin-right: 15px;
+    display: inline-block;
+    background-color: var(--gray-color);
+    color: var(--white-color);
+    height: 30px;
+    line-height: 30px;
+    padding: 0 15px;
+    text-decoration: none;
+    cursor: pointer;
 }
