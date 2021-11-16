@@ -147,7 +147,6 @@
 											data-service_id_g="<?php echo $res['service_id'];?>" 
 											data-game_id_g="<?php echo $res['game_id'];?>" 
 											data-order_id_g="<?php echo '3'?>"> Bargain</a>
-											<a>
 											</a>
 
 										</div>
