@@ -85,12 +85,11 @@
                                          if($res['transaction_status']==0){
                                             echo '<span> Success </span>';
                                          }else if($res['transaction_status']==1){
-                                          echo "<span> Waiting for buyer's response </span>";
-                                          echo '<br>';
-                                          echo '<br>';
-                                          echo '<button> Cancel Order </button>';   
+                                             if($res['order_id']==1){echo '<button> Cancel Order1 </button>';}
+                                             if($res['order_id']==2){echo '<button> Cancel Order2 </button>';}
+                                             if($res['order_id']==3){echo '<button> Cancel Order3 </button>';}                                                          
                                          }else if($res['transaction_status']==2){
-                                            echo "<span> Canceled Order </span>";
+                                            echo "<span style='color:red'><b> Canceled Order </b> </span>";
                                          }else if($res['transaction_status']==3){
                                           echo '<span> Waiting for your response</span>';	
                                           echo '<br>';

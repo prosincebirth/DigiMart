@@ -12,8 +12,7 @@
                 </div>
                 <ul class="left_nav__list">
                     <li class="left_nav__list___item active"><a href="./">Home</a></li>
-                    <li class="left_nav__list___item"><a href="market.php">Market</a></li>
-                    <li class="left_nav__list___item"><a href="sale_market.php">News</a></li>
+                    <li class="left_nav__list___item"><a href="sale_market.php">Market</a></li>
                 </ul>
             </nav>
             <?php if(isset($_SESSION['user_session'])){?>

@@ -10,8 +10,8 @@
                 <div class="market_item--wrapper">
                     <div class="market_tabs">
                         <ul class="market_tab--list">
-						<li class='active'><span onclick="window.location.href='sale_order.php';">Sale Orders</span></li>
-                            <li ><span onclick="window.location.href='sale_order_record.php';">Sale Order Records</span></li>
+						<li class='active'><span onclick="window.location.href='sale_order.php';">Sale Order</span></li>
+                            <li ><span onclick="window.location.href='sale_order_record.php';">Sale Order Record</span></li>
                             <li ><span onclick="window.location.href='my_saleorder.php';">My Sale Order</span></li>
                             <li><span data-toggle="modal" data-target="#sale_game_item_modal">Post Item for Sale</span></li>  
                         </ul>
@@ -33,9 +33,11 @@
                                 <thead>
                                     <tr>
                                         <th>Items</th>
-                                        <th>Buyer</th>  
+                                        <th>Buyer</th> 
+                                        <th>Type</th>   
                                         <th>Price</th>
                                         <th>Quantity</th>
+                                        <th>Total</th>
                                         <th>Create Time</th>
                                         <th></th>
                                     </tr>
@@ -54,11 +56,25 @@
                                     <td>
 										<span><?php echo $res['buyer_name'];?></span>
 									</td>
+                                    <td>
+                                            <?php 
+                                         if($res['order_id']==1){
+                                            echo '<span>Sale Order</span>';
+                                         }else if($res['order_id']==2){
+                                            echo "<span>Buy Order</span>";		
+                                         }else if($res['order_id']==3){
+                                            echo "<span>Bargain Order</span>";				
+                                         }
+                                            ?>
+									</td>
 									<td>
 										<span><?php echo $res['transaction_amount'];?></span>									
 									</td>
 									<td>
 										<span><?php echo $res['transaction_quantity'];?></span>
+									</td>
+                                    <td>
+										<span><?php echo $res['transaction_quantity']*$res['transaction_amount'] ;?></span>
 									</td>
 									<td>
 									<span><?php echo $res['transaction_date'];?></span>										

@@ -26,10 +26,8 @@
                         <div class="menu">
                             <ul>
                             <li><button onclick="location.href='user-wallet.php'"><i class="fas fa-wallet"></i>My wallet</button></li>
-                                <li><button class="active" href="javascript:void(0);"><i class="fas fa-cog"></i>z`Account</button></li>
+                                <li><button class="active" href="javascript:void(0);"><i class="fas fa-cog"></i>Account</button></li>
                                 <li><button href="javascript:void(0);"><i class="fas fa-envelope"></i>Messages</button></li>
-                                <li><button href="javascript:void(0);"><i class="fas fa-star"></i>Favorites</button></li>
-                                <li><button href="javascript:void(0);"><i class="fas fa-ticket-alt"></i>My coupon</button></li>
                                 <li><button href="javascript:void(0);"><i class="fas fa-comment-dots"></i>Support</button></li>
                             </ul>
                         </div>
@@ -79,21 +77,7 @@
                                         <td class="t-right"><a href="javascript:void(0);" class="i-btn --i-btn-small">Unbind</a></td>
                                     </tr>
                                     <tr>
-                                        <td class="t-left">API key <i class="fas fa-question-circle" data-toggle="popover" title="About the API key" 
-                                        data-content="CSGO trade require seller to provide API Key for trading offer detection.
-                                         API Key can query and cancel trade offers, but cannot create and accept trade offers."></i></td>
-                                        <td class="t-left" style="position: relative;">
-                                            <span>
-                                                <input type="text" name="steam_api_key"size="42" placeholder="API key" value spellcheck="false">
-                                            </span>
-                                            <a href="javascript:void(0);" target=""data-url="javascript:void(0);">To get<i class="fas fa-caret-right"></i></a>
-                                            <i class="fas fa-question-circle" data-toggle="popover" title="Steps:" 
-                                            data-content="1.Click Set;
-                                                2.If you don't currently create an API Key, enter a domain name, then click Register; If you already have an API Key but it is not registered by yourself, it is recommended to log out and re-register;
-                                               3.Copy and paste the API Key into the input box and click Save."
-                                                 data-direction="right"></i>
-                                        </td>
-                                        <td class="t-right"><a href="javascript:void(0);" class="i-btn --i-btn-small">Save</a></td>
+                                
                                     </tr>
                                     <tr>
                                         <td class="t-left">Trade url</td>

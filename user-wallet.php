@@ -22,10 +22,8 @@
                         <div class="menu">
                             <ul>
                                 <li><button class="active" href="javascript:void(0);"><i class="fas fa-wallet"></i>My wallet</button></li>
-                                <li><button onclick="location.href='user-account.php'"><i class="fas fa-cog"></i>Account</button></li>
+                                <li><button onclick="location.href='user_account.php'"><i class="fas fa-cog"></i>Account</button></li>
                                 <li><button href="javascript:void(0);"><i class="fas fa-envelope"></i>Messages</button></li>
-                                <li><button href="javascript:void(0);"><i class="fas fa-star"></i>Favorites</button></li>
-                                <li><button href="javascript:void(0);"><i class="fas fa-ticket-alt"></i>My coupon</button></li>
                                 <li><button href="javascript:void(0);"><i class="fas fa-comment-dots"></i>Support</button></li>
                             </ul>
                         </div>

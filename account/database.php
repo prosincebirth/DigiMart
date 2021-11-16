@@ -193,7 +193,6 @@
 
 	function edit_game_item(){}
 ///////////////////UPDATE FUNCTIIONS CONFIRMATION/////////////////////////////////
-
  	function update_item_delivery($transaction_id,$user_id){
 		$conn=connection();
 		$query="UPDATE transactions set transaction_status=4 where transaction_id=:transaction_id and seller_id=:user_id";
@@ -351,7 +350,7 @@
 		c.goods_image,
 		c.goods_id,
 		c.goods_quality,
-		c.goods_name,(select user_username from users where user_id=a.buyer_id ) as buyer_name from transactions a join game_items b join goods c where a.item_id=b.item_id and b.goods_id = c.goods_id and a.buyer_id != $user_id and a.seller_id=$user_id and a.game_id=$game_id ORDER BY a.transaction_date DESC";		
+		c.goods_name,(select user_username from users where user_id=a.buyer_id ) as buyer_name from transactions a join game_items b join goods c where a.item_id=b.item_id and b.goods_id = c.goods_id and a.buyer_id != $user_id and a.transaction_status !=1 and a.seller_id=$user_id and a.game_id=$game_id ORDER BY a.transaction_date DESC";		
 		$result = $conn->query($sql);
 		return $result;}	
 	
@@ -381,7 +380,7 @@
 		
 	function display_mybuy_orders($user_id,$game_id){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
-		$sql="SELECT  * from game_items a join goods b where a.goods_id=b.goods_id and a.user_id=$user_id and a.order_id=2  and a.game_id=$game_id ORDER BY a.item_status ASC";
+		$sql="SELECT  * from game_items a join goods b where a.goods_id=b.goods_id and a.user_id=$user_id and a.order_id!=3 and a.game_id=$game_id ORDER BY a.item_status ASC";
 		$result = $conn->query($sql);
 		return $result;}
 
@@ -418,7 +417,7 @@
 
 	function display_buy_order_records($user_id,$game_id){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
-		$sql="SELECT *,(select user_username from users where user_id=a.seller_id ) as seller_name from transactions a join game_items b join goods c where a.item_id=b.item_id and b.goods_id = c.goods_id and a.buyer_id=$user_id and a.seller_id != $user_id and a.transaction_status !=1 and a.game_id=$game_id and a.order_id != 3 ORDER BY a.transaction_status ASC";		
+		$sql="SELECT *,(select user_username from users where user_id=a.seller_id ) as seller_name from transactions a join game_items b join goods c where a.item_id=b.item_id and b.goods_id = c.goods_id and a.buyer_id=$user_id and a.seller_id != $user_id and a.game_id=$game_id and a.order_id != 3 ORDER BY a.transaction_status ASC";		
 		$result = $conn->query($sql);
 		return $result;}		
 

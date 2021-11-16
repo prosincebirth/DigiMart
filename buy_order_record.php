@@ -70,6 +70,11 @@
                                         <?php
                                          if($res['transaction_status']==0){
                                             echo '<span> Success </span>';
+                                        }else if($res['transaction_status']==1){
+                                            echo "<span> Waiting for seller's response </span>";
+                                            echo '<br>';
+                                            echo '<br>';
+                                            echo '<button> Cancel Order </button>';   
                                          }else if($res['transaction_status']==2){
                                             echo "<span> Canceled Order </span>";
                                          }else if($res['transaction_status']==3){
