@@ -27,13 +27,14 @@
                     </div>
                     <div class="market_item--container">
                         <div class="items_wrapper">
-                            <div class="table">
                             <table class="table_list--items">
                                 <thead>
-                                    <tr>
+                                <tr>
                                         <th>Items</th>
+                                        <th>Type</th>
                                         <th>Price</th>
                                         <th>Quantity</th>
+                                        <th>Total</th>
                                         <th>Create Time</th>
                                         <th></th>
                                     </tr>
@@ -49,15 +50,13 @@
 											<span><?php echo '<a href="goods_sell.php?goods_id='.$res['goods_id'].'";><span>'.$res['goods_quality'].' '.$res['goods_name'].'</span></a>';?></span>	
 										</div>                                       
 									</td>
-									<td>
-										<span><?php echo $res['item_price'];?></span>									
-									</td>
-									<td>
-										<span><?php echo $res['item_quantity'];?></span>
-									</td>
-									<td>
-									<span><?php echo $res['item_date_added'];?></span>										
-									</td>
+                                    <td><?php if($res['order_id']==1){echo '<span>Sale Order</span>';}
+                                                else if($res['order_id']==2){echo "<span>Buy Order</span>";}
+                                                else if($res['order_id']==3){echo "<span>Bargain Order</span>";}?></td>
+									<td><span><?php echo $res['item_price'];?></span></td>
+									<td><span><?php echo $res['item_quantity'];?></span></td>
+                                     <td><span><?php echo $res['item_quantity'] * $res['item_price'];?></span></td>
+									<td><span><?php echo $res['item_date_added'];?></span></td>
 									<td>
                                         <?php
                                          if($res['item_status']==0){
@@ -68,7 +67,11 @@
                                             data-target="#cancel_sale_order_modal" 
                                             data-item_id_n='.$res['item_id'].' data-user_id_n='.$_SESSION['user_session'].'>Cancel Order</button>';
                                          }else if($res['item_status']==2){
-                                            echo "<span> Canceled Order </span>";
+                                            echo '<span style="color:red"><b>Failure</b></span>';
+                                            echo '<br>';
+                                            echo '<br>';
+                                            echo ' ';	
+                                            echo '<span style="color:gray"><u>Canceled Order</u></span>';
                                          }else if($res['item_status']==3){
                                             echo "<span> Waiting for your response </span>";	
                                          }else if($res['item_status']==4){
@@ -95,7 +98,6 @@
 								</tr>
 							</tbody>
                             </table>
-                            </div>
                             <div class="pagination">
 								<ul>
 										<li><a href="">Previous</a></li>
