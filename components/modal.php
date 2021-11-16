@@ -177,8 +177,8 @@
 		<h4 class="modal-title"><center>SELL ITEM </h4>
 		</div>
 		<div class="modal-body">		
-				<div class="fld_input"><label>Price </label><input type="number" name="item_price_b"  id="item_price_b" class="form-control"></div>
-				<div class="fld_input"><label> Quantity </label><input type="number" name="items_quantity_b"  id="items_quantity_b" class="form-control"></div>
+				<div class="fld_input"><label>Price </label><input type="number" name="item_price_b"  id="item_price_b" value="1" class="form-control"></div>
+				<div class="fld_input"><label> Quantity </label><input type="number" name="items_quantity_b"  id="items_quantity_b" value="1" class="form-control"></div>
                 <div class="fld_input"><input type="hidden" name="goods_id_b" placeholder="GOODS ID" id="goods_id_b" class="form-control"></div>
 				<div class="fld_input"><select name="service_id_b" id="service_id_b" class="form-control">	
 				<option value="" disabled selected>Service Mode</option>
@@ -420,7 +420,7 @@
 		<div class="modal-content">
 		<div class="modal-header"> 
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title"><center>CANCEL BUY ORDER</h4>
+		<h4 class="modal-title"><center>CANCEL ORDER</h4>
 		</div>
 		<div class="modal-body">							
 				<div class="fld_input"><input type="hidden" name="item_id_i" placeholder="ITEM ID" id="item_id_i" class="form-control"></div>						
@@ -456,7 +456,7 @@
 		<div class="modal-content">
 		<div class="modal-header"> 
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title"><center>ACCEPT BUY ORDER</h4>
+		<h4 class="modal-title"><center>ACCEPT ORDER</h4>
 		</div>
 		<div class="modal-body">							
 				<div class="fld_input"><input type="hidden" name="transaction_id_j" placeholder="ITEM ID" id="transaction_id_j" class="form-control"></div>						
@@ -474,7 +474,7 @@
 		<div class="modal-content">
 		<div class="modal-header"> 
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title"><center>REFUSE BUY ORDER</h4>
+		<h4 class="modal-title"><center>REFUSE ORDER</h4>
 		</div>
 		<div class="modal-body">							
 				<div class="fld_input"><input type="hidden" name="transaction_id_k" placeholder="ITEM ID" id="transaction_id_k" class="form-control"></div>						
@@ -530,7 +530,7 @@
 		<div class="modal-content">
 		<div class="modal-header"> 
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title"><center>CANCEL SALE ORDER</h4>
+		<h4 class="modal-title"><center>CANCEL ORDER</h4>
 		</div>
 		<div class="modal-body">							
 				<div class="fld_input"><input type="hidden" name="item_id_n" placeholder="ITEM ID" id="item_id_n" class="form-control"></div>						
@@ -548,7 +548,7 @@
 		<div class="modal-content">
 		<div class="modal-header"> 
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title"><center>ACCEPT SALE ORDER</h4>
+		<h4 class="modal-title"><center>ACCEPT ORDER</h4>
 		</div>
 		<div class="modal-body">							
 				<div class="fld_input"><input type="hidden" name="transaction_id_o" placeholder="ITEM ID" id="transaction_id_o" class="form-control"></div>						
@@ -586,7 +586,7 @@
 		<div class="modal-content">
 		<div class="modal-header"> 
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title"><center>CANCEL SALE ORDER</h4>
+		<h4 class="modal-title"><center>CANCEL ORDER</h4>
 		</div>
 		<div class="modal-body">							
 				<div class="fld_input"><input type="hidden" name="transaction_id_nn" placeholder="ITEM ID" id="transaction_id_nn" class="form-control"></div>						
@@ -605,7 +605,7 @@
 		<div class="modal-content">
 		<div class="modal-header"> 
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title"><center>CANCEL SALE ORDER</h4>
+		<h4 class="modal-title"><center>CANCEL ORDER</h4>
 		</div>
 		<div class="modal-body">							
 				<div class="fld_input"><input type="text" name="transaction_id_q" placeholder="ITEM ID" id="transaction_id_q" class="form-control"></div>						
