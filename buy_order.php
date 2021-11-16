@@ -34,11 +34,12 @@
                                 <thead>
                                     <tr>
                                         <th>Items</th>
-                                        <th>Seller</th>  
                                         <th>Price</th>
                                         <th>Quantity</th>
+                                        <th>Type</th>
+                                        <th>User</th>
                                         <th>Create Time</th>
-                                        <th></th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <?php	$result = display_buy_orders($_SESSION['user_session'],1);
@@ -53,16 +54,25 @@
 										</div>
 									</td>
                                     <td>
-										<span><?php echo $res['seller_name'];?></span>
+                                    <span><?php echo $res['transaction_amount'];?></span>		
 									</td>
 									<td>
-										<span><?php echo $res['transaction_amount'];?></span>									
+										<span><?php echo $res['transaction_quantity'];?></span>									
+									</td>
+									<td><?php 
+                                         if($res['order_id']==1){
+                                            echo '<span>Sale Order</span>';
+                                         }else if($res['order_id']==2){
+                                            echo "<span>Buy Order</span>";		
+                                         }else if($res['order_id']==3){
+                                            echo "<span>Bargain Order</span>";				
+                                         }?>
 									</td>
 									<td>
-										<span><?php echo $res['transaction_quantity'];?></span>
+									    <span><?php echo $res['seller_name'];?></span>										
 									</td>
-									<td>
-									<span><?php echo $res['transaction_date'];?></span>										
+                                    <td>
+									    <span><?php echo $res['transaction_date'];?></span>										
 									</td>
 									<td>
                                     <div class="item__group--cta">
