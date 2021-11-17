@@ -51,9 +51,9 @@
 									<td><span><?php echo $res['item_date_added'];?></span></td>
 									<td><?php
                                          if($res['item_status']==0){
-                                            echo '<span> Success </span>';
+                                            echo '<span><i class="fas fa-check-circle"></i> Success </span>';
                                          }else if($res['item_status']==1){
-                                            echo '<span style="color:orange"><b>Waiting for seller</b></span>';
+                                            echo '<span style="color:orange"><b><i class="fas fa-clock"></i> Waiting for seller</b></span>';
                                             echo '<br>';
                                             echo '<br>';
                                             echo ' ';	
@@ -62,7 +62,7 @@
                                             data-target="#cancel_buy_order_modal" 
                                             data-item_id_i='.$res['item_id'].' data-user_id_i='.$_SESSION['user_session'].' >Cancel Order</button>';
                                          }else if($res['item_status']==2){
-                                          echo '<span style="color:red"><b>Failure</b></span>';
+                                          echo '<span style="color:red"><i class="fas fa-times-circle"></i> <b>Failure</b></span>';
                                           echo '<br>';
                                           echo '<br>';
                                           echo ' ';	
@@ -86,7 +86,7 @@
                                          }else if($res['item_status']==11){
                                             echo '<span> Transaction Dispute </span>';	
                                          }else if($res['item_status']==12){
-                                            echo '<span style="color:green"><b>Success</b></span>';
+                                            echo '<span style="color:green"><i class="fas fa-check-circle"></i> <b>Success</b></span>';
                                             echo '<br>';
                                             echo '<br>';
                                             echo ' ';	

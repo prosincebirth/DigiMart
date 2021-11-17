@@ -16,15 +16,6 @@
                             <li><span data-toggle="modal" data-target="#sale_game_item_modal">Post Item for Sale</span></li>  
                         </ul>
                     </div>
-                    <div class="market_tabs">
-                        <div class="search__bar">
-                            <input type="search" name="" id="" class="form-control">
-                            <button type="submit">
-                            <i class="fas fa-search"></i>
-                            <span>Search</span>
-                            </button>
-                        </div>
-                    </div>
                     <div class="market_item--container">
                         <div class="items_wrapper">
                             <table class="table_list--items">
@@ -58,9 +49,9 @@
 									<td>
                                         <?php
                                          if($res['item_status']==0){
-                                            echo '<span> Success </span>';
+                                            echo '<span style="color:green"><b><i class="fas fa-check-circle"></i> Success </span>';
                                          }else if($res['item_status']==1){
-                                            echo '<button class="buy_btn wishlist_btn"  
+                                            echo '<button 
                                             data-toggle="modal" 
                                             data-target="#cancel_sale_order_modal" 
                                             data-item_id_n='.$res['item_id'].' data-user_id_n='.$_SESSION['user_session'].'>Cancel Order</button>';
@@ -89,7 +80,7 @@
                                          }else if($res['item_status']==11){
                                             echo '<span> Transaction Dispute </span>';	
                                          }else if($res['item_status']==12){
-                                          echo '<span style="color:green"><b>Success</b></span>';
+                                            echo '<span style="color:green"><i class="fas fa-check-circle"></i> <b>Success</b></span>';
                                             echo '<br>';
                                             echo '<br>';
                                             echo ' ';	

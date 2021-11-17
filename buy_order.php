@@ -74,7 +74,7 @@
                                         <?php
                                         if($res['transaction_status']==1){
                                                 if($res['order_id']==1){
-                                                    echo "<span style='color:blue'><b> <i class='bi bi-activity'></i> Waiting for seller to accept </b></span>";
+                                                    echo "<span style='color:orange'><b><i class='fas fa-clock'></i> Waiting for seller to accept </b></span>";
                                                     echo '<br>';
                                                     echo '<br>';
                                                     echo '<button class="buy_btn wishlist_btn"  
@@ -83,7 +83,7 @@
                                                     data-transaction_id_ii='.$res['transaction_id'].' data-user_id_ii='.$_SESSION['user_session'].' >Cancel Order</button>';}
                                                 
                                                 else if($res['order_id']==2){
-                                                    echo "<span style='color:green'><b> Waiting for your response </b></span>";
+                                                    echo "<span style='color:blue'><b><i class='fas fa-clock'></i> Waiting for your response </b></span>";
                                                     echo '<br>';
                                                     echo '<br>';
                                                     echo '<button class="buy_btn wishlist_btn"  
@@ -96,7 +96,7 @@
                                                         data-transaction_id_k='.$res['transaction_id'].'
                                                         data-user_id_k='.$_SESSION['user_session'].' >Refuse</button> ';}
                                          }else if($res['transaction_status']==3){
-                                            echo "<span style='color:orange'><b> Waiting for seller to send </b></span>";
+                                            echo "<span style='color:orange'><b><i class='fas fa-clock'></i> Waiting for seller to send </b></span>";
                                             echo '<br>';
                                             echo '<br>';
                                             echo '<button class="buy_btn wishlist_btn"  
@@ -104,7 +104,7 @@
                                             data-target="#cancel_buy_order_modal_i" 
                                             data-transaction_id_ii='.$res['transaction_id'].' data-user_id_ii='.$_SESSION['user_session'].' >Cancel Order</button>';
                                          }else if($res['transaction_status']==4){//Waiting for Buyer's Response
-                                            echo '<span> Waiting for your response</span>';	
+                                            echo '<span style="color:blue"><b><i class="fas fa-clock"></i> Waiting for your response</b></span>';	
                                             echo '<br>';
                                             echo '<br>';
                                             echo '<button class="buy_btn wishlist_btn"  

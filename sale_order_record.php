@@ -26,7 +26,7 @@
                                 <thead>
                                     <tr>
                                         <th>Items</th>
-                                        <th>Seller</th>
+                                        <th>Buyer</th>
                                         <th>Type</th>
                                         <th>Price</th>
                                         <th>Quantity</th>
@@ -51,9 +51,9 @@
                                     <td>
 										<span><?php echo $res['buyer_name'];?></span>									
 									</td>
-                                    <td><?php if($res['order_id']==1){echo '<span>Sale Order</span>';}
-                                         else if($res['order_id']==2){echo "<span>Buy Order</span>";}
-                                         else if($res['order_id']==3){echo "<span>Bargain Order</span>";}?>
+                                    <td><?php if($res['transaction_order_id']==1){echo '<span>Sale Order</span>';}
+                                         else if($res['transaction_order_id']==2){echo "<span>Buy Order</span>";}
+                                         else if($res['transaction_order_id']==3){echo "<span>Bargain Order</span>";}?>
 									</td>
                                     <td><span><?php echo $res['transaction_amount'];?></span></td>
 									<td><span><?php echo $res['transaction_quantity'];?></span></td>
@@ -62,21 +62,21 @@
                                     <td>
                                         <?php
                                          if($res['transaction_status']==0){
-                                            echo '<span style="color:green"><b> Success </b></span>';
+                                            echo '<span style="color:green"><b><i class="fas fa-check-circle"></i> Success </b></span>';
                                          }else if($res['transaction_status']==2){
-                                          echo '<span style="color:red"><b>Failure</b></span>';
+                                          echo '<span style="color:red"><b><i class="fas fa-times-circle"></i> Failure</b></span>';
                                           echo '<br>';
                                           echo '<br>';
                                           echo ' ';	
                                           echo '<span style="color:gray"><u>Canceled Order</u></span>';
                                          }else if($res['transaction_status']==5){
-                                            echo '<span style="color:red"><b>Failure</b></span>';
+                                            echo '<span style="color:red"><b><i class="fas fa-times-circle"></i> Failure</b></span>';
                                             echo '<br>';
                                             echo '<br>';
                                             echo ' ';	
                                             echo '<span style="color:gray"><u>Seller Canceled</u></span>';
                                          }else if($res['transaction_status']==6){
-                                            echo '<span style="color:red"><b>Failure</b></span>';
+                                            echo '<span style="color:red"><b><i class="fas fa-times-circle"></i> Failure</b></span>';
                                             echo '<br>';
                                             echo '<br>';
                                             echo ' ';	
@@ -88,7 +88,7 @@
                                          }else if($res['transaction_status']==9){
                                             echo '<span> Refunded</span>';	
                                          }else if($res['transaction_status']==10){
-                                            echo '<span style="color:red"><b>Failure</b></span>';
+                                            echo '<span style="color:red"><b><i class="fas fa-times-circle"></i> Failure</b></span>';
                                             echo '<br>';
                                             echo '<br>';
                                             echo ' ';	

@@ -21,7 +21,7 @@
                         <div class="search__bar">
                             <input type="search" name="" id="" class="form-control">
                             <button type="submit">
-                            <i class="fas fa-search"></i>
+                            <i class="fas fa-check"></i>
                             <span>Search</span>
                             </button>
                         </div>
