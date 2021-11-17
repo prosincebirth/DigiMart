@@ -45,35 +45,23 @@
 									<td>
 										<div class="img_text">
 											<?php echo '<img class="item__img" src="data:image/png;base64,'.base64_encode($res['goods_image']).'"height="72" >'; ?>
-                                            <span><?php echo '<a href="goods_buy.php?goods_id='.$res['goods_id'].'";><span>'.$res['goods_quality'].' '.$res['goods_name'].'</span></a>';?></span>
-                                        			
+                                            <span><?php echo '<a href="goods_buy.php?goods_id='.$res['goods_id'].'";><span>'.$res['goods_quality'].' '.$res['goods_name'].'</span></a>';?></span>		
 										</div>
 									</td>
-                                    <td>
-										<span><?php echo $res['seller_name'];?></span>									
-									</td>
-									
-                                    <td><?php 
-                                         if($res['order_id']==1){
+                                    <td><span><?php echo $res['seller_name'];?></span></td>
+									<td><?php 
+                                         if($res['transaction_order_id']==1){
                                             echo '<span>Sale Order</span>';
-                                         }else if($res['order_id']==2){
+                                         }else if($res['transaction_order_id']==2){
                                             echo "<span>Buy Order</span>";		
-                                         }else if($res['order_id']==3){
+                                         }else if($res['transaction_order_id']==3){
                                             echo "<span>Bargain Order</span>";				
                                          }?>
 									</td>
-                                    <td>
-										<span><?php echo $res['transaction_amount'];?></span>									
-									</td>
-									<td>
-									    <span><?php echo $res['transaction_quantity'];?></span>										
-									</td>
-                                    <td>
-									    <span><?php echo $res['transaction_quantity'] * $res['transaction_amount'];?></span>										
-									</td>
-                                    <td>
-									    <span><?php echo $res['transaction_date'];?></span>										
-									</td>
+                                    <td><span><?php echo $res['transaction_amount'];?></span></td>
+									<td><span><?php echo $res['transaction_quantity'];?></span></td>
+                                    <td><span><?php echo $res['transaction_quantity'] * $res['transaction_amount'];?></span></td>
+                                    <td><span><?php echo $res['transaction_date'];?></span></td>
 									<td>
                                         <?php
                                          if($res['transaction_status']==0){
@@ -115,9 +103,7 @@
                                          }
                                          } }?>
 									</td>
-									
 								</tr>
-
 							</tbody>
                             </table>
                             </div>

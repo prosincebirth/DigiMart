@@ -45,31 +45,20 @@
 											<span><?php echo '<a href="goods_buy.php?goods_id='.$res['goods_id'].'";><span>'.$res['goods_quality'].' '.$res['goods_name'].'</span></a>';?></span>	  
 										</div>
 									</td>
-                                    <td>
-										<span><?php echo $res['seller_name'];?></span>									
-									</td>
-									
+                                    <td><span><?php echo $res['seller_name'];?></span></td>
                                     <td><?php 
-                                         if($res['order_id']==1){
+                                         if($res['transaction_order_id']==1){
                                             echo '<span>Sale Order</span>';
-                                         }else if($res['order_id']==2){
+                                         }else if($res['transaction_order_id']==2){
                                             echo "<span>Buy Order</span>";		
-                                         }else if($res['order_id']==3){
+                                         }else if($res['transaction_order_id']==3){
                                             echo "<span>Bargain Order</span>";				
                                          }?>
 									</td>
-                                    <td>
-										<span><?php echo $res['transaction_amount'];?></span>									
-									</td>
-									<td>
-									    <span><?php echo $res['transaction_quantity'];?></span>										
-									</td>
-                                    <td>
-									    <span><?php echo $res['transaction_quantity'] * $res['transaction_amount'];?></span>										
-									</td>
-                                    <td>
-									    <span><?php echo $res['transaction_date'];?></span>										
-									</td>
+                                    <td><span><?php echo $res['transaction_amount'];?></span></td>
+									<td><span><?php echo $res['transaction_quantity'];?></span></td>
+                                    <td><span><?php echo $res['transaction_quantity'] * $res['transaction_amount'];?></span></td>
+                                    <td><span><?php echo $res['transaction_date'];?></span></td>
 									<td>                               
                                         <?php
                                         if($res['transaction_status']==1){
@@ -96,7 +85,7 @@
                                                         data-transaction_id_k='.$res['transaction_id'].'
                                                         data-user_id_k='.$_SESSION['user_session'].' >Refuse</button> ';}
                                          }else if($res['transaction_status']==3){
-                                            echo "<span style='color:orange'><b><i class='fas fa-clock'></i> Waiting for seller to send </b></span>";
+                                            echo "<span style='color:blue'><b><i class='fas fa-clock'></i> Waiting for seller to send </b></span>";
                                             echo '<br>';
                                             echo '<br>';
                                             echo '<button class="buy_btn wishlist_btn"  

@@ -9,26 +9,23 @@
                 <div class="market_item--wrapper">
                     <div class="market_tabs">
                         <ul class="market_tab--list">
-							
                             <li  class='active'><span onclick="window.location.href='bargain_order.php';">Bargain Orders</span></li>
                             <li><span onclick="window.location.href='bargain_order_record.php';">Bargain Order Records</span></li>
-							<li ><span onclick="window.location.href='my_bargain.php';">My Bargain</span></li>
                         </ul>
-                        
                     </div>
-
                     <div class="market_item--container">
                         <div class="items_wrapper">
                             <table class="table_list--items">
                                 <thead>
-                                    <tr>
+                                <tr>
                                         <th>Items</th>
-                                        <th>Bargain Price</th>
-										<th>Quantity</th>
-										<th>Total</th>
-                                        <th>Seller</th>	
+                                        <th>Seller</th>
+                                        <th>Type</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
                                         <th>Create Time</th>
-										<th>Action</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <?php	$result = display_bargain_orders($_SESSION['user_session'],1);
@@ -42,61 +39,42 @@
 											<span><?php echo $res['goods_quality']," ",$res['goods_name'];?></span>	
 										</div>
 									</td>
-									<td>
-										<span><?php echo $res['transaction_amount'];?></span>									
+									<td><span><?php echo $res['seller_name'];?></span></td>
+                                    <td><?php 
+                                         if($res['transaction_order_id']==1){
+                                            echo '<span>Sale Order</span>';
+                                         }else if($res['transaction_order_id']==2){
+                                            echo "<span>Buy Order</span>";		
+                                         }else if($res['transaction_order_id']==3){
+                                            echo "<span>Bargain Order</span>";				
+                                         }?>
 									</td>
-									<td>
-										<span><?php echo $res['transaction_quantity']; ?></span>		
-									</td>
-									<td>
-										<span><?php echo $res['transaction_amount'] * $res['transaction_quantity'];?></span>								
-									</td>
-									<td>
-										<span><?php echo $res['seller_name'];?></span>								
-									</td>
-									<td>
-										<span><?php echo $res['item_date_added'];?></span>										
-									</td>
-									<td> <?php
-                                         if($res['transaction_status']==0){
-                                            echo '<span> Success </span>';
-                                         }else if($res['transaction_status']==1){
-                                                if($res['order_id']==1){
-                                                    echo "<span> Waiting for seller to accept </span>";
+                                    <td><span><?php echo $res['transaction_amount'];?></span></td>
+									<td><span><?php echo $res['transaction_quantity'];?></span></td>
+                                    <td><span><?php echo $res['transaction_quantity'] * $res['transaction_amount'];?></span></td>
+                                    <td><span><?php echo $res['transaction_date'];?></span></td>
+									<td>                               
+                                        <?php
+                                        if($res['transaction_status']==1){
+                                                if($res['transaction_order_id']==3){
+                                                    echo "<span style='color:orange'><b><i class='fas fa-clock'></i> Waiting for seller to accept </b></span>";
                                                     echo '<br>';
                                                     echo '<br>';
                                                     echo '<button class="buy_btn wishlist_btn"  
                                                     data-toggle="modal" 
                                                     data-target="#cancel_buy_order_modal_i" 
                                                     data-transaction_id_ii='.$res['transaction_id'].' data-user_id_ii='.$_SESSION['user_session'].' >Cancel Order</button>';}
-                                                
-                                                else if($res['order_id']==2){
-                                                    echo "<span> Waiting for your response</span>";
-                                                    echo '<br>';
-                                                    echo '<br>';
-                                                    echo '<button class="buy_btn wishlist_btn"  
-                                                    data-toggle="modal" 
-                                                    data-target="#accept_buy_order_modal" 
-											        data-transaction_id_j='.$res['transaction_id'].' 
-                                                    data-user_id_j='.$_SESSION['user_session'].' >Accept</button>';
-                                                    echo ' ';
-                                                    
-                                                    echo '<button class="buy_btn wishlist_btn"  data-toggle="modal" data-target="#refuse_buy_order_modal" 
-                                                    data-transaction_id_k='.$res['transaction_id'].'
-                                                    data-user_id_k='.$_SESSION['user_session'].' >Refuse</button> ';}
-
-                                         }else if($res['transaction_status']==2){
-                                            echo "<span> Canceled Order </span>";
+           
                                          }else if($res['transaction_status']==3){
-                                            echo "<span>Waiting for seller to send</span>";
+                                            echo "<span style='color:blue'><b><i class='fas fa-clock'></i> Waiting for seller to send </b></span>";
                                             echo '<br>';
-                                         
+                                            echo '<br>';
                                             echo '<button class="buy_btn wishlist_btn"  
                                             data-toggle="modal" 
                                             data-target="#cancel_buy_order_modal_i" 
                                             data-transaction_id_ii='.$res['transaction_id'].' data-user_id_ii='.$_SESSION['user_session'].' >Cancel Order</button>';
                                          }else if($res['transaction_status']==4){//Waiting for Buyer's Response
-                                            echo '<span> Waiting for your response</span>';	
+                                            echo '<span style="color:blue"><b><i class="fas fa-clock"></i> Waiting for your response</b></span>';	
                                             echo '<br>';
                                             echo '<br>';
                                             echo '<button class="buy_btn wishlist_btn"  
@@ -106,25 +84,9 @@
                                                 data-user_id_m='.$_SESSION['user_session'].'>Item recieved</button>';
                                             echo ' ';
                                             echo '<button> Start Dispute </button>';
-                                         }else if($res['transaction_status']==5){
-                                            echo '<span> Seller Canceled </span>';	
-                                         }else if($res['transaction_status']==6){
-                                            echo '<span> Buyer Canceled</span>';
-                                         }else if($res['transaction_status']==7){
-                                            echo '<span> Refunded to the Buyer </span>';	
-                                         }else if($res['transaction_status']==8){
-                                            echo '<span> Refunded to the Seller </span>';	
-                                         }else if($res['transaction_status']==9){
-                                            echo '<span> Refunded</span>';	
-                                         }else if($res['transaction_status']==10){
-                                            echo '<span> Canceled by the Admin </span>';	
-                                         }else if($res['transaction_status']==11){
-                                            echo '<span> Transaction Dispute </span>';	
-                                         }else if($res['transaction_status']==12){
-                                            echo '<span> Sold Out </span>';	
-                                         }
-                                         
-                                         } }?>							
+                                            } 
+                                            }
+                                            }?>
 									</td>
 								</tr>
 							</tbody>
