@@ -22,7 +22,6 @@
                 <div class="" id="popular_tab">
                     <div class="popular_items">
                        <?php
-                        require_once 'account/database.php';
                         $result = display_item(5);
                         if($result->num_rows > 0){
                         while ($res = $result->fetch_assoc()){
@@ -52,7 +51,7 @@
                                     
                                     <?php echo '<span class="item_title">'.$res['goods_name'].'</span>'; ?>
                                     
-                                    <?php echo '<span class="item_price">₱ '.$res['item_price'].'</span>'; ?>
+                                    <?php echo '<span class="item_price">₱ '.$res['lowest_price'].'</span>'; ?>
                                 </div>
                             </div>
                         </a>

@@ -516,7 +516,7 @@
 		
 	function display_item($limit){//global-market.php
 		$conn=connection2();
-		$sql="SELECT * from goods a join game_items b where a.goods_id=b.goods_id LIMIT $limit";
+		$sql="SELECT *,count(b.item_id) as mycount,MIN(b.item_price) as lowest_price from goods a inner JOIN game_items b where b.goods_id=a.goods_id group by a.goods_id order by lowest_price LIMIT $limit";
 		$result = $conn->query($sql);
 		return $result;}
 
