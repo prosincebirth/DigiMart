@@ -24,14 +24,14 @@
                             <table class="table_list--items">
                                 <thead>
                                     <tr>
-                                    <th>Items</th>
-                                        <th>Buyer</th>
+                                        <th>Items</th>
+                                        <th>Seller</th>
                                         <th>Type</th>
                                         <th>Price</th>
                                         <th>Quantity</th>
                                         <th>Total</th>
                                         <th>Create Time</th>
-                                        <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <?php	$result = display_buy_orders($_SESSION['user_session'],1);
@@ -72,9 +72,7 @@
 									</td>
 									<td>                               
                                         <?php
-                                         if($res['transaction_status']==0){
-                                            echo '<span> Success </span>';
-                                         }else if($res['transaction_status']==1){
+                                        if($res['transaction_status']==1){
                                                 if($res['order_id']==1){
                                                     echo "<span style='color:blue'><b> <i class='bi bi-activity'></i> Waiting for seller to accept </b></span>";
                                                     echo '<br>';
@@ -97,10 +95,7 @@
                                                     echo '<button class="buy_btn wishlist_btn"  data-toggle="modal" data-target="#refuse_buy_order_modal" 
                                                         data-transaction_id_k='.$res['transaction_id'].'
                                                         data-user_id_k='.$_SESSION['user_session'].' >Refuse</button> ';}
-                                         }else if($res['transaction_status']==2){
-                                            echo "<span> Canceled Order </span>";
                                          }else if($res['transaction_status']==3){
-                                            
                                             echo "<span style='color:orange'><b> Waiting for seller to send </b></span>";
                                             echo '<br>';
                                             echo '<br>';
@@ -119,27 +114,12 @@
                                                 data-user_id_m='.$_SESSION['user_session'].'>Item recieved</button>';
                                             echo ' ';
                                             echo '<button> Start Dispute </button>';
-                                         }else if($res['transaction_status']==5){
-                                            echo '<span> Seller Canceled </span>';	
-                                         }else if($res['transaction_status']==6){
-                                            echo '<span> Buyer Canceled</span>';
-                                         }else if($res['transaction_status']==7){
-                                            echo '<span> Refunded to the Buyer </span>';	
-                                         }else if($res['transaction_status']==8){
-                                            echo '<span> Refunded to the Seller </span>';	
-                                         }else if($res['transaction_status']==9){
-                                            echo '<span> Refunded</span>';	
-                                         }else if($res['transaction_status']==10){
-                                            echo '<span> Canceled by the Admin </span>';	
-                                         }else if($res['transaction_status']==11){
-                                            echo '<span> Transaction Dispute </span>';	
-                                         }else if($res['transaction_status']==12){
-                                            echo '<span> Sold Out </span>';	
-                                         }
-                                         } }?>
+                                            } 
+                                            }
+                                            }?>
 									</td>
 
-									</td>
+								
 								</tr>
 							</tbody>               
                             </table>

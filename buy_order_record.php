@@ -26,7 +26,7 @@
                                 <thead>
                                     <tr>
                                         <th>Items</th>
-                                        <th>Buyer</th>
+                                        <th>Seller</th>
                                         <th>Type</th>
                                         <th>Price</th>
                                         <th>Quantity</th>
@@ -78,39 +78,12 @@
                                         <?php
                                          if($res['transaction_status']==0){
                                             echo '<span style="color:green"><b> Success </b></span>';
-                                        }else if($res['transaction_status']==1){
-                                            echo "<span> Waiting for seller to accept </span>";
-                                            echo '<br>';
-                                            echo '<br>';
-                                            echo '<button class="buy_btn wishlist_btn"  
-                                            data-toggle="modal" 
-                                            data-target="#cancel_buy_order_modal_i" 
-                                            data-transaction_id_ii='.$res['transaction_id'].' data-user_id_ii='.$_SESSION['user_session'].' >Cancel Order</button>';
                                          }else if($res['transaction_status']==2){
                                           echo '<span style="color:red"><b>Failure</b></span>';
                                           echo '<br>';
                                           echo '<br>';
                                           echo ' ';	
                                           echo '<span style="color:gray"><u>Canceled Order</u></span>';
-                                         }else if($res['transaction_status']==3){
-                                            echo "<span>Waiting for seller to send</span>";
-                                            echo '<br>';
-                                            echo '<br>';
-                                            echo '<button class="buy_btn wishlist_btn"  
-                                            data-toggle="modal" 
-                                            data-target="#cancel_buy_order_modal_i" 
-                                            data-transaction_id_ii='.$res['transaction_id'].' data-user_id_ii='.$_SESSION['user_session'].' >Cancel Order</button>';
-                                         }else if($res['transaction_status']==4){//Waiting for Buyer's Response
-                                            echo '<span> Waiting for your response</span>';	
-                                            echo '<br>';
-                                            echo '<br>';
-                                            echo '<button class="buy_btn wishlist_btn"  
-                                                data-toggle="modal" 
-                                                data-target="#item_confirmation_buy_order_modal" 
-                                                data-transaction_id_m='.$res['transaction_id'].'
-                                                data-user_id_m='.$_SESSION['user_session'].'>Item recieved</button>';
-                                            echo ' ';
-                                            echo '<button> Start Dispute </button>';
                                          }else if($res['transaction_status']==5){
                                             echo '<span style="color:red"><b>Failure</b></span>';
                                             echo '<br>';
@@ -140,7 +113,6 @@
                                          }else if($res['transaction_status']==12){
                                             echo '<span>Out of stock</span>';	
                                          }
-                                         
                                          } }?>
 									</td>
 									

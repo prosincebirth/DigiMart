@@ -10,7 +10,7 @@
                 <div class="market_item--wrapper">
                     <div class="market_tabs">
                         <ul class="market_tab--list">
-                            <li ><span onclick="window.location.href='buy_order.php';">Buy Orders</span></li>
+                            <li ><span onclick="window.location.href='buy_order.php';">Buy Order</span></li>
                             <li ><span onclick="window.location.href='buy_order_record.php';">Buy Order Records</span></li>
                             <li class='active'><span onclick="window.location.href='my_buyorder.php';">My Buy Order</span></li>
                             <li><span data-toggle="modal" data-target="#buyorder_game_item_modal">Place Buy Order</span></li>   
@@ -28,7 +28,6 @@
                                         <th>Type</th>
                                         <th>Price</th>
                                         <th>Quantity</th>
-                                        <th>Total</th>
                                         <th>Create Time</th>
                                         <th></th>
                                     </tr>
@@ -49,7 +48,6 @@
                                        else if($res['order_id']==3){echo "<span>Bargain Order</span>";}?></td>
 									<td><span><?php echo $res['item_price'];?></span></td>
 									<td><span><?php echo $res['item_quantity'];?></span></td>
-                           <td><span><?php echo $res['item_quantity'] * $res['item_price'];?></span></td>
 									<td><span><?php echo $res['item_date_added'];?></span></td>
 									<td><?php
                                          if($res['item_status']==0){
@@ -88,7 +86,7 @@
                                          }else if($res['item_status']==11){
                                             echo '<span> Transaction Dispute </span>';	
                                          }else if($res['item_status']==12){
-                                            echo '<span style="color:red"><b>Failure</b></span>';
+                                            echo '<span style="color:green"><b>Success</b></span>';
                                             echo '<br>';
                                             echo '<br>';
                                             echo ' ';	

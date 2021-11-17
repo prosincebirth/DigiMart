@@ -34,9 +34,7 @@
                                         <th>Type</th>
                                         <th>Price</th>
                                         <th>Quantity</th>
-                                        <th>Total</th>
                                         <th>Create Time</th>
-                                        <th></th>
                                     </tr>
                                 </thead>
                                 <?php	$result = display_my_sale_order($_SESSION['user_session'],1);//user logged in and game id
@@ -55,7 +53,7 @@
                                                 else if($res['order_id']==3){echo "<span>Bargain Order</span>";}?></td>
 									<td><span><?php echo $res['item_price'];?></span></td>
 									<td><span><?php echo $res['item_quantity'];?></span></td>
-                                     <td><span><?php echo $res['item_quantity'] * $res['item_price'];?></span></td>
+                                   
 									<td><span><?php echo $res['item_date_added'];?></span></td>
 									<td>
                                         <?php
@@ -91,8 +89,12 @@
                                          }else if($res['item_status']==11){
                                             echo '<span> Transaction Dispute </span>';	
                                          }else if($res['item_status']==12){
-                                            echo '<span> Sold Out </span>';	
-                                         }
+                                          echo '<span style="color:green"><b>Success</b></span>';
+                                            echo '<br>';
+                                            echo '<br>';
+                                            echo ' ';	
+                                            echo '<span style="color:gray"><u>Sale Order Ended</u></span>';
+                                       }
                                          } }?>
 									</td>									
 								</tr>

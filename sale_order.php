@@ -17,16 +17,7 @@
                         </ul>
                         
                     </div>
-                    <div class="market_tabs">
-                        
-                        <div class="search__bar">
-                            <input type="search" name="" id="" class="form-control">
-                            <button type="submit">
-                            <i class="fas fa-search"></i>
-                            <span>Search</span>
-                            </button>
-                        </div>
-                    </div>
+
                     <div class="market_item--container">
                         <div class="items_wrapper">
                             <div class="table">
@@ -34,13 +25,14 @@
                                 <thead>
                                     <tr>
                                         <th>Items</th>
-                                        <th>Buyer</th> 
-                                        <th>Type</th>   
+                                        <th>Buyer</th>
+                                        <th>Type</th>
                                         <th>Price</th>
                                         <th>Quantity</th>
                                         <th>Total</th>
                                         <th>Create Time</th>
-                                        <th></th>
+                                        <th>Action</th>
+                                    </tr>
                                     </tr>
                                 </thead>
                                 <?php	$result = display_sale_order($_SESSION['user_session'],1);
@@ -68,33 +60,76 @@
                                          }
                                             ?>
 									</td>
-									<td>
-										<span><?php echo $res['transaction_amount'];?></span>									
-									</td>
-									<td>
-										<span><?php echo $res['transaction_quantity'];?></span>
-									</td>
-                                    <td>
-										<span><?php echo $res['transaction_quantity']*$res['transaction_amount'] ;?></span>
-									</td>
-									<td>
-									<span><?php echo $res['transaction_date'];?></span>										
-									</td>
-									<td>
-                                    <div class="item__group--cta">
-											<button class="buy_btn wishlist_btn"  data-toggle="modal" data-target="#accept_sale_order_modal" 
+									<td><span><?php echo $res['transaction_amount'];?></span></td>
+									<td><span><?php echo $res['transaction_quantity'];?></span></td>
+                                    <td><span><?php echo $res['transaction_quantity']*$res['transaction_amount'] ;?></span></td>
+									<td><span><?php echo $res['transaction_date'];?></span></td>
+									
+                                    
+											<button data-toggle="modal" data-target="#accept_sale_order_modal" 
 											data-transaction_id_o="<?php echo $res['transaction_id'];?>" 
                                             data-user_id_o="<?php if(isset($_SESSION['user_session'])){echo $_SESSION['user_session']; }?>" 
 										    >Accept</button>
 											
-											<button class="buy_btn wishlist_btn"  data-toggle="modal" data-target="#refuse_sale_order_modal" 
+											<button data-toggle="modal" data-target="#refuse_sale_order_modal" 
 											data-transaction_id_p="<?php echo $res['transaction_id'];?>" 
                                             data-user_id_p="<?php if(isset($_SESSION['user_session'])){echo $_SESSION['user_session']; }?>" 
 										    >Refuse</button>
 										
-										</div>
-											<?php } }?>
-										
+                                            <td>                               
+                                        <?php
+                                        if($res['transaction_status']==1){
+                                                if($res['order_id']==1){//sale
+                                                    echo "<span style='color:blue'><b> <i class='bi bi-activity'></i>Waiting for your response </b></span>";
+                                                    echo '<br>';
+                                                    echo '<br>';
+                                                    echo '<button data-toggle="modal" data-target="#accept_sale_order_modal" 
+											        data-transaction_id_o='.$res['transaction_id'].' 
+                                                    data-user_id_o='.$_SESSION['user_session'].'>Accept</button>';
+                                                    echo ' ';
+                                                    echo '<button data-toggle="modal" data-target="#refuse_sale_order_modal" 
+											        data-transaction_id_p='.$res['transaction_id'].'
+                                                    data-user_id_p='.$_SESSION['user_session'].'>Refuse</button>';}
+
+                                                else if($res['order_id']==2){//buy
+                                                    echo "<span style='color:green'><b> Waiting for buyer to accept </b></span>";
+                                                    echo '<br>';
+                                                    echo '<br>';
+                                                    echo ' ';
+                                                    echo '<button data-toggle="modal" data-target="#cancel_sale_order_modal_nn" data-transaction_id_nn='.$res['transaction_id'].' 
+                                                          data-user_id_nn='.$_SESSION['user_session'].' >Cancel Order</button>';}
+ 
+                                                else if($res['order_id']==3){//bargain
+                                                    echo "<span style='color:blue'><b> <i class='bi bi-activity'></i> Waiting for seller to accept </b></span>";
+                                                    echo '<br>';
+                                                    echo '<br>';
+                                                    echo '<button   
+                                                    data-toggle="modal" 
+                                                    data-target="#cancel_buy_order_modal_i" 
+                                                    data-transaction_id_ii='.$res['transaction_id'].' data-user_id_ii='.$_SESSION['user_session'].' >Cancel Order</button>';}
+
+                                         }else if($res['transaction_status']==3){
+                                            echo "<span style='color:orange'><b> Waiting for seller to send </b></span>";
+                                            echo '<br>';
+                                            echo '<br>';
+                                            echo '<button 
+                                            data-toggle="modal" 
+                                            data-target="#cancel_buy_order_modal_i" 
+                                            data-transaction_id_ii='.$res['transaction_id'].' data-user_id_ii='.$_SESSION['user_session'].' >Cancel Order</button>';
+                                         }else if($res['transaction_status']==4){//Waiting for Buyer's Response
+                                            echo '<span> Waiting for your response</span>';	
+                                            echo '<br>';
+                                            echo '<br>';
+                                            echo '<button 
+                                                data-toggle="modal" 
+                                                data-target="#item_confirmation_buy_order_modal" 
+                                                data-transaction_id_m='.$res['transaction_id'].'
+                                                data-user_id_m='.$_SESSION['user_session'].'>Item recieved</button>';
+                                            echo ' ';
+                                            echo '<button> Start Dispute </button>';
+                                            } 
+                                            }
+                                            }?>
 									</td>
 									
 								</tr>

@@ -105,49 +105,12 @@
 											<span><?php echo $res['goods_quality']," ",$res['goods_name'];?></span>	
 										</div>
 									</td>
-									<td>
-										<span><?php echo $res['transaction_amount'];?></span>			
-									</td>
-									<td>
-									
-									</td>
-									<td>
-										<span><?php echo $res['order_desc'];?></span>						
-									</td>
-									<td>
-										<span><?php echo date('Y-m-d',strtotime($res['transaction_date']));?></span>																			
-									</td>
-									<td>
-									
-									</td>
-									<?php } 
-								}else {	?> 
-								
-								<tbody>
-									<tr>
-										<td>
-										
-										</td>
-										<td>
-											
-										</td>
-										<td>
-										
-											 <span>no</span>
-										</td>
-											
-										<td>
-											<span>data</span>			
-										</td>
-										<td>
-								</br>				
-										</td>
-										<td>
-
-										</td>
-								
-										<?php } ?>
-	
+									<td><span><?php echo $res['transaction_amount'];?></span></td>
+									<td></td>
+									<td><span><?php echo $res['order_desc'];?></span></td>
+									<td><span><?php echo date('Y-m-d',strtotime($res['transaction_date']));?></span></td>
+									<td></td>
+									<?php } }?> 
 							</tr>
 							</tbody>
 						</table>

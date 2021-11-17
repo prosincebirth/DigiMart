@@ -342,7 +342,14 @@
 /////////////////////////////////////////////////////////////////////
 	function display_sale_order($user_id,$game_id){
 		$conn=connection2();
-		$sql="SELECT *,(select user_username from users where user_id=a.buyer_id ) as buyer_name,(select order_id from orders where order_id=a.order_id ) as transaction_order_id from transactions a join game_items b join goods c join users d where a.item_id = b.item_id AND b.goods_id = c.goods_id AND a.seller_id = $user_id and a.buyer_id != $user_id AND d.user_id = $user_id AND a.game_id=$game_id AND a.transaction_status = 1 ORDER BY a.transaction_date DESC";
+		$sql="SELECT *,(select user_username from users where user_id=a.buyer_id ) as buyer_name,(select order_id from orders where order_id=a.order_id ) as transaction_order_id 
+		from transactions a join game_items b join goods c join users d where a.item_id = b.item_id 
+		AND b.goods_id = c.goods_id AND a.seller_id = $user_id and a.buyer_id != $user_id AND d.user_id = $user_id 
+		AND a.game_id=$game_id AND 
+		a.transaction_status!=0 AND a.transaction_status!=2 AND a.transaction_status!=5 AND
+		a.transaction_status!=6 AND a.transaction_status!=7 AND a.transaction_status!=8 AND
+		a.transaction_status!=10 AND a.transaction_status!=11 AND a.transaction_status!=12
+		ORDER BY a.transaction_date DESC";
 		$result = $conn->query($sql);
 		return $result;}
 	
@@ -411,7 +418,7 @@
 		
 	function display_mybuy_orders($user_id,$game_id){ //MY_BUYORDER.PHP
 		$conn=connection2();
-		$sql="SELECT  * from game_items a join goods b where a.goods_id=b.goods_id and a.user_id=$user_id and a.order_id=2 and a.game_id=$game_id ORDER BY a.item_status ASC";
+		$sql="SELECT  * from game_items a join goods b where a.goods_id=b.goods_id and a.user_id=$user_id and a.order_id=2 and a.game_id=$game_id  ORDER BY a.item_status ASC";
 		$result = $conn->query($sql);
 		return $result;}
 
@@ -448,7 +455,9 @@
 
 	function display_buy_order_records($user_id,$game_id){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
-		$sql="SELECT *,(select user_username from users where user_id=a.seller_id ) as seller_name from transactions a join game_items b join goods c where a.item_id=b.item_id and b.goods_id = c.goods_id and a.buyer_id=$user_id and a.seller_id != $user_id and a.game_id=$game_id and a.order_id != 3 and a.transaction_status!=1 and a.transaction_status!=3 and a.transaction_status!=4 ORDER BY a.transaction_date desc";		
+		$sql="SELECT *,(select user_username from users where user_id=a.seller_id ) as seller_name from transactions a join game_items b join goods c 
+		where a.item_id=b.item_id and b.goods_id = c.goods_id and a.buyer_id=$user_id and a.seller_id != $user_id and a.game_id=$game_id and a.order_id != 3 and 
+		a.transaction_status!=1 and a.transaction_status!=3 and a.transaction_status!=4 ORDER BY a.transaction_date desc";		
 		$result = $conn->query($sql);
 		return $result;}		
 

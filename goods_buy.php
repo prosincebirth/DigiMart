@@ -121,11 +121,11 @@
 
 									</td>
 									<td>
-										<span style="color: var(--white-color)"><?php echo $res['item_quantity'];?></span>
+										<span style="color: var(--white-color)"><?php echo $res['item_price'];?></span>
 																	
 									</td>
 									<td>
-										<span style="color: var(--white-color)"><?php echo $res['item_price'];?></span>														
+										<span style="color: var(--white-color)"><?php echo $res['item_quantity'];?></span>														
 									</td>
 									<td>
 										<div class="item__group--cta">
