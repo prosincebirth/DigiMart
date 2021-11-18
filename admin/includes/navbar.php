@@ -51,11 +51,7 @@
 </li>
 
 <!-- Nav Item - Review -->
-<li class="nav-item">
-  <a class="nav-link" href="review.php">
-    <i class="fas fa-comment-dots"></i>
-    <span>Review</span></a>
-</li>
+
 
 <!-- Nav Item - Disputes -->
 <li class="nav-item">

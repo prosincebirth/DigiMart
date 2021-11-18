@@ -50,13 +50,11 @@
                                 <table class=list-tab width="100%">
                                     <tbody>
                                         <tr>
-                                            <td class="t-left">Phone number</td>
-                                            <td class="t-Right">Change Phone</td>
+                                           
                                         </tr>
 
                                         <tr>
-                                            <td class="t-left">Phone number</td>
-                                            <td class="t-Right">Change Phone</td>
+                                          
                                         </tr>
                                     </tbody>
                                 </table>

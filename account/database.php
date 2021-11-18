@@ -19,6 +19,13 @@
 		$exec=$prepare->execute(array(":user_username"=>$user_username,":user_password"=>$user_password,":user_email"=>$user_email));
 		$conn=null;}
 
+	function add_new_dispute($transaction_id,$dispute_title,$dispute_message){//register.php
+		$conn=connection();
+		$query="INSERT INTO disputes(dispute_title,dispute_message,transaction_id ) values(:transaction_id,:dispute_title,:dispute_message)"; 
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":dispute_title"=>$dispute_title,":dispute_message"=>$dispute_message,":transaction_id"=>$transaction_id));
+		$conn=null;}	
+
 	function add_new_game($game_name,$game_desc,$steam_game_id_a){// ADD GAME // ADD_GAME_GAME_MODAL // TESTED 11:56 pm , 25/10/2021
 		$conn=connection();
 		$query="INSERT INTO games(game_name,game_desc,steam_game_id) values(:game_name,:game_desc,:steam_game_id_a)"; 
@@ -221,6 +228,13 @@
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id,":user_id"=>$user_id));
 		$conn=null;}
+	
+	function item_not_received_dispute($transaction_id){
+		$conn=connection();
+		$query="UPDATE transactions set transaction_status=12 where transaction_id=:transaction_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id,":user_id"=>$user_id));
+		$conn=null;}
 
 	function cancel_sale_order_nn($transaction_id,$user_id){
 		$conn=connection();
@@ -334,10 +348,6 @@
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":item_id"=>$item_id));
 		$conn=null;}
-
-
-
-
 
 /////////////////////////////////////////////////////////////////////
 	function display_sale_order($user_id,$game_id){

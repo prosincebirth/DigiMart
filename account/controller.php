@@ -541,7 +541,8 @@
 								echo 'Empty Fields';
 							}						
 							else if($result_q=get_bargain_order_transaction_details($transaction_id_q,$user_id_q)){
-								cancel_bargain_order($transaction_id_q,$user_id_q);
+								item_not_received_dispute($transaction_id_dispute);
+								add_new_dispute($transaction_id_dispute,$dispute_title_a,$dispute_message_a);
 								update_wallet_balance($user_id_q,$result_q['transaction_amount'] * $result_q['transaction_quantity']);
 								echo 'Success'; 															
 								}
