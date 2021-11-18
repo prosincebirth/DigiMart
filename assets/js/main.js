@@ -237,6 +237,12 @@ $('document').ready(function()
         $(e.currentTarget).find('input[name="user_id_p"]').val(user_id_p);
     });
 
+    $('#dispute_item_not_received').on('show.bs.modal', function(e) {
+        var transaction_id_dispute = $(e.relatedTarget).data('transaction_id_dispute');
+
+        $(e.currentTarget).find('input[name="transaction_id_dispute"]').val(transaction_id_dispute);
+    });
+
     $('#cancel_sale_order_modal_nn').on('show.bs.modal', function(e) {
         var transaction_id_nn = $(e.relatedTarget).data('transaction_id_nn');
         var user_id_nn = $(e.relatedTarget).data('user_id_nn');
@@ -958,7 +964,35 @@ $('document').ready(function()
                         } 
 					}
 				});
-            break;	
+            break;
+            case "dispute_item_not_received":             
+                var transaction_id_dispute=$("#transaction_id_dispute").val()
+                var dispute_title_a=$("#dispute_title_a").val()
+                var dispute_message_a=$("#dispute_message_a").val()
+
+				var data=new FormData();
+				data.append("action_type","dispute_item_not_received");
+				data.append("transaction_id_dispute",transaction_id_dispute);
+                data.append("dispute_title_a",dispute_title_a);
+                data.append("dispute_message_a",dispute_message_a);
+
+				$.ajax({	
+					url:"account/controller.php",
+					method:"post",
+					data:data,
+					contentType:false,
+					cache:false,
+					processData:false,
+					success:function(res){
+                        if(res=="Success"){
+                            alert(res)
+                            location.reload();
+                        }else{
+                            alert(res)
+                        } 
+					}
+				});
+            break;		
         };	
 	});	
 });

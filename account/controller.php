@@ -531,7 +531,21 @@
 								update_wallet_balance($user_id_q,$result_q['transaction_amount'] * $result_q['transaction_quantity']);
 								echo 'Success'; 															
 								}
-						break;												
+						break;
+					case "dispute_item_not_received":		
+							$transaction_id_dispute=$_POST['transaction_id_dispute'];
+							$dispute_title_a=$_POST['dispute_title_a'];
+							$dispute_message_a=$_POST['dispute_message_a'];
+							
+							if(empty($transaction_id_dispute) && empty($dispute_title_a)){ // trappings for not logged in
+								echo 'Empty Fields';
+							}						
+							else if($result_q=get_bargain_order_transaction_details($transaction_id_q,$user_id_q)){
+								cancel_bargain_order($transaction_id_q,$user_id_q);
+								update_wallet_balance($user_id_q,$result_q['transaction_amount'] * $result_q['transaction_quantity']);
+								echo 'Success'; 															
+								}
+						break;														
 						
 			}
 		}

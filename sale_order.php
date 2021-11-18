@@ -113,7 +113,7 @@
                                             data-user_id_nn='.$_SESSION['user_session'].' >Cancel Order</button>';
                                          
                                          }else if($res['transaction_status']==4){//Waiting for Buyer's Response
-                                            echo "<span style='color:blue'><b><i class='fas fa-clock'></i> Waiting for buyer to confirm </span>";
+                                            echo "<span style='color:blue'><b><i class='fas fa-clock'></i> Waiting for buyer to confirm </b></span>";
                                             echo '<br>';
                                             echo '<br>';
                                             echo '<button> Start Dispute</button>';

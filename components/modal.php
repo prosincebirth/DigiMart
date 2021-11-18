@@ -627,12 +627,11 @@
 		<h4 class="modal-title"><center>Start Dispute</h4>
 		</div>
 		<div class="modal-body">
-									
-				Item Price : <span id="display_price_f"  name="display_price_f"> </span></br>
-				Total : <span id="display_total_f"  name="display_total_f"> </span>
-					
-                <div class="fld_input"><label> Quantity </label><input type="number" name="item_quantity_f" placeholder="ITEM QUANTITY" id="item_quantity_f" value ="1" class="form-control"></div>
-				<div class="fld_input"><input type="hidden" name="item_total_f" placeholder="ITEM TOTAL" id="item_total_f" class="form-control"></div>	
+	
+				<div class="fld_input"><input type="text" name="transaction_id_dispute" placeholder="TRANSACTION ID" id="transaction_id_dispute" class="form-control"></div>						
+                <div class="fld_input"><label> Title </label><input type="text" name="dispute_title_a" id="dispute_title_a" value ="ITEM NOT RECEIVED" class="form-control"></div>
+	
+				<div class="fld_input"><label> Message </label><input type="text" name="dispute_message_a"  id="dispute_message_a" value ="1" class="form-control"></div>
             </div>
 			<div class="modal-footer">
 					<button class="btn btn-success" type="button" value="dispute_item_not_received">Confirm</button>
