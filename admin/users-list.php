@@ -23,6 +23,7 @@ include('includes/navbar.php');
             <th> User Email </th>
             <th> Last Login </th>
             <th> Status</th>
+            <th> Action </th>
           </tr>
         </thead>
         <tbody>
@@ -35,10 +36,16 @@ include('includes/navbar.php');
             <?php if($users['user_status']==0){
                 echo '<td>Inactive</td>';
               }else if($users['user_status']==1){
-                echo '<td>Active</td>';
+                echo '<td><span style="color:blue"><b><i class="fas fa-spinner fa-pulse"></i> Active</td>';
               }else if($users['user_status']==2){
                 echo '<td>Canceled</td>';
               } ?>
+              <td>
+                <form action="" method="post">
+                  <input type="hidden" name="delete_id" value="">
+                  <button type="submit" name="delete_btn" class="btn btn-danger"> BAN </button>
+                </form>
+            </td>
           </tr>
           <?php } ?>
         </tbody>

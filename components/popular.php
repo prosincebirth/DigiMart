@@ -2,21 +2,16 @@
     <div class="container">
         <div class="tab_wrapper">
             <ul class="tab_list__nav">
-                <li class="tab_nav_item active">
+                <li class="tab_nav_item active ">
                     <a href="#">Popular</a>
                 </li>
-                <li class="tab_nav_item">
+                <li class="tab_nav_item " style="color:black">
                     <a href="#">
-                        <i class="fa">&#xf11b;</i>
-                        <span clas="tab_title">DOTA 2</span>
+                        <i class="fa" style="color:black">&#xf11b;</i>
+                        <span clas="tab_title" style="color:black"><b>DOTA 2</b></span>
                     </a>
                 </li>
-                <li class="tab_nav_item">
-                    <a href="#">
-                        <i class="fa">&#xf11b;</i>
-                        <span clas="tab_title">CS:GO</span>
-                    </a>
-                </li>
+               
             </ul>
             <div class="tab_contents">
                 <div class="" id="popular_tab">

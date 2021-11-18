@@ -56,7 +56,7 @@
                                 <tbody>
                                     <tr>
                                         <td class="t-left" width="120">Phone number</td>
-                                        <td class="t-left"><span><i class="fas fa-check-circle"></i>Bound</span><span id="mobile" >Connecting phone number 63-********69</span></td>
+                                        <td ></td>
                                         <td class="t-Right"><a href="javascript:void(0);" class="i-btn --i-btn-small">Change Phone</a></td>
                                     </tr>
                                     <tr>
@@ -78,14 +78,7 @@
                                 
                                     </tr>
                                     <tr>
-                                        <td class="t-left">Trade url</td>
-                                        <td class="t-left" style="position: relative;">
-                                            <span>
-                                                <input type="text" name="steam_api_key" class="i-text" size="42" placeholder="Trade url" value spellcheck="false">
-                                            </span>
-                                            <a href="javascript:void(0);" target="" class="a-gray"data-url="javascript:void(0);">To get<i class="fas fa-caret-right"></i></a>
-                                        </td>
-                                        <td class="t-right"><a href="javascript:void(0);" class="i-btn --i-btn-small">Save</a></td>
+                                        
                                     </tr>
                                 </tbody>
                             </table>
