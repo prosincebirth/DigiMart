@@ -107,25 +107,25 @@
 									<td>
 										<div class="img_text">
 											<?php echo '<img class="item__img" src="data:image/png;base64,'.base64_encode($res['goods_image']).'"height="72" >'; ?>
-											<span style="color: var(--white-color)"><?php echo $res['goods_quality']," ",$res['goods_name'];?></span>	
+											<span style="color: var(--black-color)"><?php echo $res['goods_quality']," ",$res['goods_name'];?></span>	
 										</div>
 									</td>
 									<td>
 										<div class="img_text">
 											<?php echo '<img class="item__seller" src="data:image/png;base64,'.base64_encode($res['goods_image']).'"height="40" >'; ?>
-												<span style="color: var(--white-color)"><?php echo $res['user_username'];?></span>	
+												<span style="color: var(--black-color)"><?php echo $res['user_username'];?></span>	
 										</div>
 									</td>
 									<td>
-										<span style="color: var(--white-color)"><?php echo $res['service_mode'];?></span>	
+										<span style="color: var(--black-color)"><?php echo $res['service_mode'];?></span>	
 
 									</td>
 									<td>
-										<span style="color: var(--white-color)"><?php echo $res['item_price'];?></span>
+										<span style="color: var(--black-color)"><?php echo $res['item_price'];?></span>
 																	
 									</td>
 									<td>
-										<span style="color: var(--white-color)"><?php echo $res['item_quantity'];?></span>														
+										<span style="color: var(--black-color)"><?php echo $res['item_quantity'];?></span>														
 									</td>
 									<td>
 										<div class="item__group--cta">
