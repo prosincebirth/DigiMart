@@ -1,0 +1,22 @@
+.main_footer {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    text-align: center;
+    padding: 15px;
+    clear: both; 
+    position: relative; 
+    z-index: 1; 
+    height: -3em; 
+    margin-top: auto 0; 
+  }
+
+.main_footer .container .copyright {
+    text-align: center;
+}
+
+  @media screen and (max-width: 991px) {
+    .main_footer{
+      background-color: var(--primary-color);
+    }
+  }
