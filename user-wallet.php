@@ -100,7 +100,7 @@
                                                     <div class="user-deposit">
                                                         <div class=user-deposit-btn>
                                                             <ul>
-                                                                <li title="You can pay using paypal." class="disable"><i class="fas fa-credit-card"></i>paypal</li>
+                                                                <li title="You can pay using paypal." class="disable"><i class="fas fa-credit-card"></i> </li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -124,7 +124,7 @@
                                             <ul>
                                                 <li>Deposit notice</li>
                                                 <li>1. Single order limit 5-20000；</li>
-                                                <li>2. 1% service fee will be charged for alipay refund or withdrawal；</li>
+                                                <li>2. 1% service fee will be charged for refund or withdrawal；</li>
                                                 <li>3. In case of illegal transfer of fund, the account will be frozen。</li>
                                             </ul>
                                             <div style="border-bottom: 1px solid var(--light-gray-color);"></div>
@@ -137,9 +137,9 @@
                                             <tbody>
                                                 <tr>
                                                     <th>Serial number</th>
-                                                    <th>Deposit amount</th>
-                                                    <th>Payment account</th>
-                                                    <th>Progress</th>
+                                                    <th> Deposit amount</th>
+                                                    <th> Payment account</th>
+                                                    <th> Progress</th>
                                                     <th>Create time</th>
                                                 </tr>
                                             </tbody>

@@ -520,11 +520,19 @@
 		$result = $conn->query($sql);
 		return $result;}
 
-	function display_items(){//global-market.php
+	function display_items_sale(){//global-market.php
 		$conn=connection2();
-		$sql="SELECT *,count(b.item_id) as mycount from goods a inner JOIN game_items b where b.goods_id=a.goods_id group by a.goods_id";
+		$sql="SELECT *,count(b.item_id) as mycount from goods a inner JOIN game_items b where b.goods_id=a.goods_id and b.order_id=1 group by a.goods_id";
 		$result = $conn->query($sql);
 		return $result;}
+
+	function display_items_buy(){//global-market.php
+		$conn=connection2();
+		$sql="SELECT *,count(b.item_id) as mycount from goods a inner JOIN game_items b where b.goods_id=a.goods_id and b.order_id=2 group by a.goods_id";
+		$result = $conn->query($sql);
+		return $result;}
+
+
 	function get_user_count(){
 		$conn=connection2();
 		$sql="SELECT count(user_id) as count_users from users where user_status != 0";

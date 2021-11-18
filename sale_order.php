@@ -60,9 +60,9 @@
                                          }
                                             ?>
 									</td>
-									<td><span><?php echo $res['transaction_amount'];?></span></td>
+									<td><span>₱ <?php echo $res['transaction_amount'];?></span></td>
 									<td><span><?php echo $res['transaction_quantity'];?></span></td>
-                                    <td><span><?php echo $res['transaction_quantity']*$res['transaction_amount'] ;?></span></td>
+                                    <td><span>₱ <?php echo $res['transaction_quantity']*$res['transaction_amount'] ;?></span></td>
 									<td><span><?php echo $res['transaction_date'];?></span></td>
                                     <td><?php
                                         if($res['transaction_status']==1){

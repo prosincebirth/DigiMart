@@ -14,7 +14,7 @@
 		<div class="container">
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="buy-market.php">Market</a></li>
+					<li class="breadcrumb-item"><a href="sale_market.php">Market</a></li>
 					<li class="breadcrumb-item active" aria-current="page"><?php echo $res['goods_name'];?></li>
 				</ol>
 			</nav>

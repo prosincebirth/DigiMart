@@ -13,7 +13,7 @@
                         <div class="market_tabs">
                             <ul class="market_tab--list">
                                 <li class='active'><span onclick="window.location.href='sale_market.php';">Sale</span></li>
-                                <li><span onclick="window.location.href='buy-market.php';">Purchase</span></li>
+                                <li><span onclick="window.location.href='buy_market.php';">Purchase</span></li>
                             </ul>
                         </div>
                         <div class="market_item--container global-market">
@@ -21,7 +21,7 @@
                                 <ul class="item_grid item_grid--6 item_grid--2-mobile">
                                     <?php
                                     require_once 'account/database.php';
-                                    $result = display_items();
+                                    $result = display_items_sale();
                                     if($result->num_rows > 0){
                                     while ($res = $result->fetch_assoc()){?> 
                                     <li class="item_grid--item">
