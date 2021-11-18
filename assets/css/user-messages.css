@@ -70,8 +70,7 @@
 
 
 .col2 .main{
-    padding: 10px;
-    padding: 0 25px 50px 25px;
+    padding-bottom: 20px;
     border: 1px solid var(--black-color);
     background-color: var(--white-color);
 }
@@ -165,9 +164,65 @@
     color: var(--black-color);
 }
 
-.col2 .main .user-setting h3{
-    font-size: 14px;
-    font-weight: bolder;
+.col2 .main .user-setting .tab-header{
+    width: 100%;
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    padding: 20px 20px 20px 20px;
+}
+
+.col2 .main .user-setting .tab-header ul {
+    display: table;
+    align-content: center;
+    margin: 0px;
+    
+    
+}
+
+.col2 .main .user-setting .tab-header ul li{ 
+    width: 100%;
+    display: inline;
+    border-right: 1px solid var(--white-color);
+}
+
+.col2 .main .user-setting .tab-header span { 
+    padding: 10px;
+}
+
+.col2 .main .user-setting .title-header {
+    width: 100%;
+    
+}
+
+.col2 .main .user-setting .title-header ul{ 
+    display: table;
+    margin: 0 auto;
+    width: 100%;
+    background-color: var(--very-light-gray-color);
+    padding: 10px;
+}
+
+.col2 .main .user-setting .title-header ul li{ 
+    width: 100%;
+    display: inline;
+}
+
+.col2 .main .user-setting .title-header span { 
+    padding: 10px;
+    margin: 10px;
+    margin-left: 190px;
+    margin-right: 50px;
+}
+
+.col2 .main .user-setting .tab-header ul li:hover,
+.col2 .main .user-setting .tab-header ul li:active { 
+   color: var(--visual-blue-color) !important;
+   text-decoration: underline !important;
+   cursor: pointer;
+}
+
+.col2 .main .user-setting .tab-header{
+    width: 100%;
 }
 
 .col2 .main .user-setting .list-tab {
@@ -180,7 +235,7 @@
 }
 
 .col2 .main .user-setting .list-tab td{
-    padding: 10px;
+    padding: 20px;
     font-size: 14px;
     color:var(--gray-color);
 }
@@ -190,11 +245,11 @@
 }
 
 .col2 .user-setting .list-tab .t-left {
-    width: 120px;
+    width: 75%;
 }
 
 .col2 .user-setting .list-tab .t-right{
-    text-align: right;
+    width: 25%;
 }
 
 .col2 .user-setting .list-tab .t-right a:first-of-type{

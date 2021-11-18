@@ -15,8 +15,6 @@
                         <div class="user-image">
                             <div class="image">
                                 <img src="http://via.placeholder.com/70x70" input type="file" name="item_image"alt="">
-
-                                
                             </div>
                             <div class="name">
                                 <h2><?php echo $_SESSION['user_username']; ?></h2>
@@ -25,10 +23,10 @@
 
                         <div class="menu">
                             <ul>
-                            <li><button onclick="location.href='user-wallet.php'"><i class="fas fa-wallet"></i>My wallet</button></li>
-                                <li><button class="active" href="javascript:void(0);"><i class="fas fa-cog"></i>Account</button></li>
-                                <li><button href="javascript:void(0);"><i class="fas fa-envelope"></i>Messages</button></li>
-                                <li><button href="javascript:void(0);"><i class="fas fa-comment-dots"></i>Support</button></li>
+                                <li onclick="location.href='user_wallet.php'"><span ><i class="fas fa-wallet"></i>My wallet</span></li>
+                                <li href="javascript:void(0);" class="active"><span  ><i class="fas fa-cog"></i>Account</span></li>
+                                <li onclick="location.href='user_messages.php'"><span ><i class="fas fa-envelope"></i>Messages</span></li>
+                                <!-- <li href="javascript:void(0);"><span ><i class="fas fa-comment-dots"></i>Support</span></li> -->
                             </ul>
                         </div>
                     </div>

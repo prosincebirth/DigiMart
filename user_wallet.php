@@ -21,10 +21,10 @@
                         </div>
                         <div class="menu">
                             <ul>
-                                <li><button class="active" href="javascript:void(0);"><i class="fas fa-wallet"></i>My wallet</button></li>
-                                <li><button onclick="location.href='user_account.php'"><i class="fas fa-cog"></i>Account</button></li>
-                                <li><button href="javascript:void(0);"><i class="fas fa-envelope"></i>Messages</button></li>
-                                <li><button href="javascript:void(0);"><i class="fas fa-comment-dots"></i>Support</button></li>
+                                <li href="javascript:void(0);" class="active"><span ><i class="fas fa-wallet"></i>My wallet</span></li>
+                                <li><span onclick="location.href='user_account.php'" ><i class="fas fa-cog"></i>Account</span></li>
+                                <li onclick="location.href='user_messages.php'"><span ><i class="fas fa-envelope"></i>Messages</span></li>
+                                <!-- <li href="javascript:void(0);"><span ><i class="fas fa-comment-dots"></i>Support</span></li> -->
                             </ul>
                         </div>
                     </div>
