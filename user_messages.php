@@ -48,15 +48,16 @@
                                     <li><span>Time</span></li>
                                 </ul>
                                 <table class=list-tab width="100%">
+                                <?php	$get_notification = get_notification($_SESSION['user_session']); foreach($get_notification as $notification){?>
+                                         
                                     <tbody>
                                         <tr>
-                                           
+                                            <td><?php echo '<h4>'.$notification['notification_message'].' </h4>'; ?></td>
+                                            <td><?php echo '<h4>'.$notification['notification_date_created'].' </h4>';?></td>
                                         </tr>
-
-                                        <tr>
-                                          
-                                        </tr>
+                                               
                                     </tbody>
+                                    <?php } ?>
                                 </table>
                             </div>
                         </div>

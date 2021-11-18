@@ -26,6 +26,14 @@
 		$exec=$prepare->execute(array(":dispute_title"=>$dispute_title,":dispute_message"=>$dispute_message,":transaction_id"=>$transaction_id));
 		$conn=null;}	
 
+	function add_notification($notification_message,$user_id){//register.php
+		$conn=connection();
+		$query="INSERT INTO notification(notification_message,user_id) values(:notification_message,:user_id)"; 
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":notification_message"=>$notification_message,":user_id"=>$user_id));
+		$conn=null;}			
+
+
 	function add_new_game($game_name,$game_desc,$steam_game_id_a){// ADD GAME // ADD_GAME_GAME_MODAL // TESTED 11:56 pm , 25/10/2021
 		$conn=connection();
 		$query="INSERT INTO games(game_name,game_desc,steam_game_id) values(:game_name,:game_desc,:steam_game_id_a)"; 
@@ -571,8 +579,13 @@
 		$conn=connection2();
 		$sql="SELECT count(transaction_id) as count_transactions from transactions where transaction_status != 0";
 		$result = $conn->query($sql);
-		return $result;}				
-	
+		return $result;}
+			
+	function get_notification($user_id){
+		$conn=connection2();
+		$sql="SELECT * from notification where user_id=$user_id order by notification_date_created desc";
+		$result = $conn->query($sql);
+		return $result;}
 	
 	function display_goods_id($goods_id){//user
 		$conn=connection2();

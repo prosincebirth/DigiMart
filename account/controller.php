@@ -229,6 +229,7 @@
 											}else{
 												add_new_game_item($item_price_e,$items_quantity_e,$goods_id_e,$user_id_e,$service_id_e,'1','2');
 												update_frozen_balance($user_id_e,$total_e);
+												
 												echo 'Success';
 											} // success posting item on item page , copying same attribute of the item rather than inputing everything 
 										}else{
@@ -266,6 +267,7 @@
 											update_sale_order_item_quantity_out_of_stock($item_id_f);
 											add_transaction($item_quantity_f,$item_total_f,$item_id_f,$buyer_id_f,$seller_id_f,$service_id_f,$game_id_f,$order_id_f);
 											update_frozen_balance($buyer_id_f,$item_total_f);
+											add_notification("A buyer has purchased your sale order",$seller_id_f);
 												echo 'Success';
 										}else{ 
 												echo 'Insufficient Balance'; 
@@ -278,7 +280,8 @@
 											update_sale_order_item_quantity($item_id_f,$item_quantity_f);
 											add_transaction($item_quantity_f,$item_total_f,$item_id_f,$buyer_id_f,$seller_id_f,$service_id_f,$game_id_f,$order_id_f);
 											update_frozen_balance($buyer_id_f,$item_total_f);
-												echo 'Success'; // success not buying his own posting	
+												echo 'Success'; // success not buying his own posting
+												add_notification("A buyer has purchased your sale order",$seller_id_f);	
 										}else{ 
 												echo 'Insufficient Balance'; 
 											}
@@ -321,6 +324,7 @@
 												update_sale_order_item_quantity_out_of_stock($item_id_g);
 												add_transaction($item_quantity_g,$item_total_g,$item_id_g,$buyer_id_g,$seller_id_g,$service_id_g,$game_id_g,$order_id_g);
 												update_frozen_balance($buyer_id_g,$item_total_g);
+												add_notification("A buyer has bargained your sale order",$seller_id_g);
 												echo 'Success';
 										}else{
 												echo 'Insufficient Balance'; 
@@ -333,6 +337,7 @@
 											update_sale_order_item_quantity($item_id_g,$item_quantity_g);
 											add_transaction($item_quantity_g,$item_total_g,$item_id_g,$buyer_id_g,$seller_id_g,$service_id_g,$game_id_g,$order_id_g);
 											update_frozen_balance($buyer_id_g,$item_total_g);
+											add_notification("A buyer has bargained your sale order",$seller_id_g);
 											echo 'Success';
 										}else{ 
 											echo 'Insufficient Balance'; 
@@ -365,11 +370,13 @@
 								else if($item_quantity_h == $item_stock_h){
 									update_buy_order_item_quantity_out_of_stock($item_id_h);
 									add_transaction($item_quantity_h,$item_total_h,$item_id_h,$buyer_id_h,$seller_id_h,$service_id_h,$game_id_h,$order_id_h);
+									add_notification("A seller has supplied your buy order",$seller_id_h);
 									echo 'Success'; // success not buying his own posting
 								}else{
 									update_buy_order_item_quantity($item_id_h,$item_quantity_h);
 									add_transaction($item_quantity_h,$item_total_h,$item_id_h,$buyer_id_h,$seller_id_h,$service_id_h,$game_id_h,$order_id_h);
-									echo 'Success'; // success not buying his own posting
+									add_notification("A seller has supplied your buy order",$seller_id_h);
+									echo 'Success'; 
 								}
 								break;							
 					
@@ -383,6 +390,7 @@
 								else if($result_i=get_game_item_information($item_id_i,$user_id_i)){
 										cancel_buy_order($item_id_i,$user_id_i);
 										update_wallet_balance($user_id_i,$result_i['item_price'] * $result_i['item_quantity']);
+										
 										echo 'Success'; 															
 									}
 								break;
@@ -396,6 +404,7 @@
 								}						
 								else{
 									accept_buy_order($transaction_id_j,$user_id_j);
+									
 									echo 'Success'; // success not buying his own posting
 								} 
 							break;				
@@ -448,8 +457,9 @@
 						else if($result_m=get_buy_order_transaction_details($transaction_id_m,$user_id_m)){
 							send_wallet_balance($result_m['seller_id'],$result_m['transaction_quantity']*$result_m['transaction_amount']);
 							deduct_wallet_balance($result_m['buyer_id'],$result_m['transaction_quantity']*$result_m['transaction_amount']);
+							$total_gg=$result_m['transaction_quantity']*$result_m['transaction_amount'];
 							update_item_confirmation($transaction_id_m,$user_id_m);
-							
+							add_notification("Buyer has received your item,₱ $total_gg has added to your balance.",$result_m['seller_id']);
 							echo 'Success'; // success not buying his own posting
 						} 
 							break;
@@ -540,10 +550,9 @@
 							if(empty($transaction_id_dispute) && empty($dispute_title_a)){ // trappings for not logged in
 								echo 'Empty Fields';
 							}						
-							else if($result_q=get_bargain_order_transaction_details($transaction_id_q,$user_id_q)){
+							else{
 								item_not_received_dispute($transaction_id_dispute);
 								add_new_dispute($transaction_id_dispute,$dispute_title_a,$dispute_message_a);
-								update_wallet_balance($user_id_q,$result_q['transaction_amount'] * $result_q['transaction_quantity']);
 								echo 'Success'; 															
 								}
 						break;														

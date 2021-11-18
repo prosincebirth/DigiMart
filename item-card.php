@@ -16,7 +16,16 @@
 	        ?>
         </div>
         <div class="item_info">
-            <?php echo '<h3 class="title">'.substr($res['goods_name'],0,15).'..</h3>'; ?>
+
+            <?php 
+                $size=strlen($res['goods_name']);
+                if($size>=15){
+                     echo '<h3 class="title">'.substr($res['goods_name'],0,15).'..</h3>'; }
+                else {
+                    echo '<h3 class="title">'.$res['goods_name'].'</h3>'; 
+                }
+            
+            ?>
             <div class="other_info">
                 <?php echo '<span class="price">₱ '.$res['item_price'].'</span>'; ?>
 

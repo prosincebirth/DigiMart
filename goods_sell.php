@@ -112,7 +112,7 @@
 									<td>
 										<div class="img_text">
 
-											<?php echo '<img class="item__seller" src="data:image/png;base64,'.base64_encode($res['goods_image']).'"height="40" >'; ?>
+											<?php #echo '<img class="item__seller" src="data:image/png;base64,'.base64_encode($res['goods_image']).'"height="40" >'; ?>
 											<span><?php echo $res['user_username'];?></span>	
 										</div>
 									</td>
