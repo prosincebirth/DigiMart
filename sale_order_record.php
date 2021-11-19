@@ -3,7 +3,7 @@ $search="";
 if(isset($_POST["search_item1"])){$search = trim($_POST['search_item']);}
 ?>
 <?php include('head.php'); ?>
-<?php if(!isset($_SESSION)){header("Location: index.php"); exit();}?>
+
 <?php include('header.php'); ?>
 
 

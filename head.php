@@ -30,7 +30,9 @@
             if($_SESSION['user_status']==2){
                 header("Location: admin/index.php"); exit();
                 }   
-            }
+        }else{
+                header("Location: index.php"); exit();
+        }
     ?>
 </head>
 <body>
