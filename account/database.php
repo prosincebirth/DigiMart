@@ -208,11 +208,11 @@
 
 	function edit_game_item(){}
 ///////////////////UPDATE FUNCTIIONS CONFIRMATION/////////////////////////////////
- 	function update_item_delivery($transaction_id,$user_id){
+ 	function update_item_delivery($transaction_id,$user_id,$image){
 		$conn=connection();
-		$query="UPDATE transactions set transaction_status=4 where transaction_id=:transaction_id and seller_id=:user_id";
+		$query="UPDATE transactions set transaction_status=4,transaction_proof=:image where transaction_id=:transaction_id and seller_id=:user_id";
 		$prepare=$conn->prepare($query);
-		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id,":user_id"=>$user_id));
+		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id,":user_id"=>$user_id,":image"=>$image));
 		$conn=null;}
 
 	function update_item_confirmation($transaction_id,$user_id){
@@ -378,10 +378,10 @@
 		return $result;}
 	
 
-	function display_sale_order_records($user_id,$game_id){
+	function display_sale_order_records($user_id,$game_id,$search){
 		$conn=connection2();
 		$sql="SELECT *,(select user_username from users where user_id=a.buyer_id ) as buyer_name,(select order_id from orders where order_id=a.order_id ) as transaction_order_id from transactions a join game_items b join goods c 
-		where a.item_id=b.item_id and b.goods_id = c.goods_id and a.buyer_id!=$user_id and a.seller_id = $user_id and a.game_id=$game_id and
+		where c.goods_name LIKE '%".$search."%' and a.item_id=b.item_id and b.goods_id = c.goods_id and a.buyer_id!=$user_id and a.seller_id = $user_id and a.game_id=$game_id and
 		a.transaction_status!=1 and a.transaction_status!=3 and a.transaction_status!=4 ORDER BY a.transaction_date desc";		
 		$result = $conn->query($sql);
 		return $result;}			
@@ -540,13 +540,13 @@
 
 	function display_items_sale(){//global-market.php
 		$conn=connection2();
-		$sql="SELECT *,count(b.item_id) as mycount from goods a inner JOIN game_items b where b.goods_id=a.goods_id and b.order_id=1 group by a.goods_id";
+		$sql="SELECT *,count(b.item_id) as mycount from goods a inner JOIN game_items b where b.goods_id=a.goods_id and b.order_id=1 and b.item_status=1 group by a.goods_id";
 		$result = $conn->query($sql);
 		return $result;}
 
 	function display_items_buy(){//global-market.php
 		$conn=connection2();
-		$sql="SELECT *,count(b.item_id) as mycount from goods a inner JOIN game_items b where b.goods_id=a.goods_id and b.order_id=2 group by a.goods_id";
+		$sql="SELECT *,count(b.item_id) as mycount from goods a inner JOIN game_items b where b.goods_id=a.goods_id and b.order_id=2 and b.item_status=1 group by a.goods_id";
 		$result = $conn->query($sql);
 		return $result;}
 
@@ -589,7 +589,7 @@
 	
 	function display_goods_id($goods_id){//user
 		$conn=connection2();
-		$sql="SELECT * from game_items where goods_id=$goods_id order";
+		$sql="SELECT * from game_items where goods_id=$goods_id order b";
 		$result = $conn->query($sql);
 		return $result;}
 

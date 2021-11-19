@@ -55,7 +55,13 @@
                                             echo '<button 
                                             data-toggle="modal" 
                                             data-target="#cancel_sale_order_modal" 
-                                            data-item_id_n='.$res['item_id'].' data-user_id_n='.$_SESSION['user_session'].'>Cancel Order</button>';
+                                            data-item_id_n='.$res['item_id'].' data-user_id_n='.$_SESSION['user_session'].'>Edit Item</button>';
+                                            
+                                            echo ' ';
+                                            echo '<button 
+                                            data-toggle="modal" 
+                                            data-target="#cancel_sale_order_modal" 
+                                            data-item_id_n='.$res['item_id'].' data-user_id_n='.$_SESSION['user_session'].'>Unpublish Order</button>';
                                          }else if($res['item_status']==2){
                                             echo '<span style="color:red"><b>Failure</b></span>';
                                             echo '<br>';

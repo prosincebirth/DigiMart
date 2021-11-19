@@ -431,6 +431,8 @@
 
 						$transaction_id_l=$_POST['transaction_id_l'];
 						$user_id_l=$_POST['user_id_l'];
+						if(isset($_FILES['transaction_proof'])){
+						$transaction_proof=file_get_contents($_FILES['transaction_proof']['tmp_name']);}
 						
 						if(empty($user_id_l)){ // trappings for not logged in
 							echo 'Please Login';
@@ -439,7 +441,7 @@
 						//else if(){ email not verified trappings , cannot buy because the email is not verified
 						//}								
 						else{
-							update_item_delivery($transaction_id_l,$user_id_l);
+							update_item_delivery($transaction_id_l,$user_id_l,$transaction_proof);
 							echo 'Success'; // success not buying his own posting
 						} 
 						break;

@@ -790,11 +790,14 @@ $('document').ready(function()
             case "item_deliver_sale_order_modal":             
                 var transaction_id_l=$("#transaction_id_l").val()
                 var user_id_l=$("#user_id_l").val()
+                var transaction_proof=$('#transaction_proof')[0].files[0];
+
 
 				var data=new FormData();
 				data.append("action_type","item_deliver_sale_order_modal");
 				data.append("transaction_id_l",transaction_id_l);
                 data.append("user_id_l",user_id_l);
+                data.append("transaction_proof",transaction_proof);
 
 				$.ajax({	
 					url:"account/controller.php",
@@ -997,7 +1000,8 @@ $('document').ready(function()
                         } 
 					}
 				});
-            break;		
+            break;
+            		
         };	
 	});	
 });

@@ -1,4 +1,7 @@
-
+<?php 
+$search="";
+if(isset($_POST["search_item1"])){$search = trim($_POST['search_item']);}
+?>
 <?php include('head.php'); ?>
 <?php if(!isset($_SESSION)){header("Location: index.php"); exit();}?>
 <?php include('header.php'); ?>
@@ -16,16 +19,14 @@
                             <li class='active'><span onclick="window.location.href='sale_order_record.php';">Sale Order Records</span></li>
                             <li ><span onclick="window.location.href='my_saleorder.php';">My Sale Order</span></li>
                             <li><span data-toggle="modal" data-target="#sale_game_item_modal">Post Item for Sale</span></li>  
-                            <li><input type="text" class="search"placeholder="search..."><button><i class="fas fa-search">Search</i></button></li>
-                        </ul>
-                        
+                        </ul>   
                     </div>
 
                     <div class="market_tabs">
-
                         <div class="search__bar">
-                            <input type="search" name="" id="" class="form-control">
-                            <button type="submit">
+                        <form method='post' action="" enctype="multipart/form-data">
+                            <input type="text" name="search_item" id="search_item" value="<?php echo $search;?>" class="form-control">
+                            <button type="submit" name="search_item1"></form
                             <i class="fas fa-search"></i>
                             <span>Search</span>
                             </button>
@@ -50,7 +51,8 @@
                                     </tr>
                                 </thead>
 
-                            <?php	$result = display_sale_order_records($_SESSION['user_session'],1);
+                            <?php	
+                            $result = display_sale_order_records($_SESSION['user_session'],1,$search);
 										if($result->num_rows > 0){
 										while ($res = $result->fetch_assoc()){?>                    
 							<tbody>
@@ -58,7 +60,7 @@
 									<td>
 										<div class="img_text">
 											<?php echo '<img class="item__img" src="data:image/png;base64,'.base64_encode($res['goods_image']).'"height="72" >'; ?>
-                                            <span><?php echo '<a href="goods_sell.php?goods_id='.$res['goods_id'].'";><span>'.$res['goods_quality'].' '.$res['goods_name'].'</span></a>';?></span>
+                                            <span><?php echo '<a href="goods_sell.php?goods_id='.$res['goods_id'].'";>'.$res['goods_name'].'</span></a>';?></span>
                                         			
 										</div>
 									</td>

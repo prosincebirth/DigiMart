@@ -47,7 +47,7 @@
                            <td><?php if($res['order_id']==1){echo '<span>Sale Order</span>';}
                                        else if($res['order_id']==2){echo "<span>Buy Order</span>";}
                                        else if($res['order_id']==3){echo "<span>Bargain Order</span>";}?></td>
-									<td><span>₱ <?php number_format(echo $res['item_price'],2);?></span></td>
+									<td><span>₱ <?php echo number_format($res['item_price'],2);?></span></td>
 									<td><span><?php echo $res['item_quantity'];?></span></td>
 									<td><span><?php echo $res['item_date_added'];?></span></td>
 									<td><?php
