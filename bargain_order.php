@@ -1,4 +1,5 @@
 <?php include('head.php'); ?>
+<?php if($_SESSION['user_status']!=1){header("Location: index.php"); exit();} ?>
 <?php include('header.php'); ?>
 
 <main>    

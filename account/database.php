@@ -373,10 +373,10 @@
 		$conn=null;}
 
 /////////////////////////////////////////////////////////////////////
-	function display_sale_order($user_id,$game_id){
+	function display_sale_order($user_id,$game_id,$search){
 		$conn=connection2();
 		$sql="SELECT *,(select user_username from users where user_id=a.buyer_id ) as buyer_name,(select order_id from orders where order_id=a.order_id ) as transaction_order_id 
-		from transactions a join game_items b join goods c join users d where a.item_id = b.item_id 
+		from transactions a join game_items b join goods c join users d where c.goods_name LIKE '%".$search."%' and a.item_id = b.item_id 
 		AND b.goods_id = c.goods_id AND a.seller_id = $user_id and a.buyer_id != $user_id AND d.user_id = $user_id 
 		AND a.game_id=$game_id AND 
 		a.transaction_status!=0 AND a.transaction_status!=2 AND a.transaction_status!=5 AND
@@ -401,9 +401,9 @@
 		$result = $conn->query($sql);
 		return $result;}			
 	
-	function display_my_sale_order($user_id,$game_id){
+	function display_my_sale_order($user_id,$game_id,$search){
 		$conn=connection2();
-		$sql="SELECT  * from game_items a join goods b where a.goods_id=b.goods_id and a.user_id=$user_id and a.order_id=1 and a.game_id=$game_id and a.item_status!=0 ORDER BY a.item_status ASC";
+		$sql="SELECT  * from game_items a join goods b where b.goods_name LIKE '%".$search."%' and a.goods_id=b.goods_id and a.user_id=$user_id and a.order_id=1 and a.game_id=$game_id and a.item_status!=0 ORDER BY a.item_status ASC";
 		$result = $conn->query($sql);
 		return $result;}
 		

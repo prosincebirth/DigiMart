@@ -1,9 +1,6 @@
-<?php 
-$search="";
-if(isset($_POST["search_item1"])){$search = trim($_POST['search_item']);}
-?>
+<?php $search="";if(isset($_POST["search_item_query"])){$search = trim($_POST['search_item']);}?>
 <?php include('head.php'); ?>
-
+<?php if($_SESSION['user_status']!=1){header("Location: index.php"); exit();} ?>
 <?php include('header.php'); ?>
 
 
@@ -26,7 +23,7 @@ if(isset($_POST["search_item1"])){$search = trim($_POST['search_item']);}
                     <form method='post' action="" enctype="multipart/form-data" class="form-search">
                         <ul class="market_tab--list">
                             <li><input type="text" name="search_item" id="search_item" value="<?php echo $search;?>" class="form-control" placeholder="search..."></li>
-                            <li><button type="submit" name="search_item1"> <i class="fas fa-search">Search</i> </button></form></li>
+                            <li><button type="submit" name="search_item_query"> <i class="fas fa-search">Search</i> </button></form></li>
                         </ul>   
                         </form>
                     </div>
