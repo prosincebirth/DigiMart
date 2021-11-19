@@ -15,6 +15,7 @@
                                 <li class='active'><span onclick="window.location.href='sale_market.php';">Sale</span></li>
                                 <li><span onclick="window.location.href='buy_market.php';">Purchase</span></li>
                                 <li><input type="text" class="search"placeholder="search..."><button><i class="fas fa-search">Search</i></button></li>
+                                <!-- <li><span class="large-hide"><i class="fas fa-search" ></i></span></li> -->
                             </ul>
                         </div>
                         <div class="market_item--container global-market">

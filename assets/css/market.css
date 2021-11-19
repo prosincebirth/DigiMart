@@ -102,6 +102,16 @@
     justify-content: space-between;
 }
 
+.market_tabs .form-search{
+    width: 100%;
+    
+}
+
+.market_tabs .form-search ul{
+    float: right;
+}
+
+
 .market_tabs ul {
     margin: 0;
     padding: 0;
@@ -128,6 +138,21 @@
     margin-right: 15px;
     height: 26px;
     margin: 0;
+}
+
+@media screen and (max-width: 992px) {
+    .market_tabs ul li .search {
+        /* margin-right: 15px; */
+        height: 26px;
+        width: 80px;
+        margin: 0;
+    }
+    
+    .market_tabs ul li button {
+        /* margin-right: 15px; */
+        height: 26px;
+        margin: 0;
+    }
 }
 
 .market_tabs ul li:hover span,

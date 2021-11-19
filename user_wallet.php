@@ -70,9 +70,9 @@
                             <div class="body">
                                 <div class="tab">
                                     <ul class="tab-list">
-                                        <li><button href="javascirpt:void(0);">Deposit</button></li>
-                                        <li><button href="javascirpt:void(0);">Withdraw</button></li>
-                                        <li><button href="javascirpt:void(0);">Transaction</button></li>
+                                        <li  class="active"><span href="javascirpt:void(0);">Deposit</span></li>
+                                        <li><span href="javascirpt:void(0);" >Withdraw</span></li>
+                                        <li><span href="javascirpt:void(0);">Transaction</span></li>
                                     </ul>
                                 </div>
                                 
