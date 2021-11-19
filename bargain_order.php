@@ -49,9 +49,9 @@
                                             echo "<span>Bargain Order</span>";				
                                          }?>
 									</td>
-                                    <td><span>₱ <?php echo $res['transaction_amount'];?></span></td>
+                                    <td><span>₱ <?php echo number_format($res['transaction_amount'],2);?></span></td>
 									<td><span><?php echo $res['transaction_quantity'];?></span></td>
-                                    <td><span>₱ <?php echo $res['transaction_quantity'] * $res['transaction_amount'];?></span></td>
+                                    <td><span>₱ <?php echo number_format($res['transaction_quantity'] * $res['transaction_amount'],2);?></span></td>
                                     <td><span><?php echo $res['transaction_date'];?></span></td>
 									<td>                               
                                         <?php

@@ -497,7 +497,7 @@
 
 	function display_goods($goods_id){//items-goods.php
 		$conn=connection();
-		$query="SELECT * FROM goods a join game_items b WHERE a.goods_id = :goods_id  ORDER BY b.item_price ASC";
+		$query="SELECT *,MIN(b.item_price) as lowest_price FROM goods a join game_items b WHERE a.goods_id = :goods_id and b.item_status=1 and b.order_id=1 ORDER BY lowest_price";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":goods_id"=>$goods_id));
 		$res = $prepare->fetch(PDO::FETCH_ASSOC);
@@ -589,7 +589,7 @@
 	
 	function display_goods_id($goods_id){//user
 		$conn=connection2();
-		$sql="SELECT * from game_items where goods_id=$goods_id";
+		$sql="SELECT * from game_items where goods_id=$goods_id order";
 		$result = $conn->query($sql);
 		return $result;}
 

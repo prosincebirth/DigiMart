@@ -46,7 +46,7 @@
                                     
                                     <?php echo '<span class="item_title">'.$res['goods_name'].'</span>'; ?>
                                     
-                                    <?php echo '<span class="item_price">₱ '.$res['lowest_price'].'</span>'; ?>
+                                    <?php echo '<span class="item_price">₱ '.number_format($res['lowest_price'],2).'</span>'; ?>
                                 </div>
                             </div>
                         </a>

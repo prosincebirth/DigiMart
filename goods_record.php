@@ -47,7 +47,7 @@
 							<div class="item__ref--price">
 								<span>
 									Reference price | 
-									<span>₱  <?php echo $res['item_price'];?></span>
+									<span>₱  <?php echo number_format($res['item_price'],2); ?></span>
 									<span> </span>
 								</span>
 							</div>
@@ -105,7 +105,7 @@
 											<span><?php echo $res['goods_quality']," ",$res['goods_name'];?></span>	
 										</div>
 									</td>
-									<td><span><?php echo $res['transaction_amount'];?></span></td>
+									<td><span><?php echo number_format($res['transaction_amount'],2);?></span></td>
 									<td></td>
 									<td><span><?php echo $res['order_desc'];?></span></td>
 									<td><span><?php echo date('Y-m-d',strtotime($res['transaction_date']));?></span></td>

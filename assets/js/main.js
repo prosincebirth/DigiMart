@@ -300,7 +300,12 @@ $('document').ready(function()
                         cache:false,
                         processData:false,
                         success:function(res){
-                            alert(res) 
+                            if(res=="Success"){
+                                alert(res)
+                                location.reload();
+                            }else{
+                                alert(res)
+                            }     
                         }
                     });	
                 }
@@ -328,7 +333,7 @@ $('document').ready(function()
                                     location.reload();
                                 }else{
                                     alert(res)
-                                }                       
+                                }                        
                             }
                         });	
                     }

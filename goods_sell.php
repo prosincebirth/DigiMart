@@ -47,7 +47,7 @@
 							<div class="item__ref--price">
 								<span>
 									Reference price | 
-									<span>₱  <?php echo $res['item_price'];?></span>
+									<span>₱  <?php echo number_format($res['lowest_price'],2);?></span>
 									<span> </span>
 								</span>
 							</div>
@@ -121,7 +121,7 @@
 
 									</td>
 									<td>
-										<span><?php echo $res['item_price'];?></span>										
+										<span><?php echo number_format($res['item_price'],2);?></span>										
 									</td>
 									<td>
 										<span><?php echo $res['item_quantity'];?></span>										
