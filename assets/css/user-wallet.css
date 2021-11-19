@@ -1,19 +1,52 @@
 .layout {
     padding-top: 20px;
+    display: flex;
+    flex-direction: row;
 }
+
+
+@media (max-width: 991px) {
+    .layout {
+      flex-direction: column;
+    }
+  }
+
 .column {
     float: left;
-    padding: 10px;
     
 }
+
+@media (max-width: 991px) {
+    .column  {
+       float: left;
+       
+    }
+  }
+
 .col1 {
     width: 25%;
-   
+    flex: 25%;
+    padding-right: 20px;
 }
+
+@media (max-width: 991px) {
+    .col1 {
+      width: 100%;
+      padding-right: 0px;
+    }
+  }
+
 
 .col2 {
     width: 75%;
+    flex: 75%;
 }
+
+@media (max-width: 991px) {
+    .col2 {
+      width: 100%;
+    }
+  }
 
 .layout:after {
     content: "";
@@ -23,18 +56,38 @@
 
 .col1 .panel{
     background-color: var(--secondary-color);
+    
 }
 
-.col2 .header{
-    background-color: var(--secondary-color);
-    border-radius: 5px;
+@media (max-width: 991px) {
+    .col1 .panel{
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+
+
+.col2 .main{
+    padding: 10px;
+    padding: 0 25px 50px 25px;
+    border: 1px solid var(--black-color);
+    background-color: var(--white-color);
 }
 
 .col1 .panel .user-image{
     background-color: var(--secondary-color);
     color: var(--white-color);
-    
 }
+
+@media (max-width: 991px) {
+    .col1 .panel .user-image {
+        width: 50%;
+        min-height: 32px;
+    }
+  }
+
 .col1 .panel .user-image .image{
     padding: 20px 0 0 0;   
 }
@@ -58,7 +111,15 @@
     color: var(--primary-color);
 }
 
-.col1 .panel .menu li{
+@media (max-width: 991px) {
+    .col1 .panel .menu {
+      width: 100%;
+      min-height: 32px;
+      background-color: var(--secondary-color);
+    }
+  }
+
+.col1 .panel .menu li {
     width: 100%;
     min-height: 64px;
     display: grid;
@@ -69,11 +130,31 @@
     cursor: pointer;
 }
 
+@media (max-width: 991px) {
+    .col1 .panel .menu li {
+      width: 100%;
+      min-height: 32px;
+    }
+  }
+
 .col1 .panel .menu ul li:hover,
 .col1 .panel .menu ul li.active{
     color: var(--visual-blue-color);
     text-decoration: underline;
 }
+
+@media (max-width: 991px) {
+    .col1 .panel .menu ul li {
+     display: inline;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .col1 .panel .menu ul {
+     margin: auto;
+     align-content: center;
+    }
+  }
 
 .col1 .panel .menu i{
     padding: 10px;
@@ -89,26 +170,23 @@
 
 .col2 .header .row:after {
     float: left;
-    width: 33.33%;
+    width: inherit;
 }
 
 .col2 .grid-container { 
     display: grid;
-    grid-row-gap: 20px;
     background-color: var(--white-color);
-    border-radius: 5px;
 }
 
 .col2 .grid-item-header{
     background-color: var(--secondary-color);
     border: 1px solid var(--light-gray-color);
-    border-radius: 5px
 }
 
 .col2 .grid-item {
     background-color: var(--white-color);
     border: 1px solid var(--light-gray-color);
-    border-radius: 5px
+    /* border-radius: 5px */
 }
 
 .col2 .grid-container .grid-item-header .header .row .col .info .icon{
@@ -116,12 +194,19 @@
     padding: 0 10px 0 10px;
 }
 
+@media (max-width: 991px){
+    .col2 .grid-container .grid-item-header .header .row .col .info .icon{
+        float: left;
+        
+    }
+}
+
 .col2 .grid-container .grid-item .body .tab {
-    background-color: var(--steam-color);
+    background-color: var(--tertiary-color);
     padding: 10px;
     width: 100%;
     padding-bottom: 30px;
-    border-radius: 5px;
+    /* border-radius: 5px; */
 } 
 
 .col2 .grid-container .grid-item .body .tab .tab-list li{
@@ -131,12 +216,18 @@
     
 }
 
-.col2 .grid-container .grid-item .body .tab .tab-list li button{
+.col2 .grid-container .grid-item .body .tab .tab-list li span{
     font-size: 20px;
-    color: var(--white-color);
-    background-color: var(--steam-color);
+    color: var(--dark-color);
+    background-color: var(--tertiary-color);
     width: 100%;
     border: none;
+    cursor: pointer;
+}
+.col2 .grid-container .grid-item .body .tab .tab-list li:hover,
+.col2 .grid-container .grid-item .body .tab .tab-list li:active{
+    color: var(--visual-blue-color);
+    text-decoration: underline;
 }
 
 .col2 .grid-container .grid-item .body .user-wallet .table {

@@ -23,14 +23,12 @@ if(isset($_POST["search_item1"])){$search = trim($_POST['search_item']);}
                     </div>
 
                     <div class="market_tabs">
-                        <div class="search__bar">
-                            <form method='post' action="" enctype="multipart/form-data">
-                                <input type="text" name="search_item" id="search_item" value="<?php echo $search;?>" class="form-control">
-                                    <button type="submit" name="search_item1"></form>
-                                        <i class="fas fa-search"></i>
-                                <span>Search</span>
-                            </button>
-                        </div>
+                    <form method='post' action="" enctype="multipart/form-data" class="form-search">
+                        <ul class="market_tab--list">
+                            <li><input type="text" name="search_item" id="search_item" value="<?php echo $search;?>" class="form-control" placeholder="search..."></li>
+                            <li><button type="submit" name="search_item1"> <i class="fas fa-search">Search</i> </button></form></li>
+                        </ul>   
+                        </form>
                     </div>
 
                     <div class="market_item--container">

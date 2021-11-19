@@ -13,8 +13,15 @@
                             <li ><span onclick="window.location.href='sale_order_record.php';">Sale Order Record</span></li>
                             <li ><span onclick="window.location.href='my_saleorder.php';">My Sale Order</span></li>
                             <li><span data-toggle="modal" data-target="#sale_game_item_modal">Post Item for Sale</span></li>  
-                            <li><input type="text" class="search"placeholder="search..."><button><i class="fas fa-search">Search</i></button></li>
                         </ul>
+                    </div>
+                    <div class="market_tabs">
+                    <form method='post' action="" enctype="multipart/form-data" class="form-search">
+                        <ul class="market_tab--list">
+                            <li><input type="text" name="search_item" id="search_item" value="" class="form-control" placeholder="search..."></li>
+                            <li><button type="submit" name="search_item1"> <i class="fas fa-search">Search</i> </button></form></li>
+                        </ul>   
+                        </form>
                     </div>
 
                     <div class="market_item--container">
