@@ -1,5 +1,4 @@
 <?php include('head.php'); ?>
-<?php if(!isset($_SESSION)){header("Location: index.php"); exit();}?>
 <?php include('header.php'); ?>
 
 <main>    

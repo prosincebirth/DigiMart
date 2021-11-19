@@ -3,7 +3,7 @@ $search="";
 if(isset($_POST["search_item1"])){$search = trim($_POST['search_item']);}
 ?>
 <?php include('head.php'); ?>
-<?php if(!isset($_SESSION)){header("Location: index.php"); exit();}?>
+
 <?php include('header.php'); ?>
 
 
@@ -24,15 +24,14 @@ if(isset($_POST["search_item1"])){$search = trim($_POST['search_item']);}
 
                     <div class="market_tabs">
                         <div class="search__bar">
-                        <form method='post' action="" enctype="multipart/form-data">
-                            <input type="text" name="search_item" id="search_item" value="<?php echo $search;?>" class="form-control">
-                            <button type="submit" name="search_item1"></form
-                            <i class="fas fa-search"></i>
-                            <span>Search</span>
+                            <form method='post' action="" enctype="multipart/form-data">
+                                <input type="text" name="search_item" id="search_item" value="<?php echo $search;?>" class="form-control">
+                                    <button type="submit" name="search_item1"></form>
+                                        <i class="fas fa-search"></i>
+                                <span>Search</span>
                             </button>
                         </div>
                     </div>
-
 
                     <div class="market_item--container">
                         <div class="items_wrapper">

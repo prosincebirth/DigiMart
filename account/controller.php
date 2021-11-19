@@ -575,7 +575,7 @@
 								echo 'Empty Fields';
 							}						
 							else{
-								update_goods_item_name($goods_id_edit,$goods_name_edit,$goods_quality_edit,$goods_rarity_edit,$goods_detail1_edit,$goods_detail2_edit,$goods_detail3_edit);
+								update_goods_item_name($goods_id_edit,$goods_name_edit,$goods_quality_edit,$goods_rarity_edit,$goods_detail1_edit,$goods_detail2_edit,$goods_detail3_edit,$service_id_edit);
 								echo 'Success'; 															
 								}
 						break;																
