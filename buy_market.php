@@ -14,8 +14,15 @@
                             <ul class="market_tab--list">
                             <li ><span onclick="window.location.href='sale_market.php';">Sale</span></li>
                                 <li class='active'><span onclick="window.location.href='buy_market.php';">Purchase</span></li>
-                                <li><input type="text" class="search"placeholder="search..."><button><i class="fas fa-search">Search</i></button></li>
                             </ul>
+                        </div>
+                        <div class="market_tabs">
+                        <form method='post' action="" enctype="multipart/form-data" class="form-search">
+                            <ul class="market_tab--list">
+                                <li><input type="text" name="search_item" id="search_item" value="" class="form-control" placeholder="search..."></li>
+                                <li><button type="submit" name="search_item1"> <i class="fas fa-search">Search</i> </button></form></li>
+                            </ul>   
+                            </form>
                         </div>
                         <div class="market_item--container global-market">
                             <div class="items_wrapper">
