@@ -319,7 +319,14 @@
 		$query="UPDATE transactions set transaction_status=5 where transaction_id=:transaction_id";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id));
-		$conn=null;}		
+		$conn=null;}	
+	
+	function update_goods_item_name($goods_id,$goods_name,$goods_quality,$goods_rarity,$goods_detail_1,$goods_detail_2,$goods_detail_3){
+		$conn=connection();
+		$query="UPDATE goods set goods_name=:goods_name,goods_quality=:goods_quality,goods_rarity=:goods_rarity,goods_detail_1=:goods_detail_1,goods_detail_2=:goods_detail_2,goods_detail_3=:goods_detail_3 where goods_id=:goods_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":goods_id"=>$goods_id,":goods_name"=>$goods_name,":goods_quality"=>$goods_quality,":goods_rarity"=>$goods_rarity,":goods_detail_1"=>$goods_detail_1,":goods_detail_2"=>$goods_detail_2,":goods_detail_3"=>$goods_detail_3,));
+		$conn=null;}			
 	
 ///////////////////////DELETE FUNCTIONS///////////////////////////////// 
 	function delete_game($game_id){

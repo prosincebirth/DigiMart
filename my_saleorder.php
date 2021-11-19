@@ -37,7 +37,7 @@
 									<td>
 										<div class="img_text">
 											<?php echo '<img class="item__img" src="data:image/png;base64,'.base64_encode($res['goods_image']).'"height="72" >'; ?>
-											<span><?php echo '<a href="goods_sell.php?goods_id='.$res['goods_id'].'";><span>'.$res['goods_quality'].' '.$res['goods_name'].'</span></a>';?></span>	
+											<span><?php echo '<a href="goods_sell.php?goods_id='.$res['goods_id'].'";><span>'.$res['goods_name'].'</span></a>';?></span>	
 										</div>                                       
 									</td>
                                     <td><?php if($res['order_id']==1){echo '<span>Sale Order</span>';}
@@ -53,15 +53,26 @@
                                             echo '<span style="color:green"><b><i class="fas fa-check-circle"></i> Success </span>';
                                          }else if($res['item_status']==1){
                                             echo '<button 
-                                            data-toggle="modal" 
-                                            data-target="#cancel_sale_order_modal" 
-                                            data-item_id_n='.$res['item_id'].' data-user_id_n='.$_SESSION['user_session'].'>Edit Item</button>';
+                                            data-toggle="modal"  
+                                            data-target="#edit_game_item_modal"  
+                                            data-goods_id_edit='.$res['goods_id'].'  
+                                            
+                                            data-goods_quality_edit= '.$res['goods_quality'].' 
+                                            data-goods_rarity_edit= '.$res['goods_rarity'].' 
+                                            data-goods_detail1_edit= '.$res['goods_detail_1'].' 
+                                            data-goods_detail2_edit= '.$res['goods_detail_2'].'  
+                                            data-goods_detail3_edit= '.$res['goods_detail_3'].' 
+                                            data-order_id_edit= '.$res['order_id'].' 
+                                            data-goods_name_edit="'.$res['goods_name'].'"
+                                            data-service_id_edit= '.$res['service_id'].'>
+     
+                                            Edit Item</button>';
                                             
                                             echo ' ';
                                             echo '<button 
                                             data-toggle="modal" 
                                             data-target="#cancel_sale_order_modal" 
-                                            data-item_id_n='.$res['item_id'].' data-user_id_n='.$_SESSION['user_session'].'>Unpublish Order</button>';
+                                            data-item_id_n='.$res['item_id'].' data-user_id_n='.$_SESSION['user_session'].'>Cancel Item</button>';
                                          }else if($res['item_status']==2){
                                             echo '<span style="color:red"><b>Failure</b></span>';
                                             echo '<br>';

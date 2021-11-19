@@ -264,7 +264,7 @@
 				<div class="fld_input"><input type="number" name="goods_price_d" placeholder="ITEM PRICE" id="goods_price_d" class="form-control"></div>
 				<div class="fld_input"><input type="number" name="goods_quantity_d" placeholder="ITEM QUANTITY" id="goods_quantity_d" class="form-control"></div>
 				<div class="fld_input"><input type="file" name="goods_image_d" placeholder="ITEM IMAGE" id="goods_image_d" value="" class="form-control"></div>
-				<div class="fld_input"><input type="text" name="order_id_d" placeholder="ORDER ID" id="order_id_d" class="form-control" value="2"></div>	
+				<div class="fld_input"><input type="hidden" name="order_id_d" placeholder="ORDER ID" id="order_id_d" class="form-control" value="2"></div>	
 				<div class="fld_input"><select name="service_id_d" id="service_id_d" class="form-control">	
 				<option value="" disabled selected>Service Mode</option>
 									<?php
@@ -283,6 +283,89 @@
 	</div>
   </div></div>
 	</div>
+
+
+
+<div class="modal fade" id="edit_game_item_modal" role="dialog">
+	<div class="vertical-alignment-helper">
+	<div class="modal-dialog vertical-align-center">
+	<div class="modal-content">
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title"><center>EDIT ITEM </center</h4>
+		</div>
+		<div class="modal-body">
+                <div class="fld_input"><input type="text" name="goods_name_edit"  id="goods_name_edit" class="form-control"> </div>
+				<div class="fld_input"><select name="goods_quality_edit" id="goods_quality_edit"  class="form-control">
+				<?php	$game=get_goods_category(1);
+				echo '<option value="" disabled selected>'.$game['goods_type'].'</option>';
+                                    $result = get_goods_information(1);
+                                    if($result->num_rows > 0){
+                                    while ($res = $result->fetch_assoc()){
+										if($res['goods_quality']!= NULL){
+										echo '<option value='.$res['goods_quality'].'>'.$res['goods_quality'].'</option>';}}}?>
+										</select></div>
+				<div class="fld_input"><select name="goods_rarity_edit" id="goods_rarity_edit" class="form-control">	
+				<option value="" disabled selected><?php echo $game['goods_rarity'];?></option>
+									<?php
+                                    $result = get_goods_information(1);
+                                    if($result->num_rows > 0){
+									while ($res = $result->fetch_assoc()){
+										if($res['goods_rarity']!= NULL){
+										echo '<option value='.$res['goods_rarity'].'>'.$res['goods_rarity'].'</option>';
+										}}}?>
+										</select></div>
+				<div class="fld_input"><select name="goods_detail1_edit" id="goods_detail1_edit" class="form-control">	
+				<option value="" disabled selected><?php echo $game['goods_category1'];?></option>
+									<?php
+                                    $result = get_goods_information(1);
+                                    if($result->num_rows > 0){
+									while ($res = $result->fetch_assoc()){
+										if($res['goods_detail_1']!= NULL){
+										echo '<option value='.$res['goods_detail_1'].'>'.$res['goods_detail_1'].'</option>';
+										}}}?>
+										</select></div>
+				<div class="fld_input"><select name="goods_detail2_edit" id="goods_detail2_edit" class="form-control">	
+				<option value="" disabled selected><?php echo $game['goods_category2'];?></option>
+									<?php
+                                    $result = get_goods_information(1);
+                                    if($result->num_rows > 0){
+									while ($res = $result->fetch_assoc()){
+										if($res['goods_detail_2']!= NULL){
+										echo '<option value='.$res['goods_detail_2'].'>'.$res['goods_detail_2'].'</option>';
+										}}}?>
+										</select></div>
+				<div class="fld_input"><select name="goods_detail3_edit" id="goods_detail3_edit" class="form-control">	
+				<option value="" disabled selected><?php echo $game['goods_category3'];?></option>
+									<?php
+                                    $result = get_goods_information(1);
+                                    if($result->num_rows > 0){
+									while ($res = $result->fetch_assoc()){
+										if($res['goods_detail_3']!= NULL){
+										echo '<option value='.$res['goods_detail_3'].'>'.$res['goods_detail_3'].'</option>';
+										}}}?>
+										</select></div>
+				<div class="fld_input"><input type="hidden" name="order_id_edit" placeholder="ORDER ID" id="order_id_edit" class="form-control" value="2"></div>
+				<div class="fld_input"><input type="hidden" name="goods_id_edit" placeholder="GOODS ID" id="goods_id_edit" class="form-control" value="2"></div>		
+				<div class="fld_input"><select name="service_id_edit" id="service_id_edit" class="form-control">	
+				<option value="" disabled selected>Service Mode</option>
+									<?php
+                                    $result = get_game_service(1);
+                                    if($result->num_rows > 0){
+									while ($res = $result->fetch_assoc()){
+										if($res['service_id']!= NULL){
+										echo '<option value='.$res['service_id'].'>'.$res['service_mode'].'</option>';
+										}}}?>
+										</select></div>
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="edit_game_item_modal">Confirm</button>			
+			</div>
+		</div>
+	</div>
+  </div></div>
+	</div>
+
 	
 
 <div class="modal fade" id="buyorder_game_item_modal_2" role="dialog">
@@ -452,7 +535,7 @@
 	</div></div>
 	
 <div class="modal fade" id="accept_buy_order_modal" role="dialog">
-<div class="modal-dialog">
+	<div class="modal-dialog">
 		<div class="modal-content">
 		<div class="modal-header"> 
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -570,7 +653,7 @@
 	</div></div>
 
 <div class="modal fade" id="refuse_sale_order_modal" role="dialog">
-<div class="modal-dialog">
+	<div class="modal-dialog">
 		<div class="modal-content">
 		<div class="modal-header"> 
 		<button type="button" class="close" data-dismiss="modal">&times;</button>

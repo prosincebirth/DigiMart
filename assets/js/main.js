@@ -163,6 +163,31 @@ $('document').ready(function()
         $(e.currentTarget).find('input[name="order_id_h"]').val(order_id_h);
     });
 
+
+    $('#edit_game_item_modal').on('show.bs.modal', function(e) {
+        var goods_id_edit = $(e.relatedTarget).data('goods_id_edit');
+        var goods_name_edit = $(e.relatedTarget).data('goods_name_edit');
+        var goods_quality_edit = $(e.relatedTarget).data('goods_quality_edit');
+        var goods_rarity_edit = $(e.relatedTarget).data('goods_rarity_edit');
+        var goods_detail1_edit = $(e.relatedTarget).data('goods_detail1_edit');
+        var goods_detail2_edit = $(e.relatedTarget).data('goods_detail2_edit');
+        var goods_detail3_edit = $(e.relatedTarget).data('goods_detail3_edit');
+        var order_id_edit = $(e.relatedTarget).data('order_id_edit');
+        var service_id_edit = $(e.relatedTarget).data('service_id_edit');
+     
+
+        $(e.currentTarget).find('input[name="goods_name_edit"]').val(goods_name_edit);
+        $(e.currentTarget).find('input[name="order_id_edit"]').val(order_id_edit);
+        $(e.currentTarget).find('input[name="goods_id_edit"]').val(goods_id_edit);
+        $(e.currentTarget).find('select[name="goods_quality_edit"]').val(goods_quality_edit);
+        $(e.currentTarget).find('select[name="goods_rarity_edit"]').val(goods_rarity_edit);
+        $(e.currentTarget).find('select[name="goods_detail1_edit"]').val(goods_detail1_edit);  
+        $(e.currentTarget).find('select[name="goods_detail2_edit"]').val(goods_detail2_edit);
+        $(e.currentTarget).find('select[name="goods_detail3_edit"]').val(goods_detail3_edit);
+        $(e.currentTarget).find('select[name="service_id_edit"]').val(service_id_edit);
+
+    });
+
     $('#item_quantity_h').keyup(function() {
         var price=Number($("#item_price_h").val())
         var quantity=Number($("#item_quantity_h").val())
@@ -1001,6 +1026,45 @@ $('document').ready(function()
 					}
 				});
             break;
+            case "edit_game_item_modal":             
+                var goods_name_edit=$("#goods_name_edit").val()
+                var goods_quality_edit=$("#goods_quality_edit").val()
+                var goods_rarity_edit=$("#goods_rarity_edit").val()
+                var goods_detail1_edit=$("#goods_detail1_edit").val()
+                var goods_detail2_edit=$("#goods_detail2_edit").val()
+                var goods_detail3_edit=$("#goods_detail3_edit").val()
+                var order_id_edit=$("#order_id_edit").val()
+                var service_id_edit=$("#service_id_edit").val()
+                var goods_id_edit=$("#goods_id_edit").val()
+
+				var data=new FormData();
+				data.append("action_type","edit_game_item_modal");
+				data.append("goods_name_edit",goods_name_edit);
+                data.append("goods_quality_edit",goods_quality_edit);
+                data.append("goods_rarity_edit",goods_rarity_edit);
+                data.append("goods_detail1_edit",goods_detail1_edit);
+                data.append("goods_detail2_edit",goods_detail2_edit);
+                data.append("goods_detail3_edit",goods_detail3_edit);
+                data.append("order_id_edit",order_id_edit);
+                data.append("goods_id_edit",goods_id_edit);
+                data.append("service_id_edit",service_id_edit);
+                
+				$.ajax({	
+					url:"account/controller.php",
+					method:"post",
+					data:data,
+					contentType:false,
+					cache:false,
+					processData:false,
+					success:function(res){
+                        if(res=="Success"){
+                            alert(res)
+                            location.reload();
+                        }else{
+                            alert(res)
+                        } 
+					}
+				});
             		
         };	
 	});	

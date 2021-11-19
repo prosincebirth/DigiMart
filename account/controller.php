@@ -557,7 +557,28 @@
 								add_new_dispute($transaction_id_dispute,$dispute_title_a,$dispute_message_a);
 								echo 'Success'; 															
 								}
-						break;														
+						break;
+					case "edit_game_item_modal":		
+							$goods_name_edit=$_POST['goods_name_edit'];
+							$goods_quality_edit=$_POST['goods_quality_edit'];
+							$goods_rarity_edit=$_POST['goods_rarity_edit'];
+							$goods_detail1_edit=$_POST['goods_detail1_edit'];
+							$goods_detail2_edit=$_POST['goods_detail2_edit'];
+							$goods_detail3_edit=$_POST['goods_detail3_edit'];
+							$order_id_edit=$_POST['order_id_edit'];
+							$service_id_edit=$_POST['service_id_edit'];
+							$goods_id_edit=$_POST['goods_id_edit'];
+
+							
+							if(empty($goods_name_edit) && empty($goods_quality_edit)  && empty($goods_rarity_edit)  && empty($goods_detail1_edit)  && empty($goods_detail2_edit)  && empty($goods_detail3_edit)  && empty($order_id_edit)  
+							&& empty($service_id_edit)  && empty($goods_id_edit)){ // trappings for not logged in
+								echo 'Empty Fields';
+							}						
+							else{
+								update_goods_item_name($goods_id_edit,$goods_name_edit,$goods_quality_edit,$goods_rarity_edit,$goods_detail1_edit,$goods_detail2_edit,$goods_detail3_edit);
+								echo 'Success'; 															
+								}
+						break;																
 						
 			}
 		}
