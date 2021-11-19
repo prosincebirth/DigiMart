@@ -11,6 +11,7 @@
                         <ul class="market_tab--list">
                             <li  class='active'><span onclick="window.location.href='bargain_order.php';">Bargain Orders</span></li>
                             <li><span onclick="window.location.href='bargain_order_record.php';">Bargain Order Records</span></li>
+                            <li><input type="text" class="search"placeholder="search..."><button><i class="fas fa-search">Search</i></button></li>
                         </ul>
                     </div>
                     <div class="market_item--container">

@@ -118,6 +118,18 @@
     margin-right: 15px;
 }
 
+.market_tabs ul li .search {
+    margin-right: 15px;
+    height: 26px;
+    margin: 0;
+}
+
+.market_tabs ul li button {
+    margin-right: 15px;
+    height: 26px;
+    margin: 0;
+}
+
 .market_tabs ul li:hover span,
 .market_tabs ul li.active span {
     border-bottom: 1px solid var(--white-color);

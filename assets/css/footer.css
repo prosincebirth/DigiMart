@@ -1,6 +1,6 @@
 .main_footer {
     width: 100%;
-    background-color: var(--primary-color);
+    background-color: var(--light-gray-color);
     color: var(--white-color);
     text-align: center;
     padding: 15px;
@@ -17,6 +17,6 @@
 
   @media screen and (max-width: 991px) {
     .main_footer{
-      background-color: var(--primary-color);
+      background-color: var(--light-gray-color);
     }
   }
