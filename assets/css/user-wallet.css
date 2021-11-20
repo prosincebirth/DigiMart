@@ -189,6 +189,30 @@
     /* border-radius: 5px */
 }
 
+.col2 .grid-item .body .user-wallet .list-tab thead tr th {
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: var(--very-light-gray-color);
+}
+
+.col2 .grid-item .body .user-wallet .list-tab tbody tr td {
+    font-size: 15px;
+    padding: 5px;
+}
+
+.col2 .grid-item .body .user-wallet .list-tab tbody:nth-child(odd) {
+    font-size: 15px;
+    padding: 5px;
+    background-color: var(--very-light-gray-color);
+}
+.col2 .grid-item .body .user-wallet .list-tab tbody:nth-child(even) {
+    font-size: 15px;
+    padding: 5px;
+    background-color: var(--white-color);
+}
+
+
 .col2 .grid-container .grid-item-header .header .row .col .info .icon{
     float: left;
     padding: 0 10px 0 10px;
