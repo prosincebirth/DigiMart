@@ -549,9 +549,22 @@
 		
 	function display_item($limit){//global-market.php
 		$conn=connection2();
-		$sql="SELECT *,count(b.item_id) as mycount,MIN(b.item_price) as lowest_price from goods a inner JOIN game_items b where b.goods_id=a.goods_id group by a.goods_id order by lowest_price LIMIT $limit";
+		$sql="SELECT *,count(b.item_id) as mycount,MIN(b.item_price) as lowest_price from goods a inner JOIN game_items b where b.goods_id=a.goods_id group by a.goods_id order by mycount desc LIMIT $limit";
 		$result = $conn->query($sql);
 		return $result;}
+	
+	function display_item_newly_listed($limit){//global-market.php
+		$conn=connection2();
+		$sql="SELECT *,count(b.item_id) as mycount,MIN(b.item_price) as lowest_price from goods a inner JOIN game_items b where b.goods_id=a.goods_id group by a.goods_id order by item_date_added DESC LIMIT $limit";
+		$result = $conn->query($sql);
+		return $result;}
+	
+	function display_item_buy_orders($limit){//global-market.php
+		$conn=connection2();
+		$sql="SELECT *,count(b.item_id) as mycount,MIN(b.item_price) as lowest_price from goods a inner JOIN game_items b where b.goods_id=a.goods_id and b.order_id=2 group by a.goods_id order by lowest_price DESC LIMIT $limit";
+		$result = $conn->query($sql);
+		return $result;}		
+		
 
 	function display_items_sale(){//global-market.php
 		$conn=connection2();
@@ -601,6 +614,12 @@
 		$sql="SELECT * from notification where user_id=$user_id order by notification_date_created desc";
 		$result = $conn->query($sql);
 		return $result;}
+
+	function get_transaction_history($user_id){
+		$conn=connection2();
+		$sql="SELECT * from transactions where buyer_id=$user_id or seller_id=$user_id order by transaction_date desc";
+		$result = $conn->query($sql);
+		return $result;}	
 	
 	function display_goods_id($goods_id){//user
 		$conn=connection2();

@@ -37,12 +37,7 @@
                 <div class="column col2"> 
                     <div class="main">
                         <div class="user-setting">
-                            <div class="tab-header">
-                                <ul>
-                                    <li class="active"><span>Trade Messages</span></li>
-                                    <li><span>System Messages</span></li>
-                                </ul>
-                            </div>
+                            
                             <div class="title-header">
                                 <ul>
                                     <li><span>Message Content</span></li>

@@ -9,10 +9,10 @@
                     <li class="splide__slide">
                         <div class="splide_info_container">
                             <div class="splide__img">
-                                <img src="https://via.placeholder.com/1280x720" alt="">
+                                <img src="https://i.redd.it/tsgb3vbk1kq61.png" alt="">
                             </div>
                             <div class="slide__info">
-                                <h1>Horn of the Ancient</h1>
+                                <h1>Horn of the Fractal Abbysm</h1>
                                 <a href="">Buy it now</a>
                             </div>
                         </div>
@@ -20,7 +20,7 @@
                     <li class="splide__slide">
                         <div class="splide_info_container">
                             <div class="splide__img">
-                                <img src="https://via.placeholder.com/1280x720" alt="">
+                                <img src="./pictures/3098893.jpg" alt="">
                             </div>
                             <div class="slide__info">
                                 <h1>Silver Crest of Radiant</h1>

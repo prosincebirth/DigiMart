@@ -73,7 +73,7 @@
                                     <ul class="tab-list">
                                         <li  class="active"><span href="javascirpt:void(0);">Deposit</span></li>
                                         <li><span href="javascirpt:void(0);" >Withdraw</span></li>
-                                        <li><span href="javascirpt:void(0);">Transaction</span></li>
+                                        <li><span onclick="location.href='user_transaction.php'">Transaction</span></li>
                                     </ul>
                                 </div>
                                 

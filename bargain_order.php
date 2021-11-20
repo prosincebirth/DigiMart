@@ -10,7 +10,7 @@
                 <div class="market_item--wrapper">
                     <div class="market_tabs">
                         <ul class="market_tab--list">
-                            <li  class='active'><span onclick="window.location.href='bargain_order.php';">Bargain Orders</span></li>
+                            <li  class='active'><span onclick="window.location.href='bargain_order.php';">Bargain Order</span></li>
                             <li><span onclick="window.location.href='bargain_order_record.php';">Bargain Order Records</span></li>
                         </ul>
                     </div>
