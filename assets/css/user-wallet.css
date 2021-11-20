@@ -190,7 +190,7 @@
 }
 
 .col2 .grid-item .body .user-wallet .list-tab thead tr th {
-    padding: 10px;
+    /* padding: 10px; */
     font-size: 20px;
     font-weight: bold;
     background-color: var(--very-light-gray-color);
@@ -302,6 +302,20 @@
 
     .user-wallet-section .table--container {
         overflow-x: scroll;
+    }
+
+    .user-wallet-section .table--container .user-wallet-history {
+        width: 200% !important;
+    }
+
+    .user-wallet-section .table--container,
+    .user-wallet .table--container {
+        overflow-x: scroll;
+    }
+
+    .user-wallet-section .table--container .table,
+    .user-wallet .table--container table {
+        width: 200% !important;
     }
 
     .user-wallet-section .table--container .user-wallet-history {

@@ -11,7 +11,7 @@
         <div class="container">
             <div class="layout">
                 <div class="column col1">
-                    <div class="panel">
+                    <div class="panel user__panel">
                         <div class="user-image">
                             <div class="image">
                                 <img src="http://via.placeholder.com/70x70" alt="">
@@ -35,7 +35,7 @@
                 <div class="column col2"> 
                     <!-- header -->
                     <div class="grid-container">
-                        <div class="grid-item-header">
+                        <div class="grid-item-header balance__section">
                             <div class="header">
                                 <div class="row">
                                     <div class="col">
@@ -78,38 +78,40 @@
                                 </div>
                                 
                                 <div class="user-wallet">
-                                    <table class=list-tab width="100%">
-                                         <thead>
-                                            <tr>
-                                                <th>Transaction ID</th>
-                                                <th>Type</th>
-                                                <th>Changes</th>
-                                                <th>Date Created</th>
-                                            </tr>
-                                        </thead>
-                                        <?php	$get_transaction_history = get_transaction_history($_SESSION['user_session']); foreach($get_transaction_history as $transaction_history){?>
-                                            
-                                        <tbody>
-                                            <tr>
-                                                <td><?php echo '<span>'.$transaction_history['transaction_id'].' </span>'; ?></td>
-                                                <?php   if($transaction_history['order_id']==1){
-                                                            echo '<td><span>Sale</span></td>';}
-                                                        else if($transaction_history['order_id']==2){
-                                                            echo '<td><span>Buy</span></td>';}
-                                                        else if($transaction_history['order_id']==3){
-                                                            echo '<td><span>Bargain</span></td>';}
+                                    <div class="table--container">
+                                        <table class=list-tab width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Transaction ID</th>
+                                                    <th>Type</th>
+                                                    <th>Changes</th>
+                                                    <th>Date Created</th>
+                                                </tr>
+                                            </thead>
+                                            <?php	$get_transaction_history = get_transaction_history($_SESSION['user_session']); foreach($get_transaction_history as $transaction_history){?>
+                                                
+                                            <tbody>
+                                                <tr>
+                                                    <td><?php echo '<span>'.$transaction_history['transaction_id'].' </span>'; ?></td>
+                                                    <?php   if($transaction_history['order_id']==1){
+                                                                echo '<td><span>Sale</span></td>';}
+                                                            else if($transaction_history['order_id']==2){
+                                                                echo '<td><span>Buy</span></td>';}
+                                                            else if($transaction_history['order_id']==3){
+                                                                echo '<td><span>Bargain</span></td>';}
 
-                                                        if($transaction_history['buyer_id']==$_SESSION['user_session']){
-                                                            echo '<td><span style="color:red">- '.number_format($transaction_history['transaction_amount'] * $transaction_history['transaction_quantity'],2).' </span></td>';}
-                                                        else if($transaction_history['seller_id']==$_SESSION['user_session']){
-                                                            echo '<td><span style="color:green">+ '.number_format($transaction_history['transaction_amount'] * $transaction_history['transaction_quantity'],2).' </span></td>';
-                                                        } 
-                                                ?>
-                                                <td><?php echo '<span>'.$transaction_history['transaction_date'].' </span>';?></td>
-                                            </tr>
-                                        </tbody>
-                                        <?php } ?>
-                                    </table>
+                                                            if($transaction_history['buyer_id']==$_SESSION['user_session']){
+                                                                echo '<td><span style="color:red">- '.number_format($transaction_history['transaction_amount'] * $transaction_history['transaction_quantity'],2).' </span></td>';}
+                                                            else if($transaction_history['seller_id']==$_SESSION['user_session']){
+                                                                echo '<td><span style="color:green">+ '.number_format($transaction_history['transaction_amount'] * $transaction_history['transaction_quantity'],2).' </span></td>';
+                                                            } 
+                                                    ?>
+                                                    <td><?php echo '<span>'.$transaction_history['transaction_date'].' </span>';?></td>
+                                                </tr>
+                                            </tbody>
+                                            <?php } ?>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
