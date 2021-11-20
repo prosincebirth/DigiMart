@@ -35,7 +35,7 @@
                 <div class="column col2"> 
                     <!-- header -->
                     <div class="grid-container">
-                        <div class="grid-item-header">
+                        <div class="grid-item-header balance__section">
                             <div class="header">
                                 <div class="row">
                                     <div class="col">
@@ -89,9 +89,9 @@
                                                         <span value="custom" class="on">
                                                             <input type="text" placeholder="Deposit amount">
                                                         </span>
-                                                        <span><button value="100">₱ 100</button></span>
-                                                        <span><button value="500">₱ 500</button></span>
-                                                        <span><button value="1000">₱ 1000</button></span>
+                                                        <span class="button"><button value="100">₱ 100</button></span>
+                                                        <span class="button"><button value="500">₱ 500</button></span>
+                                                        <span class="button"><button value="1000">₱ 1000</button></span>
                                                     </div>
                                                 </td>
                                             </tr>

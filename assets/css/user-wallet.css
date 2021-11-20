@@ -123,8 +123,8 @@
     width: 100%;
     min-height: 64px;
     display: grid;
-    align-items: center;
-    text-align: center;
+    /* align-items: center;
+    text-align: center; */
     color: var(--white-color);
     background-color: var(--secondary-color);
     cursor: pointer;
@@ -145,14 +145,14 @@
 
 @media (max-width: 991px) {
     .col1 .panel .menu ul li {
-     display: inline;
+     display: blockw;
     }
   }
 
   @media (max-width: 991px) {
     .col1 .panel .menu ul {
      margin: auto;
-     align-content: center;
+     /* align-content: center; */
     }
   }
 
@@ -223,6 +223,57 @@
         float: left;
         
     }
+
+    .balance__section .row {
+        margin: 0;
+        display: flex;
+    }
+
+    .balance__section .row .col {
+        float: none;
+        width: auto;
+    }
+
+    .balance__section .info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .balance__section .info > div {
+        flex: 0 0 100%;
+        text-align: center;
+    }
+
+    .balance__section .info > div:first-of-type {
+        margin-bottom: 10px;
+    }
+
+    .balance__section i {
+        font-size: 20px;
+    }
+
+    .user-deposit span.button {
+        display: block;
+        margin-top: 10px;
+    }
+
+    .user-deposit span:not(.button) input {
+        width: 100%;
+        border: 1px solid var(--black-color);
+        height: 40px;
+        padding: 5px 10px;
+    }
+
+    .user-deposit span.button button {
+        width: 100% !important;
+        height: 30px !important;
+        background-color: var(--visual-blue-color) !important;
+    }
+
+    .user-wallet > table {
+        margin-bottom: 20px;
+    }
 }
 
 .col2 .grid-container .grid-item .body .tab {
@@ -286,6 +337,16 @@
     color: var(--white-color);
 }
 
+.user-wallet-notice- ul {
+    padding: 10px 0;
+    margin: 0;
+}
 
+.user-wallet-section {
+    padding: 0 15px 10px;    
+}
 
-
+.user-wallet-section .user-wallet-history {
+    width: 100%;
+    
+}
