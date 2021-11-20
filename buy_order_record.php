@@ -51,7 +51,7 @@
 									<td>
 										<div class="img_text">
 											<?php echo '<img class="item__img" src="data:image/png;base64,'.base64_encode($res['goods_image']).'"height="72" >'; ?>
-                                            <span><?php echo '<a href="goods_buy.php?goods_id='.$res['goods_id'].'";><span>'.$res['goods_quality'].' '.$res['goods_name'].'</span></a>';?></span>		
+                                            <span><?php echo '<a href="goods_buy.php?goods_id='.$res['goods_id'].'";><span>  '.$res['goods_name'].'</span></a>';?></span>		
 										</div>
 									</td>
                                     <td><span><?php echo $res['seller_name'];?></span></td>

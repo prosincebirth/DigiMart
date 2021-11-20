@@ -20,10 +20,10 @@
                     <li class="splide__slide">
                         <div class="splide_info_container">
                             <div class="splide__img">
-                                <img src="assets/svg/slide2.jpg" alt="">
+                                <img src="assets/svg/wp9805077.jpg" alt="">
                             </div>
                             <div class="slide__info">
-                                <h1>Silver Crest of Radiant</h1>
+                                <h1>Bladeform Legacy</h1>
                                 <a href="sale_market.php">Buy it now</a>
                             </div>
                         </div>
