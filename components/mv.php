@@ -20,11 +20,11 @@
                     <li class="splide__slide">
                         <div class="splide_info_container">
                             <div class="splide__img">
-                                <img src="./pictures/3098893.jpg" alt="">
+                                <img src="assets/svg/slide2.jpg" alt="">
                             </div>
                             <div class="slide__info">
                                 <h1>Silver Crest of Radiant</h1>
-                                <a href="">Buy it now</a>
+                                <a href="sale_market.php">Buy it now</a>
                             </div>
                         </div>
                     </li>
