@@ -154,6 +154,41 @@
      margin: auto;
      align-content: center;
     }
+
+    .user__panel {
+        display: block !important;
+    }
+
+    .user__panel .user-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100% !important;
+        min-height: auto !important;
+        margin-top: 10px;
+    }
+
+    .user__panel .user-image .image {
+        padding: 0 !important;
+    }
+
+    .user__panel .user-image .name {
+        margin-left: 20px;
+    }
+
+    .user__panel .menu ul {
+        display: flex;
+    }
+
+    .user-wallet-section .table--container {
+        overflow-x: scroll;
+    }
+
+    .user-wallet-section .table--container .user-wallet-history {
+        width: 200% !important;
+    }
+
+
   }
 
 .col1 .panel .menu i{
@@ -180,9 +215,10 @@
 }
 
 .col2 .main .user-setting .list-tab td{
-    padding: 10px;
+    padding: 10px 0;
     font-size: 14px;
     color:var(--gray-color);
+    vertical-align: top;
 }
 
 .col2 .main .user-setting .list-tab td img{

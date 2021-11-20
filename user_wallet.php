@@ -11,7 +11,7 @@
         <div class="container">
             <div class="layout">
                 <div class="column col1">
-                    <div class="panel">
+                    <div class="panel user__panel">
                         <div class="user-image">
                             <div class="image">
                                 <img src="http://via.placeholder.com/70x70" alt="">
@@ -133,19 +133,21 @@
                                         </div>
                                     </div>
                                     
-                                    <div class=user-wallet-section>
+                                    <div class="user-wallet-section">
                                         <h2>Deposit records</h2>
-                                        <table class="user-wallet-history">
-                                            <tbody>
-                                                <tr>
-                                                    <th>Serial number</th>
-                                                    <th> Deposit amount</th>
-                                                    <th> Payment account</th>
-                                                    <th> Progress</th>
-                                                    <th>Create time</th>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                        <div class="table--container">
+                                            <table class="user-wallet-history">
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Serial number</th>
+                                                        <th> Deposit amount</th>
+                                                        <th> Payment account</th>
+                                                        <th> Progress</th>
+                                                        <th>Create time</th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

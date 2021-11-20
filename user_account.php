@@ -11,7 +11,7 @@
         <div class="container">
             <div class="layout">
                 <div class="column col1">
-                    <div class="panel">
+                    <div class="panel user__panel">
 
                         <div class="user-image">
                             <div class="image">
