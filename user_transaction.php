@@ -4,7 +4,7 @@
 
 <!-- <link rel="preload stylesheet" href="assets/css/item-card.css" as="style" crossorigin>
 <link rel="preload stylesheet" href="assets/css/item-grid.css" as="style" crossorigin> -->
-<link rel="preload stylesheet" href="assets/css/user-messages.css" as="style" crossorigin>
+<link rel="preload stylesheet" href="assets/css/user-wallet.css" as="style" crossorigin>
 
 <main>
     <section class="market_section">
@@ -12,7 +12,7 @@
             <div class="layout">
                 <div class="column col1">
                     <div class="panel">
-                    <div class="user-image">
+                        <div class="user-image">
                             <div class="image">
                                 <img src="http://via.placeholder.com/70x70" alt="">
                             </div>
@@ -22,10 +22,9 @@
                         </div>
                         <div class="menu">
                             <ul>
-                            <li onclick="location.href='user_wallet.php' class="active"><span ><i class="fas fa-wallet"></i>My wallet</span></li>
-                                <li onclick="location.href='user_account.php'" ><span  ><i class="fas fa-cog"></i>Account</span></li>
-                                <li onclick="location.href='user_messages.php'" ><span ><i class="fas fa-envelope"></i>Messages</span></li>
-
+                                <li href="user_wallet.php;" class="active"><span ><i class="fas fa-wallet"></i>My wallet</span></li>
+                                <li><span onclick="location.href='user_account.php'" ><i class="fas fa-cog"></i>Account</span></li>
+                                <li onclick="location.href='user_messages.php'"><span ><i class="fas fa-envelope"></i>Messages</span></li>
                                 <!-- <li href="javascript:void(0);"><span ><i class="fas fa-comment-dots"></i>Support</span></li> -->
                             </ul>
                         </div>
@@ -34,44 +33,84 @@
 
                 
                 <div class="column col2"> 
-                    <div class="main">
-                        <div class="user-setting">
+                    <!-- header -->
+                    <div class="grid-container">
+                        <div class="grid-item-header">
+                            <div class="header">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="info">
+                                            <div class="icon"><i class="fas fa-money-bill-wave fa-3x"></i></div>
+                                            <div class="info-title">
+                                                
+                                                <span>Balance</span>
+                                            </div>
+                                            <div class="info-ammount">
+                                            <?php	$display_balance = display_balance($_SESSION['user_session']);foreach($display_balance as $balance){ ?>
+                                                <span>₱ <?php echo $balance['wallet_balance']; ?> </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="info">
+                                            <div class="icon"><i class="fas fa-credit-card  fa-3x"></i></div>
+                                            <div class="info-title">
+                                                <span>Frozen Balance</span>
+                                            </div>
+                                            <div class="info-ammount">
+                                                <span>₱ <?php echo $balance['wallet_frozen_balance']; }?></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- body -->
+                        <div class="grid-item">
+                            <div class="body">
+                                <div class="tab">
+                                    <ul class="tab-list">
+                                        <li  class="active"><span onclick="location.href='user_wallet.php'">Deposit</span></li>
+                                        <li><span href="javascirpt:void(0);" >Withdraw</span></li>
+                                        <li><span onclick="location.href='user_transaction.php'">Transaction</span></li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="user-wallet">
+                                    <table class=list-tab width="100%">
+                                         <thead>
+                                            <tr>
+                                                <th>Transaction ID</th>
+                                                <th>Type</th>
+                                                <th>Changes</th>
+                                                <th>Date Created</th>
+                                            </tr>
+                                        </thead>
+                                        <?php	$get_transaction_history = get_transaction_history($_SESSION['user_session']); foreach($get_transaction_history as $transaction_history){?>
+                                            
+                                        <tbody>
+                                            <tr>
+                                                <td><?php echo '<span>'.$transaction_history['transaction_id'].' </span>'; ?></td>
+                                                <?php   if($transaction_history['order_id']==1){
+                                                            echo '<td><span>Sale</span></td>';}
+                                                        else if($transaction_history['order_id']==2){
+                                                            echo '<td><span>Buy</span></td>';}
+                                                        else if($transaction_history['order_id']==3){
+                                                            echo '<td><span>Bargain</span></td>';}
 
-                            <div class="title-header">
-                                <ul>
-                                    <li>Transaction ID</li>
-                                    <li>Type</li>
-                                    <li>Changes</li>
-                                    <li>Date Created</li>
-                                </ul>
-                                <table class=list-tab width="100%">
-                                <?php	$get_transaction_history = get_transaction_history($_SESSION['user_session']); foreach($get_transaction_history as $transaction_history){?>
-                                         
-                                    <tbody>
-                                        <tr>
-                                            <td><?php echo '<h4>'.$transaction_history['transaction_id'].' </h4>'; ?></td>
-                                            <?php   if($transaction_history['order_id']==1){
-                                                        echo '<td><h4>Sale</h4></td>';}
-                                                    else if($transaction_history['order_id']==2){
-                                                        echo '<td><h4>Buy</h4></td>';}
-                                                    else if($transaction_history['order_id']==3){
-                                                        echo '<td><h4>Bargain</h4></td>';}
-
-                                                    if($transaction_history['buyer_id']==$_SESSION['user_session']){
-                                                        echo '<td><h4 style="color:red">- '.number_format($transaction_history['transaction_amount'] * $transaction_history['transaction_quantity'],2).' </h4></td>';}
-                                                    else if($transaction_history['seller_id']==$_SESSION['user_session']){
-                                                        echo '<td><h4 style="color:green">+ '.number_format($transaction_history['transaction_amount'] * $transaction_history['transaction_quantity'],2).' </h4></td>';
-                                                    } 
-                                                       
-                                            ?>
-
-                                           
-                                            <td><?php echo '<h4>'.$transaction_history['transaction_date'].' </h4>';?></td>
-                                        </tr>
-                                               
-                                    </tbody>
-                                    <?php } ?>
-                                </table>
+                                                        if($transaction_history['buyer_id']==$_SESSION['user_session']){
+                                                            echo '<td><span style="color:red">- '.number_format($transaction_history['transaction_amount'] * $transaction_history['transaction_quantity'],2).' </span></td>';}
+                                                        else if($transaction_history['seller_id']==$_SESSION['user_session']){
+                                                            echo '<td><span style="color:green">+ '.number_format($transaction_history['transaction_amount'] * $transaction_history['transaction_quantity'],2).' </span></td>';
+                                                        } 
+                                                ?>
+                                                <td><?php echo '<span>'.$transaction_history['transaction_date'].' </span>';?></td>
+                                            </tr>
+                                        </tbody>
+                                        <?php } ?>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
