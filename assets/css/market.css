@@ -43,6 +43,25 @@
     border-radius: 5px;
 }
 
+.market_section .market_wrapper .mainbar .market_item--wrapper .market_item--container .items_wrapper .table tbody tr td button {
+   padding: 5px;
+   font-size: 14px;
+   background-color: transparent;
+   border:1px solid var(--visual-blue-color);
+   color: var(--visual-blue-color);
+   margin: 1px;
+}
+
+.market_section .market_wrapper .mainbar .market_item--wrapper .market_item--container .items_wrapper .table tbody tr td button:hover {
+   padding: 5px;
+   font-size: 14px;
+   background-color: var(--visual-blue-color);
+   border:1px solid var(--visual-blue-color);
+   color: var(--white-color);
+   margin: 1px;
+
+}
+
 .market_section .market_wrapper .mainbar .market_item--wrapper .market_item--container .title {
     font-size: 24px;
     color: var(--white-color);
