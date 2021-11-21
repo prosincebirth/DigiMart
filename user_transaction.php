@@ -71,9 +71,9 @@
                             <div class="body">
                                 <div class="tab">
                                     <ul class="tab-list">
-                                        <li  class="active"><span onclick="location.href='user_wallet.php'">Deposit</span></li>
+                                        <li><span onclick="location.href='user_wallet.php'">Deposit</span></li>
                                         <li><span href="javascirpt:void(0);" >Withdraw</span></li>
-                                        <li><span onclick="location.href='user_transaction.php'">Transaction</span></li>
+                                        <li class="active"><span onclick="location.href='user_transaction.php'">Transaction</span></li>
                                     </ul>
                                 </div>
                                 

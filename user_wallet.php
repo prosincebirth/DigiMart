@@ -23,7 +23,7 @@
                         <div class="menu">
                             <ul>
                                 <li href="javascript:void(0);" class="active"><span ><i class="fas fa-wallet"></i>My wallet</span></li>
-                                <li><span onclick="location.href='user_account.php'" ><i class="fas fa-cog"></i>Account</span></li>
+                                <li onclick="location.href='user_account.php'"><span  ><i class="fas fa-cog"></i>Account</span></li>
                                 <li onclick="location.href='user_messages.php'"><span ><i class="fas fa-envelope"></i>Messages</span></li>
                                 <!-- <li href="javascript:void(0);"><span ><i class="fas fa-comment-dots"></i>Support</span></li> -->
                             </ul>
@@ -71,8 +71,8 @@
                         <div class="grid-item">
                             <div class="body">
                                 <div class="tab">
-                                    <ul class="tab-list">
-                                        <li  class="active"><span href="javascirpt:void(0);">Deposit</span></li>
+                                    <ul>
+                                        <li href="javascirpt:void(0);" class="active"><span >Deposit</span></li>
                                         <li><span href="javascirpt:void(0);" >Withdraw</span></li>
                                         <li><span onclick="location.href='user_transaction.php'">Transaction</span></li>
                                     </ul>
