@@ -314,8 +314,8 @@
 								else if($buyer_id_g == $seller_id_g){ // cannot buy your own game 
 									echo 'You cannot bargain your game ';
 								}
-								else if($item_quantity_g == 0 && $bargain_price_g == 0){ // cannot buy your own game 
-									echo 'You cannot bargain your game ';
+								else if(!is_numeric($item_quantity_g)==0 && !is_numeric($bargain_price_g)==0){ // cannot buy your own game 
+									echo 'Incorrect Input';
 								}
 								else if($item_quantity_g > $item_stock_g){ // cannot exceed stock
 									echo 'Exceed Quantity';
