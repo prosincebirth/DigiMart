@@ -1,5 +1,6 @@
 
 <?php include_once('head.php');  ?>
+<?php if(!isset($_SESSION)){if($_SESSION['user_status']==2){header("Location: admin/index.php"); exit();}} ?>
 <?php include_once('header.php'); ?>
 
 <main>

@@ -453,23 +453,35 @@
 
 	function display_buy_orders_admin(){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
-		$sql="SELECT  * from game_items a join goods b join game_services c join games d join users e where a.goods_id=b.goods_id and a.order_id=2 and a.game_id=d.game_id and a.service_id = c.service_id and a.user_id=e.user_id and a.item_status != 0 ORDER BY a.item_status ASC";
+		$sql="SELECT  * from game_items a join goods b join game_services c join games d join users e where a.goods_id=b.goods_id and a.order_id=2 and a.game_id=d.game_id and a.service_id = c.service_id and a.user_id=e.user_id and a.item_status != 0 ORDER BY a.item_id ASC";
 		$result = $conn->query($sql);
 		return $result;}
 
 	function display_sale_orders_admin(){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
-		$sql="SELECT  * from game_items a join goods b join game_services c join games d join users e where a.goods_id=b.goods_id and a.order_id=1 and a.game_id=d.game_id and a.service_id = c.service_id and a.user_id=e.user_id and a.item_status != 0 ORDER BY a.item_status ASC";
+		$sql="SELECT  * from game_items a join goods b join game_services c join games d join users e where a.goods_id=b.goods_id and a.order_id=1 and a.game_id=d.game_id and a.service_id = c.service_id and a.user_id=e.user_id and a.item_status != 0 ORDER BY a.item_id ASC";
 		$result = $conn->query($sql);
 		return $result;}
 
 	function display_users_admin(){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
-		$sql="SELECT  * from users where user_status !=2";
+		$sql="SELECT  * from users where user_status !=2 order by user_id";
 		$result = $conn->query($sql);
 		return $result;}	
 
 	
+	function display_sales_records_admin(){// USED IN GAME SERVICES , POST SALE
+		$conn=connection2();
+		$sql="SELECT *,(select user_username from users where user_id=a.seller_id ) as seller_name,(select user_username from users where user_id=a.buyer_id ) as buyer_name from transactions a join game_items b join goods c join games d join game_services e join orders f
+		where a.item_id = b.item_id AND
+        b.goods_id = c.goods_id AND 
+        a.game_id=d.game_id and 
+        a.service_id=e.service_id and
+		a.order_id = f.order_id and a.transaction_status=0
+        ORDER BY a.transaction_id ASC";
+		$result = $conn->query($sql);
+		return $result;}
+		
 	function display_transaction_records_admin(){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
 		$sql="SELECT *,(select user_username from users where user_id=a.seller_id ) as seller_name,(select user_username from users where user_id=a.buyer_id ) as buyer_name from transactions a join game_items b join goods c join games d join game_services e join orders f
@@ -477,10 +489,11 @@
         b.goods_id = c.goods_id AND 
         a.game_id=d.game_id and 
         a.service_id=e.service_id and
-		a.order_id = f.order_id
-        ORDER BY a.transaction_date DESC";
+		a.order_id = f.order_id 
+        ORDER BY a.transaction_id ASC";
 		$result = $conn->query($sql);
-		return $result;}	
+		return $result;}
+		
 
 	function display_buy_order_records($user_id,$game_id){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
@@ -686,6 +699,15 @@
 		$query="SELECT * from game_items where item_id=:item_id and user_id=:user_id";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":item_id"=>$item_id,":user_id"=>$user_id));
+		$res = $prepare->fetch(PDO::FETCH_ASSOC);
+		$conn=null;
+		return $res;}
+
+	function get_game_item_information_notification($item_id){
+		$conn=connection();
+		$query="SELECT * from goods a join game_items b where item_id=:item_id and a.goods_id=b.goods_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":item_id"=>$item_id));
 		$res = $prepare->fetch(PDO::FETCH_ASSOC);
 		$conn=null;
 		return $res;}

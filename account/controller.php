@@ -240,7 +240,7 @@
 										echo 'Empty Fields'; // Wrong input , Empty input
 										}
 								break;
-					case "buy_game_item":
+					case "buy_game_item"://NOTIFICATION DONE 
 								$item_quantity_f=$_POST['item_quantity_f'];
 								$item_total_f=$_POST['item_total_f'];
 								$item_id_f=$_POST['item_id_f'];
@@ -267,8 +267,11 @@
 											update_sale_order_item_quantity_out_of_stock($item_id_f);
 											add_transaction($item_quantity_f,$item_total_f,$item_id_f,$buyer_id_f,$seller_id_f,$service_id_f,$game_id_f,$order_id_f);
 											update_frozen_balance($buyer_id_f,$item_total_f);
-											add_notification("A buyer has purchased your sale order",$seller_id_f);
-												echo 'Success';
+											if($notification_f=get_game_item_information_notification($item_id_f)){
+												add_notification('A buyer has purchased your item "'.$notification_f['goods_name'].'" x'.$item_quantity_f.' , <a href="sale_order.php">go to Sales</a>',$seller_id_f);
+												add_notification('You purchased "'.$notification_f['goods_name'].'" x'.$item_quantity_f.' , <a href="buy_order.php">go to Buy Order</a>',$buyer_id_f);
+												echo 'Success';}	
+											
 										}else{ 
 												echo 'Insufficient Balance'; 
 										}
@@ -277,11 +280,13 @@
 								else{
 									if($balance_f=get_wallet_balance($buyer_id_f)){
 										if($balance_f['wallet_balance'] >= $item_total_f){
-											update_sale_order_item_quantity($item_id_f,$item_quantity_f);
-											add_transaction($item_quantity_f,$item_total_f,$item_id_f,$buyer_id_f,$seller_id_f,$service_id_f,$game_id_f,$order_id_f);
-											update_frozen_balance($buyer_id_f,$item_total_f);
-												echo 'Success'; // success not buying his own posting
-												add_notification("A buyer has purchased your sale order",$seller_id_f);	
+												update_sale_order_item_quantity($item_id_f,$item_quantity_f);
+												add_transaction($item_quantity_f,$item_total_f,$item_id_f,$buyer_id_f,$seller_id_f,$service_id_f,$game_id_f,$order_id_f);
+												update_frozen_balance($buyer_id_f,$item_total_f);
+												if($notification_f=get_game_item_information_notification($item_id_f)){
+													add_notification('A buyer has purchased your item "'.$notification_f['goods_name'].'" x'.$item_quantity_f.' , <a href="sale_order.php">go to Sales</a>',$seller_id_f);
+													add_notification('You purchased "'.$notification_f['goods_name'].'" x'.$item_quantity_f.' , <a href="buy_order.php">go to Buy Order</a>',$buyer_id_f);
+													echo 'Success';}	
 										}else{ 
 												echo 'Insufficient Balance'; 
 											}
@@ -309,6 +314,9 @@
 								else if($buyer_id_g == $seller_id_g){ // cannot buy your own game 
 									echo 'You cannot bargain your game ';
 								}
+								else if($item_quantity_g == 0 && $bargain_price_g == 0){ // cannot buy your own game 
+									echo 'You cannot bargain your game ';
+								}
 								else if($item_quantity_g > $item_stock_g){ // cannot exceed stock
 									echo 'Exceed Quantity';
 								}
@@ -324,8 +332,11 @@
 												update_sale_order_item_quantity_out_of_stock($item_id_g);
 												add_transaction($item_quantity_g,$item_total_g,$item_id_g,$buyer_id_g,$seller_id_g,$service_id_g,$game_id_g,$order_id_g);
 												update_frozen_balance($buyer_id_g,$item_total_g);
-												add_notification("A buyer has bargained your sale order",$seller_id_g);
-												echo 'Success';
+												//A buyer has bargained ₱ 320 for Fractal Horns of Inner Abysm, please Go to view.
+												if($notification_g=get_game_item_information_notification($item_id_g)){
+													add_notification('A buyer has bargained your item ₱ '.$bargain_price_g.' for "'.$notification_g['goods_name'].'" x'.$item_quantity_g.' , <a href="sale_order.php">go to Sales</a>',$seller_id_g);
+													add_notification('You bargained "'.$notification_g['goods_name'].'" x'.$item_quantity_f.' for ₱ '.$bargain_price_g.', <a href="bargain_order.php">go to Buy Order</a>',$buyer_id_g);
+													echo 'Success';}	
 										}else{
 												echo 'Insufficient Balance'; 
 										}
@@ -337,8 +348,10 @@
 											update_sale_order_item_quantity($item_id_g,$item_quantity_g);
 											add_transaction($item_quantity_g,$item_total_g,$item_id_g,$buyer_id_g,$seller_id_g,$service_id_g,$game_id_g,$order_id_g);
 											update_frozen_balance($buyer_id_g,$item_total_g);
-											add_notification("A buyer has bargained your sale order",$seller_id_g);
-											echo 'Success';
+											if($notification_g=get_game_item_information_notification($item_id_g)){
+												add_notification('A buyer has bargained your item ₱ '.$bargain_price_g.' for "'.$notification_g['goods_name'].'" x'.$item_quantity_g.' , <a href="sale_order.php">go to Sales</a>',$seller_id_g);
+												add_notification('You bargained "'.$notification_g['goods_name'].'" x'.$item_quantity_g.' for ₱ '.$bargain_price_g.', <a href="bargain_order.php">go to Buy Order</a>',$buyer_id_g);
+												echo 'Success';}
 										}else{ 
 											echo 'Insufficient Balance'; 
 										}			

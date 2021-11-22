@@ -46,6 +46,7 @@
       <a class="collapse-item" href="users-list.php">Users</a>
       <a class="collapse-item" href="buy_order.php">Buy Order</a>
       <a class="collapse-item" href="sale_order.php">Sale Order</a>
+      <a class="collapse-item" href="transaction.php">Transaction</a>
     </div>
   </div>
 </li>
