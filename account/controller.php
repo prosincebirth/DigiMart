@@ -500,7 +500,7 @@
 							echo 'Success'; // success not buying his own posting
 						} 
 							break;
-					case "cancel_sale_order_modal":		
+					case "cancel_sale_order_modal"://NOTIFICATION DONE			
 							$item_id_n=$_POST['item_id_n'];
 							$user_id_n=$_POST['user_id_n'];
 							
@@ -587,6 +587,9 @@
 							else if($result_q=get_bargain_order_transaction_details($transaction_id_q,$user_id_q)){
 								cancel_bargain_order($transaction_id_q,$user_id_q);
 								update_wallet_balance($user_id_q,$result_q['transaction_amount'] * $result_q['transaction_quantity']);
+								if($notification_q=get_transaction_notification_seller($transaction_id_q,$user_id_q)){
+									add_notification('Seller has declined for "'.$notification_q['goods_name'].'" x'.$notification_q['transaction_quantity'].', <a href="buy_order_record_record.php">go to Buy Order</a>',$notification_q['buyer_id']);
+									echo 'Success';}
 								echo 'Success'; 															
 								}
 						break;

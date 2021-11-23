@@ -1,3 +1,4 @@
+<?php $search=""; if(isset($_POST["search_item_query"])){$search = trim($_POST['search_item']);}?>
 <?php include('head.php'); ?>
 <?php if($_SESSION['user_status']!=1){header("Location: index.php"); exit();} ?>
 <?php include('header.php'); ?>
@@ -20,10 +21,11 @@
                     <form method='post' action="" enctype="multipart/form-data" class="form-search">
                         <ul class="market_tab--list">
                             <li><input type="text" name="search_item" id="search_item" value="" class="form-control" placeholder="search..."></li>
-                            <li><button type="submit" name="search_item1"> <i class="fas fa-search">Search</i> </button></form></li>
+                            <li><button type="submit" name="search_item_query"> <i class="fas fa-search">Search</i> </button></form></li>
                         </ul>   
                         </form>
                     </div>
+
                     <div class="market_item--container">
                         <div class="items_wrapper">
                             <div class="table">
@@ -40,7 +42,7 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <?php	$result = display_buy_orders($_SESSION['user_session'],1);
+                                <?php	$result = display_buy_orders($_SESSION['user_session'],1,$search);
 										if($result->num_rows > 0){
 										while ($res = $result->fetch_assoc()){?>      
 							<tbody>

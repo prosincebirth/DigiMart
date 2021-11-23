@@ -414,18 +414,18 @@
 		$result = $conn->query($sql);
 		return $result;}
 
-	function display_bargain_orders_records($user_id,$game_id){// USED IN GAME SERVICES , POST SALE
+	function display_bargain_orders_records($user_id,$game_id,$search){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
 		$sql="SELECT *,(select user_username from users where user_id=a.seller_id ) as seller_name,(select order_id from orders where order_id=a.order_id ) as transaction_order_id from transactions a join game_items b join goods c 
-		where a.item_id=b.item_id and b.goods_id = c.goods_id and a.buyer_id=$user_id and a.seller_id != $user_id and a.game_id=$game_id and a.order_id = 3 and 
+		where c.goods_name LIKE '%".$search."%' and a.item_id=b.item_id and b.goods_id = c.goods_id and a.buyer_id=$user_id and a.seller_id != $user_id and a.game_id=$game_id and a.order_id = 3 and 
 		a.transaction_status!=1 and a.transaction_status!=3 and a.transaction_status!=4 ORDER BY a.transaction_date desc";			
 		$result = $conn->query($sql);
 		return $result;}
 	
-	function display_buy_orders($user_id,$game_id){// USED IN GAME SERVICES , POST SALE
+	function display_buy_orders($user_id,$game_id,$search){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
 		$sql="SELECT *,(select user_username from users where user_id=a.seller_id ) as seller_name,(select order_id from orders where order_id=a.order_id ) as transaction_order_id from transactions a join game_items b join goods c 
-		where a.item_id = b.item_id AND b.goods_id = c.goods_id AND a.buyer_id = $user_id AND a.seller_id != $user_id  AND a.game_id=$game_id and a.order_id != 3 and 
+		where c.goods_name LIKE '%".$search."%' and a.item_id = b.item_id AND b.goods_id = c.goods_id AND a.buyer_id = $user_id AND a.seller_id != $user_id  AND a.game_id=$game_id and a.order_id != 3 and 
 		a.transaction_status!=0 AND a.transaction_status!=2 AND a.transaction_status!=5 AND
 		a.transaction_status!=6 AND a.transaction_status!=7 AND a.transaction_status!=8 AND
 		a.transaction_status!=10 AND a.transaction_status!=11 AND a.transaction_status!=12
@@ -433,10 +433,10 @@
 		$result = $conn->query($sql);
 		return $result;}
 	
-	function display_bargain_orders($user_id,$game_id){// USED IN GAME SERVICES , POST SALE
+	function display_bargain_orders($user_id,$game_id,$search){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
 		$sql="SELECT *,(select user_username from users where user_id=a.seller_id ) as seller_name,(select order_id from orders where order_id=a.order_id ) as transaction_order_id from transactions a join game_items b join goods c 
-		where a.item_id = b.item_id AND b.goods_id = c.goods_id AND a.buyer_id = $user_id AND a.seller_id != $user_id  AND a.game_id=$game_id and a.order_id = 3 and 
+		where c.goods_name LIKE '%".$search."%' and a.item_id = b.item_id AND b.goods_id = c.goods_id AND a.buyer_id = $user_id AND a.seller_id != $user_id  AND a.game_id=$game_id and a.order_id = 3 and 
 		a.transaction_status!=0 AND a.transaction_status!=2 AND a.transaction_status!=5 AND
 		a.transaction_status!=6 AND a.transaction_status!=7 AND a.transaction_status!=8 AND
 		a.transaction_status!=10 AND a.transaction_status!=11 AND a.transaction_status!=12
@@ -445,9 +445,9 @@
 		return $result;}
 		
 		
-	function display_mybuy_orders($user_id,$game_id){ //MY_BUYORDER.PHP
+	function display_mybuy_orders($user_id,$game_id,$search){ //MY_BUYORDER.PHP
 		$conn=connection2();
-		$sql="SELECT  * from game_items a join goods b where a.goods_id=b.goods_id and a.user_id=$user_id and a.order_id=2 and a.game_id=$game_id and a.item_status!=0 ORDER BY a.item_status ASC";
+		$sql="SELECT  * from game_items a join goods b where b.goods_name LIKE '%".$search."%' and a.goods_id=b.goods_id and a.user_id=$user_id and a.order_id=2 and a.game_id=$game_id and a.item_status!=0 ORDER BY a.item_status ASC";
 		$result = $conn->query($sql);
 		return $result;}
 
@@ -495,10 +495,10 @@
 		return $result;}
 		
 
-	function display_buy_order_records($user_id,$game_id){// USED IN GAME SERVICES , POST SALE
+	function display_buy_order_records($user_id,$game_id,$search){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
 		$sql="SELECT *,(select user_username from users where user_id=a.seller_id ) as seller_name,(select order_id from orders where order_id=a.order_id ) as transaction_order_id from transactions a join game_items b join goods c 
-		where a.item_id=b.item_id and b.goods_id = c.goods_id and a.buyer_id=$user_id and a.seller_id != $user_id and a.game_id=$game_id and a.order_id != 3 and 
+		where c.goods_name LIKE '%".$search."%' and a.item_id=b.item_id and b.goods_id = c.goods_id and a.buyer_id=$user_id and a.seller_id != $user_id and a.game_id=$game_id and a.order_id != 3 and 
 		a.transaction_status!=1 and a.transaction_status!=3 and a.transaction_status!=4 ORDER BY a.transaction_date desc";		
 		$result = $conn->query($sql);
 		return $result;}		
@@ -579,15 +579,15 @@
 		return $result;}		
 		
 
-	function display_items_sale(){//global-market.php
+	function display_items_sale($search){//global-market.php
 		$conn=connection2();
-		$sql="SELECT *,count(b.item_id) as mycount from goods a inner JOIN game_items b where b.goods_id=a.goods_id and b.order_id=1 and b.item_status=1 group by a.goods_id";
+		$sql="SELECT *,count(b.item_id) as mycount from goods a inner JOIN game_items b where a.goods_name LIKE '%".$search."%' and b.goods_id=a.goods_id and b.order_id=1 and b.item_status=1 group by a.goods_id";
 		$result = $conn->query($sql);
 		return $result;}
 
-	function display_items_buy(){//global-market.php
+	function display_items_buy($search){//global-market.php
 		$conn=connection2();
-		$sql="SELECT *,count(b.item_id) as mycount from goods a inner JOIN game_items b where b.goods_id=a.goods_id and b.order_id=2 and b.item_status=1 group by a.goods_id";
+		$sql="SELECT *,count(b.item_id) as mycount from goods a inner JOIN game_items b where a.goods_name LIKE '%".$search."%' and b.goods_id=a.goods_id and b.order_id=2 and b.item_status=1 group by a.goods_id";
 		$result = $conn->query($sql);
 		return $result;}
 
