@@ -258,6 +258,9 @@
 								else if($buyer_id_f == $seller_id_f){ // cannot buy your own game 
 									echo 'You cannot buy your game';
 								}
+								else if(!is_numeric($item_quantity_f) or $item_quantity_f==0){ // cannot buy your own game 
+									echo 'Incorrect Input';
+								}
 								else if($item_quantity_f > $item_stock_f){ // cannot exceed stock
 									echo 'Exceed Quantity';
 								}
@@ -268,7 +271,7 @@
 											add_transaction($item_quantity_f,$item_total_f,$item_id_f,$buyer_id_f,$seller_id_f,$service_id_f,$game_id_f,$order_id_f);
 											update_frozen_balance($buyer_id_f,$item_total_f);
 											if($notification_f=get_game_item_information_notification($item_id_f)){
-												add_notification('A buyer has purchased your item "'.$notification_f['goods_name'].'" x'.$item_quantity_f.' , <a href="sale_order.php">go to Sales</a>',$seller_id_f);
+												add_notification('A buyer has purchased "'.$notification_f['goods_name'].'" x'.$item_quantity_f.' , <a href="sale_order.php">go to Sales</a>',$seller_id_f);
 												add_notification('You purchased "'.$notification_f['goods_name'].'" x'.$item_quantity_f.' , <a href="buy_order.php">go to Buy Order</a>',$buyer_id_f);
 												echo 'Success';}	
 											
@@ -293,7 +296,7 @@
 									}
 								} 
 								break;		
-					case "bargain_game_item":		
+					case "bargain_game_item"://NOTIFICATION DONE
 								$minimum_g=$_POST['minimum_g'];
 								$bargain_price_g=$_POST['bargain_price_g'];
 								$item_price_g=$_POST['item_price_g'];
@@ -314,7 +317,7 @@
 								else if($buyer_id_g == $seller_id_g){ // cannot buy your own game 
 									echo 'You cannot bargain your game ';
 								}
-								else if(!is_numeric($item_quantity_g)==0 && !is_numeric($bargain_price_g)==0){ // cannot buy your own game 
+								else if(!is_numeric($item_quantity_g) or !is_numeric($bargain_price_g) or $item_quantity_g==0 or $bargain_price_g==0){ // cannot buy your own game 
 									echo 'Incorrect Input';
 								}
 								else if($item_quantity_g > $item_stock_g){ // cannot exceed stock
@@ -334,7 +337,7 @@
 												update_frozen_balance($buyer_id_g,$item_total_g);
 												//A buyer has bargained ₱ 320 for Fractal Horns of Inner Abysm, please Go to view.
 												if($notification_g=get_game_item_information_notification($item_id_g)){
-													add_notification('A buyer has bargained your item ₱ '.$bargain_price_g.' for "'.$notification_g['goods_name'].'" x'.$item_quantity_g.' , <a href="sale_order.php">go to Sales</a>',$seller_id_g);
+													add_notification('A buyer has bargained ₱ '.$bargain_price_g.' for "'.$notification_g['goods_name'].'" x'.$item_quantity_g.' , <a href="sale_order.php">go to Sales</a>',$seller_id_g);
 													add_notification('You bargained "'.$notification_g['goods_name'].'" x'.$item_quantity_f.' for ₱ '.$bargain_price_g.', <a href="bargain_order.php">go to Buy Order</a>',$buyer_id_g);
 													echo 'Success';}	
 										}else{
@@ -349,7 +352,7 @@
 											add_transaction($item_quantity_g,$item_total_g,$item_id_g,$buyer_id_g,$seller_id_g,$service_id_g,$game_id_g,$order_id_g);
 											update_frozen_balance($buyer_id_g,$item_total_g);
 											if($notification_g=get_game_item_information_notification($item_id_g)){
-												add_notification('A buyer has bargained your item ₱ '.$bargain_price_g.' for "'.$notification_g['goods_name'].'" x'.$item_quantity_g.' , <a href="sale_order.php">go to Sales</a>',$seller_id_g);
+												add_notification('A buyer has bargained ₱ '.$bargain_price_g.' for "'.$notification_g['goods_name'].'" x'.$item_quantity_g.' , <a href="sale_order.php">go to Sales</a>',$seller_id_g);
 												add_notification('You bargained "'.$notification_g['goods_name'].'" x'.$item_quantity_g.' for ₱ '.$bargain_price_g.', <a href="bargain_order.php">go to Buy Order</a>',$buyer_id_g);
 												echo 'Success';}
 										}else{ 
@@ -358,7 +361,7 @@
 									}
 								} 
 								break;
-					case "supply_item_modal":		
+					case "supply_item_modal"://NOTIFICATION DONE	
 
 								$item_price_h=$_POST['item_price_h'];
 								$item_stock_h=$_POST['item_stock_h'];
@@ -377,19 +380,26 @@
 								else if($buyer_id_h == $seller_id_h){ // cannot buy your own game 
 									echo 'You cannot supply your own post ';
 								}
+								else if(!is_numeric($item_quantity_h) or $item_quantity_h==0){
+									echo 'Incorrect Input';
+								}
 								else if($item_quantity_h > $item_stock_h){ // cannot exceed stock
 									echo 'Exceed Quantity';
 								}						
 								else if($item_quantity_h == $item_stock_h){
 									update_buy_order_item_quantity_out_of_stock($item_id_h);
 									add_transaction($item_quantity_h,$item_total_h,$item_id_h,$buyer_id_h,$seller_id_h,$service_id_h,$game_id_h,$order_id_h);
-									add_notification("A seller has supplied your buy order",$seller_id_h);
-									echo 'Success'; // success not buying his own posting
+									if($notification_h=get_game_item_information_notification($item_id_h)){
+										add_notification('A seller has supplied "'.$notification_h['goods_name'].'" x'.$item_quantity_h.' , <a href="sale_order.php">go to Sales</a>',$buyer_id_h);
+										add_notification('You supplied "'.$notification_h['goods_name'].'" x'.$item_quantity_h.', <a href="bargain_order.php">go to Buy Order</a>',$seller_id_h);
+										echo 'Success';}
 								}else{
 									update_buy_order_item_quantity($item_id_h,$item_quantity_h);
 									add_transaction($item_quantity_h,$item_total_h,$item_id_h,$buyer_id_h,$seller_id_h,$service_id_h,$game_id_h,$order_id_h);
-									add_notification("A seller has supplied your buy order",$seller_id_h);
-									echo 'Success'; 
+									if($notification_h=get_game_item_information_notification($item_id_h)){
+										add_notification('A seller has supplied "'.$notification_h['goods_name'].'" x'.$item_quantity_h.' , <a href="sale_order.php">go to Sales</a>',$buyer_id_h);
+										add_notification('You supplied "'.$notification_h['goods_name'].'" x'.$item_quantity_h.', <a href="bargain_order.php">go to Buy Order</a>',$seller_id_h);
+										echo 'Success';}
 								}
 								break;							
 					
