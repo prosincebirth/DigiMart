@@ -377,8 +377,8 @@
 		<h4 class="modal-title"><center>PLACE BUY ORDER</h4>
 		</div>
 		<div class="modal-body">		
-				<div class="fld_input"><label> Price </label><input type="number" name="item_price_e"  id="item_price_e" class="form-control"></div>
-				<div class="fld_input"><label> Quantity </label><input type="number" name="items_quantity_e"  id="items_quantity_e" class="form-control"></div>
+				<div class="fld_input"><label> Price </label><input type="number" name="item_price_e"  id="item_price_e" value="1" class="form-control"></div>
+				<div class="fld_input"><label> Quantity </label><input type="number" name="items_quantity_e"  id="items_quantity_e" value ="1" class="form-control"></div>
                 <div class="fld_input"><input type="hidden" name="goods_id_e" placeholder="GOODS ID" id="goods_id_e" class="form-control"></div>
 				<div class="fld_input"><select name="service_id_e" id="service_id_e" class="form-control">	
 				<option value="" disabled selected>Service Mode</option>

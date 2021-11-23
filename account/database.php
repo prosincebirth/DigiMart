@@ -711,6 +711,24 @@
 		$res = $prepare->fetch(PDO::FETCH_ASSOC);
 		$conn=null;
 		return $res;}
+		
+	function get_transaction_notification_buyer($transaction_id,$user_id){ // BUY ORDER
+		$conn=connection();
+		$query="SELECT * from transactions a join goods b join game_items c where b.goods_id=c.goods_id and a.item_id=c.item_id and transaction_id=:transaction_id and buyer_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id,":user_id"=>$user_id));
+		$res = $prepare->fetch(PDO::FETCH_ASSOC);
+		$conn=null;
+		return $res;}
+	
+	function get_transaction_notification_seller($transaction_id,$user_id){ // BUY ORDER
+		$conn=connection();
+		$query="SELECT * from transactions a join goods b join game_items c where b.goods_id=c.goods_id and a.item_id=c.item_id and transaction_id=:transaction_id and seller_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id,":user_id"=>$user_id));
+		$res = $prepare->fetch(PDO::FETCH_ASSOC);
+		$conn=null;
+		return $res;}
 
 
 ?>

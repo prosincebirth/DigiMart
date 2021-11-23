@@ -224,7 +224,8 @@
 										if($balance_e=get_wallet_balance($user_id_e)){
 										$total_e = $items_quantity_e * $item_price_e;
 										if($balance_e['wallet_balance'] >= $total_e){
-											if(existing_game_items($goods_id_e,$user_id_e)){
+											$row=existing_game_items($goods_id_e,$user_id_e);
+											if($row){
 												echo 'Item already posted';
 											}else{
 												add_new_game_item($item_price_e,$items_quantity_e,$goods_id_e,$user_id_e,$service_id_e,'1','2');
@@ -390,20 +391,20 @@
 									update_buy_order_item_quantity_out_of_stock($item_id_h);
 									add_transaction($item_quantity_h,$item_total_h,$item_id_h,$buyer_id_h,$seller_id_h,$service_id_h,$game_id_h,$order_id_h);
 									if($notification_h=get_game_item_information_notification($item_id_h)){
-										add_notification('A seller has supplied "'.$notification_h['goods_name'].'" x'.$item_quantity_h.' , <a href="sale_order.php">go to Sales</a>',$buyer_id_h);
-										add_notification('You supplied "'.$notification_h['goods_name'].'" x'.$item_quantity_h.', <a href="bargain_order.php">go to Buy Order</a>',$seller_id_h);
+										add_notification('A seller has supplied "'.$notification_h['goods_name'].'" x'.$item_quantity_h.' , <a href="buy_order.php">go to Sales</a>',$buyer_id_h);
+										add_notification('You supplied "'.$notification_h['goods_name'].'" x'.$item_quantity_h.', <a href="sale_order.php">go to Buy Order</a>',$seller_id_h);
 										echo 'Success';}
 								}else{
 									update_buy_order_item_quantity($item_id_h,$item_quantity_h);
 									add_transaction($item_quantity_h,$item_total_h,$item_id_h,$buyer_id_h,$seller_id_h,$service_id_h,$game_id_h,$order_id_h);
 									if($notification_h=get_game_item_information_notification($item_id_h)){
-										add_notification('A seller has supplied "'.$notification_h['goods_name'].'" x'.$item_quantity_h.' , <a href="sale_order.php">go to Sales</a>',$buyer_id_h);
-										add_notification('You supplied "'.$notification_h['goods_name'].'" x'.$item_quantity_h.', <a href="bargain_order.php">go to Buy Order</a>',$seller_id_h);
+										add_notification('A seller has supplied "'.$notification_h['goods_name'].'" x'.$item_quantity_h.' , <a href="buy_order.php">go to Sales</a>',$buyer_id_h);
+										add_notification('You supplied "'.$notification_h['goods_name'].'" x'.$item_quantity_h.', <a href="sale_order.php">go to Buy Order</a>',$seller_id_h);
 										echo 'Success';}
 								}
 								break;							
 					
-					case "cancel_buy_order_modal":		
+					case "cancel_buy_order_modal"://NOTIFICATION DONE	
 								$item_id_i=$_POST['item_id_i'];
 								$user_id_i=$_POST['user_id_i'];
 								
@@ -413,11 +414,12 @@
 								else if($result_i=get_game_item_information($item_id_i,$user_id_i)){
 										cancel_buy_order($item_id_i,$user_id_i);
 										update_wallet_balance($user_id_i,$result_i['item_price'] * $result_i['item_quantity']);
-										
-										echo 'Success'; 															
+										if($notification_i=get_game_item_information_notification($item_id_i)){
+										add_notification('You canceled the buy order for "'.$notification_i['goods_name'].'" x'.$notification_i['item_quantity'].', <a href="my_buyorder.php">go to Buy Order</a>',$user_id_i);
+										echo 'Success';}									
 									}
 								break;
-					case "accept_buy_order_modal":		
+					case "accept_buy_order_modal"://NOTIFICATION DONE
 
 								$transaction_id_j=$_POST['transaction_id_j'];
 								$user_id_j=$_POST['user_id_j'];
@@ -427,12 +429,14 @@
 								}						
 								else{
 									accept_buy_order($transaction_id_j,$user_id_j);
-									
-									echo 'Success'; // success not buying his own posting
+									if($notification_j=get_transaction_notification_buyer($transaction_id_j,$user_id_j)){
+										add_notification('Buyer has accepted for "'.$notification_j['goods_name'].'" x'.$notification_j['transaction_quantity'].', <a href="sale_order.php">go to Sale Order</a>',$notification_j['seller_id']);
+										echo 'Success';}
+		
 								} 
 							break;				
 								
-					case "refuse_buy_order_modal":		
+					case "refuse_buy_order_modal"://NOTIFICATION DONE
 
 						$transaction_id_k=$_POST['transaction_id_k'];
 						$user_id_k=$_POST['user_id_k'];
@@ -447,15 +451,15 @@
 							//update_game_quantity_reject($result_k['item_id'],$result_k['transaction_quantity']);
 							update_transaction_buy_order($transaction_id_k);
 							update_wallet_balance($user_id_k,$result_k['transaction_quantity']*$result_k['transaction_amount']);
-							echo 'Success'; // success not buying his own posting
+							if($notification_k=get_transaction_notification_buyer($transaction_id_k,$user_id_k)){
+								add_notification('Buyer has declined for "'.$notification_k['goods_name'].'" x'.$notification_k['transaction_quantity'].', <a href="sale_order_record.php">go to Sale Order</a>',$notification_k['seller_id']);
+								echo 'Success';}
 						} 
 							break;
-					case "item_deliver_sale_order_modal":		
+					case "item_deliver_sale_order_modal"://NOTIFICATION DONE
 
 						$transaction_id_l=$_POST['transaction_id_l'];
 						$user_id_l=$_POST['user_id_l'];
-						if(isset($_FILES['transaction_proof'])){
-						$transaction_proof=file_get_contents($_FILES['transaction_proof']['tmp_name']);}
 						
 						if(empty($user_id_l)){ // trappings for not logged in
 							echo 'Please Login';
@@ -463,12 +467,20 @@
 						//else if(){ balance trappings , cannot buy because the balance is insufficient
 						//else if(){ email not verified trappings , cannot buy because the email is not verified
 						//}								
-						else{
-							update_item_delivery($transaction_id_l,$user_id_l,$transaction_proof);
-							echo 'Success'; // success not buying his own posting
-						} 
+						else if(isset($_FILES['transaction_proof'])){
+								$transaction_proof=file_get_contents($_FILES['transaction_proof']['tmp_name']);
+									if($notification_l=get_transaction_notification_seller($transaction_id_l,$user_id_l)){
+										add_notification('Seller has delivered "'.$notification_l['goods_name'].'" x'.$notification_l['transaction_quantity'].', <a href="buy_order.php">go to Buy Order</a>',$notification_l['buyer_id']);
+										update_item_delivery($transaction_id_l,$user_id_l,$transaction_proof);
+										echo 'Success';}
+						}else {
+								if($notification_l=get_transaction_notification_seller($transaction_id_l,$user_id_l)){
+								add_notification('Seller has delivered "'.$notification_l['goods_name'].'" x'.$notification_l['transaction_quantity'].', <a href="buy_order.php">go to Buy Order</a>',$notification_l['buyer_id']);
+								update_item_delivery($transaction_id_l,$user_id_l,null);
+								echo 'Success';}
+						}
 						break;
-					case "item_confirmation_buy_order_modal":		
+					case "item_confirmation_buy_order_modal"://NOTIFICATION DONE
 
 						$transaction_id_m=$_POST['transaction_id_m'];
 						$user_id_m=$_POST['user_id_m'];
@@ -495,12 +507,15 @@
 							if(empty($user_id_n)){ // trappings for not logged in
 								echo 'Please Login';
 							}						
-							else{
-								cancel_sale_order($item_id_n,$user_id_n);
-								echo 'Success'; 															
+							else{	
+								if($notification_n=get_game_item_information_notification($item_id_n)){
+									add_notification('You canceled the sale order for "'.$notification_n['goods_name'].'" x'.$notification_n['item_quantity'].', <a href="my_saleorder.php">go to Sale Order</a>',$user_id_n);
+									cancel_sale_order($item_id_n,$user_id_n);
+									echo 'Success';}														
 								}
 						break;
-					case "cancel_buy_order_modal_i":		
+					case "cancel_buy_order_modal_i"://NOTIFICATION DONE	
+							
 							$transaction_id_ii=$_POST['transaction_id_ii'];
 							$user_id_ii=$_POST['user_id_ii'];
 							
@@ -508,12 +523,14 @@
 								echo 'Please Login';
 							}						
 							else if($result_ii=get_bargain_order_transaction_details($transaction_id_ii,$user_id_ii)){
-								cancel_bargain_order($transaction_id_ii,$user_id_ii);
-								update_wallet_balance($user_id_ii,$result_ii['transaction_amount'] * $result_ii['transaction_quantity']);
-								echo 'Success'; 															
+									if($notification_ii=get_transaction_notification_buyer($transaction_id_ii,$user_id_ii)){
+										add_notification('Buyer has canceled "'.$notification_ii['goods_name'].'" x'.$notification_ii['transaction_quantity'].', <a href="sale_order_record.php">go to Sales Order</a>',$notification_ii['seller_id']);
+										cancel_bargain_order($transaction_id_ii,$user_id_ii);
+										update_wallet_balance($user_id_ii,$result_ii['transaction_amount'] * $result_ii['transaction_quantity']);
+										echo 'Success';}
 								}
 						break;
-					case "cancel_sale_order_modal_nn":		
+					case "cancel_sale_order_modal_nn"://NOTIFICATION DONE
 							$transaction_id_nn=$_POST['transaction_id_nn'];
 							$user_id_nn=$_POST['user_id_nn'];
 							
@@ -523,10 +540,12 @@
 							else if($result_nn=get_sale_order_transaction_details($transaction_id_nn,$user_id_nn)){
 								cancel_sale_order_nn($transaction_id_nn,$user_id_nn);
 								update_wallet_balance($result_nn['buyer_id'],$result_nn['transaction_amount'] * $result_nn['transaction_quantity']);
-								echo 'Success'; 															
+									if($notification_nn=get_transaction_notification_seller($transaction_id_nn,$user_id_nn)){
+										add_notification('Seller has canceled "'.$notification_nn['goods_name'].'" x'.$notification_nn['transaction_quantity'].', <a href="buy_order_record.php">go to Buy Order</a>',$notification_nn['buyer_id']);
+										echo 'Success';}															
 								}
 						break;			
-					case "accept_sale_order_modal":		
+					case "accept_sale_order_modal"://NOTIFICATION DONE
 
 						$transaction_id_o=$_POST['transaction_id_o'];
 						$user_id_o=$_POST['user_id_o'];
@@ -536,10 +555,12 @@
 						}						
 						else{
 							accept_sale_order($transaction_id_o,$user_id_o);
-							echo 'Success'; // success not buying his own posting
+							if($notification_o=get_transaction_notification_seller($transaction_id_o,$user_id_o)){
+								add_notification('Seller has accepted for "'.$notification_o['goods_name'].'" x'.$notification_o['transaction_quantity'].', <a href="buy_order_record.php">go to Buy Order</a>',$notification_o['buyer_id']);
+								echo 'Success';}
 						} 
 						break;
-					case "refuse_sale_order_modal":		
+					case "refuse_sale_order_modal"://NOTIFICATION DONE
 
 						$transaction_id_p=$_POST['transaction_id_p'];
 						$user_id_p=$_POST['user_id_p'];
@@ -551,7 +572,9 @@
 							//update_game_quantity_reject($result_k['item_id'],$result_k['transaction_quantity']);
 							update_transaction_sale_order($transaction_id_p);
 							update_wallet_balance($result_p['buyer_id'],$result_p['transaction_quantity']*$result_p['transaction_amount']);
-							echo 'Success'; // success not buying his own posting
+								if($notification_p=get_transaction_notification_seller($transaction_id_p,$user_id_p)){
+								add_notification('Seller has declined for "'.$notification_p['goods_name'].'" x'.$notification_p['transaction_quantity'].', <a href="buy_order_record_record.php">go to Buy Order</a>',$notification_p['buyer_id']);
+								echo 'Success';}
 						} 
 						break;
 					case "cancel_bargain_order_modal":		
