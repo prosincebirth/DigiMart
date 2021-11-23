@@ -204,6 +204,12 @@ $('document').ready(function()
         $(e.currentTarget).find('input[name="user_id_i"]').val(user_id_i);
     });
 
+    $('#dispute_item_not_received').on('show.bs.modal', function(e) {
+        var transaction_id_dispute = $(e.relatedTarget).data('transaction_id_dispute');
+
+        $(e.currentTarget).find('input[name="transaction_id_dispute"]').val(transaction_id_dispute);
+    });
+
     $('#cancel_buy_order_modal_i').on('show.bs.modal', function(e) {
         var transaction_id_ii = $(e.relatedTarget).data('transaction_id_ii');
         var user_id_ii = $(e.relatedTarget).data('user_id_ii');

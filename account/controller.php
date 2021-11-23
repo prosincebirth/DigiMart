@@ -339,7 +339,7 @@
 												//A buyer has bargained ₱ 320 for Fractal Horns of Inner Abysm, please Go to view.
 												if($notification_g=get_game_item_information_notification($item_id_g)){
 													add_notification('A buyer has bargained ₱ '.$bargain_price_g.' for "'.$notification_g['goods_name'].'" x'.$item_quantity_g.' , <a href="sale_order.php">go to Sales</a>',$seller_id_g);
-													add_notification('You bargained "'.$notification_g['goods_name'].'" x'.$item_quantity_f.' for ₱ '.$bargain_price_g.', <a href="bargain_order.php">go to Buy Order</a>',$buyer_id_g);
+													add_notification('You bargained "'.$notification_g['goods_name'].'" x'.$item_quantity_g.' for ₱ '.$bargain_price_g.', <a href="bargain_order.php">go to Buy Order</a>',$buyer_id_g);
 													echo 'Success';}	
 										}else{
 												echo 'Insufficient Balance'; 
@@ -577,7 +577,7 @@
 								echo 'Success';}
 						} 
 						break;
-					case "cancel_bargain_order_modal":		
+					case "cancel_bargain_order_modal":// DONT KNOW WHERE THIS SHIT IS BEING USED
 							$transaction_id_q=$_POST['transaction_id_q'];
 							$user_id_q=$_POST['user_id_q'];
 							
@@ -589,8 +589,7 @@
 								update_wallet_balance($user_id_q,$result_q['transaction_amount'] * $result_q['transaction_quantity']);
 								if($notification_q=get_transaction_notification_seller($transaction_id_q,$user_id_q)){
 									add_notification('Seller has declined for "'.$notification_q['goods_name'].'" x'.$notification_q['transaction_quantity'].', <a href="buy_order_record_record.php">go to Buy Order</a>',$notification_q['buyer_id']);
-									echo 'Success';}
-								echo 'Success'; 															
+									echo 'Success';}														
 								}
 						break;
 					case "dispute_item_not_received":		
@@ -598,13 +597,16 @@
 							$dispute_title_a=$_POST['dispute_title_a'];
 							$dispute_message_a=$_POST['dispute_message_a'];
 							
-							if(empty($transaction_id_dispute) && empty($dispute_title_a)){ // trappings for not logged in
+							if(empty($transaction_id_dispute) or empty($dispute_title_a)){ // trappings for not logged in
 								echo 'Empty Fields';
 							}						
 							else{
 								item_not_received_dispute($transaction_id_dispute);
-								add_new_dispute($transaction_id_dispute,$dispute_title_a,$dispute_message_a);
-								echo 'Success'; 															
+								add_new_dispute($transaction_id_dispute,$dispute_title_a,$dispute_message_a,$transaction_id_dispute);
+								
+								if($notification_dispute=get_transaction_notification_buyer($transaction_id_dispute,$_SESSION['user_session'])){
+									add_notification('Buyer has started a dispute for "'.$notification_dispute['goods_name'].'" x'.$notification_dispute['transaction_quantity'].', <a href="buy_order_record_record.php">go to Buy Order</a>',$notification_dispute['buyer_id']);
+									echo 'Success';}	
 								}
 						break;
 					case "edit_game_item_modal":		

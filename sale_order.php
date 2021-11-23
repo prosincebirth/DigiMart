@@ -124,7 +124,9 @@
                                             echo "<span style='color:blue'><b><i class='fas fa-clock'></i> Waiting for buyer to confirm </b></span>";
                                             echo '<br>';
                                             echo '<br>';
-                                            echo '<button> Start Dispute</button>';
+                                            echo '<button data-toggle="modal" data-target="#dispute_item_not_received" 
+											        data-transaction_id_p='.$res['transaction_id'].'
+                                                    data-user_id_p='.$_SESSION['user_session'].'>Start Dispute</button>';
                                             } 
                                             }
                                             }?>

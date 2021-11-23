@@ -109,6 +109,11 @@
                                             echo '<span> Transaction Dispute </span>';	
                                          }else if($res['transaction_status']==12){
                                             echo '<span>Out of stock</span>';	
+                                         }else if($res['transaction_status']==13){
+                                            echo '<span style="color:red"><b><i class="fas fa-times-circle"></i> Dispute on process</b></span>';
+                                            echo '<br>';
+                                            echo '<br>';
+                                            echo ' ';	
                                          }
                                          } }?>
 									</td>

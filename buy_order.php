@@ -110,10 +110,9 @@
                                                 data-transaction_id_m='.$res['transaction_id'].'
                                                 data-user_id_m='.$_SESSION['user_session'].'>Item recieved</button>';
                                             echo ' ';
-                                            echo '<button 
-                                                data-toggle="modal" 
+                                            echo '<button data-toggle="modal" 
                                                 data-target="#dispute_item_not_received" 
-                                                data-transaction_id_dispute='.$res['transaction_id'].' >Start Dispute</button>';
+                                                data-transaction_id_dispute='.$res['transaction_id'].'>Start Dispute</button>';
                                             } 
                                             }
                                             }?>

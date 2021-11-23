@@ -21,7 +21,7 @@
 
 	function add_new_dispute($transaction_id,$dispute_title,$dispute_message){//register.php
 		$conn=connection();
-		$query="INSERT INTO disputes(dispute_title,dispute_message,transaction_id ) values(:transaction_id,:dispute_title,:dispute_message)"; 
+		$query="INSERT INTO disputes(dispute_title,dispute_message,transaction_id) values(:dispute_title,:dispute_message,:transaction_id)"; 
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":dispute_title"=>$dispute_title,":dispute_message"=>$dispute_message,":transaction_id"=>$transaction_id));
 		$conn=null;}	
@@ -239,9 +239,9 @@
 	
 	function item_not_received_dispute($transaction_id){
 		$conn=connection();
-		$query="UPDATE transactions set transaction_status=12 where transaction_id=:transaction_id";
+		$query="UPDATE transactions set transaction_status=13 where transaction_id=:transaction_id";
 		$prepare=$conn->prepare($query);
-		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id,":user_id"=>$user_id));
+		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id));
 		$conn=null;}
 
 	function cancel_sale_order_nn($transaction_id,$user_id){
@@ -428,7 +428,7 @@
 		where c.goods_name LIKE '%".$search."%' and a.item_id = b.item_id AND b.goods_id = c.goods_id AND a.buyer_id = $user_id AND a.seller_id != $user_id  AND a.game_id=$game_id and a.order_id != 3 and 
 		a.transaction_status!=0 AND a.transaction_status!=2 AND a.transaction_status!=5 AND
 		a.transaction_status!=6 AND a.transaction_status!=7 AND a.transaction_status!=8 AND
-		a.transaction_status!=10 AND a.transaction_status!=11 AND a.transaction_status!=12
+		a.transaction_status!=10 AND a.transaction_status!=11 AND a.transaction_status!=12 AND a.transaction_status!=13 
 		ORDER BY a.transaction_date DESC";
 		$result = $conn->query($sql);
 		return $result;}
