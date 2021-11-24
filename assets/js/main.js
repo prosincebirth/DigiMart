@@ -210,6 +210,12 @@ $('document').ready(function()
         $(e.currentTarget).find('input[name="transaction_id_dispute"]').val(transaction_id_dispute);
     });
 
+    $('#dispute_item_delivered_dispute').on('show.bs.modal', function(e) {
+        var transaction_id_dispute_seller = $(e.relatedTarget).data('transaction_id_dispute_seller');
+
+        $(e.currentTarget).find('input[name="transaction_id_dispute_seller"]').val(transaction_id_dispute_seller);
+    });
+
     $('#cancel_buy_order_modal_i').on('show.bs.modal', function(e) {
         var transaction_id_ii = $(e.relatedTarget).data('transaction_id_ii');
         var user_id_ii = $(e.relatedTarget).data('user_id_ii');
@@ -1071,7 +1077,35 @@ $('document').ready(function()
                         } 
 					}
 				});
-            		
+            break;
+            case "dispute_item_delivered_dispute":             
+                var transaction_id_dispute_seller=$("#transaction_id_dispute_seller").val()
+                var dispute_title_seller=$("#dispute_title_seller").val()
+                var dispute_message_seller=$("#dispute_message_seller").val()
+
+				var data=new FormData();
+				data.append("action_type","dispute_item_delivered_dispute");
+				data.append("transaction_id_dispute_seller",transaction_id_dispute_seller);
+                data.append("dispute_title_seller",dispute_title_seller);
+                data.append("dispute_message_seller",dispute_message_seller);
+
+				$.ajax({	
+					url:"account/controller.php",
+					method:"post",
+					data:data,
+					contentType:false,
+					cache:false,
+					processData:false,
+					success:function(res){
+                        if(res=="Success"){
+                            alert(res)
+                            location.reload();
+                        }else{
+                            alert(res)
+                        } 
+					}
+				});
+            break;
         };	
 	});	
 });

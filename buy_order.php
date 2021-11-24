@@ -1,6 +1,8 @@
 <?php $search=""; if(isset($_POST["search_item_query"])){$search = trim($_POST['search_item']);}?>
 <?php include('head.php'); ?>
-<?php if($_SESSION['user_status']!=1){header("Location: index.php"); exit();} ?>
+<?php 
+if($_SESSION['user_status']==2){header("Location: admin"); exit();}
+if($_SESSION['user_status']!=1){header("Location: index.php"); exit();} ?>
 <?php include('header.php'); ?>
 
 <main>    

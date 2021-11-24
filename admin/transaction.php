@@ -8,7 +8,7 @@ include('includes/navbar.php');
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">Sales</h6>
+    <h6 class="m-0 font-weight-bold text-primary">Transaction</h6>
   </div>
 
   <div class="card-body">
@@ -62,7 +62,19 @@ include('includes/navbar.php');
                 echo '<td>Refunded to the Buyer</td>';
               }else if($transaction['transaction_status']==8){
                 echo '<td>Refunded to the Seller</td>';
-              }  
+              }else if($transaction['transaction_status']==9){
+                echo '<td>Refunded to the Seller</td>';
+              }else if($transaction['transaction_status']==10){
+                echo '<td>Refunded to the Seller</td>';
+              }else if($transaction['transaction_status']==11){
+                echo '<td>Refunded to the Seller</td>';
+              }else if($transaction['transaction_status']==12){
+                echo '<td>Refunded to the Seller</td>';
+              }else if($transaction['transaction_status']==13){
+                echo '<td><span style="color:red"><b><i class="fas fa-times-circle"></i> Dispute on process</td>';
+              }    
+                 
+
               ?>
 
           </tr>

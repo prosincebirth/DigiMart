@@ -718,12 +718,35 @@
 		<div class="modal-body">
 	
 				<div class="fld_input"><input type="hidden" name="transaction_id_dispute" placeholder="TRANSACTION ID" id="transaction_id_dispute" class="form-control"></div>						
-                <div class="fld_input"><label> Title </label><input type="text" name="dispute_title_a" id="dispute_title_a" value ="ITEM NOT RECEIVED" class="form-control"></div>
+                <div class="fld_input"><label> Title </label><input type="text" name="dispute_title_a" id="dispute_title_a" value ="Item wasn't received" class="form-control"></div>
 	
 				<div class="fld_input"><label> Message </label><input type="text" name="dispute_message_a"  id="dispute_message_a" class="form-control"></div>
             </div>
 			<div class="modal-footer">
 					<button class="btn btn-success" type="button" value="dispute_item_not_received">Confirm</button>
+			</div>
+		</div>
+	</div>
+	</div></div>
+	</div>	
+
+<div class="modal fade" id="dispute_item_delivered_dispute" role="dialog">
+	<div class="vertical-alignment-helper">
+	<div class="modal-dialog vertical-align-center">
+	<div class="modal-content">
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title"><center>Start Dispute</h4>
+		</div>
+		<div class="modal-body">
+	
+				<div class="fld_input"><input type="hidden" name="transaction_id_dispute_seller" placeholder="TRANSACTION ID" id="transaction_id_dispute_seller" class="form-control"></div>						
+                <div class="fld_input"><label> Title </label><input type="text" name="dispute_title_seller" id="dispute_title_seller" value ="Item is delivered but not confirmed" class="form-control"></div>
+	
+				<div class="fld_input"><label> Message </label><input type="text" name="dispute_message_seller"  id="dispute_message_seller" class="form-control"></div>
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="dispute_item_delivered_dispute">Confirm</button>
 			</div>
 		</div>
 	</div>

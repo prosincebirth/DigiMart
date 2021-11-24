@@ -573,7 +573,7 @@
 							update_transaction_sale_order($transaction_id_p);
 							update_wallet_balance($result_p['buyer_id'],$result_p['transaction_quantity']*$result_p['transaction_amount']);
 								if($notification_p=get_transaction_notification_seller($transaction_id_p,$user_id_p)){
-								add_notification('Seller has declined for "'.$notification_p['goods_name'].'" x'.$notification_p['transaction_quantity'].', <a href="buy_order_record_record.php">go to Buy Order</a>',$notification_p['buyer_id']);
+								add_notification('Seller has declined for "'.$notification_p['goods_name'].'" x'.$notification_p['transaction_quantity'].', <a href="buy_order_record.php">go to Buy Order</a>',$notification_p['buyer_id']);
 								echo 'Success';}
 						} 
 						break;
@@ -588,7 +588,7 @@
 								cancel_bargain_order($transaction_id_q,$user_id_q);
 								update_wallet_balance($user_id_q,$result_q['transaction_amount'] * $result_q['transaction_quantity']);
 								if($notification_q=get_transaction_notification_seller($transaction_id_q,$user_id_q)){
-									add_notification('Seller has declined for "'.$notification_q['goods_name'].'" x'.$notification_q['transaction_quantity'].', <a href="buy_order_record_record.php">go to Buy Order</a>',$notification_q['buyer_id']);
+									add_notification('Seller has declined for "'.$notification_q['goods_name'].'" x'.$notification_q['transaction_quantity'].', <a href="buy_order_record.php">go to Buy Order</a>',$notification_q['buyer_id']);
 									echo 'Success';}														
 								}
 						break;
@@ -602,34 +602,52 @@
 							}						
 							else{
 								item_not_received_dispute($transaction_id_dispute);
-								add_new_dispute($transaction_id_dispute,$dispute_title_a,$dispute_message_a,$transaction_id_dispute);
+								add_new_dispute($transaction_id_dispute,$dispute_title_a,$dispute_message_a);
 								
 								if($notification_dispute=get_transaction_notification_buyer($transaction_id_dispute,$_SESSION['user_session'])){
-									add_notification('Buyer has started a dispute for "'.$notification_dispute['goods_name'].'" x'.$notification_dispute['transaction_quantity'].', <a href="buy_order_record_record.php">go to Buy Order</a>',$notification_dispute['buyer_id']);
+									add_notification('Buyer has started a dispute for "'.$notification_dispute['goods_name'].'" x'.$notification_dispute['transaction_quantity'].', <a href="buy_sale_record.php">go to Buy Order</a>',$notification_dispute['seller_id']);
 									echo 'Success';}	
 								}
 						break;
-					case "edit_game_item_modal":		
-							$goods_name_edit=$_POST['goods_name_edit'];
-							$goods_quality_edit=$_POST['goods_quality_edit'];
-							$goods_rarity_edit=$_POST['goods_rarity_edit'];
-							$goods_detail1_edit=$_POST['goods_detail1_edit'];
-							$goods_detail2_edit=$_POST['goods_detail2_edit'];
-							$goods_detail3_edit=$_POST['goods_detail3_edit'];
-							$order_id_edit=$_POST['order_id_edit'];
-							$service_id_edit=$_POST['service_id_edit'];
-							$goods_id_edit=$_POST['goods_id_edit'];
 
+						case "dispute_item_delivered_dispute":		
+							$transaction_id_dispute_seller=$_POST['transaction_id_dispute_seller'];
+							$dispute_title_seller=$_POST['dispute_title_seller'];
+							$dispute_message_seller=$_POST['dispute_message_seller'];
 							
-							if(empty($goods_name_edit) && empty($goods_quality_edit)  && empty($goods_rarity_edit)  && empty($goods_detail1_edit)  && empty($goods_detail2_edit)  && empty($goods_detail3_edit)  && empty($order_id_edit)  
-							&& empty($service_id_edit)  && empty($goods_id_edit)){ // trappings for not logged in
+							if(empty($transaction_id_dispute_seller) or empty($dispute_title_seller)){ // trappings for not logged in
 								echo 'Empty Fields';
 							}						
 							else{
-								update_goods_item_name($goods_id_edit,$goods_name_edit,$goods_quality_edit,$goods_rarity_edit,$goods_detail1_edit,$goods_detail2_edit,$goods_detail3_edit,$service_id_edit);
-								echo 'Success'; 															
+								item_not_received_dispute($transaction_id_dispute_seller);
+								add_new_dispute($transaction_id_dispute_seller,$dispute_title_seller,$dispute_message_seller);
+								if($notification_dispute_seller=get_transaction_notification_seller($transaction_id_dispute_seller,$_SESSION['user_session'])){
+									add_notification('Seller has started a dispute for "'.$notification_dispute_seller['goods_name'].'" x'.$notification_dispute_seller['transaction_quantity'].', <a href="buy_order_record.php">go to Buy Order</a>',$notification_dispute_seller['buyer_id']);
+									echo 'Success';}	
 								}
-						break;																
+						break;
+						
+						case "edit_game_item_modal":		
+								$goods_name_edit=$_POST['goods_name_edit'];
+								$goods_quality_edit=$_POST['goods_quality_edit'];
+								$goods_rarity_edit=$_POST['goods_rarity_edit'];
+								$goods_detail1_edit=$_POST['goods_detail1_edit'];
+								$goods_detail2_edit=$_POST['goods_detail2_edit'];
+								$goods_detail3_edit=$_POST['goods_detail3_edit'];
+								$order_id_edit=$_POST['order_id_edit'];
+								$service_id_edit=$_POST['service_id_edit'];
+								$goods_id_edit=$_POST['goods_id_edit'];
+
+								
+								if(empty($goods_name_edit) && empty($goods_quality_edit)  && empty($goods_rarity_edit)  && empty($goods_detail1_edit)  && empty($goods_detail2_edit)  && empty($goods_detail3_edit)  && empty($order_id_edit)  
+								&& empty($service_id_edit)  && empty($goods_id_edit)){ // trappings for not logged in
+									echo 'Empty Fields';
+								}						
+								else{
+									update_goods_item_name($goods_id_edit,$goods_name_edit,$goods_quality_edit,$goods_rarity_edit,$goods_detail1_edit,$goods_detail2_edit,$goods_detail3_edit,$service_id_edit);
+									echo 'Success'; 															
+									}
+							break;																
 						
 			}
 		}
