@@ -271,6 +271,12 @@
         background-color: var(--visual-blue-color) !important;
     }
 
+    .user-deposit-confirm .button .user-deposit-btn{
+        width: 100% !important;
+        height: 30px !important;
+        background-color: var(--visual-blue-color) !important;
+    }
+
     .user-wallet > table {
         margin-bottom: 20px;
     }
@@ -306,6 +312,7 @@
 
     .user-wallet-section .table--container .user-wallet-history {
         width: 200% !important;
+        border: 1px solid var(--very-light-gray-color);
     }
 
     .user-wallet-section .table--container,
@@ -386,6 +393,19 @@
     color: var(--white-color);
 }
 
+.col2 .grid-container .grid-item .body .user-wallet table tbody tr .t-right .user-deposit .user-deposit-btn .card{
+    background-color: var(--white-color);
+    border: none;
+}
+
+.col2 .grid-container .grid-item .body .user-wallet table tbody tr .t-left .user-deposit-confirm .button .user-deposit-btn{
+    width: 15%;
+    height: 40%;
+    border: none;
+    background-color: var(--facebook-color);
+    color: var(--white-color);
+}
+
 .user-wallet-notice- ul {
     padding: 10px 0;
     margin: 0;
@@ -399,15 +419,15 @@
     width: 100%;
 }
 
-.user-wallet-section .user-wallet-history th {
+.user-wallet-section .user-wallet-history th{
     font-size: 15px;
-    padding: 10px;
-    text-align: center;
     background-color: var(--dark-color);
     color: var(--white-color);
+    text-align: center;
+    padding: 5px 0 5px 0;
 }
 
-.user-wallet-section .user-wallet-history td {
+.user-wallet-section .user-wallet-history tr td{
     text-align: center;
     padding: 5px;
     border-bottom: 1px solid var(--very-light-gray-color);

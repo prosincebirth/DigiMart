@@ -102,7 +102,7 @@
                                                     <div class="user-deposit">
                                                         <div class=user-deposit-btn>
                                                             <ul>
-                                                                <li title="You can pay using paypal." class="disable"><i class="fas fa-credit-card"></i> </li>
+                                                                <li title="You can pay using paypal." class="active"><button class="card"><img src="https://img.icons8.com/plasticine/50/000000/gcash.png" alt="">GCash</button></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -111,16 +111,16 @@
 
                                             <tr>
                                                 <td></td>
-                                                <td>
-                                                    <div class="user-deposit">
-                                                        <a href="javascript:void(0);" class=user-deposit-confirm>Confirm</a>
+                                                <td class="t-left">
+                                                    <div class="user-deposit-confirm">
+                                                        <span class="button"><button href="javascript:void(0);" class=user-deposit-btn>Confirm</button></span>
                                                     </div>
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
 
-                                    <div class="user-wallet-section">
+                                    <!-- <div class="user-wallet-section">
                                         <div class="user-wallet-notice-">
                                             <div style="border-bottom: 1px solid var(--light-gray-color);"></div>
                                             <ul>
@@ -131,7 +131,7 @@
                                             </ul>
                                             <div style="border-bottom: 1px solid var(--light-gray-color);"></div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     
                                     <div class="user-wallet-section">
                                         <h2>Deposit records</h2>
@@ -151,7 +151,7 @@
                                                         <td>00001</td>
                                                         <td>1500.00</td>
                                                         <td>321321</td>
-                                                        <td>success</td>
+                                                        <td style="color:#008000; font-weight:bold;"><i class="fas fa-check-circle"></i> success</td>
                                                         <td>10:30</td>
                                                     </tr>
                                                 </tbody>
@@ -160,7 +160,7 @@
                                                         <td>00002</td>
                                                         <td>1500.00</td>
                                                         <td>321321</td>
-                                                        <td>success</td>
+                                                        <td style="color:#008000; font-weight:bold;"><i class="fas fa-check-circle"></i> success</td>
                                                         <td>10:30</td>
                                                     </tr>
                                                 </tbody>
