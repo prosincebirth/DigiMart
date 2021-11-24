@@ -94,7 +94,10 @@ include('includes/navbar.php');
 <div class="card shadow mb-4">
   <div class="card-header py-3">
     <h6 class="m-0 font-weight-bold text-primary">Game 
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add_new_game_modal">Add Game</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add_new_game_modal">Add Game</button>
+    <div style="float:right; padding-top:7px; width:fit-content;">
+      <input type="text" value="" placeholder= "search... " style=""><button type="submit" class="btn-search"><i class="fas fa-search "></i></button>
+    </div>
     </h6>
   </div>
 

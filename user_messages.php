@@ -39,11 +39,14 @@
                         <div class="user-setting">
                             
                             <div class="title-header">
-                                <ul>
-                                    <li><span>Message Content</span></li>
-                                    <li><span>Time</span></li>
-                                </ul>
-                                <table class=list-tab width="100%">
+                            <table class=list-tab width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Message Content</th>
+                                        <th>Time</th>
+                                    </tr>
+                                </thead>
+                             
                                 <?php	$get_notification = get_notification($_SESSION['user_session']); foreach($get_notification as $notification){?>
                                          
                                     <tbody>

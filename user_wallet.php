@@ -67,7 +67,7 @@
                         </div>
                         
                         <!-- body -->
-                        
+                        <form action="user_wallet.php" method="POST">
                         <div class="grid-item">
                             <div class="body">
                                 <div class="tab">
@@ -87,11 +87,11 @@
                                                 <td class="t-right">
                                                     <div class="user-deposit">
                                                         <span value="custom" class="on">
-                                                            <input type="text" placeholder="Deposit amount">
+                                                            <input type="text" placeholder="Deposit amount" value="<?php $value = 0; $value = $_POST["1h"] ?? "";if($value==0){echo "";}else{echo $value;}  ?>">
                                                         </span>
-                                                        <span class="button"><button value="100">₱ 100</button></span>
-                                                        <span class="button"><button value="500">₱ 500</button></span>
-                                                        <span class="button"><button value="1000">₱ 1000</button></span>
+                                                        <span class="button"><button name="1h" type="submit" value="100">₱ 100</button></span>
+                                                        <span class="button"><button name="1h" type="submit" value="500">₱ 500</button></span>
+                                                        <span class="button"><button name="1h" type="submit" value="1000">₱ 1000</button></span>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -102,7 +102,7 @@
                                                     <div class="user-deposit">
                                                         <div class=user-deposit-btn>
                                                             <ul>
-                                                                <li title="You can pay using paypal." class="disable"><i class="fas fa-credit-card"></i> </li>
+                                                                <li title="You can pay using gcash."><button class="active"><img src="https://img.icons8.com/plasticine/50/000000/gcash.png">GCash</button></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -111,16 +111,16 @@
 
                                             <tr>
                                                 <td></td>
-                                                <td>
-                                                    <div class="user-deposit">
-                                                        <a href="javascript:void(0);" class=user-deposit-confirm>Confirm</a>
+                                                <td class="t-left">
+                                                    <div class="user-deposit-confirm">
+                                                        <span class="button"><button href="javascript:void(0);" class="user-deposit-btn">Confirm</button></span>
                                                     </div>
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
 
-                                    <div class="user-wallet-section">
+                                    <!-- <div class="user-wallet-section">
                                         <div class="user-wallet-notice-">
                                             <div style="border-bottom: 1px solid var(--light-gray-color);"></div>
                                             <ul>
@@ -131,19 +131,37 @@
                                             </ul>
                                             <div style="border-bottom: 1px solid var(--light-gray-color);"></div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     
                                     <div class="user-wallet-section">
                                         <h2>Deposit records</h2>
                                         <div class="table--container">
                                             <table class="user-wallet-history">
-                                                <tbody>
+                                                <thead>
                                                     <tr>
                                                         <th>Serial number</th>
                                                         <th> Deposit amount</th>
                                                         <th> Payment account</th>
                                                         <th> Progress</th>
                                                         <th>Create time</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>00001</td>
+                                                        <td>1500.00</td>
+                                                        <td>321321</td>
+                                                        <td style="color:#008000; font-weight:bold;"><i class="fas fa-check-circle"></i> success</td>
+                                                        <td>10:30</td>
+                                                    </tr>
+                                                </tbody>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>00002</td>
+                                                        <td>1500.00</td>
+                                                        <td>321321</td>
+                                                        <td style="color:#008000; font-weight:bold;"><i class="fas fa-check-circle"></i> success</td>
+                                                        <td>10:30</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -152,6 +170,7 @@
                                 </div>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>

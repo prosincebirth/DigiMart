@@ -215,7 +215,7 @@
     color: var(--white-color);
     padding: 20px 20px 20px 20px;
 }
-
+/* 
 .col2 .main .user-setting .tab-header ul {
     display: table;
     align-content: center;
@@ -239,7 +239,7 @@
     
 }
 
-.col2 .main .user-setting .title-header ul{ 
+.col2 .main .user-setting .title-header thead{ 
     display: table;
     margin: 0 auto;
     width: 100%;
@@ -247,8 +247,8 @@
     padding: 10px;
 }
 
-.col2 .main .user-setting .title-header ul li{ 
-    width: 100%;
+.col2 .main .user-setting .title-header thead tr{ 
+    width: 50%;
     display: inline;
 }
 
@@ -257,7 +257,7 @@
     margin: 10px;
     margin-left: 190px;
     margin-right: 50px;
-}
+} */
 
 .col2 .main .user-setting .tab-header ul li:hover,
 .col2 .main .user-setting .tab-header ul li:active { 
@@ -270,19 +270,34 @@
     width: 100%;
 }
 
+.col2 .user-setting .tab-header.t-left {
+    width: 75%;
+}
+
+.col2 .user-setting .tab-header.t-right{
+    width: 25%;
+}
+
 .col2 .main .user-setting .list-tab {
     width: 100%;
 }
 
 .col2 .main .user-setting .list-tab tr{
     border-bottom: 1px solid var(--tertiary-color);
-    
 }
+
 
 .col2 .main .user-setting .list-tab td{
     padding: 20px;
     font-size: 14px;
     color:var(--gray-color);
+}
+.col2 .main .user-setting .list-tab th{
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+    color:var(--black-color);
+    background-color: var(--very-light-gray-color);
 }
 
 .col2 .main .user-setting .list-tab td img{
