@@ -137,13 +137,31 @@
                                         <h2>Deposit records</h2>
                                         <div class="table--container">
                                             <table class="user-wallet-history">
-                                                <tbody>
+                                                <thead>
                                                     <tr>
                                                         <th>Serial number</th>
                                                         <th> Deposit amount</th>
                                                         <th> Payment account</th>
                                                         <th> Progress</th>
                                                         <th>Create time</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>00001</td>
+                                                        <td>1500.00</td>
+                                                        <td>321321</td>
+                                                        <td>success</td>
+                                                        <td>10:30</td>
+                                                    </tr>
+                                                </tbody>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>00002</td>
+                                                        <td>1500.00</td>
+                                                        <td>321321</td>
+                                                        <td>success</td>
+                                                        <td>10:30</td>
                                                     </tr>
                                                 </tbody>
                                             </table>

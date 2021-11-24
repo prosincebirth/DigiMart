@@ -397,5 +397,18 @@
 
 .user-wallet-section .user-wallet-history {
     width: 100%;
-    
+}
+
+.user-wallet-section .user-wallet-history th {
+    font-size: 15px;
+    padding: 10px;
+    text-align: center;
+    background-color: var(--dark-color);
+    color: var(--white-color);
+}
+
+.user-wallet-section .user-wallet-history td {
+    text-align: center;
+    padding: 5px;
+    border-bottom: 1px solid var(--very-light-gray-color);
 }
