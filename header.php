@@ -32,20 +32,9 @@
                                 <i><img src="assets/svg/dota-2-icon.png" style="width:20px; height:20px"></i>
                             </span>
                             <span class="game_title">DOTA 2</span>
-                            <span class="caret_down">
-                                <i class="fa">&#xf107;</i>
-                            </span>
+                            
                         </div>
-                        <div class="game_dropdown">
-                            <ul class="game_list__dropdown">
-                                <li class="game_list__item">
-                                    <span class="game_icon">
-                                        <i><img src="assets/svg/dota-2-icon.png" style="width:20px; height:20px"></i>
-                                    </span>
-                                    <span>DOTA 2</span>
-                                </li>
-                            </ul>
-                        </div>
+                        
                     </div>
                     
 

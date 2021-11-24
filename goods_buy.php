@@ -29,7 +29,15 @@
 						<div class="item_detail--content">
 							<h2>
 								<span><?php echo $res['goods_name'];?></span>								
-								<span class="tag tag--immortal"><?php echo $res['goods_rarity'];?></span>
+								 <?php  if($res['goods_rarity'] == 'Common'){echo ' <span class="tag tag--immortal" style="background-color:#484b5f">'.$res['goods_rarity'].'</span>';}
+                                        elseif($res['goods_rarity'] == 'Uncommon'){echo ' <span class="tag tag--immortal"" style="background-color:#82BDFF">'.$res['goods_rarity'].'</span>';}
+                                        elseif($res['goods_rarity'] == 'Rare'){echo ' <span class="tag tag--immortal" style="background-color:#7C8FF5">'.$res['goods_rarity'].'</span>';}
+                                        elseif($res['goods_rarity'] == 'Mythical'){echo ' <span class="tag tag--immortal" style="background-color:#A876F9">'.$res['goods_rarity'].'</span>';}
+                                        elseif($res['goods_rarity'] == 'Immortal'){echo ' <span class="tag tag--immortal" style="background-color:#F2B166">'.$res['goods_rarity'].'</span>';}
+                                        elseif($res['goods_rarity'] == 'Legendary'){echo ' <span class="tag tag--immortal" style="background-color:#DC5EEA">'.$res['goods_rarity'].'</span>';}
+                                        elseif($res['goods_rarity'] == 'Arcana'){echo ' <span class="tag tag--immortal" style="background-color:#9ACC4C">'.$res['goods_rarity'].'</span>';}
+                                        elseif($res['goods_rarity'] == 'Ancient'){echo ' <span class="tag tag--immortal" style="background-color:#e06b6a">'.$res['goods_rarity'].'</span>';}
+                                ?>
 							</h2>
 							<p>
 								<span>
