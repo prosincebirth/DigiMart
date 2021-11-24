@@ -3,8 +3,8 @@ include('includes/header.php');
 include('includes/navbar.php'); 
 ?>
 
-<div class="container-fluid">
 
+<div class="container-fluid">
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
@@ -59,9 +59,9 @@ include('includes/navbar.php');
               }else if($transaction['transaction_status']==6){
                 echo '<td><span style="color:red"><b><i class="fas fa-times-circle"></i> Canceled</td>';
               }else if($transaction['transaction_status']==7){
-                echo '<td>Refunded to the Buyer</td>';
+                echo '<td><span style="color:red"><b><i class="fas fa-times-circle"></i> Refunded to Buyer</td>';
               }else if($transaction['transaction_status']==8){
-                echo '<td>Refunded to the Seller</td>';
+                echo '<td><span style="color:red"><b><i class="fas fa-times-circle"></i> Refunded to Seller</td>';
               }else if($transaction['transaction_status']==9){
                 echo '<td>Refunded to the Seller</td>';
               }else if($transaction['transaction_status']==10){

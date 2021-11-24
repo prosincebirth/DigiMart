@@ -118,8 +118,8 @@ include('includes/navbar.php');
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
           <tr>
-            <th> ID </th>
-            <th> Service Name </th>
+            <th>ID </th>
+            <th>Service Name</th>
             <th>Game</th>
             <th>Description </th>
             <th>EDIT </th>

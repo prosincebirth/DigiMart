@@ -3,6 +3,79 @@ include('includes/header.php');
 include('includes/navbar.php'); 
 ?>
 
+<div class="modal fade" id="view_dispute_details">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 style="color:#4e73df" class="modal-title" id="exampleModalLabel">Dispute Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label style="color:#4e73df"> Transaction ID :</label> <span id="transaction_id" id="transaction_id"> </span>
+            </div>
+            <div class="form-group">
+              <label style="color:#4e73df"> Transaction amount :</label> ₱<span id="transaction_amount" id="transaction_amount"> </span>
+            </div>
+            <div class="form-group">
+              <label style="color:#4e73df"> Transaction date :</label> <span id="transaction_date" id="transaction_date"> </span>
+            </div>
+            <div class="form-group">
+              <label style="color:#4e73df"> Item name :</label> <span id="transaction_item_name" id="transaction_item_name"> </span>
+            </div>
+            <div class="form-group">
+              <label style="color:#4e73df"> Order type :</label> <span id="transaction_order_type" id="transaction_order_type"> </span>
+            </div>
+            <div class="form-group">
+              <label style="color:#4e73df"> Seller name :</label> <span id="transaction_seller" id="transaction_seller"> </span>
+            </div>
+            <div class="form-group">
+             <label style="color:#4e73df"> Buyer name :</label> <span id="transaction_buyer" id="transaction_buyer"> </span>
+            </div><div class="form-group">
+              <label style="color:#4e73df"> Service mode :</label> <span id="transaction_service" id="transaction_service"> +Order</span>
+            </div>
+            <div class="form-group">
+                <label style="color:#4e73df">Transaction proof</label>
+                <img src="data:image/png;base64," height="260">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          
+        </div>
+    </div>
+  </div></div>
+
+
+
+<div class="modal fade" id="update_dispute_details">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Dispute Status </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Status</label>
+                <div class="fld_input"><select name="update_dispute_status" id="update_dispute_status" class="form-control">						
+                    <option value="7">Seller</option>';
+                    <option value="8">Seller</option>';
+										</select></div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" value="update_dispute_details" class="btn btn-primary">Confirm</button>
+        </div>
+    </div>
+  </div></div> 
+
 <div class="container-fluid">
 
 <!-- DataTales Example -->
@@ -22,38 +95,48 @@ include('includes/navbar.php');
             <th> Title </th>
             <th> Message</th>
             <th> Date & Time</th>
+            <th> Refunded to</th>
             <th> Status </th>
-            <th> </th>
-            <th> </th>
-            <th> </th>
+            <th colspan="2"><center>Actions</center></th>
+
           </tr>
         </thead>
         <tbody>
+        <?php	$display_dispute_admin = display_dispute_admin();foreach($display_dispute_admin as $dispute){ ?>
           <tr>
-            <td> 1 </td>
-            <td> No Confirmation</td>
-            <td> did not confirm payment</td>
-            <td> November 2, 2021 - 7:00 pm</td>
-            <td> Solve</td>
-            <td>
-                <form action="" method="post">
-                    <input type="hidden" name="edit_id" value="">
-                    <button  type="submit" name="edit_btn" class="btn btn-success"> VIEW</button>
-                </form>
+            <td><?php echo $dispute['dispute_id']; ?></td>
+            <td><?php echo $dispute['dispute_title']; ?></td>
+            <td><?php echo $dispute['dispute_message']; ?></td>
+            <td><?php echo $dispute['dispute_date_created']; ?></td>
+            <td><?php 
+                  if($dispute['transaction_status']==7){echo 'Buyer';}
+                  else if($dispute['transaction_status']==8){echo 'Seller';}
+                  else {echo 'Pending';}
+            ?></td>
+            <td><?php 
+                  if($dispute['dispute_status']!=1){echo 'Complete';}
+                  else if($dispute['dispute_status']==1){echo 'Active';}?>
             </td>
             <td>
-                <form action="" method="post">
-                    <input type="hidden" name="add_btn" value="">
-                    <button  type="submit" name="add_btn" class="btn btn-info"> UPDATE</button>
-                </form>
+                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#view_dispute_details"
+                  data-transaction_id="<?php echo $dispute['transaction_id']?>"    
+                  data-transaction_amount="<?php echo $dispute['transaction_amount'] * $dispute['transaction_quantity']?>"    
+                  data-transaction_date="<?php echo $dispute['transaction_date']?>"    
+                  data-transaction_item_name="<?php echo $dispute['goods_name']?>"    
+                  data-transaction_order_type="<?php echo $dispute['transaction_order_id'],' Order'?>"    
+                  data-transaction_seller="<?php echo $dispute['seller_name']?>"    
+                  data-transaction_buyer="<?php echo $dispute['buyer_name']?>"    
+                  data-transaction_service_mode="<?php echo $dispute['transaction_service_id']; ?>"    
+                  data-transaction_proof="<?php echo base64_encode($dispute['transaction_proof'])?>"
+                  >View</button> 
             </td>
-            <td>
-                <form action="" method="post">
-                  <input type="hidden" name="delete_id" value="">
-                  <button type="submit" name="delete_btn" class="btn btn-danger"> DELETE</button>
-                </form>
+            <td><?php if($dispute['dispute_status']==1){ ?>
+                  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#update_dispute_details"
+                  data-transaction_id="<?php echo $dispute['transaction_id']?>"    
+                  >Update</button><?php } ?>
             </td>
           </tr>
+        <?php } ?>
         </tbody>
       </table>
 

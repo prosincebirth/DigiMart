@@ -14,14 +14,9 @@ $('#edit_new_game_modal').on('show.bs.modal', function(e){
 
 $('#edit_game_services_modal').on('show.bs.modal', function(e){
     var service_id_e = $(e.relatedTarget).data('21');
-    var service_mode_e = $(e.relatedTarget).data('22');
-    var service_desc_e = $(e.relatedTarget).data('23');
-    var game_id_e = $(e.relatedTarget).data('24');
 
     $(e.currentTarget).find('input[name="service_id_e"]').val(service_id_e);
-    $(e.currentTarget).find('input[name="service_mode_e"]').val(service_mode_e);
-    $(e.currentTarget).find('input[name="service_desc_e"]').val(service_desc_e);
-    $(e.currentTarget).find('input[name="game_id_e"]').val(game_id_e);
+
 });
 
 $('#delete_new_game_modal').on('show.bs.modal', function(e){
@@ -34,6 +29,29 @@ $('#delete_game_services_modal').on('show.bs.modal', function(e){
     var service_id_f = $(e.relatedTarget).data('28');
 
     $(e.currentTarget).find('input[name="service_id_f"]').val(service_id_f);
+});
+
+$('#view_dispute_details').on('show.bs.modal', function(e){
+    var transaction_id = $(e.relatedTarget).data('transaction_id');
+    var transaction_amount = $(e.relatedTarget).data('transaction_amount');
+    var transaction_date = $(e.relatedTarget).data('transaction_date');
+    var transaction_item_name = $(e.relatedTarget).data('transaction_item_name');
+    var transaction_order_type = $(e.relatedTarget).data('transaction_order_type');
+    var transaction_seller = $(e.relatedTarget).data('transaction_seller');
+    var transaction_buyer = $(e.relatedTarget).data('transaction_buyer');
+    var transaction_service_mode = $(e.relatedTarget).data('transaction_service_mode');
+    var transaction_proof = $(e.relatedTarget).data('transaction_proof');
+    
+    
+    $('#transaction_id').html(transaction_id)
+    $('#transaction_amount').html(transaction_amount)
+    $('#transaction_date').html(transaction_date)
+    $('#transaction_item_name').html(transaction_item_name)
+    $('#transaction_order_type').html(transaction_order_type)
+    $('#transaction_seller').html(transaction_seller)
+    $('#transaction_buyer').html(transaction_buyer)
+    $('#transaction_service').html(transaction_service_mode,"Order")
+    $(e.currentTarget).find('img').attr("src",'data:image/png;base64,'+transaction_proof)
 });
 
 

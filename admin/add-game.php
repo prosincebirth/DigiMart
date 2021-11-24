@@ -107,7 +107,7 @@ include('includes/navbar.php');
             <th>Steam Game ID</th>
             <th>Game Name </th>
             <th>Description </th>
-            <th colspan="2">Actions</th>
+            <th colspan="2"><center>Actions</center></th>
           </tr>
         </thead>
         <tbody>
