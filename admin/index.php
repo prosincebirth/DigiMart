@@ -77,7 +77,7 @@ include('includes/navbar.php');
               </div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-hand-holding fa-2x text-gray-300"></i>
+              <i class="fas fa-cogs fa-2x text-gray-300"></i>
             </div>
           </div>
         </div>

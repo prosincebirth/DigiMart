@@ -393,9 +393,17 @@
     color: var(--white-color);
 }
 
-.col2 .grid-container .grid-item .body .user-wallet table tbody tr .t-right .user-deposit .user-deposit-btn .card{
+.col2 .grid-container .grid-item .body .user-wallet table tbody tr .t-right .user-deposit .user-deposit-btn button{
     background-color: var(--white-color);
     border: none;
+}
+
+.col2 .grid-container .grid-item .body .user-wallet table tbody tr .t-right .user-deposit .user-deposit-btn button:hover,
+.col2 .grid-container .grid-item .body .user-wallet table tbody tr .t-right .user-deposit .user-deposit-btn button:active{
+    background-color: var(--facebook-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 5px;
 }
 
 .col2 .grid-container .grid-item .body .user-wallet table tbody tr .t-left .user-deposit-confirm .button .user-deposit-btn{
@@ -405,6 +413,7 @@
     background-color: var(--facebook-color);
     color: var(--white-color);
 }
+
 
 .user-wallet-notice- ul {
     padding: 10px 0;

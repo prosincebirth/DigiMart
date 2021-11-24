@@ -67,7 +67,7 @@
                         </div>
                         
                         <!-- body -->
-                        
+                        <form action="user_wallet.php" method="POST">
                         <div class="grid-item">
                             <div class="body">
                                 <div class="tab">
@@ -87,11 +87,11 @@
                                                 <td class="t-right">
                                                     <div class="user-deposit">
                                                         <span value="custom" class="on">
-                                                            <input type="text" placeholder="Deposit amount">
+                                                            <input type="text" placeholder="Deposit amount" value="<?php $value = 0; $value = $_POST["1h"] ?? "";if($value==0){echo "";}else{echo $value;}  ?>">
                                                         </span>
-                                                        <span class="button"><button value="100">₱ 100</button></span>
-                                                        <span class="button"><button value="500">₱ 500</button></span>
-                                                        <span class="button"><button value="1000">₱ 1000</button></span>
+                                                        <span class="button"><button name="1h" type="submit" value="100">₱ 100</button></span>
+                                                        <span class="button"><button name="1h" type="submit" value="500">₱ 500</button></span>
+                                                        <span class="button"><button name="1h" type="submit" value="1000">₱ 1000</button></span>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -102,7 +102,7 @@
                                                     <div class="user-deposit">
                                                         <div class=user-deposit-btn>
                                                             <ul>
-                                                                <li title="You can pay using paypal." class="active"><button class="card"><img src="https://img.icons8.com/plasticine/50/000000/gcash.png" alt="">GCash</button></li>
+                                                                <li title="You can pay using gcash."><button class="active"><img src="https://img.icons8.com/plasticine/50/000000/gcash.png">GCash</button></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -113,7 +113,7 @@
                                                 <td></td>
                                                 <td class="t-left">
                                                     <div class="user-deposit-confirm">
-                                                        <span class="button"><button href="javascript:void(0);" class=user-deposit-btn>Confirm</button></span>
+                                                        <span class="button"><button href="javascript:void(0);" class="user-deposit-btn">Confirm</button></span>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -170,6 +170,7 @@
                                 </div>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
