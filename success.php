@@ -18,5 +18,5 @@ if (isset($_GET['ukayra_id'])) {
     echo "Success Page";
 }
 
-
-echo "<a href='/demo'>Back to main</a>";
+header("Location: user_wallet.php");
+//echo "<a href='/digimart/user_wallet.php'>Back to main</a>";
