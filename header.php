@@ -29,7 +29,7 @@
                     <div class="game_wrapper js-drop">
                         <div class="selected_game">
                             <span class="game_icon">
-                                <i class="fa">&#xf11b;</i>
+                                <i><img src="assets/svg/dota-2-icon.png" style="width:20px; height:20px"></i>
                             </span>
                             <span class="game_title">DOTA 2</span>
                             <span class="caret_down">
@@ -40,15 +40,9 @@
                             <ul class="game_list__dropdown">
                                 <li class="game_list__item">
                                     <span class="game_icon">
-                                        <i class="fa">&#xf11b;</i>
+                                        <i><img src="assets/svg/dota-2-icon.png" style="width:20px; height:20px"></i>
                                     </span>
                                     <span>DOTA 2</span>
-                                </li>
-                                <li class="game_list__item">
-                                    <span class="game_icon">
-                                        <i class="fa">&#xf11b;</i>
-                                    </span>
-                                    <span>CS:GO</span>
                                 </li>
                             </ul>
                         </div>

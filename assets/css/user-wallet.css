@@ -271,12 +271,6 @@
         background-color: var(--visual-blue-color) !important;
     }
 
-    .user-deposit-confirm .button .user-deposit-btn{
-        width: 100% !important;
-        height: 30px !important;
-        background-color: var(--visual-blue-color) !important;
-    }
-
     .user-wallet > table {
         margin-bottom: 20px;
     }
@@ -393,25 +387,19 @@
     color: var(--white-color);
 }
 
-.col2 .grid-container .grid-item .body .user-wallet table tbody tr .t-right .user-deposit .user-deposit-btn button{
+.col2 .grid-container .grid-item .body .user-wallet table tbody tr .t-right .user-deposit .user-deposit-btn a{
     background-color: var(--white-color);
     border: none;
 }
 
-.col2 .grid-container .grid-item .body .user-wallet table tbody tr .t-right .user-deposit .user-deposit-btn button:hover,
-.col2 .grid-container .grid-item .body .user-wallet table tbody tr .t-right .user-deposit .user-deposit-btn button:active{
+.col2 .grid-container .grid-item .body .user-wallet table tbody tr .t-right .user-deposit .user-deposit-btn a:hover,
+.col2 .grid-container .grid-item .body .user-wallet table tbody tr .t-right .user-deposit .user-deposit-btn a.selected{
     background-color: var(--facebook-color);
     color: var(--white-color);
     border: none;
     border-radius: 5px;
-}
-
-.col2 .grid-container .grid-item .body .user-wallet table tbody tr .t-left .user-deposit-confirm .button .user-deposit-btn{
-    width: 15%;
-    height: 40%;
-    border: none;
-    background-color: var(--facebook-color);
-    color: var(--white-color);
+    padding: 16px;
+    text-decoration: none;
 }
 
 

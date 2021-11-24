@@ -82,12 +82,12 @@
                                     <table>
                                         <tbody>
 
-                                            <tr>
+                                            <!-- <tr>
                                                 <td class="t-left">Deposit ammount</td>
                                                 <td class="t-right">
                                                     <div class="user-deposit">
                                                         <span value="custom" class="on">
-                                                            <input type="text" placeholder="Deposit amount" value="<?php $value = 0; $value = $_POST["1h"] ?? "";if($value==0){echo "";}else{echo $value;}  ?>">
+                                                            <input type="text" placeholder="Deposit amount" value="<?php $value = 0; $value = $_POST["1h"] ?? "";if($value==0){echo "";}else{echo $value;}  ?>"></form>
                                                         </span>
                                                         <span class="button"><button name="1h" type="submit" value="100">₱ 100</button></span>
                                                         <span class="button"><button name="1h" type="submit" value="500">₱ 500</button></span>
@@ -95,28 +95,29 @@
                                                     </div>
                                                 </td>
                                             </tr>
-
+                                                     -->
                                             <tr>
                                                 <td class="t-left">Deposit method</td>
                                                 <td class="t-right">
                                                     <div class="user-deposit">
                                                         <div class=user-deposit-btn>
                                                             <ul>
-                                                                <li title="You can pay using gcash."><button class="active"><img src="https://img.icons8.com/plasticine/50/000000/gcash.png">GCash</button></li>
+                                                                <li title="You can pay using gcash."><a href="#deposit_gcash" data-toggle="modal" class="selected"><img src="https://img.icons8.com/plasticine/50/000000/gcash.png">GCash</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
                                                 </td>
                                             </tr>
 
-                                            <tr>
+                                            <!-- <tr>
+                                                
                                                 <td></td>
                                                 <td class="t-left">
                                                     <div class="user-deposit-confirm">
-                                                        <span class="button"><button href="javascript:void(0);" class="user-deposit-btn">Confirm</button></span>
+                                                        <span class="button"><a href="#deposit_gcash" data-toggle="modal" class="user-deposit-btn">Confirm</a></span>
                                                     </div>
                                                 </td>
-                                            </tr>
+                                            </tr> -->
                                         </tbody>
                                     </table>
 
@@ -170,7 +171,7 @@
                                 </div>
                             </div>
                         </div>
-                        </form>
+                        
                     </div>
                 </div>
             </div>
