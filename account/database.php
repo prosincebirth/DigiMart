@@ -381,7 +381,7 @@
 		AND a.game_id=$game_id AND 
 		a.transaction_status!=0 AND a.transaction_status!=2 AND a.transaction_status!=5 AND
 		a.transaction_status!=6 AND a.transaction_status!=7 AND a.transaction_status!=8 AND
-		a.transaction_status!=10 AND a.transaction_status!=11 AND a.transaction_status!=12
+		a.transaction_status!=10 AND a.transaction_status!=11 AND a.transaction_status!=12 AND a.transaction_status!=13 
 		ORDER BY a.transaction_date DESC";
 		$result = $conn->query($sql);
 		return $result;}
@@ -439,7 +439,7 @@
 		where c.goods_name LIKE '%".$search."%' and a.item_id = b.item_id AND b.goods_id = c.goods_id AND a.buyer_id = $user_id AND a.seller_id != $user_id  AND a.game_id=$game_id and a.order_id = 3 and 
 		a.transaction_status!=0 AND a.transaction_status!=2 AND a.transaction_status!=5 AND
 		a.transaction_status!=6 AND a.transaction_status!=7 AND a.transaction_status!=8 AND
-		a.transaction_status!=10 AND a.transaction_status!=11 AND a.transaction_status!=12
+		a.transaction_status!=10 AND a.transaction_status!=11 AND a.transaction_status!=12 AND a.transaction_status!=13 
 		ORDER BY a.transaction_date DESC";
 		$result = $conn->query($sql);
 		return $result;}

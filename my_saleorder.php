@@ -1,6 +1,8 @@
 <?php $search="";if(isset($_POST["search_item_query"])){$search = trim($_POST['search_item']);}?>
 <?php include('head.php'); ?>
-<?php if($_SESSION['user_status']!=1){header("Location: index.php"); exit();} ?>
+<?php if($_SESSION['user_status']!=1){header("Location: index.php"); exit();}
+      else if($_SESSION['user_status']==2){header("Location: ../admin.php"); exit();}
+?>
 <?php include('header.php'); ?>
 
 <main>    
@@ -12,7 +14,7 @@
                     <div class="market_tabs">
                         <ul class="market_tab--list">
                             <li ><span onclick="window.location.href='sale_order.php';">Sale Order</span></li>
-                            <li ><span onclick="window.location.href='sale_order_record.php';">Sale Order Records</span></li>
+                            <li ><span onclick="window.location.href='sale_order_record.php';">Sale Order Record</span></li>
                             <li class='active'><span onclick="window.location.href='my_saleorder.php';">My Sale Order</span></li>
                             <li><span data-toggle="modal" data-target="#sale_game_item_modal">Post Item for Sale</span></li>  
                         </ul>

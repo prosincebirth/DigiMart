@@ -1,6 +1,10 @@
 <?php $search=""; if(isset($_POST["search_item_query"])){$search = trim($_POST['search_item']);}?>
 <?php include('head.php'); ?>
-<?php if($_SESSION['user_status']!=1){header("Location: index.php"); exit();} ?>
+<?php 
+if($_SESSION['user_status']==2){header("Location: admin"); exit();}
+if($_SESSION['user_status']!=1){header("Location: index.php"); exit();} 
+        
+?>
 <?php include('header.php'); ?>
 
 <main>    
@@ -124,9 +128,10 @@
                                             echo "<span style='color:blue'><b><i class='fas fa-clock'></i> Waiting for buyer to confirm </b></span>";
                                             echo '<br>';
                                             echo '<br>';
-                                            echo '<button data-toggle="modal" data-target="#dispute_item_not_received" 
-											        data-transaction_id_p='.$res['transaction_id'].'
-                                                    data-user_id_p='.$_SESSION['user_session'].'>Start Dispute</button>';
+                                            echo ' ';
+                                            echo '<button data-toggle="modal" 
+                                                data-target="#dispute_item_delivered_dispute" 
+                                                data-transaction_id_dispute_seller='.$res['transaction_id'].'>Start Dispute</button>';
                                             } 
                                             }
                                             }?>
