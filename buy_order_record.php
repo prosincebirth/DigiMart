@@ -119,7 +119,12 @@
                                             echo '<span style="color:red"><b><i class="fas fa-times-circle"></i> Dispute on process</b></span>';
                                             echo '<br>';
                                             echo '<br>';
-                                            echo ' ';	
+                                            echo '<span style="color:gray"><u>Started by the Buyer</u></span>';
+                                         }else if($res['transaction_status']==14){
+                                            echo '<span style="color:red"><b><i class="fas fa-times-circle"></i> Dispute on process</b></span>';
+                                            echo '<br>';
+                                            echo '<br>';
+                                            echo '<span style="color:gray"><u>Started by the Seller</u></span>';
                                          }
                                          } }?>
 									</td>

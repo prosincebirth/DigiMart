@@ -92,8 +92,8 @@
 						$service_desc_d=$_POST['service_desc_d'];
 						$game_id_d=$_POST['game_id_d'];
 
-						if(!empty($service_mode_d) && !empty($service_desc_d) && !empty($game_id_d)){
-						add_game_service($service_mode_d,$service_desc_d,$game_id_d);
+						if(!empty($service_mode_d) or !empty($service_desc_d) or !empty($game_id_d)){
+							add_game_service($service_mode_d,$service_desc_d,$game_id_d);
 							echo 'Success';
 						}else{
 							echo 'Field inputs error';
@@ -619,14 +619,41 @@
 								echo 'Empty Fields';
 							}						
 							else{
-								item_not_received_dispute($transaction_id_dispute_seller);
+								item_delivered_dispute($transaction_id_dispute_seller);
 								add_new_dispute($transaction_id_dispute_seller,$dispute_title_seller,$dispute_message_seller);
 								if($notification_dispute_seller=get_transaction_notification_seller($transaction_id_dispute_seller,$_SESSION['user_session'])){
 									add_notification('Seller has started a dispute for "'.$notification_dispute_seller['goods_name'].'" x'.$notification_dispute_seller['transaction_quantity'].', <a href="buy_order_record.php">go to Buy Order</a>',$notification_dispute_seller['buyer_id']);
 									echo 'Success';}	
 								}
 						break;
-						
+
+						case "update_dispute_details":		
+							$update_dispute_status=$_POST['update_dispute_status'];
+							$transaction_id_update=$_POST['transaction_id_update'];
+							$dispute_id_update=$_POST['dispute_id_update'];
+							
+							if(empty($update_dispute_status) or empty($transaction_id_update) or empty($dispute_id_update)){ // trappings for not logged in
+								echo 'Empty Fields';
+							}else if($update_dispute_status==7){//BUYER WON
+								if($notification_dispute_admin=get_transaction_notification_dispute($transaction_id_update)){
+									update_wallet_balance($notification_dispute_admin['buyer_id'],$notification_dispute_admin['transaction_quantity'] * $notification_dispute_admin['transaction_amount']);
+									item_update_dispute($transaction_id_update,$update_dispute_status); // update item to transaction id = 7
+									update_dispute_id($dispute_id_update); // closing of ticket
+									add_notification('Dispute status is updated for "'.$notification_dispute_admin['goods_name'].'" x'.$notification_dispute_admin['transaction_quantity'].', <a href="buy_order_record.php">go to Buy Order</a>',$notification_dispute_admin['buyer_id']);
+									add_notification('Dispute status is updated for "'.$notification_dispute_admin['goods_name'].'" x'.$notification_dispute_admin['transaction_quantity'].', <a href="sale_order_record.php">go to Sale Order</a>',$notification_dispute_admin['seller_id']);
+									echo 'Success';}	
+							}else if($update_dispute_status==8){//SELLER WON
+								if($notification_dispute_admin=get_transaction_notification_dispute($transaction_id_update)){
+									send_wallet_balance($notification_dispute_admin['seller_id'],$notification_dispute_admin['transaction_quantity']*$notification_dispute_admin['transaction_amount']);
+									deduct_wallet_balance($notification_dispute_admin['buyer_id'],$notification_dispute_admin['transaction_quantity']*$notification_dispute_admin['transaction_amount']);
+									item_update_dispute($transaction_id_update,$update_dispute_status); // update item to transaction id = 7
+									update_dispute_id($dispute_id_update); // closing of ticket
+									add_notification('Dispute status is updated for "'.$notification_dispute_admin['goods_name'].'" x'.$notification_dispute_admin['transaction_quantity'].', <a href="buy_order_record.php">go to Buy Order</a>',$notification_dispute_admin['buyer_id']);
+									add_notification('Dispute status is updated for "'.$notification_dispute_admin['goods_name'].'" x'.$notification_dispute_admin['transaction_quantity'].', <a href="sale_order_record.php">go to Sale Order</a>',$notification_dispute_admin['seller_id']);
+									echo 'Success';}	
+							}
+					
+						break;
 						case "edit_game_item_modal":		
 								$goods_name_edit=$_POST['goods_name_edit'];
 								$goods_quality_edit=$_POST['goods_quality_edit'];

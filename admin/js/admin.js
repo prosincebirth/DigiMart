@@ -16,7 +16,14 @@ $('#edit_game_services_modal').on('show.bs.modal', function(e){
     var service_id_e = $(e.relatedTarget).data('21');
 
     $(e.currentTarget).find('input[name="service_id_e"]').val(service_id_e);
+});
 
+$('#update_dispute_details').on('show.bs.modal', function(e){
+    var transaction_id_update = $(e.relatedTarget).data('transaction_id_update');
+    var dispute_id_update = $(e.relatedTarget).data('dispute_id_update');
+
+    $(e.currentTarget).find('input[name="transaction_id_update"]').val(transaction_id_update);
+    $(e.currentTarget).find('input[name="dispute_id_update"]').val(dispute_id_update);
 });
 
 $('#delete_new_game_modal').on('show.bs.modal', function(e){
@@ -209,6 +216,35 @@ $(".btn").on("click",function(){
             var data=new FormData();
             data.append("action_type","delete_game_services_modal");
             data.append("service_id_f",service_id_f);
+
+            $.ajax({	
+                url:"../account/controller.php",
+                method:"post",
+                data:data,
+                contentType:false,
+                cache:false,
+                processData:false,
+                success:function(res){
+                    console.log(res)
+                    if(res=="Success"){
+                        alert(res)
+                        location.reload();
+                    }else{
+                        alert(res)
+                    } 
+                }
+            });//END	
+            break;
+            case "update_dispute_details": 
+            var update_dispute_status=$("#update_dispute_status").val().trim();
+            var transaction_id_update=$("#transaction_id_update").val().trim();
+            var dispute_id_update=$("#dispute_id_update").val().trim();
+
+            var data=new FormData();
+            data.append("action_type","update_dispute_details");
+            data.append("update_dispute_status",update_dispute_status);
+            data.append("transaction_id_update",transaction_id_update);
+            data.append("dispute_id_update",dispute_id_update);
 
             $.ajax({	
                 url:"../account/controller.php",

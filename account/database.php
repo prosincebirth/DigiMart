@@ -239,10 +239,32 @@
 	
 	function item_not_received_dispute($transaction_id){
 		$conn=connection();
+		$query="UPDATE transactions set transaction_status=14 where transaction_id=:transaction_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id));
+		$conn=null;}
+	
+	function item_delivered_dispute($transaction_id){
+		$conn=connection();
 		$query="UPDATE transactions set transaction_status=13 where transaction_id=:transaction_id";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id));
 		$conn=null;}
+	
+	function item_update_dispute($transaction_id,$refunded){
+		$conn=connection();
+		$query="UPDATE transactions set transaction_status=:refunded where transaction_id=:transaction_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id,":refunded"=>$refunded));
+		$conn=null;}
+
+	function update_dispute_id($dispute_id){
+		$conn=connection();
+		$query="UPDATE disputes set dispute_status=0 where dispute_id=:dispute_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":dispute_id"=>$dispute_id));
+		$conn=null;}
+		
 
 	function cancel_sale_order_nn($transaction_id,$user_id){
 		$conn=connection();
@@ -736,6 +758,15 @@
 		$query="SELECT * from transactions a join goods b join game_items c where b.goods_id=c.goods_id and a.item_id=c.item_id and transaction_id=:transaction_id and seller_id=:user_id";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id,":user_id"=>$user_id));
+		$res = $prepare->fetch(PDO::FETCH_ASSOC);
+		$conn=null;
+		return $res;}
+
+	function get_transaction_notification_dispute($transaction_id){ // BUY ORDER
+		$conn=connection();
+		$query="SELECT * from transactions a join goods b join game_items c where b.goods_id=c.goods_id and a.item_id=c.item_id and transaction_id=:transaction_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":transaction_id"=>$transaction_id));
 		$res = $prepare->fetch(PDO::FETCH_ASSOC);
 		$conn=null;
 		return $res;}

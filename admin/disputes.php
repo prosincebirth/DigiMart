@@ -61,9 +61,11 @@ include('includes/navbar.php');
       </div>
         <div class="modal-body">
             <div class="form-group">
-                <label>Status</label>
+                <label>Refund to</label>
+                <input type="hidden" name="transaction_id_update" placeholder="transaction id" id="transaction_id_update" class="form-control">
+                <input type="hidden" name="dispute_id_update" placeholder="dispute id" id="dispute_id_update" class="form-control">
                 <div class="fld_input"><select name="update_dispute_status" id="update_dispute_status" class="form-control">						
-                    <option value="7">Seller</option>';
+                    <option value="7">Buyer</option>';
                     <option value="8">Seller</option>';
 										</select></div>
                 
@@ -132,7 +134,8 @@ include('includes/navbar.php');
             </td>
             <td><?php if($dispute['dispute_status']==1){ ?>
                   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#update_dispute_details"
-                  data-transaction_id="<?php echo $dispute['transaction_id']?>"    
+                  data-transaction_id_update="<?php echo $dispute['transaction_id']?>"    
+                  data-dispute_id_update="<?php echo $dispute['dispute_id']?>"    
                   >Update</button><?php } ?>
             </td>
           </tr>
