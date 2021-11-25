@@ -1,15 +1,25 @@
 $('document').ready(function()
 {
-    var hide = setInterval(() => {
-        if ( !$('#desposit_success').hasClass('in') ) {
-            
-        } else {
-            setTimeout(function() {
-                $('.modal .close').trigger('click');          
-                clearInterval(hide);          
-            }, 2000);
-        }
-    }, 100);
+    if ( $('#desposit_success').hasClass('in') ) {
+        setTimeout(function() {
+            $('#desposit_success').removeClass("in").removeAttr("style");
+            $('body').removeClass("modal-open").removeAttr("style");
+            $('.modal-backdrop').remove();
+            // $('.modal .close').trigger('click');      
+        }, 2000);                    
+        // clearInterval(hide); 
+    }
+    // var hide = setInterval(() => {
+    //     if ( $('#desposit_success').hasClass('in') ) {
+    //         setTimeout(function() {
+    //             $('#desposit_success').removeClass("in").removeAttr("style");
+    //             $('body').removeClass("modal-open").removeAttr("style");
+    //             $('.modal-backdrop').remove();
+    //             // $('.modal .close').trigger('click');      
+    //         }, 2000);                    
+    //         clearInterval(hide); 
+    //     }
+    // }, 100);
 
     $('.js-drop').on('click', function() {
         $(this).toggleClass('open');

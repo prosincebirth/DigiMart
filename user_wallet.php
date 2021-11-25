@@ -179,4 +179,17 @@
     </section>
 </main>
 
+<?php
+    $is_success = $_GET['success'];
+    if( $is_success == true ) {
+        echo '<script>
+        $(document).ready(function() {
+            $("body").addClass("modal-open").css({"padding-right":"16px"}).append("<div class=modal-backdrop></div>");
+            $(".modal-backdrop").addClass("fade in");
+            $("#desposit_success").addClass("in").css({"display":"block", "padding-right":"16px"});    
+        });
+        </script>';
+    }
+?>
+
 <?php include('footer.php'); ?>
