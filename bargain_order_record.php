@@ -88,9 +88,15 @@
                                             echo ' ';	
                                             echo '<span style="color:gray"><u>Buyer Canceled</u></span>';
                                          }else if($res['transaction_status']==7){
-                                            echo '<span> Refunded to the Buyer </span>';	
+                                            echo '<span style="color:red"><b><i class="fas fa-times-circle"></i> Dispute completed</b></span>';
+                                            echo '<br>';
+                                            echo '<br>';
+                                            echo '<span style="color:gray"><u>Refunded to the Buyer </u></span>';	
                                          }else if($res['transaction_status']==8){
-                                            echo '<span> Refunded to the Seller </span>';	
+                                            echo '<span style="color:red"><b><i class="fas fa-times-circle"></i> Dispute completed</b></span>';
+                                            echo '<br>';
+                                            echo '<br>';
+                                            echo '<span style="color:gray"><u>Refunded to the Seller </u></span>';	
                                          }else if($res['transaction_status']==9){
                                             echo '<span> Refunded</span>';	
                                          }else if($res['transaction_status']==10){

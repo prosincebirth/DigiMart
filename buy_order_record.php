@@ -94,15 +94,15 @@
                                             echo ' ';	
                                             echo '<span style="color:gray"><u>Buyer Canceled</u></span>';
                                          }else if($res['transaction_status']==7){
-                                            echo '<span style="color:red"><b><i class="fas fa-times-circle"></i> Dispute </b></span>';
+                                            echo '<span style="color:red"><b><i class="fas fa-times-circle"></i> Dispute completed</b></span>';
                                             echo '<br>';
                                             echo '<br>';
-                                            echo '<span style="color:gray"><u>Refunded to the buyer</u></span>';	
+                                            echo '<span style="color:gray"><u>Refunded to the Buyer </u></span>';	
                                          }else if($res['transaction_status']==8){
-                                            echo '<span style="color:red"><b><i class="fas fa-times-circle"></i> Dispute </b></span>';
+                                            echo '<span style="color:red"><b><i class="fas fa-times-circle"></i> Dispute completed</b></span>';
                                             echo '<br>';
                                             echo '<br>';
-                                            echo '<span style="color:gray"><u>Refunded to the seller</u></span>';
+                                            echo '<span style="color:gray"><u>Refunded to the Seller </u></span>';	
                                          }else if($res['transaction_status']==9){
                                             echo '<span> Refunded</span>';	
                                          }else if($res['transaction_status']==10){
@@ -115,7 +115,7 @@
                                             echo '<span> Transaction Dispute </span>';	
                                          }else if($res['transaction_status']==12){
                                             echo '<span>Out of stock</span>';	
-                                         }else if($res['transaction_status']==13){
+                                        }else if($res['transaction_status']==13){
                                             echo '<span style="color:red"><b><i class="fas fa-times-circle"></i> Dispute on process</b></span>';
                                             echo '<br>';
                                             echo '<br>';
