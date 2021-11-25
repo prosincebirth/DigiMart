@@ -55,7 +55,7 @@
 							</p>
 							<div class="item__ref--price">
 								<span>
-									Reference price | 
+									Lowest price | 
 									<span>₱  <?php echo number_format($res['item_price'],2); ?></span>
 									<span> </span>
 								</span>
