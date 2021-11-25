@@ -1,7 +1,7 @@
 $('document').ready(function()
 {
     var hide = setInterval(() => {
-        if ( !$('#deposit-success').hasClass('in') ) {
+        if ( !$('#desposit_success').hasClass('in') ) {
             
         } else {
             setTimeout(() => {
