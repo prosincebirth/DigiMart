@@ -307,9 +307,11 @@ $('document').ready(function()
     $('#item_confirmation_buy_order_modal').on('show.bs.modal', function(e) {
         var transaction_id_m = $(e.relatedTarget).data('transaction_id_m');
         var user_id_m = $(e.relatedTarget).data('user_id_m');
+        var transaction_proof_mm = $(e.relatedTarget).data('transaction_proof_mm');
 
         $(e.currentTarget).find('input[name="transaction_id_m"]').val(transaction_id_m);
         $(e.currentTarget).find('input[name="user_id_m"]').val(user_id_m);
+        $(e.currentTarget).find('img').attr("src",'data:image/png;base64,'+transaction_proof_mm)
     });
     
     
