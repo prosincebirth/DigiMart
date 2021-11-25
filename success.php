@@ -18,12 +18,16 @@ if (isset($_GET['ukayra_id'])) {
     echo "Success Page";
 }
 
-header("Location: user_wallet.php");
-//echo "<a href='/digimart/user_wallet.php'>Back to main</a>";
-
 echo '<script>
     $(document).ready(function() {
         $("body").addClass("modal-open");
         $("#desposit_success").addClass("in");
+
+        setTimeout(() => {
+            window.location.href = "user_wallet.php";
+        }, 2500);        
     });
 </script>';
+
+// header("Location: user_wallet.php");
+//echo "<a href='/digimart/user_wallet.php'>Back to main</a>";
