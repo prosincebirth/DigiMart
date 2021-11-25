@@ -69,7 +69,7 @@
 									</td>
                                     <td><span>₱ <?php echo $res['item_price'];?></span></td>
 									<td><span><?php echo number_format($res['transaction_quantity'],2);?></span></td>
-                                    <td><span><?php echo number_format($res['transaction_amount'],2);?></span></td>
+                                    <td><span>₱ <?php echo number_format($res['transaction_amount'],2);?></span></td>
                                     <td><span><?php echo $res['transaction_date'];?></span></td>
 									<td>
                                         <?php
