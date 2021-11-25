@@ -102,7 +102,7 @@
                                                     <div class="user-deposit">
                                                         <div class=user-deposit-btn>
                                                             <ul>
-                                                                <li title="You can pay using gcash."><a href="#deposit_gcash" data-toggle="modal" class="selected"><img src="https://img.icons8.com/plasticine/50/000000/gcash.png">GCash</a></li>
+                                                                <li title="You can deposit using gcash."><a href="#deposit_gcash" data-toggle="modal" class="selected"><img src="https://img.icons8.com/plasticine/50/000000/gcash.png">GCash</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
