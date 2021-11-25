@@ -1,13 +1,14 @@
 $('document').ready(function()
 {
     var hide = setInterval(() => {
-        while ( !$('#deposit-success').hasClass('in') ) {
-            continue;
+        if ( !$('#deposit-success').hasClass('in') ) {
+            
+        } else {
+            setTimeout(() => {
+                $('.modal .close').trigger('click');          
+                clearInterval(hide);          
+            }, 2000);
         }
-        setTimeout(() => {
-            $('.modal .close').trigger('click');          
-            clearInterval(hide);          
-        }, 2000);
     }, 100);
 
     $('.js-drop').on('click', function() {
