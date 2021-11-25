@@ -137,6 +137,7 @@
 													}
 													else{
 														add_new_game_item($goods_price_d,$goods_quantity_d,$result_d['goods_id'],$user_id_d,$service_id_d,'1','2');
+														add_notification('You posted buy order for "'.$goods_name_d.'" x'.$goods_quantity_d.', <a href="my_buyorder.php">go to Buy Order</a>',$_SESSION['user_session']);
 														update_frozen_balance($user_id_d,$total_d);
 														echo 'Success';//NEW GOODS_ID IS GENERATED
 													}
@@ -144,6 +145,7 @@
 													add_new_goods($goods_name_d,$goods_quality_d,$goods_rarity_d,$goods_detail1_d,$goods_detail2_d,$goods_detail3_d,$goods_image_d,'1');
 													$result_d=existing_goods($goods_name_d,$goods_quality_d,$goods_rarity_d,$goods_detail1_d,$goods_detail2_d,$goods_detail3_d,$goods_image_d,'1');
 													add_new_game_item($goods_price_d,$goods_quantity_d,$result_d['goods_id'],$user_id_d,$service_id_d,'1','2');
+													add_notification('You posted buy order for "'.$goods_name_d.'" x'.$goods_quantity_d.', <a href="my_buyorder.php">go to Buy Order</a>',$_SESSION['user_session']);
 													update_frozen_balance($user_id_d,$total_d);
 													echo 'Success';//GOODS_ID IS COPIED
 												}
@@ -172,7 +174,8 @@
 											}else{
 												add_new_game_item($item_price_e,$items_quantity_e,$goods_id_e,$user_id_e,$service_id_e,'1','2');
 												update_frozen_balance($user_id_e,$total_e);
-												
+												$result_d=display_goods($goods_id_e);
+												add_notification('You posted buy order for "'.$result_d['goods_name'].'" x'.$items_quantity_e.', <a href="my_buyorder.php">go to Buy Order</a>',$_SESSION['user_session']);
 												echo 'Success';
 											} // success posting item on item page , copying same attribute of the item rather than inputing everything 
 										}else{
@@ -607,7 +610,7 @@
 								echo 'Empty Fields';
 							}else if($update_dispute_status==7){//BUYER WON
 								if($notification_dispute_admin=get_transaction_notification_dispute($transaction_id_update)){
-									update_wallet_balance($notification_dispute_admin['buyer_id'],$notification_dispute_admin['transaction_quantity'] * $notification_dispute_admin['transaction_amount']);
+									update_wallet_balance($notification_dispute_admin['buyer_id'],$notification_dispute_admin['transaction_amount']);
 									item_update_dispute($transaction_id_update,$update_dispute_status); // update item to transaction id = 7
 									update_dispute_id($dispute_id_update); // closing of ticket
 									add_notification('Dispute status is updated for "'.$notification_dispute_admin['goods_name'].'" x'.$notification_dispute_admin['transaction_quantity'].', <a href="buy_order_record.php">go to Buy Order</a>',$notification_dispute_admin['buyer_id']);
@@ -615,8 +618,8 @@
 									echo 'Success';}	
 							}else if($update_dispute_status==8){//SELLER WON
 								if($notification_dispute_admin=get_transaction_notification_dispute($transaction_id_update)){
-									send_wallet_balance($notification_dispute_admin['seller_id'],$notification_dispute_admin['transaction_quantity']*$notification_dispute_admin['transaction_amount']);
-									deduct_wallet_balance($notification_dispute_admin['buyer_id'],$notification_dispute_admin['transaction_quantity']*$notification_dispute_admin['transaction_amount']);
+									send_wallet_balance($notification_dispute_admin['seller_id'],$notification_dispute_admin['transaction_amount']);
+									deduct_wallet_balance($notification_dispute_admin['buyer_id'],$notification_dispute_admin['transaction_amount']);
 									item_update_dispute($transaction_id_update,$update_dispute_status); // update item to transaction id = 7
 									update_dispute_id($dispute_id_update); // closing of ticket
 									add_notification('Dispute status is updated for "'.$notification_dispute_admin['goods_name'].'" x'.$notification_dispute_admin['transaction_quantity'].', <a href="buy_order_record.php">go to Buy Order</a>',$notification_dispute_admin['buyer_id']);

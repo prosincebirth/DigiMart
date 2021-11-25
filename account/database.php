@@ -421,7 +421,7 @@
 		AND a.game_id=$game_id AND 
 		a.transaction_status!=0 AND a.transaction_status!=2 AND a.transaction_status!=5 AND
 		a.transaction_status!=6 AND a.transaction_status!=7 AND a.transaction_status!=8 AND
-		a.transaction_status!=10 AND a.transaction_status!=11 AND a.transaction_status!=12 AND a.transaction_status!=13 
+		a.transaction_status!=10 AND a.transaction_status!=11 AND a.transaction_status!=12 AND a.transaction_status!=13 AND a.transaction_status!=14
 		ORDER BY a.transaction_date DESC";
 		$result = $conn->query($sql);
 		return $result;}
@@ -468,7 +468,7 @@
 		where c.goods_name LIKE '%".$search."%' and a.item_id = b.item_id AND b.goods_id = c.goods_id AND a.buyer_id = $user_id AND a.seller_id != $user_id  AND a.game_id=$game_id and a.order_id != 3 and 
 		a.transaction_status!=0 AND a.transaction_status!=2 AND a.transaction_status!=5 AND
 		a.transaction_status!=6 AND a.transaction_status!=7 AND a.transaction_status!=8 AND
-		a.transaction_status!=10 AND a.transaction_status!=11 AND a.transaction_status!=12 AND a.transaction_status!=13 
+		a.transaction_status!=10 AND a.transaction_status!=11 AND a.transaction_status!=12 AND a.transaction_status!=13 AND a.transaction_status!=14
 		ORDER BY a.transaction_date DESC";
 		$result = $conn->query($sql);
 		return $result;}
@@ -479,7 +479,7 @@
 		where c.goods_name LIKE '%".$search."%' and a.item_id = b.item_id AND b.goods_id = c.goods_id AND a.buyer_id = $user_id AND a.seller_id != $user_id  AND a.game_id=$game_id and a.order_id = 3 and 
 		a.transaction_status!=0 AND a.transaction_status!=2 AND a.transaction_status!=5 AND
 		a.transaction_status!=6 AND a.transaction_status!=7 AND a.transaction_status!=8 AND
-		a.transaction_status!=10 AND a.transaction_status!=11 AND a.transaction_status!=12 AND a.transaction_status!=13 
+		a.transaction_status!=10 AND a.transaction_status!=11 AND a.transaction_status!=12 AND a.transaction_status!=13 AND a.transaction_status!=14
 		ORDER BY a.transaction_date DESC";
 		$result = $conn->query($sql);
 		return $result;}
@@ -575,7 +575,7 @@
 
 	function display_goods($goods_id){//items-goods.php
 		$conn=connection();
-		$query="SELECT *,MIN(b.item_price) as lowest_price FROM goods a join game_items b WHERE a.goods_id = :goods_id and b.item_status=1 and b.order_id=1 ORDER BY lowest_price";
+		$query="SELECT *,MIN(b.item_price) as lowest_price FROM goods a join game_items b WHERE a.goods_id = :goods_id and a.goods_id=b.goods_id and b.item_status=1 and b.order_id=1 ORDER BY lowest_price";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":goods_id"=>$goods_id));
 		$res = $prepare->fetch(PDO::FETCH_ASSOC);
@@ -631,13 +631,13 @@
 
 	function display_items_sale($search){//global-market.php
 		$conn=connection2();
-		$sql="SELECT *,count(b.item_id) as mycount from goods a inner JOIN game_items b where a.goods_name LIKE '%".$search."%' and b.goods_id=a.goods_id and b.order_id=1 and b.item_status=1 group by a.goods_id";
+		$sql="SELECT *,count(b.item_id) as mycount from goods a inner JOIN game_items b where a.goods_name LIKE '%".$search."%' and b.goods_id=a.goods_id and b.order_id=1 and b.item_status=1 group by a.goods_id order by b.item_date_added desc";
 		$result = $conn->query($sql);
 		return $result;}
 
 	function display_items_buy($search){//global-market.php
 		$conn=connection2();
-		$sql="SELECT *,count(b.item_id) as mycount from goods a inner JOIN game_items b where a.goods_name LIKE '%".$search."%' and b.goods_id=a.goods_id and b.order_id=2 and b.item_status=1 group by a.goods_id";
+		$sql="SELECT *,count(b.item_id) as mycount from goods a inner JOIN game_items b where a.goods_name LIKE '%".$search."%' and b.goods_id=a.goods_id and b.order_id=2 and b.item_status=1 group by a.goods_id order by b.item_date_added desc";
 		$result = $conn->query($sql);
 		return $result;}
 
