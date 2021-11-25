@@ -21,7 +21,7 @@ if (isset($_GET['ukayra_id'])) {
 echo '<script>
     $(document).ready(function() {
         $("body").addClass("modal-open");
-        $("#desposit_success").addClass("in");
+        $("#desposit_success").addClass("in").css({"display":"block", "padding-right":"6px"});
 
         setTimeout(() => {
             window.location.href = "user_wallet.php";
