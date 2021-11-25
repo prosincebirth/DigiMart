@@ -23,7 +23,7 @@ echo '<script>
         $("body").addClass("modal-open");
         $("#desposit_success").addClass("in").css({"display":"block", "padding-right":"6px"});
 
-        setTimeout(() => {
+        setTimeout(function() {
             window.location.href = "user_wallet.php";
         }, 2500);        
     });

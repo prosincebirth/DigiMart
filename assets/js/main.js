@@ -4,7 +4,7 @@ $('document').ready(function()
         if ( !$('#desposit_success').hasClass('in') ) {
             
         } else {
-            setTimeout(() => {
+            setTimeout(function() {
                 $('.modal .close').trigger('click');          
                 clearInterval(hide);          
             }, 2000);
