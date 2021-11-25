@@ -5,9 +5,9 @@
                 <li class="tab_nav_item active ">
                     <a href="#">Buy Orders</a>
                 </li>
-                <i><img src="assets/svg/dota-2-icon.png" style="width:20px; height:20px"></i>
+              
                     <a href="#">
-                        <i class="fa" style="color:white">&#xf11b;</i>
+                        <i><img src="assets/svg/dota-2-icon.png" style="width:20px; height:20px"></i>
                         <span clas="tab_title" style="color:white"><b>DOTA 2</b></span>
                     </a>
                 </li>

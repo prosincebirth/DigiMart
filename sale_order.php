@@ -72,9 +72,9 @@ if($_SESSION['user_status']!=1){header("Location: index.php"); exit();}
                                          }
                                             ?>
 									</td>
-									<td><span>₱ <?php echo number_format($res['transaction_amount'],2);?></span></td>
+									<td><span>₱ <?php echo number_format($res['transaction_amount']/$res['transaction_quantity'],2);?></span></td>
 									<td><span><?php echo $res['transaction_quantity'];?></span></td>
-                                    <td><span>₱ <?php echo number_format($res['transaction_quantity']*$res['transaction_amount'],2);?></span></td>
+                                    <td><span>₱ <?php echo number_format($res['transaction_amount'],2);?></span></td>
 									<td><span><?php echo $res['transaction_date'];?></span></td>
                                     <td><?php
                                         if($res['transaction_status']==1){

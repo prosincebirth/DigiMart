@@ -156,14 +156,32 @@
 		$conn=null;
 		return $res;}
 
-	function existing_game_items($goods_id,$user_id){//USED IN POST SALE
+	function existing_game_items($goods_id,$user_id,$order_id){//USED IN POST SALE
 		$conn=connection();
-		$query="SELECT * from game_items where goods_id=:goods_id and user_id=:user_id and item_status=1";
+		$query="SELECT * from game_items where goods_id=:goods_id and user_id=:user_id and item_status=1 and order_id=:order_id";
 		$prepare=$conn->prepare($query);
-		$exec=$prepare->execute(array(":goods_id"=>$goods_id,":user_id"=>$user_id));
+		$exec=$prepare->execute(array(":goods_id"=>$goods_id,":user_id"=>$user_id,":order_id"=>$order_id));
 		$res = $prepare->fetch(PDO::FETCH_ASSOC);
 		$conn=null;
 		return $res;}
+	
+	function existing_transaction($item_id,$buyer_id,$order_id){//USED IN POST SALE
+		$conn=connection();
+		$query="SELECT * from transactions where item_id=:item_id and buyer_id=:buyer_id and order_id=:order_id and transaction_status!=0";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":item_id"=>$item_id,":buyer_id"=>$buyer_id,":order_id"=>$order_id));
+		$res = $prepare->fetch(PDO::FETCH_ASSOC);
+		$conn=null;
+		return $res;}
+		
+		function existing_transaction_seller($item_id,$seller_id,$order_id){//USED IN POST SALE
+			$conn=connection();
+			$query="SELECT * from transactions where item_id=:item_id and seller_id=:seller_id and order_id=:order_id and transaction_status!=0";
+			$prepare=$conn->prepare($query);
+			$exec=$prepare->execute(array(":item_id"=>$item_id,":seller_id"=>$seller_id,":order_id"=>$order_id));
+			$res = $prepare->fetch(PDO::FETCH_ASSOC);
+			$conn=null;
+			return $res;}	
 
 	function sale_game_modal_2($goods_id){
 		$conn=connection();
@@ -668,7 +686,7 @@
 	
 	function display_goods_id($goods_id){//user
 		$conn=connection2();
-		$sql="SELECT * from game_items where goods_id=$goods_id order b";
+		$sql="SELECT * from game_items where goods_id=$goods_id";
 		$result = $conn->query($sql);
 		return $result;}
 

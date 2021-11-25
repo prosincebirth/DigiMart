@@ -65,9 +65,9 @@ if($_SESSION['user_status']!=1){header("Location: index.php"); exit();} ?>
                                             echo "<span>Bargain Order</span>";				
                                          }?>
 									</td>
-                                    <td><span>₱ <?php echo number_format($res['transaction_amount'],2);?></span></td>
+                                    <td><span>₱ <?php echo number_format($res['item_price'],2);?></span></td>
 									<td><span><?php echo $res['transaction_quantity'];?></span></td>
-                                    <td><span>₱ <?php echo number_format($res['transaction_quantity'] * $res['transaction_amount'],2);?></span></td>
+                                    <td><span>₱ <?php echo number_format($res['transaction_amount'],2);?></span></td>
                                     <td><span><?php echo $res['transaction_date'];?></span></td>
 									<td>                               
                                         <?php
