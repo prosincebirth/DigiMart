@@ -1,13 +1,25 @@
 $('document').ready(function()
 {
+    var hide = setInterval(() => {
+        if ( !$('#deposit-success').hasClass('in') ) {
+            
+        } else {
+            setTimeout(() => {
+                $('.modal .close').trigger('click');          
+                clearInterval(hide);          
+            }, 2000);
+        }
+    }, 100);
+
     $('.js-drop').on('click', function() {
         $(this).toggleClass('open');
         $('body').toggleClass('open');
     });
+
     $('[data-toggle="popover"]').popover({
         placement: 'right',
         trigger: 'hover'
-     });
+    });
 
     $("#register-form").validate({
         rules:
