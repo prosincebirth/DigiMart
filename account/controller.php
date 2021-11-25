@@ -423,7 +423,7 @@
 						else if($result_k=get_buy_order_transaction_details($transaction_id_k,$user_id_k)){
 							//update_game_quantity_reject($result_k['item_id'],$result_k['transaction_quantity']);
 							update_transaction_buy_order($transaction_id_k);
-							update_wallet_balance($user_id_k,$result_k['transaction_quantity']*$result_k['transaction_amount']);
+							update_wallet_balance($user_id_k,$result_k['transaction_amount']);
 							if($notification_k=get_transaction_notification_buyer($transaction_id_k,$user_id_k)){
 								add_notification('Buyer has declined for "'.$notification_k['goods_name'].'" x'.$notification_k['transaction_quantity'].', <a href="sale_order_record.php">go to Sale Order</a>',$notification_k['seller_id']);
 								echo 'Success';}
@@ -447,11 +447,9 @@
 										update_item_delivery($transaction_id_l,$user_id_l,$transaction_proof);
 										echo 'Success';}
 						}else {
-								if($notification_l=get_transaction_notification_seller($transaction_id_l,$user_id_l)){
-								add_notification('Seller has delivered "'.$notification_l['goods_name'].'" x'.$notification_l['transaction_quantity'].', <a href="buy_order.php">go to Buy Order</a>',$notification_l['buyer_id']);
-								update_item_delivery($transaction_id_l,$user_id_l,null);
-								echo 'Success';}
+							echo 'Input payment proof';
 						}
+						
 						break;
 					case "item_confirmation_buy_order_modal"://NOTIFICATION DONE
 
@@ -465,9 +463,9 @@
 						//else if(){ email not verified trappings , cannot buy because the email is not verified
 						//}								
 						else if($result_m=get_buy_order_transaction_details($transaction_id_m,$user_id_m)){
-							send_wallet_balance($result_m['seller_id'],$result_m['transaction_quantity']*$result_m['transaction_amount']);
-							deduct_wallet_balance($result_m['buyer_id'],$result_m['transaction_quantity']*$result_m['transaction_amount']);
-							$total_gg=$result_m['transaction_quantity']*$result_m['transaction_amount'];
+							send_wallet_balance($result_m['seller_id'],$result_m['transaction_amount']);
+							deduct_wallet_balance($result_m['buyer_id'],$result_m['transaction_amount']);
+							$total_gg=$result_m['transaction_amount'];
 							update_item_confirmation($transaction_id_m,$user_id_m);
 							add_notification("Buyer has received your item,₱ $total_gg has added to your balance.",$result_m['seller_id']);
 							echo 'Success'; // success not buying his own posting
@@ -499,7 +497,7 @@
 									if($notification_ii=get_transaction_notification_buyer($transaction_id_ii,$user_id_ii)){
 										add_notification('Buyer has canceled "'.$notification_ii['goods_name'].'" x'.$notification_ii['transaction_quantity'].', <a href="sale_order_record.php">go to Sales Order</a>',$notification_ii['seller_id']);
 										cancel_bargain_order($transaction_id_ii,$user_id_ii);
-										update_wallet_balance($user_id_ii,$result_ii['transaction_amount'] * $result_ii['transaction_quantity']);
+										update_wallet_balance($user_id_ii,$result_ii['transaction_amount']);
 										echo 'Success';}
 								}
 						break;
@@ -512,7 +510,7 @@
 							}						
 							else if($result_nn=get_sale_order_transaction_details($transaction_id_nn,$user_id_nn)){
 								cancel_sale_order_nn($transaction_id_nn,$user_id_nn);
-								update_wallet_balance($result_nn['buyer_id'],$result_nn['transaction_amount'] * $result_nn['transaction_quantity']);
+								update_wallet_balance($result_nn['buyer_id'],$result_nn['transaction_amount']);
 									if($notification_nn=get_transaction_notification_seller($transaction_id_nn,$user_id_nn)){
 										add_notification('Seller has canceled "'.$notification_nn['goods_name'].'" x'.$notification_nn['transaction_quantity'].', <a href="buy_order_record.php">go to Buy Order</a>',$notification_nn['buyer_id']);
 										echo 'Success';}															
@@ -544,7 +542,7 @@
 						else if($result_p=get_sale_order_transaction_details($transaction_id_p,$user_id_p)){
 							//update_game_quantity_reject($result_k['item_id'],$result_k['transaction_quantity']);
 							update_transaction_sale_order($transaction_id_p);
-							update_wallet_balance($result_p['buyer_id'],$result_p['transaction_quantity']*$result_p['transaction_amount']);
+							update_wallet_balance($result_p['buyer_id'],$result_p['transaction_amount']);
 								if($notification_p=get_transaction_notification_seller($transaction_id_p,$user_id_p)){
 								add_notification('Seller has declined for "'.$notification_p['goods_name'].'" x'.$notification_p['transaction_quantity'].', <a href="buy_order_record.php">go to Buy Order</a>',$notification_p['buyer_id']);
 								echo 'Success';}
@@ -559,7 +557,7 @@
 							}						
 							else if($result_q=get_bargain_order_transaction_details($transaction_id_q,$user_id_q)){
 								cancel_bargain_order($transaction_id_q,$user_id_q);
-								update_wallet_balance($user_id_q,$result_q['transaction_amount'] * $result_q['transaction_quantity']);
+								update_wallet_balance($user_id_q,$result_q['transaction_amount']);
 								if($notification_q=get_transaction_notification_seller($transaction_id_q,$user_id_q)){
 									add_notification('Seller has declined for "'.$notification_q['goods_name'].'" x'.$notification_q['transaction_quantity'].', <a href="buy_order_record.php">go to Buy Order</a>',$notification_q['buyer_id']);
 									echo 'Success';}														
@@ -639,8 +637,8 @@
 								$goods_id_edit=$_POST['goods_id_edit'];
 
 								
-								if(empty($goods_name_edit) && empty($goods_quality_edit)  && empty($goods_rarity_edit)  && empty($goods_detail1_edit)  && empty($goods_detail2_edit)  && empty($goods_detail3_edit)  && empty($order_id_edit)  
-								&& empty($service_id_edit)  && empty($goods_id_edit)){ // trappings for not logged in
+								if(empty($goods_name_edit) or empty($goods_quality_edit)  or empty($goods_rarity_edit)  or empty($goods_detail1_edit)  or empty($goods_detail2_edit)  or empty($goods_detail3_edit)  or empty($order_id_edit)  
+								&& empty($service_id_edit) or empty($goods_id_edit)){ // trappings for not logged in
 									echo 'Empty Fields';
 								}						
 								else{
