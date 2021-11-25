@@ -5,21 +5,8 @@ $('document').ready(function()
             $('#desposit_success').removeClass("in").removeAttr("style");
             $('body').removeClass("modal-open").removeAttr("style");
             $('.modal-backdrop').remove();
-            // $('.modal .close').trigger('click');      
-        }, 2000);                    
-        // clearInterval(hide); 
+        }, 2000);       
     }
-    // var hide = setInterval(() => {
-    //     if ( $('#desposit_success').hasClass('in') ) {
-    //         setTimeout(function() {
-    //             $('#desposit_success').removeClass("in").removeAttr("style");
-    //             $('body').removeClass("modal-open").removeAttr("style");
-    //             $('.modal-backdrop').remove();
-    //             // $('.modal .close').trigger('click');      
-    //         }, 2000);                    
-    //         clearInterval(hide); 
-    //     }
-    // }, 100);
 
     $('.js-drop').on('click', function() {
         $(this).toggleClass('open');
