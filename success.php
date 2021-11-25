@@ -20,3 +20,4 @@ if (isset($_GET['ukayra_id'])) {
 
 header("Location: user_wallet.php");
 //echo "<a href='/digimart/user_wallet.php'>Back to main</a>";
+

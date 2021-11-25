@@ -756,7 +756,7 @@
 			<form  method="GET" action="payment_gcash.php">
 				<img style="display: block;margin-left: auto;margin-right: auto;"src="https://img.icons8.com/plasticine/80/000000/gcash.png">
 				<h3 style="text-align:center;">GCash</h3>
-				<h4 style="text-align:center; margin-bottom:50px;">Ammount: <input type="number" name="ammount" placeholder="0" required class="form-control"></h4>
+				<h4 style="text-align:center; margin-bottom:50px;">Amount: <input type="number" name="amount" placeholder="0" required class="form-control" step=".01"></h4>
 				<div class="fld_input"><input type="text" name="first_name" placeholder="First name" required class="form-control"></div>						
 				<div class="fld_input"><input type="text" name="last_name" placeholder="Last name" required class="form-control"></div>						
 				<div class="fld_input"><input type="text" name="mobile" placeholder="Mobile Number" required class="form-control"></div>						
@@ -770,6 +770,30 @@
 		</div>
 	</div>
 	</div></div>
+	</div>
+
+	<div class="modal fade" id="desposit_success" role="dialog">
+		<div class="vertical-alignment-helper">
+			<div class="modal-dialog vertical-align-center">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title"><i class="fas fa-check-circle"></i>Success</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="desposit_failed" role="dialog">
+		<div class="vertical-alignment-helper">
+			<div class="modal-dialog vertical-align-center">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title"><i class="fas fa-times-circle"></i>Failed</h4>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 

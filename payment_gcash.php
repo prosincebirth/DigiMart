@@ -3,8 +3,8 @@
 $url = "https://api4wrd.2kpa.me/paymongo/v1/create"; // you will need an app_key, get it from -> https://api4wrd.ukayra.com/register
 
 $redirect = [
-    "success" => "http://localhost/digimart/success.php",
-    "failed" => "http://localhost/digimart/failed.php"
+    "success" => "http://192.168.254.107/digimart/success.php",
+    "failed" => "http://192.168.254.107/digimart/failed.php"
 ];
 
 $billing = [
@@ -18,7 +18,7 @@ $billing = [
 $attributes = [
     "livemode" => false,
     "type" => "gcash",
-    "amount" => (int)$_GET["ammount"] ,
+    "amount" => (int)$_GET["amount"] ,
     "currency" => "PHP",
     "redirect" => $redirect,
     "billing" => $billing,
@@ -55,8 +55,10 @@ $resData = json_decode($result, true);
 
 if ($resData["status"] == 200) {
     header("Location: " . $resData["url_redirect"] );
+    
 } else {
-    header("Location: user_wallet.php");
+    //header("Location: user_wallet.php");
+    echo "ERROR: ".$resData["status"];
 }
 
 die();
