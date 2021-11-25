@@ -46,7 +46,7 @@
                                     </tr>
                                     <tr>
                                         <td class="t-left" width="120">Username</td>
-                                        <td class="t-left"><span class="name-tab" style="display: inline">Username</span></td>
+                                        <td class="t-left"><span class="name-tab" style="display: inline; color:var(--primary-color);font-weight:bold;"><?php echo $_SESSION['user_username'];?></span></td>
                                         <td class="t-right"><a href="javascript:void(0);" class="btn-change">Change</a></td>    
                                     </tr>
                                 </tbody>
