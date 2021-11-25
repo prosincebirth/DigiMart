@@ -50,7 +50,7 @@ if($_SESSION['user_status']!=1){header("Location: index.php"); exit();} ?>
                                             <td>
                                             <div class="img_text">
                                                 <?php echo '<img class="item__img" src="data:image/png;base64,'.base64_encode($res['goods_image']).'"height="72" >'; ?>
-                                                <span><?php echo $res['goods_name'];?></span>	
+                                                <span><?php echo '<a href="goods_sell.php?goods_id='.$res['goods_id'].'";><span>  '.$res['goods_name'].'</span></a>';?></span>		
                                             </div>
                                         </td>
                                         <td><span><?php echo $res['seller_name'];?></span></td>
