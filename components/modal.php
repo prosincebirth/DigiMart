@@ -347,16 +347,7 @@
 										</select></div>
 				<div class="fld_input"><input type="hidden" name="order_id_edit" placeholder="ORDER ID" id="order_id_edit" class="form-control" value="2"></div>
 				<div class="fld_input"><input type="hidden" name="goods_id_edit" placeholder="GOODS ID" id="goods_id_edit" class="form-control" value="2"></div>		
-				<div class="fld_input"><select name="service_id_edit" id="service_id_edit" class="form-control">	
-				<option value="" disabled selected>Service Mode</option>
-									<?php
-                                    $result = get_game_service(1);
-                                    if($result->num_rows > 0){
-									while ($res = $result->fetch_assoc()){
-										if($res['service_id']!= NULL){
-										echo '<option value='.$res['service_id'].'>'.$res['service_mode'].'</option>';
-										}}}?>
-										</select></div>
+				
             </div>
 			<div class="modal-footer">
 					<button class="btn btn-success" type="button" value="edit_game_item_modal">Confirm</button>			

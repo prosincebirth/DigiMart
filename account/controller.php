@@ -636,16 +636,15 @@
 								$goods_detail2_edit=$_POST['goods_detail2_edit'];
 								$goods_detail3_edit=$_POST['goods_detail3_edit'];
 								$order_id_edit=$_POST['order_id_edit'];
-								$service_id_edit=$_POST['service_id_edit'];
 								$goods_id_edit=$_POST['goods_id_edit'];
 
 								
 								if(empty($goods_name_edit) or empty($goods_quality_edit)  or empty($goods_rarity_edit)  or empty($goods_detail1_edit)  or empty($goods_detail2_edit)  or empty($goods_detail3_edit)  or empty($order_id_edit)  
-								&& empty($service_id_edit) or empty($goods_id_edit)){ // trappings for not logged in
+								  or empty($goods_id_edit)){ // trappings for not logged in
 									echo 'Empty Fields';
 								}						
 								else{
-									update_goods_item_name($goods_id_edit,$goods_name_edit,$goods_quality_edit,$goods_rarity_edit,$goods_detail1_edit,$goods_detail2_edit,$goods_detail3_edit,$service_id_edit);
+									update_goods_item_name($goods_id_edit,$goods_name_edit,$goods_quality_edit,$goods_rarity_edit,$goods_detail1_edit,$goods_detail2_edit,$goods_detail3_edit);
 									echo 'Success'; 															
 									}
 							break;																
