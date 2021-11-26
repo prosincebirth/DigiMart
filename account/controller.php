@@ -51,8 +51,8 @@
 							}
 						}else{ echo 'Empty Fields';
 							}
-						break;
-						case "add_new_game_modal"://TESTED 11:56 pm , 25/10/2021
+					break;
+					case "add_new_game_modal"://TESTED 11:56 pm , 25/10/2021
 							$game_name_a=$_POST['game_name_a'];
 							$game_desc_a=$_POST['game_desc_a'];
 							$steam_game_id_a=$_POST['steam_game_id_a'];
@@ -63,8 +63,8 @@
 							}else{
 									echo 'Field inputs error';
 							}
-							break;
-						case "edit_new_game_modal"://TESTED 11:56 pm , 25/10/2021
+					break;
+					case "edit_new_game_modal"://TESTED 11:56 pm , 25/10/2021
 							$game_id_b=$_POST['game_id_b'];
 							$game_name_b=$_POST['game_name_b'];
 							$game_desc_b=$_POST['game_desc_b'];
@@ -76,8 +76,8 @@
 							}else{
 									echo 'Field inputs error';
 							}
-							break;	
-						case "delete_new_game_modal"://TESTED 11:56 pm , 25/10/2021
+					break;	
+					case "delete_new_game_modal"://TESTED 11:56 pm , 25/10/2021
 							$game_id_c=$_POST['game_id_c'];
 	
 							if(!empty($game_id_c)){
@@ -86,8 +86,8 @@
 							}else{
 									echo 'Field inputs error';
 							}
-							break;
-						case "add_new_service_modal"://TESTED 11:56 pm , 25/10/2021
+					break;
+					case "add_new_service_modal"://TESTED 11:56 pm , 25/10/2021
 							$service_mode_d=$_POST['service_mode_d'];
 							$service_desc_d=$_POST['service_desc_d'];
 							$game_id_d=$_POST['game_id_d'];
@@ -98,8 +98,8 @@
 							}else{
 								echo 'Field inputs error';
 							}
-							break;	
-						case "edit_game_services_modal"://TESTED 11:56 pm , 25/10/2021
+					break;	
+					case "edit_game_services_modal"://TESTED 11:56 pm , 25/10/2021
 							$service_id_e=$_POST['service_id_e'];
 							$service_mode_e=$_POST['service_mode_e'];
 							$service_desc_e=$_POST['service_desc_e'];
@@ -111,9 +111,8 @@
 							}else{
 								echo 'Field inputs error';
 							}
-							break;
-	
-						case "delete_game_services_modal"://TESTED 11:56 pm , 25/10/2021
+					break;
+					case "delete_game_services_modal"://TESTED 11:56 pm , 25/10/2021
 							$service_id_f=$_POST['service_id_f'];
 	
 							if(!empty($service_id_f)){
@@ -122,7 +121,7 @@
 							}else{
 									echo 'Field inputs error';
 							}
-							break;	
+					break;	
 					case "sell_game_item":
 							$goods_name_a=$_POST['goods_name_a'];
 							$goods_quality_a=$_POST['goods_quality_a'];
