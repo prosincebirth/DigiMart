@@ -72,7 +72,10 @@ include('includes/navbar.php');
                 echo '<td>Refunded to the Seller</td>';
               }else if($transaction['transaction_status']==13){
                 echo '<td><span style="color:red"><b><i class="fas fa-times-circle"></i> Dispute on process</td>';
-              }    
+              } 
+              else if($transaction['transaction_status']==14){
+                echo '<td><span style="color:red"><b><i class="fas fa-times-circle"></i> Dispute on process</td>';
+              }   
                  
 
               ?>

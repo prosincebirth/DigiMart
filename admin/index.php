@@ -118,7 +118,6 @@ include('includes/navbar.php');
               <div class="h5 mb-0 font-weight-bold text-gray-800">
                 
               <?php	$transactions = get_transaction_count();foreach($transactions as $count_transactions){echo '<h4>'.$count_transactions['count_transactions'].' </h4>';}?>
-
               </div>
             </div>
             <div class="col-auto">
@@ -136,7 +135,7 @@ include('includes/navbar.php');
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Pending Disputes</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><?php	$disputes = get_dispute_count();foreach($disputes as $count_dispute){echo '<h4>'.$count_dispute['count_disputes'].' </h4>';}?></div>
             </div>
             <div class="col-auto">
               <i class="fas fa-comments fa-2x text-gray-300"></i>

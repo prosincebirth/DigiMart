@@ -671,6 +671,12 @@
 		$sql="SELECT count(transaction_id) as count_transactions from transactions where transaction_status != 0";
 		$result = $conn->query($sql);
 		return $result;}
+
+	function get_dispute_count(){
+		$conn=connection2();
+		$sql="SELECT count(dispute_id) as count_disputes from disputes where dispute_status != 0";
+		$result = $conn->query($sql);
+		return $result;}	
 			
 	function get_notification($user_id){
 		$conn=connection2();

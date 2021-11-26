@@ -91,13 +91,17 @@ if($_SESSION['user_status']!=1){header("Location: index.php"); exit();} ?>
                                                 echo '<span style="color:blue"><b><i class="fas fa-clock"></i> Waiting for your response</b></span>';	
                                                 echo '<br>';
                                                 echo '<br>';
-                                                echo '<button class="buy_btn wishlist_btn"  
+                                                echo '<button 
                                                     data-toggle="modal" 
                                                     data-target="#item_confirmation_buy_order_modal" 
                                                     data-transaction_id_m='.$res['transaction_id'].'
+                                                    data-transaction_proof_mm='.base64_encode($res['transaction_proof']).'
                                                     data-user_id_m='.$_SESSION['user_session'].'>Item recieved</button>';
                                                 echo ' ';
-                                                echo '<button> Start Dispute </button>';
+                                                echo '<button data-toggle="modal" 
+                                                    data-target="#dispute_item_not_received" 
+                                                    data-transaction_id_dispute='.$res['transaction_id'].'>Start Dispute</button>';
+                                             
                                                 } 
                                                 }
                                                 }?>
