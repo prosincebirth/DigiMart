@@ -597,7 +597,7 @@
 				<div class="fld_input"><input type="hidden" name="transaction_id_m" placeholder="ITEM ID" id="transaction_id_m" class="form-control"></div>						
 				<div class="fld_input"><input type="hidden" name="user_id_m" placeholder="USER ID" id="user_id_m" class="form-control"></div>			
 				<div class="form-group">
-                <label style="color:#4e73df">Transaction proof</label>
+                <label style="color:#4e73df">Item delivery proof</label>
                 <img src="data:image/png;base64," height="260">
             </div>
             </div>
