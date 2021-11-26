@@ -6,41 +6,54 @@
 <link rel="preload stylesheet" href="assets/css/item-grid.css" as="style" crossorigin> -->
 <link rel="preload stylesheet" href="assets/css/user-account.css" as="style" crossorigin>
 
-<div class="modal fade" id="edit_game_services_modal">
+<div class="modal fade" id="kyc_services_modal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Game Service</h5>
+      <h4 class="modal-title"><center>KYC Verification</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
         <div class="modal-body">
             <div class="form-inline">
-                <label style="margin:5px; width:30%; float:left;">Service Mode </label> 
-                <input style="width:60%; float:center; margin:5px;" type="text" class="form-control" name="service_id_e" placeholder="Game Name" id="service_id_e" class="form-control">
-
+                <input type="hidden" class="form-control"  name="user_session_kyc" placeholder="Game Name" id="user_session_kyc" value="<?php echo $_SESSION['user_session'];?>" class="form-control">
+                <label style="margin:5px; width:30%; float:left;">First name</label> 
+                <input style="width:60%; float:center; margin:5px;" type="text" class="form-control" name="firstname_kyc" placeholder="e.g. Jason" id="firstname_kyc" class="form-control">
             </div>
             <div class="form-inline">
-                <label style="margin:5px; width:30%; float:left;">Service Description</label>
-                <input style="width:60%; float:center; margin:5px;"type="text" name="service_desc_e" placeholder="Service Description" id="service_desc_e" class="form-control">
+                <label style="margin:5px; width:30%; float:left;">Middle name</label> 
+                <input style="width:60%; float:center; margin:5px;" type="text" class="form-control" name="middlename_kyc" placeholder="e.g. Optina" id="middlename_kyc" class="form-control">
             </div>
             <div class="form-inline">
-                <label style="margin:5px; width:30%; float:left;">Service Description</label>
-                <input style="width:60%; float:center; margin:5px;" type="text" name="service_desc_e" placeholder="Service Description" id="service_desc_e" class="form-control">
-            </div><div class="form-inline">
-                <label style="margin:5px; width:30%; float:left;"> Service Description</label>
-                <input style="width:60%; float:center; margin:5px;" type="text" name="service_desc_e" placeholder="Service Description" id="service_desc_e" class="form-control">
-            </div><div class="form-inline">
-                <label style="margin:5px; width:30%; float:left;">Service Description</label>
-                <input style="width:60%; float:center; margin:5px;" type="text" name="service_desc_e" placeholder="Service Description" id="service_desc_e" class="form-control">
-            </div><div class="form-inline">
-                <label style="margin:5px; width:30%; float:left;">Service Description</label>
-                <input style="width:60%; float:center; margin:5px;" type="text" name="service_desc_e" placeholder="Service Description" id="service_desc_e" class="form-control">
+                <label style="margin:5px; width:30%; float:left;">Last name</label> 
+                <input style="width:60%; float:center; margin:5px;" type="text" class="form-control" name="lastname_kyc" placeholder="e.g. Baguio" id="lastname_kyc" class="form-control">
             </div>
+            <div class="form-inline">
+                <label style="margin:5px; width:30%; float:left;">ID number</label>
+                <input style="width:60%; float:center; margin:5px;"type="text" name="idnumber_kyc" placeholder="e.g. 15401441" id="idnumber_kyc" class="form-control">
+            </div>
+            <div class="form-inline">
+                <label style="margin:5px; width:30%; float:left;">Address</label>
+                <input style="width:60%; float:center; margin:5px;"type="text" name="address_kyc" placeholder="e.g. Summerland Cebu City" id="address_kyc" class="form-control">
+            </div>
+            <div class="form-inline">
+                <label style="margin:5px; width:30%; float:left;">Identification Verification</label>
+                <select style="width:60%; float:center; margin:5px;" name="id_kyc" id="id_kyc" class="form-control">
+                <option value="" disabled selected>Type of ID</option>	
+                <option value="1">Driver's License</option>
+                <option value="2">Student ID</option>
+                <option value="3">Passport</option>
+                <option value="4">National ID</option></select>   
+           </div>
+            <div class="form-inline">
+                <label style="margin:5px; width:30%; float:left;"> </label>
+                <input style="width:60%; float:center; margin:5px;"type="file" name="id_proof_kyc" placeholder="Service Description" id="id_proof_kyc" class="form-control">
+           </div>
+           
         </div>
         <div class="modal-footer">
-            <button type="button" value="edit_game_services_modal" class="btn btn-primary">Confirm</button>
+            <button type="button" value="kyc_services_modal" class="btn btn-primary">Confirm</button>
         </div>
     </div>
   </div></div>
@@ -105,7 +118,7 @@
                                         <td class="t-left" width="120">KYC Verification</td>
                                         <td class="t-left"><span style="color:red"><i class="fas fa-times-circle"></i> Not verfied</span></td>
                                         <td class="t=left"></td>
-                                        <td class="t-right"><a data-toggle="modal" data-target="#edit_game_services_modal" class="i-btn --i-btn-small"> Start Verification</a></td>
+                                        <td class="t-right"><a data-toggle="modal" data-target="#kyc_services_modal" class="i-btn --i-btn-small"> Start Verification</a></td>
                                     </tr>
                                     <tr>
                                         <td class="t-left" width="120">Password settings</td>
@@ -121,9 +134,9 @@
                                     </tr>
                                     <tr > 
                                         <td class="t-left" width="120">Steam Trade Link</td>
-                                        <td class="t=left"><span><input type="text" style="margin-right: 12px;"></input>   </span></td>
-                                        <td  ><a href="https://steamcommunity.com/profiles/76561198147247956/tradeoffers/privacy#trade_offer_access_url" target="_blank">Click to get link</a></td>
-
+                                        
+                                        <td class="t=left"><span><input type="text" style="margin-right:0px;width:150%"></input></span></td>
+                                        <td><a href="https://steamcommunity.com/profiles/76561198147247956/tradeoffers/privacy#trade_offer_access_url" target="_blank">Click to get link</a></td>
                                         <td class="t-right"><a href="https://steamcommunity.com/profiles/76561198147247956/tradeoffers/privacy#trade_offer_access_url" target="_blank" class="i-btn --i-btn-small">Save</a></td>
 
                                     </tr>

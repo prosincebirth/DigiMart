@@ -61,6 +61,12 @@
     <span>Disputes</span></a>
 </li>
 
+<li class="nav-item">
+  <a class="nav-link" href="kyc_verification.php">
+    <i class="fas fa-exclamation-circle"></i>
+    <span>KYC Verification</span></a>
+</li>
+
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
 

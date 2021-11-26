@@ -720,6 +720,25 @@
 									update_goods_item_name($goods_id_edit,$goods_name_edit,$goods_quality_edit,$goods_rarity_edit,$goods_detail1_edit,$goods_detail2_edit,$goods_detail3_edit);
 									echo 'Success'; 															
 									}
+							break;
+							case "kyc_services_modal":		
+								$firstname_kyc=$_POST['firstname_kyc'];
+								$middlename_kyc=$_POST['middlename_kyc'];
+								$lastname_kyc=$_POST['lastname_kyc'];
+								$idnumber_kyc=$_POST['idnumber_kyc'];
+								$address_kyc=$_POST['address_kyc'];
+								$id_kyc=$_POST['id_kyc'];
+								$id_proof_kyc=$_POST['id_proof_kyc'];
+								$user_session_kyc=$_POST['user_session_kyc'];
+								
+								if(empty($firstname_kyc) or empty($middlename_kyc)  or empty($lastname_kyc)  or empty($idnumber_kyc)  or empty($address_kyc)  or empty($id_kyc)  or empty($id_proof_kyc)  
+								  or empty($user_session_kyc)){ // trappings for not logged in
+									echo 'Empty Fields';
+								}						
+								else{
+									update_goods_item_name($goods_id_edit,$goods_name_edit,$goods_quality_edit,$goods_rarity_edit,$goods_detail1_edit,$goods_detail2_edit,$goods_detail3_edit);
+									echo 'Success'; 															
+									}
 							break;																
 						
 			}

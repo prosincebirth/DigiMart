@@ -269,6 +269,46 @@ $(".btn").on("click",function(){
                 }
             });//END	
             break;
+            case "kyc_services_modal": 
+            var firstname_kyc=$("#firstname_kyc").val().trim();
+            var middlename_kyc=$("#middlename_kyc").val().trim();
+            var lastname_kyc=$("#lastname_kyc").val().trim();
+            var idnumber_kyc=$("#idnumber_kyc").val().trim();
+            var address_kyc=$("#address_kyc").val().trim();
+            var id_kyc=$("#id_kyc").val().trim();
+            var id_proof_kyc=$("#id_proof_kyc").val().trim();
+            var user_session_kyc=$("#user_session_kyc").val().trim();
+            
+            
+            var data=new FormData();
+            data.append("action_type","kyc_services_modal");
+            data.append("firstname_kyc",firstname_kyc);
+            data.append("middlename_kyc",middlename_kyc);
+            data.append("lastname_kyc",lastname_kyc);
+            data.append("idnumber_kyc",idnumber_kyc);
+            data.append("address_kyc",address_kyc);
+            data.append("id_kyc",id_kyc);
+            data.append("id_proof_kyc",id_proof_kyc);
+            data.append("user_session_kyc",user_session_kyc);
+
+            $.ajax({	
+                url:"../account/controller.php",
+                method:"post",
+                data:data,
+                contentType:false,
+                cache:false,
+                processData:false,
+                success:function(res){
+                    console.log(res)
+                    if(res=="Success"){
+                        alert(res)
+                        location.reload();
+                    }else{
+                        alert(res)
+                    } 
+                }
+            });//END	
+            break;
         }
     });
 });
