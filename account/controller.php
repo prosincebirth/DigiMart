@@ -23,7 +23,35 @@
 							echo 'Success';
 						} //if both are not taken, success
 						break;
-					case "login":
+					case "login":		
+						$user_username_a=$_POST['user_username_a'];
+						$user_password_a=$_POST['user_password_a'];
+
+						if(!empty($user_username_a) && !empty($user_password_a)){
+							if(existing_user($user_username_a)){
+								$res_a = login($user_username_a);
+								if(password_verify($user_password_a, $res_a['user_password'])){	
+									$_SESSION['user_session'] = $res_a['user_id'];
+									$_SESSION['user_username'] = $res_a['user_username'];
+									$_SESSION['user_status'] = $res_a['user_status'];
+									session_write_close();
+									update_login($res_a['user_id']);
+										if(!get_wallet_balance($res_a['user_id'])){
+												add_wallet($res_a['user_id']);										
+											}
+									echo 'Success';		
+									//header('Location: home.php'); 
+									//palihug ko try ani na fix para wla na alert mo gawas tanawa ang sa modal ilisdi ang button to submit para auto redirect ra siya
+									//then e uncomment ang header 
+								}else{
+									echo 'Wrong Password';
+								}
+							}else{
+								echo 'Username not recognized';
+							}
+						}else{ echo 'Empty Fields';
+							}
+						break;
 						case "add_new_game_modal"://TESTED 11:56 pm , 25/10/2021
 							$game_name_a=$_POST['game_name_a'];
 							$game_desc_a=$_POST['game_desc_a'];
@@ -94,35 +122,7 @@
 							}else{
 									echo 'Field inputs error';
 							}
-							break;		
-						$user_username_a=$_POST['user_username_a'];
-						$user_password_a=$_POST['user_password_a'];
-
-						if(!empty($user_username_a) && !empty($user_password_a)){
-							if(existing_user($user_username_a)){
-								$res_a = login($user_username_a);
-								if(password_verify($user_password_a, $res_a['user_password'])){	
-									$_SESSION['user_session'] = $res_a['user_id'];
-									$_SESSION['user_username'] = $res_a['user_username'];
-									$_SESSION['user_status'] = $res_a['user_status'];
-									session_write_close();
-									update_login($res_a['user_id']);
-										if(!get_wallet_balance($res_a['user_id'])){
-												add_wallet($res_a['user_id']);										
-											}
-									echo 'Success';		
-									//header('Location: home.php'); 
-									//palihug ko try ani na fix para wla na alert mo gawas tanawa ang sa modal ilisdi ang button to submit para auto redirect ra siya
-									//then e uncomment ang header 
-								}else{
-									echo 'Wrong Password';
-								}
-							}else{
-								echo 'Username not recognized';
-							}
-						}else{ echo 'Empty Fields';
-							}
-						break;
+							break;	
 					case "sell_game_item":
 							$goods_name_a=$_POST['goods_name_a'];
 							$goods_quality_a=$_POST['goods_quality_a'];
