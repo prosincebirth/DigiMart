@@ -6,6 +6,45 @@
 <link rel="preload stylesheet" href="assets/css/item-grid.css" as="style" crossorigin> -->
 <link rel="preload stylesheet" href="assets/css/user-account.css" as="style" crossorigin>
 
+<div class="modal fade" id="edit_game_services_modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Game Service</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Service Mode </label> <input type="text" class="form-control" name="service_id_e" placeholder="Game Name" id="service_id_e" class="form-control">
+
+            </div>
+            <div class="form-group">
+                <label>Service Description</label>
+                <input type="text" name="service_desc_e" placeholder="Service Description" id="service_desc_e" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Service Description</label>
+                <input type="text" name="service_desc_e" placeholder="Service Description" id="service_desc_e" class="form-control">
+            </div><div class="form-group">
+                <label>Service Description</label>
+                <input type="text" name="service_desc_e" placeholder="Service Description" id="service_desc_e" class="form-control">
+            </div><div class="form-group">
+                <label>Service Description</label>
+                <input type="text" name="service_desc_e" placeholder="Service Description" id="service_desc_e" class="form-control">
+            </div><div class="form-group">
+                <label>Service Description</label>
+                <input type="text" name="service_desc_e" placeholder="Service Description" id="service_desc_e" class="form-control">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" value="edit_game_services_modal" class="btn btn-primary">Confirm</button>
+        </div>
+    </div>
+  </div></div>
+
+
 <main>
     <section class="market_section">
         <div class="container">
@@ -57,26 +96,35 @@
                                 <tbody>
                                     <tr>
                                         <td class="t-left" width="120">Phone number</td>
-                                        <td ></td>
+                                        <td class="t=left"></td>
+                                        <td class="t=left"></td>
                                         <td class="t-Right"><a href="javascript:void(0);" class="i-btn --i-btn-small">Change Phone</a></td>
                                     </tr>
                                     <tr>
-                                        <td class="t-left" width="120">Real-name verification</td>
-                                        <td class="t-left"><span><i class="fas fa-times-circle"></i>Not verfied</span></td>
-                                        <td class="t-right"><a href="javascript:void(0);" class="i-btn --i-btn-small">To verify</a></td>
+                                        <td class="t-left" width="120">KYC Verification</td>
+                                        <td class="t-left"><span style="color:red"><i class="fas fa-times-circle"></i> Not verfied</span></td>
+                                        <td class="t=left"></td>
+                                        <td class="t-right"><a data-toggle="modal" data-target="#edit_game_services_modal" class="i-btn --i-btn-small"> Start Verification</a></td>
                                     </tr>
                                     <tr>
                                         <td class="t-left" width="120">Password settings</td>
-                                        <td></td>
+                                        <td class="t=left"></td>
+                                        <td class="t=left"></td>
                                         <td class="t-right"><a href="javascript:void(0;)" class="i-btn --i-btn-small">Change password</a></td>
                                     </tr>
                                     <tr class="steam-bind"> 
                                         <td class="t-left" width="120">Steam ID</td>
                                         <td class="t=left"><span><a href="javascript:void(0);">123456789123456</a></span></td>
-                                        <td class="t-right"><a href="javascript:void(0);" class="i-btn --i-btn-small">Unbind</a></td>
+                                        <td class="t=left"></td>
+                                        <td class="t-right"><a href="javascript:void(0);" class="i-btn --i-btn-small">Save</a></td>
                                     </tr>
-                                    <tr>
-                                
+                                    <tr > 
+                                        <td class="t-left" width="120">Steam Trade Link</td>
+                                        <td class="t=left"><span><input type="text" style="margin-right: 12px;"></input>   </span></td>
+                                        <td  ><a href="https://steamcommunity.com/profiles/76561198147247956/tradeoffers/privacy#trade_offer_access_url" target="_blank">Click to get link</a></td>
+
+                                        <td class="t-right"><a href="https://steamcommunity.com/profiles/76561198147247956/tradeoffers/privacy#trade_offer_access_url" target="_blank" class="i-btn --i-btn-small">Save</a></td>
+
                                     </tr>
                                     <tr>
                                         
