@@ -16,26 +16,27 @@
         </button>
       </div>
         <div class="modal-body">
-            <div class="form-group">
-                <label>Service Mode </label> <input type="text" class="form-control" name="service_id_e" placeholder="Game Name" id="service_id_e" class="form-control">
+            <div class="form-inline">
+                <label style="margin:5px; width:30%; float:left;">Service Mode </label> 
+                <input style="width:60%; float:center; margin:5px;" type="text" class="form-control" name="service_id_e" placeholder="Game Name" id="service_id_e" class="form-control">
 
             </div>
-            <div class="form-group">
-                <label>Service Description</label>
-                <input type="text" name="service_desc_e" placeholder="Service Description" id="service_desc_e" class="form-control">
+            <div class="form-inline">
+                <label style="margin:5px; width:30%; float:left;">Service Description</label>
+                <input style="width:60%; float:center; margin:5px;"type="text" name="service_desc_e" placeholder="Service Description" id="service_desc_e" class="form-control">
             </div>
-            <div class="form-group">
-                <label>Service Description</label>
-                <input type="text" name="service_desc_e" placeholder="Service Description" id="service_desc_e" class="form-control">
-            </div><div class="form-group">
-                <label>Service Description</label>
-                <input type="text" name="service_desc_e" placeholder="Service Description" id="service_desc_e" class="form-control">
-            </div><div class="form-group">
-                <label>Service Description</label>
-                <input type="text" name="service_desc_e" placeholder="Service Description" id="service_desc_e" class="form-control">
-            </div><div class="form-group">
-                <label>Service Description</label>
-                <input type="text" name="service_desc_e" placeholder="Service Description" id="service_desc_e" class="form-control">
+            <div class="form-inline">
+                <label style="margin:5px; width:30%; float:left;">Service Description</label>
+                <input style="width:60%; float:center; margin:5px;" type="text" name="service_desc_e" placeholder="Service Description" id="service_desc_e" class="form-control">
+            </div><div class="form-inline">
+                <label style="margin:5px; width:30%; float:left;"> Service Description</label>
+                <input style="width:60%; float:center; margin:5px;" type="text" name="service_desc_e" placeholder="Service Description" id="service_desc_e" class="form-control">
+            </div><div class="form-inline">
+                <label style="margin:5px; width:30%; float:left;">Service Description</label>
+                <input style="width:60%; float:center; margin:5px;" type="text" name="service_desc_e" placeholder="Service Description" id="service_desc_e" class="form-control">
+            </div><div class="form-inline">
+                <label style="margin:5px; width:30%; float:left;">Service Description</label>
+                <input style="width:60%; float:center; margin:5px;" type="text" name="service_desc_e" placeholder="Service Description" id="service_desc_e" class="form-control">
             </div>
         </div>
         <div class="modal-footer">
