@@ -24,6 +24,77 @@
 						} //if both are not taken, success
 						break;
 					case "login":
+						case "add_new_game_modal"://TESTED 11:56 pm , 25/10/2021
+							$game_name_a=$_POST['game_name_a'];
+							$game_desc_a=$_POST['game_desc_a'];
+							$steam_game_id_a=$_POST['steam_game_id_a'];
+	
+							if(!empty($game_name_a) && !empty($game_desc_a) && !empty($steam_game_id_a)){
+								add_new_game($game_name_a,$game_desc_a,$steam_game_id_a);
+									echo 'Success';
+							}else{
+									echo 'Field inputs error';
+							}
+							break;
+						case "edit_new_game_modal"://TESTED 11:56 pm , 25/10/2021
+							$game_id_b=$_POST['game_id_b'];
+							$game_name_b=$_POST['game_name_b'];
+							$game_desc_b=$_POST['game_desc_b'];
+							$steam_game_id_b=$_POST['steam_game_id_b'];
+	
+							if(!empty($game_name_b) && !empty($game_desc_b) && !empty($steam_game_id_b) && !empty($game_id_b)){
+									edit_game($game_id_b,$game_name_b,$game_desc_b,$steam_game_id_b);
+									echo 'Success';
+							}else{
+									echo 'Field inputs error';
+							}
+							break;	
+						case "delete_new_game_modal"://TESTED 11:56 pm , 25/10/2021
+							$game_id_c=$_POST['game_id_c'];
+	
+							if(!empty($game_id_c)){
+									delete_game($game_id_c);
+									echo 'Success';
+							}else{
+									echo 'Field inputs error';
+							}
+							break;
+						case "add_new_service_modal"://TESTED 11:56 pm , 25/10/2021
+							$service_mode_d=$_POST['service_mode_d'];
+							$service_desc_d=$_POST['service_desc_d'];
+							$game_id_d=$_POST['game_id_d'];
+	
+							if(!empty($service_mode_d) or !empty($service_desc_d) or !empty($game_id_d)){
+								add_game_service($service_mode_d,$service_desc_d,$game_id_d);
+								echo 'Success';
+							}else{
+								echo 'Field inputs error';
+							}
+							break;	
+						case "edit_game_services_modal"://TESTED 11:56 pm , 25/10/2021
+							$service_id_e=$_POST['service_id_e'];
+							$service_mode_e=$_POST['service_mode_e'];
+							$service_desc_e=$_POST['service_desc_e'];
+							$game_id_e=$_POST['game_id_e'];
+	
+							if(!empty($service_id_e) && !empty($service_mode_e) && !empty($service_desc_e) && !empty($game_id_e)){
+								edit_game_service($service_id_e,$service_mode_e,$service_desc_e,$game_id_e);
+								echo 'Success';
+							}else{
+								echo 'Field inputs error';
+							}
+							break;
+	
+						case "delete_game_services_modal"://TESTED 11:56 pm , 25/10/2021
+							$service_id_f=$_POST['service_id_f'];
+	
+							if(!empty($service_id_f)){
+									delete_game_services($service_id_f);
+									echo 'Success';
+							}else{
+									echo 'Field inputs error';
+							}
+							break;		
 						$user_username_a=$_POST['user_username_a'];
 						$user_password_a=$_POST['user_password_a'];
 
