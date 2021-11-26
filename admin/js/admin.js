@@ -14,8 +14,13 @@ $('#edit_new_game_modal').on('show.bs.modal', function(e){
 
 $('#edit_game_services_modal').on('show.bs.modal', function(e){
     var service_id_e = $(e.relatedTarget).data('21');
+    var service_mode_e = $(e.relatedTarget).data('22');
+    var service_desc_e = $(e.relatedTarget).data('23');
 
+    
     $(e.currentTarget).find('input[name="service_id_e"]').val(service_id_e);
+    $(e.currentTarget).find('input[name="service_mode_e"]').val(service_mode_e);
+    $(e.currentTarget).find('input[name="service_desc_e"]').val(service_desc_e);
 });
 
 $('#update_dispute_details').on('show.bs.modal', function(e){

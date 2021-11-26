@@ -142,7 +142,6 @@ include('includes/navbar.php');
 									data-21="<?php echo $res['service_id']; ?>"  
                   data-22="<?php echo $res['service_mode'];?>"     
                   data-23="<?php echo $res['service_desc']; ?>"  
-                  data-24="<?php echo $res['game_id']; ?>"   
                   >Edit</button>
             </td>
             <td>
