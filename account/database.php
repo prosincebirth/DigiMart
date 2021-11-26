@@ -167,7 +167,7 @@
 	
 	function existing_transaction($item_id,$buyer_id,$order_id){//USED IN POST SALE
 		$conn=connection();
-		$query="SELECT * from transactions where item_id=:item_id and buyer_id=:buyer_id and order_id=:order_id and transaction_status!=0";
+		$query="SELECT * from transactions where item_id=:item_id and buyer_id=:buyer_id and order_id=:order_id and transaction_status=1";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":item_id"=>$item_id,":buyer_id"=>$buyer_id,":order_id"=>$order_id));
 		$res = $prepare->fetch(PDO::FETCH_ASSOC);
@@ -176,7 +176,7 @@
 		
 		function existing_transaction_seller($item_id,$seller_id,$order_id){//USED IN POST SALE
 			$conn=connection();
-			$query="SELECT * from transactions where item_id=:item_id and seller_id=:seller_id and order_id=:order_id and transaction_status!=0";
+			$query="SELECT * from transactions where item_id=:item_id and seller_id=:seller_id and order_id=:order_id and transaction_status=1";
 			$prepare=$conn->prepare($query);
 			$exec=$prepare->execute(array(":item_id"=>$item_id,":seller_id"=>$seller_id,":order_id"=>$order_id));
 			$res = $prepare->fetch(PDO::FETCH_ASSOC);

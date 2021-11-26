@@ -282,7 +282,7 @@
 								}
 								else if($item_quantity_f == $item_stock_f){
 									$row=existing_transaction($item_id_f,$_SESSION['user_session'],1);
-									if($row==0){
+									if(!$row>0){
 										if($balance_f=get_wallet_balance($buyer_id_f)){
 											if($balance_f['wallet_balance'] >= $item_total_f){
 												update_sale_order_item_quantity_out_of_stock($item_id_f);
@@ -303,7 +303,7 @@
 								}
 								else{
 									$row=existing_transaction($item_id_f,$_SESSION['user_session'],1);
-									if($row==0){
+									if(!$row>0){
 										if($balance_f=get_wallet_balance($buyer_id_f)){
 											if($balance_f['wallet_balance'] >= $item_total_f){
 													update_sale_order_item_quantity($item_id_f,$item_quantity_f);
@@ -355,9 +355,12 @@
 								else if($bargain_price_g > $item_price_g){ // cannot exceed stock
 									echo 'Bargain price error high';
 								}
+								else if($bargain_price_g > $item_price_g){ // cannot exceed stock
+									echo 'Bargain price error high';
+								}
 								else if($item_quantity_g == $item_stock_g){
 									$row=existing_transaction($item_id_g,$_SESSION['user_session'],3);
-									if($row==0){ // cannot exceed stock
+									if(!$row>=0){ // cannot exceed stock
 										if($balance_g=get_wallet_balance($buyer_id_g)){					
 											if($balance_g['wallet_balance'] >= $item_total_g){
 													update_sale_order_item_quantity_out_of_stock($item_id_g);
@@ -378,7 +381,7 @@
 								}
 								else{
 									$row=existing_transaction($item_id_g,$_SESSION['user_session'],3);
-									if($row==0){
+									if(!$row>0){
 										if($balance_g=get_wallet_balance($buyer_id_g)){					
 											if($balance_g['wallet_balance'] >= $item_total_g){
 												update_sale_order_item_quantity($item_id_g,$item_quantity_g);
@@ -424,7 +427,7 @@
 								}						
 								else if($item_quantity_h == $item_stock_h){
 									$row=existing_transaction_seller($item_id_h,$_SESSION['user_session'],2);
-									if($row==0){
+									if(!$row>0){
 										update_buy_order_item_quantity_out_of_stock($item_id_h);
 										add_transaction($item_quantity_h,$item_total_h,$item_id_h,$buyer_id_h,$seller_id_h,$service_id_h,$game_id_h,$order_id_h);
 										if($notification_h=get_game_item_information_notification($item_id_h)){
@@ -437,7 +440,7 @@
 
 								}else{
 									$row=existing_transaction_seller($item_id_h,$_SESSION['user_session'],2);
-									if($row==0){
+									if(!$row>0){
 										update_buy_order_item_quantity($item_id_h,$item_quantity_h);
 										add_transaction($item_quantity_h,$item_total_h,$item_id_h,$buyer_id_h,$seller_id_h,$service_id_h,$game_id_h,$order_id_h);
 										if($notification_h=get_game_item_information_notification($item_id_h)){
