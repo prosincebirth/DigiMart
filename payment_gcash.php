@@ -13,8 +13,6 @@ $billing = [
     "email" => $_GET["email"]
 ];
 
-
-
 $attributes = [
     "livemode" => false,
     "type" => "gcash",
@@ -53,9 +51,14 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 $result = curl_exec($ch);
 $resData = json_decode($result, true);
 
+echo ''.$result;
+
 if ($resData["status"] == 200) {
-    header("Location: " . $resData["url_redirect"] );
-    
+    // header("Location: " . $resData["url_redirect"] );
+    echo '<script>localStorage.setItem("deposited_amount", '. (int)$_GET["amount"] .');</script>';
+    echo '<script>
+        window.location.href = "'. $resData["url_redirect"] .'";  
+    </script>';
 } else {
     //header("Location: user_wallet.php");
     echo "ERROR: ".$resData["status"];

@@ -72,8 +72,8 @@
                             <div class="body">
                                 <div class="tab">
                                     <ul>
-                                        <li class="active"><span onclick="location.href='user_wallet.php'">Deposit</span></li>
-                                        <li><span onclick="location.href='user_withdraw.php'" >Withdraw</span></li>
+                                        <li><span onclick="location.href='user_wallet.php'">Deposit</span></li>
+                                        <li class="active"><span onclick="location.href='user_withdraw.php'" >Withdraw</span></li>
                                         <li><span onclick="location.href='user_transaction.php'">Transaction</span></li>
                                     </ul>
                                 </div>
@@ -97,7 +97,7 @@
                                             </tr>
                                                      -->
                                             <tr>
-                                                <td class="t-left">Deposit method</td>
+                                                <td class="t-left">Withdraw method</td>
                                                 <td class="t-right">
                                                     <div class="user-deposit">
                                                         <div class=user-deposit-btn>
@@ -135,14 +135,14 @@
                                     </div> -->
                                     
                                     <div class="user-wallet-section">
-                                        <h2>Deposit records</h2>
+                                        <h2>Withdraw records</h2>
                                         <div class="table--container">
                                             <table class="user-wallet-history">
                                                 <thead>
                                                     <tr>
                                                         <th>Serial number</th>
-                                                        <th> Deposit amount</th>
-                                                        <th> Payment account</th>
+                                                        <th> Witdraw amount</th>
+                                                        <th> Account</th>
                                                         <th> Progress</th>
                                                         <th>Create time</th>
                                                     </tr>
@@ -159,7 +159,7 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>00002</td>
-                                                        <td><?php ?></td>
+                                                        <td>1500.00</td>
                                                         <td>321321</td>
                                                         <td style="color:#008000; font-weight:bold;"><i class="fas fa-check-circle"></i> success</td>
                                                         <td>10:30</td>
@@ -178,19 +178,9 @@
         </div>
     </section>
 </main>
-
+<!-- 
 <?php
-
-    $total = 0.00;
-    
     $is_success = $_GET['success'];
-    $added = (int)$_GET['amount'];
-    $crt = (int)$balance['wallet_balance'];
-    $total = $added + $crt;
-
-        $sql_update = 'UPDATE wallets SET wallet_balance = "'.$total.'" where user_id=6';
-        $conn->exec($sql_update);
-
     if( $is_success == true ) {
         echo '<script>
         $(document).ready(function() {
@@ -200,8 +190,6 @@
         });
         </script>';
     }
-    
-    
-?>
+?> -->
 
 <?php include('footer.php'); ?>
