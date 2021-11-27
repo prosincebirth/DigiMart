@@ -38,7 +38,7 @@
                 <input style="width:60%; float:center; margin:5px;"type="text" name="address_kyc" placeholder="e.g. Summerland Cebu City" id="address_kyc" class="form-control">
             </div>
             <div class="form-inline">
-                <label style="margin:5px; width:30%; float:left;">Identification Verification</label>
+                <label style="margin:5px; width:30%; float:left;">Identification</label>
                 <select style="width:60%; float:center; margin:5px;" name="id_kyc" id="id_kyc" class="form-control">
                 <option value="" disabled selected>Type of ID</option>	
                 <option value="1">Driver's License</option>
@@ -48,7 +48,7 @@
            </div>
             <div class="form-inline">
                 <label style="margin:5px; width:30%; float:left;"> </label>
-                <input style="width:60%; float:center; margin:5px;"type="file" name="id_proof_kyc" placeholder="Service Description" id="id_proof_kyc" class="form-control">
+                <input style="width:60%; float:center; margin:5px;" type="file" name="id_proof_kyc" placeholder="Service Description" id="id_proof_kyc" class="form-control">
            </div>
            
         </div>
@@ -116,9 +116,22 @@
                                     </tr>
                                     <tr>
                                         <td class="t-left" width="120">KYC Verification</td>
-                                        <td class="t-left"><span style="color:red"><i class="fas fa-times-circle"></i> Not verfied</span></td>
-                                        <td class="t=left"></td>
-                                        <td class="t-right"><a data-toggle="modal" data-target="#kyc_services_modal" class="i-btn --i-btn-small"> Start Verification</a></td>
+                                        <?php $user_kyc_status = user_kyc_status($_SESSION['user_session']);foreach($user_kyc_status as $kyc_request){ 
+                                        if($kyc_request['user_kyc']==0){ 
+                                            echo '<td class="t-left"><span style="color:red"><i class="fas fa-times-circle"></i> Not verfied</span></td>'; 
+                                            echo '<td class="t=left"></td>';
+                                            echo '<td class="t-right"><a data-toggle="modal" data-target="#kyc_services_modal" class="i-btn --i-btn-small"> Start Verification</a></td>';
+                                        } 
+                                        else if($kyc_request['user_kyc']==1){ echo '<td class="t-left"><span style="color:orange"><i class="fas fa-times-circle"></i> Pending </span></td>'; } 
+                                        else if($kyc_request['user_kyc']==2){ echo '<td class="t-left"><span style="color:green"><b><i class="fas fa-check-circle"></i> Verified</span></td>'; } 
+                                        else if($kyc_request['user_kyc']==3){ 
+                                            echo '<td class="t-left"><span style="color:red"><i class="fas fa-times-circle"></i> Denied</span></td>'; 
+                                            echo '<td class="t=left"></td>';
+                                            echo '<td class="t-right"><a data-toggle="modal" data-target="#kyc_services_modal" class="i-btn --i-btn-small"> Start Verification</a></td>';
+                                            } 
+                                        }
+                                        ?>
+                                        
                                     </tr>
                                     <tr>
                                         <td class="t-left" width="120">Password settings</td>

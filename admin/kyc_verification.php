@@ -3,42 +3,38 @@ include('includes/header.php');
 include('includes/navbar.php'); 
 ?>
 
-<div class="modal fade" id="view_dispute_details">
+<div class="modal fade" id="view_kyc_info_modal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 style="color:#4e73df" class="modal-title" id="exampleModalLabel">Dispute Details</h5>
+        <h5 style="color:#4e73df" class="modal-title" id="exampleModalLabel">User Details</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
         <div class="modal-body">
             <div class="form-group">
-                <label style="color:#4e73df"> Transaction ID :</label> <span id="transaction_id" id="transaction_id"> </span>
+                <label style="color:#4e73df"> First name :</label> <span id="firstname_kyc" id="firstname_kyc"> </span>
             </div>
             <div class="form-group">
-              <label style="color:#4e73df"> Transaction amount :</label> ₱<span id="transaction_amount" id="transaction_amount"> </span>
+              <label style="color:#4e73df"> Middle name :</label> <span id="middlename_kyc" id="middlename_kyc"> </span>
             </div>
             <div class="form-group">
-              <label style="color:#4e73df"> Transaction date :</label> <span id="transaction_date" id="transaction_date"> </span>
+              <label style="color:#4e73df"> Last name :</label> <span id="lastname_kyc" id="lastname_kyc"> </span>
             </div>
             <div class="form-group">
-              <label style="color:#4e73df"> Item name :</label> <span id="transaction_item_name" id="transaction_item_name"> </span>
+              <label style="color:#4e73df"> Address :</label> <span id="address_kyc" id="address_kyc"> </span>
             </div>
             <div class="form-group">
-              <label style="color:#4e73df"> Order type :</label> <span id="transaction_order_type" id="transaction_order_type"> </span>
+              <label style="color:#4e73df"> Identification type :</label> <span id="id_kyc" id="id_kyc"> </span>
             </div>
             <div class="form-group">
-              <label style="color:#4e73df"> Seller name :</label> <span id="transaction_seller" id="transaction_seller"> </span>
+              <label style="color:#4e73df"> Identification number :</label> <span id="idnumber_kyc" id="idnumber_kyc"> </span>
             </div>
+            <label style="color:#4e73df">Identification proof</label>
             <div class="form-group">
-             <label style="color:#4e73df"> Buyer name :</label> <span id="transaction_buyer" id="transaction_buyer"> </span>
-            </div><div class="form-group">
-              <label style="color:#4e73df"> Service mode :</label> <span id="transaction_service" id="transaction_service"> +Order</span>
-            </div>
-            <div class="form-group">
-                <label style="color:#4e73df">Transaction proof</label>
-                <img src="data:image/png;base64," height="260">
+               
+                <img src="data:image/png;base64," height="260px">
             </div>
         </div>
         <div class="modal-footer">
@@ -65,8 +61,8 @@ include('includes/navbar.php');
                 <input type="hidden" name="transaction_id_update" placeholder="transaction id" id="transaction_id_update" class="form-control">
                 <input type="hidden" name="dispute_id_update" placeholder="dispute id" id="dispute_id_update" class="form-control">
                 <div class="fld_input"><select name="update_dispute_status" id="update_dispute_status" class="form-control">						
-                    <option value="7">Buyer</option>';
-                    <option value="8">Seller</option>';
+                    <option value="0">Buyer</option>';
+                    <option value="2">Seller</option>';
 										</select></div>
                 
             </div>
@@ -83,7 +79,7 @@ include('includes/navbar.php');
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">Disputes</h6>
+    <h6 class="m-0 font-weight-bold text-primary">KYC Verification List</h6>
   </div>
 
   <div class="card-body">
@@ -94,49 +90,44 @@ include('includes/navbar.php');
         <thead>
           <tr>
             <th> ID </th>
-            <th> Title </th>
-            <th> Message</th>
-            <th> Date & Time</th>
-            <th> Refunded to</th>
+            <th> User </th>
+            <th> Date & Time Created</th>
             <th> Status </th>
             <th colspan="2"><center>Actions</center></th>
 
           </tr>
         </thead>
         <tbody>
-        <?php	$display_dispute_admin = display_dispute_admin();foreach($display_dispute_admin as $dispute){ ?>
+        <?php	$display_kyc_verification_admin = display_kyc_verification_admin();foreach($display_kyc_verification_admin as $kyc){ ?>
           <tr>
-            <td><?php echo $dispute['dispute_id']; ?></td>
-            <td><?php echo $dispute['dispute_title']; ?></td>
-            <td><?php echo $dispute['dispute_message']; ?></td>
-            <td><?php echo $dispute['dispute_date_created']; ?></td>
+            <td><?php echo $kyc['kyc_id']; ?></td>
+            <td><?php echo $kyc['user_username']; ?></td>
+            <td><?php echo $kyc['kyc_date_created']; ?></td>
             <td><?php 
-                  if($dispute['transaction_status']==7){echo 'Buyer';}
-                  else if($dispute['transaction_status']==8){echo 'Seller';}
-                  else {echo 'Pending';}
-            ?></td>
-            <td><?php 
-                  if($dispute['dispute_status']!=1){echo 'Complete';}
-                  else if($dispute['dispute_status']==1){echo 'Active';}?>
-            </td>
+                      if($kyc['kyc_status']==0){echo 'Complete';}
+                      else if($kyc['kyc_status']==1){echo 'Pending';}
+                      else if($kyc['kyc_status']==2){echo 'Denied';}?>
+                  </td>
             <td>
-                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#view_dispute_details"
-                  data-transaction_id="<?php echo $dispute['transaction_id']?>"    
-                  data-transaction_amount="<?php echo $dispute['transaction_amount'] * $dispute['transaction_quantity']?>"    
-                  data-transaction_date="<?php echo $dispute['transaction_date']?>"    
-                  data-transaction_item_name="<?php echo $dispute['goods_name']?>"    
-                  data-transaction_order_type="<?php echo $dispute['transaction_order_id'],' Order'?>"    
-                  data-transaction_seller="<?php echo $dispute['seller_name']?>"    
-                  data-transaction_buyer="<?php echo $dispute['buyer_name']?>"    
-                  data-transaction_service_mode="<?php echo $dispute['transaction_service_id']; ?>"    
+                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#view_kyc_info_modal"
+                  data-firstname_kyc	="<?php echo $kyc['firstname_kyc']?>"
+                  data-middlename_kyc		="<?php echo $kyc['middlename_kyc']?>"
+                  data-lastname_kyc	="<?php echo $kyc['lastname_kyc']?>"
+                  data-address_kyc	="<?php echo $kyc['address_kyc']?>"
+                  data-id_kyc	="<?php
+                      if($kyc['id_kyc']==1){echo "Driver's License";}
+                      else if($kyc['id_kyc']==2){echo 'Student ID';}
+                      else if($kyc['id_kyc']==3){echo 'Passport';}
+                      else if($kyc['id_kyc']==4){echo 'National ID';}
+                      ?>"
+                  data-idnumber_kyc	="<?php echo $kyc['idnumber_kyc']?>"
+                  data-id_proof_kyc="<?php echo base64_encode($kyc['id_proof_kyc'])?>"
+                  >View</button> 
+            </td>  
+            <td>
+                  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#view_dispute_details"
                   data-transaction_proof="<?php echo base64_encode($dispute['transaction_proof'])?>"
                   >View</button> 
-            </td>
-            <td><?php if($dispute['dispute_status']==1){ ?>
-                  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#update_dispute_details"
-                  data-transaction_id_update="<?php echo $dispute['transaction_id']?>"    
-                  data-dispute_id_update="<?php echo $dispute['dispute_id']?>"    
-                  >Update</button><?php } ?>
             </td>
           </tr>
         <?php } ?>

@@ -66,6 +66,25 @@ $('#view_dispute_details').on('show.bs.modal', function(e){
     $(e.currentTarget).find('img').attr("src",'data:image/png;base64,'+transaction_proof)
 });
 
+$('#view_kyc_info_modal').on('show.bs.modal', function(e){
+    var firstname_kyc = $(e.relatedTarget).data('firstname_kyc');
+    var middlename_kyc = $(e.relatedTarget).data('middlename_kyc');
+    var lastname_kyc = $(e.relatedTarget).data('lastname_kyc');
+    var address_kyc = $(e.relatedTarget).data('address_kyc');
+    var id_kyc = $(e.relatedTarget).data('id_kyc');
+    var idnumber_kyc = $(e.relatedTarget).data('idnumber_kyc');
+    var id_proof_kyc = $(e.relatedTarget).data('id_proof_kyc');
+    
+    
+    $('#firstname_kyc').html(firstname_kyc)
+    $('#middlename_kyc').html(middlename_kyc)
+    $('#lastname_kyc').html(lastname_kyc)
+    $('#address_kyc').html(address_kyc)
+    $('#id_kyc').html(id_kyc)
+    $('#idnumber_kyc').html(idnumber_kyc)
+    $(e.currentTarget).find('img').attr("src",'data:image/png;base64,'+id_proof_kyc)
+});
+
 
 $(".btn").on("click",function(){
     var btn_val=$(this).val();
@@ -269,46 +288,7 @@ $(".btn").on("click",function(){
                 }
             });//END	
             break;
-            case "kyc_services_modal": 
-            var firstname_kyc=$("#firstname_kyc").val().trim();
-            var middlename_kyc=$("#middlename_kyc").val().trim();
-            var lastname_kyc=$("#lastname_kyc").val().trim();
-            var idnumber_kyc=$("#idnumber_kyc").val().trim();
-            var address_kyc=$("#address_kyc").val().trim();
-            var id_kyc=$("#id_kyc").val().trim();
-            var id_proof_kyc=$("#id_proof_kyc").val().trim();
-            var user_session_kyc=$("#user_session_kyc").val().trim();
             
-            
-            var data=new FormData();
-            data.append("action_type","kyc_services_modal");
-            data.append("firstname_kyc",firstname_kyc);
-            data.append("middlename_kyc",middlename_kyc);
-            data.append("lastname_kyc",lastname_kyc);
-            data.append("idnumber_kyc",idnumber_kyc);
-            data.append("address_kyc",address_kyc);
-            data.append("id_kyc",id_kyc);
-            data.append("id_proof_kyc",id_proof_kyc);
-            data.append("user_session_kyc",user_session_kyc);
-
-            $.ajax({	
-                url:"../account/controller.php",
-                method:"post",
-                data:data,
-                contentType:false,
-                cache:false,
-                processData:false,
-                success:function(res){
-                    console.log(res)
-                    if(res=="Success"){
-                        alert(res)
-                        location.reload();
-                    }else{
-                        alert(res)
-                    } 
-                }
-            });//END	
-            break;
         }
     });
 });

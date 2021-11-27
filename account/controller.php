@@ -655,7 +655,7 @@
 									add_notification('Buyer has started a dispute for "'.$notification_dispute['goods_name'].'" x'.$notification_dispute['transaction_quantity'].', <a href="buy_sale_record.php">go to Buy Order</a>',$notification_dispute['seller_id']);
 									echo 'Success';}	
 								}
-						break;
+							break;
 
 						case "dispute_item_delivered_dispute":		
 							$transaction_id_dispute_seller=$_POST['transaction_id_dispute_seller'];
@@ -672,7 +672,7 @@
 									add_notification('Seller has started a dispute for "'.$notification_dispute_seller['goods_name'].'" x'.$notification_dispute_seller['transaction_quantity'].', <a href="buy_order_record.php">go to Buy Order</a>',$notification_dispute_seller['buyer_id']);
 									echo 'Success';}	
 								}
-						break;
+							break;
 
 						case "update_dispute_details":		
 							$update_dispute_status=$_POST['update_dispute_status'];
@@ -700,7 +700,7 @@
 									echo 'Success';}	
 							}
 					
-						break;
+							break;
 						case "edit_game_item_modal":		
 								$goods_name_edit=$_POST['goods_name_edit'];
 								$goods_quality_edit=$_POST['goods_quality_edit'];
@@ -728,15 +728,16 @@
 								$idnumber_kyc=$_POST['idnumber_kyc'];
 								$address_kyc=$_POST['address_kyc'];
 								$id_kyc=$_POST['id_kyc'];
-								$id_proof_kyc=$_POST['id_proof_kyc'];
 								$user_session_kyc=$_POST['user_session_kyc'];
+								if(isset($_FILES['id_proof_kyc'])){
+								$id_proof_kyc=file_get_contents($_FILES['id_proof_kyc']['tmp_name']);}
 								
 								if(empty($firstname_kyc) or empty($middlename_kyc)  or empty($lastname_kyc)  or empty($idnumber_kyc)  or empty($address_kyc)  or empty($id_kyc)  or empty($id_proof_kyc)  
 								  or empty($user_session_kyc)){ // trappings for not logged in
 									echo 'Empty Fields';
 								}						
 								else{
-									update_goods_item_name($goods_id_edit,$goods_name_edit,$goods_quality_edit,$goods_rarity_edit,$goods_detail1_edit,$goods_detail2_edit,$goods_detail3_edit);
+									add_new_kyc($firstname_kyc,$middlename_kyc,$lastname_kyc,$idnumber_kyc,$address_kyc,$id_kyc,$id_proof_kyc,$user_session_kyc);
 									echo 'Success'; 															
 									}
 							break;																

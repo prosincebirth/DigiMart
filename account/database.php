@@ -24,7 +24,27 @@
 		$query="INSERT INTO disputes(dispute_title,dispute_message,transaction_id) values(:dispute_title,:dispute_message,:transaction_id)"; 
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":dispute_title"=>$dispute_title,":dispute_message"=>$dispute_message,":transaction_id"=>$transaction_id));
+		$conn=null;}
+		
+	function add_new_kyc($firstname_kyc,$middlename_kyc,$lastname_kyc,$idnumber_kyc,$address_kyc,$id_kyc,$id_proof_kyc,$user_session_kyc){//register.php
+		$conn=connection();
+		$query="INSERT INTO kyc_verification(firstname_kyc,middlename_kyc,lastname_kyc,idnumber_kyc,address_kyc,id_kyc,id_proof_kyc,user_session_kyc) values(:firstname_kyc,:middlename_kyc,:lastname_kyc,:idnumber_kyc,:address_kyc,:id_kyc,:id_proof_kyc,:user_session_kyc)"; 
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":firstname_kyc"=>$firstname_kyc,":middlename_kyc"=>$middlename_kyc,":lastname_kyc"=>$lastname_kyc,":idnumber_kyc"=>$idnumber_kyc,":address_kyc"=>$address_kyc,":id_kyc"=>$id_kyc,":id_proof_kyc"=>$id_proof_kyc,":user_session_kyc"=>$user_session_kyc));
 		$conn=null;}	
+		
+	function existing_kyc_request($user_session_kyc){// USED IN GAME SERVICES , POST SALE
+		$conn=connection2();
+		$sql="SELECT * from kyc_verification where user_session_kyc=$user_session_kyc limit 1";
+		$result = $conn->query($sql);
+		return $result;}
+
+	function user_kyc_status($user_session_kyc){// USED IN GAME SERVICES , POST SALE
+		$conn=connection2();
+		$sql="SELECT * from users limit 1";
+		$result = $conn->query($sql);
+		return $result;}			
+
 
 	function add_notification($notification_message,$user_id){//register.php
 		$conn=connection();
@@ -174,7 +194,7 @@
 		$conn=null;
 		return $res;}
 		
-		function existing_transaction_seller($item_id,$seller_id,$order_id){//USED IN POST SALE
+	function existing_transaction_seller($item_id,$seller_id,$order_id){//USED IN POST SALE
 			$conn=connection();
 			$query="SELECT * from transactions where item_id=:item_id and seller_id=:seller_id and order_id=:order_id and transaction_status=1";
 			$prepare=$conn->prepare($query);
@@ -504,6 +524,12 @@
 		from disputes a join transactions b join game_items c join goods d
 		where a.transaction_id = b.transaction_id and b.item_id = c.item_id AND c.goods_id = d.goods_id 
 		ORDER BY a.dispute_date_created ASC";
+		$result = $conn->query($sql);
+		return $result;}
+
+	function display_kyc_verification_admin(){// USED IN GAME SERVICES , POST SALE
+		$conn=connection2();
+		$sql="SELECT * from kyc_verification a join users b where b.user_id=a.user_session_kyc order by a.kyc_id";
 		$result = $conn->query($sql);
 		return $result;}
 
