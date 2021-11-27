@@ -740,6 +740,20 @@
 									add_new_kyc($firstname_kyc,$middlename_kyc,$lastname_kyc,$idnumber_kyc,$address_kyc,$id_kyc,$id_proof_kyc,$user_session_kyc);
 									echo 'Success'; 															
 									}
+							break;
+							case "update_kyc_modal":		
+								$user_id=$_POST['user_id'];
+								$kyc_id=$_POST['kyc_id'];
+								$update_kyc_status=$_POST['update_kyc_status'];
+								
+								if(empty($user_id) or empty($kyc_id)  or empty($update_kyc_status)){ // trappings for not logged in
+									echo 'Empty Fields';
+								}						
+								else{
+									update_kyc_status($kyc_id,$update_kyc_status);
+									update_account_kyc_status($user_id,$update_kyc_status);
+									echo 'Success'; 															
+									}
 							break;																
 						
 			}

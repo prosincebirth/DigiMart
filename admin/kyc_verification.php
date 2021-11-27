@@ -46,30 +46,30 @@ include('includes/navbar.php');
 
 
 
-<div class="modal fade" id="update_dispute_details">
+<div class="modal fade" id="update_kyc_modal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Update Dispute Status </h5>
+        <h5 class="modal-title" id="exampleModalLabel">Update Verification Status </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
         <div class="modal-body">
             <div class="form-group">
-                <label>Refund to</label>
-                <input type="hidden" name="transaction_id_update" placeholder="transaction id" id="transaction_id_update" class="form-control">
-                <input type="hidden" name="dispute_id_update" placeholder="dispute id" id="dispute_id_update" class="form-control">
-                <div class="fld_input"><select name="update_dispute_status" id="update_dispute_status" class="form-control">						
-                    <option value="0">Buyer</option>';
-                    <option value="2">Seller</option>';
+                <label>Status</label>
+                <input type="hidden" name="user_id" placeholder="user id" id="user_id" class="form-control">
+                <input type="hidden" name="kyc_id" placeholder="kyc id" id="kyc_id" class="form-control">
+                <div class="fld_input"><select name="update_kyc_status" id="update_kyc_status" class="form-control">						
+                    <option value="2">Verified</option>';
+                    <option value="3">Denied</option>';
 										</select></div>
                 
             </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" value="update_dispute_details" class="btn btn-primary">Confirm</button>
+            <button type="button" value="update_kyc_modal" class="btn btn-primary">Confirm</button>
         </div>
     </div>
   </div></div> 
@@ -104,9 +104,10 @@ include('includes/navbar.php');
             <td><?php echo $kyc['user_username']; ?></td>
             <td><?php echo $kyc['kyc_date_created']; ?></td>
             <td><?php 
-                      if($kyc['kyc_status']==0){echo 'Complete';}
-                      else if($kyc['kyc_status']==1){echo 'Pending';}
-                      else if($kyc['kyc_status']==2){echo 'Denied';}?>
+                      if($kyc['kyc_status']==0){echo 'Not Verified';}
+                      else if($kyc['kyc_status']==1){echo 'Active';}
+                      else if($kyc['kyc_status']==2){echo 'Verified';}
+                      else if($kyc['kyc_status']==3){echo 'Denied';}?>
                   </td>
             <td>
                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#view_kyc_info_modal"
@@ -125,9 +126,10 @@ include('includes/navbar.php');
                   >View</button> 
             </td>  
             <td>
-                  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#view_dispute_details"
-                  data-transaction_proof="<?php echo base64_encode($dispute['transaction_proof'])?>"
-                  >View</button> 
+                  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#update_kyc_modal"
+                  data-user_id="<?php echo $kyc['user_session_kyc']?>"
+                  data-kyc_id="<?php echo $kyc['kyc_id']?>"
+                  >Update</button> 
             </td>
           </tr>
         <?php } ?>

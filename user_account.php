@@ -150,7 +150,7 @@
                                         
                                         <td class="t-left"><input type="text" style="margin-right:0px;width:150%"></input></td>
                                         <td class="t-left" ><a href="https://steamcommunity.com/profiles/76561198147247956/tradeoffers/privacy#trade_offer_access_url" target="_blank">Click to get link</a></td>
-                                        <td class="t-right"><a href="https://steamcommunity.com/profiles/76561198147247956/tradeoffers/privacy#trade_offer_access_url" target="_blank" class="i-btn --i-btn-small">Save</a></td>
+                                            <td class="t-right"><a href="https://steamcommunity.com/profiles/76561198147247956/tradeoffers/privacy#trade_offer_access_url" target="_blank" class="i-btn --i-btn-small">Save</a></td>
 
                                     </tr>
                                     <tr>

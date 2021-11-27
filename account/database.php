@@ -533,6 +533,21 @@
 		$result = $conn->query($sql);
 		return $result;}
 
+	function update_kyc_status($kyc_id,$kyc_status){
+		$conn=connection();
+		$query="UPDATE kyc_Verification set kyc_status=:kyc_status where kyc_id=:kyc_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":kyc_status"=>$kyc_status,":kyc_id"=>$kyc_id));
+		$conn=null;}
+
+	function update_account_kyc_status($user_id,$update_kyc_status){
+		$conn=connection();
+		$query="UPDATE users set user_kyc=:update_kyc_status where user_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":update_kyc_status"=>$update_kyc_status,":user_id"=>$user_id));
+		$conn=null;}	
+
+
 	function display_sale_orders_admin(){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
 		$sql="SELECT  * from game_items a join goods b join game_services c join games d join users e where a.goods_id=b.goods_id and a.order_id=1 and a.game_id=d.game_id and a.service_id = c.service_id and a.user_id=e.user_id and a.item_status != 0 ORDER BY a.item_id ASC";

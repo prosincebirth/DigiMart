@@ -86,6 +86,17 @@ $('#view_kyc_info_modal').on('show.bs.modal', function(e){
 });
 
 
+$('#update_kyc_modal').on('show.bs.modal', function(e){
+    var user_id = $(e.relatedTarget).data('user_id');
+    var kyc_id = $(e.relatedTarget).data('kyc_id');
+    
+    
+    $(e.currentTarget).find('input[name="user_id"]').val(user_id);
+    $(e.currentTarget).find('input[name="kyc_id"]').val(kyc_id);
+
+});
+
+
 $(".btn").on("click",function(){
     var btn_val=$(this).val();
         switch(btn_val){
@@ -269,6 +280,35 @@ $(".btn").on("click",function(){
             data.append("update_dispute_status",update_dispute_status);
             data.append("transaction_id_update",transaction_id_update);
             data.append("dispute_id_update",dispute_id_update);
+
+            $.ajax({	
+                url:"../account/controller.php",
+                method:"post",
+                data:data,
+                contentType:false,
+                cache:false,
+                processData:false,
+                success:function(res){
+                    console.log(res)
+                    if(res=="Success"){
+                        alert(res)
+                        location.reload();
+                    }else{
+                        alert(res)
+                    } 
+                }
+            });//END	
+            break;
+            case "update_kyc_modal": 
+            var user_id=$("#user_id").val().trim();
+            var kyc_id=$("#kyc_id").val().trim();
+            var update_kyc_status=$("#update_kyc_status").val().trim();
+
+            var data=new FormData();
+            data.append("action_type","update_kyc_modal");
+            data.append("user_id",user_id);
+            data.append("kyc_id",kyc_id);
+            data.append("update_kyc_status",update_kyc_status);
 
             $.ajax({	
                 url:"../account/controller.php",
