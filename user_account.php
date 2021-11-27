@@ -110,33 +110,33 @@
                                 <tbody>
                                     <tr>
                                         <td class="t-left" width="120">Phone number</td>
-                                        <td class="t=left"></td>
-                                        <td class="t=left"></td>
+                                        <td class="t-left"></td>
+                                        <td class="t-left"></td>
                                         <td class="t-Right"><a href="javascript:void(0);" class="i-btn --i-btn-small">Change Phone</a></td>
                                     </tr>
                                     <tr>
                                         <td class="t-left" width="120">KYC Verification</td>
                                         <td class="t-left"><span style="color:red"><i class="fas fa-times-circle"></i> Not verfied</span></td>
-                                        <td class="t=left"></td>
+                                        <td class="t-left"></td>
                                         <td class="t-right"><a data-toggle="modal" data-target="#kyc_services_modal" class="i-btn --i-btn-small"> Start Verification</a></td>
                                     </tr>
                                     <tr>
                                         <td class="t-left" width="120">Password settings</td>
-                                        <td class="t=left"></td>
-                                        <td class="t=left"></td>
+                                        <td class="t-left"></td>
+                                        <td class="t-left"></td>
                                         <td class="t-right"><a href="javascript:void(0;)" class="i-btn --i-btn-small">Change password</a></td>
                                     </tr>
                                     <tr class="steam-bind"> 
                                         <td class="t-left" width="120">Steam ID</td>
-                                        <td class="t=left"><span><a href="javascript:void(0);">123456789123456</a></span></td>
-                                        <td class="t=left"></td>
+                                        <td class="t-left"><span><a href="javascript:void(0);">123456789123456</a></span></td>
+                                        <td class="t-eft"></td>
                                         <td class="t-right"><a href="javascript:void(0);" class="i-btn --i-btn-small">Save</a></td>
                                     </tr>
-                                    <tr > 
+                                    <tr style="margin:10px"> 
                                         <td class="t-left" width="120">Steam Trade Link</td>
                                         
-                                        <td class="t=left"><span><input type="text" style="margin-right:0px;width:150%"></input></span></td>
-                                        <td><a href="https://steamcommunity.com/profiles/76561198147247956/tradeoffers/privacy#trade_offer_access_url" target="_blank">Click to get link</a></td>
+                                        <td class="t-left"><input type="text" style="margin-right:0px;width:150%"></input></td>
+                                        <td class="t-left" ><a href="https://steamcommunity.com/profiles/76561198147247956/tradeoffers/privacy#trade_offer_access_url" target="_blank">Click to get link</a></td>
                                         <td class="t-right"><a href="https://steamcommunity.com/profiles/76561198147247956/tradeoffers/privacy#trade_offer_access_url" target="_blank" class="i-btn --i-btn-small">Save</a></td>
 
                                     </tr>

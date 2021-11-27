@@ -226,6 +226,14 @@
 }
 
 .col2 .user-setting .list-tab .t-left {
+    width: 200px;
+}
+
+.col2 .user-setting .list-tab .t-left input{
+    width: 180px !important;
+}
+
+.col2 .user-setting .list-tab .t-left a{
     width: 120px;
 }
 

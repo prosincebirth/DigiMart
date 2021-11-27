@@ -180,26 +180,16 @@
 </main>
 
 <?php
+
     $total = 0.00;
     
     $is_success = $_GET['success'];
     $added = (int)$_GET['amount'];
     $crt = (int)$balance['wallet_balance'];
     $total = $added + $crt;
-    try{
-        $sql = 'SELECT * FROM users where user_username="'.$_SESSION['user_username'].'"';
-        $stmt = $conn->query($sql);
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        if( $stmt->rowCount() > 0 ) {
-            while( $res = $stmt->fetch() ) {
-                $crt_user = $res['user_id'];
-            }
-            echo $stmt;
-        }
-        
-        $sql_update = 'UPDATE wallets SET wallet_balance = "'.$total.'" where user_id="'.$crt_user.'"';
+
+        $sql_update = 'UPDATE wallets SET wallet_balance = "'.$total.'" where user_id=6';
         $conn->exec($sql_update);
-    }catch(PDOException $e){ echo $e;}
 
     if( $is_success == true ) {
         echo '<script>
