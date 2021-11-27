@@ -3,8 +3,8 @@
 $url = "https://api4wrd.2kpa.me/paymongo/v1/create"; // you will need an app_key, get it from -> https://api4wrd.ukayra.com/register
 
 $redirect = [
-    "success" => "http://localhost/DigiMart/success.php",
-    "failed" => "http://localhost/DigiMart/failed.php"
+    "success" => "http://192.168.254.107/digimart/success.php",
+    "failed" => "http://192.168.254.107/digimart/failed.php"
 ];
 
 $billing = [
