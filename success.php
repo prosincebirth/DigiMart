@@ -1,6 +1,5 @@
 <?php
-
-if (isset($_GET['ukayra_id'])) {
+if ( isset($_GET['ukayra_id']) ) {
     echo "UkayraID: " . $_GET['ukayra_id'] . "<br />";
 
     if (isset($_GET['paymongo_id'])) {
@@ -18,8 +17,13 @@ if (isset($_GET['ukayra_id'])) {
     echo "Success Page";
 }
 
+echo "<script>
+localStorage.setItem('is_deposited', true);
+</script>";
+
 echo '<script>
-        window.location.href = "user_wallet.php?success=true";  
+    var depositAmt = localStorage.getItem("deposited_amount");
+    window.location.href = "user_wallet.php?success=true&amount="+depositAmt;  
 </script>';
 
 // header("Location: user_wallet.php");
