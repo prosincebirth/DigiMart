@@ -93,7 +93,7 @@ include('includes/navbar.php');
             <th> User </th>
             <th> Date & Time Created</th>
             <th> Status </th>
-            <th colspan="2"><center>Actions</center></th>
+            <th colspan="2">Actions</th>
 
           </tr>
         </thead>
@@ -109,6 +109,9 @@ include('includes/navbar.php');
                       else if($kyc['kyc_status']==2){echo 'Verified';}
                       else if($kyc['kyc_status']==3){echo 'Denied';}?>
                   </td>
+            
+
+            <?php if($kyc['kyc_status']==1){?>     
             <td>
                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#view_kyc_info_modal"
                   data-firstname_kyc	="<?php echo $kyc['firstname_kyc']?>"
@@ -131,6 +134,24 @@ include('includes/navbar.php');
                   data-kyc_id="<?php echo $kyc['kyc_id']?>"
                   >Update</button> 
             </td>
+            <?php }else if($kyc['kyc_status']!=1){?>
+              <td>
+                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#view_kyc_info_modal"
+                  data-firstname_kyc	="<?php echo $kyc['firstname_kyc']?>"
+                  data-middlename_kyc		="<?php echo $kyc['middlename_kyc']?>"
+                  data-lastname_kyc	="<?php echo $kyc['lastname_kyc']?>"
+                  data-address_kyc	="<?php echo $kyc['address_kyc']?>"
+                  data-id_kyc	="<?php
+                      if($kyc['id_kyc']==1){echo "Driver's License";}
+                      else if($kyc['id_kyc']==2){echo 'Student ID';}
+                      else if($kyc['id_kyc']==3){echo 'Passport';}
+                      else if($kyc['id_kyc']==4){echo 'National ID';}
+                      ?>"
+                  data-idnumber_kyc	="<?php echo $kyc['idnumber_kyc']?>"
+                  data-id_proof_kyc="<?php echo base64_encode($kyc['id_proof_kyc'])?>"
+                  >View</button>
+            </td>
+            <?php } ?>
           </tr>
         <?php } ?>
         </tbody>

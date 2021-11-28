@@ -43,8 +43,10 @@
 		$conn=connection2();
 		$sql="SELECT * from users where user_id=$user_session_kyc limit 1";
 		$result = $conn->query($sql);
-		return $result;}			
-
+		return $result;}
+		
+		
+		
 
 	function add_notification($notification_message,$user_id){//register.php
 		$conn=connection();

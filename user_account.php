@@ -1,6 +1,95 @@
+<?php 
+
+ob_start();
+session_start();
+
+    function connection3(){// DB CONNECTION PDO
+    $conn=new PDO("mysql:host=localhost;dbname=digimart","root","");
+    return $conn;}
+
+    function add_steam_id($user_id,$user_steam_id){
+		$conn=connection3();
+		$query="UPDATE users set user_steam_id=:user_steam_id where user_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":user_id"=>$user_id,":user_steam_id"=>$user_steam_id));
+		$conn=null;}
+
+
+    function delete_steam_trade_link($user_id){
+		$conn=connection3();
+		$query="UPDATE users set user_steam_trade_link='' where user_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":user_id"=>$user_id));
+		$conn=null;}
+
+    function delete_steam_link($user_id){
+		$conn=connection3();
+		$query="UPDATE users set user_steam_id='' where user_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":user_id"=>$user_id));
+		$conn=null;}
+        
+    if (isset($_GET['delete'])){  
+
+        delete_steam_trade_link($_SESSION['user_session']);
+        echo "<script>alert('Successfully Deleted!')</script>";
+    }
+
+    if (isset($_GET['delete_steam'])){  
+
+        delete_steam_link($_SESSION['user_session']);
+
+        echo "<script>alert('Successfully Unbinded Steam Account!')</script>";
+    }
+
+if (isset($_GET['login'])){
+	require 'openid.php';
+	try {
+		require 'SteamConfig.php';
+		$openid = new LightOpenID($steamauth['domainname']);
+		
+		if(!$openid->mode) {
+			$openid->identity = 'https://steamcommunity.com/openid';
+			header('Location: ' . $openid->authUrl());
+		} elseif ($openid->mode == 'cancel') {
+			echo 'User has canceled authentication!';
+		} else {
+			if($openid->validate()) { 
+				$id = $openid->identity;
+				$ptn = "/^https?:\/\/steamcommunity\.com\/openid\/id\/(7[0-9]{15,25}+)$/";
+				preg_match($ptn, $id, $matches);
+				
+				$_SESSION['steamid'] = $matches[1];
+                //$_SESSION['user_session'] = $_SESSION['steamid'];
+                add_steam_id($_SESSION['user_session'],$_SESSION['steamid']);
+                
+				if (!headers_sent()) {
+					header('Location: '.$steamauth['loginpage']);
+					exit;
+				} else {
+					?>
+					<script type="text/javascript">
+						window.location.href="<?=$steamauth['loginpage']?>";
+					</script>
+					<noscript>
+						<meta http-equiv="refresh" content="0;url=<?=$steamauth['loginpage']?>" />
+					</noscript>
+					<?php
+					exit;
+				}
+			} else {
+				echo "User is not logged in.\n";
+			}
+		}
+	} catch(ErrorException $e) {
+		echo $e->getMessage();
+	}
+}?>
+
 <?php include('head.php'); ?>
 <?php if($_SESSION['user_status']!=1){header("Location: index.php"); exit();} ?>
 <?php include('header.php'); ?>
+
 
 <!-- <link rel="preload stylesheet" href="assets/css/item-card.css" as="style" crossorigin>
 <link rel="preload stylesheet" href="assets/css/item-grid.css" as="style" crossorigin> -->
@@ -68,7 +157,7 @@
 
                         <div class="user-image">
                             <div class="image">
-                                <img src="http://via.placeholder.com/70x70" input type="file" name="item_image"alt="">
+                                <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/1e/1ea286928be0ee3a6217ecb9b6c14275e71b0e72_medium.jpg" input type="file" name="item_image"alt="">
                             </div>
                             <div class="name">
                                 <h2><?php echo $_SESSION['user_username']; ?></h2>
@@ -95,7 +184,7 @@
                                 <tbody>
                                     <tr>
                                         <td class="t-left">Avatar</td>
-                                        <td class="t-left"> <img src="http://via.placeholder.com/46x46" alt=""></td>
+                                        <td class="t-left"> <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/1e/1ea286928be0ee3a6217ecb9b6c14275e71b0e72_medium.jpg" alt=""></td>
                                     </tr>
                                     <tr>
                                         <td class="t-left" width="120">Username</td>
@@ -141,16 +230,26 @@
                                     </tr>
                                     <tr class="steam-bind"> 
                                         <td class="t-left" width="120">Steam ID</td>
-                                        <td class="t-left"><span><a href="javascript:void(0);">123456789123456</a></span></td>
-                                        <td class="t-eft"></td>
-                                        <td class="t-right"><a href="javascript:void(0);" class="i-btn --i-btn-small">Save</a></td>
+                                        <?php $user_kyc_status = user_kyc_status($_SESSION['user_session']);foreach($user_kyc_status as $kyc_request1){
+                                        if($kyc_request1['user_steam_id']==''){?>
+                                                <td class="t-left"><span style="color:black"><?php echo $kyc_request1['user_steam_id'];?> </input></span></td>
+                                                <td class="t-eft"></td>
+                                                <td class="t-right"><a href="?login" class="i-btn --i-btn-small">Bind Steam Account</a></td>
+                                            <?php } else { ?>
+                                                <td class="t-left"><span style="color:black"><?php echo $kyc_request1['user_steam_id'];?> </input></span></td>
+                                                <td class="t-eft"></td>
+                                                <td class="t-right"><a href="?delete_steam" class="i-btn --i-btn-small">Unbind Steam Account</a></td>
+                                            <?php } } ?>
+
+
                                     </tr>
                                     <tr style="margin:10px"> 
                                         <td class="t-left" width="120">Steam Trade Link</td>
-                                        
-                                        <td class="t-left"><input type="text" style="margin-right:0px;width:150%"></input></td>
-                                        <td class="t-left" ><a href="https://steamcommunity.com/profiles/76561198147247956/tradeoffers/privacy#trade_offer_access_url" target="_blank">Click to get link</a></td>
-                                            <td class="t-right"><a href="https://steamcommunity.com/profiles/76561198147247956/tradeoffers/privacy#trade_offer_access_url" target="_blank" class="i-btn --i-btn-small">Save</a></td>
+                                        <?php $user_kyc_status = user_kyc_status($_SESSION['user_session']);foreach($user_kyc_status as $kyc_request1){?>
+                                        <td class="t-left"><input type="text" value="<?php echo $kyc_request1['user_steam_trade_link'];?>" style="margin-right:0px;color:black"></input></td>
+                                        <?php }?>
+                                        <td class="t-left" ><a href="https://steamcommunity.com/my/tradeoffers/privacy#trade_offer_access_url" target="_blank">Click to get link</a></td>
+                                        <td class="t-right"><a href="" target="_blank" class="i-btn --i-btn-small">Save</a></td>
 
                                     </tr>
                                     <tr>

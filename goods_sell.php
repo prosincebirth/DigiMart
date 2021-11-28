@@ -121,7 +121,7 @@
 									<td>
 										<div class="img_text">
 
-											<?php #echo '<img class="item__seller" src="data:image/png;base64,'.base64_encode($res['goods_image']).'"height="40" >'; ?>
+											<?php echo '<img class="item__seller" src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/1e/1ea286928be0ee3a6217ecb9b6c14275e71b0e72.jpg"height="40" >'; ?>
 											<span><?php echo $res['user_username'];?></span>	
 										</div>
 									</td>
