@@ -1156,6 +1156,53 @@ $('document').ready(function()
                 }
             });//END	
             break;
+            case "add_steam_trade": 
+            var trade_link=$("#trade_link").val()
+           
+            var data=new FormData();
+            data.append("action_type","add_steam_trade");
+            data.append("trade_link",trade_link);
+
+            $.ajax({	
+                url:"account/controller.php",
+                method:"post",
+                data:data,
+                contentType:false,
+                cache:false,
+                processData:false,
+                success:function(res){
+                    console.log(res)
+                    if(res=="Success"){
+                        alert(res)
+                        location.reload();
+                    }else{
+                        alert(res)
+                    } 
+                }
+            });//END
+            break;	
+            case "delete_steam_trade": 
+            var data=new FormData();
+            data.append("action_type","delete_steam_trade");
+
+            $.ajax({	
+                url:"account/controller.php",
+                method:"post",
+                data:data,
+                contentType:false,
+                cache:false,
+                processData:false,
+                success:function(res){
+                    console.log(res)
+                    if(res=="Success"){
+                        alert(res)
+                        location.reload();
+                    }else{
+                        alert(res)
+                    } 
+                }
+            });//END	
+            break;	
         };	
 	});	
 });

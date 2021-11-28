@@ -754,7 +754,24 @@
 									update_account_kyc_status($user_id,$update_kyc_status);
 									echo 'Success'; 															
 									}
-							break;																
+							break;
+							case "add_steam_trade":		
+								$trade_link=$_POST['trade_link'];
+								
+								if(empty($trade_link)){ // trappings for not logged in
+									echo 'Empty Fields';
+								}						
+								else{
+									add_steam_trade_link($_SESSION['user_session'],$trade_link);
+									echo 'Success'; 															
+									}
+							break;
+							case "delete_steam_trade":		
+
+									delete_steam_trade_link($_SESSION['user_session']);
+									echo 'Success'; 															
+									
+							break;																			
 						
 			}
 		}

@@ -6,10 +6,24 @@
     function connection(){// DB CONNECTION PDO
 		$conn=new PDO("mysql:host=localhost;dbname=digimart","root","");
 		return $conn;}
-	
+
 	function connection2(){// DB CONNECTION MYSQL
 		$conn= mysqli_connect("localhost", "root", "", "digimart");
-		return $conn;}
+		return $conn;}	
+	
+	function add_steam_trade_link($user_id,$trade_link){
+		$conn=connection();
+		$query="UPDATE users set user_steam_trade_link=:trade_link where user_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":user_id"=>$user_id,":trade_link"=>$trade_link));
+		$conn=null;}
+
+	 function delete_steam_trade_link($user_id){
+		$conn=connection();
+		$query="UPDATE users set user_steam_trade_link='' where user_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":user_id"=>$user_id));
+		$conn=null;}
 
 		////////////////// ADDD FUNCTIONS /////////////////
 	function add_new_user($user_username,$user_password,$user_email){//register.php

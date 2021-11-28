@@ -14,14 +14,6 @@ session_start();
 		$exec=$prepare->execute(array(":user_id"=>$user_id,":user_steam_id"=>$user_steam_id));
 		$conn=null;}
 
-
-    function delete_steam_trade_link($user_id){
-		$conn=connection3();
-		$query="UPDATE users set user_steam_trade_link='' where user_id=:user_id";
-		$prepare=$conn->prepare($query);
-		$exec=$prepare->execute(array(":user_id"=>$user_id));
-		$conn=null;}
-
     function delete_steam_link($user_id){
 		$conn=connection3();
 		$query="UPDATE users set user_steam_id='' where user_id=:user_id";
@@ -29,13 +21,14 @@ session_start();
 		$exec=$prepare->execute(array(":user_id"=>$user_id));
 		$conn=null;}
         
-    if (isset($_GET['delete'])){  
-
-        delete_steam_trade_link($_SESSION['user_session']);
-        echo "<script>alert('Successfully Deleted!')</script>";
+    if(isset($_GET['delete_link'])){  
+        if($_GET['delete_link']!=''){
+        delete_steam_trade_link($_SESSION['user_session'],$_GET['delete_link']);
+        echo "<script>alert('Successfully Dele222ted!')</script>";
+        }
     }
 
-    if (isset($_GET['delete_steam'])){  
+    if(isset($_GET['delete_steam'])){  
 
         delete_steam_link($_SESSION['user_session']);
 
@@ -157,7 +150,7 @@ if (isset($_GET['login'])){
 
                         <div class="user-image">
                             <div class="image">
-                                <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/1e/1ea286928be0ee3a6217ecb9b6c14275e71b0e72_medium.jpg" input type="file" name="item_image"alt="">
+                                <img src="" input type="file" name="item_image"alt="">
                             </div>
                             <div class="name">
                                 <h2><?php echo $_SESSION['user_username']; ?></h2>
@@ -167,7 +160,7 @@ if (isset($_GET['login'])){
                         <div class="menu">
                             <ul>
                                 <li onclick="location.href='user_wallet.php'"><span ><i class="fas fa-wallet"></i>My wallet</span></li>
-                                <li href="javascript:void(0);" class="active"><span  ><i class="fas fa-cog"></i>Account</span></li>
+                                <li onclick="location.href='user_account.php'" class="active"><span  ><i class="fas fa-cog"></i>Account</span></li>
                                 <li onclick="location.href='user_messages.php'"><span ><i class="fas fa-envelope"></i>Messages</span></li>
                                 <!-- <li href="javascript:void(0);"><span ><i class="fas fa-comment-dots"></i>Support</span></li> -->
                             </ul>
@@ -184,7 +177,7 @@ if (isset($_GET['login'])){
                                 <tbody>
                                     <tr>
                                         <td class="t-left">Avatar</td>
-                                        <td class="t-left"> <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/1e/1ea286928be0ee3a6217ecb9b6c14275e71b0e72_medium.jpg" alt=""></td>
+                                        <td class="t-left"> <img src="" alt=""></td>
                                     </tr>
                                     <tr>
                                         <td class="t-left" width="120">Username</td>
@@ -197,12 +190,7 @@ if (isset($_GET['login'])){
                             <h3>Security settings</h3>
                             <table class=list-tab width="100%">
                                 <tbody>
-                                    <tr>
-                                        <td class="t-left" width="120">Phone number</td>
-                                        <td class="t-left"></td>
-                                        <td class="t-left"></td>
-                                        <td class="t-Right"><a href="javascript:void(0);" class="i-btn --i-btn-small">Change Phone</a></td>
-                                    </tr>
+                                    
                                     <tr>
                                         <td class="t-left" width="120">KYC Verification</td>
                                         <?php $user_kyc_status = user_kyc_status($_SESSION['user_session']);foreach($user_kyc_status as $kyc_request){ 
@@ -245,12 +233,16 @@ if (isset($_GET['login'])){
                                     </tr>
                                     <tr style="margin:10px"> 
                                         <td class="t-left" width="120">Steam Trade Link</td>
-                                        <?php $user_kyc_status = user_kyc_status($_SESSION['user_session']);foreach($user_kyc_status as $kyc_request1){?>
-                                        <td class="t-left"><input type="text" value="<?php echo $kyc_request1['user_steam_trade_link'];?>" style="margin-right:0px;color:black"></input></td>
-                                        <?php }?>
-                                        <td class="t-left" ><a href="https://steamcommunity.com/my/tradeoffers/privacy#trade_offer_access_url" target="_blank">Click to get link</a></td>
-                                        <td class="t-right"><a href="" target="_blank" class="i-btn --i-btn-small">Save</a></td>
-
+                                        <?php $user_kyc_status = user_kyc_status($_SESSION['user_session']);foreach($user_kyc_status as $kyc_request1){
+                                            if($kyc_request1['user_steam_trade_link']==''){?>
+                                                <td class="t-left"><input type="text" name="trade_link" id="trade_link" style="margin-right:0px;color:black"></input></td> 
+                                                <td class="t-left" ><a href="https://steamcommunity.com/my/tradeoffers/privacy#trade_offer_access_url" target="_blank">Click to get link</a></td>
+                                                <td class="t-right"> <button class="btn btn-secondary btn-login" type="button" value="add_steam_trade" >Save</button></td>
+                                            <?php } else { ?>
+                                                <td class="t-left"><input type="text" value="<?php echo $kyc_request1['user_steam_trade_link'];?>" disabled style="margin-right:0px;color:black"></input></td>
+                                                <td class="t-left" > </td>
+                                                <td class="t-right"> <button class="btn btn-secondary btn-login" type="button" value="delete_steam_trade">Delete</button></td>
+                                            <?php } } ?>
                                     </tr>
                                     <tr>
                                         
