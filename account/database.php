@@ -41,7 +41,7 @@
 
 	function user_kyc_status($user_session_kyc){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
-		$sql="SELECT * from users limit 1";
+		$sql="SELECT * from users where user_id=$user_session_kyc limit 1";
 		$result = $conn->query($sql);
 		return $result;}			
 
