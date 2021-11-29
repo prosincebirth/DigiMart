@@ -1267,6 +1267,41 @@ $('document').ready(function()
                 }
             });//END	
             break;	
+
+            case "insert_withdraw_info": 
+            var amount_with=$("#amount_with").val();
+            var mobile_with=$("#mobile_with").val();
+            var crt_date=$("#crt_date").val();
+            var withdraw_method=$("#withdraw_method").val();
+            var user_id=$("#user_id").val();
+
+
+            var data=new FormData();
+            data.append("action_type","insert_withdraw_info");
+            data.append("amount_with",amount_with);
+            data.append("mobile_with",mobile_with);
+            data.append("crt_date",crt_date);
+            data.append("withdraw_method",withdraw_method);
+            data.append("user_id",user_id);
+
+            $.ajax({	
+                url:"account/controller.php",
+                method:"post",
+                data:data,
+                contentType:false,
+                cache:false,
+                processData:false,
+                success:function(res){
+                    console.log(res)
+                    if(res=="Success"){
+                        alert(res)
+                        location.reload();
+                    }else{
+                        alert(res)
+                    } 
+                }
+            });//END	
+            break;	
         };	
 	});	
 });

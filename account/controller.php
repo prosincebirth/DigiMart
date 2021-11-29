@@ -811,6 +811,29 @@
 							
 						}
 						break;
+
+						case "insert_withdraw_info":
+							$amount_with = number_format($_POST['amount_with'], 2, '.', '');
+							$mobile_with = $_POST['mobile_with'];
+							$crt_date = date('Y-m-d H:m:s');
+							$withdraw_method = 'gcash';
+							$user_id = $_SESSION['user_session'];
+							$crt_wallet = get_wallet_balance($user_id);
+							$total =  $amount_with;
+	
+							if(empty($amount_with) or empty($mobile_with)){
+								echo 'Empty Fields';
+							}elseif($amount_with < 100){
+								echo 'Minumun amount is 100';
+							}elseif($amount_with > 10000){
+								echo 'Maximun amount is 10,000';
+							}else{
+								update_withdraw_wallet_balance($user_id,$total);
+								insert_withdraw_info($amount_with,$crt_date,$withdraw_method,$mobile_with,$user_id);
+								echo 'Success';
+								
+							}
+							break;
 																							
 						
 			}

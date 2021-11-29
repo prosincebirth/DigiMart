@@ -170,7 +170,7 @@
                                                     <tr>
                                                         <th> Deposit amount</th>
                                                         <th> Name</th>
-                                                        <th> Number</th>
+                                                        <th> Mobile number</th>
                                                         <th>Create time</th>
                                                     </tr>
                                                 </thead>
