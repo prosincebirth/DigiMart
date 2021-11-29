@@ -789,17 +789,21 @@
 							break;
 
 					case "insert_deposit_info":
-						$amount = $_POST['amount'];
+						$amount = number_format($_POST['amount'], 2, '.', '');
 						$name =  $_POST['first_name'] ." ". $_POST['last_name'];
 						$mobile = $_POST['mobile'];
-						$crt_date = date('Y-m-d');
+						$crt_date = date('Y-m-d H:m:s');
 						$deposit_method = 'gcash';
 						$user_id = $_SESSION['user_session'];
 						$crt_wallet = get_wallet_balance($user_id);
-						$total = $crt_wallet['wallet_balance'] + $amount;
+						$total =  $amount;
 
 						if(empty($amount) or empty($name) or empty($mobile)){
 							echo 'Empty Fields';
+						}elseif($amount < 100){
+							echo 'Minumun amount is 100';
+						}elseif($amount > 10000){
+							echo 'Maximun amount is 10,000';
 						}else{
 							update_deposit_wallet_balance($user_id,$total);
 							insert_deposit_info($amount,$crt_date,$deposit_method,$name,$mobile,$user_id);

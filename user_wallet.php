@@ -168,31 +168,22 @@
                                             <table class="user-wallet-history">
                                                 <thead>
                                                     <tr>
-                                                        <th>Serial number</th>
                                                         <th> Deposit amount</th>
-                                                        <th> Payment account</th>
-                                                        <th> Progress</th>
+                                                        <th> Name</th>
+                                                        <th> Number</th>
                                                         <th>Create time</th>
                                                     </tr>
                                                 </thead>
+                                                <?php	$get_deposit_info = get_deposit_info($_SESSION['user_session']); foreach($get_deposit_info as $get_deposit_info){?>
                                                 <tbody>
                                                     <tr>
-                                                        <td>00001</td>
-                                                        <td>1500.00</td>
-                                                        <td>321321</td>
-                                                        <td style="color:#008000; font-weight:bold;"><i class="fas fa-check-circle"></i> success</td>
-                                                        <td>10:30</td>
+                                                        <td><?php echo '<span>'.$get_deposit_info['deposit_amt'].' </span>'; ?></td>
+                                                        <td><?php echo '<span>'.$get_deposit_info['deposit_name'].' </span>'; ?></td>
+                                                        <td><?php echo '<span>'.$get_deposit_info['deposit_number'].' </span>'; ?></td>
+                                                        <td><?php echo '<span>'.$get_deposit_info['deposit_date_created'].' </span>'; ?></td>
                                                     </tr>
                                                 </tbody>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>00002</td>
-                                                        <td><?php ?></td>
-                                                        <td>321321</td>
-                                                        <td style="color:#008000; font-weight:bold;"><i class="fas fa-check-circle"></i> success</td>
-                                                        <td>10:30</td>
-                                                    </tr>
-                                                </tbody>
+                                                <?php } ?>
                                             </table>
                                         </div>
                                     </div>

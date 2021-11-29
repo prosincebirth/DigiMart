@@ -775,6 +775,12 @@
 		$sql="SELECT * from notification where user_id=$user_id order by notification_date_created desc";
 		$result = $conn->query($sql);
 		return $result;}
+	
+	function get_deposit_info($user_id){
+		$conn=connection2();
+		$sql="SELECT * from deposit where user_id=$user_id order by deposit_date_created desc";
+		$result = $conn->query($sql);
+		return $result;}
 
 	function get_transaction_history($user_id){
 		$conn=connection2();
