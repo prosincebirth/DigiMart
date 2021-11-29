@@ -1229,10 +1229,25 @@ $('document').ready(function()
             });//END	
             break;		
            
-            case "add_deposit_info1": 
-           
+            case "insert_deposit_info": 
+            var amount=$("#amount").val();
+            var first_name=$("#first_name").val();
+            var last_name=$("#last_name").val();
+            var mobile=$("#mobile").val();
+            var crt_date=$("#crt_date").val();
+            var deposit_method=$("#deposit_method").val();
+            var user_id_dep=$("#user_id_dep").val();
+
+
             var data=new FormData();
-            data.append("action_type","add_deposit_info1");
+            data.append("action_type","insert_deposit_info");
+            data.append("amount",amount);
+            data.append("first_name",first_name);
+            data.append("last_name",last_name);
+            data.append("mobile",mobile);
+            data.append("crt_date",crt_date);
+            data.append("deposit_method",deposit_method);
+            data.append("user_id_dep",user_id_dep);
 
             $.ajax({	
                 url:"account/controller.php",

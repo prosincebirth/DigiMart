@@ -7,7 +7,7 @@
 <link rel="preload stylesheet" href="assets/css/user-wallet.css" as="style" crossorigin>
 
 <main>
-<div class="modal fade" id="add_deposit_info" role="dialog">
+<div class="modal fade" id="add_deposit_info_modal" role="dialog">
 	<div class="vertical-alignment-helper">
 	<div class="modal-dialog vertical-align-center">
 	<div class="modal-content">
@@ -18,13 +18,13 @@
 		<div class="modal-body">
 	
 				<h3 style="text-align:center;">GCash</h3>
-				<div class="fld_input"><input type="number" name="amount_222" id="amount_222" placeholder="0"   class="form-control" ></div>	
-				<div class="fld_input"><input type="text" name="first_name_222" id="first_name_222" placeholder="First name"   class="form-control"></div>						
-				<div class="fld_input"><input type="text" name="last_name_222" id="last_name_222" placeholder="Last name"   class="form-control"></div>						
-				<div class="fld_input"><input type="number" name="mobile_222" id="mobile_222" placeholder="Mobile Number"   class="form-control"></div>						
+				<div class="fld_input"><input type="number" name="amount" id="amount" placeholder="0"   class="form-control" ></div>	
+				<div class="fld_input"><input type="text" name="first_name" id="first_name" placeholder="First name"   class="form-control"></div>						
+				<div class="fld_input"><input type="text" name="last_name" id="last_name" placeholder="Last name"   class="form-control"></div>						
+				<div class="fld_input"><input type="number" name="mobile" id="mobile" placeholder="Mobile Number"   class="form-control"></div>						
 				</div>
 				<div class="modal-footer">
-						<button class="btn btn-success" type="button" value="add_deposit_info1">Confirm</button>
+						<button class="btn btn-success" type="button" value="insert_deposit_info">Confirm</button>
 				</div>
 			
 		</div>
@@ -130,7 +130,7 @@
                                                     <div class="user-deposit">
                                                         <div class=user-deposit-btn>
                                                             <ul>
-                                                                <li title="You can deposit using gcash."><a href="#add_deposit_info" data-toggle="modal" class="selected"><img src="https://img.icons8.com/plasticine/50/000000/gcash.png">GCash</a></li>
+                                                                <li title="You can deposit using gcash."><a href="#add_deposit_info_modal" data-toggle="modal" class="selected"><img src="https://img.icons8.com/plasticine/50/000000/gcash.png">GCash</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -206,19 +206,10 @@
         </div>
     </section>
 </main>
-
+<!-- 
 <?php
-
-    $total = 0.00;
-    
     $is_success = $_GET['success'];
-    $added = (int)$_GET['amount'];
-    $crt = (int)$balance['wallet_balance'];
-    $total = $added + $crt;
-
-        $sql_update = 'UPDATE wallets SET wallet_balance = "'.$total.'" where user_id=6';
-        $conn->exec($sql_update);
-
+    
     if( $is_success == true ) {
         echo '<script>
         $(document).ready(function() {
@@ -230,6 +221,6 @@
     }
     
     
-?>
+?> -->
 
 <?php include('footer.php'); ?>

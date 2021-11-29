@@ -54,11 +54,11 @@
 		$exec=$prepare->execute(array(":firstname_kyc"=>$firstname_kyc,":middlename_kyc"=>$middlename_kyc,":lastname_kyc"=>$lastname_kyc,":idnumber_kyc"=>$idnumber_kyc,":address_kyc"=>$address_kyc,":id_kyc"=>$id_kyc,":id_proof_kyc"=>$id_proof_kyc,":user_session_kyc"=>$user_session_kyc));
 		$conn=null;}	
 		
-	function add_deposit_info($amount,$crt_date,$deposit_method,$name,$mobile,$user_id){
+	function insert_deposit_info($amount,$crt_date,$deposit_method,$name,$mobile,$user_id_dep){
 		$conn=connection();
 		$query="INSERT INTO deposit(deposit_amt,deposit_date_created,deposit_method,deposit_name,deposit_number,user_id) values(:deposit_amt,:deposit_date_created,:deposit_method,:deposit_name,:deposit_number,:user_id)"; 
 		$prepare=$conn->prepare($query);
-		$exec=$prepare->execute(array(":deposit_amt"=>$amount,":deposit_date_created"=>$crt_date,":deposit_method"=>$deposit_method,":deposit_name"=>$name,":deposit_number"=>$mobile,":user_id"=>$user_id));
+		$exec=$prepare->execute(array(":deposit_amt"=>$amount,":deposit_date_created"=>$crt_date,":deposit_method"=>$deposit_method,":deposit_name"=>$name,":deposit_number"=>$mobile,":user_id"=>$user_id_dep));
 		$conn=null;}
 		
 	function existing_kyc_request($user_session_kyc){// USED IN GAME SERVICES , POST SALE
