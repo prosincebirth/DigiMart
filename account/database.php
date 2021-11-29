@@ -226,6 +226,15 @@
 			$conn=null;
 			return $res;}	
 
+	function existing_kyc_req($user_id){//USED IN POST SALE
+			$conn=connection();
+			$query="SELECT * from transactions where user_id=:user_id and transaction_status=1";
+			$prepare=$conn->prepare($query);
+			$exec=$prepare->execute(array(":user_id"=>$user_id));
+			$res = $prepare->fetch(PDO::FETCH_ASSOC);
+			$conn=null;
+			return $res;}	
+
 	function sale_game_modal_2($goods_id){
 		$conn=connection();
 		$query="SELECT * from game_items where goods_id=:goods_id";

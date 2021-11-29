@@ -729,17 +729,19 @@
 								$address_kyc=$_POST['address_kyc'];
 								$id_kyc=$_POST['id_kyc'];
 								$user_session_kyc=$_POST['user_session_kyc'];
-								if(isset($_FILES['id_proof_kyc'])){
-								$id_proof_kyc=file_get_contents($_FILES['id_proof_kyc']['tmp_name']);}
+								
 								
 								if(empty($firstname_kyc) or empty($middlename_kyc)  or empty($lastname_kyc)  or empty($idnumber_kyc)  or empty($address_kyc)  or empty($id_kyc)  or empty($id_proof_kyc)  
 								  or empty($user_session_kyc)){ // trappings for not logged in
 									echo 'Empty Fields';
-								}						
-								else{
+								}else if(){
+								
+								}else if(isset($_FILES['transaction_proof'])){
+									$id_proof_kyc=file_get_contents($_FILES['id_proof_kyc']['tmp_name']);
 									add_new_kyc($firstname_kyc,$middlename_kyc,$lastname_kyc,$idnumber_kyc,$address_kyc,$id_kyc,$id_proof_kyc,$user_session_kyc);
-									echo 'Success'; 															
-									}
+									echo 'Success';
+								}						
+								
 							break;
 							case "update_kyc_modal":		
 								$user_id=$_POST['user_id'];
