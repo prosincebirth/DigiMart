@@ -1236,7 +1236,7 @@ $('document').ready(function()
             var mobile=$("#mobile").val();
             var crt_date=$("#crt_date").val();
             var deposit_method=$("#deposit_method").val();
-            var user_id_dep=$("#user_id_dep").val();
+            var user_id=$("#user_id").val();
 
 
             var data=new FormData();
@@ -1247,7 +1247,7 @@ $('document').ready(function()
             data.append("mobile",mobile);
             data.append("crt_date",crt_date);
             data.append("deposit_method",deposit_method);
-            data.append("user_id_dep",user_id_dep);
+            data.append("user_id",user_id);
 
             $.ajax({	
                 url:"account/controller.php",

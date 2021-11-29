@@ -794,15 +794,18 @@
 						$mobile = $_POST['mobile'];
 						$crt_date = date('Y-m-d');
 						$deposit_method = 'gcash';
-						$user_id_dep = $_SESSION['user_session'];
+						$user_id = $_SESSION['user_session'];
+						$crt_wallet = get_wallet_balance($user_id);
+						$total = $crt_wallet['wallet_balance'] + $amount;
 
 						if(empty($amount) or empty($name) or empty($mobile)){
 							echo 'Empty Fields';
 						}else{
-							insert_deposit_info($amount,$crt_date,$deposit_method,$name,$mobile,$user_id_dep);
+							update_deposit_wallet_balance($user_id,$total);
+							insert_deposit_info($amount,$crt_date,$deposit_method,$name,$mobile,$user_id);
 							echo 'Success';
+							
 						}
-
 						break;
 																							
 						
