@@ -770,20 +770,36 @@
 							break;
 							case "delete_steam_trade":		
 
-									delete_steam_trade_link($_SESSION['user_session']);
-									echo 'Success'; 																
-							break;
-							case "unbind_steam_account":
-								$steam_id_64=$_POST['steam_id_64'];
+								delete_steam_trade_link($_SESSION['user_session']);
+								echo 'Success'; 																
+						break;
+						case "unbind_steam_account":
+							$steam_id_64=$_POST['steam_id_64'];
 
-								if(empty($steam_id_64)){ // trappings for not logged in
-									echo 'Empty Fields';
-								}						
-								else{
-									delete_steam_link($_SESSION['user_session']);
-									echo 'Success';
-								} 																
-							break;																			
+							if(empty($steam_id_64)){ // trappings for not logged in
+								echo 'Empty Fields';
+							}						
+							else{
+								delete_steam_link($_SESSION['user_session']);
+								echo 'Success';
+							} 																
+						break;
+						case "add_deposit_info":
+							$amount = $_POST['amount'];
+							$crt_date = date('Y-m-d');
+							$deposit_method = "gcash";
+							$name = $_POST['first_name'] . " " . $_POST['last_name'];
+							$mobile = $_POST['mobile'];
+							$user_id = $_SESSION['user_session'];
+
+							if(empty($amount) or empty($name) or empty($mobile)){ // trappings 
+								echo 'Empty Fields';
+							}						
+							else{
+								add_deposit_info($amount,$crt_date,$deposit_method,$name,$mobile,$user_id);
+								echo 'Success';
+							} 																
+						break;																		
 						
 			}
 		}
