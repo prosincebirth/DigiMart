@@ -7,6 +7,32 @@
 <link rel="preload stylesheet" href="assets/css/user-wallet.css" as="style" crossorigin>
 
 <main>
+<div class="modal fade" id="add_deposit_info" role="dialog">
+	<div class="vertical-alignment-helper">
+	<div class="modal-dialog vertical-align-center">
+	<div class="modal-content">
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title"><center>Deposit GCash</h4>
+		</div>
+		<div class="modal-body">
+	
+				<h3 style="text-align:center;">GCash</h3>
+				<div class="fld_input"><input type="number" name="amount_222" id="amount_222" placeholder="0"   class="form-control" ></div>	
+				<div class="fld_input"><input type="text" name="first_name_222" id="first_name_222" placeholder="First name"   class="form-control"></div>						
+				<div class="fld_input"><input type="text" name="last_name_222" id="last_name_222" placeholder="Last name"   class="form-control"></div>						
+				<div class="fld_input"><input type="number" name="mobile_222" id="mobile_222" placeholder="Mobile Number"   class="form-control"></div>						
+				</div>
+				<div class="modal-footer">
+						<button class="btn btn-success" type="button" value="add_deposit_info1">Confirm</button>
+				</div>
+			
+		</div>
+	</div>
+	</div></div>
+	</div>
+
+
     <section class="market_section">
         <div class="container">
             <div class="layout">
@@ -30,6 +56,8 @@
                         </div>
                     </div>
                 </div>
+
+                
 
                 
                 <div class="column col2"> 

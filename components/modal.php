@@ -747,31 +747,7 @@
 	</div></div>
 	</div>	
 
-	<div class="modal fade" id="add_deposit_info" role="dialog">
-	<div class="vertical-alignment-helper">
-	<div class="modal-dialog vertical-align-center">
-	<div class="modal-content">
-		<div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title"><center>Deposit GCash</h4>
-		</div>
-		<div class="modal-body">
-			<form  method="GET" action="payment_gcash.php">
-				<img style="display: block;margin-left: auto;margin-right: auto;"src="https://img.icons8.com/plasticine/80/000000/gcash.png">
-				<h3 style="text-align:center;">GCash</h3>
-				<div class="fld_input"><input type="number" name="amount" id="amount" placeholder="0" required class="form-control" step=".01"></div>	
-				<div class="fld_input"><input type="text" name="first_name" id="first_name" placeholder="First name" required class="form-control"></div>						
-				<div class="fld_input"><input type="text" name="last_name" id="last_name" placeholder="Last name" required class="form-control"></div>						
-				<div class="fld_input"><input type="number" name="mobile" id="mobile" placeholder="Mobile Number" required class="form-control"></div>						
-				</div>
-				<div class="modal-footer">
-						<button class="btn btn-success" type="button" value="add_deposit_info">Confirm</button>
-				</div>
-			</form>
-		</div>
-	</div>
-	</div></div>
-	</div>
+	
 
 	<div class="modal fade" id="desposit_success" role="dialog">
 		<div class="vertical-alignment-helper">

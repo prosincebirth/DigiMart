@@ -1228,22 +1228,11 @@ $('document').ready(function()
                 }
             });//END	
             break;		
-
-          	
-            case "add_deposit_info": 
-            var amount=$("#amount").val().trim();
-            var first_name=$("#first_name").val().trim();
-            var last_name=$("#last_name").val().trim();
-            var mobile=$("#mobile").val().trim();
-            var user_id_dep=$("#user_id").val().trim();
+           
+            case "add_deposit_info1": 
            
             var data=new FormData();
-            data.append("action_type","add_deposit_info");
-            data.append("amount",amount);
-            data.append("first_name",first_name);
-            data.append("last_name",last_name);
-            data.append("mobile",mobile);
-            data.append("user_id_dep",user_id_dep);
+            data.append("action_type","add_deposit_info1");
 
             $.ajax({	
                 url:"account/controller.php",
@@ -1263,7 +1252,6 @@ $('document').ready(function()
                 }
             });//END	
             break;	
-
         };	
 	});	
 });

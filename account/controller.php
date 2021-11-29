@@ -657,7 +657,7 @@
 								}
 							break;
 
-						case "dispute_item_delivered_dispute":		
+					case "dispute_item_delivered_dispute":		
 							$transaction_id_dispute_seller=$_POST['transaction_id_dispute_seller'];
 							$dispute_title_seller=$_POST['dispute_title_seller'];
 							$dispute_message_seller=$_POST['dispute_message_seller'];
@@ -674,7 +674,7 @@
 								}
 							break;
 
-						case "update_dispute_details":		
+					case "update_dispute_details":		
 							$update_dispute_status=$_POST['update_dispute_status'];
 							$transaction_id_update=$_POST['transaction_id_update'];
 							$dispute_id_update=$_POST['dispute_id_update'];
@@ -701,7 +701,7 @@
 							}
 					
 							break;
-						case "edit_game_item_modal":		
+					case "edit_game_item_modal":		
 								$goods_name_edit=$_POST['goods_name_edit'];
 								$goods_quality_edit=$_POST['goods_quality_edit'];
 								$goods_rarity_edit=$_POST['goods_rarity_edit'];
@@ -721,7 +721,7 @@
 									echo 'Success'; 															
 									}
 							break;
-							case "kyc_services_modal":		
+					case "kyc_services_modal":		
 								$firstname_kyc=$_POST['firstname_kyc'];
 								$middlename_kyc=$_POST['middlename_kyc'];
 								$lastname_kyc=$_POST['lastname_kyc'];
@@ -729,21 +729,24 @@
 								$address_kyc=$_POST['address_kyc'];
 								$id_kyc=$_POST['id_kyc'];
 								$user_session_kyc=$_POST['user_session_kyc'];
+								$id_proof_kyc='';
+								if(isset($_FILES['id_proof_kyc'])){
+								$id_proof_kyc=file_get_contents($_FILES['id_proof_kyc']['tmp_name']);
+								}
 								
-								
-								if(empty($firstname_kyc) or empty($middlename_kyc)  or empty($lastname_kyc)  or empty($idnumber_kyc)  or empty($address_kyc)  or empty($id_kyc)  or empty($id_proof_kyc)  
+								if(empty($firstname_kyc) or empty($middlename_kyc)  or empty($lastname_kyc)  or empty($idnumber_kyc)  or empty($address_kyc)  or empty($id_kyc)  or empty($id_proof_kyc) 
 								  or empty($user_session_kyc)){ // trappings for not logged in
 									echo 'Empty Fields';
-								}else if(){
 								
-								}else if(isset($_FILES['transaction_proof'])){
+								}else if(isset($_FILES['id_proof_kyc'])){
 									$id_proof_kyc=file_get_contents($_FILES['id_proof_kyc']['tmp_name']);
 									add_new_kyc($firstname_kyc,$middlename_kyc,$lastname_kyc,$idnumber_kyc,$address_kyc,$id_kyc,$id_proof_kyc,$user_session_kyc);
+									update_user_kyc($user_session_kyc);
 									echo 'Success';
 								}						
 								
 							break;
-							case "update_kyc_modal":		
+					case "update_kyc_modal":		
 								$user_id=$_POST['user_id'];
 								$kyc_id=$_POST['kyc_id'];
 								$update_kyc_status=$_POST['update_kyc_status'];
@@ -757,7 +760,7 @@
 									echo 'Success'; 															
 									}
 							break;
-							case "add_steam_trade":		
+					case "add_steam_trade":		
 								$trade_link=$_POST['trade_link'];
 								
 								if(empty($trade_link)){ // trappings for not logged in
@@ -768,38 +771,27 @@
 									echo 'Success'; 															
 									}
 							break;
-							case "delete_steam_trade":		
+					case "delete_steam_trade":		
 
 								delete_steam_trade_link($_SESSION['user_session']);
 								echo 'Success'; 																
-						break;
-						case "unbind_steam_account":
-							$steam_id_64=$_POST['steam_id_64'];
+							break;
+					case "add_deposit_info1":
+								
+								echo 'Empty Fields';											
+								break;	
+					case "unbind_steam_account":
+								$steam_id_64=$_POST['steam_id_64'];
 
-							if(empty($steam_id_64)){ // trappings for not logged in
-								echo 'Empty Fields';
-							}						
-							else{
-								delete_steam_link($_SESSION['user_session']);
-								echo 'Success';
-							} 																
-						break;
-						case "add_deposit_info":
-							$amount = $_POST['amount'];
-							$crt_date = date('Y-m-d');
-							$deposit_method = "gcash";
-							$name = $_POST['first_name'] . " " . $_POST['last_name'];
-							$mobile = $_POST['mobile'];
-							$user_id = $_SESSION['user_session'];
-
-							if(empty($amount) or empty($name) or empty($mobile)){ // trappings 
-								echo 'Empty Fields';
-							}						
-							else{
-								add_deposit_info($amount,$crt_date,$deposit_method,$name,$mobile,$user_id);
-								echo 'Success';
-							} 																
-						break;																		
+								if(empty($steam_id_64)){ // trappings for not logged in
+									echo 'Empty Fields';
+								}						
+								else{
+									delete_steam_link($_SESSION['user_session']);
+									echo 'Success';
+								} 																
+							break;
+																							
 						
 			}
 		}

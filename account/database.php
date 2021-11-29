@@ -73,7 +73,12 @@
 		$result = $conn->query($sql);
 		return $result;}
 		
-		
+	function update_user_kyc($user_id){
+		$conn=connection();
+		$query="UPDATE users set user_kyc=1 where user_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":user_id"=>$user_id));
+		$conn=null;}
 		
 
 	function add_notification($notification_message,$user_id){//register.php

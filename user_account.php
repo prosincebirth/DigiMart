@@ -14,16 +14,6 @@ session_start();
 		$exec=$prepare->execute(array(":user_id"=>$user_id,":user_steam_id"=>$user_steam_id));
 		$conn=null;}
 
-
-
-
-    if(isset($_GET['delete_steam'])){  
-
-        delete_steam_link($_SESSION['user_session']);
-
-        echo "<script>alert('Successfully Unbinded Steam Account!')</script>";
-    }
-
 if (isset($_GET['login'])){
 	require 'openid.php';
 	try {
