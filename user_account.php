@@ -14,19 +14,8 @@ session_start();
 		$exec=$prepare->execute(array(":user_id"=>$user_id,":user_steam_id"=>$user_steam_id));
 		$conn=null;}
 
-    function delete_steam_link($user_id){
-		$conn=connection3();
-		$query="UPDATE users set user_steam_id='' where user_id=:user_id";
-		$prepare=$conn->prepare($query);
-		$exec=$prepare->execute(array(":user_id"=>$user_id));
-		$conn=null;}
-        
-    if(isset($_GET['delete_link'])){  
-        if($_GET['delete_link']!=''){
-        delete_steam_trade_link($_SESSION['user_session'],$_GET['delete_link']);
-        echo "<script>alert('Successfully Dele222ted!')</script>";
-        }
-    }
+
+
 
     if(isset($_GET['delete_steam'])){  
 
@@ -177,7 +166,7 @@ if (isset($_GET['login'])){
                                 <tbody>
                                     <tr>
                                         <td class="t-left">Avatar</td>
-                                        <td class="t-left"> <img src="" alt=""></td>
+                                        <td class="t-left"> <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/1e/1ea286928be0ee3a6217ecb9b6c14275e71b0e72_medium.jpg" alt=""></td>
                                     </tr>
                                     <tr>
                                         <td class="t-left" width="120">Username</td>
@@ -225,8 +214,8 @@ if (isset($_GET['login'])){
                                                 <td class="t-right"><a href="?login" class="i-btn --i-btn-small">Bind Steam Account</a></td>
                                             <?php } else { ?>
                                                 <td class="t-left"><span style="color:black"><?php echo $kyc_request1['user_steam_id'];?> </input></span></td>
-                                                <td class="t-eft"></td>
-                                                <td class="t-right"><a href="?delete_steam" class="i-btn --i-btn-small">Unbind Steam Account</a></td>
+                                                <td class="t-left">  <input type="hidden" name="steam_id_64" id="steam_id_64" value="<?php echo $kyc_request1['user_steam_id'];?>" style="margin-right:0px;color:black"> </td>
+                                                <td class="t-right"><button class="btn btn-secondary btn-login" type="button" value="unbind_steam_account">Unbind Steam account</button></td>
                                             <?php } } ?>
 
 

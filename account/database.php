@@ -25,6 +25,13 @@
 		$exec=$prepare->execute(array(":user_id"=>$user_id));
 		$conn=null;}
 
+	function delete_steam_link($user_id){
+		$conn=connection();
+		$query="UPDATE users set user_steam_id='' where user_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":user_id"=>$user_id));
+		$conn=null;}		
+
 		////////////////// ADDD FUNCTIONS /////////////////
 	function add_new_user($user_username,$user_password,$user_email){//register.php
 		$conn=connection();

@@ -769,8 +769,18 @@
 							case "delete_steam_trade":		
 
 									delete_steam_trade_link($_SESSION['user_session']);
-									echo 'Success'; 															
-									
+									echo 'Success'; 																
+							break;
+							case "unbind_steam_account":
+								$steam_id_64=$_POST['steam_id_64'];
+
+								if(empty($steam_id_64)){ // trappings for not logged in
+									echo 'Empty Fields';
+								}						
+								else{
+									delete_steam_link($_SESSION['user_session']);
+									echo 'Success';
+								} 																
 							break;																			
 						
 			}
