@@ -18,48 +18,7 @@ $('document').ready(function()
         trigger: 'hover'
     });
 
-    $("#register-form").validate({
-        rules:
-        {
-            user_username_b: {
-                required: true,
-                minlength: 5
-            },
-            user_password_b: {
-                required: true,
-                minlength: 8,
-                maxlength: 15
-            },
-            cpassword_b: {
-                required: true,
-                equalTo: '#user_password_b'
-            },
-            user_email_b: {
-                required: true,
-				email: true,
-               
-            },
-        },
-        messages:
-        {
-            user_username_b:{
-                required: "Provide a Username",
-                minlength: "Username Needs To Be Minimum of 5 Characters"
-            },
-            user_password_b:{
-                required: "Provide a Password",
-                minlength: "Password Needs To Be Minimum of 8 Characters"
-            },
-            user_email_b:{
-                required: "Provide a Valid Email",
-            },
-            cpassword_b:{
-                required: "Retype Your Password",
-                equalTo: "Password Mismatch! Retype"
-            }
-        },
-    });
-	
+    
     $("#login-form").validate({
         rules:
           {
@@ -329,7 +288,7 @@ $('document').ready(function()
 		var btn_val=$(this).val();
             switch(btn_val){
             case "register":
-                if($("#register-form").valid()){
+                
                     var username_b=$("#user_username_b").val().trim();
                     var email_b=$("#user_email_b").val().trim();
                     var password_b=$("#user_password_b").val().trim();
@@ -362,7 +321,7 @@ $('document').ready(function()
                             }     
                         }
                     });	
-                }
+                
             break;               
             case "login":
                 if($("#login-form").valid()){

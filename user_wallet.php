@@ -174,7 +174,7 @@
                                                         <th>Create time</th>
                                                     </tr>
                                                 </thead>
-                                                <?php	$get_deposit_info = get_deposit_info($_SESSION['user_session']); foreach($get_deposit_info as $get_deposit_info){?>
+                                                <?php $get_deposit_info = get_deposit_info($_SESSION['user_session']); foreach($get_deposit_info as $get_deposit_info){?>
                                                 <tbody>
                                                     <tr>
                                                         <td><?php echo '<span>'.$get_deposit_info['deposit_amt'].' </span>'; ?></td>
