@@ -249,9 +249,29 @@
     height: 30px;
     line-height: 30px;
     padding: 0 15px;
+    text-align: center;
+    cursor: pointer;
 }
 
 .col2 .user-setting .list-tab table tbody tr td .t-right a:last-of-type{
     color: var(--quinary-color);
     font-size: 20px;
+}
+
+.col2 .user-setting .list-tab .t-right button{
+    margin-right: 15px;
+    display: inline-block;
+    background-color: var(--facebook-color);
+    color: var(--white-color);
+    height: 30px;
+    line-height: 30px;
+    padding: 0 15px;
+    text-align: center;
+    border-radius: 0px;
+}
+
+.col2 .user-setting .list-tab .t-right button:hover,
+.col2 .user-setting .list-tab .t-right button.active{
+
+    text-decoration: underline;
 }
