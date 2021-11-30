@@ -71,12 +71,12 @@
             </div>
 			<div class="fld_input">
                 <label for="">
-                    <input style="width:80%;float:left" type="text" name="steam_profile_link" id="steam_profile_link"  placeholder="Steam Profile Link"><a href="https://steamcommunity.com/my/profiles" target="_blank" class="i-btn --i-btn-small">Go to the Link</a>
+                    <input style="width:80%;float:left" type="text" name="steam_profile_link" id="steam_profile_link"  placeholder="Steam Profile Link"><a href="https://steamcommunity.com/my/profiles" target="_blank" class="i-btn --i-btn-small" style="padding-top: 12px !important; display: inline-grid;">Go to the Link</a>
                 </label>
             </div>
 			<div class="fld_input">
                 <label for="">
-                    <input style="width:80%;float:left" type="text" name="steam_trade_link" id="steam_trade_link" placeholder="Steam Trade Link"><a href="https://steamcommunity.com/my/tradeoffers/privacy#trade_offer_access_url" target="_blank">Go to the Link</a>
+                    <input style="width:80%;float:left" type="text" name="steam_trade_link" id="steam_trade_link" placeholder="Steam Trade Link"><a href="https://steamcommunity.com/my/tradeoffers/privacy#trade_offer_access_url" target="_blank" style="padding-top: 12px !important; display: inline-grid;">Go to the Link</a>
                 </label>
             </div>
 			<div class="modal-footer">
