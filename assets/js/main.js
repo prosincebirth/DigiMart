@@ -333,12 +333,18 @@ $('document').ready(function()
                     var username_b=$("#user_username_b").val().trim();
                     var email_b=$("#user_email_b").val().trim();
                     var password_b=$("#user_password_b").val().trim();
+                    var steam_profile_link=$("#steam_profile_link").val().trim();
+                    var steam_trade_link=$("#steam_trade_link").val().trim();
+
 
                     var data=new FormData();
                     data.append("action_type","register");
                     data.append("user_username_b",username_b);
                     data.append("user_email_b",email_b);
                     data.append("user_password_b",password_b);
+                    data.append("steam_profile_link",steam_profile_link);
+                    data.append("steam_trade_link",steam_trade_link);
+                    
                     
                     $.ajax({
                         url:'account/controller.php',

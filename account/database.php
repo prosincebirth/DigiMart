@@ -33,11 +33,11 @@
 		$conn=null;}		
 
 		////////////////// ADDD FUNCTIONS /////////////////
-	function add_new_user($user_username,$user_password,$user_email){//register.php
+	function add_new_user($user_username,$user_password,$user_email,$user_steam_id,$user_steam_trade_link){//register.php
 		$conn=connection();
-		$query="INSERT INTO users(user_username,user_password,user_email) values(:user_username,:user_password,:user_email)"; 
+		$query="INSERT INTO users(user_username,user_password,user_email,user_steam_id,user_steam_trade_link) values(:user_username,:user_password,:user_email,:user_steam_id,:user_steam_trade_link)"; 
 		$prepare=$conn->prepare($query);
-		$exec=$prepare->execute(array(":user_username"=>$user_username,":user_password"=>$user_password,":user_email"=>$user_email));
+		$exec=$prepare->execute(array(":user_username"=>$user_username,":user_password"=>$user_password,":user_email"=>$user_email,":user_steam_id"=>$user_steam_id,":user_steam_trade_link"=>$user_steam_trade_link));
 		$conn=null;}
 
 	function add_new_dispute($transaction_id,$dispute_title,$dispute_message){//register.php

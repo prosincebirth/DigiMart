@@ -8,18 +8,23 @@
 						$user_email_b=$_POST['user_email_b'];
 						$user_password_b=$_POST['user_password_b'];
 						$user_password_b=password_hash($user_password_b, PASSWORD_DEFAULT); 
+						$steam_profile_link=$_POST['steam_profile_link'];
+						$steam_trade_link=$_POST['steam_trade_link'];
 
 						if(existing_user($user_username_b) && existing_email($user_email_b)){
-							echo 'both taken';
+							echo 'Both taken';
 						} // if both are taken
 						else if(existing_user($user_username_b)){
-							echo 'user taken';
+							echo 'User taken';
 						} // if user is taken
 						else if(existing_email($user_email_b)){
-							echo 'email taken';
+							echo 'Email taken';
 						} // if email is taken
+						else if(empty($user_username_b) or empty($user_email_b) or empty($user_password_b) or empty($steam_profile_link) or empty($steam_trade_link)){
+							echo 'Empty Fields';
+						}
 						else{
-							add_new_user($user_username_b,$user_password_b,$user_email_b);	
+							add_new_user($user_username_b,$user_password_b,$user_email_b,$steam_profile_link,$steam_trade_link);	
 							echo 'Success';
 						} //if both are not taken, success
 						break;

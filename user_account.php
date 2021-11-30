@@ -32,8 +32,15 @@ if (isset($_GET['login'])){
 				preg_match($ptn, $id, $matches);
 				
 				$_SESSION['steamid'] = $matches[1];
-                //$_SESSION['user_session'] = $_SESSION['steamid'];
-                add_steam_id($_SESSION['user_session'],$_SESSION['steamid']);
+
+                if (empty($_SESSION['steam_uptodate']) or empty($_SESSION['steam_personaname'])) {
+                    require 'SteamConfig.php';
+                    $url = file_get_contents("https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$steamauth['apikey']."&steamids=".$_SESSION['steamid']); 
+                    $content = json_decode($url, true);
+                    $_SESSION['steam_profileurl'] = $content['response']['players'][0]['profileurl'];
+                }
+
+                add_steam_id($_SESSION['user_session'],$_SESSION['steam_profileurl']);
                 
 				if (!headers_sent()) {
 					header('Location: '.$steamauth['loginpage']);
@@ -156,7 +163,7 @@ if (isset($_GET['login'])){
                                 <tbody>
                                     <tr>
                                         <td class="t-left">Avatar</td>
-                                        <td class="t-left"> <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/1e/1ea286928be0ee3a6217ecb9b6c14275e71b0e72_medium.jpg" alt=""></td>
+                                        <td class="t-left"> <img src="" alt=""></td>
                                     </tr>
                                     <tr>
                                         <td class="t-left" width="120">Username</td>

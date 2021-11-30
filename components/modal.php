@@ -1,3 +1,4 @@
+
 <div class="modal fade" id="login_modal" role="dialog">
 	<div class="vertical-alignment-helper">
 	<div class="modal-dialog vertical-align-center">
@@ -48,24 +49,34 @@
 		<form class="form-signin" method="post" id="register-form"><center>
 			<div class="fld_input">
                 <label for="username">
-                    <input type="text" name="user_username_b" id="user_username_b" placeholder="Username">
+                    <input type="text" name="user_username_b" id="user_username_b" placeholder="Username*">
                     <label for="user_username" id="error_username"></label>
                 </label>
             </div>
             <div class="fld_input">
                 <label for="email">
-                    <input type="text" name="user_email_b" id="user_email_b" placeholder="Email Address" >
+                    <input type="text" name="user_email_b" id="user_email_b" placeholder="Email Address*" >
                     <label for="user_email" id="error_email"></label>
                 </label>
             </div>
             <div class="fld_input">
                 <label for="password1">
-                    <input type="password" name="user_password_b" id="user_password_b" placeholder="Password" >
+                    <input type="password" name="user_password_b" id="user_password_b" placeholder="Password*" >
                 </label>
             </div>
             <div class="fld_input">
                 <label for="password1">
-                    <input type="password" name="cpassword_b" id="cpassword_b" placeholder="Confirm Password" >
+                    <input type="password" name="cpassword_b" id="cpassword_b" placeholder="Confirm Password*" >
+                </label>
+            </div>
+			<div class="fld_input">
+                <label for="">
+                    <input style="width:80%;float:left" type="text" name="steam_profile_link" id="steam_profile_link"  placeholder="Steam Profile Link"><a href="https://steamcommunity.com/my/profiles" target="_blank" class="i-btn --i-btn-small">Go to the Link</a>
+                </label>
+            </div>
+			<div class="fld_input">
+                <label for="">
+                    <input style="width:80%;float:left" type="text" name="steam_trade_link" id="steam_trade_link" placeholder="Steam Trade Link"><a href="https://steamcommunity.com/my/tradeoffers/privacy#trade_offer_access_url" target="_blank">Go to the Link</a>
                 </label>
             </div>
 			<div class="modal-footer">
