@@ -7,6 +7,30 @@
 <link rel="preload stylesheet" href="assets/css/user-wallet.css" as="style" crossorigin>
 
 <main>
+<div class="modal fade" id="add_withdraw_info_modal" role="dialog">
+	<div class="vertical-alignment-helper">
+	<div class="modal-dialog vertical-align-center">
+	<div class="modal-content">
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title"><center>Withdraw GCash</h4>
+		</div>
+		<div class="modal-body">
+	
+				<h3 style="text-align:center;">GCash</h3>
+				<div class="fld_input"><input type="number" name="amount_with" id="amount_with" placeholder="Amount"  class="form-control" ></div>	
+				<div class="fld_input"><input type="number" name="mobile_with" id="mobile_with" placeholder="Mobile Number"   class="form-control"></div>						
+				</div>
+				<div class="modal-footer">
+						<button class="btn btn-success" type="button" value="insert_withdraw_info">Confirm</button>
+				</div>
+			
+		</div>
+	</div>
+	</div></div>
+	</div>
+
+<main>
     <section class="market_section">
         <div class="container">
             <div class="layout">
@@ -102,7 +126,7 @@
                                                     <div class="user-deposit">
                                                         <div class=user-deposit-btn>
                                                             <ul>
-                                                                <li title="You can deposit using gcash."><a href="#deposit_gcash" data-toggle="modal" class="selected"><img src="https://img.icons8.com/plasticine/50/000000/gcash.png">GCash</a></li>
+                                                                <li title="You can deposit using gcash."><a href="#add_withdraw_info_modal" data-toggle="modal" class="selected"><img src="https://img.icons8.com/plasticine/50/000000/gcash.png">GCash</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -140,31 +164,21 @@
                                             <table class="user-wallet-history">
                                                 <thead>
                                                     <tr>
-                                                        <th>Serial number</th>
                                                         <th> Witdraw amount</th>
-                                                        <th> Account</th>
-                                                        <th> Progress</th>
-                                                        <th>Create time</th>
+                                                        <th> Mobile number</th>
+                                                        <th> Create time</th>
                                                     </tr>
                                                 </thead>
+                                                <?php	$get_withdraw_info = get_withdraw_info($_SESSION['user_session']); foreach($get_withdraw_info as $get_withdraw_info){?>
                                                 <tbody>
                                                     <tr>
-                                                        <td>00001</td>
-                                                        <td>1500.00</td>
-                                                        <td>321321</td>
-                                                        <td style="color:#008000; font-weight:bold;"><i class="fas fa-check-circle"></i> success</td>
-                                                        <td>10:30</td>
+                                                        <td><?php echo '<span>'.$get_withdraw_info['withdraw_amt'].' </span>'; ?></td>
+                                                        <td><?php echo '<span>'.$get_withdraw_info['withdraw_number'].' </span>'; ?></td>
+                                                        <td><?php echo '<span>'.$get_withdraw_info['withdraw_date_created'].' </span>'; ?></td>
+                                                       
                                                     </tr>
                                                 </tbody>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>00002</td>
-                                                        <td>1500.00</td>
-                                                        <td>321321</td>
-                                                        <td style="color:#008000; font-weight:bold;"><i class="fas fa-check-circle"></i> success</td>
-                                                        <td>10:30</td>
-                                                    </tr>
-                                                </tbody>
+                                                <?php } ?>
                                             </table>
                                         </div>
                                     </div>

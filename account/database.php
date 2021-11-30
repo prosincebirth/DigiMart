@@ -54,11 +54,32 @@
 		$exec=$prepare->execute(array(":firstname_kyc"=>$firstname_kyc,":middlename_kyc"=>$middlename_kyc,":lastname_kyc"=>$lastname_kyc,":idnumber_kyc"=>$idnumber_kyc,":address_kyc"=>$address_kyc,":id_kyc"=>$id_kyc,":id_proof_kyc"=>$id_proof_kyc,":user_session_kyc"=>$user_session_kyc));
 		$conn=null;}	
 		
-	function add_deposit_info($amount,$crt_date,$deposit_method,$name,$mobile,$user_id){
+	function insert_deposit_info($amount,$crt_date,$deposit_method,$name,$mobile,$user_id){
 		$conn=connection();
 		$query="INSERT INTO deposit(deposit_amt,deposit_date_created,deposit_method,deposit_name,deposit_number,user_id) values(:deposit_amt,:deposit_date_created,:deposit_method,:deposit_name,:deposit_number,:user_id)"; 
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":deposit_amt"=>$amount,":deposit_date_created"=>$crt_date,":deposit_method"=>$deposit_method,":deposit_name"=>$name,":deposit_number"=>$mobile,":user_id"=>$user_id));
+		$conn=null;}
+
+	function insert_withdraw_info($amount_with,$crt_date,$withdraw_method,$mobile_with,$user_id){
+		$conn=connection();
+		$query="INSERT INTO withdraw(withdraw_amt,withdraw_date_created,withdraw_method,withdraw_number,user_id) values(:withdraw_amt,:withdraw_date_created,:withdraw_method,:withdraw_number,:user_id)"; 
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":withdraw_amt"=>$amount_with,":withdraw_date_created"=>$crt_date,":withdraw_method"=>$withdraw_method,":withdraw_number"=>$mobile_with,":user_id"=>$user_id));
+		$conn=null;}
+
+	function update_deposit_wallet_balance($user_id,$total){
+		$conn=connection();
+		$query="UPDATE wallets set wallet_balance=wallet_balance+:total where user_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":user_id"=>$user_id,":total"=>$total));
+		$conn=null;}
+
+	function update_withdraw_wallet_balance($user_id,$total){
+		$conn=connection();
+		$query="UPDATE wallets set wallet_balance=wallet_balance-:total where user_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":user_id"=>$user_id,":total"=>$total));
 		$conn=null;}
 		
 	function existing_kyc_request($user_session_kyc){// USED IN GAME SERVICES , POST SALE
@@ -766,6 +787,18 @@
 	function get_notification($user_id){
 		$conn=connection2();
 		$sql="SELECT * from notification where user_id=$user_id order by notification_date_created desc";
+		$result = $conn->query($sql);
+		return $result;}
+	
+	function get_deposit_info($user_id){
+		$conn=connection2();
+		$sql="SELECT * from deposit where user_id=$user_id order by deposit_date_created desc";
+		$result = $conn->query($sql);
+		return $result;}
+
+	function get_withdraw_info($user_id){
+		$conn=connection2();
+		$sql="SELECT * from withdraw where user_id=$user_id order by withdraw_date_created desc";
 		$result = $conn->query($sql);
 		return $result;}
 

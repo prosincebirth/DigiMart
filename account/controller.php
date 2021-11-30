@@ -776,10 +776,6 @@
 								delete_steam_trade_link($_SESSION['user_session']);
 								echo 'Success'; 																
 							break;
-					case "add_deposit_info1":
-								
-								echo 'Empty Fields';											
-								break;	
 					case "unbind_steam_account":
 								$steam_id_64=$_POST['steam_id_64'];
 
@@ -790,6 +786,53 @@
 									delete_steam_link($_SESSION['user_session']);
 									echo 'Success';
 								} 																
+							break;
+
+					case "insert_deposit_info":
+						$amount = number_format($_POST['amount'], 2, '.', '');
+						$name =  $_POST['first_name'] ." ". $_POST['last_name'];
+						$mobile = $_POST['mobile'];
+						$crt_date = date('Y-m-d H:m:s');
+						$deposit_method = 'gcash';
+						$user_id = $_SESSION['user_session'];
+						$crt_wallet = get_wallet_balance($user_id);
+						$total =  $amount;
+
+						if(empty($amount) or empty($name) or empty($mobile)){
+							echo 'Empty Fields';
+						}elseif($amount < 100){
+							echo 'Minumun amount is 100';
+						}elseif($amount > 10000){
+							echo 'Maximun amount is 10,000';
+						}else{
+							update_deposit_wallet_balance($user_id,$total);
+							insert_deposit_info($amount,$crt_date,$deposit_method,$name,$mobile,$user_id);
+							echo 'Success';
+							
+						}
+						break;
+
+						case "insert_withdraw_info":
+							$amount_with = number_format($_POST['amount_with'], 2, '.', '');
+							$mobile_with = $_POST['mobile_with'];
+							$crt_date = date('Y-m-d H:m:s');
+							$withdraw_method = 'gcash';
+							$user_id = $_SESSION['user_session'];
+							$crt_wallet = get_wallet_balance($user_id);
+							$total =  $amount_with;
+	
+							if(empty($amount_with) or empty($mobile_with)){
+								echo 'Empty Fields';
+							}elseif($amount_with < 100){
+								echo 'Minumun amount is 100';
+							}elseif($amount_with > 10000){
+								echo 'Maximun amount is 10,000';
+							}else{
+								update_withdraw_wallet_balance($user_id,$total);
+								insert_withdraw_info($amount_with,$crt_date,$withdraw_method,$mobile_with,$user_id);
+								echo 'Success';
+								
+							}
 							break;
 																							
 						
