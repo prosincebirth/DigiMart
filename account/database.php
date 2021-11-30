@@ -573,7 +573,7 @@
 
 	function display_kyc_verification_admin(){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
-		$sql="SELECT * from kyc_verification a join users b where b.user_id=a.user_session_kyc order by a.kyc_id";
+		$sql="SELECT * from kyc_verification a join users b where b.user_id=a.user_session_kyc order by a.kyc_id desc";
 		$result = $conn->query($sql);
 		return $result;}
 
