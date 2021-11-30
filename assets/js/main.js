@@ -267,9 +267,15 @@ $('document').ready(function()
     $('#item_deliver_sale_order_modal').on('show.bs.modal', function(e) {
         var transaction_id_l = $(e.relatedTarget).data('transaction_id_l');
         var user_id_l = $(e.relatedTarget).data('user_id_l');
+        var buyer_steam_profile_link = $(e.relatedTarget).data('buyer_steam_profile_link');
+        var buyer_steam_trade_link = $(e.relatedTarget).data('buyer_steam_trade_link');
 
         $(e.currentTarget).find('input[name="transaction_id_l"]').val(transaction_id_l);
         $(e.currentTarget).find('input[name="user_id_l"]').val(user_id_l);
+        $(e.currentTarget).find('span[name="steam_profile_link"]').html(buyer_steam_profile_link);
+        $(e.currentTarget).find('span[name="steam_trade_link_buyer"]').html(buyer_steam_trade_link);
+        $(e.currentTarget).find('a[name="steam_profile_link"]').attr("href",buyer_steam_profile_link)
+        $(e.currentTarget).find('a[name="steam_trade_link_buyer"]').attr("href",buyer_steam_trade_link)
     });
 
     $('#item_confirmation_buy_order_modal').on('show.bs.modal', function(e) {

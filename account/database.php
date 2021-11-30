@@ -500,7 +500,8 @@
 /////////////////////////////////////////////////////////////////////
 	function display_sale_order($user_id,$game_id,$search){
 		$conn=connection2();
-		$sql="SELECT *,(select user_username from users where user_id=a.buyer_id ) as buyer_name,(select order_id from orders where order_id=a.order_id ) as transaction_order_id 
+		$sql="SELECT *,(select user_username from users where user_id=a.buyer_id ) as buyer_name,(select order_id from orders where order_id=a.order_id ) as transaction_order_id,
+		(select user_steam_id from users where user_id=a.buyer_id ) as buyer_steam_profile_link,(select user_steam_trade_link from users where user_id=a.buyer_id ) as buyer_steam_trade_link
 		from transactions a join game_items b join goods c join users d where c.goods_name LIKE '%".$search."%' and a.item_id = b.item_id 
 		AND b.goods_id = c.goods_id AND a.seller_id = $user_id and a.buyer_id != $user_id AND d.user_id = $user_id 
 		AND a.game_id=$game_id AND 

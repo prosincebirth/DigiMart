@@ -582,8 +582,10 @@
 		<div class="modal-body">		
 			
 	<span><center> If delivery screenshot is not uploaded , payment will be put on hold and we will favor the buyer in the event of dispute </center></span>
-	<br>
+	<br>	
 
+			Buyer Steam Profile Link : <a href="" id="steam_profile_link"  name="steam_profile_link" target="_blank"><span id="steam_profile_link"  name="steam_profile_link"></span> </a></br>
+			Buyer Steam Trade Link : <a href="" id="steam_trade_link_buyer"  name="steam_trade_link_buyer" target="_blank"><span id="steam_trade_link_buyer" name="steam_trade_link_buyer"> </span></a></br>
 					
 				<div class="fld_input"><input type="hidden" name="transaction_id_l" placeholder="ITEM ID" id="transaction_id_l" class="form-control"></div>						
 				<div class="fld_input"><input type="hidden" name="user_id_l" placeholder="USER ID" id="user_id_l" class="form-control"></div>			
