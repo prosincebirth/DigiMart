@@ -550,7 +550,9 @@
 	
 	function display_buy_orders($user_id,$game_id,$search){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
-		$sql="SELECT *,(select user_username from users where user_id=a.seller_id ) as seller_name,(select order_id from orders where order_id=a.order_id ) as transaction_order_id from transactions a join game_items b join goods c 
+		$sql="SELECT *,(select user_username from users where user_id=a.seller_id ) as seller_name,(select order_id from orders where order_id=a.order_id ) as transaction_order_id,
+		(select user_steam_id from users where user_id=a.seller_id ) as seller_steam_profile_link,(select user_steam_trade_link from users where user_id=a.seller_id ) as seller_steam_trade_link
+		from transactions a join game_items b join goods c 
 		where c.goods_name LIKE '%".$search."%' and a.item_id = b.item_id AND b.goods_id = c.goods_id AND a.buyer_id = $user_id AND a.seller_id != $user_id  AND a.game_id=$game_id and a.order_id != 3 and 
 		a.transaction_status!=0 AND a.transaction_status!=2 AND a.transaction_status!=5 AND
 		a.transaction_status!=6 AND a.transaction_status!=7 AND a.transaction_status!=8 AND

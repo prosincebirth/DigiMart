@@ -584,7 +584,7 @@
 	<span><center> If delivery screenshot is not uploaded , payment will be put on hold and we will favor the buyer in the event of dispute </center></span>
 	<br>	
 
-			Buyer Steam Profile Link : <a href="" id="steam_profile_link"  name="steam_profile_link" target="_blank"><span id="steam_profile_link"  name="steam_profile_link"></span> </a></br>
+			Buyer Steam Profile Link : <a href="" id="steam_profile_link_buyer"  name="steam_profile_link_buyer" target="_blank"><span id="steam_profile_link_buyer"  name="steam_profile_link_buyer"></span> </a></br>
 			Buyer Steam Trade Link : <a href="" id="steam_trade_link_buyer"  name="steam_trade_link_buyer" target="_blank"><span id="steam_trade_link_buyer" name="steam_trade_link_buyer"> </span></a></br>
 					
 				<div class="fld_input"><input type="hidden" name="transaction_id_l" placeholder="ITEM ID" id="transaction_id_l" class="form-control"></div>						
@@ -608,9 +608,13 @@
 		</div>
 		<div class="modal-body">							
 				<div class="fld_input"><input type="hidden" name="transaction_id_m" placeholder="ITEM ID" id="transaction_id_m" class="form-control"></div>						
-				<div class="fld_input"><input type="hidden" name="user_id_m" placeholder="USER ID" id="user_id_m" class="form-control"></div>			
+				<div class="fld_input"><input type="hidden" name="user_id_m" placeholder="USER ID" id="user_id_m" class="form-control"></div>		
+				Seller Steam Profile Link : <a href="" id="steam_profile_link_seller"  name="steam_profile_link_seller" target="_blank"><span id="steam_profile_link_seller"  name="steam_profile_link_seller"></span> </a></br>
+				Seller Steam Trade Link : <a href="" id="steam_trade_link_seller"  name="steam_trade_link_seller" target="_blank"><span id="steam_trade_link_seller" name="steam_trade_link_seller"> </span></a></br>
+				<br>	
+				<label style="color:#4e73df">Item delivery proof</label>
 				<div class="form-group">
-                <label style="color:#4e73df">Item delivery proof</label>
+                
                 <img src="data:image/png;base64," height="260">
             </div>
             </div>

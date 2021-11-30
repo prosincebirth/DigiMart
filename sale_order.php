@@ -121,7 +121,7 @@ if($_SESSION['user_status']!=1){header("Location: index.php"); exit();}
                                             data-transaction_id_l='.$res['transaction_id'].'
                                             data-buyer_steam_profile_link='.$res['buyer_steam_profile_link'].'
                                             data-buyer_steam_trade_link='.$res['buyer_steam_trade_link'].'
-                                            data-user_id_l='.$_SESSION['user_session'].'>Item Delivered</button>';
+                                            data-user_id_l='.$_SESSION['user_session'].'>Item Transfered</button>';
                                             echo ' ';       
                                             echo '<button data-toggle="modal" data-target="#cancel_sale_order_modal_nn" data-transaction_id_nn='.$res['transaction_id'].' 
                                             data-user_id_nn='.$_SESSION['user_session'].' >Cancel Order</button>';

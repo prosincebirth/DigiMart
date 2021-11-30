@@ -110,6 +110,8 @@ if($_SESSION['user_status']!=1){header("Location: index.php"); exit();} ?>
                                                 data-toggle="modal" 
                                                 data-target="#item_confirmation_buy_order_modal" 
                                                 data-transaction_id_m='.$res['transaction_id'].'
+                                                data-seller_steam_profile_link='.$res['seller_steam_profile_link'].'
+                                                data-seller_steam_trade_link='.$res['seller_steam_trade_link'].'
                                                 data-transaction_proof_mm='.base64_encode($res['transaction_proof']).'
                                                 data-user_id_m='.$_SESSION['user_session'].'>Item recieved</button>';
                                             echo ' ';
