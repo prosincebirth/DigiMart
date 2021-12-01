@@ -286,7 +286,6 @@ $('document').ready(function()
         var seller_steam_profile_link = $(e.relatedTarget).data('seller_steam_profile_link');
         var seller_steam_trade_link = $(e.relatedTarget).data('seller_steam_trade_link');
 
-
         $(e.currentTarget).find('input[name="transaction_id_m"]').val(transaction_id_m);
         $(e.currentTarget).find('input[name="user_id_m"]').val(user_id_m);
         $(e.currentTarget).find('span[name="steam_profile_link_seller"]').html(seller_steam_profile_link);
