@@ -156,7 +156,7 @@
                             </table> -->
 
                             <h3>Security settings</h3>
-                            <table class=list-tab width="100%">
+                            <table class=list-tab>
                                 <tbody>
                                     
                                     <tr>
@@ -205,7 +205,7 @@
                                             if($res = $result->fetch_assoc()){;
                                             ?>
                                         <tr style="margin:10px">  
-                                            <td class="t-left" width="120"> </td> 
+                                            <td class="t-left" width="120"></td> 
                                             <td class="t-left"><a href="<?php echo $kyc_request1['user_steam_id'];?>" target="_blank"><span style="color:black"><?php echo $res['game_link'];?> </input></span></a></td> 
                                             <td class="t-left" ></td>
                                             <td class="t-right"><button class="btn" type="button" class="btn btn-success" data-toggle="modal" data-target="#delete_steam_link_new"
@@ -214,7 +214,7 @@
                                         </tr>  
                                         <?php } else{?>
                                         <tr style="margin:10px">  
-                                            <td class="t-left" width="120"> </td> 
+                                            <td class="t-left" width="120"></td> 
                                             <td class="t-left"><input type="text" name="add_steam_profile_link" id="add_steam_profile_link" placeholder="Add another game account" style="margin-right:0px;color:black"></input></td> 
                                             <td class="t-left" ></td>
                                             <td class="t-right"><button class="btn" type="button" value="add_steam_link_new">Bind Game Account</button></td> 
