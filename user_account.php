@@ -2,6 +2,55 @@
 <?php if($_SESSION['user_status']!=1){header("Location: index.php"); exit();} ?>
 <?php include('header.php'); ?>
 
+<div class="modal fade" id="delete_steam_link_new" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+		<div class="modal-header"> 
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title"><center>Unbind Game Account</h4></center>
+		</div>
+		<div class="modal-body">							
+				<div class="fld_input"><input type="hidden" name="steam_id_delete" id="steam_id_delete" class="form-control"></div>								
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="delete_steam_link_new">Confirm</button>					
+			</div>									
+		</div>
+		</div>
+	</div></div>
+    
+<div class="modal fade" id="unbind_steam_account" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+		<div class="modal-header"> 
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title"><center>Unbind Game Account</h4></center>
+		</div>
+		<div class="modal-body">							
+				<div class="fld_input"><input type="hidden" name="steam_id_64" id="steam_id_64" class="form-control"></div>								
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="unbind_steam_account">Confirm</button>					
+			</div>									
+		</div>
+		</div>
+	</div></div>
+    <div class="modal fade" id="delete_steam_trade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+		<div class="modal-header"> 
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title"><center>Unbind Steam Trade Link</h4></center>
+		</div>
+		<div class="modal-body">							
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="delete_steam_trade">Confirm</button>					
+			</div>									
+		</div>
+		</div>
+	</div></div>
+
 
 <!-- <link rel="preload stylesheet" href="assets/css/item-card.css" as="style" crossorigin>
 <link rel="preload stylesheet" href="assets/css/item-grid.css" as="style" crossorigin> -->
@@ -141,12 +190,14 @@
                                                 if($kyc_request1['user_steam_id']==''){?>
                                                         <td class="t-left"><input type="text" placeholder="Add main game account" name="main_steam_profile_link" id="main_steam_profile_link" style="margin-right:0px;color:black"><span style="color:black"></span></td>
                                                         <td class="t-left" ><a href="https://steamcommunity.com/my/profiles" target="_blank" style="margin-left:10px;"> Click to get link</a></td>
-                                                        <td class="t-right"><button class="btn" type="button" value="main_steam_profile">Bind Steam Account</button></td>                                                        
+                                                        <td class="t-right"><button class="btn" type="button" value="main_steam_profile">Bind Game Account</button></td>                                                        
                                                     <?php } else { ?>
                                                         <td class="t-left"><a href="<?php echo $kyc_request1['user_steam_id'];?>" target="_blank"><span style="color:black"><?php echo $kyc_request1['user_steam_id'];?> </input></span></a></td>
-                                                        <td class="t-left" ><a href="https://steamcommunity.com/my/profiles" target="_blank"> Click to get link</a></td>
-                                                        <input type="hidden" name="steam_id_64" id="steam_id_64" value="<?php echo $kyc_request1['user_steam_id'];?>" style="margin-right:0px;color:black">
-                                                        <td class="t-right"><button class="btn" type="button" value="unbind_steam_account">Unbind Steam account</button></td>
+                                                        <td class="t-left" ><a href="https://steamcommunity.com/my/profiles" target="_blank" style="margin-left:10px;"> Click to get link</a></td>
+                                                        <td class="t-right"> <button class="btn" type="button" class="btn btn-success" data-toggle="modal" data-target="#unbind_steam_account"
+                                                        data-steam_id_64="<?php echo $kyc_request1['user_steam_id'];?>" >Unbind Game Account</button></td>
+                                                        
+
                                                     <?php } } ?>
                                     </tr>
                                     <?php $result=display_game_accounts($_SESSION['user_session']); 
@@ -156,15 +207,17 @@
                                         <tr style="margin:10px">  
                                             <td class="t-left" width="120"></td> 
                                             <td class="t-left"><a href="<?php echo $kyc_request1['user_steam_id'];?>" target="_blank"><span style="color:black"><?php echo $res['game_link'];?> </input></span></a></td> 
-                                            <td class="t-left" ><input type="hidden" name="steam_id_delete" id="steam_id_delete" value="<?php echo $res['game_account_id'];?>" style="margin-right:0px;color:black"></td>
-                                            <td class="t-right"><button class="btn" type="button" value="delete_steam_link_new">Unbind Steam Account</button></td> 
+                                            <td class="t-left" ></td>
+                                            <td class="t-right"><button class="btn" type="button" class="btn btn-success" data-toggle="modal" data-target="#delete_steam_link_new"
+                                                data-steam_id_delete="<?php echo $res['game_account_id'];?>" >Unbind Game Account</button></td> 
+                                  
                                         </tr>  
                                         <?php } else{?>
                                         <tr style="margin:10px">  
                                             <td class="t-left" width="120"></td> 
                                             <td class="t-left"><input type="text" name="add_steam_profile_link" id="add_steam_profile_link" placeholder="Add another game account" style="margin-right:0px;color:black"></input></td> 
                                             <td class="t-left" ></td>
-                                            <td class="t-right"><button class="btn" type="button" value="add_steam_link_new">Bind Steam Account</button></td> 
+                                            <td class="t-right"><button class="btn" type="button" value="add_steam_link_new">Bind Game Account</button></td> 
                                         </tr> 
                                     <?php } } ?>
                                         
@@ -179,7 +232,8 @@
                                             <?php } else { ?>
                                                 <td class="t-left"><a href="<?php echo $kyc_request1['user_steam_trade_link'];?>" target="_blank"><span style="color:black"><?php echo substr($kyc_request1['user_steam_trade_link'],0,50);?></span></a></td>
                                                 <td class="t-left" ><a href="https://steamcommunity.com/my/tradeoffers/privacy#trade_offer_access_url" target="_blank" style="margin-left:10px;" > Click to get link</a></td></td>
-                                                <td class="t-right"> <button class="btn" type="button" value="delete_steam_trade">Delete</button></td>
+                                                <td class="t-right"> <button class="btn" type="button" data-toggle="modal" data-target="#delete_steam_trade">Delete</button></td>
+                                              
                                             <?php } } ?>
                                     </tr>
                                     <tr>                                      

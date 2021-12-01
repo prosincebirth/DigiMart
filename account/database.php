@@ -38,6 +38,24 @@
 		$exec=$prepare->execute(array(":user_id"=>$user_id));
 		$conn=null;}
 
+	function existing_steam_profile($user_steam_id,$user_id){// USED IN GAME SERVICES , POST SALE
+		$conn=connection();
+		$query="SELECT * from users where user_steam_id=:user_steam_id and user_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":user_steam_id"=>$user_steam_id,":user_id"=>$user_id));
+		$res = $prepare->fetch(PDO::FETCH_ASSOC);
+		$conn=null;
+		return $res;}
+
+	function existing_steam_profile2($game_link,$user_id){// USED IN GAME SERVICES , POST SALE
+		$conn=connection();
+		$query="SELECT * from game_account_users where game_link=:game_link and user_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":game_link"=>$game_link,":user_id"=>$user_id));
+		$res = $prepare->fetch(PDO::FETCH_ASSOC);
+		$conn=null;
+		return $res;}
+
 	function delete_steam_link($user_id){
 		$conn=connection();
 		$query="UPDATE users set user_steam_id='' where user_id=:user_id";

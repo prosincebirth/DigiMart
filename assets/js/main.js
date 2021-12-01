@@ -172,6 +172,18 @@ $('document').ready(function()
         $(e.currentTarget).find('input[name="item_id_i"]').val(item_id_i);
         $(e.currentTarget).find('input[name="user_id_i"]').val(user_id_i);
     });
+    
+    $('#delete_steam_link_new').on('show.bs.modal', function(e) {
+        var steam_id_delete = $(e.relatedTarget).data('steam_id_delete');
+
+        $(e.currentTarget).find('input[name="steam_id_delete"]').val(steam_id_delete);
+    });
+
+    $('#unbind_steam_account').on('show.bs.modal', function(e) {
+        var unbind_steam_account = $(e.relatedTarget).data('steam_id_64');
+
+        $(e.currentTarget).find('input[name="steam_id_64"]').val(unbind_steam_account);
+    });
 
     $('#dispute_item_not_received').on('show.bs.modal', function(e) {
         var transaction_id_dispute = $(e.relatedTarget).data('transaction_id_dispute');

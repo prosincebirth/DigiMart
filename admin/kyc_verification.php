@@ -109,9 +109,9 @@ include('includes/navbar.php');
             <td><?php echo $kyc['kyc_date_created']; ?></td>
             <td><?php 
                       if($kyc['kyc_status']==0){echo 'Not Verified';}
-                      else if($kyc['kyc_status']==1){echo 'Active';}
-                      else if($kyc['kyc_status']==2){echo 'Verified';}
-                      else if($kyc['kyc_status']==3){echo 'Denied';}?>
+                      else if($kyc['kyc_status']==1){echo '<span style="color:blue"><b><i class="fas fa-spinner fa-pulse"></i> Active</span>';}
+                      else if($kyc['kyc_status']==2){echo '<span style="color:green"><b><i class="fas fa-check-circle"></i> Verified';}
+                      else if($kyc['kyc_status']==3){echo '<span style="color:red"><b><i class="fas fa-times-circle"></i> Denied';}?>
                   </td>
                   <td><?php echo $kyc['kyc_message']; ?></td>
             
