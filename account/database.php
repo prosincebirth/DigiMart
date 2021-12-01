@@ -572,6 +572,12 @@
 		$result = $conn->query($sql);
 		return $result;}
 		
+	function kyc_status_check_user($user_id){// USED IN GAME SERVICES , POST SALE
+		$conn=connection2();
+		$query="SELECT user_kyc from users where user_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":user_id"=>$user_id));
+		$conn=null;}
 		
 	function display_mybuy_orders($user_id,$game_id,$search){ //MY_BUYORDER.PHP
 		$conn=connection2();

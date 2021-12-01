@@ -210,7 +210,7 @@ if (isset($_GET['login'])){
                                                 <td class="t-eft"></td>
                                                 <td class="t-right"><a href="?login" class="i-btn --i-btn-small">Bind Steam Account</a></td>
                                             <?php } else { ?>
-                                                <td class="t-left"><a href="<?php echo $kyc_request1['user_steam_id'];?>"><span style="color:black"><?php echo $kyc_request1['user_steam_id'];?> </input></span></a></td>
+                                                <td class="t-left"><a href="<?php echo $kyc_request1['user_steam_id'];?>" target="_blank"><span style="color:black"><?php echo $kyc_request1['user_steam_id'];?> </input></span></a></td>
                                                 <td class="t-left">  <input type="hidden" name="steam_id_64" id="steam_id_64" value="<?php echo $kyc_request1['user_steam_id'];?>" style="margin-right:0px;color:black"> </td>
                                                 <td class="t-right"><button class="btn btn-secondary btn-login" type="button" value="unbind_steam_account">Unbind Steam account</button></td>
                                             <?php } } ?>
@@ -225,7 +225,7 @@ if (isset($_GET['login'])){
                                                 <td class="t-left" ><a href="https://steamcommunity.com/my/tradeoffers/privacy#trade_offer_access_url" target="_blank">Click to get link</a></td>
                                                 <td class="t-right"> <button class="btn btn-secondary btn-login" type="button" value="add_steam_trade" >Save</button></td>
                                             <?php } else { ?>
-                                                <td class="t-left"><a href="<?php echo $kyc_request1['user_steam_trade_link'];?>"><span style="color:black"><?php echo $kyc_request1['user_steam_trade_link'];?></span></a></td>
+                                                <td class="t-left"><a href="<?php echo $kyc_request1['user_steam_trade_link'];?>" target="_blank"><span style="color:black"><?php echo $kyc_request1['user_steam_trade_link'];?></span></a></td>
                                                 <td class="t-left" > </td>
                                                 <td class="t-right"> <button class="btn btn-secondary btn-login" type="button" value="delete_steam_trade">Delete</button></td>
                                             <?php } } ?>

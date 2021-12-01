@@ -102,24 +102,10 @@
                                     </ul>
                                 </div>
                                 
+                                    
                                 <div class="user-wallet">
                                     <table>
                                         <tbody>
-
-                                            <!-- <tr>
-                                                <td class="t-left">Deposit ammount</td>
-                                                <td class="t-right">
-                                                    <div class="user-deposit">
-                                                        <span value="custom" class="on">
-                                                            <input type="text" placeholder="Deposit amount" value="<?php $value = 0; $value = $_POST["1h"] ?? "";if($value==0){echo "";}else{echo $value;}  ?>"></form>
-                                                        </span>
-                                                        <span class="button"><button name="1h" type="submit" value="100">₱ 100</button></span>
-                                                        <span class="button"><button name="1h" type="submit" value="500">₱ 500</button></span>
-                                                        <span class="button"><button name="1h" type="submit" value="1000">₱ 1000</button></span>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                                     -->
                                             <tr>
                                                 <td class="t-left">Withdraw method</td>
                                                 <td class="t-right">
@@ -133,31 +119,9 @@
                                                 </td>
                                             </tr>
 
-                                            <!-- <tr>
-                                                
-                                                <td></td>
-                                                <td class="t-left">
-                                                    <div class="user-deposit-confirm">
-                                                        <span class="button"><a href="#deposit_gcash" data-toggle="modal" class="user-deposit-btn">Confirm</a></span>
-                                                    </div>
-                                                </td>
-                                            </tr> -->
                                         </tbody>
                                     </table>
 
-                                    <!-- <div class="user-wallet-section">
-                                        <div class="user-wallet-notice-">
-                                            <div style="border-bottom: 1px solid var(--light-gray-color);"></div>
-                                            <ul>
-                                                <li>Deposit notice</li>
-                                                <li>1. Single order limit 5-20000；</li>
-                                                <li>2. 1% service fee will be charged for refund or withdrawal；</li>
-                                                <li>3. In case of illegal transfer of fund, the account will be frozen。</li>
-                                            </ul>
-                                            <div style="border-bottom: 1px solid var(--light-gray-color);"></div>
-                                        </div>
-                                    </div> -->
-                                    
                                     <div class="user-wallet-section">
                                         <h2>Withdraw records</h2>
                                         <div class="table--container">
@@ -183,6 +147,10 @@
                                         </div>
                                     </div>
                                 </div>
+
+
+
+
                             </div>
                         </div>
                         
