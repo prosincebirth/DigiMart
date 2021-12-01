@@ -827,7 +827,7 @@
 							$wallet_balance = $crt_wallet['wallet_balance'] ?? "";
 							$total =  $amount_with;
 							$verified = is_verified($user_id);
-							$is_verified = $verified['kyc_status'] ?? "";
+							$is_verified = $verified['user_kyc'] ?? "";
 	
 							if(empty($amount_with) or empty($mobile_with)){
 								echo 'Empty Fields';
