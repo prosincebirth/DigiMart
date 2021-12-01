@@ -104,7 +104,6 @@
                                 
                                     
                                 <div class="user-wallet">
-<<<<<<< HEAD
                                     <?php $get_kyc_status = is_verified($_SESSION['user_session']);
                                             $verified = $get_kyc_status['kyc_status'] ?? "";
                                             if($verified == 2){ ?>
@@ -148,48 +147,6 @@
                                                     <?php } ?>
                                                 </table>
                                             </div>
-=======
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <td class="t-left">Withdraw method</td>
-                                                <td class="t-right">
-                                                    <div class="user-deposit">
-                                                        <div class=user-deposit-btn>
-                                                            <ul>
-                                                                <li title="You can deposit using gcash."><a href="#add_withdraw_info_modal" data-toggle="modal" class="selected"><img src="https://img.icons8.com/plasticine/50/000000/gcash.png">GCash</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-
-                                    <div class="user-wallet-section">
-                                        <h2>Withdraw records</h2>
-                                        <div class="table--container">
-                                            <table class="user-wallet-history">
-                                                <thead>
-                                                    <tr>
-                                                        <th> Witdraw amount</th>
-                                                        <th> Mobile number</th>
-                                                        <th> Create time</th>
-                                                    </tr>
-                                                </thead>
-                                                <?php	$get_withdraw_info = get_withdraw_info($_SESSION['user_session']); foreach($get_withdraw_info as $get_withdraw_info){?>
-                                                <tbody>
-                                                    <tr>
-                                                        <td><?php echo '<span>'.$get_withdraw_info['withdraw_amt'].' </span>'; ?></td>
-                                                        <td><?php echo '<span>'.$get_withdraw_info['withdraw_number'].' </span>'; ?></td>
-                                                        <td><?php echo '<span>'.$get_withdraw_info['withdraw_date_created'].' </span>'; ?></td>
-                                                       
-                                                    </tr>
-                                                </tbody>
-                                                <?php } ?>
-                                            </table>
->>>>>>> eaed45be6f5e9bf9f185ac55554844f2ed4de279
                                         </div>
                                     <?php }else{?>      
                                         <table width="100%" cellpadding="0" cellspacing="0" >
@@ -202,13 +159,8 @@
                                         </table>
                                         <?php }?>
                                 </div>
-
-
-
-
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>
