@@ -311,6 +311,15 @@
 		$res = $prepare->fetch(PDO::FETCH_ASSOC);
 		$conn=null;
 		return $res;}
+
+	function checking_profile_link($user_id){//USED IN POST SALE
+		$conn=connection();
+		$query="SELECT * from users where user_id=:user_id and user_steam_id='' or user_steam_trade_link='' ";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":user_id"=>$user_id));
+		$res = $prepare->fetch(PDO::FETCH_ASSOC);
+		$conn=null;
+		return $res;}	
 	
 	function existing_transaction($item_id,$buyer_id,$order_id){//USED IN POST SALE
 		$conn=connection();

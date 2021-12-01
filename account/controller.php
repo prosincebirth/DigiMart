@@ -151,25 +151,30 @@
 							//add_new_goods($goods_name,$goods_quality,$goods_rarity,$goods_detail1,$goods_detail2,$goods_detail3,$goods_image,$game_id)
 							//existing_goods($goods_name,$goods_quality,$goods_rarity,$goods_detail_1,$goods_detail_2,$goods_detail_3,$goods_image,$game_id){
 							if(!empty($goods_name_a) && is_numeric($goods_price_a) && is_numeric($goods_quantity_a) && !empty($_SESSION['user_session']) && !empty($order_id_a)  && !empty($goods_image_a) && $goods_quality_a != 'null' && $goods_rarity_a != 'null' && $goods_detail1_a != 'null' && $goods_detail2_a != 'null' && $goods_detail3_a != 'null' && $goods_price_a != 'null' && $goods_quantity_a !='null' && $order_id_a !='null' && $service_id_a !='null'){
-								if($result_a=existing_goods($goods_name_a,$goods_quality_a,$goods_rarity_a,$goods_detail1_a,$goods_detail2_a,$goods_detail3_a,$goods_image_a,'1')){
-											$row=existing_game_items($result_a['goods_id'],$_SESSION['user_session'],1);
-											if($row > 0){
-												echo 'Item already posted';
-											}else{
-												add_new_game_item($goods_price_a,$goods_quantity_a,$result_a['goods_id'],$_SESSION['user_session'],$service_id_a,'1','1');
-												add_notification('You posted for sale "'.$goods_name_a.'" x'.$goods_quantity_a.', <a href="my_saleorder.php">go to Sale Order</a>',$_SESSION['user_session']);
-												echo 'Success';}	
+								$row2=checking_profile_link($_SESSION['user_session']);
+								if(!$row2>0){
+									if($result_a=existing_goods($goods_name_a,$goods_quality_a,$goods_rarity_a,$goods_detail1_a,$goods_detail2_a,$goods_detail3_a,$goods_image_a,'1')){
+												$row=existing_game_items($result_a['goods_id'],$_SESSION['user_session'],1);
+												if($row > 0){
+													echo 'Item already posted';
+												}else{
+													add_new_game_item($goods_price_a,$goods_quantity_a,$result_a['goods_id'],$_SESSION['user_session'],$service_id_a,'1','1');
+													add_notification('You posted for sale "'.$goods_name_a.'" x'.$goods_quantity_a.', <a href="my_saleorder.php">go to Sale Order</a>',$_SESSION['user_session']);
+													echo 'Success';}	
+									}else{
+										add_new_goods($goods_name_a,$goods_quality_a,$goods_rarity_a,$goods_detail1_a,$goods_detail2_a,$goods_detail3_a,$goods_image_a,'1');
+										$result_a=existing_goods($goods_name_a,$goods_quality_a,$goods_rarity_a,$goods_detail1_a,$goods_detail2_a,$goods_detail3_a,$goods_image_a,'1');
+										add_new_game_item($goods_price_a,$goods_quantity_a,$result_a['goods_id'],$_SESSION['user_session'],$service_id_a,'1','1');
+										add_notification('You posted for sale"'.$goods_name_a.'" x'.$goods_quantity_a.', <a href="my_saleorder.php">go to Sale Order</a>',$_SESSION['user_session']);
+										echo 'Success'; 
+									}
 								}else{
-									add_new_goods($goods_name_a,$goods_quality_a,$goods_rarity_a,$goods_detail1_a,$goods_detail2_a,$goods_detail3_a,$goods_image_a,'1');
-									$result_a=existing_goods($goods_name_a,$goods_quality_a,$goods_rarity_a,$goods_detail1_a,$goods_detail2_a,$goods_detail3_a,$goods_image_a,'1');
-									add_new_game_item($goods_price_a,$goods_quantity_a,$result_a['goods_id'],$_SESSION['user_session'],$service_id_a,'1','1');
-									add_notification('You posted for sale"'.$goods_name_a.'" x'.$goods_quantity_a.', <a href="my_saleorder.php">go to Sale Order</a>',$_SESSION['user_session']);
-									echo 'Success'; 
+									echo 'Game Link is Missing';
+								}	
+								}else{
+									echo 'Empty Fields'; // input is lacking , wrong inputs
 								}
-							}else{
-								echo 'Empty Fields'; // input is lacking , wrong inputs
-							}
-							break;			
+								break;			
 					case "sell_game_item_2":
 								$item_price_b=$_POST['item_price_b'];
 								$items_quantity_b=$_POST['items_quantity_b']; 
@@ -177,6 +182,8 @@
 								$service_id_b=$_POST['service_id_b'];
 								//add_new_game_item($item_price,$item_quantity,$goods_id,$user_id,$service_id,$game_id,$order_id)
 									if(!empty($item_price_b) && is_numeric($item_price_b) && is_numeric($items_quantity_b) && !empty($items_quantity_b) && !empty($goods_id_b) && $service_id_b != 'NULL'){
+										$row2=checking_profile_link($_SESSION['user_session']);
+										if(!$row2>0){
 											$row=existing_game_items($goods_id_b,$_SESSION['user_session'],1);
 											if($row > 0){
 												echo 'Item already posted';
@@ -185,7 +192,10 @@
 												$result_b=display_goods($goods_id_b);
 												add_notification('You posted for sale "'.$result_b['goods_name'].'" x'.$items_quantity_b.', <a href="my_saleorder.php">go to Sale Order</a>',$_SESSION['user_session']);
 												echo 'Success';} // success posting item on item page , copying same attribute of the item rather than inputing everything 
-									}else{
+											}else{
+												echo 'Game Link is Missing';
+											}
+										}else{
 										echo 'Incorrect Input'; // Wrong input , Empty input
 									}
 								break;
@@ -208,36 +218,41 @@
 							//add_new_goods($goods_name,$goods_quality,$goods_rarity,$goods_detail1,$goods_detail2,$goods_detail3,$goods_image,$game_id)
 							//existing_goods($goods_name,$goods_quality,$goods_rarity,$goods_detail_1,$goods_detail_2,$goods_detail_3,$goods_image,$game_id){
 							if(!empty($goods_name_d) && is_numeric($goods_price_d) && is_numeric($goods_quantity_d) && !empty($_SESSION['user_session']) && !empty($order_id_d)  && !empty($goods_image_d) && $goods_quality_d != 'null' && $goods_rarity_d != 'null' && $goods_detail1_d != 'null' && $goods_detail2_d != 'null' && $goods_detail3_d != 'null' && $goods_price_d != 'null' && $goods_quantity_d !='null' && $order_id_d !='null' && $service_id_d !='null'){
+								$row2=checking_profile_link($_SESSION['user_session']);
+								if(!$row2>0){
 								if($balance_d=get_wallet_balance($user_id_d)){
-									$total_d = $goods_quantity_d * $goods_price_d;
-											if($balance_d['wallet_balance'] >= $total_d){
-												if($result_d=existing_goods($goods_name_d,$goods_quality_d,$goods_rarity_d,$goods_detail1_d,$goods_detail2_d,$goods_detail3_d,$goods_image_d,'1')){//existing on DB
-													$row=existing_game_items($goods_id_e,$user_id_e,2);
-													if($row > 0 ){
-														echo 'Item already posted';//ITEM ALREADY EXISTED OR POSTED
-													}
-													else{
+										$total_d = $goods_quantity_d * $goods_price_d;
+												if($balance_d['wallet_balance'] >= $total_d){
+													if($result_d=existing_goods($goods_name_d,$goods_quality_d,$goods_rarity_d,$goods_detail1_d,$goods_detail2_d,$goods_detail3_d,$goods_image_d,'1')){//existing on DB
+														$row=existing_game_items($goods_id_e,$user_id_e,2);
+														if($row > 0 ){
+															echo 'Item already posted';//ITEM ALREADY EXISTED OR POSTED
+														}
+														else{
+															add_new_game_item($goods_price_d,$goods_quantity_d,$result_d['goods_id'],$user_id_d,$service_id_d,'1','2');
+															add_notification('You posted buy order for "'.$goods_name_d.'" x'.$goods_quantity_d.', <a href="my_buyorder.php">go to Buy Order</a>',$_SESSION['user_session']);
+															update_frozen_balance($user_id_d,$total_d);
+															echo 'Success';//NEW GOODS_ID IS GENERATED
+														}
+													}else{//not existed , created new goods_id
+														add_new_goods($goods_name_d,$goods_quality_d,$goods_rarity_d,$goods_detail1_d,$goods_detail2_d,$goods_detail3_d,$goods_image_d,'1');
+														$result_d=existing_goods($goods_name_d,$goods_quality_d,$goods_rarity_d,$goods_detail1_d,$goods_detail2_d,$goods_detail3_d,$goods_image_d,'1');
 														add_new_game_item($goods_price_d,$goods_quantity_d,$result_d['goods_id'],$user_id_d,$service_id_d,'1','2');
 														add_notification('You posted buy order for "'.$goods_name_d.'" x'.$goods_quantity_d.', <a href="my_buyorder.php">go to Buy Order</a>',$_SESSION['user_session']);
 														update_frozen_balance($user_id_d,$total_d);
-														echo 'Success';//NEW GOODS_ID IS GENERATED
+														echo 'Success';//GOODS_ID IS COPIED
 													}
-												}else{//not existed , created new goods_id
-													add_new_goods($goods_name_d,$goods_quality_d,$goods_rarity_d,$goods_detail1_d,$goods_detail2_d,$goods_detail3_d,$goods_image_d,'1');
-													$result_d=existing_goods($goods_name_d,$goods_quality_d,$goods_rarity_d,$goods_detail1_d,$goods_detail2_d,$goods_detail3_d,$goods_image_d,'1');
-													add_new_game_item($goods_price_d,$goods_quantity_d,$result_d['goods_id'],$user_id_d,$service_id_d,'1','2');
-													add_notification('You posted buy order for "'.$goods_name_d.'" x'.$goods_quantity_d.', <a href="my_buyorder.php">go to Buy Order</a>',$_SESSION['user_session']);
-													update_frozen_balance($user_id_d,$total_d);
-													echo 'Success';//GOODS_ID IS COPIED
-												}
-										}else{
-											echo 'Insufficient Balance'; // input is lacking , wrong inputs
-										}
+											}else{
+												echo 'Insufficient Balance'; // input is lacking , wrong inputs
+											}
+									}
+								}else{
+									echo 'Game Link is Missing';
 								}
-							}else{
-								echo 'Empty Fields'; // input is lacking , wrong inputs
-							}
-							break;						
+								}else{
+									echo 'Empty Fields'; // input is lacking , wrong inputs
+								}
+								break;						
 					case "buyorder_game_item_2":
 								$item_price_e=$_POST['item_price_e'];
 								$items_quantity_e=$_POST['items_quantity_e']; 
@@ -246,27 +261,32 @@
 								$user_id_e=$_SESSION['user_session'];
 								//add_new_game_item($item_price,$item_quantity,$goods_id,$user_id,$service_id,$game_id,$order_id)			
 									if(!empty($item_price_e) && is_numeric($item_price_e) && is_numeric($items_quantity_e) && !empty($items_quantity_e) && !empty($goods_id_e) && $service_id_e != 'NULL'){
+									$row2=checking_profile_link($_SESSION['user_session']);
+									if(!$row2>0){		
 										if($balance_e=get_wallet_balance($user_id_e)){
-										$total_e = $items_quantity_e * $item_price_e;
-										if($balance_e['wallet_balance'] >= $total_e){
-											$row=existing_game_items($goods_id_e,$user_id_e,2);
-											if($row > 0){
-												echo 'Item already posted';
+											$total_e = $items_quantity_e * $item_price_e;
+											if($balance_e['wallet_balance'] >= $total_e){
+												$row=existing_game_items($goods_id_e,$user_id_e,2);
+												if($row > 0){
+													echo 'Item already posted';
+												}else{
+													add_new_game_item($item_price_e,$items_quantity_e,$goods_id_e,$user_id_e,$service_id_e,'1','2');
+													update_frozen_balance($user_id_e,$total_e);
+													$result_d=display_goods($goods_id_e);
+													add_notification('You posted buy order for "'.$result_d['goods_name'].'" x'.$items_quantity_e.', <a href="my_buyorder.php">go to Buy Order</a>',$_SESSION['user_session']);
+													echo 'Success';
+												} // success posting item on item page , copying same attribute of the item rather than inputing everything 
 											}else{
-												add_new_game_item($item_price_e,$items_quantity_e,$goods_id_e,$user_id_e,$service_id_e,'1','2');
-												update_frozen_balance($user_id_e,$total_e);
-												$result_d=display_goods($goods_id_e);
-												add_notification('You posted buy order for "'.$result_d['goods_name'].'" x'.$items_quantity_e.', <a href="my_buyorder.php">go to Buy Order</a>',$_SESSION['user_session']);
-												echo 'Success';
-											} // success posting item on item page , copying same attribute of the item rather than inputing everything 
+												echo 'Insufficient Balance'; // input is lacking , wrong inputs
+												}
+											}
 										}else{
-											  echo 'Insufficient Balance'; // input is lacking , wrong inputs
-											 }
+											echo 'Game Link is Missing';
 										}
-									}else{
-										echo 'Empty Fields'; // Wrong input , Empty input
-										}
-								break;
+										}else{
+											echo 'Empty Fields'; // Wrong input , Empty input
+											}
+									break;
 					case "buy_game_item"://NOTIFICATION DONE 
 								$item_quantity_f=$_POST['item_quantity_f'];
 								$item_total_f=$_POST['item_total_f'];
@@ -292,46 +312,54 @@
 									echo 'Exceed Quantity';
 								}
 								else if($item_quantity_f == $item_stock_f){
-									$row=existing_transaction($item_id_f,$_SESSION['user_session'],1);
-									if(!$row>0){
-										if($balance_f=get_wallet_balance($buyer_id_f)){
-											if($balance_f['wallet_balance'] >= $item_total_f){
-												update_sale_order_item_quantity_out_of_stock($item_id_f);
-												add_transaction($item_quantity_f,$item_total_f,$item_id_f,$buyer_id_f,$seller_id_f,$service_id_f,$game_id_f,$order_id_f);
-												update_frozen_balance($buyer_id_f,$item_total_f);
-												if($notification_f=get_game_item_information_notification($item_id_f)){
-													add_notification('A buyer has purchased "'.$notification_f['goods_name'].'" x'.$item_quantity_f.' , <a href="sale_order.php">go to Sales</a>',$seller_id_f);
-													add_notification('You purchased "'.$notification_f['goods_name'].'" x'.$item_quantity_f.' , <a href="buy_order.php">go to Buy Order</a>',$buyer_id_f);
-													echo 'Success';}	
-												
-											}else{ 
-													echo 'Insufficient Balance'; 
-											}
-										}
-									}else{
-										echo 'Duplicate order';
-									}
-								}
-								else{
-									$row=existing_transaction($item_id_f,$_SESSION['user_session'],1);
-									if(!$row>0){
-										if($balance_f=get_wallet_balance($buyer_id_f)){
-											if($balance_f['wallet_balance'] >= $item_total_f){
-													update_sale_order_item_quantity($item_id_f,$item_quantity_f);
+									$row2=checking_profile_link($_SESSION['user_session']);
+									if(!$row2>0){		
+										$row=existing_transaction($item_id_f,$_SESSION['user_session'],1);
+										if(!$row>0){
+											if($balance_f=get_wallet_balance($buyer_id_f)){
+												if($balance_f['wallet_balance'] >= $item_total_f){
+													update_sale_order_item_quantity_out_of_stock($item_id_f);
 													add_transaction($item_quantity_f,$item_total_f,$item_id_f,$buyer_id_f,$seller_id_f,$service_id_f,$game_id_f,$order_id_f);
 													update_frozen_balance($buyer_id_f,$item_total_f);
 													if($notification_f=get_game_item_information_notification($item_id_f)){
-														add_notification('A buyer has purchased your item "'.$notification_f['goods_name'].'" x'.$item_quantity_f.' , <a href="sale_order.php">go to Sales</a>',$seller_id_f);
+														add_notification('A buyer has purchased "'.$notification_f['goods_name'].'" x'.$item_quantity_f.' , <a href="sale_order.php">go to Sales</a>',$seller_id_f);
 														add_notification('You purchased "'.$notification_f['goods_name'].'" x'.$item_quantity_f.' , <a href="buy_order.php">go to Buy Order</a>',$buyer_id_f);
 														echo 'Success';}	
-											}else{ 
-													echo 'Insufficient Balance'; 
+												}else{ 
+														echo 'Insufficient Balance'; 
 												}
+											}
+										}else{
+											echo 'Duplicate order';
 										}
 									}else{
-										echo 'Duplicate order';
-									}
-								} 
+										echo 'Game Link is Missing';
+									}}
+								else{
+									$row2=checking_profile_link($_SESSION['user_session']);
+									if(!$row2>0){
+										$row=existing_transaction($item_id_f,$_SESSION['user_session'],1);
+										if(!$row>0){
+											if($balance_f=get_wallet_balance($buyer_id_f)){
+												if($balance_f['wallet_balance'] >= $item_total_f){
+														update_sale_order_item_quantity($item_id_f,$item_quantity_f);
+														add_transaction($item_quantity_f,$item_total_f,$item_id_f,$buyer_id_f,$seller_id_f,$service_id_f,$game_id_f,$order_id_f);
+														update_frozen_balance($buyer_id_f,$item_total_f);
+														if($notification_f=get_game_item_information_notification($item_id_f)){
+															add_notification('A buyer has purchased your item "'.$notification_f['goods_name'].'" x'.$item_quantity_f.' , <a href="sale_order.php">go to Sales</a>',$seller_id_f);
+															add_notification('You purchased "'.$notification_f['goods_name'].'" x'.$item_quantity_f.' , <a href="buy_order.php">go to Buy Order</a>',$buyer_id_f);
+															echo 'Success';}	
+												}else{ 
+														echo 'Insufficient Balance'; 
+													}
+											}
+										}else{
+											echo 'Duplicate order';
+										}
+									}else{
+										echo 'Game Link is Missing';
+									}									
+									} 
 								break;		
 					case "bargain_game_item"://NOTIFICATION DONE
 								$minimum_g=$_POST['minimum_g'];
@@ -370,45 +398,55 @@
 									echo 'Bargain price error high';
 								}
 								else if($item_quantity_g == $item_stock_g){
-									$row=existing_transaction($item_id_g,$_SESSION['user_session'],3);
-									if(!$row>=0){ // cannot exceed stock
-										if($balance_g=get_wallet_balance($buyer_id_g)){					
-											if($balance_g['wallet_balance'] >= $item_total_g){
-													update_sale_order_item_quantity_out_of_stock($item_id_g);
+									$row2=checking_profile_link($_SESSION['user_session']);
+									if(!$row2>0){
+										$row=existing_transaction($item_id_g,$_SESSION['user_session'],3);
+										if(!$row>=0){ // cannot exceed stock
+											if($balance_g=get_wallet_balance($buyer_id_g)){					
+												if($balance_g['wallet_balance'] >= $item_total_g){
+														update_sale_order_item_quantity_out_of_stock($item_id_g);
+														add_transaction($item_quantity_g,$item_total_g,$item_id_g,$buyer_id_g,$seller_id_g,$service_id_g,$game_id_g,$order_id_g);
+														update_frozen_balance($buyer_id_g,$item_total_g);
+														//A buyer has bargained ₱ 320 for Fractal Horns of Inner Abysm, please Go to view.
+														if($notification_g=get_game_item_information_notification($item_id_g)){
+															add_notification('A buyer has bargained ₱ '.$bargain_price_g.' for "'.$notification_g['goods_name'].'" x'.$item_quantity_g.' , <a href="sale_order.php">go to Sales</a>',$seller_id_g);
+															add_notification('You bargained "'.$notification_g['goods_name'].'" x'.$item_quantity_g.' for ₱ '.$bargain_price_g.', <a href="bargain_order.php">go to Buy Order</a>',$buyer_id_g);
+															echo 'Success';}	
+												}else{
+														echo 'Insufficient Balance'; 
+												}
+											}
+										}else{
+											echo 'Duplicate order';
+										}
+									}else{
+										echo 'Game Link is Missing';
+									}	
+									}
+								else{
+									$row2=checking_profile_link($_SESSION['user_session']);
+									if(!$row2>0){
+										$row=existing_transaction($item_id_g,$_SESSION['user_session'],3);
+										if(!$row>0){
+											if($balance_g=get_wallet_balance($buyer_id_g)){					
+												if($balance_g['wallet_balance'] >= $item_total_g){
+													update_sale_order_item_quantity($item_id_g,$item_quantity_g);
 													add_transaction($item_quantity_g,$item_total_g,$item_id_g,$buyer_id_g,$seller_id_g,$service_id_g,$game_id_g,$order_id_g);
 													update_frozen_balance($buyer_id_g,$item_total_g);
-													//A buyer has bargained ₱ 320 for Fractal Horns of Inner Abysm, please Go to view.
 													if($notification_g=get_game_item_information_notification($item_id_g)){
 														add_notification('A buyer has bargained ₱ '.$bargain_price_g.' for "'.$notification_g['goods_name'].'" x'.$item_quantity_g.' , <a href="sale_order.php">go to Sales</a>',$seller_id_g);
 														add_notification('You bargained "'.$notification_g['goods_name'].'" x'.$item_quantity_g.' for ₱ '.$bargain_price_g.', <a href="bargain_order.php">go to Buy Order</a>',$buyer_id_g);
-														echo 'Success';}	
-											}else{
+														echo 'Success';}
+												}else{ 
 													echo 'Insufficient Balance'; 
+												}			
 											}
+										}else{
+											echo 'Duplicate order';
 										}
 									}else{
-										echo 'Duplicate order';
-									}
-								}
-								else{
-									$row=existing_transaction($item_id_g,$_SESSION['user_session'],3);
-									if(!$row>0){
-										if($balance_g=get_wallet_balance($buyer_id_g)){					
-											if($balance_g['wallet_balance'] >= $item_total_g){
-												update_sale_order_item_quantity($item_id_g,$item_quantity_g);
-												add_transaction($item_quantity_g,$item_total_g,$item_id_g,$buyer_id_g,$seller_id_g,$service_id_g,$game_id_g,$order_id_g);
-												update_frozen_balance($buyer_id_g,$item_total_g);
-												if($notification_g=get_game_item_information_notification($item_id_g)){
-													add_notification('A buyer has bargained ₱ '.$bargain_price_g.' for "'.$notification_g['goods_name'].'" x'.$item_quantity_g.' , <a href="sale_order.php">go to Sales</a>',$seller_id_g);
-													add_notification('You bargained "'.$notification_g['goods_name'].'" x'.$item_quantity_g.' for ₱ '.$bargain_price_g.', <a href="bargain_order.php">go to Buy Order</a>',$buyer_id_g);
-													echo 'Success';}
-											}else{ 
-												echo 'Insufficient Balance'; 
-											}			
-										}
-									}else{
-										echo 'Duplicate order';
-									}
+										echo 'Game Link is Missing';
+									}	
 								} 
 								break;
 					case "supply_item_modal"://NOTIFICATION DONE	
@@ -437,31 +475,42 @@
 									echo 'Exceed Quantity';
 								}						
 								else if($item_quantity_h == $item_stock_h){
-									$row=existing_transaction_seller($item_id_h,$_SESSION['user_session'],2);
-									if(!$row>0){
-										update_buy_order_item_quantity_out_of_stock($item_id_h);
-										add_transaction($item_quantity_h,$item_total_h,$item_id_h,$buyer_id_h,$seller_id_h,$service_id_h,$game_id_h,$order_id_h);
-										if($notification_h=get_game_item_information_notification($item_id_h)){
-											add_notification('A seller has supplied "'.$notification_h['goods_name'].'" x'.$item_quantity_h.' , <a href="buy_order.php">go to Sales</a>',$buyer_id_h);
-											add_notification('You supplied "'.$notification_h['goods_name'].'" x'.$item_quantity_h.', <a href="sale_order.php">go to Buy Order</a>',$seller_id_h);
-											echo 'Success';}
+									$row2=checking_profile_link($_SESSION['user_session']);
+									if(!$row2>0){
+										$row=existing_transaction_seller($item_id_h,$_SESSION['user_session'],2);
+										if(!$row>0){
+											update_buy_order_item_quantity_out_of_stock($item_id_h);
+											add_transaction($item_quantity_h,$item_total_h,$item_id_h,$buyer_id_h,$seller_id_h,$service_id_h,$game_id_h,$order_id_h);
+											if($notification_h=get_game_item_information_notification($item_id_h)){
+												add_notification('A seller has supplied "'.$notification_h['goods_name'].'" x'.$item_quantity_h.' , <a href="buy_order.php">go to Sales</a>',$buyer_id_h);
+												add_notification('You supplied "'.$notification_h['goods_name'].'" x'.$item_quantity_h.', <a href="sale_order.php">go to Buy Order</a>',$seller_id_h);
+												echo 'Success';}
+										}else{
+											echo 'Duplicate order';
+										}
 									}else{
-										echo 'Duplicate order';
-									}
+										echo 'Game Link is Missing';
+									}	
 
 								}else{
-									$row=existing_transaction_seller($item_id_h,$_SESSION['user_session'],2);
-									if(!$row>0){
-										update_buy_order_item_quantity($item_id_h,$item_quantity_h);
-										add_transaction($item_quantity_h,$item_total_h,$item_id_h,$buyer_id_h,$seller_id_h,$service_id_h,$game_id_h,$order_id_h);
-										if($notification_h=get_game_item_information_notification($item_id_h)){
-											add_notification('A seller has supplied "'.$notification_h['goods_name'].'" x'.$item_quantity_h.' , <a href="buy_order.php">go to Sales</a>',$buyer_id_h);
-											add_notification('You supplied "'.$notification_h['goods_name'].'" x'.$item_quantity_h.', <a href="sale_order.php">go to Buy Order</a>',$seller_id_h);
-											echo 'Success';}
+									$row2=checking_profile_link($_SESSION['user_session']);
+									if(!$row2>0){
+
+										$row=existing_transaction_seller($item_id_h,$_SESSION['user_session'],2);
+										if(!$row>0){
+											update_buy_order_item_quantity($item_id_h,$item_quantity_h);
+											add_transaction($item_quantity_h,$item_total_h,$item_id_h,$buyer_id_h,$seller_id_h,$service_id_h,$game_id_h,$order_id_h);
+											if($notification_h=get_game_item_information_notification($item_id_h)){
+												add_notification('A seller has supplied "'.$notification_h['goods_name'].'" x'.$item_quantity_h.' , <a href="buy_order.php">go to Sales</a>',$buyer_id_h);
+												add_notification('You supplied "'.$notification_h['goods_name'].'" x'.$item_quantity_h.', <a href="sale_order.php">go to Buy Order</a>',$seller_id_h);
+												echo 'Success';}
+										}else{
+											echo 'Duplicate order';
+										}
 									}else{
-										echo 'Duplicate order';
+										echo 'Game Link is Missing';
 									}
-								}
+									}
 								break;							
 					
 					case "cancel_buy_order_modal"://NOTIFICATION DONE	
