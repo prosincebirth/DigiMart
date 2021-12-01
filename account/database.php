@@ -49,7 +49,7 @@
 		
 	function add_new_kyc($firstname_kyc,$middlename_kyc,$lastname_kyc,$idnumber_kyc,$address_kyc,$id_kyc,$id_proof_kyc,$user_session_kyc){//register.php
 		$conn=connection();
-		$query="INSERT INTO kyc_verification(firstname_kyc,middlename_kyc,lastname_kyc,idnumber_kyc,address_kyc,id_kyc,id_proof_kyc,user_session_kyc) values(:firstname_kyc,:middlename_kyc,:lastname_kyc,:idnumber_kyc,:address_kyc,:id_kyc,:id_proof_kyc,:user_session_kyc)"; 
+		$query="INSERT INTO kyc_verification(firstname_kyc,middlename_kyc,lastname_kyc,idnumber_kyc,address_kyc,id_type_kyc,id_proof_kyc,user_session_kyc) values(:firstname_kyc,:middlename_kyc,:lastname_kyc,:idnumber_kyc,:address_kyc,:id_kyc,:id_proof_kyc,:user_session_kyc)"; 
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":firstname_kyc"=>$firstname_kyc,":middlename_kyc"=>$middlename_kyc,":lastname_kyc"=>$lastname_kyc,":idnumber_kyc"=>$idnumber_kyc,":address_kyc"=>$address_kyc,":id_kyc"=>$id_kyc,":id_proof_kyc"=>$id_proof_kyc,":user_session_kyc"=>$user_session_kyc));
 		$conn=null;}	
@@ -90,7 +90,7 @@
 
 	function user_kyc_status($user_session_kyc){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
-		$sql="SELECT * from users where user_id=$user_session_kyc limit 1";
+		$sql="SELECT *,(SELECT kyc_message FROM kyc_verification WHERE user_session_kyc=2 ORDER BY `kyc_date_created` DESC limit 1) as user_kyc_message from users where user_id=$user_session_kyc limit 1";
 		$result = $conn->query($sql);
 		return $result;}
 		
@@ -633,11 +633,11 @@
 		$result = $conn->query($sql);
 		return $result;}
 
-	function update_kyc_status($kyc_id,$kyc_status){
+	function update_kyc_status($kyc_id,$kyc_status,$kyc_message){
 		$conn=connection();
-		$query="UPDATE kyc_Verification set kyc_status=:kyc_status where kyc_id=:kyc_id";
+		$query="UPDATE kyc_Verification set kyc_status=:kyc_status,kyc_message=:kyc_message where kyc_id=:kyc_id";
 		$prepare=$conn->prepare($query);
-		$exec=$prepare->execute(array(":kyc_status"=>$kyc_status,":kyc_id"=>$kyc_id));
+		$exec=$prepare->execute(array(":kyc_status"=>$kyc_status,":kyc_id"=>$kyc_id,":kyc_message"=>$kyc_message));
 		$conn=null;}
 
 	function update_account_kyc_status($user_id,$update_kyc_status){

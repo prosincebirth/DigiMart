@@ -162,6 +162,7 @@ $('document').ready(function()
 
         $('#display_total_h').html(price * quantity)
         $('#item_total_h').val(price * quantity)
+    
     });
 
     $('#cancel_buy_order_modal').on('show.bs.modal', function(e) {

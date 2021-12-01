@@ -755,15 +755,24 @@
 								$user_id=$_POST['user_id'];
 								$kyc_id=$_POST['kyc_id'];
 								$update_kyc_status=$_POST['update_kyc_status'];
-								
+							
+								$reason_kyc=$_POST['reason_kyc'];
+
 								if(empty($user_id) or empty($kyc_id)  or empty($update_kyc_status)){ // trappings for not logged in
 									echo 'Empty Fields';
+								}else if($update_kyc_status==3 and empty($reason_kyc)){
+									echo 'Empty Fields';
 								}						
-								else{
-									update_kyc_status($kyc_id,$update_kyc_status);
+								else if($update_kyc_status==2){
+									$reason_kyc='';
+									update_kyc_status($kyc_id,$update_kyc_status,$reason_kyc);
 									update_account_kyc_status($user_id,$update_kyc_status);
 									echo 'Success'; 															
-									}
+								}else{
+									update_kyc_status($kyc_id,$update_kyc_status,$reason_kyc);
+									update_account_kyc_status($user_id,$update_kyc_status);
+									echo 'Success'; 
+								}
 							break;
 					case "add_steam_trade":		
 								$trade_link=$_POST['trade_link'];

@@ -303,12 +303,15 @@ $(".btn").on("click",function(){
             var user_id=$("#user_id").val().trim();
             var kyc_id=$("#kyc_id").val().trim();
             var update_kyc_status=$("#update_kyc_status").val().trim();
+            var reason_kyc=$("#reason_kyc").val()
+            
 
             var data=new FormData();
             data.append("action_type","update_kyc_modal");
             data.append("user_id",user_id);
             data.append("kyc_id",kyc_id);
             data.append("update_kyc_status",update_kyc_status);
+            data.append("reason_kyc",reason_kyc);
 
             $.ajax({	
                 url:"../account/controller.php",
