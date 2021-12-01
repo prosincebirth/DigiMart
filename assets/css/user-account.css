@@ -275,3 +275,36 @@
 
     text-decoration: underline;
 }
+
+@media screen and (max-width: 767px) {
+    .col2 .main .user-setting .list-tab {
+        display: block;
+    }
+    
+    .col2 .main .user-setting .list-tab tbody {
+        display: block;
+    }  
+    
+    .col2 .main .user-setting .list-tab tbody tr {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    
+    .col2 .main .user-setting .list-tab tbody tr td {
+        flex: 0 0 100%;
+    }
+    
+    .col2 .main .user-setting .list-tab tbody tr td input {
+        width: 100% !important;
+    }
+    
+    .col2 .main .user-setting .list-tab tbody tr td a {
+        margin-right: 0;
+        width: 100%;
+    }
+    
+    .col2 .main .user-setting .list-tab tbody tr td:empty {
+        display: none;
+    }    
+}
