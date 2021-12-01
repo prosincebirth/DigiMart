@@ -130,7 +130,7 @@
                                                 <table class="user-wallet-history">
                                                     <thead>
                                                         <tr>
-                                                            <th> Witdraw amount</th>
+                                                            <th> Withdraw amount</th>
                                                             <th> Mobile number</th>
                                                             <th> Create time</th>
                                                         </tr>

@@ -126,8 +126,7 @@ if (isset($_GET['login'])){
     </div>
   </div></div>
 
-
-<main>
+  <main>
     <section class="market_section">
         <div class="container">
             <div class="layout">
@@ -168,6 +167,7 @@ if (isset($_GET['login'])){
                                     <tr>
                                         <td class="t-left" width="120">Username</td>
                                         <td class="t-left"><span class="name-tab" style="display: inline; color:var(--primary-color);font-weight:bold;"><?php echo $_SESSION['user_username'];?></span></td>
+                                        
                                         <td class="t-right"><a href="javascript:void(0);" class="btn-change">Change</a></td>    
                                     </tr>
                                 </tbody>
@@ -198,9 +198,9 @@ if (isset($_GET['login'])){
                                     </tr>
                                     <tr>
                                         <td class="t-left" width="120">Password settings</td>
+                                        <td class="t-left"><label for="password">**********</label></td>
                                         <td class="t-left"></td>
-                                        <td class="t-left"></td>
-                                        <td class="t-right"><a href="javascript:void(0;)" class="i-btn --i-btn-small">Change password</a></td>
+                                        <td class="t-right"><a href="#change_user_password"  data-toggle="modal" class="i-btn --i-btn-small">Change password</a></td>
                                     </tr>
                                     <tr class="steam-bind"> 
                                         <td class="t-left" width="120">Steam ID</td>

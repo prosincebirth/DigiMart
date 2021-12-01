@@ -1282,6 +1282,39 @@ $('document').ready(function()
                 }
             });//END	
             break;	
+
+            case "change_user_password": 
+            var confirm_old_pass=$("#confirm_old_pass").val();
+            var new_pass=$("#new_pass").val();
+            var confirm_new_pass=$("#confirm_new_pass").val();
+            var user_id=$("#user_id").val();
+
+
+            var data=new FormData();
+            data.append("action_type","change_user_password");
+            data.append("confirm_old_pass",confirm_old_pass);
+            data.append("new_pass",new_pass);
+            data.append("confirm_new_pass",confirm_new_pass);
+            data.append("user_id",user_id);
+
+            $.ajax({	
+                url:"account/controller.php",
+                method:"post",
+                data:data,
+                contentType:false,
+                cache:false,
+                processData:false,
+                success:function(res){
+                    console.log(res)
+                    if(res=="Success"){
+                        alert(res)
+                        location.reload();
+                    }else{
+                        alert(res)
+                    } 
+                }
+            });//END	
+            break;	
         };	
 	});	
 });
