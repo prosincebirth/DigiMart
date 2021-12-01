@@ -1340,6 +1340,56 @@ $('document').ready(function()
                 }
             });//END	
             break;	
+            case "add_steam_link_new": 
+            var add_steam_profile_link=$("#add_steam_profile_link").val()
+           
+            var data=new FormData();
+            data.append("action_type","add_steam_link_new");
+            data.append("add_steam_profile_link",add_steam_profile_link);
+
+            $.ajax({	
+                url:"account/controller.php",
+                method:"post",
+                data:data,
+                contentType:false,
+                cache:false,
+                processData:false,
+                success:function(res){
+                    console.log(res)
+                    if(res=="Success"){
+                        alert(res)
+                        location.reload();
+                    }else{
+                        alert(res)
+                    } 
+                }
+            });//END	
+            break;
+            case "delete_steam_link_new": 
+            var steam_id_delete=$("#steam_id_delete").val()
+           
+            var data=new FormData();
+            data.append("action_type","delete_steam_link_new");
+            data.append("steam_id_delete",steam_id_delete);
+
+            $.ajax({	
+                url:"account/controller.php",
+                method:"post",
+                data:data,
+                contentType:false,
+                cache:false,
+                processData:false,
+                success:function(res){
+                    console.log(res)
+                    if(res=="Success"){
+                        alert(res)
+                        location.reload();
+                    }else{
+                        alert(res)
+                    } 
+                }
+            });//END	
+            break;			
         };	
 	});	
 });

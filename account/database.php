@@ -18,6 +18,12 @@
 		$exec=$prepare->execute(array(":user_id"=>$user_id,":trade_link"=>$trade_link));
 		$conn=null;}
 
+	function display_game_accounts($user_id){// USED IN GAME SERVICES , POST SALE
+			$conn=connection2();
+			$sql="SELECT  * from game_account_users where user_id=$user_id";
+			$result = $conn->query($sql);
+			return $result;}		
+
 	function add_steam_id($user_id,$user_steam_id){
 		$conn=connection();
 		$query="UPDATE users set user_steam_id=:user_steam_id where user_id=:user_id";
@@ -39,6 +45,13 @@
 		$exec=$prepare->execute(array(":user_id"=>$user_id));
 		$conn=null;}		
 
+	function delete_steam_link_alt($game_account_id,$user_id){
+		$conn=connection();
+		$query="DELETE FROM game_account_users where game_account_id=:game_account_id and user_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":user_id"=>$user_id,":game_account_id"=>$game_account_id));
+		$conn=null;}		
+
 		////////////////// ADDD FUNCTIONS /////////////////
 	function add_new_user($user_username,$user_password,$user_email,$user_steam_id,$user_steam_trade_link){//register.php
 		$conn=connection();
@@ -49,7 +62,7 @@
 	
 	function add_game_profile($game_account_type,$game_link,$game_id,$user_id){//register.php
 		$conn=connection();
-		$query="INSERT INTO users(game_account_type,game_link,game_id,user_id) values(:game_account_type,:game_link,:game_id,:user_id)"; 
+		$query="INSERT INTO game_account_users(game_account_type,game_link,game_id,user_id) values(:game_account_type,:game_link,:game_id,:user_id)"; 
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":game_account_type"=>$game_account_type,":game_link"=>$game_link,":game_id"=>$game_id,":user_id"=>$user_id));
 		$conn=null;}	

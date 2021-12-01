@@ -139,36 +139,51 @@
                                         <td class="t-left" width="120">Main Steam Profile Link</td>
                                         <?php $user_kyc_status = user_kyc_status($_SESSION['user_session']);foreach($user_kyc_status as $kyc_request1){
                                                 if($kyc_request1['user_steam_id']==''){?>
-                                                        <td class="t-left"><input type="text" name="main_steam_profile_link" id="main_steam_profile_link" style="margin-right:0px;color:black"><span style="color:black"><?php echo $kyc_request1['user_steam_id'];?></span></td>
-                                                        <td class="t-left" ><a href="https://steamcommunity.com/my/profiles" target="_blank"> Click to get link</a></td>
+                                                        <td class="t-left"><input type="text" placeholder="Add main game account" name="main_steam_profile_link" id="main_steam_profile_link" style="margin-right:0px;color:black"><span style="color:black"></span></td>
+                                                        <td class="t-left" ><a href="https://steamcommunity.com/my/profiles" target="_blank" style="margin-left:10px;"> Click to get link</a></td>
                                                         <td class="t-right"><button class="btn" type="button" value="main_steam_profile">Bind Steam Account</button></td>                                                        
                                                     <?php } else { ?>
                                                         <td class="t-left"><a href="<?php echo $kyc_request1['user_steam_id'];?>" target="_blank"><span style="color:black"><?php echo $kyc_request1['user_steam_id'];?> </input></span></a></td>
-                                                        <td class="t-left">  <input type="hidden" name="steam_id_64" id="steam_id_64" value="<?php echo $kyc_request1['user_steam_id'];?>" style="margin-right:0px;color:black"> </td>
+                                                        <td class="t-left" ><a href="https://steamcommunity.com/my/profiles" target="_blank"> Click to get link</a></td>
+                                                        <input type="hidden" name="steam_id_64" id="steam_id_64" value="<?php echo $kyc_request1['user_steam_id'];?>" style="margin-right:0px;color:black">
                                                         <td class="t-right"><button class="btn" type="button" value="unbind_steam_account">Unbind Steam account</button></td>
                                                     <?php } } ?>
                                     </tr>
-                                    <tr style="margin:10px"> 
-                                    
+                                    <?php $result=display_game_accounts($_SESSION['user_session']); 
+                                        for($i=0;$i<4;$i++){ 
+                                            if($res = $result->fetch_assoc()){;
+                                            ?>
+                                        <tr style="margin:10px">  
                                             <td class="t-left" width="120"> </td> 
-                                            <td class="t-left"><input type="text" name="trade_link" id="trade_link" style="margin-right:0px;color:black"></input></td> 
-                                    </tr>
+                                            <td class="t-left"><a href="<?php echo $kyc_request1['user_steam_id'];?>" target="_blank"><span style="color:black"><?php echo $res['game_link'];?> </input></span></a></td> 
+                                            <td class="t-left" ><input type="hidden" name="steam_id_delete" id="steam_id_delete" value="<?php echo $res['game_account_id'];?>" style="margin-right:0px;color:black"></td>
+                                            <td class="t-right"><button class="btn" type="button" value="delete_steam_link_new">Unbind Steam Account</button></td> 
+                                        </tr>  
+                                        <?php } else{?>
+                                        <tr style="margin:10px">  
+                                            <td class="t-left" width="120"> </td> 
+                                            <td class="t-left"><input type="text" name="add_steam_profile_link" id="add_steam_profile_link" placeholder="Add another game account" style="margin-right:0px;color:black"></input></td> 
+                                            <td class="t-left" ></td>
+                                            <td class="t-right"><button class="btn" type="button" value="add_steam_link_new">Bind Steam Account</button></td> 
+                                        </tr> 
+                                    <?php } } ?>
+                                        
+
                                     <tr style="margin:10px"> 
                                         <td class="t-left" width="120">Steam Trade Link</td>
                                         <?php $user_kyc_status = user_kyc_status($_SESSION['user_session']);foreach($user_kyc_status as $kyc_request1){
                                             if($kyc_request1['user_steam_trade_link']==''){?>
-                                                <td class="t-left"><input type="text" name="trade_link" id="trade_link" style="margin-right:0px;color:black"></input></td> 
-                                                <td class="t-left"><a href="https://steamcommunity.com/my/tradeoffers/privacy#trade_offer_access_url" target="_blank"> Click to get link</a></td>
+                                                <td class="t-left"><input type="text" name="trade_link" id="trade_link" style="margin-right:0px;color:black" placeholder="Add main steam trade link" ></input></td> 
+                                                <td class="t-left"><a href="https://steamcommunity.com/my/tradeoffers/privacy#trade_offer_access_url" target="_blank" style="margin-left:10px;" > Click to get link</a></td>
                                                 <td class="t-right"> <button class="btn btn-secondary btn-login" type="button" value="add_steam_trade" >Save</button></td>
                                             <?php } else { ?>
-                                                <td class="t-left"><a href="<?php echo $kyc_request1['user_steam_trade_link'];?>" target="_blank"><span style="color:black"><?php echo $kyc_request1['user_steam_trade_link'];?></span></a></td>
-                                                <td class="t-left" > </td>
+                                                <td class="t-left"><a href="<?php echo $kyc_request1['user_steam_trade_link'];?>" target="_blank"><span style="color:black"><?php echo substr($kyc_request1['user_steam_trade_link'],0,50);?></span></a></td>
+                                                <td class="t-left" ><a href="https://steamcommunity.com/my/tradeoffers/privacy#trade_offer_access_url" target="_blank" style="margin-left:10px;" > Click to get link</a></td></td>
                                                 <td class="t-right"> <button class="btn" type="button" value="delete_steam_trade">Delete</button></td>
                                             <?php } } ?>
                                     </tr>
                                     <tr>                                      
-                                                <td class="t-left" width="120"> </td> 
-                                                <td class="t-left"><input type="text" name="trade_link" id="trade_link" style="margin-right:0px;color:black"></input></td> 
+                                            
                                     </tr>
                                 </tbody>
                             </table>

@@ -785,7 +785,10 @@
 								
 								if(empty($trade_link)){ // trappings for not logged in
 									echo 'Empty Fields';
-								}						
+								}
+								else if(!filter_var($trade_link, FILTER_VALIDATE_URL)){ // trappings for not logged in
+									echo 'Not a valid profile link';
+								}			
 								else{
 									add_steam_trade_link($_SESSION['user_session'],$trade_link);
 									echo 'Success'; 															
@@ -821,6 +824,31 @@
 									echo 'Success';
 								} 																
 							break;
+					case "add_steam_link_new":
+								$add_steam_profile_link=$_POST['add_steam_profile_link'];
+
+								if(empty($add_steam_profile_link)){ // trappings for not logged in
+									echo 'Empty Fields';
+								}
+								else if(!filter_var($add_steam_profile_link, FILTER_VALIDATE_URL)){ // trappings for not logged in
+									echo 'Not a valid profile link';
+								}							
+								else{
+									add_game_profile(1,$add_steam_profile_link,1,$_SESSION['user_session']);
+									echo 'Success';
+								} 																
+							break;
+					case "delete_steam_link_new":
+								$steam_id_delete=$_POST['steam_id_delete'];
+
+								if(empty($steam_id_delete)){ // trappings for not logged in
+									echo 'Empty Fields';
+								}		
+								else{
+									delete_steam_link_alt($steam_id_delete,$_SESSION['user_session']);
+									echo 'Success';
+								} 																
+							break;							
 
 					case "insert_deposit_info":
 						$amount = number_format($_POST['amount'], 2, '.', '');
