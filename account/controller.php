@@ -812,9 +812,13 @@
 							break;
 					case "main_steam_profile":
 								$main_steam_profile_link=$_POST['main_steam_profile_link'];
+								$row1=existing_steam_profile2($main_steam_profile_link,$_SESSION['user_session']);
 
 								if(empty($main_steam_profile_link)){ // trappings for not logged in
 									echo 'Empty Fields';
+								}
+								else if($row1>0){ // trappings for not logged in
+									echo 'Existing Game Link';
 								}
 								else if(!filter_var($main_steam_profile_link, FILTER_VALIDATE_URL)){ // trappings for not logged in
 									echo 'Not a valid profile link';
@@ -826,9 +830,14 @@
 							break;
 					case "add_steam_link_new":
 								$add_steam_profile_link=$_POST['add_steam_profile_link'];
+								$row2=existing_steam_profile2($add_steam_profile_link,$_SESSION['user_session']);
+								$row3=existing_steam_profile($add_steam_profile_link,$_SESSION['user_session']);
 
 								if(empty($add_steam_profile_link)){ // trappings for not logged in
 									echo 'Empty Fields';
+								}
+								else if($row2>0 or $row3>0){ // trappings for not logged in
+									echo 'Existing Game Link';
 								}
 								else if(!filter_var($add_steam_profile_link, FILTER_VALIDATE_URL)){ // trappings for not logged in
 									echo 'Not a valid profile link';
