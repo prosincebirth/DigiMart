@@ -105,7 +105,7 @@
                                     
                                 <div class="user-wallet">
                                     <?php $get_kyc_status = is_verified($_SESSION['user_session']);
-                                            $verified = $get_kyc_status['kyc_status'] ?? "";
+                                            $verified = $get_kyc_status['user_kyc'] ?? "";
                                             if($verified == 2){ ?>
                                 
                                         <table>
