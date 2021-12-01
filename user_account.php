@@ -90,7 +90,7 @@
                 <div class="column col2"> 
                     <div class="main">
                         <div class="user-setting">
-                            <h3>Basic Settings</h3>
+                            <!-- <h3>Basic Settings</h3>
                             <table class="list-tab" >
                                 <tbody>
                                     <tr>
@@ -101,10 +101,10 @@
                                         <td class="t-left" width="120">Username</td>
                                         <td class="t-left"><span class="name-tab" style="display: inline; color:var(--primary-color);font-weight:bold;"><?php echo $_SESSION['user_username'];?></span></td>
                                         
-                                        <td class="t-right"><a href="javascript:void(0);" class="btn-change">Change</a></td>    
+                                        <td class="t-right"><a href="#change_username" class="btn-change">Change</a></td>    
                                     </tr>
                                 </tbody>
-                            </table>
+                            </table> -->
 
                             <h3>Security settings</h3>
                             <table class=list-tab width="100%">
