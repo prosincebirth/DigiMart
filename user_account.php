@@ -203,7 +203,7 @@ if (isset($_GET['login'])){
                                         <td class="t-right"><a href="javascript:void(0;)" class="i-btn --i-btn-small">Change password</a></td>
                                     </tr>
                                     <tr class="steam-bind"> 
-                                        <td class="t-left" width="120">Steam ID</td>
+                                        <td class="t-left" width="120">Steam Profile Link</td>
                                         <?php $user_kyc_status = user_kyc_status($_SESSION['user_session']);foreach($user_kyc_status as $kyc_request1){
                                         if($kyc_request1['user_steam_id']==''){?>
                                                 <td class="t-left"><span style="color:black"><?php echo $kyc_request1['user_steam_id'];?></span></td>
