@@ -824,7 +824,10 @@
 							$withdraw_method = 'gcash';
 							$user_id = $_SESSION['user_session'];
 							$crt_wallet = get_wallet_balance($user_id);
+							$wallet_balance = $crt_wallet['wallet_balance'] ?? "";
 							$total =  $amount_with;
+							$verified = is_verified($user_id);
+							$is_verified = $verified['kyc_status'] ?? "";
 	
 							if(empty($amount_with) or empty($mobile_with)){
 								echo 'Empty Fields';
@@ -832,10 +835,18 @@
 								echo 'Minumun amount is 100';
 							}elseif($amount_with > 10000){
 								echo 'Maximun amount is 10,000';
+							}elseif($wallet_balance < $amount_with){
+								echo 'Amount entered exceeds';
 							}else{
-								update_withdraw_wallet_balance($user_id,$total);
-								insert_withdraw_info($amount_with,$crt_date,$withdraw_method,$mobile_with,$user_id);
-								echo 'Success';
+								if($is_verified == 2){
+									update_withdraw_wallet_balance($user_id,$total);
+									insert_withdraw_info($amount_with,$crt_date,$withdraw_method,$mobile_with,$user_id);
+									echo 'Success';
+								}
+								else{
+									echo 'Account must be verified';
+								}
+								
 								
 							}
 							break;

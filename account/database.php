@@ -185,6 +185,15 @@
 		$conn=null;
 		return $res;}
 
+	function is_verified($user_id){//USED IN POST SALE
+		$conn=connection();
+		$query="SELECT * from kyc_verification where user_session_kyc=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":user_id"=>$user_id));
+		$res = $prepare->fetch(PDO::FETCH_ASSOC);
+		$conn=null;
+		return $res;}
+
 	function get_wallet_balance($user_id){//USED IN POST SALE
 		$conn=connection();
 		$query="SELECT * from wallets where user_id=:user_id";
