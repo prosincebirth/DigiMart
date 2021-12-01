@@ -47,6 +47,9 @@
       <a class="collapse-item" href="buy_order.php">Buy Order</a>
       <a class="collapse-item" href="sale_order.php">Sale Order</a>
       <a class="collapse-item" href="transaction.php">Transaction</a>
+      <a class="collapse-item" href="deposit_record.php">Deposit Records</a>
+      <a class="collapse-item" href="withdraw_record.php">Withdraw Records</a>
+      
     </div>
   </div>
 </li>

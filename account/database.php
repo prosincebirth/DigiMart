@@ -705,6 +705,17 @@
 		$result = $conn->query($sql);
 		return $result;}	
 
+	function display_withdraw_record_admin(){// USED IN GAME SERVICES , POST SALE
+		$conn=connection2();
+		$sql="SELECT  *,(select user_username from users where user_id=a.user_id) as user_username_admin from withdraw a ";
+		$result = $conn->query($sql);
+		return $result;}		
+		
+	function display_deposit_record_admin(){// USED IN GAME SERVICES , POST SALE
+		$conn=connection2();
+		$sql="SELECT  *,(select user_username from users where user_id=a.user_id) as user_username_admin from deposit a ";
+		$result = $conn->query($sql);
+		return $result;}	
 	
 	function display_sales_records_admin(){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
