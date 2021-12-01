@@ -57,6 +57,9 @@ include('includes/navbar.php');
       </div>
         <div class="modal-body">
             <div class="form-group">
+                <label>Reason</label>
+                <input type="text" name="reason_kyc" id="reason_kyc" class="form-control">
+            </br>
                 <label>Status</label>
                 <input type="hidden" name="user_id" placeholder="user id" id="user_id" class="form-control">
                 <input type="hidden" name="kyc_id" placeholder="kyc id" id="kyc_id" class="form-control">
@@ -93,6 +96,7 @@ include('includes/navbar.php');
             <th> User </th>
             <th> Date & Time Created</th>
             <th> Status </th>
+            <th> Reason </th>
             <th colspan="2">Actions</th>
 
           </tr>
@@ -109,6 +113,7 @@ include('includes/navbar.php');
                       else if($kyc['kyc_status']==2){echo 'Verified';}
                       else if($kyc['kyc_status']==3){echo 'Denied';}?>
                   </td>
+                  <td><?php echo $kyc['kyc_message']; ?></td>
             
 
             <?php if($kyc['kyc_status']==1){?>     
@@ -119,10 +124,10 @@ include('includes/navbar.php');
                   data-lastname_kyc	="<?php echo $kyc['lastname_kyc']?>"
                   data-address_kyc	="<?php echo $kyc['address_kyc']?>"
                   data-id_kyc	="<?php
-                      if($kyc['id_kyc']==1){echo "Driver's License";}
-                      else if($kyc['id_kyc']==2){echo 'Student ID';}
-                      else if($kyc['id_kyc']==3){echo 'Passport';}
-                      else if($kyc['id_kyc']==4){echo 'National ID';}
+                      if($kyc['id_type_kyc']==1){echo "Driver's License";}
+                      else if($kyc['id_type_kyc']==2){echo 'Student ID';}
+                      else if($kyc['id_type_kyc']==3){echo 'Passport';}
+                      else if($kyc['id_type_kyc']==4){echo 'National ID';}
                       ?>"
                   data-idnumber_kyc	="<?php echo $kyc['idnumber_kyc']?>"
                   data-id_proof_kyc="<?php echo base64_encode($kyc['id_proof_kyc'])?>"
@@ -142,10 +147,10 @@ include('includes/navbar.php');
                   data-lastname_kyc	="<?php echo $kyc['lastname_kyc']?>"
                   data-address_kyc	="<?php echo $kyc['address_kyc']?>"
                   data-id_kyc	="<?php
-                      if($kyc['id_kyc']==1){echo "Driver's License";}
-                      else if($kyc['id_kyc']==2){echo 'Student ID';}
-                      else if($kyc['id_kyc']==3){echo 'Passport';}
-                      else if($kyc['id_kyc']==4){echo 'National ID';}
+                      if($kyc['id_type_kyc']==1){echo "Driver's License";}
+                      else if($kyc['id_type_kyc']==2){echo 'Student ID';}
+                      else if($kyc['id_type_kyc']==3){echo 'Passport';}
+                      else if($kyc['id_type_kyc']==4){echo 'National ID';}
                       ?>"
                   data-idnumber_kyc	="<?php echo $kyc['idnumber_kyc']?>"
                   data-id_proof_kyc="<?php echo base64_encode($kyc['id_proof_kyc'])?>"
