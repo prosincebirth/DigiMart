@@ -103,85 +103,60 @@
                                 </div>
                                 
                                 <div class="user-wallet">
-                                    <table>
-                                        <tbody>
-
-                                            <!-- <tr>
-                                                <td class="t-left">Deposit ammount</td>
-                                                <td class="t-right">
-                                                    <div class="user-deposit">
-                                                        <span value="custom" class="on">
-                                                            <input type="text" placeholder="Deposit amount" value="<?php $value = 0; $value = $_POST["1h"] ?? "";if($value==0){echo "";}else{echo $value;}  ?>"></form>
-                                                        </span>
-                                                        <span class="button"><button name="1h" type="submit" value="100">₱ 100</button></span>
-                                                        <span class="button"><button name="1h" type="submit" value="500">₱ 500</button></span>
-                                                        <span class="button"><button name="1h" type="submit" value="1000">₱ 1000</button></span>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                                     -->
-                                            <tr>
-                                                <td class="t-left">Withdraw method</td>
-                                                <td class="t-right">
-                                                    <div class="user-deposit">
-                                                        <div class=user-deposit-btn>
-                                                            <ul>
-                                                                <li title="You can deposit using gcash."><a href="#add_withdraw_info_modal" data-toggle="modal" class="selected"><img src="https://img.icons8.com/plasticine/50/000000/gcash.png">GCash</a></li>
-                                                            </ul>
+                                    <?php $get_kyc_status = is_verified($_SESSION['user_session']);
+                                            $verified = $get_kyc_status['kyc_status'] ?? "";
+                                            if($verified == 2){ ?>
+                                
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="t-left">Withdraw method</td>
+                                                    <td class="t-right">
+                                                        <div class="user-deposit">
+                                                            <div class=user-deposit-btn>
+                                                                <ul>
+                                                                    <li title="You can deposit using gcash."><a href="#add_withdraw_info_modal" data-toggle="modal" class="selected"><img src="https://img.icons8.com/plasticine/50/000000/gcash.png">GCash</a></li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-
-                                            <!-- <tr>
-                                                
-                                                <td></td>
-                                                <td class="t-left">
-                                                    <div class="user-deposit-confirm">
-                                                        <span class="button"><a href="#deposit_gcash" data-toggle="modal" class="user-deposit-btn">Confirm</a></span>
-                                                    </div>
-                                                </td>
-                                            </tr> -->
-                                        </tbody>
-                                    </table>
-
-                                    <!-- <div class="user-wallet-section">
-                                        <div class="user-wallet-notice-">
-                                            <div style="border-bottom: 1px solid var(--light-gray-color);"></div>
-                                            <ul>
-                                                <li>Deposit notice</li>
-                                                <li>1. Single order limit 5-20000；</li>
-                                                <li>2. 1% service fee will be charged for refund or withdrawal；</li>
-                                                <li>3. In case of illegal transfer of fund, the account will be frozen。</li>
-                                            </ul>
-                                            <div style="border-bottom: 1px solid var(--light-gray-color);"></div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="user-wallet-section">
+                                            <h2>Withdraw records</h2>
+                                            <div class="table--container">
+                                                <table class="user-wallet-history">
+                                                    <thead>
+                                                        <tr>
+                                                            <th> Witdraw amount</th>
+                                                            <th> Mobile number</th>
+                                                            <th> Create time</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <?php	$get_withdraw_info = get_withdraw_info($_SESSION['user_session']); foreach($get_withdraw_info as $get_withdraw_info){?>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><?php echo '<span>'.$get_withdraw_info['withdraw_amt'].' </span>'; ?></td>
+                                                            <td><?php echo '<span>'.$get_withdraw_info['withdraw_number'].' </span>'; ?></td>
+                                                            <td><?php echo '<span>'.$get_withdraw_info['withdraw_date_created'].' </span>'; ?></td>
+                                                        
+                                                        </tr>
+                                                    </tbody>
+                                                    <?php } ?>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div> -->
-                                    
-                                    <div class="user-wallet-section">
-                                        <h2>Withdraw records</h2>
-                                        <div class="table--container">
-                                            <table class="user-wallet-history">
-                                                <thead>
-                                                    <tr>
-                                                        <th> Witdraw amount</th>
-                                                        <th> Mobile number</th>
-                                                        <th> Create time</th>
-                                                    </tr>
-                                                </thead>
-                                                <?php	$get_withdraw_info = get_withdraw_info($_SESSION['user_session']); foreach($get_withdraw_info as $get_withdraw_info){?>
-                                                <tbody>
-                                                    <tr>
-                                                        <td><?php echo '<span>'.$get_withdraw_info['withdraw_amt'].' </span>'; ?></td>
-                                                        <td><?php echo '<span>'.$get_withdraw_info['withdraw_number'].' </span>'; ?></td>
-                                                        <td><?php echo '<span>'.$get_withdraw_info['withdraw_date_created'].' </span>'; ?></td>
-                                                       
-                                                    </tr>
-                                                </tbody>
-                                                <?php } ?>
-                                            </table>
-                                        </div>
-                                    </div>
+                                    <?php }else{?>      
+                                        <table width="100%" cellpadding="0" cellspacing="0" >
+                                            <tbody style="text-align:center">
+                                                <tr >
+                                                    <td style="padding:50px 0 10px 0; display: block">The withdrawal function is available only after completing KYC verification.</td>
+                                                    <td style="padding:10px 0 50px 0; display: block;"><span style="background-color: var(--visual-blue-color); padding:10px;"><a href="user_account.php" style=" color: var(--white-color);" class="selected">Go to KYC verification</a></span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <?php }?>
                                 </div>
                             </div>
                         </div>
