@@ -1184,6 +1184,31 @@ $('document').ready(function()
                 }
             });//END	
             break;
+            case "main_steam_profile": 
+            var main_steam_profile_link=$("#main_steam_profile_link").val()
+           
+            var data=new FormData();
+            data.append("action_type","main_steam_profile");
+            data.append("main_steam_profile_link",main_steam_profile_link);
+
+            $.ajax({	
+                url:"account/controller.php",
+                method:"post",
+                data:data,
+                contentType:false,
+                cache:false,
+                processData:false,
+                success:function(res){
+                    console.log(res)
+                    if(res=="Success"){
+                        alert(res)
+                        location.reload();
+                    }else{
+                        alert(res)
+                    } 
+                }
+            });//END	
+            break;		
             case "unbind_steam_account": 
             var steam_id_64=$("#steam_id_64").val()
            
@@ -1255,7 +1280,6 @@ $('document').ready(function()
             var crt_date=$("#crt_date").val();
             var withdraw_method=$("#withdraw_method").val();
             var user_id=$("#user_id").val();
-
 
             var data=new FormData();
             data.append("action_type","insert_withdraw_info");

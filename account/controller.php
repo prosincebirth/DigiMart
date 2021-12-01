@@ -23,6 +23,12 @@
 						else if(empty($user_username_b) or empty($user_email_b) or empty($user_password_b) or empty($steam_profile_link) or empty($steam_trade_link)){
 							echo 'Empty Fields';
 						}
+						else if(!filter_var($steam_profile_link, FILTER_VALIDATE_URL)){ // trappings for not logged in
+							echo 'Profile link is not valid';
+						}
+						else if(!filter_var($steam_trade_link, FILTER_VALIDATE_URL)){ // trappings for not logged in
+							echo 'Trade link is not valid';
+						}														
 						else{
 							add_new_user($user_username_b,$user_password_b,$user_email_b,$steam_profile_link,$steam_trade_link);	
 							echo 'Success';
@@ -798,6 +804,20 @@
 								}						
 								else{
 									delete_steam_link($_SESSION['user_session']);
+									echo 'Success';
+								} 																
+							break;
+					case "main_steam_profile":
+								$main_steam_profile_link=$_POST['main_steam_profile_link'];
+
+								if(empty($main_steam_profile_link)){ // trappings for not logged in
+									echo 'Empty Fields';
+								}
+								else if(!filter_var($main_steam_profile_link, FILTER_VALIDATE_URL)){ // trappings for not logged in
+									echo 'Not a valid profile link';
+								}							
+								else{
+									add_steam_id($_SESSION['user_session'],$main_steam_profile_link);
 									echo 'Success';
 								} 																
 							break;

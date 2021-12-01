@@ -1,70 +1,3 @@
-<?php 
-
-ob_start();
-session_start();
-
-    function connection3(){// DB CONNECTION PDO
-    $conn=new PDO("mysql:host=localhost;dbname=digimart","root","");
-    return $conn;}
-
-    function add_steam_id($user_id,$user_steam_id){
-		$conn=connection3();
-		$query="UPDATE users set user_steam_id=:user_steam_id where user_id=:user_id";
-		$prepare=$conn->prepare($query);
-		$exec=$prepare->execute(array(":user_id"=>$user_id,":user_steam_id"=>$user_steam_id));
-		$conn=null;}
-
-if (isset($_GET['login'])){
-	require 'openid.php';
-	try {
-		require 'SteamConfig.php';
-		$openid = new LightOpenID($steamauth['domainname']);
-		
-		if(!$openid->mode) {
-			$openid->identity = 'https://steamcommunity.com/openid';
-			header('Location: ' . $openid->authUrl());
-		} elseif ($openid->mode == 'cancel') {
-			echo 'User has canceled authentication!';
-		} else {
-			if($openid->validate()) { 
-				$id = $openid->identity;
-				$ptn = "/^https?:\/\/steamcommunity\.com\/openid\/id\/(7[0-9]{15,25}+)$/";
-				preg_match($ptn, $id, $matches);
-				
-				$_SESSION['steamid'] = $matches[1];
-
-                if (empty($_SESSION['steam_uptodate']) or empty($_SESSION['steam_personaname'])) {
-                    require 'SteamConfig.php';
-                    $url = file_get_contents("https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$steamauth['apikey']."&steamids=".$_SESSION['steamid']); 
-                    $content = json_decode($url, true);
-                    $_SESSION['steam_profileurl'] = $content['response']['players'][0]['profileurl'];
-                }
-
-                add_steam_id($_SESSION['user_session'],$_SESSION['steam_profileurl']);
-                
-				if (!headers_sent()) {
-					header('Location: '.$steamauth['loginpage']);
-					exit;
-				} else {
-					?>
-					<script type="text/javascript">
-						window.location.href="<?=$steamauth['loginpage']?>";
-					</script>
-					<noscript>
-						<meta http-equiv="refresh" content="0;url=<?=$steamauth['loginpage']?>" />
-					</noscript>
-					<?php
-					exit;
-				}
-			} else {
-				echo "User is not logged in.\n";
-			}
-		}
-	} catch(ErrorException $e) {
-		echo $e->getMessage();
-	}
-}?>
-
 <?php include('head.php'); ?>
 <?php if($_SESSION['user_status']!=1){header("Location: index.php"); exit();} ?>
 <?php include('header.php'); ?>
@@ -203,26 +136,29 @@ if (isset($_GET['login'])){
                                         <td class="t-right"><a href="javascript:void(0;)" class="i-btn --i-btn-small">Change password</a></td>
                                     </tr>
                                     <tr class="steam-bind"> 
-                                        <td class="t-left" width="120">Steam Profile Link</td>
+                                        <td class="t-left" width="120">Main Steam Profile Link</td>
                                         <?php $user_kyc_status = user_kyc_status($_SESSION['user_session']);foreach($user_kyc_status as $kyc_request1){
-                                        if($kyc_request1['user_steam_id']==''){?>
-                                                <td class="t-left"><span style="color:black"><?php echo $kyc_request1['user_steam_id'];?></span></td>
-                                                <td class="t-eft"></td>
-                                                <td class="t-right"><a href="?login" class="i-btn --i-btn-small">Bind Steam Account</a></td>
-                                            <?php } else { ?>
-                                                <td class="t-left"><a href="<?php echo $kyc_request1['user_steam_id'];?>" target="_blank"><span style="color:black"><?php echo $kyc_request1['user_steam_id'];?> </input></span></a></td>
-                                                <td class="t-left">  <input type="hidden" name="steam_id_64" id="steam_id_64" value="<?php echo $kyc_request1['user_steam_id'];?>" style="margin-right:0px;color:black"> </td>
-                                                <td class="t-right"><button class="btn" type="button" value="unbind_steam_account">Unbind Steam account</button></td>
-                                            <?php } } ?>
-
-
+                                                if($kyc_request1['user_steam_id']==''){?>
+                                                        <td class="t-left"><input type="text" name="main_steam_profile_link" id="main_steam_profile_link" style="margin-right:0px;color:black"><span style="color:black"><?php echo $kyc_request1['user_steam_id'];?></span></td>
+                                                        <td class="t-left" ><a href="https://steamcommunity.com/my/profiles" target="_blank"> Click to get link</a></td>
+                                                        <td class="t-right"><button class="btn" type="button" value="main_steam_profile">Bind Steam Account</button></td>                                                        
+                                                    <?php } else { ?>
+                                                        <td class="t-left"><a href="<?php echo $kyc_request1['user_steam_id'];?>" target="_blank"><span style="color:black"><?php echo $kyc_request1['user_steam_id'];?> </input></span></a></td>
+                                                        <td class="t-left">  <input type="hidden" name="steam_id_64" id="steam_id_64" value="<?php echo $kyc_request1['user_steam_id'];?>" style="margin-right:0px;color:black"> </td>
+                                                        <td class="t-right"><button class="btn" type="button" value="unbind_steam_account">Unbind Steam account</button></td>
+                                                    <?php } } ?>
+                                    </tr>
+                                    <tr style="margin:10px"> 
+                                    
+                                            <td class="t-left" width="120"> </td> 
+                                            <td class="t-left"><input type="text" name="trade_link" id="trade_link" style="margin-right:0px;color:black"></input></td> 
                                     </tr>
                                     <tr style="margin:10px"> 
                                         <td class="t-left" width="120">Steam Trade Link</td>
                                         <?php $user_kyc_status = user_kyc_status($_SESSION['user_session']);foreach($user_kyc_status as $kyc_request1){
                                             if($kyc_request1['user_steam_trade_link']==''){?>
                                                 <td class="t-left"><input type="text" name="trade_link" id="trade_link" style="margin-right:0px;color:black"></input></td> 
-                                                <td class="t-left" ><a href="https://steamcommunity.com/my/tradeoffers/privacy#trade_offer_access_url" target="_blank">Click to get link</a></td>
+                                                <td class="t-left"><a href="https://steamcommunity.com/my/tradeoffers/privacy#trade_offer_access_url" target="_blank"> Click to get link</a></td>
                                                 <td class="t-right"> <button class="btn btn-secondary btn-login" type="button" value="add_steam_trade" >Save</button></td>
                                             <?php } else { ?>
                                                 <td class="t-left"><a href="<?php echo $kyc_request1['user_steam_trade_link'];?>" target="_blank"><span style="color:black"><?php echo $kyc_request1['user_steam_trade_link'];?></span></a></td>
@@ -230,8 +166,9 @@ if (isset($_GET['login'])){
                                                 <td class="t-right"> <button class="btn" type="button" value="delete_steam_trade">Delete</button></td>
                                             <?php } } ?>
                                     </tr>
-                                    <tr>
-                                        
+                                    <tr>                                      
+                                                <td class="t-left" width="120"> </td> 
+                                                <td class="t-left"><input type="text" name="trade_link" id="trade_link" style="margin-right:0px;color:black"></input></td> 
                                     </tr>
                                 </tbody>
                             </table>

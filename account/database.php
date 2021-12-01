@@ -10,12 +10,19 @@
 	function connection2(){// DB CONNECTION MYSQL
 		$conn= mysqli_connect("localhost", "root", "", "digimart");
 		return $conn;}	
-	
+
 	function add_steam_trade_link($user_id,$trade_link){
 		$conn=connection();
 		$query="UPDATE users set user_steam_trade_link=:trade_link where user_id=:user_id";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":user_id"=>$user_id,":trade_link"=>$trade_link));
+		$conn=null;}
+
+	function add_steam_id($user_id,$user_steam_id){
+		$conn=connection();
+		$query="UPDATE users set user_steam_id=:user_steam_id where user_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":user_id"=>$user_id,":user_steam_id"=>$user_steam_id));
 		$conn=null;}
 
 	 function delete_steam_trade_link($user_id){
@@ -39,6 +46,13 @@
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":user_username"=>$user_username,":user_password"=>$user_password,":user_email"=>$user_email,":user_steam_id"=>$user_steam_id,":user_steam_trade_link"=>$user_steam_trade_link));
 		$conn=null;}
+	
+	function add_game_profile($game_account_type,$game_link,$game_id,$user_id){//register.php
+		$conn=connection();
+		$query="INSERT INTO users(game_account_type,game_link,game_id,user_id) values(:game_account_type,:game_link,:game_id,:user_id)"; 
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":game_account_type"=>$game_account_type,":game_link"=>$game_link,":game_id"=>$game_id,":user_id"=>$user_id));
+		$conn=null;}	
 
 	function add_new_dispute($transaction_id,$dispute_title,$dispute_message){//register.php
 		$conn=connection();
