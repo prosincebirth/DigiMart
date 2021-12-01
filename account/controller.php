@@ -879,7 +879,28 @@
 								
 							}
 							break;
-																							
+					
+							case "change_user_password":
+								$user_id = $_SESSION['user_session'] ?? "";
+								$confirm_old_pass = $_POST['confirm_old_pass'];
+								$new_pass = $_POST['new_pass'] ?? "";
+								$confirm_new_pass = $_POST['confirm_new_pass'] ?? "";
+
+								$hash_password = password_hash($new_pass, PASSWORD_DEFAULT);
+
+								$hash_old_password = get_user_password($user_id);
+
+								if(empty($confirm_old_pass) or empty($new_pass) or empty($confirm_new_pass)){ // trappings for not logged in
+									echo 'Empty Fields';
+								}elseif(!password_verify($confirm_old_pass,$hash_old_password['user_password'])){
+									echo 'Old password incorrect';
+								}elseif($new_pass!=$confirm_new_pass){
+									echo 'New password does not match';
+								}else{
+									change_user_password($user_id,$hash_password);
+									echo 'Success';
+								} 																
+							break;																
 						
 			}
 		}

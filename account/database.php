@@ -243,8 +243,25 @@
 		$query="UPDATE wallets set wallet_frozen_balance=wallet_frozen_balance-:total where user_id=:user_id";
 		$prepare=$conn->prepare($query);
 		$exec=$prepare->execute(array(":user_id"=>$user_id,":total"=>$total));
-		$conn=null;}		
+		$conn=null;}	
 		
+	function get_user_password($user_id){
+		$conn=connection();
+		$query="SELECT * from users where user_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":user_id"=>$user_id));
+		$res = $prepare->fetch(PDO::FETCH_ASSOC);
+		$conn=null;
+		return $res;}
+	
+	function change_user_password($user_id,$hash_password){
+		$conn=connection();
+		$query="UPDATE users set user_password=:user_password where user_id=:user_id";
+		$prepare=$conn->prepare($query);
+		$exec=$prepare->execute(array(":user_id"=>$user_id,":user_password"=>$hash_password));
+		$conn=null;}
+		
+	
 
 	function existing_goods($goods_name,$goods_quality,$goods_rarity,$goods_detail_1,$goods_detail_2,$goods_detail_3,$goods_image,$game_id){//USED IN POST SALE
 		$conn=connection();

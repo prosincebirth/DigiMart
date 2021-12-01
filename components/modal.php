@@ -753,7 +753,6 @@
 	
 				<div class="fld_input"><input type="hidden" name="transaction_id_dispute_seller" placeholder="TRANSACTION ID" id="transaction_id_dispute_seller" class="form-control"></div>						
                 <div class="fld_input"><label> Title </label><input type="text" name="dispute_title_seller" id="dispute_title_seller" value ="Item is delivered but not confirmed" class="form-control"></div>
-	
 				<div class="fld_input"><label> Message </label><input type="text" name="dispute_message_seller"  id="dispute_message_seller" class="form-control"></div>
             </div>
 			<div class="modal-footer">
@@ -764,7 +763,26 @@
 	</div></div>
 	</div>	
 
-	
+	<div class="modal fade" id="change_user_password" role="dialog">
+	<div class="vertical-alignment-helper">
+	<div class="modal-dialog vertical-align-center">
+	<div class="modal-content">
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title"><center>Change password</h4>
+		</div>
+		<div class="modal-body">
+                <div class="fld_input"><label> Old password </label><input type="password" name="confirm_old_pass" id="confirm_old_pass" class="form-control"></div>
+				<div class="fld_input"><label> New password </label><input type="password" name="new_pass"  id="new_pass" class="form-control"></div>
+                <div class="fld_input"><label> Confirm new password </label><input type="password" name="confirm_new_pass"  id="confirm_new_pass" class="form-control"></div>
+            </div>
+			<div class="modal-footer">
+					<button class="btn btn-success" type="button" value="change_user_password">Confirm</button>
+			</div>
+		</div>
+	</div>
+	</div></div>
+	</div>
 
 	<div class="modal fade" id="desposit_success" role="dialog">
 		<div class="vertical-alignment-helper">
