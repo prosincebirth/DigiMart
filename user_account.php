@@ -206,7 +206,7 @@
                                             ?>
                                         <tr style="margin:10px">  
                                             <td class="t-left" width="120"></td> 
-                                            <td class="t-left"><a href="<?php echo $kyc_request1['user_steam_id'];?>" target="_blank"><span style="color:black"><?php echo $res['game_link'];?> </input></span></a></td> 
+                                            <td class="t-left"><a href="<?php echo $res['game_link'];?>" target="_blank"><span style="color:black"><?php echo $res['game_link'];?> </input></span></a></td> 
                                             <td class="t-left" ></td>
                                             <td class="t-right"><button class="btn" type="button" class="btn btn-success" data-toggle="modal" data-target="#delete_steam_link_new"
                                                 data-steam_id_delete="<?php echo $res['game_account_id'];?>" >Unbind Game Account</button></td> 

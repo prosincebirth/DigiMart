@@ -135,7 +135,7 @@
 
 	function user_kyc_status($user_session_kyc){// USED IN GAME SERVICES , POST SALE
 		$conn=connection2();
-		$sql="SELECT *,(SELECT kyc_message FROM kyc_verification WHERE user_session_kyc=2 ORDER BY `kyc_date_created` DESC limit 1) as user_kyc_message from users where user_id=$user_session_kyc limit 1";
+		$sql="SELECT *,(SELECT kyc_message FROM kyc_verification WHERE user_session_kyc=$user_session_kyc ORDER BY `kyc_date_created` DESC limit 1) as user_kyc_message from users where user_id=$user_session_kyc limit 1";
 		$result = $conn->query($sql);
 		return $result;}
 		
