@@ -192,7 +192,7 @@
                                                         <td class="t-left" ><a href="https://steamcommunity.com/my/profiles" target="_blank" style="margin-left:10px;"> Click to get link</a></td>
                                                         <td class="t-right"><button class="btn" type="button" value="main_steam_profile">Bind Game Account</button></td>                                                        
                                                     <?php } else { ?>
-                                                        <td class="t-left"><a href="<?php echo $kyc_request1['user_steam_id'];?>" target="_blank"><span style="color:black"><?php echo $kyc_request1['user_steam_id'];?> </input></span></a></td>
+                                                        <td class="t-left"><a href="<?php echo $kyc_request1['user_steam_id'];?>" target="_blank"><span style="color:black"><?php echo substr($kyc_request1['user_steam_id'],0,45);?></input></span></a></td>
                                                         <td class="t-left" ><a href="https://steamcommunity.com/my/profiles" target="_blank" style="margin-left:10px;"> Click to get link</a></td>
                                                         <td class="t-right"> <button class="btn" type="button" class="btn btn-success" data-toggle="modal" data-target="#unbind_steam_account"
                                                         data-steam_id_64="<?php echo $kyc_request1['user_steam_id'];?>" >Unbind Game Account</button></td>
@@ -206,12 +206,12 @@
                                             ?>
                                         <tr style="margin:10px">  
                                             <td class="t-left" width="120"></td> 
-                                            <td class="t-left"><a href="<?php echo $res['game_link'];?>" target="_blank"><span style="color:black"><?php echo $res['game_link'];?> </input></span></a></td> 
+                                            <td class="t-left"><a href="<?php echo $res['game_link'];?>" target="_blank"><span style="color:black"><?php echo substr($res['game_link'],0,45);?> </input></span></a></td> 
                                             <td class="t-left" ></td>
                                             <td class="t-right"><button class="btn" type="button" class="btn btn-success" data-toggle="modal" data-target="#delete_steam_link_new"
                                                 data-steam_id_delete="<?php echo $res['game_account_id'];?>" >Unbind Game Account</button></td> 
                                   
-                                        </tr>  
+                                        </tr>                       
                                         <?php } else{?>
                                         <tr style="margin:10px">  
                                             <td class="t-left" width="120"></td> 
@@ -230,7 +230,7 @@
                                                 <td class="t-left"><a href="https://steamcommunity.com/my/tradeoffers/privacy#trade_offer_access_url" target="_blank" style="margin-left:10px;" > Click to get link</a></td>
                                                 <td class="t-right"> <button class="btn btn-secondary btn-login" type="button" value="add_steam_trade" >Save</button></td>
                                             <?php } else { ?>
-                                                <td class="t-left"><a href="<?php echo $kyc_request1['user_steam_trade_link'];?>" target="_blank"><span style="color:black"><?php echo substr($kyc_request1['user_steam_trade_link'],0,50);?></span></a></td>
+                                                <td class="t-left"><a href="<?php echo $kyc_request1['user_steam_trade_link'];?>" target="_blank"><span style="color:black"><?php echo substr($kyc_request1['user_steam_trade_link'],0,44);?></span></a></td>
                                                 <td class="t-left" ><a href="https://steamcommunity.com/my/tradeoffers/privacy#trade_offer_access_url" target="_blank" style="margin-left:10px;" > Click to get link</a></td></td>
                                                 <td class="t-right"> <button class="btn" type="button" data-toggle="modal" data-target="#delete_steam_trade">Delete</button></td>
                                               
