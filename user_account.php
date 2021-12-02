@@ -170,7 +170,7 @@
                                         else if($kyc_request['user_kyc']==1){ echo '<td class="t-left"><span style="color:orange"><i class="fas fa-times-circle"></i> Pending </span></td>'; } 
                                         else if($kyc_request['user_kyc']==2){ echo '<td class="t-left"><span style="color:green"><b><i class="fas fa-check-circle"></i> Verified</span></td>'; } 
                                         else if($kyc_request['user_kyc']==3){ 
-                                            echo '<td class="t-left"><span style="color:red"><i class="fas fa-times-circle"></i> Denied - '.$kyc_request['user_kyc_message'].' </span></td>'; 
+                                            echo '<td class="t-left"><span style="color:red"><i class="fas fa-times-circle"></i> Denied - Reason : '.$kyc_request['user_kyc_message'].' </span></td>'; 
                                             echo '<td class="t=left"></td>';
                                             echo '<td class="t-right"><a data-toggle="modal" data-target="#kyc_services_modal" class="i-btn --i-btn-small"> Start Verification</a></td>';
                                             } 
